@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "NONE",
+    "keyBindingName": "Cursed Energy Shield",
+    "keyBindingCategoryKey": "jujutsucraftaddon",
+    "onKeyPressed": {
+      "name": "CursedEnergyShieldOnKeyPressed"
+    }
+  }
+}

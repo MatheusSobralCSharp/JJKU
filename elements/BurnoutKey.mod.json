@@ -1,0 +1,15 @@
+{
+  "_fv": 60,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "NONE",
+    "keyBindingName": "Burnout Key",
+    "keyBindingCategoryKey": "jujutsucraftaddon",
+    "onKeyPressed": {
+      "name": "BurnoutKeyOnKeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "BurnoutKeyOnKeyReleased"
+    }
+  }
+}

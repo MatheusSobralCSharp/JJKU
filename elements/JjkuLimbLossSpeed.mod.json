@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Limb Loss Speed",
+    "description": "Changes the how often you can lose limbs and how much rare ( higher values = more chance )",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 1
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 190,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_imbue_with_negative_energy",
+          "text": "Imbue With Negative Energy",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ImbueNegative"
+          },
+          "width": 160,
+          "height": 20,
+          "x": 132,
+          "y": 64
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_imbue_with_positive_energy",
+          "text": "Imbue With Positive Energy",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ImbuePositive"
+          },
+          "width": 160,
+          "height": 20,
+          "x": 133,
+          "y": 144
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_heal_with_ce",
+          "text": "Heal With CE",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "HealWeapon"
+          },
+          "width": 87,
+          "height": 20,
+          "x": 165,
+          "y": 102
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

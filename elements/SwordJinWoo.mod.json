@@ -1,0 +1,44 @@
+{
+  "_fv": 60,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "ive-been-having-a-lot-of-fun-modeling-sung-jinwoos-daggers-v0-fpxx7itnr5oa1-transformed",
+    "customModelName": "kamish_dagger_1:default",
+    "blockingModelName": "Normal blocking",
+    "name": "Kamish Dagger",
+    "specialInformation": {
+      "fixedValue": [
+        "[Ability] Arise"
+      ]
+    },
+    "creativeTab": {
+      "value": "No creative tab entry"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 2.0,
+    "enchantability": 2,
+    "damageVsEntity": 15.0,
+    "usageCount": 250,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "SwordJinWooRightclicked"
+    },
+    "onEntityHitWith": {
+      "name": "SwordJinWooLivingEntityIsHitWithTool"
+    },
+    "onItemInUseTick": {
+      "name": "SwordJinWooToolInHandTick"
+    }
+  }
+}

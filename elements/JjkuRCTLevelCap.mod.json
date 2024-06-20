@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "Set The RCT Level Cap Value",
+    "description": "Set The RCT Level Effect Cap Value",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 20
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "Jjku Jujutsu Sorcerers Spawn Rate",
+    "description": "Change Spawn Rate of Jujutsu Sorcerers ( default is 0, 1 = 1% chance  )",
+    "category": "SPAWNING",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 100
+  }
+}

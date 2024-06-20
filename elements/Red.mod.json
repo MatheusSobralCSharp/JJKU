@@ -1,0 +1,21 @@
+{
+  "_fv": 60,
+  "_type": "particle",
+  "definition": {
+    "texture": "redo3.png",
+    "animate": true,
+    "frameDuration": 20,
+    "width": 0.2,
+    "height": 0.2,
+    "scale": 6.0,
+    "speedFactor": 0.0,
+    "gravity": 0.0,
+    "maxAge": 140,
+    "maxAgeDiff": 2,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 1.0,
+    "canCollide": true,
+    "alwaysShow": false,
+    "renderType": "LIT"
+  }
+}

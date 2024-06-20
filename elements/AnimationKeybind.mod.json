@@ -1,0 +1,15 @@
+{
+  "_fv": 60,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "B",
+    "keyBindingName": "Special Interaction",
+    "keyBindingCategoryKey": "jujutsucraftaddon",
+    "onKeyPressed": {
+      "name": "AnimationKeybindOnKeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "PassiveKeybindOnKeyReleased"
+    }
+  }
+}

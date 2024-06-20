@@ -1,0 +1,56 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jujutsucraftaddon"
+version="6.6"
+displayName="JJKU"
+displayURL="https://mcreator.net"
+logoFile="logo.png"
+credits="Made With Mcreator ( By Satushi )"
+authors="Satushi"
+description="A New JujutsuCraft ( Orca ) Experience ADD-ON"
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+[[dependencies.jujutsucraftaddon]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.jujutsucraftaddon]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.jujutsucraftaddon]]
+    modId="playeranimator"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.jujutsucraftaddon]]
+    modId="geckolib"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.jujutsucraftaddon]]
+    modId="jujutsucraft_api"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.jujutsucraftaddon]]
+    modId="playeranimator"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+

@@ -1,0 +1,73 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 176,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_random_rule",
+          "text": "Random Rule",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "KoganeRandomRule"
+          },
+          "width": 82,
+          "height": 20,
+          "x": 170,
+          "y": 62
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_random_player_punishment",
+          "text": "Random Player Punishment",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "KoganeRandomPunishment"
+          },
+          "width": 150,
+          "height": 20,
+          "x": 139,
+          "y": 100
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "kogane_showing_player_data2.png",
+          "use1Xscale": true,
+          "x": 98,
+          "y": 7
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_summon_sukuna_fushiguro",
+          "text": "Challenge Ryomen Sukuna",
+          "isUndecorated": false,
+          "width": 145,
+          "height": 20,
+          "x": 143,
+          "y": 139
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

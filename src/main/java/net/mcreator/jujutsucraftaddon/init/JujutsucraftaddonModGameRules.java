@@ -1,0 +1,61 @@
+
+/*
+ *    MCreator note: This file will be REGENERATED on each build.
+ */
+package net.mcreator.jujutsucraftaddon.init;
+
+import net.minecraftforge.fml.common.Mod;
+
+import net.minecraft.world.level.GameRules;
+
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+public class JujutsucraftaddonModGameRules {
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_DIFFICULTY = GameRules.register("jjkuDifficulty", GameRules.Category.MISC, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_GOJO_ONLY_SIX_EYES = GameRules.register("jjkuGojoOnlySixEyes", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_HARDCORE_MODE = GameRules.register("jjkuHardcoreMode", GameRules.Category.MOBS, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_ANIMATIONS = GameRules.register("jjkuAnimations", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_SPAWN_OVERWORLD = GameRules.register("jjkuSpawnOverworld", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SUKUNA_RATE = GameRules.register("jjkuSukunaRate", GameRules.Category.SPAWNING, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_GOJO_RATE = GameRules.register("jjkuGojoRate", GameRules.Category.MISC, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NO_OPEN_FOR_SUKUNA = GameRules.register("jjkuNoOpenForSukuna", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_SPAWN_CHANGER = GameRules.register("jjkuSpawnChanger", GameRules.Category.SPAWNING, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_CURSED_SPIRIT_RATE = GameRules.register("jjkuCursedSpiritRate", GameRules.Category.SPAWNING, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_CURSE_USERS_RATE = GameRules.register("jjkuCurseUsersRate", GameRules.Category.SPAWNING, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SORCERERS_RATE = GameRules.register("jjkuSorcerersRate", GameRules.Category.SPAWNING, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_TOJI_RATE = GameRules.register("jjkuTojiRate", GameRules.Category.SPAWNING, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NO_VANILLA = GameRules.register("jjkuNoVanilla", GameRules.Category.SPAWNING, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_CE_REGEN = GameRules.register("jjkuCERegen", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_DOMAIN_NERF = GameRules.register("jjkuDomainNerf", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_KENJAKU_LIMIT = GameRules.register("jjkuKenjakuLimit", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_ZONE_STACK = GameRules.register("jjkuZoneStack", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_DROP_RATE = GameRules.register("jjkuDropRate", GameRules.Category.DROPS, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NO_BLACK_FLASH_CUTSCENE = GameRules.register("jjkuNoBlackFlashCutscene", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NO_STEVENSON = GameRules.register("jjkuNoStevenson", GameRules.Category.SPAWNING, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NO_ARMORY_SPIRIT = GameRules.register("jjkuNoArmorySpirit", GameRules.Category.SPAWNING, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_CULLING_GAMES = GameRules.register("jjkuCullingGames", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_RANDOM_CT = GameRules.register("jjkuRandomCT", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_SUKUNA_POSSESSION_ENABLED = GameRules.register("jjkuSukunaPossessionEnabled", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_OST_PLAYER = GameRules.register("jjkuOstPlayer", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_SUKUNA_POSSESSION_PER_LIFE = GameRules.register("jjkuSukunaPossessionPerLife", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_MOB_OSTS = GameRules.register("jjkuMobOsts", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NPC_FISTS = GameRules.register("jjkuNpcFists", GameRules.Category.MOBS, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_LIMB_LOSS = GameRules.register("jjkuLimbLoss", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_AIR_COMBAT = GameRules.register("jjkuAirCombat", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_LIMB_LOSS_SPEED = GameRules.register("jjkuLimbLossSpeed", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_CURSED_SPIRIT_REGEN = GameRules.register("jjkuCursedSpiritRegen", GameRules.Category.MOBS, GameRules.IntegerValue.create(0));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_OVERPOWERED_STUFF = GameRules.register("jjkuOverpoweredStuff", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_CAN_TAME_SUKUNA = GameRules.register("jjkuCanTameSukuna", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_CE_MODIFIER = GameRules.register("jjkuCEModifier", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SUKUNA_POSSESSION_RATE = GameRules.register("jjkuSukunaPossessionRate", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_RCT_LIMIT = GameRules.register("jjkuRCTLimit", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_TAKABA_REMOVE_ARMOR = GameRules.register("jjkuTakabaRemoveArmor", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_NO_COOLDOWN = GameRules.register("jjkuNoCooldown", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_ZONE_STACK_CAP = GameRules.register("jjkuZoneStackCap", GameRules.Category.MISC, GameRules.IntegerValue.create(100));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_WATER_WALK = GameRules.register("jjkuWaterWalk", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_AUTO_RCT = GameRules.register("jjkuAutoRCT", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_CAN_STEAL_GOJO = GameRules.register("jjkuCanStealGojo", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SUKUNA_HEALTH_POSSESSION = GameRules.register("jjkuSukunaHealthPossession", GameRules.Category.MISC, GameRules.IntegerValue.create(40));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_MAHORAGA_CAN_ADAPT_EVERYTHING = GameRules.register("jjkuMahoragaCanAdaptEverything", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_HP_CAP = GameRules.register("jjkuHPCap", GameRules.Category.MISC, GameRules.IntegerValue.create(1000));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_RCT_LEVEL_CAP = GameRules.register("jjkuRCTLevelCap", GameRules.Category.MISC, GameRules.IntegerValue.create(20));
+}

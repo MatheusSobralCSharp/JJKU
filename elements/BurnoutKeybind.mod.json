@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "NUMLOCK",
+    "keyBindingName": "Burnout Keybind",
+    "keyBindingCategoryKey": "jujutsucraftaddon",
+    "onKeyPressed": {
+      "name": "RCTBurnoutKey"
+    }
+  }
+}

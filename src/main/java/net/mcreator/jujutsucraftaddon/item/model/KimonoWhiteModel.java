@@ -1,0 +1,24 @@
+package net.mcreator.jujutsucraftaddon.item.model;
+
+import software.bernie.geckolib.model.GeoModel;
+
+import net.minecraft.resources.ResourceLocation;
+
+import net.mcreator.jujutsucraftaddon.item.KimonoWhiteItem;
+
+public class KimonoWhiteModel extends GeoModel<KimonoWhiteItem> {
+	@Override
+	public ResourceLocation getAnimationResource(KimonoWhiteItem object) {
+		return new ResourceLocation("jujutsucraftaddon", "animations/kimonoblack.animation.json");
+	}
+
+	@Override
+	public ResourceLocation getModelResource(KimonoWhiteItem object) {
+		return new ResourceLocation("jujutsucraftaddon", "geo/kimonoblack.geo.json");
+	}
+
+	@Override
+	public ResourceLocation getTextureResource(KimonoWhiteItem object) {
+		return new ResourceLocation("jujutsucraftaddon", "textures/item/kimonowhite.png");
+	}
+}

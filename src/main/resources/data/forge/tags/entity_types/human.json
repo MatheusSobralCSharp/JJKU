@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "pillager",
+    "villager",
+    "vindicator",
+    "witch",
+    "zombie",
+    "zombie_villager",
+    "jujutsucraft:jujutsu_sorcerer",
+    "jujutsucraft:curse_user"
+  ]
+}

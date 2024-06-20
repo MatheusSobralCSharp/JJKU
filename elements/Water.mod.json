@@ -1,0 +1,21 @@
+{
+  "_fv": 60,
+  "_type": "particle",
+  "definition": {
+    "texture": "particle_water.png",
+    "animate": true,
+    "frameDuration": 2,
+    "width": 0.5,
+    "height": 0.5,
+    "scale": 4.0,
+    "speedFactor": 0.0,
+    "gravity": 0.0,
+    "maxAge": 20,
+    "maxAgeDiff": 4,
+    "angularVelocity": 0.0,
+    "angularAcceleration": 0.0,
+    "canCollide": true,
+    "alwaysShow": false,
+    "renderType": "LIT"
+  }
+}

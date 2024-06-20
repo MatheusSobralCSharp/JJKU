@@ -1,0 +1,26 @@
+{
+  "_fv": 60,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Overtime",
+    "icon": "bg_f8f8f8-flat_750x_075_f-pad_750x1000_f8f8f8-removebg-preview.png",
+    "color": {
+      "value": -16777216,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "isBad": false,
+    "isBenefitical": false,
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true,
+    "onStarted": {
+      "name": "OvertimeEffectStartedapplied"
+    },
+    "onActiveTick": {
+      "name": "OvertimeOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "OvertimeEffectExpires"
+    }
+  }
+}

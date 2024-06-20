@@ -1,0 +1,100 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_barrierlessmiddle",
+          "image": "cursed_energy_14.png",
+          "hoveredImage": "cursed_energy_15.png",
+          "onClick": {
+            "name": "RCTBurnoutKey"
+          },
+          "x": 180,
+          "y": 23
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_artcleftno",
+          "image": "reverse.png",
+          "hoveredImage": "reverse2.png",
+          "onClick": {
+            "name": "RCTMasteryKeyOnKeyPressed"
+          },
+          "x": 114,
+          "y": 64
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_nosimple",
+          "image": "simplefinal1.png",
+          "hoveredImage": "simplefinal2.png",
+          "onClick": {
+            "name": "SimpleDomainKeyOnKeyPressed"
+          },
+          "x": 116,
+          "y": 152
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_extensiondownrightno",
+          "image": "soulno.png",
+          "hoveredImage": "soulyes.png",
+          "onClick": {
+            "name": "ExtensionDomainKeyOnPressed"
+          },
+          "x": 245,
+          "y": 150
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_norightoutput",
+          "image": "burnout2.png",
+          "hoveredImage": "burnout1.png",
+          "onClick": {
+            "name": "RCTOutputKeyOnKeyPressed"
+          },
+          "x": 246,
+          "y": 50
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_barrierless1",
+          "image": "barrierless1.png",
+          "hoveredImage": "barrierless2.png",
+          "onClick": {
+            "name": "BarrierlessKeyOnKeyPressed"
+          },
+          "x": 180,
+          "y": 98
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

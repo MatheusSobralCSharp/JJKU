@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Logic",
+    "displayName": "JJKU Domain Nerf",
+    "description": "Only used for performance due bugs like freezing domain ( default is enabled, disable if you are sure that will freeze )",
+    "category": "MISC",
+    "defaultValueLogic": true,
+    "defaultValueNumber": 0
+  }
+}

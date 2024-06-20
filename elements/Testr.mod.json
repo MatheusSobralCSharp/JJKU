@@ -1,0 +1,87 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_nomiddle",
+          "image": "nomiddle1.png",
+          "hoveredImage": "yesmiddle.png",
+          "onClick": {
+            "name": "BindingVowPower"
+          },
+          "x": 182,
+          "y": 27
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_noleft",
+          "image": "noleft1.png",
+          "hoveredImage": "yesleft.png",
+          "onClick": {
+            "name": "BindingVowHealth"
+          },
+          "x": 124,
+          "y": 94
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_noleftdown",
+          "image": "noleftdown1.png",
+          "hoveredImage": "yesleftdown.png",
+          "onClick": {
+            "name": "BindingVowTechnique"
+          },
+          "x": 158,
+          "y": 128
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_noright",
+          "image": "noright1.png",
+          "hoveredImage": "yesright.png",
+          "onClick": {
+            "name": "BindingVowRange"
+          },
+          "x": 218,
+          "y": 94
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_norightdown",
+          "image": "norightdown1.png",
+          "hoveredImage": "yesrightdown.png",
+          "onClick": {
+            "name": "BindingVowChants"
+          },
+          "x": 209,
+          "y": 132
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

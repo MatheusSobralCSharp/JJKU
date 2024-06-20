@@ -1,0 +1,156 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_geto_ct",
+          "text": {
+            "fixedValue": "Geto CT:"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 124,
+          "y": 53
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select",
+          "text": "Select",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "KenjakuCTClick"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 213,
+          "y": 48
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_ct_names",
+          "text": {
+            "fixedValue": ":",
+            "name": "CTNames"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 123,
+          "y": 85
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_ct_names_2",
+          "text": {
+            "fixedValue": "",
+            "name": "CTNames2"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 123,
+          "y": 118
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select1",
+          "text": "Select",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CTSet1"
+          },
+          "displayCondition": {
+            "name": "Condition1"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 195,
+          "y": 80
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select2",
+          "text": "Select",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CTSet2"
+          },
+          "displayCondition": {
+            "name": "Condition2"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 195,
+          "y": 114
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_x",
+          "text": "X",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CTNameClicked2"
+          },
+          "displayCondition": {
+            "name": "Condition2"
+          },
+          "width": 30,
+          "height": 20,
+          "x": 260,
+          "y": 114
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_x1",
+          "text": "X",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CTNameClicked1"
+          },
+          "displayCondition": {
+            "name": "Condition1"
+          },
+          "width": 30,
+          "height": 20,
+          "x": 260,
+          "y": 80
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

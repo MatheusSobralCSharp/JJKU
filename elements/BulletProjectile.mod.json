@@ -1,0 +1,19 @@
+{
+  "_fv": 60,
+  "_type": "projectile",
+  "definition": {
+    "projectileItem": {
+      "value": "CUSTOM:SexEyes"
+    },
+    "showParticles": false,
+    "actionSound": {
+      "value": "CUSTOM:bullet"
+    },
+    "igniteFire": false,
+    "power": 100.0,
+    "damage": 2.0,
+    "knockback": 1,
+    "entityModel": "Default",
+    "customModelTexture": ""
+  }
+}

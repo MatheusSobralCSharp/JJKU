@@ -1,0 +1,67 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 170,
+    "height": 170,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_cursed_spirit",
+          "text": "Cursed Spirit",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "RaceChangerCursedSpirit"
+          },
+          "width": 93,
+          "height": 20,
+          "x": 165,
+          "y": 101
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_jujutsu_sorcerer",
+          "text": "Jujutsu Sorcerer",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "RaceChangerSorcerer"
+          },
+          "width": 108,
+          "height": 20,
+          "x": 157,
+          "y": 59
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_incarnated_sorcerer",
+          "text": "Incarnated Sorcerer",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "RaceChangerVessel"
+          },
+          "width": 124,
+          "height": 20,
+          "x": 148,
+          "y": 144
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

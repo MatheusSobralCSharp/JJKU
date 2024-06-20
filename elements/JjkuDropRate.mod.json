@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Drop Rate",
+    "description": "Changes Drop Rate from Items ( Higher numbers = more drop )",
+    "category": "DROPS",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 100
+  }
+}
