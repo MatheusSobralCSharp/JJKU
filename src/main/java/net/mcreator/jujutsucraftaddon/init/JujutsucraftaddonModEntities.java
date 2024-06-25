@@ -31,6 +31,8 @@ import net.mcreator.jujutsucraftaddon.entity.SatushiEntity;
 import net.mcreator.jujutsucraftaddon.entity.RikoAmanaiEntity;
 import net.mcreator.jujutsucraftaddon.entity.RedOEntity;
 import net.mcreator.jujutsucraftaddon.entity.RedEntityEntity;
+import net.mcreator.jujutsucraftaddon.entity.OutlineEntity;
+import net.mcreator.jujutsucraftaddon.entity.MaleniaEntity;
 import net.mcreator.jujutsucraftaddon.entity.MakiPreparationEntity;
 import net.mcreator.jujutsucraftaddon.entity.KashimoFemboyEntity;
 import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
@@ -161,6 +163,12 @@ public class JujutsucraftaddonModEntities {
 			EntityType.Builder.<TestProjectileEntity>of(TestProjectileEntity::new, MobCategory.MISC).setCustomClientFactory(TestProjectileEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<AntiVeilEntity>> ANTI_VEIL = register("anti_veil",
 			EntityType.Builder.<AntiVeilEntity>of(AntiVeilEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(AntiVeilEntity::new).fireImmune().sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<MaleniaEntity>> MALENIA = register("malenia",
+			EntityType.Builder.<MaleniaEntity>of(MaleniaEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(MaleniaEntity::new).fireImmune().sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<OutlineEntity>> OUTLINE = register("outline",
+			EntityType.Builder.<OutlineEntity>of(OutlineEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(OutlineEntity::new)
+
+					.sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -199,6 +207,8 @@ public class JujutsucraftaddonModEntities {
 			VeilEntity.init();
 			SatushiEntity.init();
 			AntiVeilEntity.init();
+			MaleniaEntity.init();
+			OutlineEntity.init();
 		});
 	}
 
@@ -234,5 +244,7 @@ public class JujutsucraftaddonModEntities {
 		event.put(VEIL.get(), VeilEntity.createAttributes().build());
 		event.put(SATUSHI.get(), SatushiEntity.createAttributes().build());
 		event.put(ANTI_VEIL.get(), AntiVeilEntity.createAttributes().build());
+		event.put(MALENIA.get(), MaleniaEntity.createAttributes().build());
+		event.put(OUTLINE.get(), OutlineEntity.createAttributes().build());
 	}
 }

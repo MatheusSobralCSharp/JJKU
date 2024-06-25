@@ -25,6 +25,8 @@ import net.mcreator.jujutsucraftaddon.client.renderer.SatushiRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.RikoAmanaiRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.RedORenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.RedEntityRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.OutlineRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.MaleniaRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.MakiPreparationRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.KashimoFemboyRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.ItadoriShinjukuRenderer;
@@ -78,5 +80,7 @@ public class JujutsucraftaddonModEntityRenderers {
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.SATUSHI.get(), SatushiRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.TEST_PROJECTILE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.ANTI_VEIL.get(), AntiVeilRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.MALENIA.get(), MaleniaRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.OUTLINE.get(), OutlineRenderer::new);
 	}
 }
