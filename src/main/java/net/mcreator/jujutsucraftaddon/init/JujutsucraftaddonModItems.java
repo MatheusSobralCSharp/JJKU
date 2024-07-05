@@ -80,6 +80,7 @@ import net.mcreator.jujutsucraftaddon.item.JJKUItem;
 import net.mcreator.jujutsucraftaddon.item.JJKUCheckmark2Item;
 import net.mcreator.jujutsucraftaddon.item.ItemmmChcekItem;
 import net.mcreator.jujutsucraftaddon.item.ItemTest2Item;
+import net.mcreator.jujutsucraftaddon.item.ItemDomainSizeSetItem;
 import net.mcreator.jujutsucraftaddon.item.ItadoriDrinksItem;
 import net.mcreator.jujutsucraftaddon.item.ItadoriDrinkItem;
 import net.mcreator.jujutsucraftaddon.item.ItadoriArmsItem;
@@ -261,6 +262,7 @@ public class JujutsucraftaddonModItems {
 	public static final RegistryObject<Item> DISPLAY_DOMAIN = REGISTRY.register("display_domain", () -> new DisplayDomainItem());
 	public static final RegistryObject<Item> DISPLAY_CT_NUMBER = REGISTRY.register("display_ct_number", () -> new DisplayCTNumberItem());
 	public static final RegistryObject<Item> YUUN = REGISTRY.register("yuun", () -> new YuunItem());
+	public static final RegistryObject<Item> ITEM_DOMAIN_SIZE_SET = REGISTRY.register("item_domain_size_set", () -> new ItemDomainSizeSetItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

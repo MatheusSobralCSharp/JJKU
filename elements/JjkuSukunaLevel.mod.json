@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Sukuna Cost Level",
+    "description": "Change The Sukuna Cost Reduction Level ( higher = higher cost, default = 1 )",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 5
+  }
+}

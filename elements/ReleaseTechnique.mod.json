@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "NONE",
+    "keyBindingName": "Release Technique",
+    "keyBindingCategoryKey": "jujutsucraftaddon",
+    "onKeyPressed": {
+      "name": "ReleaseTechniqueOnKeyPressed"
+    }
+  }
+}

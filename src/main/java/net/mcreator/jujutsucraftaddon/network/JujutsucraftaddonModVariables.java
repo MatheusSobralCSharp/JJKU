@@ -226,6 +226,7 @@ public class JujutsucraftaddonModVariables {
 			clone.locker = original.locker;
 			clone.YutaCheck = original.YutaCheck;
 			clone.MahoragaCanAdapt = original.MahoragaCanAdapt;
+			clone.RadiusDomain = original.RadiusDomain;
 			if (!event.isWasDeath()) {
 				clone.InventoryArmorySlot0 = original.InventoryArmorySlot0;
 				clone.InventoryArmorySlot2 = original.InventoryArmorySlot2;
@@ -313,6 +314,7 @@ public class JujutsucraftaddonModVariables {
 		public BlockState BlockType = Blocks.AIR.defaultBlockState();
 		public Direction BlockDirection = Direction.NORTH;
 		public double DomainExpansion = 0;
+		public double map = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -325,6 +327,7 @@ public class JujutsucraftaddonModVariables {
 			BlockType = NbtUtils.readBlockState(BuiltInRegistries.BLOCK.asLookup(), nbt.getCompound("BlockType"));
 			BlockDirection = Direction.from3DDataValue(nbt.getInt("BlockDirection"));
 			DomainExpansion = nbt.getDouble("DomainExpansion");
+			map = nbt.getDouble("map");
 		}
 
 		@Override
@@ -333,6 +336,7 @@ public class JujutsucraftaddonModVariables {
 			nbt.put("BlockType", NbtUtils.writeBlockState(BlockType));
 			nbt.putInt("BlockDirection", BlockDirection.get3DDataValue());
 			nbt.putDouble("DomainExpansion", DomainExpansion);
+			nbt.putDouble("map", map);
 			return nbt;
 		}
 
@@ -590,6 +594,7 @@ public class JujutsucraftaddonModVariables {
 		public double YutaCheck = 0;
 		public double MahoragaCanAdapt = 0;
 		public double DomainSizeVariable = 0;
+		public double RadiusDomain = 0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -763,6 +768,7 @@ public class JujutsucraftaddonModVariables {
 			nbt.putDouble("YutaCheck", YutaCheck);
 			nbt.putDouble("MahoragaCanAdapt", MahoragaCanAdapt);
 			nbt.putDouble("DomainSizeVariable", DomainSizeVariable);
+			nbt.putDouble("RadiusDomain", RadiusDomain);
 			return nbt;
 		}
 
@@ -933,6 +939,7 @@ public class JujutsucraftaddonModVariables {
 			YutaCheck = nbt.getDouble("YutaCheck");
 			MahoragaCanAdapt = nbt.getDouble("MahoragaCanAdapt");
 			DomainSizeVariable = nbt.getDouble("DomainSizeVariable");
+			RadiusDomain = nbt.getDouble("RadiusDomain");
 		}
 	}
 
@@ -1122,6 +1129,7 @@ public class JujutsucraftaddonModVariables {
 					variables.YutaCheck = message.data.YutaCheck;
 					variables.MahoragaCanAdapt = message.data.MahoragaCanAdapt;
 					variables.DomainSizeVariable = message.data.DomainSizeVariable;
+					variables.RadiusDomain = message.data.RadiusDomain;
 				}
 			});
 			context.setPacketHandled(true);

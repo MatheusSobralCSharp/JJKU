@@ -33,7 +33,7 @@ public class JjkuVeilAccessCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					VeilAcessProcedure.execute(arguments, entity);
+					VeilAcessProcedure.execute(world, arguments, entity);
 					return 0;
 				})));
 	}

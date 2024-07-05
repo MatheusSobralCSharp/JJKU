@@ -1,0 +1,137 @@
+package net.mcreator.jujutsucraftaddon.mixins;
+
+import net.mcreator.jujutsucraft.entity.JudgemanEntity;
+import net.mcreator.jujutsucraft.entity.TakadaEntity;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.procedures.*;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LevelAccessor;
+import org.spongepowered.asm.mixin.Mixin;
+import java.util.UUID;
+import java.util.function.BiFunction;
+import net.mcreator.jujutsucraft.entity.JudgemanEntity;
+import net.mcreator.jujutsucraft.entity.TakadaEntity;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
+import org.spongepowered.asm.mixin.Overwrite;
+
+import java.util.UUID;
+import java.util.function.BiFunction;
+
+@Mixin(value = TakadaOnEntityTickUpdateProcedure.class, remap = false)
+public abstract class HigurumaShikigamiMixin {
+    public HigurumaShikigamiMixin() {
+    }
+
+    /**
+     * @author Sat
+     * @reason Changes
+     */
+    @Overwrite
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (entity != null) {
+            Entity entity_a = null;
+            double x_pos = 0.0;
+            double y_pos = 0.0;
+            double z_pos = 0.0;
+            double num1 = 0.0;
+            if (LogicOwnerExistProcedure.execute(world, entity)) {
+                entity_a = (new BiFunction<LevelAccessor, String, Entity>() {
+                    public Entity apply(LevelAccessor levelAccessor, String uuid) {
+                        if (levelAccessor instanceof ServerLevel serverLevel) {
+                            try {
+                                return serverLevel.getEntity(UUID.fromString(uuid));
+                            } catch (Exception var5) {
+                            }
+                        }
+
+                        return null;
+                    }
+                }).apply(world, entity.getPersistentData().getString("OWNER_UUID"));
+                ServerLevel _level;
+                if (entity_a instanceof LivingEntity) {
+                    LivingEntity _livEnt2 = (LivingEntity)entity_a;
+                    if (_livEnt2.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                        if (entity instanceof JudgemanEntity && entity_a.getPersistentData().getDouble("skill") == 2719.0 && entity_a.getPersistentData().getDouble("cnt3") >= 20.0 && entity_a.getPersistentData().getDouble("cnt1") > 0.0) {
+                            if (entity instanceof JudgemanEntity) {
+                                ((JudgemanEntity)entity).setAnimation("empty");
+                            }
+
+                            if (entity instanceof JudgemanEntity) {
+                                ((JudgemanEntity)entity).setAnimation("judgement");
+                            }
+
+                            num1 = 0.0;
+                            x_pos = entity.getX();
+                            y_pos = entity.getY();
+                            z_pos = entity.getZ();
+                            if (world instanceof ServerLevel) {
+                                _level = (ServerLevel)world;
+                                _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
+                                return;
+                            }
+                        }
+
+                        return;
+                    }
+                }
+
+                if (entity instanceof TakadaEntity) {
+                    if (world instanceof ServerLevel) {
+                        _level = (ServerLevel)world;
+                        _level.sendParticles(ParticleTypes.END_ROD, x, y + (double)entity.getBbHeight() * 0.5, z, 40, 0.2, 0.5, 0.2, 0.0);
+                    }
+                } else if (entity instanceof JudgemanEntity && world instanceof ServerLevel) {
+                    _level = (ServerLevel)world;
+                    _level.sendParticles(ParticleTypes.SQUID_INK, x, y + (double)entity.getBbHeight() * 0.5, z, 40, 0.2, 0.5, 0.2, 0.0);
+                }
+
+                if (!entity.level().isClientSide()) {
+                    if (entity.getPersistentData().getBoolean("ShikigamiLevel") == false){
+                        entity.discard();
+                    } else {
+                        if (entity instanceof JudgemanEntity) {
+                            ((JudgemanEntity)entity).setAnimation("judgement");
+                            num1 = 0.0;
+                            x_pos = entity.getX();
+                            y_pos = entity.getY();
+                            z_pos = entity.getZ();
+                            if (world instanceof ServerLevel) {
+                                _level = (ServerLevel) world;
+                                _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
+                                return;
+                            }
+                        }
+                    }
+                }
+            } else if (!entity.level().isClientSide()) {
+                if (entity.getPersistentData().getBoolean("ShikigamiLevel") == false){
+                    entity.discard();
+                } else {
+                    if (entity instanceof JudgemanEntity) {
+                        ((JudgemanEntity)entity).setAnimation("judgement");
+                        num1 = 0.0;
+                        x_pos = entity.getX();
+                        y_pos = entity.getY();
+                        z_pos = entity.getZ();
+                        if (world instanceof ServerLevel) {
+                            ServerLevel _level = (ServerLevel) world;
+                            _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
+                            return;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

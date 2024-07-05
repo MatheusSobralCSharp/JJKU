@@ -18,6 +18,7 @@ import net.minecraft.client.KeyMapping;
 import net.mcreator.jujutsucraftaddon.network.WorldSlashKeyMessage;
 import net.mcreator.jujutsucraftaddon.network.WaterWalkingMessage;
 import net.mcreator.jujutsucraftaddon.network.TestAnimationMessage;
+import net.mcreator.jujutsucraftaddon.network.ReleaseTechniqueMessage;
 import net.mcreator.jujutsucraftaddon.network.RegistryMessage;
 import net.mcreator.jujutsucraftaddon.network.PassiveKeybindMessage;
 import net.mcreator.jujutsucraftaddon.network.KeyWheelMessage;
@@ -31,6 +32,7 @@ import net.mcreator.jujutsucraftaddon.network.CursedWeaponMessage;
 import net.mcreator.jujutsucraftaddon.network.CursedEnergyShieldMessage;
 import net.mcreator.jujutsucraftaddon.network.CounterKeybindMessage;
 import net.mcreator.jujutsucraftaddon.network.ClickAnimationMessage;
+import net.mcreator.jujutsucraftaddon.network.ChangeTechniqueMessage;
 import net.mcreator.jujutsucraftaddon.network.BurnoutKeybindMessage;
 import net.mcreator.jujutsucraftaddon.network.BurnoutKeyMessage;
 import net.mcreator.jujutsucraftaddon.network.ArmoryOrCopyMessage;
@@ -319,6 +321,32 @@ public class JujutsucraftaddonModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
+	public static final KeyMapping CHANGE_TECHNIQUE = new KeyMapping("key.jujutsucraftaddon.change_technique", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ChangeTechniqueMessage(0, 0));
+				ChangeTechniqueMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
+	public static final KeyMapping RELEASE_TECHNIQUE = new KeyMapping("key.jujutsucraftaddon.release_technique", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ReleaseTechniqueMessage(0, 0));
+				ReleaseTechniqueMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
 	private static long ANIMATION_KEYBIND_LASTPRESS = 0;
 	private static long PASSIVE_KEYBIND_LASTPRESS = 0;
 	private static long DOMAIN_EXPANSION_LASTPRESS = 0;
@@ -346,6 +374,8 @@ public class JujutsucraftaddonModKeyMappings {
 		event.register(CURSED_ENERGY_SHIELD);
 		event.register(CURSED_WEAPON);
 		event.register(DOMAIN_TYPE);
+		event.register(CHANGE_TECHNIQUE);
+		event.register(RELEASE_TECHNIQUE);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -373,6 +403,8 @@ public class JujutsucraftaddonModKeyMappings {
 				CURSED_ENERGY_SHIELD.consumeClick();
 				CURSED_WEAPON.consumeClick();
 				DOMAIN_TYPE.consumeClick();
+				CHANGE_TECHNIQUE.consumeClick();
+				RELEASE_TECHNIQUE.consumeClick();
 			}
 		}
 	}

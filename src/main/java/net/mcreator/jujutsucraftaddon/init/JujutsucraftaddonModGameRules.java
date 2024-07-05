@@ -58,4 +58,10 @@ public class JujutsucraftaddonModGameRules {
 	public static final GameRules.Key<GameRules.BooleanValue> JJKU_MAHORAGA_CAN_ADAPT_EVERYTHING = GameRules.register("jjkuMahoragaCanAdaptEverything", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
 	public static final GameRules.Key<GameRules.IntegerValue> JJKU_HP_CAP = GameRules.register("jjkuHPCap", GameRules.Category.MISC, GameRules.IntegerValue.create(1000));
 	public static final GameRules.Key<GameRules.IntegerValue> JJKU_RCT_LEVEL_CAP = GameRules.register("jjkuRCTLevelCap", GameRules.Category.MISC, GameRules.IntegerValue.create(20));
+	public static final GameRules.Key<GameRules.BooleanValue> ENABLE_SUKUNA_PVP = GameRules.register("enableSukunaPVP", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_CAN_SUKUNA_GET_ADVANCEMENTS = GameRules.register("jjkuCanSukunaGetAdvancements", GameRules.Category.MISC, GameRules.BooleanValue.create(false));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_PURPLE_RANGE = GameRules.register("jjkuPurpleRange", GameRules.Category.MISC, GameRules.IntegerValue.create(200));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_DESTRUCTION_LEVEL = GameRules.register("jjkuDestructionLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SIX_EYES_LEVEL = GameRules.register("jjkuSixEyesLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SUKUNA_LEVEL = GameRules.register("jjkuSukunaLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(5));
 }

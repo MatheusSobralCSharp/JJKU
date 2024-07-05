@@ -83,47 +83,19 @@ public class GojoAnimationsProcedure {
 			public double getValue() {
 				CompoundTag dataIndex7 = new CompoundTag();
 				entity.saveWithoutId(dataIndex7);
-				return dataIndex7.getCompound("ForgeData").getDouble("skill");
-			}
-		}.getValue() == 215) {
-			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == false) {
-				if (!entity.isShiftKeyDown()) {
-					if (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex9 = new CompoundTag();
-							entity.saveWithoutId(dataIndex9);
-							return dataIndex9.getCompound("ForgeData").getDouble("cnt6");
-						}
-					}.getValue() == 1) {
-						if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).gojosund != 1) {
-							{
-								double _setval = 1;
-								entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-									capability.gojosund = _setval;
-									capability.syncPlayerVariables(entity);
-								});
-							}
-						}
-					}
-				}
-			}
-		} else if (new Object() {
-			public double getValue() {
-				CompoundTag dataIndex10 = new CompoundTag();
-				entity.saveWithoutId(dataIndex10);
-				return dataIndex10.getCompound("ForgeData").getDouble("PRESS_Z");
+				return dataIndex7.getCompound("ForgeData").getDouble("PRESS_Z");
 			}
 		}.getValue() == 1 && new Object() {
 			public double getValue() {
-				CompoundTag dataIndex11 = new CompoundTag();
-				entity.saveWithoutId(dataIndex11);
-				return dataIndex11.getCompound("ForgeData").getDouble("skill");
+				CompoundTag dataIndex8 = new CompoundTag();
+				entity.saveWithoutId(dataIndex8);
+				return dataIndex8.getCompound("ForgeData").getDouble("skill");
 			}
 		}.getValue() == 215 && new Object() {
 			public double getValue() {
-				CompoundTag dataIndex12 = new CompoundTag();
-				entity.saveWithoutId(dataIndex12);
-				return dataIndex12.getCompound("ForgeData").getDouble("cnt1");
+				CompoundTag dataIndex9 = new CompoundTag();
+				entity.saveWithoutId(dataIndex9);
+				return dataIndex9.getCompound("ForgeData").getDouble("cnt1");
 			}
 		}.getValue() >= 0) {
 			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == false) {
@@ -142,32 +114,61 @@ public class GojoAnimationsProcedure {
 						}
 					}
 				}
-				if (entity instanceof ServerPlayer _plr15 && _plr15.level() instanceof ServerLevel
-						&& _plr15.getAdvancements().getOrStartProgress(_plr15.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:gojo_training_part_3"))).isDone()) {
+				if (entity instanceof ServerPlayer _plr12 && _plr12.level() instanceof ServerLevel
+						&& _plr12.getAdvancements().getOrStartProgress(_plr12.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:gojo_training_part_3"))).isDone()) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex16 = new CompoundTag();
-							entity.saveWithoutId(dataIndex16);
-							return dataIndex16.getCompound("ForgeData").getDouble("cnt6");
+							CompoundTag dataIndex13 = new CompoundTag();
+							entity.saveWithoutId(dataIndex13);
+							return dataIndex13.getCompound("ForgeData").getDouble("cnt6");
 						}
 					}.getValue() > 5) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex17 = new CompoundTag();
-								entity.saveWithoutId(dataIndex17);
-								return dataIndex17.getCompound("ForgeData").getDouble("cnt6");
+								CompoundTag dataIndex14 = new CompoundTag();
+								entity.saveWithoutId(dataIndex14);
+								return dataIndex14.getCompound("ForgeData").getDouble("cnt6");
 							}
 						}.getValue() <= 50) {
-							CompoundTag dataIndex19 = new CompoundTag();
-							entity.saveWithoutId(dataIndex19);
-							dataIndex19.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+							CompoundTag dataIndex16 = new CompoundTag();
+							entity.saveWithoutId(dataIndex16);
+							dataIndex16.getCompound("ForgeData").putDouble("cnt6", (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex18 = new CompoundTag();
-									entity.saveWithoutId(dataIndex18);
-									return dataIndex18.getCompound("ForgeData").getDouble("cnt6");
+									CompoundTag dataIndex15 = new CompoundTag();
+									entity.saveWithoutId(dataIndex15);
+									return dataIndex15.getCompound("ForgeData").getDouble("cnt6");
 								}
 							}.getValue() + 1));
-							entity.load(dataIndex19);
+							entity.load(dataIndex16);
+						}
+					}
+				}
+			}
+		}
+		if (new Object() {
+			public double getValue() {
+				CompoundTag dataIndex17 = new CompoundTag();
+				entity.saveWithoutId(dataIndex17);
+				return dataIndex17.getCompound("ForgeData").getDouble("skill");
+			}
+		}.getValue() == 215) {
+			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == false) {
+				if (!entity.isShiftKeyDown()) {
+					if (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex19 = new CompoundTag();
+							entity.saveWithoutId(dataIndex19);
+							return dataIndex19.getCompound("ForgeData").getDouble("cnt6");
+						}
+					}.getValue() == 1) {
+						if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).gojosund != 1) {
+							{
+								double _setval = 1;
+								entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+									capability.gojosund = _setval;
+									capability.syncPlayerVariables(entity);
+								});
+							}
 						}
 					}
 				}

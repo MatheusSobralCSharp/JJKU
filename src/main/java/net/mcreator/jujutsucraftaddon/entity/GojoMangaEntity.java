@@ -123,7 +123,7 @@ public class GojoMangaEntity extends Monster {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		GojoMangaOnEntityTickUpdateProcedure.execute(this);
+		GojoMangaOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	public static void init() {

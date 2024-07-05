@@ -34,6 +34,7 @@ public class HRCollidesProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, BlockState blockstate, Entity entity) {
 		if (entity == null)
 			return;
+		String old_block = "";
 		if (blockstate.is(BlockTags.create(new ResourceLocation("jujutsucraft:barrier")))) {
 			if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower == 0) {
 				{

@@ -120,6 +120,7 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.MOB_TAMER.get());
 				tabData.accept(JujutsucraftaddonModItems.YUTA_RING.get());
 				tabData.accept(JujutsucraftaddonModItems.VEIL_TALISMAN.get());
+				tabData.accept(JujutsucraftaddonModItems.ITEM_DOMAIN_SIZE_SET.get());
 			})
 
 					.build());

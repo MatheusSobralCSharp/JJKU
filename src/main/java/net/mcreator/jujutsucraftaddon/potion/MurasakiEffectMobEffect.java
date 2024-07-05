@@ -21,7 +21,7 @@ public class MurasakiEffectMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		MurasakiEffectOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		MurasakiEffectOnEffectActiveTickProcedure.execute(entity.level(), entity);
 	}
 
 	@Override

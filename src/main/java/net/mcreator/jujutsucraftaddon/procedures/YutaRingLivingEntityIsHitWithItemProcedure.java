@@ -42,6 +42,7 @@ public class YutaRingLivingEntityIsHitWithItemProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
+		double domainRadius = 0;
 		if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2")) {
 				if ((new Object() {
@@ -62,6 +63,10 @@ public class YutaRingLivingEntityIsHitWithItemProcedure {
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
 									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) + 30), false, false));
+						CompoundTag dataIndex15 = new CompoundTag();
+						entity.saveWithoutId(dataIndex15);
+						dataIndex15.getCompound("ForgeData").putBoolean("Final", true);
+						entity.load(dataIndex15);
 						{
 							double _setval = 0;
 							sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -104,10 +109,10 @@ public class YutaRingLivingEntityIsHitWithItemProcedure {
 								capability.syncPlayerVariables(sourceentity);
 							});
 						}
-						CompoundTag dataIndex15 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex15);
-						dataIndex15.getCompound("ForgeData").putDouble("RikaRing", 0);
-						sourceentity.load(dataIndex15);
+						CompoundTag dataIndex16 = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex16);
+						dataIndex16.getCompound("ForgeData").putDouble("RikaRing", 0);
+						sourceentity.load(dataIndex16);
 						if (sourceentity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("I LOVE YOU " + sourceentity.getDisplayName().getString() + "!!!!!!")), false);
 						if (sourceentity instanceof Player _player && !_player.level().isClientSide())

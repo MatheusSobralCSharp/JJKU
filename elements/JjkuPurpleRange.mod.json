@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Purple Range",
+    "description": "That change the range of purple for low end computers (deafult = 200)",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 200
+  }
+}

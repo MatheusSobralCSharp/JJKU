@@ -6,6 +6,8 @@ public class OutlineOnInitialEntitySpawnProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
+		String block = "";
+		String old_block = "";
 		entity.getPersistentData().putDouble("Tag1", 20);
 	}
 }
