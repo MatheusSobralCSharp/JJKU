@@ -64,4 +64,10 @@ public class JujutsucraftaddonModGameRules {
 	public static final GameRules.Key<GameRules.IntegerValue> JJKU_DESTRUCTION_LEVEL = GameRules.register("jjkuDestructionLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
 	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SIX_EYES_LEVEL = GameRules.register("jjkuSixEyesLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
 	public static final GameRules.Key<GameRules.IntegerValue> JJKU_SUKUNA_LEVEL = GameRules.register("jjkuSukunaLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(5));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_TUCA_DONCA = GameRules.register("jjkuTucaDonca", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_YOROZU_SPHERE_LIMIT = GameRules.register("jjkuYorozuSphereLimit", GameRules.Category.MISC, GameRules.IntegerValue.create(30));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_IDLE_TRANSFIGURATION_LEVEL = GameRules.register("jjkuIdleTransfigurationLevel", GameRules.Category.MISC, GameRules.IntegerValue.create(2));
+	public static final GameRules.Key<GameRules.BooleanValue> JJKU_BLACK_FLASH_REWORKED = GameRules.register("jjkuBlackFlashReworked", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_RIKA_PURE_LOVE = GameRules.register("jjkuRikaPureLove", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_FATIGUE_RATE = GameRules.register("jjkuFatigueRate", GameRules.Category.MISC, GameRules.IntegerValue.create(20));
 }

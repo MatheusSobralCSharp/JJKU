@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="jujutsucraftaddon"
-version="6.6"
+version="7.7"
 displayName="JJKU"
 displayURL="https://mcreator.net"
 logoFile="logo.png"
@@ -24,12 +24,6 @@ description="A New JujutsuCraft ( Orca ) Experience ADD-ON"
 
 [[dependencies.jujutsucraftaddon]]
     modId="geckolib"
-    mandatory=true
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.jujutsucraftaddon]]
-    modId="playeranimator"
     mandatory=true
     versionRange="[0,)"
     ordering="NONE"

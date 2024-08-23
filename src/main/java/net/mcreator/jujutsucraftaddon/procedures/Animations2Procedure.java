@@ -11,8 +11,6 @@ public class Animations2Procedure {
 			return;
 		if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 2) {
 			GojoAnimationsProcedure.execute(world, x, y, z, entity);
-		} else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 1) {
-			SukunaAnimationsProcedure.execute(world, entity);
 		}
 	}
 }

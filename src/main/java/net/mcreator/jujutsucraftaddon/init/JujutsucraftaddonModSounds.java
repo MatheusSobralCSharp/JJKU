@@ -86,4 +86,16 @@ public class JujutsucraftaddonModSounds {
 	public static final RegistryObject<SoundEvent> KOKUSENTODO = REGISTRY.register("kokusentodo", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "kokusentodo")));
 	public static final RegistryObject<SoundEvent> SENKETSU = REGISTRY.register("senketsu", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "senketsu")));
 	public static final RegistryObject<SoundEvent> PIERCINGBLOOD = REGISTRY.register("piercingblood", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "piercingblood")));
+	public static final RegistryObject<SoundEvent> TRIPPING = REGISTRY.register("tripping", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "tripping")));
+	public static final RegistryObject<SoundEvent> RUSHHR = REGISTRY.register("rushhr", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "rushhr")));
+	public static final RegistryObject<SoundEvent> SLASH2 = REGISTRY.register("slash2", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "slash2")));
+	public static final RegistryObject<SoundEvent> SWORD4 = REGISTRY.register("sword4", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sword4")));
+	public static final RegistryObject<SoundEvent> SWING1 = REGISTRY.register("swing1", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "swing1")));
+	public static final RegistryObject<SoundEvent> SWING2 = REGISTRY.register("swing2", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "swing2")));
+	public static final RegistryObject<SoundEvent> SWING3 = REGISTRY.register("swing3", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "swing3")));
+	public static final RegistryObject<SoundEvent> SWING4 = REGISTRY.register("swing4", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "swing4")));
+	public static final RegistryObject<SoundEvent> SWING5 = REGISTRY.register("swing5", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "swing5")));
+	public static final RegistryObject<SoundEvent> PUNCH5 = REGISTRY.register("punch5", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "punch5")));
+	public static final RegistryObject<SoundEvent> PUNCH6 = REGISTRY.register("punch6", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "punch6")));
+	public static final RegistryObject<SoundEvent> BLACKFLASHTHEME = REGISTRY.register("blackflashtheme", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "blackflashtheme")));
 }

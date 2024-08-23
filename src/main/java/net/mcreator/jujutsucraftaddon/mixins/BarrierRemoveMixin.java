@@ -19,9 +19,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -54,41 +54,35 @@ public abstract class BarrierRemoveMixin {
         double y_fix = 0.0;
         double y_fix_height = 0.0;
         double y_floor = 0.0;
-        double test = 0.0;
         x_pos = x;
         y_pos = y;
         z_pos = z;
         ServerLevel _level;
         if (world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos)).getBlock() == JujutsucraftModBlocks.JUJUTSU_BARRIER.get() && Math.random() < 0.1) {
             if (world instanceof ServerLevel) {
-                _level = (ServerLevel) world;
-                _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_BROKEN_GLASS.get(), x_pos, y_pos, z_pos, 1, 0.25, 0.25, 0.25, 0.25);
+                _level = (ServerLevel)world;
+                _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_BROKEN_GLASS.get(), x_pos, y_pos, z_pos, 1, 0.25, 0.25, 0.25, 0.25);
             }
 
-            if (world instanceof ServerLevel) {
-                _level = (ServerLevel) world;
-                if (!_level.isClientSide()) {
-                    _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.break")), SoundSource.NEUTRAL, 1.0F, 1.5F);
+            if (world instanceof Level) {
+                Level _level2 = (Level)world;
+                if (!_level2.isClientSide()) {
+                    _level2.playSound((Player)null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.break")), SoundSource.NEUTRAL, 1.0F, 1.5F);
                 } else {
-                    _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.break")), SoundSource.NEUTRAL, 1.0F, 1.5F, false);
+                    _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.break")), SoundSource.NEUTRAL, 1.0F, 1.5F, false);
                 }
             }
         }
 
-        old_block = (((new Object() {
+        old_block = ((new Object() {
             public String getValue(LevelAccessor world, BlockPos pos, String tag) {
                 BlockEntity blockEntity = world.getBlockEntity(pos);
-                BlockState blockState = world.getBlockState(pos);
-                String registryName = ForgeRegistries.BLOCKS.getKey(blockState.getBlock()).toString();
-                String nbtData = blockEntity.serializeNBT().toString();
-                return blockEntity.getPersistentData().getString(tag);
+                return blockEntity != null ? blockEntity.getPersistentData().getString(tag) : "";
             }
-        })).getValue(world, BlockPos.containing(x_pos, y_pos, z_pos), "old_block"));
+        })).getValue(world, BlockPos.containing(x_pos, y_pos, z_pos), "old_block");
 
-        if (world instanceof ServerLevel) {
+        if (world instanceof ServerLevel level4) {
             _level = (ServerLevel)world;
-            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + old_block);
-            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + old_block);
             _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + old_block);
             _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + old_block);
             _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + old_block);
@@ -97,8 +91,6 @@ public abstract class BarrierRemoveMixin {
         if (world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos)).is(BlockTags.create(new ResourceLocation("jujutsucraft:barrier")))) {
             if (world instanceof ServerLevel) {
                 _level = (ServerLevel)world;
-                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ air");
-                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ air");
                 _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ air");
                 _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ air");
                 _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ air");

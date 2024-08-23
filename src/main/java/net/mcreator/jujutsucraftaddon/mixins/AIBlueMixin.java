@@ -5,6 +5,7 @@ import net.mcreator.jujutsucraft.entity.PureLoveCannonEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
 import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
@@ -150,7 +151,7 @@ public abstract class AIBlueMixin {
                             }
 
                             entity.getPersistentData().putDouble("Damage", 52.0);
-                            entity.getPersistentData().putDouble("Range", 12.0 * 4);
+                            entity.getPersistentData().putDouble("Range", 12.0 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_RIKA_PURE_LOVE)));
                             entity.getPersistentData().putDouble("knockback", 2.0);
                             entity.getPersistentData().putDouble("effectConfirm", 2.0);
                             RangeAttackProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
@@ -172,7 +173,7 @@ public abstract class AIBlueMixin {
 
                             if (entity.getPersistentData().getDouble("cnt2") < 15.0) {
                                 entity.getPersistentData().putDouble("Damage", 52.0);
-                                entity.getPersistentData().putDouble("Range", 24.0 * 4 * ReturnEntitySizeProcedure.execute(entity));
+                                entity.getPersistentData().putDouble("Range", 24.0 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_RIKA_PURE_LOVE) * ReturnEntitySizeProcedure.execute(entity)));
                                 entity.getPersistentData().putDouble("knockback", 2.0);
                                 entity.getPersistentData().putDouble("effectConfirm", 2.0);
                                 RangeAttackProcedure.execute(world, x_pos, y_pos, z_pos, entity);
@@ -196,8 +197,8 @@ public abstract class AIBlueMixin {
                             }
 
                             if (entity.getPersistentData().getDouble("cnt2") < 3.0) {
-                                entity.getPersistentData().putDouble("BlockRange", 24.0 * 5);
-                                entity.getPersistentData().putDouble("BlockDamage", 18.0 * 5);
+                                entity.getPersistentData().putDouble("BlockRange", 24.0 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_RIKA_PURE_LOVE)));
+                                entity.getPersistentData().putDouble("BlockDamage", 18.0 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_RIKA_PURE_LOVE)));
                                 entity.getPersistentData().putBoolean("noParticle", true);
                                 BlockDestroyAllDirectionProcedure.execute(world, x_pos, y_pos, z_pos, entity);
                                 if (world instanceof ServerLevel) {

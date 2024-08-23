@@ -28,7 +28,7 @@ public class RikaAIBuffedProcedure {
 				return dataIndex0.getCompound("ForgeData").getBoolean("Buffed");
 			}
 		}.getValue()) == true) {
-			if (Math.random() <= 0.008) {
+			if (Math.random() <= 0.01) {
 				if (!(entity == null)) {
 					TrackX = entity.getX() - sourceentity.getX();
 					TrackY = entity.getY() - sourceentity.getY() + entity.getBbHeight() * 0.75 - sourceentity.getBbHeight() * 0.75;
@@ -69,7 +69,7 @@ public class RikaAIBuffedProcedure {
 				return dataIndex24.getCompound("ForgeData").getBoolean("Buffed2");
 			}
 		}.getValue()) == true) {
-			if (Math.random() <= 0.01) {
+			if (Math.random() <= 0.02) {
 				if (!(entity == null)) {
 					TrackX = entity.getX() - sourceentity.getX();
 					TrackY = entity.getY() - sourceentity.getY() + entity.getBbHeight() * 0.75 - sourceentity.getBbHeight() * 0.75;

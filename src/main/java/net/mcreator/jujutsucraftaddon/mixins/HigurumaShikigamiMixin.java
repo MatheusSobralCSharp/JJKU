@@ -7,20 +7,16 @@ import net.mcreator.jujutsucraft.procedures.*;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
+import java.util.Comparator;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.BiFunction;
-import net.mcreator.jujutsucraft.entity.JudgemanEntity;
-import net.mcreator.jujutsucraft.entity.TakadaEntity;
-import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Overwrite;
 
@@ -108,7 +104,6 @@ public abstract class HigurumaShikigamiMixin {
                             if (world instanceof ServerLevel) {
                                 _level = (ServerLevel) world;
                                 _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
-                                return;
                             }
                         }
                     }
@@ -128,6 +123,18 @@ public abstract class HigurumaShikigamiMixin {
                             _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
                             return;
                         }
+
+                        {
+                            final Vec3 _center = new Vec3(x, y, z);
+                            List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(60 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+                            for (Entity entityiterator : _entfound) {
+                                if (!(entity.getPersistentData().getString("OWNER_UUID")).equals(entityiterator.getStringUUID())) {
+                                    if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                                        _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.UNSTABLE.get(), 100, 1, false, false));
+                                }
+                            }
+                        }
+
                     }
                 }
             }

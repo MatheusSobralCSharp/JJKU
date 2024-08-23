@@ -8,6 +8,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
@@ -38,6 +40,7 @@ import java.util.function.BiFunction;
 @Mixin(value = PlayAnimationEntityProcedure.class, remap = false)
 public abstract class AIRikaNewMixin {
     public AIRikaNewMixin() {
+
     }
 
     /**

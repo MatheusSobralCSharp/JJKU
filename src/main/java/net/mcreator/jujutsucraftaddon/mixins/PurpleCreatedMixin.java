@@ -42,7 +42,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-import javax.print.attribute.standard.Severity;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;

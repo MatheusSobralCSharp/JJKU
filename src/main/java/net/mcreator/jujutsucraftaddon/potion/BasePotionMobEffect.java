@@ -14,7 +14,7 @@ public class BasePotionMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		BasePotionOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		BasePotionOnEffectActiveTickProcedure.execute(entity);
 	}
 
 	@Override

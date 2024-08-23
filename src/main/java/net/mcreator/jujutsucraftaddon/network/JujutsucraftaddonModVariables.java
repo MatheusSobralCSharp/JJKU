@@ -227,6 +227,10 @@ public class JujutsucraftaddonModVariables {
 			clone.YutaCheck = original.YutaCheck;
 			clone.MahoragaCanAdapt = original.MahoragaCanAdapt;
 			clone.RadiusDomain = original.RadiusDomain;
+			clone.RCTLimitLevel = original.RCTLimitLevel;
+			clone.SimpleDomainLevel = original.SimpleDomainLevel;
+			clone.friend_num = original.friend_num;
+			clone.blackflashmastery = original.blackflashmastery;
 			if (!event.isWasDeath()) {
 				clone.InventoryArmorySlot0 = original.InventoryArmorySlot0;
 				clone.InventoryArmorySlot2 = original.InventoryArmorySlot2;
@@ -590,11 +594,15 @@ public class JujutsucraftaddonModVariables {
 		public double CEShield = 0;
 		public double pressed = 0;
 		public double DomainType = 0;
-		public double locker = 0;
+		public double locker = 0.0;
 		public double YutaCheck = 0;
 		public double MahoragaCanAdapt = 0;
 		public double DomainSizeVariable = 0;
 		public double RadiusDomain = 0;
+		public double RCTLimitLevel = 0;
+		public double SimpleDomainLevel = 1.0;
+		public double friend_num = 0;
+		public double blackflashmastery = 1.0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -769,6 +777,10 @@ public class JujutsucraftaddonModVariables {
 			nbt.putDouble("MahoragaCanAdapt", MahoragaCanAdapt);
 			nbt.putDouble("DomainSizeVariable", DomainSizeVariable);
 			nbt.putDouble("RadiusDomain", RadiusDomain);
+			nbt.putDouble("RCTLimitLevel", RCTLimitLevel);
+			nbt.putDouble("SimpleDomainLevel", SimpleDomainLevel);
+			nbt.putDouble("friend_num", friend_num);
+			nbt.putDouble("blackflashmastery", blackflashmastery);
 			return nbt;
 		}
 
@@ -940,6 +952,10 @@ public class JujutsucraftaddonModVariables {
 			MahoragaCanAdapt = nbt.getDouble("MahoragaCanAdapt");
 			DomainSizeVariable = nbt.getDouble("DomainSizeVariable");
 			RadiusDomain = nbt.getDouble("RadiusDomain");
+			RCTLimitLevel = nbt.getDouble("RCTLimitLevel");
+			SimpleDomainLevel = nbt.getDouble("SimpleDomainLevel");
+			friend_num = nbt.getDouble("friend_num");
+			blackflashmastery = nbt.getDouble("blackflashmastery");
 		}
 	}
 
@@ -1130,6 +1146,10 @@ public class JujutsucraftaddonModVariables {
 					variables.MahoragaCanAdapt = message.data.MahoragaCanAdapt;
 					variables.DomainSizeVariable = message.data.DomainSizeVariable;
 					variables.RadiusDomain = message.data.RadiusDomain;
+					variables.RCTLimitLevel = message.data.RCTLimitLevel;
+					variables.SimpleDomainLevel = message.data.SimpleDomainLevel;
+					variables.friend_num = message.data.friend_num;
+					variables.blackflashmastery = message.data.blackflashmastery;
 				}
 			});
 			context.setPacketHandled(true);

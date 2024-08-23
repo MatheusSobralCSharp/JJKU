@@ -12,6 +12,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.KenjakuBodySwapMenu;
+import net.mcreator.jujutsucraftaddon.procedures.SetYutaCTProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.KenjakuCTClickProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.CTSet2Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.CTSet1Procedure;
@@ -85,6 +86,10 @@ public class KenjakuBodySwapButtonMessage {
 		if (buttonID == 4) {
 
 			CTNameClicked1Procedure.execute(entity);
+		}
+		if (buttonID == 5) {
+
+			SetYutaCTProcedure.execute(world, entity);
 		}
 	}
 

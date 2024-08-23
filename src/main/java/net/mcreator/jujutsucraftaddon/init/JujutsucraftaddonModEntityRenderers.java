@@ -12,9 +12,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
 import net.mcreator.jujutsucraftaddon.client.renderer.YutaCullingGamesRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.YeRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.VeilRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.UraumeRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.UiUiRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.URenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.TestingVersionRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.TestingEntityRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.TanjerinaRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.SukunaNoShirtRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.SukunaMangaRenderer;
@@ -82,5 +86,9 @@ public class JujutsucraftaddonModEntityRenderers {
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.ANTI_VEIL.get(), AntiVeilRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.MALENIA.get(), MaleniaRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.OUTLINE.get(), OutlineRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.TESTING_ENTITY.get(), TestingEntityRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.U.get(), URenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.TESTING_VERSION.get(), TestingVersionRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.YE.get(), YeRenderer::new);
 	}
 }

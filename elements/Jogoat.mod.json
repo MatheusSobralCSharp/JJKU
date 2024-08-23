@@ -1,0 +1,695 @@
+{
+  "_fv": 60,
+  "_type": "config",
+  "definition": {
+    "pools": [
+      {
+        "category": "Jujutsu Random Rates",
+        "entries": [
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 1.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Gojo",
+            "varname": "gojo",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 3.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Geto",
+            "varname": "geto",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 4.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Fushiguro",
+            "varname": "fushiguro",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 5.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Maki",
+            "varname": "maki",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 2.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Sukuna",
+            "varname": "sukuna",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 6.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Inumaki",
+            "varname": "inumaki",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 7.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Okkotsu",
+            "varname": "okkotsu",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 8.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Jogo",
+            "varname": "jogo",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 9.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Kashimo",
+            "varname": "kashimo",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 10.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Dagon",
+            "varname": "dagon",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 11.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Tsukumo",
+            "varname": "tsukumo",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 12.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Choso",
+            "varname": "choso",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 13.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "MeiMei",
+            "varname": "meimei",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 14.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Ishigori",
+            "varname": "ishigori",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 15.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Nanami",
+            "varname": "nanami",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 16.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Hanami",
+            "varname": "hanami",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 17.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Mahito",
+            "varname": "mahito",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 18.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Mahoraga",
+            "varname": "mahoraga",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 19.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Takaba",
+            "varname": "takaba",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 20.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Naoya",
+            "varname": "naoya",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 21.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Todo",
+            "varname": "todo",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 22.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Itadori",
+            "varname": "itadori",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 23.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Jinichi",
+            "varname": "jinichi",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 24.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Kurourushi",
+            "varname": "kurourushi",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 25.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Uraume",
+            "varname": "uraume",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 26.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Ogi",
+            "varname": "ogi",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 27.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Higuruma",
+            "varname": "higuruma",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 28.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Angel",
+            "varname": "angel",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 29.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Hakari",
+            "varname": "hakari",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 30.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Miguel",
+            "varname": "miguel",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 31.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Kusakabe",
+            "varname": "kusakabe",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 32.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Chojuro",
+            "varname": "chojuro",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 33.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Yaga",
+            "varname": "yaga",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 34.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Kugisaki",
+            "varname": "kugisaki",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 35.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Junpei",
+            "varname": "junpe",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 36.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Nishimiya",
+            "varname": "nishimiya",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 37.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Dhruv",
+            "varname": "dhruv",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 38.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Yorozu",
+            "varname": "yorozu",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 39.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "TakakoUro",
+            "varname": "takakouro",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 40.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "SmallpoxDeity",
+            "varname": "smallpoxdeity",
+            "enablecomment": false,
+            "stringlist": []
+          }
+        ]
+      }
+    ],
+    "file": "Jujutsu Rates",
+    "configType": 0
+  }
+}

@@ -1,5 +1,6 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
@@ -23,12 +24,19 @@ public class RaceChangerVesselProcedure {
 		entity.load(dataIndex1);
 		CompoundTag dataIndex2 = new CompoundTag();
 		entity.saveWithoutId(dataIndex2);
-		dataIndex2.getCompound("ForgeData").putBoolean("CursedSpirit", false);
+		dataIndex2.getCompound("ForgeData").putBoolean("CursedSpirit", true);
 		entity.load(dataIndex2);
 		{
 			boolean _setval = true;
 			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.IsVessel = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
+		{
+			double _setval = -2.0;
+			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.PlayerProfession = _setval;
 				capability.syncPlayerVariables(entity);
 			});
 		}

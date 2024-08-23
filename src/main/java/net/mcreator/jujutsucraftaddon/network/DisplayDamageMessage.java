@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.jujutsucraftaddon.procedures.DisplayDamageOnKeyPressedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.RCTMasteryKeyOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.function.Supplier;
@@ -52,7 +52,7 @@ public class DisplayDamageMessage {
 			return;
 		if (type == 0) {
 
-			DisplayDamageOnKeyPressedProcedure.execute(entity);
+			RCTMasteryKeyOnKeyPressedProcedure.execute(world, entity);
 		}
 	}
 

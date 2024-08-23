@@ -1,13 +1,10 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.client.screens.OverlayDefaultOverlay;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
 import net.mcreator.jujutsucraft.procedures.*;
-import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.commands.arguments.ResourceLocationArgument;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
@@ -16,34 +13,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
-import net.minecraft.resources.ResourceLocation;
-import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.LevelAccessor;
-import com.mojang.blaze3d.platform.GlStateManager.DestFactor;
-import com.mojang.blaze3d.platform.GlStateManager.SourceFactor;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.mcreator.jujutsucraft.procedures.OverlayHaveTechniqueProcedure;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGuiEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraft.world.effect.MobEffects;
+
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArgs;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(value = JackpotEffectStartedappliedProcedure.class, remap = false)
 public abstract class UIJujutsuCraftMixin {
@@ -62,6 +34,22 @@ public abstract class UIJujutsuCraftMixin {
                 double level;
                 double tick;
                 LivingEntity _entity;
+
+                if (entity instanceof LivingEntity) {
+                    _entity = (LivingEntity)entity;
+                    _entity.addEffect(new MobEffectInstance(MobEffects.LUCK, 5020, (int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.LUCK) ? _livEnt.getEffect(MobEffects.LUCK).getAmplifier() : 0) + 1), false, false));
+                }
+
+                if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Hakari")) {
+                    if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.JACKPOT.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.JACKPOT.get()).getDuration() : 0) < 5020) {
+                        if (entity instanceof LivingEntity _entity2 && !_entity2.level().isClientSide())
+                            _entity2.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.JACKPOT.get(), 5020,
+                                    (int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.JACKPOT.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.JACKPOT.get()).getAmplifier() : 0) + 1), false, false));
+                    }
+                }
+
+
+
                 label34: {
                     level = 0.0;
                     tick = 0.0;

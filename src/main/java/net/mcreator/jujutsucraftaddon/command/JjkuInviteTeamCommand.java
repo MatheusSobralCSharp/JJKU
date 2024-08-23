@@ -13,7 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import net.mcreator.jujutsucraftaddon.procedures.JJKUFrienddProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.IniviteTeamProcedure;
 
 @Mod.EventBusSubscriber
 public class JjkuInviteTeamCommand {
@@ -21,7 +21,7 @@ public class JjkuInviteTeamCommand {
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("jjkuInviteTeam")
 
-				.then(Commands.argument("Friend", EntityArgument.player()).executes(arguments -> {
+				.then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
@@ -33,7 +33,7 @@ public class JjkuInviteTeamCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					JJKUFrienddProcedure.execute(arguments, entity);
+					IniviteTeamProcedure.execute(arguments, entity);
 					return 0;
 				})));
 	}

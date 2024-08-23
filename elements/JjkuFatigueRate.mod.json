@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Fatigue Rate",
+    "description": "Change The Fatigue Rate ( default = 20, lower = less, 0 = disabled )",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 20
+  }
+}

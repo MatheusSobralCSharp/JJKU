@@ -14,12 +14,15 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.commands.CommandSourceStack;
@@ -177,24 +180,28 @@ public class Attack1Procedure {
 						FistSukunaProcedure.execute(world, sourceentity);
 					} else if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) == false) {
 						FistsProcedureProcedure.execute(world, x, y, z, entity, sourceentity);
+						if (((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Mass Black Hole Barrage")) {
+							entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
+									(float) (amount + 5));
+						}
 					}
 				}
 				if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5) {
 					if (sourceentity instanceof LivingEntity && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.NEUTRALIZATION.get()) == false) {
-						if (sourceentity instanceof ServerPlayer _plr47 && _plr47.level() instanceof ServerLevel
-								&& _plr47.getAdvancements().getOrStartProgress(_plr47.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_modern"))).isDone()) {
+						if (sourceentity instanceof ServerPlayer _plr50 && _plr50.level() instanceof ServerLevel
+								&& _plr50.getAdvancements().getOrStartProgress(_plr50.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_modern"))).isDone()) {
 							YutaConditionProcedure.execute(world, x, y, z, sourceentity);
 						}
 					}
 				}
 			} else if ((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-				if (!(sourceentity instanceof LivingEntity _livEnt49 && _livEnt49.hasEffect(JujutsucraftaddonModMobEffects.SHRINE_EFFECT.get()))) {
+				if (!(sourceentity instanceof LivingEntity _livEnt52 && _livEnt52.hasEffect(JujutsucraftaddonModMobEffects.SHRINE_EFFECT.get()))) {
 					if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex50 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex50);
-								return dataIndex50.getCompound("ForgeData").getDouble("skill_domain");
+								CompoundTag dataIndex53 = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex53);
+								return dataIndex53.getCompound("ForgeData").getDouble("skill_domain");
 							}
 						}.getValue() == 1) {
 							if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -205,20 +212,20 @@ public class Attack1Procedure {
 				if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex52 = new CompoundTag();
-							entity.saveWithoutId(dataIndex52);
-							return dataIndex52.getCompound("ForgeData").getDouble("skill_domain");
+							CompoundTag dataIndex55 = new CompoundTag();
+							entity.saveWithoutId(dataIndex55);
+							return dataIndex55.getCompound("ForgeData").getDouble("skill_domain");
 						}
 					}.getValue() == 0 && new Object() {
 						public double getValue() {
-							CompoundTag dataIndex53 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex53);
-							return dataIndex53.getCompound("ForgeData").getDouble("skill_domain");
+							CompoundTag dataIndex56 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex56);
+							return dataIndex56.getCompound("ForgeData").getDouble("skill_domain");
 						}
 					}.getValue() > 0) {
 						if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kenjaku")) {
-							if (!(sourceentity instanceof ServerPlayer _plr55 && _plr55.level() instanceof ServerLevel
-									&& _plr55.getAdvancements().getOrStartProgress(_plr55.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:barrierless_domain_perfected"))).isDone())) {
+							if (!(sourceentity instanceof ServerPlayer _plr58 && _plr58.level() instanceof ServerLevel
+									&& _plr58.getAdvancements().getOrStartProgress(_plr58.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:barrierless_domain_perfected"))).isDone())) {
 								if (sourceentity instanceof ServerPlayer _player) {
 									Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:barrierless_domain_perfected"));
 									AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -229,8 +236,8 @@ public class Attack1Procedure {
 								}
 							}
 						} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:sukuna")) {
-							if (!(sourceentity instanceof ServerPlayer _plr58 && _plr58.level() instanceof ServerLevel
-									&& _plr58.getAdvancements().getOrStartProgress(_plr58.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:barrierless_domain_perfected"))).isDone())) {
+							if (!(sourceentity instanceof ServerPlayer _plr61 && _plr61.level() instanceof ServerLevel
+									&& _plr61.getAdvancements().getOrStartProgress(_plr61.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:barrierless_domain_perfected"))).isDone())) {
 								if (sourceentity instanceof ServerPlayer _player) {
 									Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:barrierless_domain_perfected"));
 									AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -262,7 +269,7 @@ public class Attack1Procedure {
 					}
 				}
 				if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2) {
-					if (!(sourceentity instanceof LivingEntity _livEnt66 && _livEnt66.hasEffect(JujutsucraftaddonModMobEffects.GOJO_IMBUED_POWER.get()))
+					if (!(sourceentity instanceof LivingEntity _livEnt69 && _livEnt69.hasEffect(JujutsucraftaddonModMobEffects.GOJO_IMBUED_POWER.get()))
 							&& ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo")) {
 						if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_OVERPOWERED_STUFF) == true) {
 							if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -270,7 +277,7 @@ public class Attack1Procedure {
 						}
 					}
 				} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 1) {
-					if (!(sourceentity instanceof LivingEntity _livEnt70 && _livEnt70.hasEffect(JujutsucraftaddonModMobEffects.SUKUNA_POWERS.get()))
+					if (!(sourceentity instanceof LivingEntity _livEnt73 && _livEnt73.hasEffect(JujutsucraftaddonModMobEffects.SUKUNA_POWERS.get()))
 							&& ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna")) {
 						if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_OVERPOWERED_STUFF) == true) {
 							if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -285,15 +292,15 @@ public class Attack1Procedure {
 				if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).IsVessel == true) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex74 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex74);
-							return dataIndex74.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex77 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex77);
+							return dataIndex77.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 0 && new Object() {
 						public double getValue() {
-							CompoundTag dataIndex75 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex75);
-							return dataIndex75.getCompound("ForgeData").getDouble("skill_domain");
+							CompoundTag dataIndex78 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex78);
+							return dataIndex78.getCompound("ForgeData").getDouble("skill_domain");
 						}
 					}.getValue() == 0) {
 						if (Math.random() <= 0.05) {
@@ -310,15 +317,15 @@ public class Attack1Procedure {
 						&& (sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex78 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex78);
-							return dataIndex78.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex81 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex81);
+							return dataIndex81.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 0 && new Object() {
 						public double getValue() {
-							CompoundTag dataIndex79 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex79);
-							return dataIndex79.getCompound("ForgeData").getDouble("skill_domain");
+							CompoundTag dataIndex82 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex82);
+							return dataIndex82.getCompound("ForgeData").getDouble("skill_domain");
 						}
 					}.getValue() == 0) {
 						if (Math.random() <= 0.05) {
@@ -335,15 +342,15 @@ public class Attack1Procedure {
 						|| ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna")) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex81 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex81);
-							return dataIndex81.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex84 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex84);
+							return dataIndex84.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 0 && new Object() {
 						public double getValue() {
-							CompoundTag dataIndex82 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex82);
-							return dataIndex82.getCompound("ForgeData").getDouble("skill_domain");
+							CompoundTag dataIndex85 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex85);
+							return dataIndex85.getCompound("ForgeData").getDouble("skill_domain");
 						}
 					}.getValue() == 0) {
 						if (Math.random() <= 0.1) {

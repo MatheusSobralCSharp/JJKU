@@ -51,7 +51,18 @@ public class ClanChangerRollProcedure {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("Your clan now is: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans)),
 						false);
-		} else if (Math.random() < 0.008 && Math.random() > 0.006) {
+		} else if (Math.random() < 0.007 && Math.random() > 0.006) {
+			{
+				String _setval = "Rejected Zenin";
+				entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+					capability.Clans = _setval;
+					capability.syncPlayerVariables(entity);
+				});
+			}
+			if (entity instanceof Player _player && !_player.level().isClientSide())
+				_player.displayClientMessage(Component.literal(("Your clan now is: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans)),
+						false);
+		} else if (Math.random() < 0.008 && Math.random() > 0.007) {
 			{
 				String _setval = "Itadori";
 				entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -239,7 +250,7 @@ public class ClanChangerRollProcedure {
 			ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.CLAN_CHANGER.get());
 			_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 		}
-		if (entity instanceof Player _plr22 && _plr22.containerMenu instanceof ClanChangeMenu) {
+		if (entity instanceof Player _plr23 && _plr23.containerMenu instanceof ClanChangeMenu) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 		}

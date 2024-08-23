@@ -16,11 +16,13 @@ import net.minecraft.world.item.ArmorItem;
 
 import net.mcreator.jujutsucraftaddon.item.YuunItem;
 import net.mcreator.jujutsucraftaddon.item.YutaRingItem;
+import net.mcreator.jujutsucraftaddon.item.YesIAmItem;
 import net.mcreator.jujutsucraftaddon.item.WhiteCapeItem;
 import net.mcreator.jujutsucraftaddon.item.WheelItem;
 import net.mcreator.jujutsucraftaddon.item.WarstaffItem;
 import net.mcreator.jujutsucraftaddon.item.VibraslapItem;
 import net.mcreator.jujutsucraftaddon.item.VeilTalismanItem;
+import net.mcreator.jujutsucraftaddon.item.TrolololoItem;
 import net.mcreator.jujutsucraftaddon.item.TrashItem;
 import net.mcreator.jujutsucraftaddon.item.TraitRecommendationItem;
 import net.mcreator.jujutsucraftaddon.item.Testo3Item;
@@ -61,6 +63,8 @@ import net.mcreator.jujutsucraftaddon.item.RandomCTChangerItem;
 import net.mcreator.jujutsucraftaddon.item.RaceChangerItem;
 import net.mcreator.jujutsucraftaddon.item.RCTItem;
 import net.mcreator.jujutsucraftaddon.item.PurpleCapeItem;
+import net.mcreator.jujutsucraftaddon.item.NuhUhItem;
+import net.mcreator.jujutsucraftaddon.item.NuhUh1Item;
 import net.mcreator.jujutsucraftaddon.item.MugiwaraItem;
 import net.mcreator.jujutsucraftaddon.item.ModernEraSorcererItem;
 import net.mcreator.jujutsucraftaddon.item.MobTamerItem;
@@ -263,6 +267,13 @@ public class JujutsucraftaddonModItems {
 	public static final RegistryObject<Item> DISPLAY_CT_NUMBER = REGISTRY.register("display_ct_number", () -> new DisplayCTNumberItem());
 	public static final RegistryObject<Item> YUUN = REGISTRY.register("yuun", () -> new YuunItem());
 	public static final RegistryObject<Item> ITEM_DOMAIN_SIZE_SET = REGISTRY.register("item_domain_size_set", () -> new ItemDomainSizeSetItem());
+	public static final RegistryObject<Item> NUH_UH = REGISTRY.register("nuh_uh", () -> new NuhUhItem());
+	public static final RegistryObject<Item> TESTING_ENTITY_SPAWN_EGG = REGISTRY.register("testing_entity_spawn_egg", () -> new ForgeSpawnEggItem(JujutsucraftaddonModEntities.TESTING_ENTITY, -1, -1, new Item.Properties()));
+	public static final RegistryObject<Item> TROLOLOLO = REGISTRY.register("trolololo", () -> new TrolololoItem());
+	public static final RegistryObject<Item> TESTING_VERSION_SPAWN_EGG = REGISTRY.register("testing_version_spawn_egg", () -> new ForgeSpawnEggItem(JujutsucraftaddonModEntities.TESTING_VERSION, -1, -1, new Item.Properties()));
+	public static final RegistryObject<Item> YES_I_AM = REGISTRY.register("yes_i_am", () -> new YesIAmItem());
+	public static final RegistryObject<Item> NUH_UH_1 = REGISTRY.register("nuh_uh_1", () -> new NuhUh1Item());
+	public static final RegistryObject<Item> YE_SPAWN_EGG = REGISTRY.register("ye_spawn_egg", () -> new ForgeSpawnEggItem(JujutsucraftaddonModEntities.YE, -1, -1, new Item.Properties()));
 
 	// Start of user code block custom items
 	// End of user code block custom items

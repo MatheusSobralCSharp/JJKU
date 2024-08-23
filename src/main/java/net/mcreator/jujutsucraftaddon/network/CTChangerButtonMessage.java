@@ -64,7 +64,7 @@ public class CTChangerButtonMessage {
 			return;
 		if (buttonID == 0) {
 
-			TestProcedureeProcedure.execute(world, entity);
+			TestProcedureeProcedure.execute(world, x, y, z, entity, guistate);
 		}
 	}
 

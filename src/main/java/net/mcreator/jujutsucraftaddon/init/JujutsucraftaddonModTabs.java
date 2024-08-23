@@ -6,15 +6,20 @@ package net.mcreator.jujutsucraftaddon.init;
 
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class JujutsucraftaddonModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, JujutsucraftaddonMod.MODID);
 	public static final RegistryObject<CreativeModeTab> ARMORS = REGISTRY.register("armors",
@@ -121,6 +126,7 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.YUTA_RING.get());
 				tabData.accept(JujutsucraftaddonModItems.VEIL_TALISMAN.get());
 				tabData.accept(JujutsucraftaddonModItems.ITEM_DOMAIN_SIZE_SET.get());
+				tabData.accept(JujutsucraftaddonModItems.NUH_UH_1.get());
 			})
 
 					.build());
@@ -134,4 +140,12 @@ public class JujutsucraftaddonModTabs {
 			})
 
 					.build());
+
+	@SubscribeEvent
+	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
+		if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+			tabData.accept(JujutsucraftaddonModItems.TESTING_VERSION_SPAWN_EGG.get());
+			tabData.accept(JujutsucraftaddonModItems.YE_SPAWN_EGG.get());
+		}
+	}
 }

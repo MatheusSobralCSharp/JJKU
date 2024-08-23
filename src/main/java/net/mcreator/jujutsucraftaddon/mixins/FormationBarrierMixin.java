@@ -12,6 +12,7 @@ import net.mcreator.jujutsucraft.procedures.DomainExpansionCreateBarrierProcedur
 import net.mcreator.jujutsucraft.procedures.KeyChangeTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraft.procedures.RotateEntityProcedure;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.mcreator.jujutsucraftaddon.procedures.BarrierlessAndCompressedProcedure;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
@@ -80,6 +81,11 @@ public abstract class FormationBarrierMixin {
             LivingEntity _entity;
             Mob _mobEnt;
             LivingEntity var69;
+
+            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain) {
+                BarrierlessAndCompressedProcedure.execute(world, entity);
+            }
+
             if (entity.getPersistentData().getDouble("cnt3") < 20.0) {
                 entity.getPersistentData().putDouble("select", 0.0);
                 if (entity.getPersistentData().getDouble("cnt3") == 0.0) {
@@ -92,7 +98,7 @@ public abstract class FormationBarrierMixin {
                     var10002 = entity.getPersistentData().getDouble("cnt3");
                     if (entity instanceof LivingEntity) {
                         _entity = (LivingEntity)entity;
-                        if (_entity.hasEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get())) {
+                        if (_entity.hasEffect((MobEffect)JujutsucraftModMobEffects.ZONE.get())) {
                             var10003 = 2;
                             break label340;
                         }
@@ -152,12 +158,7 @@ public abstract class FormationBarrierMixin {
                     }
                 }
             } else {
-
-                if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true) {
-                    domainRadius = ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain);
-                } else {
-                    domainRadius = MapVariables.get(world).DomainExpansionRadius;
-                }
+                domainRadius = MapVariables.get(world).DomainExpansionRadius;
                 entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
                 entity.setDeltaMovement(new Vec3(0.0, Math.min(entity.getDeltaMovement().y(), 0.0), 0.0));
                 if (entity instanceof LivingEntity) {
@@ -204,7 +205,7 @@ public abstract class FormationBarrierMixin {
                         }
 
                         Level var75 = var69.level();
-                        ClipContext var10001;
+                        ClipContext var10001 = new ClipContext (entity.getEyePosition(1.0F), var69.getEyePosition(1.0F), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity);
                         if (entity instanceof Mob) {
                             _mobEnt = (Mob)entity;
                             var78 = _mobEnt.getTarget();
@@ -231,8 +232,8 @@ public abstract class FormationBarrierMixin {
                         }
 
                         var81 = var81.add(var10005.getViewVector(1.0F).scale(0.0));
-                        Block var83 = Block.OUTLINE;
-                        Fluid var10006 = Fluid.NONE;
+                        ClipContext.Block var83 = Block.OUTLINE;
+                        ClipContext.Fluid var10006 = Fluid.NONE;
                         LivingEntity var10007;
                         if (entity instanceof Mob) {
                             _mobEnt = (Mob)entity;
@@ -278,8 +279,8 @@ public abstract class FormationBarrierMixin {
                         }
 
                         var85 = var85.add(var84.getViewVector(1.0F).scale(0.0));
-                        Block var86 = Block.OUTLINE;
-                        Fluid var87 = Fluid.NONE;
+                        ClipContext.Block var86 = Block.OUTLINE;
+                        ClipContext.Fluid var87 = Fluid.NONE;
                         LivingEntity var10008;
                         if (entity instanceof Mob) {
                             _mobEnt = (Mob)entity;
@@ -288,7 +289,7 @@ public abstract class FormationBarrierMixin {
                             var10008 = null;
                         }
 
-                        var72 = new ClipContext(var81, var85, var86, var87, var10008);
+                        var72 = new ClipContext (var81, var85, var86, var87, var10008);
                         double var73 = (double)var71.clip(var72).getBlockPos().getY();
                         if (entity instanceof Mob) {
                             _mobEnt = (Mob)entity;
@@ -323,8 +324,8 @@ public abstract class FormationBarrierMixin {
                         }
 
                         var88 = var88.add(var10007.getViewVector(1.0F).scale(0.0));
-                        Block var90 = Block.OUTLINE;
-                        Fluid var89 = Fluid.NONE;
+                        ClipContext.Block var90 = Block.OUTLINE;
+                        ClipContext.Fluid var89 = Fluid.NONE;
                         LivingEntity var10009;
                         if (entity instanceof Mob) {
                             _mobEnt = (Mob)entity;
@@ -690,16 +691,8 @@ public abstract class FormationBarrierMixin {
 
                         for(int index2 = 0; index2 < (int)Math.round(loop_num); ++index2) {
                             dis = Math.sqrt(Math.pow(x_pos - entity.getPersistentData().getDouble("x_pos_doma"), 2.0) + Math.pow(y_pos - entity.getPersistentData().getDouble("y_pos_doma"), 2.0) + Math.pow(z_pos - entity.getPersistentData().getDouble("z_pos_doma"), 2.0));
-
-
-                            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true) {
-                                if (dis > ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain) - 3.0) {
-                                    break;
-                                }
-                            } else {
-                                if (dis > MapVariables.get(world).DomainExpansionRadius - 3.0) {
-                                    break;
-                                }
+                            if (dis > MapVariables.get(world).DomainExpansionRadius - 3.0) {
+                                break;
                             }
 
                             x_pos += x_dis;
@@ -755,9 +748,9 @@ public abstract class FormationBarrierMixin {
                             capability.PlayerSelectCurseTechnique = final_setval1;
                             capability.syncPlayerVariables(entity);
                         });
-                        boolean _setval1 = true;
+                        boolean _setval2 = true;
                         entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
-                            capability.noChangeTechnique = _setval1;
+                            capability.noChangeTechnique = _setval2;
                             capability.syncPlayerVariables(entity);
                         });
                         KeyChangeTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
@@ -788,4 +781,3 @@ public abstract class FormationBarrierMixin {
         }
     }
 }
-

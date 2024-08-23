@@ -244,9 +244,22 @@ public class Die1Procedure {
 							}
 						}
 					}
+					if (Math.random() < 0.1) {
+						if ((sourceentity instanceof ServerPlayer _plr45 && _plr45.level() instanceof ServerLevel
+								&& _plr45.getAdvancements().getOrStartProgress(_plr45.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"))).isDone()) == false) {
+							if (sourceentity instanceof ServerPlayer _player) {
+								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"));
+								AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+								if (!_ap.isDone()) {
+									for (String criteria : _ap.getRemainingCriteria())
+										_player.getAdvancements().award(_adv, criteria);
+								}
+							}
+						}
+					}
 				} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kusakabe_yatsuya")) {
-					if (!(sourceentity instanceof ServerPlayer _plr46 && _plr46.level() instanceof ServerLevel
-							&& _plr46.getAdvancements().getOrStartProgress(_plr46.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"))).isDone())) {
+					if (!(sourceentity instanceof ServerPlayer _plr48 && _plr48.level() instanceof ServerLevel
+							&& _plr48.getAdvancements().getOrStartProgress(_plr48.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"))).isDone())) {
 						if (Math.random() < 0.1) {
 							if (sourceentity instanceof ServerPlayer _player) {
 								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"));
@@ -258,8 +271,8 @@ public class Die1Procedure {
 							}
 						}
 					}
-					if (!(sourceentity instanceof ServerPlayer _plr48 && _plr48.level() instanceof ServerLevel
-							&& _plr48.getAdvancements().getOrStartProgress(_plr48.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:kakucho_jutsushiki"))).isDone())) {
+					if (!(sourceentity instanceof ServerPlayer _plr50 && _plr50.level() instanceof ServerLevel
+							&& _plr50.getAdvancements().getOrStartProgress(_plr50.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:kakucho_jutsushiki"))).isDone())) {
 						if (Math.random() < 0.1) {
 							if (sourceentity instanceof ServerPlayer _player) {
 								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:kakucho_jutsushiki"));
@@ -275,9 +288,9 @@ public class Die1Procedure {
 				if ((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex51 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex51);
-							return dataIndex51.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex53 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex53);
+							return dataIndex53.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 105) {
 						if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:gojo_satoru")) {
@@ -297,17 +310,17 @@ public class Die1Procedure {
 							}
 						}
 					}
-					if (!(sourceentity instanceof ServerPlayer _plr55 && _plr55.level() instanceof ServerLevel
-							&& _plr55.getAdvancements().getOrStartProgress(_plr55.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:ultimate_power"))).isDone())) {
-						if (sourceentity instanceof ServerPlayer _plr56 && _plr56.level() instanceof ServerLevel
-								&& _plr56.getAdvancements().getOrStartProgress(_plr56.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone()) {
+					if (!(sourceentity instanceof ServerPlayer _plr57 && _plr57.level() instanceof ServerLevel
+							&& _plr57.getAdvancements().getOrStartProgress(_plr57.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:ultimate_power"))).isDone())) {
+						if (sourceentity instanceof ServerPlayer _plr58 && _plr58.level() instanceof ServerLevel
+								&& _plr58.getAdvancements().getOrStartProgress(_plr58.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone()) {
 							if ((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
 								if ((ForgeRegistries.ITEMS.getKey((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:supreme_martial_solution")) {
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex60 = new CompoundTag();
-											sourceentity.saveWithoutId(dataIndex60);
-											return dataIndex60.getCompound("ForgeData").getDouble("skill");
+											CompoundTag dataIndex62 = new CompoundTag();
+											sourceentity.saveWithoutId(dataIndex62);
+											return dataIndex62.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == 105) {
 										if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kashimo_hajime")) {

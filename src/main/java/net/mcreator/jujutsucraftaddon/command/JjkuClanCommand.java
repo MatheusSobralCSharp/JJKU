@@ -15,6 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
+import net.mcreator.jujutsucraftaddon.procedures.RejectedZeninClanProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ClanZeninProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ClanUraumeProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ClanTsukumoProcedure;
@@ -149,6 +150,20 @@ public class JjkuClanCommand {
 				direction = entity.getDirection();
 
 			ClanZeninProcedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("RejectedZenin").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			RejectedZeninClanProcedure.execute(arguments);
 			return 0;
 		}))).then(Commands.literal("Kashimo").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();

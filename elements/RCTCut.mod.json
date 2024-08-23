@@ -15,6 +15,9 @@
     "renderStatusInHUD": true,
     "onActiveTick": {
       "name": "RCTCutOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "RCTCutEffectExpires"
     }
   }
 }

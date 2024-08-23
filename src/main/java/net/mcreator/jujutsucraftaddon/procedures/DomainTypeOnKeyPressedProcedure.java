@@ -37,7 +37,7 @@ public class DomainTypeOnKeyPressedProcedure {
 				});
 			}
 			{
-				double _setval = 33;
+				double _setval = 50;
 				entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.RadiusDomain = _setval;
 					capability.syncPlayerVariables(entity);

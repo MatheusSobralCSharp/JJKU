@@ -1,25 +1,19 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.entity.BulletFlameProjectileEntity;
-import net.mcreator.jujutsucraft.entity.SukunaFushiguroEntity;
-import net.mcreator.jujutsucraft.entity.SukunaPerfectEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.*;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
-import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -28,10 +22,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
 

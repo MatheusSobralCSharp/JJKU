@@ -53,7 +53,7 @@ public class DomainExpansionMessage {
 			return;
 		if (type == 0) {
 
-			DomainExpansionOnKeyPressedProcedure.execute(entity);
+			DomainExpansionOnKeyPressedProcedure.execute(world, x, y, z, entity);
 		}
 		if (type == 1) {
 

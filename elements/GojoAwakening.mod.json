@@ -2,8 +2,8 @@
   "_fv": 60,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "Gojo Awakening",
-    "icon": "ab93fb9cd11dd92ae55abc33d95b6ea6.png",
+    "effectName": "Awakening",
+    "icon": "sukuna.png",
     "color": {
       "value": -1,
       "falpha": 0.0

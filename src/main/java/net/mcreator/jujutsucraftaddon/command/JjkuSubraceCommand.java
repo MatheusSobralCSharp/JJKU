@@ -16,6 +16,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
 import net.mcreator.jujutsucraftaddon.procedures.SetRaceProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.SetRace4Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.SetRace3Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.SetRace2Procedure;
 
@@ -64,6 +65,20 @@ public class JjkuSubraceCommand {
 				direction = entity.getDirection();
 
 			SetRace3Procedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("DisasterCurse").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			SetRace4Procedure.execute(arguments);
 			return 0;
 		}))));
 	}

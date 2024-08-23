@@ -143,6 +143,42 @@
           "x": 260,
           "y": 80
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_yuta_ct",
+          "text": {
+            "fixedValue": "Yuta CT:"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ConditionYuta"
+          },
+          "x": 123,
+          "y": 153
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select3",
+          "text": "Select",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "SetYutaCT"
+          },
+          "displayCondition": {
+            "name": "ConditionYuta"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 213,
+          "y": 147
+        }
       }
     ],
     "gridSettings": {

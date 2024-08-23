@@ -58,8 +58,8 @@
     "material": {
       "value": "BARRIER"
     },
-    "tickRate": 1,
-    "tickRandomly": true,
+    "tickRate": 10,
+    "tickRandomly": false,
     "isReplaceable": false,
     "canProvidePower": false,
     "emittedRedstonePower": {

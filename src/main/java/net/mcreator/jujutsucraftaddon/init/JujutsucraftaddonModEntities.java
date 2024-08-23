@@ -17,9 +17,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 
 import net.mcreator.jujutsucraftaddon.entity.YutaCullingGamesEntity;
+import net.mcreator.jujutsucraftaddon.entity.YeEntity;
 import net.mcreator.jujutsucraftaddon.entity.VeilEntity;
 import net.mcreator.jujutsucraftaddon.entity.UraumeEntity;
 import net.mcreator.jujutsucraftaddon.entity.UiUiEntity;
+import net.mcreator.jujutsucraftaddon.entity.UEntity;
+import net.mcreator.jujutsucraftaddon.entity.TestingVersionEntity;
+import net.mcreator.jujutsucraftaddon.entity.TestingEntityEntity;
 import net.mcreator.jujutsucraftaddon.entity.TestProjectileEntity;
 import net.mcreator.jujutsucraftaddon.entity.TanjerinaEntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaNoShirtEntity;
@@ -169,6 +173,22 @@ public class JujutsucraftaddonModEntities {
 			EntityType.Builder.<OutlineEntity>of(OutlineEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(OutlineEntity::new)
 
 					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<TestingEntityEntity>> TESTING_ENTITY = register("testing_entity",
+			EntityType.Builder.<TestingEntityEntity>of(TestingEntityEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(TestingEntityEntity::new)
+
+					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<UEntity>> U = register("u",
+			EntityType.Builder.<UEntity>of(UEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(UEntity::new)
+
+					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<TestingVersionEntity>> TESTING_VERSION = register("testing_version",
+			EntityType.Builder.<TestingVersionEntity>of(TestingVersionEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(TestingVersionEntity::new)
+
+					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<YeEntity>> YE = register("ye",
+			EntityType.Builder.<YeEntity>of(YeEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(YeEntity::new)
+
+					.sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -209,6 +229,10 @@ public class JujutsucraftaddonModEntities {
 			AntiVeilEntity.init();
 			MaleniaEntity.init();
 			OutlineEntity.init();
+			TestingEntityEntity.init();
+			UEntity.init();
+			TestingVersionEntity.init();
+			YeEntity.init();
 		});
 	}
 
@@ -246,5 +270,9 @@ public class JujutsucraftaddonModEntities {
 		event.put(ANTI_VEIL.get(), AntiVeilEntity.createAttributes().build());
 		event.put(MALENIA.get(), MaleniaEntity.createAttributes().build());
 		event.put(OUTLINE.get(), OutlineEntity.createAttributes().build());
+		event.put(TESTING_ENTITY.get(), TestingEntityEntity.createAttributes().build());
+		event.put(U.get(), UEntity.createAttributes().build());
+		event.put(TESTING_VERSION.get(), TestingVersionEntity.createAttributes().build());
+		event.put(YE.get(), YeEntity.createAttributes().build());
 	}
 }

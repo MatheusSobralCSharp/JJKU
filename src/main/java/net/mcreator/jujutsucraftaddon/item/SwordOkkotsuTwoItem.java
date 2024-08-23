@@ -10,10 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.network.chat.Component;
 
+import net.mcreator.jujutsucraftaddon.procedures.SwordOkkotsuTwoToolInHandTickProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SwordOkkotsu2RightClickedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SwordOkkotsu2Procedure;
 
@@ -58,7 +60,7 @@ public class SwordOkkotsuTwoItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		SwordOkkotsu2RightClickedProcedure.execute(world, entity, ar.getObject());
+		SwordOkkotsu2RightClickedProcedure.execute(entity, ar.getObject());
 		return ar;
 	}
 
@@ -66,5 +68,12 @@ public class SwordOkkotsuTwoItem extends SwordItem {
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
 		list.add(Component.literal("[Ability] Allows you copy moves and Store them inside of the sword"));
+	}
+
+	@Override
+	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
+		super.inventoryTick(itemstack, world, entity, slot, selected);
+		if (selected)
+			SwordOkkotsuTwoToolInHandTickProcedure.execute(world, entity, itemstack);
 	}
 }

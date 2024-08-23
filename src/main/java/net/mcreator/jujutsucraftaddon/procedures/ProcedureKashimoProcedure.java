@@ -5,8 +5,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.EntityType;
@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Comparator;
 
 public class ProcedureKashimoProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 7) {
@@ -65,7 +65,10 @@ public class ProcedureKashimoProcedure {
 				if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Thunder Storm")) {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						{
-							final Vec3 _center = new Vec3(x, y, z);
+							final Vec3 _center = new Vec3(
+									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
+									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()),
+									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
 							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 							for (Entity entityiterator : _entfound) {
 								if (!(entity == entityiterator)) {
@@ -87,13 +90,19 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex17 = new CompoundTag();
-								entity.saveWithoutId(dataIndex17);
-								return dataIndex17.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex20 = new CompoundTag();
+								entity.saveWithoutId(dataIndex20);
+								return dataIndex20.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
-								final Vec3 _center = new Vec3(x, y, z);
+								final Vec3 _center = new Vec3(
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getX()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getY()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getZ()));
 								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 								for (Entity entityiterator : _entfound) {
 									if (!(entity == entityiterator)) {
@@ -103,7 +112,7 @@ public class ProcedureKashimoProcedure {
 											_level.addFreshEntity(entityToSpawn);
 										}
 										if (world instanceof ServerLevel _serverLevel) {
-											Entity entitytospawn = JujutsucraftModEntities.ENERGY_BALL_WHITE.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+											Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
 													MobSpawnType.MOB_SUMMONED);
 											if (entitytospawn != null) {
 												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
@@ -140,28 +149,32 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex41 = new CompoundTag();
-								entity.saveWithoutId(dataIndex41);
-								return dataIndex41.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex47 = new CompoundTag();
+								entity.saveWithoutId(dataIndex47);
+								return dataIndex47.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
-								final Vec3 _center = new Vec3(x, y, z);
-								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+								final Vec3 _center = new Vec3(
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getX()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getY()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getZ()));
+								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 								for (Entity entityiterator : _entfound) {
 									if (!(entity == entityiterator)) {
-										if ((entityiterator instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == entity) {
-											if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-												_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
-											{
-												Entity _ent = entity;
-												_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
-												if (_ent instanceof ServerPlayer _serverPlayer)
-													_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
-											}
-											entityiterator.hurt(
-													new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
+										if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+											_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
+										{
+											Entity _ent = entity;
+											_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
+											if (_ent instanceof ServerPlayer _serverPlayer)
+												_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 										}
+										entityiterator.hurt(
+												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
 									}
 								}
 							}
@@ -171,56 +184,60 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex55 = new CompoundTag();
-								entity.saveWithoutId(dataIndex55);
-								return dataIndex55.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex62 = new CompoundTag();
+								entity.saveWithoutId(dataIndex62);
+								return dataIndex62.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
-								final Vec3 _center = new Vec3(x, y, z);
+								final Vec3 _center = new Vec3(
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getX()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getY()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getZ()));
 								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 								for (Entity entityiterator : _entfound) {
 									if (!(entity == entityiterator)) {
-										if ((entityiterator instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == entity) {
-											{
-												Entity _ent = entity;
-												_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
-												if (_ent instanceof ServerPlayer _serverPlayer)
-													_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+										{
+											Entity _ent = entity;
+											_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
+											if (_ent instanceof ServerPlayer _serverPlayer)
+												_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+										}
+										entityiterator.hurt(
+												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
+										if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+											_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
+										if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+											_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
+										if (world instanceof ServerLevel _serverLevel) {
+											Entity entitytospawn = JujutsucraftModEntities.ENERGY_BALL_WHITE.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+													MobSpawnType.MOB_SUMMONED);
+											if (entitytospawn != null) {
+												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 											}
-											entityiterator.hurt(
-													new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
-											if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-												_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-												_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
-											if (world instanceof ServerLevel _serverLevel) {
-												Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
-														MobSpawnType.MOB_SUMMONED);
-												if (entitytospawn != null) {
-													entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+											CompoundTag dataIndex1 = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex1);
+											dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+											(entitytospawn).load(dataIndex1);
+											CompoundTag dataIndex3 = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex3);
+											dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex2 = new CompoundTag();
+													entity.saveWithoutId(dataIndex2);
+													return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
 												}
-												CompoundTag dataIndex1 = new CompoundTag();
-												(entitytospawn).saveWithoutId(dataIndex1);
-												dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
-												(entitytospawn).load(dataIndex1);
-												CompoundTag dataIndex3 = new CompoundTag();
-												(entitytospawn).saveWithoutId(dataIndex3);
-												dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-													public double getValue() {
-														CompoundTag dataIndex2 = new CompoundTag();
-														entity.saveWithoutId(dataIndex2);
-														return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
-													}
-												}.getValue()));
-												(entitytospawn).load(dataIndex3);
-												((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
-												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-													_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
-															entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
-												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-													_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
-											}
+											}.getValue()));
+											(entitytospawn).load(dataIndex3);
+											((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+												_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+														entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+												_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
 										}
 									}
 								}

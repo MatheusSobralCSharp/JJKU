@@ -33,7 +33,7 @@ public class VeilOnEntityTickUpdateProcedure {
 		String old_block = "";
 		if (world instanceof ServerLevel _origLevel) {
 			LevelAccessor _worldorig = world;
-			world = _origLevel.getServer().getLevel(Level.END);
+			world = _origLevel.getServer().getLevel(entity.level().dimension());
 			if (world != null) {
 				if (entity.getPersistentData().getDouble("TemporaryVeilsTimer") == 0) {
 					if (entity.getPersistentData().getDouble("TemporaryVeilsSize") > 0) {

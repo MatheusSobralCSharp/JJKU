@@ -29,7 +29,7 @@ public class TraitRecommendationItem extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		TraitRecommendationRightclickedProcedure.execute(entity, ar.getObject());
+		TraitRecommendationRightclickedProcedure.execute(entity);
 		return ar;
 	}
 }

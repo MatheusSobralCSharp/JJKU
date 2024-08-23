@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.RaceChangeMenu;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 
 public class RaceChangerCursedSpiritProcedure {
@@ -46,6 +47,15 @@ public class RaceChangerCursedSpiritProcedure {
 				capability.syncPlayerVariables(entity);
 			});
 		}
+
+		{
+			double _setval = -1.0;
+			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.PlayerProfession = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
+
 		if (entity instanceof Player _player) {
 			ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get());
 			_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());

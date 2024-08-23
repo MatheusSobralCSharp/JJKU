@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.RaceChangeMenu;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 
 public class RaceChangerSorcererProcedure {
@@ -43,6 +44,13 @@ public class RaceChangerSorcererProcedure {
 			boolean _setval = false;
 			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.IsVessel = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
+		{
+			double _setval = 0.0;
+			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.PlayerProfession = _setval;
 				capability.syncPlayerVariables(entity);
 			});
 		}

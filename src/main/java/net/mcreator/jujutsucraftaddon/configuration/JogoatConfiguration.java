@@ -1,0 +1,95 @@
+package net.mcreator.jujutsucraftaddon.configuration;
+
+import net.minecraftforge.common.ForgeConfigSpec;
+
+public class JogoatConfiguration {
+	public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+	public static final ForgeConfigSpec SPEC;
+	public static final ForgeConfigSpec.ConfigValue<Double> GOJO;
+	public static final ForgeConfigSpec.ConfigValue<Double> GETO;
+	public static final ForgeConfigSpec.ConfigValue<Double> FUSHIGURO;
+	public static final ForgeConfigSpec.ConfigValue<Double> MAKI;
+	public static final ForgeConfigSpec.ConfigValue<Double> SUKUNA;
+	public static final ForgeConfigSpec.ConfigValue<Double> INUMAKI;
+	public static final ForgeConfigSpec.ConfigValue<Double> OKKOTSU;
+	public static final ForgeConfigSpec.ConfigValue<Double> JOGO;
+	public static final ForgeConfigSpec.ConfigValue<Double> KASHIMO;
+	public static final ForgeConfigSpec.ConfigValue<Double> DAGON;
+	public static final ForgeConfigSpec.ConfigValue<Double> TSUKUMO;
+	public static final ForgeConfigSpec.ConfigValue<Double> CHOSO;
+	public static final ForgeConfigSpec.ConfigValue<Double> MEIMEI;
+	public static final ForgeConfigSpec.ConfigValue<Double> ISHIGORI;
+	public static final ForgeConfigSpec.ConfigValue<Double> NANAMI;
+	public static final ForgeConfigSpec.ConfigValue<Double> HANAMI;
+	public static final ForgeConfigSpec.ConfigValue<Double> MAHITO;
+	public static final ForgeConfigSpec.ConfigValue<Double> MAHORAGA;
+	public static final ForgeConfigSpec.ConfigValue<Double> TAKABA;
+	public static final ForgeConfigSpec.ConfigValue<Double> NAOYA;
+	public static final ForgeConfigSpec.ConfigValue<Double> TODO;
+	public static final ForgeConfigSpec.ConfigValue<Double> ITADORI;
+	public static final ForgeConfigSpec.ConfigValue<Double> JINICHI;
+	public static final ForgeConfigSpec.ConfigValue<Double> KUROURUSHI;
+	public static final ForgeConfigSpec.ConfigValue<Double> URAUME;
+	public static final ForgeConfigSpec.ConfigValue<Double> OGI;
+	public static final ForgeConfigSpec.ConfigValue<Double> HIGURUMA;
+	public static final ForgeConfigSpec.ConfigValue<Double> ANGEL;
+	public static final ForgeConfigSpec.ConfigValue<Double> HAKARI;
+	public static final ForgeConfigSpec.ConfigValue<Double> MIGUEL;
+	public static final ForgeConfigSpec.ConfigValue<Double> KUSAKABE;
+	public static final ForgeConfigSpec.ConfigValue<Double> CHOJURO;
+	public static final ForgeConfigSpec.ConfigValue<Double> YAGA;
+	public static final ForgeConfigSpec.ConfigValue<Double> KUGISAKI;
+	public static final ForgeConfigSpec.ConfigValue<Double> JUNPE;
+	public static final ForgeConfigSpec.ConfigValue<Double> NISHIMIYA;
+	public static final ForgeConfigSpec.ConfigValue<Double> DHRUV;
+	public static final ForgeConfigSpec.ConfigValue<Double> YOROZU;
+	public static final ForgeConfigSpec.ConfigValue<Double> TAKAKOURO;
+	public static final ForgeConfigSpec.ConfigValue<Double> SMALLPOXDEITY;
+	static {
+		BUILDER.push("Jujutsu Random Rates");
+		GOJO = BUILDER.define("Gojo", (double) 1);
+		GETO = BUILDER.define("Geto", (double) 3);
+		FUSHIGURO = BUILDER.define("Fushiguro", (double) 4);
+		MAKI = BUILDER.define("Maki", (double) 5);
+		SUKUNA = BUILDER.define("Sukuna", (double) 2);
+		INUMAKI = BUILDER.define("Inumaki", (double) 6);
+		OKKOTSU = BUILDER.define("Okkotsu", (double) 7);
+		JOGO = BUILDER.define("Jogo", (double) 8);
+		KASHIMO = BUILDER.define("Kashimo", (double) 9);
+		DAGON = BUILDER.define("Dagon", (double) 10);
+		TSUKUMO = BUILDER.define("Tsukumo", (double) 11);
+		CHOSO = BUILDER.define("Choso", (double) 12);
+		MEIMEI = BUILDER.define("MeiMei", (double) 13);
+		ISHIGORI = BUILDER.define("Ishigori", (double) 14);
+		NANAMI = BUILDER.define("Nanami", (double) 15);
+		HANAMI = BUILDER.define("Hanami", (double) 16);
+		MAHITO = BUILDER.define("Mahito", (double) 17);
+		MAHORAGA = BUILDER.define("Mahoraga", (double) 18);
+		TAKABA = BUILDER.define("Takaba", (double) 19);
+		NAOYA = BUILDER.define("Naoya", (double) 20);
+		TODO = BUILDER.define("Todo", (double) 21);
+		ITADORI = BUILDER.define("Itadori", (double) 22);
+		JINICHI = BUILDER.define("Jinichi", (double) 23);
+		KUROURUSHI = BUILDER.define("Kurourushi", (double) 24);
+		URAUME = BUILDER.define("Uraume", (double) 25);
+		OGI = BUILDER.define("Ogi", (double) 26);
+		HIGURUMA = BUILDER.define("Higuruma", (double) 27);
+		ANGEL = BUILDER.define("Angel", (double) 28);
+		HAKARI = BUILDER.define("Hakari", (double) 29);
+		MIGUEL = BUILDER.define("Miguel", (double) 30);
+		KUSAKABE = BUILDER.define("Kusakabe", (double) 31);
+		CHOJURO = BUILDER.define("Chojuro", (double) 32);
+		YAGA = BUILDER.define("Yaga", (double) 33);
+		KUGISAKI = BUILDER.define("Kugisaki", (double) 34);
+		JUNPE = BUILDER.define("Junpei", (double) 35);
+		NISHIMIYA = BUILDER.define("Nishimiya", (double) 36);
+		DHRUV = BUILDER.define("Dhruv", (double) 37);
+		YOROZU = BUILDER.define("Yorozu", (double) 38);
+		TAKAKOURO = BUILDER.define("TakakoUro", (double) 39);
+		SMALLPOXDEITY = BUILDER.define("SmallpoxDeity", (double) 40);
+		BUILDER.pop();
+
+		SPEC = BUILDER.build();
+	}
+
+}

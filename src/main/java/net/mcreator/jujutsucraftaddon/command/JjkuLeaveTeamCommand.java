@@ -32,7 +32,7 @@ public class JjkuLeaveTeamCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					LeaveTeamProcedure.execute(entity);
+					LeaveTeamProcedure.execute(world, entity);
 					return 0;
 				}));
 	}

@@ -34,6 +34,6 @@ public class CellphoneRightclickedProcedure {
         if (entity instanceof Player _player && !_player.level().isClientSide())
             _player.displayClientMessage(Component.literal(("Your Trait is: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Trait)), false);
 		if (entity instanceof Player _player && !_player.level().isClientSide())
-			_player.displayClientMessage(Component.literal(("Your Team is:" + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).TeamName)), false);
+			_player.displayClientMessage(Component.literal(("Your Team is:" + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Team)), false);
 	}
 }

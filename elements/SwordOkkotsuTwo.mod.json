@@ -36,6 +36,9 @@
     },
     "onEntityHitWith": {
       "name": "SwordOkkotsu2"
+    },
+    "onItemInUseTick": {
+      "name": "SwordOkkotsuTwoToolInHandTick"
     }
   }
 }
