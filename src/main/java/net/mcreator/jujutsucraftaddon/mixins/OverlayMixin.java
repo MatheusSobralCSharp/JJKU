@@ -30,7 +30,7 @@ public abstract class OverlayMixin {
 
 
     @ModifyConstant(
-            method = "execute(Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V",
+            method = "execute",
             constant = @Constant(doubleValue = 0.998),
             remap = false
     )
@@ -51,12 +51,14 @@ public abstract class OverlayMixin {
     private static void injectProcedure(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if ((world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_BLACK_FLASH_REWORKED))) {
             if (entity.getPersistentData().getDouble("cnt_bf") >= 50.0) {
-                if (!((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()))) {
-                    if (world instanceof Level _level6) {
-                        if (!_level6.isClientSide()) {
-                            _level6.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1);
-                        } else {
-                            _level6.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1, false);
+                if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_OST_PLAYER) == true) {
+                    if (!((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()))) {
+                        if (world instanceof Level _level6) {
+                            if (!_level6.isClientSide()) {
+                                _level6.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1);
+                            } else {
+                                _level6.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1, false);
+                            }
                         }
                     }
                 }
@@ -65,12 +67,14 @@ public abstract class OverlayMixin {
                 entity.getPersistentData().putDouble("cnt_bf", 0);
             }
         } else {
-            if (!((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()))) {
-                if (world instanceof Level _level6) {
-                    if (!_level6.isClientSide()) {
-                        _level6.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1);
-                    } else {
-                        _level6.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1, false);
+            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_OST_PLAYER) == true) {
+                if (!((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()))) {
+                    if (world instanceof Level _level6) {
+                        if (!_level6.isClientSide()) {
+                            _level6.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1);
+                        } else {
+                            _level6.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:blackflashtheme"))), SoundSource.NEUTRAL, 1, 1, false);
+                        }
                     }
                 }
             }

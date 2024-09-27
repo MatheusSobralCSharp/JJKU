@@ -57,7 +57,35 @@ public class Die1Procedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
+		if (sourceentity.getPersistentData().getDouble("Fight") == 1 || sourceentity.getPersistentData().getDouble("Wukong") == 1) {
+			{
+				Entity _ent = entity;
+				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "stopsound @s");
+				}
+			}
+			sourceentity.getPersistentData().putDouble("Wukong", 0);
+			sourceentity.getPersistentData().putDouble("Fight", 0);
+		}
 		if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
+			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow4 >= 1) {
+				{
+					Entity _ent = entity;
+					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "clear");
+					}
+				}
+				{
+					double _setval = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).CursedLevel
+							- (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow4 * 2000;
+					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+						capability.CursedLevel = _setval;
+						capability.syncPlayerVariables(entity);
+					});
+				}
+			}
 			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
 				if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Tengen")) {
 					entity.setInvulnerable(true);
@@ -67,7 +95,7 @@ public class Die1Procedure {
 						event.setCanceled(true);
 					}
 				}
-				if (entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(JujutsucraftaddonModMobEffects.MANIFESTATION.get())) {
+				if (entity instanceof LivingEntity _livEnt9 && _livEnt9.hasEffect(JujutsucraftaddonModMobEffects.MANIFESTATION.get())) {
 					entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 						capability.PlayerCurseTechnique2 = 5;
 						capability.syncPlayerVariables(entity);
@@ -112,9 +140,9 @@ public class Die1Procedure {
 									if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:crow")) {
 										if ((new Object() {
 											public String getValue() {
-												CompoundTag dataIndex15 = new CompoundTag();
-												entityiterator.saveWithoutId(dataIndex15);
-												return dataIndex15.getCompound("ForgeData").getString("FOLLOW_ID");
+												CompoundTag dataIndex21 = new CompoundTag();
+												entityiterator.saveWithoutId(dataIndex21);
+												return dataIndex21.getCompound("ForgeData").getString("FOLLOW_ID");
 											}
 										}.getValue()).equals(entity.getStringUUID())) {
 											if (!entityiterator.level().isClientSide())
@@ -134,7 +162,7 @@ public class Die1Procedure {
 				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
 					if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2) {
 						if (Math.random() <= 0.01) {
-							if (!(entity instanceof LivingEntity _livEnt22 && _livEnt22.hasEffect(JujutsucraftaddonModMobEffects.AWAKENING.get()))) {
+							if (!(entity instanceof LivingEntity _livEnt28 && _livEnt28.hasEffect(JujutsucraftaddonModMobEffects.AWAKENING.get()))) {
 								if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 									_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.AWAKENING.get(), 3000, 1, false, false));
 								if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -176,9 +204,9 @@ public class Die1Procedure {
 				}
 			} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:sukuna") && !(new Object() {
 				public double getValue() {
-					CompoundTag dataIndex29 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex29);
-					return dataIndex29.getCompound("ForgeData").getDouble("sukunacompanion");
+					CompoundTag dataIndex35 = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex35);
+					return dataIndex35.getCompound("ForgeData").getDouble("sukunacompanion");
 				}
 			}.getValue() == 1)) {
 				if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:fushiguro_megumi_shibuya")) {
@@ -210,9 +238,9 @@ public class Die1Procedure {
 						for (Entity entityiterator : _entfound) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex37 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex37);
-									return dataIndex37.getCompound("ForgeData").getDouble("JujutsuSorcerer");
+									CompoundTag dataIndex43 = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex43);
+									return dataIndex43.getCompound("ForgeData").getDouble("JujutsuSorcerer");
 								}
 							}.getValue() == 1) {
 								if (entityiterator instanceof LivingEntity _entity) {
@@ -232,8 +260,8 @@ public class Die1Procedure {
 			if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
 				if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:itadori_yuji_shibuya")) {
 					if (Math.random() < 0.1) {
-						if (!(sourceentity instanceof ServerPlayer _plr43 && _plr43.level() instanceof ServerLevel
-								&& _plr43.getAdvancements().getOrStartProgress(_plr43.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:cursed_fists"))).isDone())) {
+						if (!(sourceentity instanceof ServerPlayer _plr49 && _plr49.level() instanceof ServerLevel
+								&& _plr49.getAdvancements().getOrStartProgress(_plr49.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:cursed_fists"))).isDone())) {
 							if (sourceentity instanceof ServerPlayer _player) {
 								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:cursed_fists"));
 								AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -245,8 +273,8 @@ public class Die1Procedure {
 						}
 					}
 					if (Math.random() < 0.1) {
-						if ((sourceentity instanceof ServerPlayer _plr45 && _plr45.level() instanceof ServerLevel
-								&& _plr45.getAdvancements().getOrStartProgress(_plr45.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"))).isDone()) == false) {
+						if ((sourceentity instanceof ServerPlayer _plr51 && _plr51.level() instanceof ServerLevel
+								&& _plr51.getAdvancements().getOrStartProgress(_plr51.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"))).isDone()) == false) {
 							if (sourceentity instanceof ServerPlayer _player) {
 								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"));
 								AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -258,8 +286,8 @@ public class Die1Procedure {
 						}
 					}
 				} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kusakabe_yatsuya")) {
-					if (!(sourceentity instanceof ServerPlayer _plr48 && _plr48.level() instanceof ServerLevel
-							&& _plr48.getAdvancements().getOrStartProgress(_plr48.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"))).isDone())) {
+					if (!(sourceentity instanceof ServerPlayer _plr54 && _plr54.level() instanceof ServerLevel
+							&& _plr54.getAdvancements().getOrStartProgress(_plr54.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"))).isDone())) {
 						if (Math.random() < 0.1) {
 							if (sourceentity instanceof ServerPlayer _player) {
 								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"));
@@ -271,8 +299,8 @@ public class Die1Procedure {
 							}
 						}
 					}
-					if (!(sourceentity instanceof ServerPlayer _plr50 && _plr50.level() instanceof ServerLevel
-							&& _plr50.getAdvancements().getOrStartProgress(_plr50.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:kakucho_jutsushiki"))).isDone())) {
+					if (!(sourceentity instanceof ServerPlayer _plr56 && _plr56.level() instanceof ServerLevel
+							&& _plr56.getAdvancements().getOrStartProgress(_plr56.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:kakucho_jutsushiki"))).isDone())) {
 						if (Math.random() < 0.1) {
 							if (sourceentity instanceof ServerPlayer _player) {
 								Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:kakucho_jutsushiki"));
@@ -288,9 +316,9 @@ public class Die1Procedure {
 				if ((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex53 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex53);
-							return dataIndex53.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex59 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex59);
+							return dataIndex59.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 105) {
 						if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:gojo_satoru")) {
@@ -310,17 +338,17 @@ public class Die1Procedure {
 							}
 						}
 					}
-					if (!(sourceentity instanceof ServerPlayer _plr57 && _plr57.level() instanceof ServerLevel
-							&& _plr57.getAdvancements().getOrStartProgress(_plr57.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:ultimate_power"))).isDone())) {
-						if (sourceentity instanceof ServerPlayer _plr58 && _plr58.level() instanceof ServerLevel
-								&& _plr58.getAdvancements().getOrStartProgress(_plr58.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone()) {
+					if (!(sourceentity instanceof ServerPlayer _plr63 && _plr63.level() instanceof ServerLevel
+							&& _plr63.getAdvancements().getOrStartProgress(_plr63.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:ultimate_power"))).isDone())) {
+						if (sourceentity instanceof ServerPlayer _plr64 && _plr64.level() instanceof ServerLevel
+								&& _plr64.getAdvancements().getOrStartProgress(_plr64.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone()) {
 							if ((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
 								if ((ForgeRegistries.ITEMS.getKey((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:supreme_martial_solution")) {
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex62 = new CompoundTag();
-											sourceentity.saveWithoutId(dataIndex62);
-											return dataIndex62.getCompound("ForgeData").getDouble("skill");
+											CompoundTag dataIndex68 = new CompoundTag();
+											sourceentity.saveWithoutId(dataIndex68);
+											return dataIndex68.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == 105) {
 										if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kashimo_hajime")) {
@@ -365,26 +393,44 @@ public class Die1Procedure {
 						}
 					}
 				}
-				if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
-					if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2) {
-						QuestGojoProcedure.execute(entity, sourceentity);
-					}
+				if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2) {
+					QuestGojoProcedure.execute(entity, sourceentity);
 				}
-				if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
-					if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Kenjaku")
-							|| ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Okkotsu")) {
-						if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 18
-								|| (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5
-								|| (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == (sourceentity
-										.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).KenjakuCT1
-								|| (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == (entity
-										.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).KenjakuCT2) {
-							BarrierLessoProcedure.execute(world, entity, sourceentity);
+				if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).History == 1) {
+					if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:fushiguro_toji")) {
+						{
+							double _setval = 2;
+							sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+								capability.History = _setval;
+								capability.syncPlayerVariables(sourceentity);
+							});
 						}
 					}
 				}
-				DropItems3Procedure.execute(world, entity, sourceentity);
-				CursedLevelGainProcedure.execute(entity, sourceentity);
+				if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Warrior")) {
+					ProfessionDeathProcedure.execute(entity, sourceentity);
+				}
+				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).IsCursedSpirit == true
+						&& (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).IsJujutsuSorcerer == false) {
+					ProfessionDeathProcedure.execute(entity, sourceentity);
+				}
+				if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Kenjaku")
+						|| ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Okkotsu")) {
+					if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 18
+							|| (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5
+							|| (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == (sourceentity
+									.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).KenjakuCT1
+							|| (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == (entity
+									.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).KenjakuCT2) {
+						BarrierLessoProcedure.execute(world, entity, sourceentity);
+					}
+				}
+				if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKM_NO_DROPS) == false) {
+					DropItems3Procedure.execute(world, entity, sourceentity);
+				}
+				if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKM_NO_POWER_PROGRESSION) == false) {
+					CursedLevelGainProcedure.execute(entity, sourceentity);
+				}
 			}
 		}
 		if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_MOB_OSTS) == true) {

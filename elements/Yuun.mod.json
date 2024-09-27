@@ -24,23 +24,33 @@
       "value": ""
     },
     "destroyAnyBlock": false,
-    "immuneToFire": false,
+    "immuneToFire": true,
     "stayInGridWhenCrafting": false,
     "enableArmPose": false,
     "damageOnCrafting": false,
     "enableMeleeDamage": true,
-    "damageVsEntity": 20.0,
+    "damageVsEntity": 41.0,
     "specialInformation": {
       "fixedValue": [
-        "[Ability] ?????"
+        "[Ability] Apply Anti-Heal",
+        "[Ability2] Absorb Damage",
+        "[Ability3] High Knockback",
+        "[Ability4] Apply Bleeding",
+        "[Ability5] When Using In Berserk Mode Does 2x Damage"
       ]
     },
-    "hasGlow": false,
+    "hasGlow": true,
+    "glowCondition": {
+      "name": "YuunItemGlowingCondition"
+    },
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "onRightClickedInAir": {
       "name": "YuunRightclicked"
+    },
+    "onEntityHitWith": {
+      "name": "YuunLivingEntityIsHitWithItem"
     },
     "onEntitySwing": {
       "name": "YuunEntitySwingsItem"

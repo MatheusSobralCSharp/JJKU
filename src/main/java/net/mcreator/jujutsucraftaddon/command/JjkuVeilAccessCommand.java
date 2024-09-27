@@ -19,7 +19,7 @@ import net.mcreator.jujutsucraftaddon.procedures.VeilAcessProcedure;
 public class JjkuVeilAccessCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuVeilAccess")
+		event.getDispatcher().register(Commands.literal("jjkurVeilAccess")
 
 				.then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

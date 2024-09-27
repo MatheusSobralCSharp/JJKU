@@ -3,7 +3,7 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "NONE",
-    "keyBindingName": "Cursed Weapon",
+    "keyBindingName": "Cursed Weapon Menu",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
       "name": "CursedWeaponOnKeyPressed"

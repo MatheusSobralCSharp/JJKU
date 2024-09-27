@@ -32,26 +32,17 @@
     },
     "combos":
     {
-    	"one_hand":
-    	[
-			"wom:biped/combat/enderblaster_onehand_auto_1",
-			"wom:biped/combat/enderblaster_onehand_auto_2",
-			"wom:biped/combat/agony_auto_4",
-			"wom:biped/combat/agony_auto_3",
-			"wom:biped/combat/katana_sheathed_dash",
-			"wom:biped/combat/staff_dash",
-			"epicfight:biped/combat/fist_auto1",
-			"wom:biped/combat/ruine_auto_4",
-			"wom:biped/skill/ruine_redemption"
-    	],
     	"two_hand":
     	[
-			"wom:biped/combat/agony_auto_3",
-			"epicfight:biped/combat/trident_auto3",
-			"wom:biped/combat/enderblaster_onehand_auto_2",
-			"wom:biped/combat/ruine_dash",
-			"wom:biped/skill/ruine_expiation",
-			"wom:biped/combat/ruine_comet"
+			"wom:biped/combat/agony_auto_1",
+			"wom:biped/combat/torment_auto_1",
+			"wom:biped/combat/ruine_auto_1",
+			"wom:biped/skill/torment_berserk_auto_1",
+			"wom:biped/combat/katana_sheathed_dash",
+			"epicfight:biped/combat/tachi_auto3",
+			"wom:biped/combat/enderblaster_onehand_auto_3",
+			"wom:biped/combat/ruine_auto_3",
+			"wom:biped/skill/ruine_redemption"
     	],
     	"mount":
     	[
@@ -61,29 +52,24 @@
     "innate_skills":
     {
     	"one_hand": "wom:agony_plunge",
-    	"two_hand": "epicfight:dancing_edge"
+    	"two_hand": "wom:agony_plunge"
     },
     "livingmotion_modifier": {
     	"one_hand":
     	{
     		"block": "wom:biped/skill/ruine_block",
 			"idle": "epicfight:biped/living/hold_liechtenauer",
-			"run" : "epicfight:biped/living/hold_tachi",
-			"walk": "epicfight:biped/living/hold_tachi",
-			"chase": "epicfight:biped/living/hold_tachi"
+			"run" : "wom:biped/living/katana_run",
+			"walk": "epicfight:biped/living/walk_liechtenauer",
+			"chase": "wom:biped/living/katana_run"
     	},
     	"two_hand":
     	{
-    		"block": "wom:biped/skill/herrscher_guard",
-    		"idle": "wom:biped/living/agony_idle",
-    		"kneel": "epicfight:biped/living/hold_dual",
-    		"walk": "epicfight:biped/living/hold_dual",
-    		"chase": "epicfight:biped/living/hold_dual",
-    		"run": "epicfight:biped/living/run_dual",
-    		"sneak": "epicfight:biped/living/hold_dual",
-    		"swim": "epicfight:biped/living/hold_dual",
-    		"float": "epicfight:biped/living/hold_dual",
-    		"fall": "epicfight:biped/living/hold_dual"
+    		"block": "wom:biped/skill/ruine_block",
+			"idle": "epicfight:biped/living/hold_liechtenauer",
+			"run" : "wom:biped/living/katana_run",
+			"walk": "epicfight:biped/living/walk_liechtenauer",
+			"chase": "wom:biped/living/katana_run"
     	}
     }
 }

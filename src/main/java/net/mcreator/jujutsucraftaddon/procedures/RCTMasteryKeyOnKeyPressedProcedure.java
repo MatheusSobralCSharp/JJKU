@@ -28,7 +28,7 @@ public class RCTMasteryKeyOnKeyPressedProcedure {
 							});
 						}
 						if (entity instanceof Player _player && !_player.level().isClientSide())
-							_player.displayClientMessage(Component.literal(("Auto RCT: " + "On")), false);
+							_player.displayClientMessage(Component.literal((Component.translatable("dialoguearct").getString() + ": On")), false);
 						if (entity instanceof Player _player)
 							_player.closeContainer();
 					} else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTMasteryOn == true) {
@@ -40,7 +40,7 @@ public class RCTMasteryKeyOnKeyPressedProcedure {
 							});
 						}
 						if (entity instanceof Player _player && !_player.level().isClientSide())
-							_player.displayClientMessage(Component.literal(("Auto RCT: " + "Off")), false);
+							_player.displayClientMessage(Component.literal((Component.translatable("dialoguearct").getString() + ": Off")), false);
 						if (entity instanceof Player _player)
 							_player.closeContainer();
 					}

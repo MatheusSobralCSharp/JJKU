@@ -24,7 +24,7 @@ public class RaceChangerVesselProcedure {
 		entity.load(dataIndex1);
 		CompoundTag dataIndex2 = new CompoundTag();
 		entity.saveWithoutId(dataIndex2);
-		dataIndex2.getCompound("ForgeData").putBoolean("CursedSpirit", true);
+		dataIndex2.getCompound("ForgeData").putBoolean("CursedSpirit", false);
 		entity.load(dataIndex2);
 		{
 			boolean _setval = true;

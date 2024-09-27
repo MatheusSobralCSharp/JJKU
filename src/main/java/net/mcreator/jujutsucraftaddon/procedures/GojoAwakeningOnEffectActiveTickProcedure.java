@@ -22,7 +22,7 @@ public class GojoAwakeningOnEffectActiveTickProcedure {
 				entity.saveWithoutId(dataIndex1);
 				return dataIndex1.getCompound("ForgeData").getDouble("cnt6");
 			}
-		}.getValue() < 50) {
+		}.getValue() < 40) {
 			CompoundTag dataIndex3 = new CompoundTag();
 			entity.saveWithoutId(dataIndex3);
 			dataIndex3.getCompound("ForgeData").putDouble("cnt6", (new Object() {

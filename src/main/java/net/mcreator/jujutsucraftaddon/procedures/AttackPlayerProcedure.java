@@ -2,7 +2,6 @@ package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -10,6 +9,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
@@ -18,14 +18,19 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -89,14 +94,6 @@ public class AttackPlayerProcedure {
 					}
 				}
 			}
-			if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 8 && entity instanceof LivingEntity _livEnt12
-					&& _livEnt12.hasEffect(JujutsucraftaddonModMobEffects.DAGON.get())) {
-				if ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) < 19) {
-					if (event != null && event.isCancelable()) {
-						event.setCanceled(true);
-					}
-				}
-			}
 			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 19) {
 					if (Math.random() <= 0.001) {
@@ -123,7 +120,7 @@ public class AttackPlayerProcedure {
 					}
 				}
 			}
-			if (entity instanceof LivingEntity _livEnt19 && _livEnt19.hasEffect(JujutsucraftaddonModMobEffects.COUNTER.get())) {
+			if (entity instanceof LivingEntity _livEnt16 && _livEnt16.hasEffect(JujutsucraftaddonModMobEffects.COUNTER.get())) {
 				CounterProcedureProcedure.execute(world, entity, sourceentity);
 				if (event != null && event.isCancelable()) {
 					event.setCanceled(true);
@@ -133,20 +130,18 @@ public class AttackPlayerProcedure {
 				CeLevelProcedure.execute(sourceentity);
 				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 					if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 20) {
-						TodoHitProcedure2Procedure.execute(world, x, y, z, entity, sourceentity);
+						if (Math.random() <= 0.2) {
+							TodoHitProcedure2Procedure.execute(world, x, y, z, entity, sourceentity);
+						}
 					} else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
 						MegumiHitProcedure.execute(world, entity, sourceentity);
 					}
 				}
-				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
-					if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())
-							? ((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()).getAmplifier()
-							: 0) >= 19) {
-						if (!(entity instanceof ServerPlayer _plr24 && _plr24.level() instanceof ServerLevel
-								&& _plr24.getAdvancements().getOrStartProgress(_plr24.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone()) && entity instanceof ServerPlayer _plr25
-								&& _plr25.level() instanceof ServerLevel && _plr25.getAdvancements().getOrStartProgress(_plr25.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:cleave_web_advancement"))).isDone()) {
-							WorldSlashQuestProcedure.execute(entity);
-						}
+				if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()) ? ((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()).getAmplifier() : 0) >= 19) {
+					if (!(entity instanceof ServerPlayer _plr21 && _plr21.level() instanceof ServerLevel
+							&& _plr21.getAdvancements().getOrStartProgress(_plr21.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone()) && entity instanceof ServerPlayer _plr22
+							&& _plr22.level() instanceof ServerLevel && _plr22.getAdvancements().getOrStartProgress(_plr22.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:cleave_web_advancement"))).isDone()) {
+						WorldSlashQuestProcedure.execute(world, entity);
 					}
 				}
 				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BrainDamage == 5) {
@@ -160,8 +155,6 @@ public class AttackPlayerProcedure {
 				}
 				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5) {
 					ChangeMimicryProcedure.execute(entity, sourceentity);
-				} else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 8) {
-					DagonShieldPlayersProcedure.execute(world, entity);
 				}
 				if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Inumaki")) {
 					InumakiClanTrashProcedure.execute(world, entity);
@@ -193,7 +186,7 @@ public class AttackPlayerProcedure {
 							}
 						}.checkGamemode(entity))) {
 							if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Limb > 0) {
-								if (!(entity instanceof LivingEntity _livEnt37 && _livEnt37.hasEffect(JujutsucraftaddonModMobEffects.LIMBS_EFFECT.get()))) {
+								if (!(entity instanceof LivingEntity _livEnt33 && _livEnt33.hasEffect(JujutsucraftaddonModMobEffects.LIMBS_EFFECT.get()))) {
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.LIMBS_EFFECT.get(), -1, 1, false, false));
 								}
@@ -215,43 +208,41 @@ public class AttackPlayerProcedure {
 						}
 					}
 				}
-				if (!(entity instanceof LivingEntity _livEnt42 && _livEnt42.hasEffect(MobEffects.CONFUSION))) {
+				if (!(entity instanceof LivingEntity _livEnt38 && _livEnt38.hasEffect(MobEffects.CONFUSION))) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex43 = new CompoundTag();
-							entity.saveWithoutId(dataIndex43);
-							return dataIndex43.getCompound("ForgeData").getDouble("brokenBrain");
+							CompoundTag dataIndex39 = new CompoundTag();
+							entity.saveWithoutId(dataIndex39);
+							return dataIndex39.getCompound("ForgeData").getDouble("brokenBrain");
 						}
 					}.getValue() == 2) {
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60, 245, false, false));
 					}
 				}
-				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
-					if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
-						if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:mahoraga_wheel_helmet")) {
-							if (new Object() {
+				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
+					if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:mahoraga_wheel_helmet")) {
+						if (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex44 = new CompoundTag();
+								entity.saveWithoutId(dataIndex44);
+								return dataIndex44.getCompound("ForgeData").getDouble("skill_domain");
+							}
+						}.getValue() == 0) {
+							if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getOrCreateTag().getDouble(("domain" + new java.text.DecimalFormat("##.##").format(new Object() {
 								public double getValue() {
-									CompoundTag dataIndex48 = new CompoundTag();
-									entity.saveWithoutId(dataIndex48);
-									return dataIndex48.getCompound("ForgeData").getDouble("skill_domain");
+									CompoundTag dataIndex45 = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex45);
+									return dataIndex45.getCompound("ForgeData").getDouble("skill_domain");
 								}
-							}.getValue() == 0) {
-								if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getOrCreateTag().getDouble(("domain" + new java.text.DecimalFormat("##.##").format(new Object() {
-									public double getValue() {
-										CompoundTag dataIndex49 = new CompoundTag();
-										sourceentity.saveWithoutId(dataIndex49);
-										return dataIndex49.getCompound("ForgeData").getDouble("skill_domain");
-									}
-								}.getValue()))) >= 100) {
-									{
-										Entity _ent = entity;
-										if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-											_ent.getServer().getCommands().performPrefixedCommand(
-													new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(),
-															_ent.getDisplayName(), _ent.level().getServer(), _ent),
-													"execute as @s unless entity @e[nbt={ForgeData:{Mahoraga:1d}},distance=..50] run summon jujutsucraft:eight_handled_swrod_divergent_sila_divine_general_mahoraga ~ ~ ~ {ForgeData:{Mahoraga:1d},Attributes:[{Name:\"jujutsucraft:size\",Base:2}]}");
-										}
+							}.getValue()))) >= 100) {
+								{
+									Entity _ent = entity;
+									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(
+												new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(),
+														_ent.getDisplayName(), _ent.level().getServer(), _ent),
+												"execute as @s unless entity @e[nbt={ForgeData:{Mahoraga:1d}},distance=..50] run summon jujutsucraft:eight_handled_swrod_divergent_sila_divine_general_mahoraga ~ ~ ~ {ForgeData:{Mahoraga:1d},Attributes:[{Name:\"jujutsucraft:size\",Base:2}]}");
 									}
 								}
 							}
@@ -261,21 +252,16 @@ public class AttackPlayerProcedure {
 			}
 			if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 > 0) {
 				if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Disaster Curses")) {
-					((LivingHurtEvent) event).setAmount(((float) (amount / 1.2)));
-					if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.UNSTABLE.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.UNSTABLE.get()).getDuration() : 0) >= 100) {
-						CounterBurnoutProcedure.execute(entity);
-					} else if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get()).getDuration() : 0) >= 100) {
-						CounterBurnoutProcedure.execute(entity);
-					}
+					((LivingHurtEvent) event).setAmount(((float) (amount / 2)));
 				}
 			}
-			if ((entity instanceof LivingEntity _livEnt57 && _livEnt57.hasEffect(JujutsucraftaddonModMobEffects.BERSERK.get())) == false) {
+			if ((entity instanceof LivingEntity _livEnt51 && _livEnt51.hasEffect(JujutsucraftaddonModMobEffects.BERSERK.get())) == false) {
 				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
 					if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Rejected Zenin")) {
 						CounterItadoriProcedure.execute(world, entity);
 					}
 				}
-			} else if (entity instanceof LivingEntity _livEnt59 && _livEnt59.hasEffect(JujutsucraftaddonModMobEffects.BERSERK.get())) {
+			} else if (entity instanceof LivingEntity _livEnt53 && _livEnt53.hasEffect(JujutsucraftaddonModMobEffects.BERSERK.get())) {
 				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
 					((LivingHurtEvent) event).setAmount(((float) (amount / 1.1)));
 				}
@@ -286,9 +272,131 @@ public class AttackPlayerProcedure {
 				CounterBFProcedure.execute(world, sourceentity);
 			}
 		}
-		if (ModList.get().isLoaded("kubejs")) {
-			ServerPlayer player = (ServerPlayer) entity;
-			player.connection.disconnect(Component.literal("Remove Kubejs From your Mods Folder is incompatible."));
+		if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
+			if (entity instanceof LivingEntity _livEnt57 && _livEnt57.hasEffect(JujutsucraftaddonModMobEffects.TRAINING.get())) {
+				if (amount > 80) {
+					if (entity instanceof Player _player && !_player.level().isClientSide())
+						_player.displayClientMessage(Component.literal("Failed Test, Try Again"), false);
+					if (entity instanceof Player _player && !_player.level().isClientSide())
+						_player.displayClientMessage(Component.literal("Failed Test, Try Again"), false);
+					if (world instanceof Level _level) {
+						if (!_level.isClientSide()) {
+							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.player.big_fall")), SoundSource.NEUTRAL, 1, 1);
+						} else {
+							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.player.big_fall")), SoundSource.NEUTRAL, 1, 1, false);
+						}
+					}
+					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get());
+					if (entity instanceof LivingEntity _entity)
+						_entity.removeEffect(JujutsucraftaddonModMobEffects.TRAINING.get());
+					if (entity instanceof Player _player && !_player.level().isClientSide())
+						_player.displayClientMessage(Component.literal("Failed Test, Try Again"), false);
+				}
+			}
+			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
+				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 20) {
+					if ((entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.NEUTRALIZATION.get())) == false
+							&& (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false
+							&& (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) == false) {
+						{
+							final Vec3 _center = new Vec3(x, y, z);
+							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(20 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+							for (Entity entityiterator : _entfound) {
+								if (Math.random() <= 0.5) {
+									if (!(entityiterator == sourceentity)) {
+										{
+											Entity _ent = entity;
+											_ent.teleportTo((sourceentity.getX()), (entity.getY()), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)));
+											if (_ent instanceof ServerPlayer _serverPlayer)
+												_serverPlayer.connection.teleport((sourceentity.getX()), (entity.getY()), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)), _ent.getYRot(), _ent.getXRot());
+										}
+										{
+											Entity _ent = sourceentity;
+											_ent.teleportTo((entityiterator.getX()), (sourceentity.getY()), (entityiterator.getZ()));
+											if (_ent instanceof ServerPlayer _serverPlayer)
+												_serverPlayer.connection.teleport((entityiterator.getX()), (sourceentity.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+										}
+										if (world instanceof Level _level) {
+											if (!_level.isClientSide()) {
+												_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:clap")), SoundSource.NEUTRAL, 1, 1);
+											} else {
+												_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:clap")), SoundSource.NEUTRAL, 1, 1, false);
+											}
+										}
+										if (event != null && event.isCancelable()) {
+											event.setCanceled(true);
+										}
+									} else {
+										((LivingHurtEvent) event).setAmount(((float) (amount / 1.1)));
+									}
+								}
+							}
+						}
+						if (Math.random() <= 0.01) {
+							entity.getPersistentData().putDouble("Roulette", 2);
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(Component.literal("This Now Allows Him To Activate His Swapping Technique Roughly Fifty Times In A Single Second"), false);
+						} else if (Math.random() <= 0.02) {
+							entity.getPersistentData().putDouble("Roulette", 1);
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(
+										Component.literal("Having Replaced His Left Arm, Changed The Activation Condition Of His Technique From Applause, To The Collision Between The Wooden Box And The Metal Teeth Of The Vibraslap"), false);
+						}
+						if (entity.getPersistentData().getDouble("Roulette") == 1) {
+							for (int index0 = 0; index0 < 50; index0++) {
+								{
+									Entity _ent = entity;
+									_ent.teleportTo((sourceentity.getX()), (entity.getY()), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)));
+									if (_ent instanceof ServerPlayer _serverPlayer)
+										_serverPlayer.connection.teleport((sourceentity.getX()), (entity.getY()), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)), _ent.getYRot(), _ent.getXRot());
+								}
+								{
+									Entity _ent = sourceentity;
+									_ent.teleportTo((entity.getX()), (sourceentity.getY()), (entity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)));
+									if (_ent instanceof ServerPlayer _serverPlayer)
+										_serverPlayer.connection.teleport((entity.getX()), (sourceentity.getY()), (entity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)), _ent.getYRot(), _ent.getXRot());
+								}
+								sourceentity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
+										(float) amount);
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:vibraslap")), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:vibraslap")), SoundSource.NEUTRAL, 1, 1, false);
+									}
+								}
+								entity.getPersistentData().putDouble("Roulette", 0);
+							}
+						} else if (entity.getPersistentData().getDouble("Roulette") == 2) {
+							for (int index1 = 0; index1 < 25; index1++) {
+								{
+									Entity _ent = entity;
+									_ent.teleportTo((sourceentity.getX()), (entity.getY()), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)));
+									if (_ent instanceof ServerPlayer _serverPlayer)
+										_serverPlayer.connection.teleport((sourceentity.getX()), (entity.getY()), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)), _ent.getYRot(), _ent.getXRot());
+								}
+								{
+									Entity _ent = sourceentity;
+									_ent.teleportTo((entity.getX()), (sourceentity.getY()), (entity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)));
+									if (_ent instanceof ServerPlayer _serverPlayer)
+										_serverPlayer.connection.teleport((entity.getX()), (sourceentity.getY()), (entity.getZ() + Mth.nextInt(RandomSource.create(), -10, 10)), _ent.getYRot(), _ent.getXRot());
+								}
+								sourceentity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
+										(float) amount);
+								if (world instanceof Level _level) {
+									if (!_level.isClientSide()) {
+										_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:vibraslap")), SoundSource.NEUTRAL, 1, 1);
+									} else {
+										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:vibraslap")), SoundSource.NEUTRAL, 1, 1, false);
+									}
+								}
+								entity.getPersistentData().putDouble("Roulette", 0);
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

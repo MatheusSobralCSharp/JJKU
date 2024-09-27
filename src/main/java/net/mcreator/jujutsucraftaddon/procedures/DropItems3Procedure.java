@@ -14,6 +14,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 
@@ -41,31 +42,63 @@ public class DropItems3Procedure {
 			}
 		}.getValue() == 1) {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kenjaku")) {
-				if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.KENJAKU_ARMOR_HELMET.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") == false) {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.KENJAKU_ARMOR_HELMET.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0002) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.VEIL_TALISMAN.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
-				} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0002) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.VEIL_TALISMAN.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				} else {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.KENJAKU_ARMOR_HELMET.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0002 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.VEIL_TALISMAN.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
 				}
 			} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:choso")) {
-				if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.S_OULBOOK.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") == false) {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.S_OULBOOK.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0003) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CURSED_WOMB.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
-				} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0003) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CURSED_WOMB.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				} else {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.KENJAKU_ARMOR_HELMET.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0003 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.VEIL_TALISMAN.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
 				}
 			} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:mahito")) {
@@ -146,36 +179,74 @@ public class DropItems3Procedure {
 				}
 			}
 			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) < 20) {
-				if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CLAN_CHANGER.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") == false) {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CLAN_CHANGER.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0002) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
-				} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0002) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				} else {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CLAN_CHANGER.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0002 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
 				}
-				if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.00001) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CURSED_POWER_LEVEL_SCROLL.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				if (((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage") == false) {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.00001) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CURSED_POWER_LEVEL_SCROLL.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.00005) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.HEALTH_SCROLL.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.REVERSE_LEVEL_SCROLL.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
-				} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.00005) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.HEALTH_SCROLL.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-					}
-				} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001) {
-					if (sourceentity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.REVERSE_LEVEL_SCROLL.get()).copy();
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+				} else {
+					if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.00001 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CURSED_POWER_LEVEL_SCROLL.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.00005 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.HEALTH_SCROLL.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
+					} else if (Math.random() < (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DROP_RATE)) * 0.0001 * 2) {
+						if (sourceentity instanceof Player _player) {
+							ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.REVERSE_LEVEL_SCROLL.get()).copy();
+							_setstack.setCount(1);
+							ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+						}
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) > 20) {

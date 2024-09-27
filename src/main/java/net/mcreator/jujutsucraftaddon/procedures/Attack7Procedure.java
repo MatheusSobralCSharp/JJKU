@@ -11,13 +11,28 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.Mth;
+import net.minecraft.tags.TagKey;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
+import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
+import net.mcreator.jujutsucraftaddon.entity.FakeClonesEntity;
+import net.mcreator.jujutsucraftaddon.entity.CloneEntity;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
 
 import javax.annotation.Nullable;
 
@@ -230,6 +245,93 @@ public class Attack7Procedure {
 						sourceentity.saveWithoutId(dataIndex44);
 						dataIndex44.getCompound("ForgeData").putDouble("Fight", 1);
 						sourceentity.load(dataIndex44);
+					}
+				}
+			}
+		}
+		if (sourceentity instanceof ItadoriShinjukuEntity) {
+			if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
+				if (Math.random() <= 0.05) {
+					if (world instanceof ServerLevel _serverLevel) {
+						Entity entitytospawn = JujutsucraftModEntities.ENTITY_BLACK_FLASH.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+						if (entitytospawn != null) {
+							entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+							if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+								_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 1, 60, false, true));
+							_serverLevel.addFreshEntity(entitytospawn);
+						}
+					}
+				}
+			}
+		}
+		if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:ten_shadows_technique")))) {
+			{
+				final Vec3 _center = new Vec3(x, y, z);
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(100 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if ((entityiterator.getStringUUID()).equals(new Object() {
+							public String getValue() {
+								CompoundTag dataIndex52 = new CompoundTag();
+								entity.saveWithoutId(dataIndex52);
+								return dataIndex52.getCompound("ForgeData").getString("OWNER_UUID");
+							}
+						}.getValue())) {
+							if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:sukuna_fushiguro")) {
+								if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:nue")) {
+									if (entity.getPersistentData().getDouble("BuffedSukuna") == 0) {
+										((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(4);
+										((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
+												.setBaseValue((((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 2));
+										if (entity instanceof LivingEntity _entity)
+											_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
+										entity.getPersistentData().putDouble("BuffedSukuna", 1);
+									}
+								} else {
+									if (entity.getPersistentData().getDouble("BuffedSukuna") == 0) {
+										((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+										((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
+												.setBaseValue((((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 2));
+										if (entity instanceof LivingEntity _entity)
+											_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
+										entity.getPersistentData().putDouble("BuffedSukuna", 1);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if (sourceentity instanceof CloneEntity || sourceentity instanceof FakeClonesEntity) {
+			if (!((sourceentity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null) == null)) {
+				if (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex74 = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex74);
+						return dataIndex74.getCompound("ForgeData").getDouble("skill");
+					}
+				}.getValue() == 0) {
+					if (Math.random() <= 0.5) {
+						if (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex75 = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex75);
+								return dataIndex75.getCompound("ForgeData").getDouble("brokenBrain");
+							}
+						}.getValue() <= 1) {
+							CompoundTag dataIndex79 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex79);
+							dataIndex79.getCompound("ForgeData").putDouble("skill", (100 * ((sourceentity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null).getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+									.orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 + Mth.nextInt(RandomSource.create(), 0, 20)));
+							sourceentity.load(dataIndex79);
+						} else {
+							CompoundTag dataIndex83 = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex83);
+							dataIndex83.getCompound("ForgeData").putDouble("skill", (100 * ((sourceentity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null).getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+									.orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 + Mth.nextInt(RandomSource.create(), 0, 19)));
+							sourceentity.load(dataIndex83);
+						}
 					}
 				}
 			}

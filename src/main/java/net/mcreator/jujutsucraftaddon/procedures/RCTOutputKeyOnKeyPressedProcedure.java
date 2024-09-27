@@ -17,7 +17,7 @@ public class RCTOutputKeyOnKeyPressedProcedure {
 				&& _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:reverse_cursed_output"))).isDone()) {
 			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTOutputActive == false) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal(("RCT Output: " + "On")), false);
+					_player.displayClientMessage(Component.literal((Component.translatable("dialogueoutput").getString() + ": On")), false);
 				{
 					boolean _setval = true;
 					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -29,7 +29,7 @@ public class RCTOutputKeyOnKeyPressedProcedure {
 					_player.closeContainer();
 			} else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTOutputActive == true) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal(("RCT Output: " + "Off")), false);
+					_player.displayClientMessage(Component.literal((Component.translatable("dialogueoutput").getString() + ": Off")), false);
 				{
 					boolean _setval = false;
 					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {

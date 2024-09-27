@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.Advancement;
 
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 
 public class SpecialGrade1RecommendationRightclickedProcedure {
@@ -18,13 +17,6 @@ public class SpecialGrade1RecommendationRightclickedProcedure {
 			return;
 		if ((entity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel
 				&& _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:special_grade_one"))).isDone()) == false) {
-			{
-				double _setval = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).CEFormer + 75;
-				entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-					capability.CEFormer = _setval;
-					capability.syncPlayerVariables(entity);
-				});
-			}
 			if (entity instanceof Player _player) {
 				ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.SPECIAL_GRADE_1_RECOMMENDATION.get());
 				_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());

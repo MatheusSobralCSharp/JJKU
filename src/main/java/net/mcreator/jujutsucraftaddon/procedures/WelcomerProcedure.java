@@ -53,6 +53,13 @@ public class WelcomerProcedure {
 						_setstack.setCount(1);
 						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 					}
+
+					if (entity instanceof Player _player) {
+						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.PROFESSION.get());
+						_setstack.setCount(1);
+						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+					}
+
 					if (entity instanceof Player _player) {
 						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get());
 						_setstack.setCount(1);
@@ -63,6 +70,7 @@ public class WelcomerProcedure {
 						_setstack.setCount(1);
 						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 					}
+					BookProcedureProcedure.execute(entity);
 					if (entity instanceof Player _player) {
 						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RANDOM_CT_CHANGER.get());
 						_setstack.setCount(1);

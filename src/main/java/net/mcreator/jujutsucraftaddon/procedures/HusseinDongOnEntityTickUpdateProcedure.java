@@ -1,6 +1,8 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.nbt.CompoundTag;
 
 public class HusseinDongOnEntityTickUpdateProcedure {
@@ -258,6 +260,10 @@ public class HusseinDongOnEntityTickUpdateProcedure {
 			entity.saveWithoutId(dataIndex41);
 			dataIndex41.getCompound("ForgeData").putDouble("TenShadowsTechnique3", 1);
 			entity.load(dataIndex41);
+		}
+		if (Math.random() <= 0.005) {
+			if (entity instanceof LivingEntity _entity)
+				_entity.swing(InteractionHand.MAIN_HAND, true);
 		}
 	}
 }

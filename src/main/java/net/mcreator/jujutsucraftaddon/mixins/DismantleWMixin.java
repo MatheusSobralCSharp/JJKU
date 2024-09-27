@@ -1,5 +1,6 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
+import net.mcreator.jujutsucraft.entity.EntityTornadoEntity;
 import net.mcreator.jujutsucraft.entity.SukunaFushiguroEntity;
 import net.mcreator.jujutsucraft.entity.SukunaPerfectEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
@@ -42,7 +43,7 @@ public abstract class DismantleWMixin {
     }
     /**
      * @author Sat
-     * @reason Testing
+     * @reason This Changes Dismantle Range
      */
     @Overwrite
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -65,18 +66,6 @@ public abstract class DismantleWMixin {
                 label428: {
                     logic_a = false;
                     worldCutter = false;
-                    canUseWorld = false;
-                    dis = 0.0;
-                    x_pos = 0.0;
-                    y_pos = 0.0;
-                    z_pos = 0.0;
-                    yaw = 0.0;
-                    picth = 0.0;
-                    yaw2 = 0.0;
-                    pitch2 = 0.0;
-                    CNT6 = 0.0;
-                    range = 0.0;
-                    double num1 = 0.0;
                     entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
                     if (entity instanceof Player) {
                         if (entity instanceof ServerPlayer) {

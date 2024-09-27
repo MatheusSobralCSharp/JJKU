@@ -46,6 +46,14 @@
     "jujutsucraft:entity_tornado",
     "jujutsucraft:bathynomus_giganteus",
     "jujutsucraft:entity_doors",
-    "jujutsucraft:slot"
+    "jujutsucraft:slot",
+    "jujutsucraft:entity_hand",
+    "jujutsucraft:entity_slash",
+    "jujutsucraft:resonance",
+    "jujutsucraft:shikigami_rika_dhruv",
+    "jujutsucraft:true_sphere",
+    "jujutsucraft:liquid_metal",
+    "jujutsucraft:needle",
+    "jujutsucraft:kaichi"
   ]
 }

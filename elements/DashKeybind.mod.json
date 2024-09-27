@@ -3,10 +3,13 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "G",
-    "keyBindingName": "Keybind Dash",
+    "keyBindingName": "Meditation Keybind",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
-      "name": "DashKeybindOnKeyPressed"
+      "name": "MeditationOnKeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "MeditationOnKeyReleased"
     }
   }
 }

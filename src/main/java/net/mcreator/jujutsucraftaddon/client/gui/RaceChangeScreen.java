@@ -22,6 +22,7 @@ public class RaceChangeScreen extends AbstractContainerScreen<RaceChangeMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_cursed_spirit;
 	Button button_jujutsu_sorcerer;
 	Button button_incarnated_sorcerer;
@@ -65,11 +66,6 @@ public class RaceChangeScreen extends AbstractContainerScreen<RaceChangeMenu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 	}
 
@@ -78,24 +74,24 @@ public class RaceChangeScreen extends AbstractContainerScreen<RaceChangeMenu> {
 		super.init();
 		button_cursed_spirit = Button.builder(Component.translatable("gui.jujutsucraftaddon.race_change.button_cursed_spirit"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new RaceChangeButtonMessage(0, x, y, z));
-				RaceChangeButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new RaceChangeButtonMessage(0, x, y, z, textstate));
+				RaceChangeButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 36, this.topPos + 66, 93, 20).build();
 		guistate.put("button:button_cursed_spirit", button_cursed_spirit);
 		this.addRenderableWidget(button_cursed_spirit);
 		button_jujutsu_sorcerer = Button.builder(Component.translatable("gui.jujutsucraftaddon.race_change.button_jujutsu_sorcerer"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new RaceChangeButtonMessage(1, x, y, z));
-				RaceChangeButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new RaceChangeButtonMessage(1, x, y, z, textstate));
+				RaceChangeButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 28, this.topPos + 24, 108, 20).build();
 		guistate.put("button:button_jujutsu_sorcerer", button_jujutsu_sorcerer);
 		this.addRenderableWidget(button_jujutsu_sorcerer);
 		button_incarnated_sorcerer = Button.builder(Component.translatable("gui.jujutsucraftaddon.race_change.button_incarnated_sorcerer"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new RaceChangeButtonMessage(2, x, y, z));
-				RaceChangeButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new RaceChangeButtonMessage(2, x, y, z, textstate));
+				RaceChangeButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 19, this.topPos + 109, 124, 20).build();
 		guistate.put("button:button_incarnated_sorcerer", button_incarnated_sorcerer);

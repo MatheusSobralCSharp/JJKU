@@ -19,7 +19,7 @@
           "onClick": {
             "name": "RCTBurnoutKey"
           },
-          "x": 180,
+          "x": 177,
           "y": 23
         }
       },
@@ -59,7 +59,7 @@
             "name": "ExtensionDomainKeyOnPressed"
           },
           "x": 245,
-          "y": 150
+          "y": 144
         }
       },
       {
@@ -85,7 +85,97 @@
             "name": "BarrierlessKeyOnKeyPressed"
           },
           "x": 180,
-          "y": 98
+          "y": 102
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_rct_output",
+          "text": {
+            "fixedValue": "RCT Output"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 255,
+          "y": 116
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_rct_mastery",
+          "text": {
+            "fixedValue": "RCT Mastery"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 117,
+          "y": 128
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_barrierless",
+          "text": {
+            "fixedValue": "Barrierless"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "x": 183,
+          "y": 172
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_rct_burnout",
+          "text": {
+            "fixedValue": "RCT Burnout"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 183,
+          "y": 88
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_simple_domain",
+          "text": {
+            "fixedValue": "Simple Domain"
+          },
+          "color": {
+            "value": -10158081,
+            "falpha": 0.0
+          },
+          "x": 116,
+          "y": 203
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_extension_technique",
+          "text": {
+            "fixedValue": "Extension Technique"
+          },
+          "color": {
+            "value": -4980573,
+            "falpha": 0.0
+          },
+          "x": 213,
+          "y": 206
         }
       }
     ],

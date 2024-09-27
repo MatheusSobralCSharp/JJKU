@@ -3,76 +3,362 @@
   "_type": "gui",
   "definition": {
     "type": 0,
-    "width": 200,
-    "height": 200,
+    "width": 450,
+    "height": 400,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
     "renderBgLayer": false,
     "doesPauseGame": false,
     "components": [
       {
-        "type": "imagebutton",
+        "type": "image",
         "data": {
-          "name": "imagebutton_nomiddle",
-          "image": "nomiddle1.png",
-          "hoveredImage": "yesmiddle.png",
-          "onClick": {
-            "name": "BindingVowPower"
-          },
-          "x": 182,
-          "y": 27
+          "image": "health.png",
+          "use1Xscale": true,
+          "x": 15,
+          "y": 26
         }
       },
       {
-        "type": "imagebutton",
+        "type": "image",
         "data": {
-          "name": "imagebutton_noleft",
-          "image": "noleft1.png",
-          "hoveredImage": "yesleft.png",
+          "image": "technique.png",
+          "use1Xscale": true,
+          "x": 85,
+          "y": 114
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "strength2.png",
+          "use1Xscale": true,
+          "x": 183,
+          "y": 4
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "meditation2.png",
+          "use1Xscale": true,
+          "x": 332,
+          "y": 118
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select",
+          "text": "Select",
+          "isUndecorated": false,
           "onClick": {
-            "name": "BindingVowHealth"
+            "name": "Vow3"
           },
-          "x": 124,
+          "width": 56,
+          "height": 20,
+          "x": 15,
+          "y": 118
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select1",
+          "text": "Select",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Vow2"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 85,
+          "y": 207
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_select2",
+          "text": "Select",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Vow1"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 183,
           "y": 94
         }
       },
       {
-        "type": "imagebutton",
+        "type": "button",
         "data": {
-          "name": "imagebutton_noleftdown",
-          "image": "noleftdown1.png",
-          "hoveredImage": "yesleftdown.png",
+          "name": "button_select3",
+          "text": "Select",
+          "isUndecorated": false,
           "onClick": {
-            "name": "BindingVowTechnique"
+            "name": "Vow4"
           },
-          "x": 158,
-          "y": 128
+          "width": 56,
+          "height": 20,
+          "x": 332,
+          "y": 210
         }
       },
       {
-        "type": "imagebutton",
+        "type": "label",
         "data": {
-          "name": "imagebutton_noright",
-          "image": "noright1.png",
-          "hoveredImage": "yesright.png",
-          "onClick": {
-            "name": "BindingVowRange"
+          "name": "label_gives_more_power_but_your_attac",
+          "text": {
+            "fixedValue": "Gives More Power ( Up to 10x )"
           },
-          "x": 218,
-          "y": 94
+          "color": {
+            "value": -12779521,
+            "falpha": 0.0
+          },
+          "x": 242,
+          "y": 6
         }
       },
       {
-        "type": "imagebutton",
+        "type": "label",
         "data": {
-          "name": "imagebutton_norightdown",
-          "image": "norightdown1.png",
-          "hoveredImage": "yesrightdown.png",
-          "onClick": {
-            "name": "BindingVowChants"
+          "name": "label_but_your_attacks_are_weaker_af",
+          "text": {
+            "fixedValue": "Your Attacks Get Weaker"
           },
-          "x": 209,
-          "y": 132
+          "color": {
+            "value": -3997697,
+            "falpha": 0.0
+          },
+          "x": 255,
+          "y": 31
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_scales_per_binding_vow",
+          "text": {
+            "fixedValue": "(Scales Per Binding Vow)"
+          },
+          "color": {
+            "value": -458752,
+            "falpha": 0.0
+          },
+          "x": 252,
+          "y": 45
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_consequences",
+          "text": {
+            "fixedValue": "Consequences:"
+          },
+          "color": {
+            "value": -655360,
+            "falpha": 0.0
+          },
+          "x": 274,
+          "y": 18
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gives_more_health_and_defense",
+          "text": {
+            "fixedValue": "Gives Temp Immortality"
+          },
+          "color": {
+            "value": -12779521,
+            "falpha": 0.0
+          },
+          "x": 3,
+          "y": 11
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_consequences1",
+          "text": {
+            "fixedValue": "Consequences:"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 91,
+          "y": 32
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_your_attacks_can_hurt_yourself",
+          "text": {
+            "fixedValue": "Poison Yourself"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 85,
+          "y": 48
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gives_temp_output",
+          "text": {
+            "fixedValue": "Gives Temp 500x Output"
+          },
+          "color": {
+            "value": -16711681,
+            "falpha": 0.0
+          },
+          "x": 170,
+          "y": 119
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_gives_10000_cursed_levels",
+          "text": {
+            "fixedValue": "Gives 1000 Cursed Levels"
+          },
+          "color": {
+            "value": -16711681,
+            "falpha": 0.0
+          },
+          "x": 296,
+          "y": 62
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_you_cant_reach_120_anymore",
+          "text": {
+            "fixedValue": "You Can't Reach 120% Anymore"
+          },
+          "color": {
+            "value": -16777216,
+            "falpha": 0.0
+          },
+          "x": 153,
+          "y": 134
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_your_progression_get_slower",
+          "text": {
+            "fixedValue": "Your Progression Get Slower"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 286,
+          "y": 74
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_scales_per_binding_vow1",
+          "text": {
+            "fixedValue": "(Scales Per Binding Vow)"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 295,
+          "y": 101
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_you_get_debuffed_per_each_respaw",
+          "text": {
+            "fixedValue": "You Get Debuffed Per Each Respawn"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 147,
+          "y": 149
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_weakness_respawn",
+          "text": {
+            "fixedValue": "Weakness Respawn"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 82,
+          "y": 61
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_each_hit_has_a_chance_of_do_2x_d",
+          "text": {
+            "fixedValue": "Each Hit Has a Chance of Hurt 2x"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 148,
+          "y": 166
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_dying_clear_your_inv",
+          "text": {
+            "fixedValue": "Dying Clear Your Inv"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 304,
+          "y": 87
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_scales_per_binding_vow2",
+          "text": {
+            "fixedValue": "(Scales Per Binding Vow)"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "x": 170,
+          "y": 185
         }
       }
     ],

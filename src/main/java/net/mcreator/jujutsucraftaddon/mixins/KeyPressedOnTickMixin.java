@@ -2,6 +2,7 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.procedures.Animations2Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.HRAttack1Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.ManjiKickProcedure;
@@ -22,12 +23,15 @@ public abstract class KeyPressedOnTickMixin {
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo cir) {
         NueSummonProcedure.execute(world, x, y, z, entity);
 
-        if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
-            HRAttack1Procedure.execute(world, x, y, z, entity);
+        if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Output > 0) {
+            if (entity.getPersistentData().getDouble("cnt6") <= (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Output) {
+                entity.getPersistentData().putDouble("cnt6",
+                        (entity.getPersistentData().getDouble("cnt6") + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Output));
+            }
         }
 
-        if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 21) {
-            ManjiKickProcedure.execute(world, x, y, z, entity);
+        if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
+            HRAttack1Procedure.execute(world, x, y, z, entity);
         }
 
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2

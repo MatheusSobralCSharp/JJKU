@@ -13238,13 +13238,13 @@
 					"position": {
 						"0.0": {
 							"post": {
-								"vector": [-4.4, -3.6125, -9.67]
+								"vector": [-0.4, -3.6125, -9.67]
 							},
 							"lerp_mode": "catmullrom"
 						},
 						"0.0833": {
 							"post": {
-								"vector": [-4.4, -3.6125, -9.67]
+								"vector": [-0.4, -3.6125, -9.67]
 							},
 							"lerp_mode": "catmullrom"
 						},

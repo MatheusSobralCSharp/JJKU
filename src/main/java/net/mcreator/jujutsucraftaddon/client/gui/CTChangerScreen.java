@@ -22,6 +22,7 @@ public class CTChangerScreen extends AbstractContainerScreen<CTChangerMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_random;
 
 	public CTChangerScreen(CTChangerMenu container, Inventory inventory, Component text) {
@@ -63,11 +64,6 @@ public class CTChangerScreen extends AbstractContainerScreen<CTChangerMenu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 	}
 
@@ -76,8 +72,8 @@ public class CTChangerScreen extends AbstractContainerScreen<CTChangerMenu> {
 		super.init();
 		button_random = Button.builder(Component.translatable("gui.jujutsucraftaddon.ct_changer.button_random"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CTChangerButtonMessage(0, x, y, z));
-				CTChangerButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CTChangerButtonMessage(0, x, y, z, textstate));
+				CTChangerButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 60, this.topPos + 67, 56, 20).build();
 		guistate.put("button:button_random", button_random);

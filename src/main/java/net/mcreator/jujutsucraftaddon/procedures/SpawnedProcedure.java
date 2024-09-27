@@ -33,11 +33,9 @@ import net.mcreator.jujutsucraftaddon.entity.ShokoIeriSchoolEntity;
 import net.mcreator.jujutsucraftaddon.entity.RikoAmanaiEntity;
 import net.mcreator.jujutsucraftaddon.entity.MakiPreparationEntity;
 import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 import javax.annotation.Nullable;
-
-import java.util.List;
-import java.util.Comparator;
 
 @Mod.EventBusSubscriber
 public class SpawnedProcedure {
@@ -53,46 +51,32 @@ public class SpawnedProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
+		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:domain_expansion_entity")) {
+			CompoundTag dataIndex2 = new CompoundTag();
+			entity.saveWithoutId(dataIndex2);
+			dataIndex2.getCompound("ForgeData").putDouble("DomainExpansionSizer", Math.round(JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius + 3));
+			entity.load(dataIndex2);
+		}
 		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:purple")) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get(), -1, 1, false, false));
 		}
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				return dataIndex2.getCompound("ForgeData").getDouble("CursedSpirit");
+				CompoundTag dataIndex5 = new CompoundTag();
+				entity.saveWithoutId(dataIndex5);
+				return dataIndex5.getCompound("ForgeData").getDouble("CursedSpirit");
 			}
 		}.getValue() == 1) {
-			if (!(entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(MobEffects.REGENERATION))) {
+			if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_CURSED_SPIRIT_RCT) == true) {
+				CompoundTag dataIndex7 = new CompoundTag();
+				entity.saveWithoutId(dataIndex7);
+				dataIndex7.getCompound("ForgeData").putDouble("RCT", 1);
+				entity.load(dataIndex7);
+			}
+			if (!(entity instanceof LivingEntity _livEnt8 && _livEnt8.hasEffect(MobEffects.REGENERATION))) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_CURSED_SPIRIT_REGEN)), false, false));
-			}
-		}
-		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:blue")) {
-			{
-				final Vec3 _center = new Vec3(x, y, z);
-				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
-				for (Entity entityiterator : _entfound) {
-					if (entityiterator instanceof LivingEntity _livEnt7 && _livEnt7.hasEffect(JujutsucraftaddonModMobEffects.GOJO_IMBUED_POWER.get())) {
-						if (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex8 = new CompoundTag();
-								entity.saveWithoutId(dataIndex8);
-								return dataIndex8.getCompound("ForgeData").getDouble("Buffedd");
-							}
-						}.getValue() != 1) {
-							if (!(entity instanceof LivingEntity _livEnt9 && _livEnt9.hasEffect(JujutsucraftaddonModMobEffects.BLUE_EFFECT.get()))) {
-								if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-									_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.BLUE_EFFECT.get(), 300, 1, false, false));
-								CompoundTag dataIndex11 = new CompoundTag();
-								entity.saveWithoutId(dataIndex11);
-								dataIndex11.getCompound("ForgeData").putDouble("Buffedd", 1);
-								entity.load(dataIndex11);
-							}
-						}
-					}
-				}
 			}
 		}
 		if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_SPAWN_CHANGER) == true) {
@@ -180,9 +164,9 @@ public class SpawnedProcedure {
 				if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:cursed_spirit_grade_37")) {
 					if (!(new Object() {
 						public String getValue() {
-							CompoundTag dataIndex58 = new CompoundTag();
-							entity.saveWithoutId(dataIndex58);
-							return dataIndex58.getString("forge:spawn_type");
+							CompoundTag dataIndex56 = new CompoundTag();
+							entity.saveWithoutId(dataIndex56);
+							return dataIndex56.getString("forge:spawn_type");
 						}
 					}.getValue()).equals("COMMAND")) {
 						if (event != null && event.isCancelable()) {
@@ -195,9 +179,9 @@ public class SpawnedProcedure {
 				if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:stevenson_screen")) {
 					if (!(new Object() {
 						public String getValue() {
-							CompoundTag dataIndex61 = new CompoundTag();
-							entity.saveWithoutId(dataIndex61);
-							return dataIndex61.getString("forge:spawn_type");
+							CompoundTag dataIndex59 = new CompoundTag();
+							entity.saveWithoutId(dataIndex59);
+							return dataIndex59.getString("forge:spawn_type");
 						}
 					}.getValue()).equals("COMMAND")) {
 						if (event != null && event.isCancelable()) {
@@ -210,9 +194,9 @@ public class SpawnedProcedure {
 					|| (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:sukuna_fushiguro")) {
 				if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex65 = new CompoundTag();
-						entity.saveWithoutId(dataIndex65);
-						return dataIndex65.getString("forge:spawn_type");
+						CompoundTag dataIndex63 = new CompoundTag();
+						entity.saveWithoutId(dataIndex63);
+						return dataIndex63.getString("forge:spawn_type");
 					}
 				}.getValue()).equals("NATURAL")) {
 					if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SUKUNA_RATE))) {
@@ -224,9 +208,9 @@ public class SpawnedProcedure {
 			} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:gojo_satoru_school_days") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:gojo_satoru")) {
 				if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex69 = new CompoundTag();
-						entity.saveWithoutId(dataIndex69);
-						return dataIndex69.getString("forge:spawn_type");
+						CompoundTag dataIndex67 = new CompoundTag();
+						entity.saveWithoutId(dataIndex67);
+						return dataIndex67.getString("forge:spawn_type");
 					}
 				}.getValue()).equals("NATURAL")) {
 					if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_GOJO_RATE))) {
@@ -238,9 +222,9 @@ public class SpawnedProcedure {
 			} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:fushiguro_toji") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:fushiguro_toji_bug")) {
 				if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex73 = new CompoundTag();
-						entity.saveWithoutId(dataIndex73);
-						return dataIndex73.getString("forge:spawn_type");
+						CompoundTag dataIndex71 = new CompoundTag();
+						entity.saveWithoutId(dataIndex71);
+						return dataIndex71.getString("forge:spawn_type");
 					}
 				}.getValue()).equals("NATURAL")) {
 					if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_TOJI_RATE))) {
@@ -317,15 +301,15 @@ public class SpawnedProcedure {
 		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).startsWith("jujutsucraft")) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex116 = new CompoundTag();
-					entity.saveWithoutId(dataIndex116);
-					return dataIndex116.getCompound("ForgeData").getDouble("CursedSpirit");
+					CompoundTag dataIndex114 = new CompoundTag();
+					entity.saveWithoutId(dataIndex114);
+					return dataIndex114.getCompound("ForgeData").getDouble("CursedSpirit");
 				}
 			}.getValue() == 1 && (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex117 = new CompoundTag();
-					entity.saveWithoutId(dataIndex117);
-					return dataIndex117.getString("forge:spawn_type");
+					CompoundTag dataIndex115 = new CompoundTag();
+					entity.saveWithoutId(dataIndex115);
+					return dataIndex115.getString("forge:spawn_type");
 				}
 			}.getValue()).equals("NATURAL")) {
 				if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_CURSED_SPIRIT_RATE))) {
@@ -335,15 +319,15 @@ public class SpawnedProcedure {
 				}
 			} else if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex119 = new CompoundTag();
-					entity.saveWithoutId(dataIndex119);
-					return dataIndex119.getCompound("ForgeData").getDouble("CurseUser");
+					CompoundTag dataIndex117 = new CompoundTag();
+					entity.saveWithoutId(dataIndex117);
+					return dataIndex117.getCompound("ForgeData").getDouble("CurseUser");
 				}
 			}.getValue() == 1 && (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex120 = new CompoundTag();
-					entity.saveWithoutId(dataIndex120);
-					return dataIndex120.getString("forge:spawn_type");
+					CompoundTag dataIndex118 = new CompoundTag();
+					entity.saveWithoutId(dataIndex118);
+					return dataIndex118.getString("forge:spawn_type");
 				}
 			}.getValue()).equals("NATURAL")) {
 				if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_CURSE_USERS_RATE))) {
@@ -353,15 +337,15 @@ public class SpawnedProcedure {
 				}
 			} else if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex122 = new CompoundTag();
-					entity.saveWithoutId(dataIndex122);
-					return dataIndex122.getCompound("ForgeData").getDouble("JujutsuSorcerer");
+					CompoundTag dataIndex120 = new CompoundTag();
+					entity.saveWithoutId(dataIndex120);
+					return dataIndex120.getCompound("ForgeData").getDouble("JujutsuSorcerer");
 				}
 			}.getValue() == 1 && (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex123 = new CompoundTag();
-					entity.saveWithoutId(dataIndex123);
-					return dataIndex123.getString("forge:spawn_type");
+					CompoundTag dataIndex121 = new CompoundTag();
+					entity.saveWithoutId(dataIndex121);
+					return dataIndex121.getString("forge:spawn_type");
 				}
 			}.getValue()).equals("NATURAL")) {
 				if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SORCERERS_RATE))) {
@@ -374,38 +358,38 @@ public class SpawnedProcedure {
 		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).startsWith("jujutsucraft")) {
 			if (new Object() {
 				public double getValue() {
+					CompoundTag dataIndex124 = new CompoundTag();
+					entity.saveWithoutId(dataIndex124);
+					return dataIndex124.getCompound("ForgeData").getDouble("CursedSpirit");
+				}
+			}.getValue() == 1 || new Object() {
+				public double getValue() {
+					CompoundTag dataIndex125 = new CompoundTag();
+					entity.saveWithoutId(dataIndex125);
+					return dataIndex125.getCompound("ForgeData").getDouble("CurseUser");
+				}
+			}.getValue() == 1 || new Object() {
+				public double getValue() {
 					CompoundTag dataIndex126 = new CompoundTag();
 					entity.saveWithoutId(dataIndex126);
-					return dataIndex126.getCompound("ForgeData").getDouble("CursedSpirit");
-				}
-			}.getValue() == 1 || new Object() {
-				public double getValue() {
-					CompoundTag dataIndex127 = new CompoundTag();
-					entity.saveWithoutId(dataIndex127);
-					return dataIndex127.getCompound("ForgeData").getDouble("CurseUser");
-				}
-			}.getValue() == 1 || new Object() {
-				public double getValue() {
-					CompoundTag dataIndex128 = new CompoundTag();
-					entity.saveWithoutId(dataIndex128);
-					return dataIndex128.getCompound("ForgeData").getDouble("JujutsuSorcerer");
+					return dataIndex126.getCompound("ForgeData").getDouble("JujutsuSorcerer");
 				}
 			}.getValue() == 1) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex129 = new CompoundTag();
-						entity.saveWithoutId(dataIndex129);
-						return dataIndex129.getCompound("ForgeData").getDouble("buff");
+						CompoundTag dataIndex127 = new CompoundTag();
+						entity.saveWithoutId(dataIndex127);
+						return dataIndex127.getCompound("ForgeData").getDouble("buff");
 					}
 				}.getValue() != 1) {
 					((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(
 							((100 / (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DIFFICULTY))) * ((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue()));
 					if (entity instanceof LivingEntity _entity)
 						_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-					CompoundTag dataIndex135 = new CompoundTag();
-					entity.saveWithoutId(dataIndex135);
-					dataIndex135.getCompound("ForgeData").putDouble("buff", 1);
-					entity.load(dataIndex135);
+					CompoundTag dataIndex133 = new CompoundTag();
+					entity.saveWithoutId(dataIndex133);
+					dataIndex133.getCompound("ForgeData").putDouble("buff", 1);
+					entity.load(dataIndex133);
 				}
 			}
 		}
@@ -413,9 +397,9 @@ public class SpawnedProcedure {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).startsWith("jujutsucraft")) {
 				if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex138 = new CompoundTag();
-						entity.saveWithoutId(dataIndex138);
-						return dataIndex138.getString("forge:spawn_type");
+						CompoundTag dataIndex136 = new CompoundTag();
+						entity.saveWithoutId(dataIndex136);
+						return dataIndex136.getString("forge:spawn_type");
 					}
 				}.getValue()).equals("NATURAL")) {
 					if (event != null && event.isCancelable()) {
@@ -428,9 +412,9 @@ public class SpawnedProcedure {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).startsWith("jujutsucraft") == false) {
 				if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex141 = new CompoundTag();
-						entity.saveWithoutId(dataIndex141);
-						return dataIndex141.getString("forge:spawn_type");
+						CompoundTag dataIndex139 = new CompoundTag();
+						entity.saveWithoutId(dataIndex139);
+						return dataIndex139.getString("forge:spawn_type");
 					}
 				}.getValue()).equals("NATURAL")) {
 					if (event != null && event.isCancelable()) {

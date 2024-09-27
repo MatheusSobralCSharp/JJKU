@@ -1,0 +1,12 @@
+{
+  "_fv": 60,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Jujutsucraft Mob Spawning Rate",
+    "description": "Changes Jujutsu Craft Mob Spawn Rate ( higher values = less spawning )",
+    "category": "SPAWNING",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 1
+  }
+}

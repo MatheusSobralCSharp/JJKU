@@ -25,6 +25,7 @@ public class ClanChangeScreen extends AbstractContainerScreen<ClanChangeMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_incarnated_sorcerer;
 	Button button_check_your_clan;
 	Button button_store;
@@ -73,11 +74,6 @@ public class ClanChangeScreen extends AbstractContainerScreen<ClanChangeMenu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.clan_change.label_clan_slot_1"), 251, 18, -12829636, false);
 		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.clan_change.label_clan_slot_2"), 251, 76, -12829636, false);
@@ -98,64 +94,64 @@ public class ClanChangeScreen extends AbstractContainerScreen<ClanChangeMenu> {
 		super.init();
 		button_incarnated_sorcerer = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_incarnated_sorcerer"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(0, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(0, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 19, this.topPos + 46, 124, 20).build();
 		guistate.put("button:button_incarnated_sorcerer", button_incarnated_sorcerer);
 		this.addRenderableWidget(button_incarnated_sorcerer);
 		button_check_your_clan = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_check_your_clan"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(1, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(1, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 29, this.topPos + 105, 103, 20).build();
 		guistate.put("button:button_check_your_clan", button_check_your_clan);
 		this.addRenderableWidget(button_check_your_clan);
 		button_store = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_store"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(2, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(2, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 252, this.topPos + 46, 51, 20).build();
 		guistate.put("button:button_store", button_store);
 		this.addRenderableWidget(button_store);
 		button_equip = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_equip"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(3, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 3, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(3, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 3, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 325, this.topPos + 46, 51, 20).build();
 		guistate.put("button:button_equip", button_equip);
 		this.addRenderableWidget(button_equip);
 		button_store1 = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_store1"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(4, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 4, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(4, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 4, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 252, this.topPos + 103, 51, 20).build();
 		guistate.put("button:button_store1", button_store1);
 		this.addRenderableWidget(button_store1);
 		button_equip1 = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_equip1"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(5, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 5, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(5, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 5, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 325, this.topPos + 103, 51, 20).build();
 		guistate.put("button:button_equip1", button_equip1);
 		this.addRenderableWidget(button_equip1);
 		button_store2 = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_store2"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(6, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 6, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(6, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 6, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 252, this.topPos + 155, 51, 20).build();
 		guistate.put("button:button_store2", button_store2);
 		this.addRenderableWidget(button_store2);
 		button_equip2 = Button.builder(Component.translatable("gui.jujutsucraftaddon.clan_change.button_equip2"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(7, x, y, z));
-				ClanChangeButtonMessage.handleButtonAction(entity, 7, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClanChangeButtonMessage(7, x, y, z, textstate));
+				ClanChangeButtonMessage.handleButtonAction(entity, 7, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 324, this.topPos + 155, 51, 20).build();
 		guistate.put("button:button_equip2", button_equip2);

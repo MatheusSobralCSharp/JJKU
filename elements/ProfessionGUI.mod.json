@@ -1,0 +1,118 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_healer",
+          "text": "Healer",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ClickedHealer"
+          },
+          "width": 56,
+          "height": 20,
+          "x": 140,
+          "y": 80
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_blacksmith",
+          "text": "Blacksmith",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "BlackSmith"
+          },
+          "width": 77,
+          "height": 20,
+          "x": 129,
+          "y": 167
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_warrior",
+          "text": "Warrior",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ClickedWarrior"
+          },
+          "width": 61,
+          "height": 20,
+          "x": 236,
+          "y": 167
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "shokoanime1.png",
+          "use1Xscale": true,
+          "x": 138,
+          "y": 22
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "sage.png",
+          "use1Xscale": true,
+          "x": 239,
+          "y": 23
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_jujutsu_sage",
+          "text": "Jujutsu Sage",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ClickedSage"
+          },
+          "width": 87,
+          "height": 20,
+          "x": 225,
+          "y": 83
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "warrior.png",
+          "use1Xscale": true,
+          "x": 236,
+          "y": 108
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "blacksmith.png",
+          "use1Xscale": true,
+          "x": 138,
+          "y": 107
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

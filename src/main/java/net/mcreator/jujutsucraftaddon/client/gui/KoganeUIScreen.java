@@ -22,6 +22,7 @@ public class KoganeUIScreen extends AbstractContainerScreen<KoganeUIMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_random_rule;
 	Button button_random_player_punishment;
 	Button button_summon_sukuna_fushiguro;
@@ -65,11 +66,6 @@ public class KoganeUIScreen extends AbstractContainerScreen<KoganeUIMenu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 	}
 
@@ -78,16 +74,16 @@ public class KoganeUIScreen extends AbstractContainerScreen<KoganeUIMenu> {
 		super.init();
 		button_random_rule = Button.builder(Component.translatable("gui.jujutsucraftaddon.kogane_ui.button_random_rule"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KoganeUIButtonMessage(0, x, y, z));
-				KoganeUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KoganeUIButtonMessage(0, x, y, z, textstate));
+				KoganeUIButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 44, this.topPos + 25, 82, 20).build();
 		guistate.put("button:button_random_rule", button_random_rule);
 		this.addRenderableWidget(button_random_rule);
 		button_random_player_punishment = Button.builder(Component.translatable("gui.jujutsucraftaddon.kogane_ui.button_random_player_punishment"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KoganeUIButtonMessage(1, x, y, z));
-				KoganeUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KoganeUIButtonMessage(1, x, y, z, textstate));
+				KoganeUIButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 13, this.topPos + 63, 150, 20).build();
 		guistate.put("button:button_random_player_punishment", button_random_player_punishment);

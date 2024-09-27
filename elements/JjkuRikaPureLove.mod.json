@@ -7,6 +7,6 @@
     "description": "Change the Rika Pure Love Size destruction ( default = 5 )",
     "category": "PLAYER",
     "defaultValueLogic": false,
-    "defaultValueNumber": 5
+    "defaultValueNumber": 2
   }
 }

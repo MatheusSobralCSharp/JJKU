@@ -6,7 +6,7 @@
     "keyBindingName": "Binding Vow Key",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
-      "name": "HabilityWheelKeyOnKeyPressed"
+      "name": "HabilityWheelKeyOnKeyPressed12"
     }
   }
 }

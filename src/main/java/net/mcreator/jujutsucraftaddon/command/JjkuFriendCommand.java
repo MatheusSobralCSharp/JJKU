@@ -19,7 +19,7 @@ import net.mcreator.jujutsucraftaddon.procedures.JJKUFrienddProcedure;
 public class JjkuFriendCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuFriend")
+		event.getDispatcher().register(Commands.literal("jjkurFriend")
 
 				.then(Commands.argument("Friend", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

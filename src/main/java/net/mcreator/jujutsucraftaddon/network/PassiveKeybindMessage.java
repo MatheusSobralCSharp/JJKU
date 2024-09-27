@@ -10,7 +10,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.jujutsucraftaddon.procedures.PassiveKeybindOnKeyReleased1Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.PassiveKeybindOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
@@ -54,10 +53,6 @@ public class PassiveKeybindMessage {
 		if (type == 0) {
 
 			PassiveKeybindOnKeyPressedProcedure.execute(world, entity);
-		}
-		if (type == 1) {
-
-			PassiveKeybindOnKeyReleased1Procedure.execute(world, entity);
 		}
 	}
 

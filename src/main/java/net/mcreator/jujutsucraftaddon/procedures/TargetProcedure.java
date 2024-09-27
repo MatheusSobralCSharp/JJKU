@@ -10,6 +10,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.tags.TagKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
@@ -159,6 +160,10 @@ public class TargetProcedure {
 			AIMegunasProcedure.execute(world, entity, sourceentity);
 			DomainsAIProcedure.execute(world, x, y, z, entity, sourceentity);
 			DomainAmplificationDetectProcedure.execute(world, entity, sourceentity);
+			if (Math.random() <= 0.05) {
+				if (sourceentity instanceof LivingEntity _entity)
+					_entity.swing(InteractionHand.MAIN_HAND, true);
+			}
 		} else if (sourceentity instanceof ItadoriShinjukuEntity) {
 			AIBaseProcedure.execute(world, entity, sourceentity);
 			DomainAmplificationDetectProcedure.execute(world, entity, sourceentity);

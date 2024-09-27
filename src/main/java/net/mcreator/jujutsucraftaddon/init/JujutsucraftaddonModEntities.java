@@ -47,6 +47,8 @@ import net.mcreator.jujutsucraftaddon.entity.HakariEntity;
 import net.mcreator.jujutsucraftaddon.entity.GojoSchoolEntity;
 import net.mcreator.jujutsucraftaddon.entity.GojoMangaEntity;
 import net.mcreator.jujutsucraftaddon.entity.GegeAkutamiEntity;
+import net.mcreator.jujutsucraftaddon.entity.FakeClonesEntity;
+import net.mcreator.jujutsucraftaddon.entity.CloneEntity;
 import net.mcreator.jujutsucraftaddon.entity.CleaveWebEntity;
 import net.mcreator.jujutsucraftaddon.entity.CircleEntity;
 import net.mcreator.jujutsucraftaddon.entity.BulletProjectileEntity;
@@ -189,6 +191,12 @@ public class JujutsucraftaddonModEntities {
 			EntityType.Builder.<YeEntity>of(YeEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(YeEntity::new)
 
 					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<FakeClonesEntity>> FAKE_CLONES = register("fake_clones", EntityType.Builder.<FakeClonesEntity>of(FakeClonesEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+			.setUpdateInterval(3).setCustomClientFactory(FakeClonesEntity::new).fireImmune().sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<CloneEntity>> CLONE = register("clone",
+			EntityType.Builder.<CloneEntity>of(CloneEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CloneEntity::new)
+
+					.sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -233,6 +241,8 @@ public class JujutsucraftaddonModEntities {
 			UEntity.init();
 			TestingVersionEntity.init();
 			YeEntity.init();
+			FakeClonesEntity.init();
+			CloneEntity.init();
 		});
 	}
 
@@ -274,5 +284,7 @@ public class JujutsucraftaddonModEntities {
 		event.put(U.get(), UEntity.createAttributes().build());
 		event.put(TESTING_VERSION.get(), TestingVersionEntity.createAttributes().build());
 		event.put(YE.get(), YeEntity.createAttributes().build());
+		event.put(FAKE_CLONES.get(), FakeClonesEntity.createAttributes().build());
+		event.put(CLONE.get(), CloneEntity.createAttributes().build());
 	}
 }

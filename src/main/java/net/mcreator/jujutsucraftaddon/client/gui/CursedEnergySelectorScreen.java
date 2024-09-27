@@ -22,6 +22,7 @@ public class CursedEnergySelectorScreen extends AbstractContainerScreen<CursedEn
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_imbue_with_negative_energy;
 	Button button_imbue_with_positive_energy;
 	Button button_heal_with_ce;
@@ -65,11 +66,6 @@ public class CursedEnergySelectorScreen extends AbstractContainerScreen<CursedEn
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 	}
 
@@ -78,24 +74,24 @@ public class CursedEnergySelectorScreen extends AbstractContainerScreen<CursedEn
 		super.init();
 		button_imbue_with_negative_energy = Button.builder(Component.translatable("gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_negative_energy"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedEnergySelectorButtonMessage(0, x, y, z));
-				CursedEnergySelectorButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedEnergySelectorButtonMessage(0, x, y, z, textstate));
+				CursedEnergySelectorButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 13, this.topPos + 27, 160, 20).build();
 		guistate.put("button:button_imbue_with_negative_energy", button_imbue_with_negative_energy);
 		this.addRenderableWidget(button_imbue_with_negative_energy);
 		button_imbue_with_positive_energy = Button.builder(Component.translatable("gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_positive_energy"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedEnergySelectorButtonMessage(1, x, y, z));
-				CursedEnergySelectorButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedEnergySelectorButtonMessage(1, x, y, z, textstate));
+				CursedEnergySelectorButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 14, this.topPos + 107, 160, 20).build();
 		guistate.put("button:button_imbue_with_positive_energy", button_imbue_with_positive_energy);
 		this.addRenderableWidget(button_imbue_with_positive_energy);
 		button_heal_with_ce = Button.builder(Component.translatable("gui.jujutsucraftaddon.cursed_energy_selector.button_heal_with_ce"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedEnergySelectorButtonMessage(2, x, y, z));
-				CursedEnergySelectorButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedEnergySelectorButtonMessage(2, x, y, z, textstate));
+				CursedEnergySelectorButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 46, this.topPos + 65, 87, 20).build();
 		guistate.put("button:button_heal_with_ce", button_heal_with_ce);

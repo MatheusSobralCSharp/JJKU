@@ -12,7 +12,9 @@ import net.minecraft.world.effect.MobEffect;
 
 import net.mcreator.jujutsucraftaddon.potion.WorldSlashEffectMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.VowFriendMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.TrainingMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.TojiEffectMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.TestingMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.SukunaPowersMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.SukunaMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.SoroiroMobEffect;
@@ -27,6 +29,7 @@ import net.mcreator.jujutsucraftaddon.potion.RCTCutMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.OvertimeMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.OneHundredAndTwentyMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.MurasakiEffectMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.MeditationStateMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.ManifestationMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.LimbsEffectMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.KokusenEffectTwoMobEffect;
@@ -36,6 +39,7 @@ import net.mcreator.jujutsucraftaddon.potion.JackpotMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.ItadoriRampageMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.ItadoriAwakeningMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.InfinityMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.HourCinderellaMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.HidingMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.HeianMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.HWBMobEffect;
@@ -67,8 +71,14 @@ import net.mcreator.jujutsucraftaddon.potion.BerserkMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.BasePotionMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.BarrierlessCooldownMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.AwakeningMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.AntiHealMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.AnimationTwoMobEffect;
 import net.mcreator.jujutsucraftaddon.potion.AnimationOneMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.AnimMobEffect;
+import net.mcreator.jujutsucraftaddon.potion.Anim4MobEffect;
+import net.mcreator.jujutsucraftaddon.potion.Anim3MobEffect;
+import net.mcreator.jujutsucraftaddon.potion.Anim2MobEffect;
+import net.mcreator.jujutsucraftaddon.potion.Anim1MobEffect;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 public class JujutsucraftaddonModMobEffects {
@@ -132,4 +142,14 @@ public class JujutsucraftaddonModMobEffects {
 	public static final RegistryObject<MobEffect> BERSERK = REGISTRY.register("berserk", () -> new BerserkMobEffect());
 	public static final RegistryObject<MobEffect> DOMAIN_TIME = REGISTRY.register("domain_time", () -> new DomainTimeMobEffect());
 	public static final RegistryObject<MobEffect> SOROIRO = REGISTRY.register("soroiro", () -> new SoroiroMobEffect());
+	public static final RegistryObject<MobEffect> ANTI_HEAL = REGISTRY.register("anti_heal", () -> new AntiHealMobEffect());
+	public static final RegistryObject<MobEffect> MEDITATION_STATE = REGISTRY.register("meditation_state", () -> new MeditationStateMobEffect());
+	public static final RegistryObject<MobEffect> TRAINING = REGISTRY.register("training", () -> new TrainingMobEffect());
+	public static final RegistryObject<MobEffect> HOUR_CINDERELLA = REGISTRY.register("hour_cinderella", () -> new HourCinderellaMobEffect());
+	public static final RegistryObject<MobEffect> ANIM = REGISTRY.register("anim", () -> new AnimMobEffect());
+	public static final RegistryObject<MobEffect> ANIM_2 = REGISTRY.register("anim_2", () -> new Anim2MobEffect());
+	public static final RegistryObject<MobEffect> ANIM_3 = REGISTRY.register("anim_3", () -> new Anim3MobEffect());
+	public static final RegistryObject<MobEffect> ANIM_4 = REGISTRY.register("anim_4", () -> new Anim4MobEffect());
+	public static final RegistryObject<MobEffect> ANIM_1 = REGISTRY.register("anim_1", () -> new Anim1MobEffect());
+	public static final RegistryObject<MobEffect> TESTING = REGISTRY.register("testing", () -> new TestingMobEffect());
 }

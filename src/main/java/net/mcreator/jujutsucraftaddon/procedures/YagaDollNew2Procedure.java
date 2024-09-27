@@ -33,7 +33,7 @@ public class YagaDollNew2Procedure {
 			return;
 		if ((ForgeRegistries.ITEMS.getKey((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:item_doll")) {
 			if ((entity.getPersistentData().getString("OWNER_UUID")).equals(sourceentity.getStringUUID())) {
-				if (!(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:panda_normal")) {
+				if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).contains("jujutsucraft:doll")) {
 					((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
 							.setBaseValue((((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getBaseValue() + 1));
 					((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)

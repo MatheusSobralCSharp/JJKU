@@ -46,12 +46,15 @@
     	],
     	"two_hand":
     	[
-			"wom:biped/combat/moonless_auto_1_verso",
-			"wom:biped/combat/agony_auto_3",
-			"wom:biped/combat/moonless_auto_2_verso",
-			"wom:biped/combat/enderblaster_twohand_dash",
-			"wom:biped/skill/ruine_expiation",
-			"wom:biped/skill/torment_berserk_airslam"
+			"wom:biped/combat/staff_auto_2",
+			"wom:biped/combat/moonless_auto_2",
+			"wom:biped/combat/moonless_auto_3",
+			"wom:biped/combat/agony_auto_4",
+			"wom:biped/combat/enderblaster_onehand_auto_1",
+			"wom:biped/combat/enderblaster_onehand_auto_2",
+			"wom:biped/combat/staff_auto_1",
+			"wom:biped/combat/moonless_auto_3_verso",
+			"wom:biped/combat/enderblaster_onehand_dash"
     	],
     	"mount":
     	[
@@ -61,7 +64,7 @@
     "innate_skills":
     {
     	"one_hand": "epicfight:tsunami",
-    	"two_hand": "wom:charybdis"
+    	"two_hand": "epicfight:tsunami"
     },
     "livingmotion_modifier": {
     	"one_hand":
@@ -74,16 +77,11 @@
     	},
     	"two_hand":
     	{
-    		"block": "wom:biped/skill/herrscher_guard",
-    		"idle": "wom:biped/living/herrscher_idle",
-    		"kneel": "epicfight:biped/living/hold_dual",
-    		"walk": "epicfight:biped/living/hold_dual",
-    		"chase": "epicfight:biped/living/hold_dual",
-    		"run": "epicfight:biped/living/run_dual",
-    		"sneak": "epicfight:biped/living/hold_dual",
-    		"swim": "epicfight:biped/living/hold_dual",
-    		"float": "epicfight:biped/living/hold_dual",
-    		"fall": "epicfight:biped/living/hold_dual"
+    		"block": "wom:biped/skill/moonless_guard",
+			"idle": "wom:biped/living/moonless_idle",
+			"run" : "wom:biped/living/moonless_run",
+			"walk": "wom:biped/living/moonless_walk",
+			"chase": "wom:biped/living/moonless_run"
     	}
     }
 }

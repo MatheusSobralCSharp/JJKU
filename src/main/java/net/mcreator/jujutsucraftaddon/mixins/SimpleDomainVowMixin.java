@@ -3,10 +3,14 @@ package net.mcreator.jujutsucraftaddon.mixins;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.procedures.*;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
@@ -23,7 +27,7 @@ public abstract class SimpleDomainVowMixin {
     }
     /**
      * @author Satushi
-     * @reason Yes
+     * @reason Change Simple Domain Logic To Upgrade Range
      */
     @Overwrite
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -53,6 +57,41 @@ public abstract class SimpleDomainVowMixin {
                 }
 
                 var10000 = 0;
+            }
+
+            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleQuest == 4) {
+                if (entity.getPersistentData().getDouble("cnt_simpledomain") < 18000.0) {
+                    label68 : {
+                        entity.getPersistentData().putDouble("cnt_simpledomain", entity.getPersistentData().getDouble("cnt_m") + 1.0);
+                    }
+                } else if (entity.getPersistentData().getDouble("cnt_simpledomain") == 18000.0) {
+                    if (entity instanceof ServerPlayer _player) {
+                        Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"));
+                        AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+                        if (!_ap.isDone()) {
+                            for (String criteria : _ap.getRemainingCriteria())
+                                _player.getAdvancements().award(_adv, criteria);
+                        }
+                    }
+
+                    {
+                        double _setval = 3;
+                        entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                            capability.SimpleDomainLevel = _setval;
+                            capability.syncPlayerVariables(entity);
+                        });
+                    }
+
+                    {
+                        double _setval = 5;
+                        entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                            capability.SimpleQuest = _setval;
+                            capability.syncPlayerVariables(entity);
+                        });
+                    }
+
+                }
+
             }
 
             if (var10000 > 0) {

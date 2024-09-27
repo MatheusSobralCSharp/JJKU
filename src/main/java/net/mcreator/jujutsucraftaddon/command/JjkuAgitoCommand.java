@@ -18,7 +18,7 @@ import net.mcreator.jujutsucraftaddon.procedures.AutoMakeProcedure;
 public class JjkuAgitoCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuAgito")
+		event.getDispatcher().register(Commands.literal("jjkurAgito")
 
 				.executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

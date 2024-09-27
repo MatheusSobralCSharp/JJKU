@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import java.util.Objects;
 
 @Mixin(value = KeyReverseCursedTechniqueOnKeyPressedProcedure.class, remap = false)
-public abstract class   ReverseKeyMixin {
+public abstract class ReverseKeyMixin {
     public ReverseKeyMixin() {
     }
 
@@ -174,7 +174,8 @@ public abstract class   ReverseKeyMixin {
                         int RCTLimitLevel = (int) playerVariables.RCTLimitLevel;
                         double level2;
                         entity.getPersistentData().putBoolean("PRESS_M", true);
-                        if (entity.getPersistentData().getBoolean("CursedSpirit")) {
+
+                        if (entity.getPersistentData().getBoolean("CursedSpirit") == true && entity.getPersistentData().getBoolean("CurseUser") == false && entity.getPersistentData().getDouble("RCT") != 1) {
                             if (entity instanceof LivingEntity) {
                                 _entity = (LivingEntity)entity;
                                 if (!_entity.level().isClientSide()) {

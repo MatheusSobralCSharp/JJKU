@@ -10,7 +10,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.jujutsucraftaddon.procedures.DashKeybindOnKeyPressedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.MeditationOnKeyReleasedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.MeditationOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.function.Supplier;
@@ -52,7 +53,11 @@ public class DashKeybindMessage {
 			return;
 		if (type == 0) {
 
-			DashKeybindOnKeyPressedProcedure.execute(world, entity);
+			MeditationOnKeyPressedProcedure.execute(world, x, y, z, entity);
+		}
+		if (type == 1) {
+
+			MeditationOnKeyReleasedProcedure.execute(entity);
 		}
 	}
 

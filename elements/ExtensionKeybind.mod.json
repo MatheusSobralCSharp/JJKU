@@ -3,10 +3,10 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "NONE",
-    "keyBindingName": "Extension Keybind",
+    "keyBindingName": "Fast Swap Mastery Keybind",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
-      "name": "ExtensionDomainKeyOnPressed"
+      "name": "HabilityWheelKeyOnKeyPressed1"
     }
   }
 }

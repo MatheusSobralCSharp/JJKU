@@ -6,7 +6,7 @@
     "keyBindingName": "Power Wheel",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
-      "name": "KeyWheelOnKeyPressed"
+      "name": "HabilityWheelKeyOnKeyPressed"
     }
   }
 }

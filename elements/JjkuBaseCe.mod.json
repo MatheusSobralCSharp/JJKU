@@ -2,7 +2,7 @@
   "_fv": 60,
   "_type": "command",
   "definition": {
-    "commandName": "jjkuBaseCe",
+    "commandName": "jjkurBaseCe",
     "type": "STANDARD",
     "permissionLevel": "4",
     "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"number_default\"><field name=\"name\">CE</field><statement name=\"args\"><block type=\"entity\"><field name=\"name\">Player</field><field name=\"type\">player</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">CEBaseFix</field></block></statement></block></statement></block></next></block></xml>"

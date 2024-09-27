@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.jujutsucraftaddon.procedures.HabilityWheelKeyOnKeyPressedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.HabilityWheelKeyOnKeyPressed12Procedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.function.Supplier;
@@ -52,7 +52,7 @@ public class HabilityWheelKeyMessage {
 			return;
 		if (type == 0) {
 
-			HabilityWheelKeyOnKeyPressedProcedure.execute(world, x, y, z, entity);
+			HabilityWheelKeyOnKeyPressed12Procedure.execute(world, x, y, z, entity);
 		}
 	}
 

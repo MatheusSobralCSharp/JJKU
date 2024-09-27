@@ -51,33 +51,19 @@ public class ProcedureKusakabeProcedure {
 						final Vec3 _center = new Vec3(x, y, z);
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 						for (Entity entityiterator : _entfound) {
-							int horizontalRadiusSphere = (int) 8 - 1;
-							int verticalRadiusSphere = (int) 8 - 1;
-							int yIterationsSphere = verticalRadiusSphere;
-							for (int i = -yIterationsSphere; i <= yIterationsSphere; i++) {
-								for (int xi = -horizontalRadiusSphere; xi <= horizontalRadiusSphere; xi++) {
-									for (int zi = -horizontalRadiusSphere; zi <= horizontalRadiusSphere; zi++) {
-										double distanceSq = (xi * xi) / (double) (horizontalRadiusSphere * horizontalRadiusSphere) + (i * i) / (double) (verticalRadiusSphere * verticalRadiusSphere)
-												+ (zi * zi) / (double) (horizontalRadiusSphere * horizontalRadiusSphere);
-										if (distanceSq <= 1.0) {
-											if (!(entity == entityiterator)) {
-												entity.setDeltaMovement(new Vec3((7 * Math.cos((entity.getYRot() + 90) * (Math.PI / 180))), 0, (7 * Math.sin((entity.getYRot() + 90) * (Math.PI / 180)))));
-												{
-													Entity _ent = entity;
-													if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-																"execute as @s run effect clear @s jujutsucraft:cursed_technique");
-													}
-												}
-												entityiterator.setSecondsOnFire(15);
-												entityiterator.hurt(
-														new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
-														100);
-											}
-										}
+							if (!(entity == entityiterator)) {
+								entity.setDeltaMovement(new Vec3((2 * Math.cos((entity.getYRot() + 90) * (Math.PI / 180))), 0, (2 * Math.sin((entity.getYRot() + 90) * (Math.PI / 180)))));
+								{
+									Entity _ent = entity;
+									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+												_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+												"execute as @s run effect clear @s jujutsucraft:cursed_technique");
 									}
 								}
+								entityiterator.setSecondsOnFire(15);
+								entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
+										100);
 							}
 						}
 					}
@@ -89,39 +75,25 @@ public class ProcedureKusakabeProcedure {
 						final Vec3 _center = new Vec3(x, y, z);
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 						for (Entity entityiterator : _entfound) {
-							int horizontalRadiusSphere = (int) 10 - 1;
-							int verticalRadiusSphere = (int) 10 - 1;
-							int yIterationsSphere = verticalRadiusSphere;
-							for (int i = -yIterationsSphere; i <= yIterationsSphere; i++) {
-								for (int xi = -horizontalRadiusSphere; xi <= horizontalRadiusSphere; xi++) {
-									for (int zi = -horizontalRadiusSphere; zi <= horizontalRadiusSphere; zi++) {
-										double distanceSq = (xi * xi) / (double) (horizontalRadiusSphere * horizontalRadiusSphere) + (i * i) / (double) (verticalRadiusSphere * verticalRadiusSphere)
-												+ (zi * zi) / (double) (horizontalRadiusSphere * horizontalRadiusSphere);
-										if (distanceSq <= 1.0) {
-											if (!(entity == entityiterator)) {
-												{
-													Entity _ent = entity;
-													if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-																"execute as @s run effect clear @s jujutsucraft:cursed_technique");
-													}
-												}
-												{
-													Entity _ent = entity;
-													_ent.teleportTo((entity.getX() + Mth.nextInt(RandomSource.create(), -3, 2)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)), (entity.getZ() + Mth.nextInt(RandomSource.create(), -3, 2)));
-													if (_ent instanceof ServerPlayer _serverPlayer)
-														_serverPlayer.connection.teleport((entity.getX() + Mth.nextInt(RandomSource.create(), -3, 2)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)),
-																(entity.getZ() + Mth.nextInt(RandomSource.create(), -3, 2)), _ent.getYRot(), _ent.getXRot());
-												}
-												entityiterator.setSecondsOnFire(15);
-												entityiterator.hurt(
-														new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
-														100);
-											}
-										}
+							if (!(entity == entityiterator)) {
+								{
+									Entity _ent = entity;
+									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+												_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+												"execute as @s run effect clear @s jujutsucraft:cursed_technique");
 									}
 								}
+								{
+									Entity _ent = entity;
+									_ent.teleportTo((entity.getX() + Mth.nextInt(RandomSource.create(), -3, 2)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)), (entity.getZ() + Mth.nextInt(RandomSource.create(), -3, 2)));
+									if (_ent instanceof ServerPlayer _serverPlayer)
+										_serverPlayer.connection.teleport((entity.getX() + Mth.nextInt(RandomSource.create(), -3, 2)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)),
+												(entity.getZ() + Mth.nextInt(RandomSource.create(), -3, 2)), _ent.getYRot(), _ent.getXRot());
+								}
+								entityiterator.setSecondsOnFire(15);
+								entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
+										100);
 							}
 						}
 					}

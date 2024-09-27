@@ -28,6 +28,12 @@ public class CellphoneRightclickedProcedure {
         if (entity instanceof Player _player && !_player.level().isClientSide())
             _player.displayClientMessage(
                     Component.literal(("Your Cursed Technique Mastery is: " + (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber)), false);
+       	if (entity instanceof Player _player && !_player.level().isClientSide())
+            _player.displayClientMessage(
+                    Component.literal(("Your Blackflash Mastery is: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).blackflashmastery)), false);
+        if (entity instanceof Player _player && !_player.level().isClientSide())
+            _player.displayClientMessage(
+                    Component.literal(("Your Profession Mastery is: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).ProfessionEXP)), false);            
         if (entity instanceof Player _player && !_player.level().isClientSide())
             _player.displayClientMessage(
                     Component.literal(("Your Fame is: " + (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame)), false);

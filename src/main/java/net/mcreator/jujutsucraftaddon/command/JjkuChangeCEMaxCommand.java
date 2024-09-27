@@ -24,7 +24,7 @@ public class JjkuChangeCEMaxCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher()
-				.register(Commands.literal("jjkuChangeCEMax").requires(s -> s.hasPermission(4)).then(Commands.argument("CEMaxYouWant", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+				.register(Commands.literal("jjkurChangeCEMax").requires(s -> s.hasPermission(4)).then(Commands.argument("CEMaxYouWant", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

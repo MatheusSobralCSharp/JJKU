@@ -21,7 +21,7 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 public class JjkuVeilSummonCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuVeilSummon")
+		event.getDispatcher().register(Commands.literal("jjkurVeilSummon")
 
 				.then(Commands.argument("VeilSize", DoubleArgumentType.doubleArg())
 						.then(Commands.argument("VeilDurationInMinutes", DoubleArgumentType.doubleArg()).then(Commands.argument("LetPeoplePass", BoolArgumentType.bool()).executes(arguments -> {

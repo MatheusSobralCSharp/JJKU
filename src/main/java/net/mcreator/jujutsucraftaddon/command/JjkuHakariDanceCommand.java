@@ -18,7 +18,7 @@ import net.mcreator.jujutsucraftaddon.procedures.HakariDanceProcedure;
 public class JjkuHakariDanceCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuHakariDance")
+		event.getDispatcher().register(Commands.literal("jjkurHakariDance")
 
 				.executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

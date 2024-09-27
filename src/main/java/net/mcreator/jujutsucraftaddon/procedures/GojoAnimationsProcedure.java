@@ -1,7 +1,5 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.LevelAccessor;
@@ -44,15 +42,7 @@ public class GojoAnimationsProcedure {
 							}
 						}
 					} else if (entity.isShiftKeyDown()) {
-						if (new Object() {
-							double convert(String s) {
-								try {
-									return Double.parseDouble(s.trim());
-								} catch (Exception e) {
-								}
-								return 0;
-							}
-						}.convert(ReturnlevelProcedure.execute(world, entity)) >= 28000) {
+						if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel >= 3) {
 							if (world.isClientSide()) {
 								if (entity instanceof AbstractClientPlayer player) {
 									var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));

@@ -1,5 +1,7 @@
 package net.mcreator.jujutsucraftaddon.network;
 
+import org.jline.reader.History;
+
 import org.apache.http.conn.util.DomainType;
 
 import net.minecraftforge.network.PacketDistributor;
@@ -231,6 +233,31 @@ public class JujutsucraftaddonModVariables {
 			clone.SimpleDomainLevel = original.SimpleDomainLevel;
 			clone.friend_num = original.friend_num;
 			clone.blackflashmastery = original.blackflashmastery;
+			clone.Profession = original.Profession;
+			clone.ProfessionEXP = original.ProfessionEXP;
+			clone.Element = original.Element;
+			clone.Level = original.Level;
+			clone.History = original.History;
+			clone.VowPower = original.VowPower;
+			clone.Vow2 = original.Vow2;
+			clone.Vow3 = original.Vow3;
+			clone.sp = original.sp;
+			clone.QuestOutput = original.QuestOutput;
+			clone.QuestActive = original.QuestActive;
+			clone.Description = original.Description;
+			clone.Healed = original.Healed;
+			clone.SimpleQuest = original.SimpleQuest;
+			clone.CooldownExp = original.CooldownExp;
+			clone.Mastery = original.Mastery;
+			clone.RCTCount2 = original.RCTCount2;
+			clone.CEPlus = original.CEPlus;
+			clone.BarrierlessCount = original.BarrierlessCount;
+			clone.random = original.random;
+			clone.CECap = original.CECap;
+			clone.GH = original.GH;
+			clone.SH = original.SH;
+			clone.Mahoraga = original.Mahoraga;
+			clone.TrueTechnique = original.TrueTechnique;
 			if (!event.isWasDeath()) {
 				clone.InventoryArmorySlot0 = original.InventoryArmorySlot0;
 				clone.InventoryArmorySlot2 = original.InventoryArmorySlot2;
@@ -253,6 +280,7 @@ public class JujutsucraftaddonModVariables {
 				clone.TimeLeft = original.TimeLeft;
 				clone.DomainType = original.DomainType;
 				clone.DomainSizeVariable = original.DomainSizeVariable;
+				clone.Vow4 = original.Vow4;
 			}
 		}
 
@@ -319,6 +347,7 @@ public class JujutsucraftaddonModVariables {
 		public Direction BlockDirection = Direction.NORTH;
 		public double DomainExpansion = 0;
 		public double map = 0;
+		public double Setup = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -332,6 +361,7 @@ public class JujutsucraftaddonModVariables {
 			BlockDirection = Direction.from3DDataValue(nbt.getInt("BlockDirection"));
 			DomainExpansion = nbt.getDouble("DomainExpansion");
 			map = nbt.getDouble("map");
+			Setup = nbt.getDouble("Setup");
 		}
 
 		@Override
@@ -341,6 +371,7 @@ public class JujutsucraftaddonModVariables {
 			nbt.putInt("BlockDirection", BlockDirection.get3DDataValue());
 			nbt.putDouble("DomainExpansion", DomainExpansion);
 			nbt.putDouble("map", map);
+			nbt.putDouble("Setup", Setup);
 			return nbt;
 		}
 
@@ -603,6 +634,32 @@ public class JujutsucraftaddonModVariables {
 		public double SimpleDomainLevel = 1.0;
 		public double friend_num = 0;
 		public double blackflashmastery = 1.0;
+		public String Profession = "\"\"";
+		public double ProfessionEXP = 0;
+		public String Element = "\"\"";
+		public double Level = 0;
+		public double History = 0.0;
+		public double VowPower = 1.0;
+		public double Vow2 = 1.0;
+		public double Vow3 = 1.0;
+		public double Vow4 = 0.0;
+		public double sp = 0;
+		public double QuestOutput = 0;
+		public String QuestActive = "\"\"";
+		public String Description = "\"\"";
+		public double Healed = 0;
+		public double SimpleQuest = 0;
+		public double CooldownExp = 0;
+		public double Mastery = 0;
+		public double RCTCount2 = 0;
+		public double CEPlus = 0;
+		public double BarrierlessCount = 0;
+		public double random = 0;
+		public double CECap = 0;
+		public double GH = 0;
+		public double SH = 0;
+		public double Mahoraga = 0;
+		public double TrueTechnique = 0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -781,6 +838,32 @@ public class JujutsucraftaddonModVariables {
 			nbt.putDouble("SimpleDomainLevel", SimpleDomainLevel);
 			nbt.putDouble("friend_num", friend_num);
 			nbt.putDouble("blackflashmastery", blackflashmastery);
+			nbt.putString("Profession", Profession);
+			nbt.putDouble("ProfessionEXP", ProfessionEXP);
+			nbt.putString("Element", Element);
+			nbt.putDouble("Level", Level);
+			nbt.putDouble("History", History);
+			nbt.putDouble("VowPower", VowPower);
+			nbt.putDouble("Vow2", Vow2);
+			nbt.putDouble("Vow3", Vow3);
+			nbt.putDouble("Vow4", Vow4);
+			nbt.putDouble("sp", sp);
+			nbt.putDouble("QuestOutput", QuestOutput);
+			nbt.putString("QuestActive", QuestActive);
+			nbt.putString("Description", Description);
+			nbt.putDouble("Healed", Healed);
+			nbt.putDouble("SimpleQuest", SimpleQuest);
+			nbt.putDouble("CooldownExp", CooldownExp);
+			nbt.putDouble("Mastery", Mastery);
+			nbt.putDouble("RCTCount2", RCTCount2);
+			nbt.putDouble("CEPlus", CEPlus);
+			nbt.putDouble("BarrierlessCount", BarrierlessCount);
+			nbt.putDouble("random", random);
+			nbt.putDouble("CECap", CECap);
+			nbt.putDouble("GH", GH);
+			nbt.putDouble("SH", SH);
+			nbt.putDouble("Mahoraga", Mahoraga);
+			nbt.putDouble("TrueTechnique", TrueTechnique);
 			return nbt;
 		}
 
@@ -956,6 +1039,32 @@ public class JujutsucraftaddonModVariables {
 			SimpleDomainLevel = nbt.getDouble("SimpleDomainLevel");
 			friend_num = nbt.getDouble("friend_num");
 			blackflashmastery = nbt.getDouble("blackflashmastery");
+			Profession = nbt.getString("Profession");
+			ProfessionEXP = nbt.getDouble("ProfessionEXP");
+			Element = nbt.getString("Element");
+			Level = nbt.getDouble("Level");
+			History = nbt.getDouble("History");
+			VowPower = nbt.getDouble("VowPower");
+			Vow2 = nbt.getDouble("Vow2");
+			Vow3 = nbt.getDouble("Vow3");
+			Vow4 = nbt.getDouble("Vow4");
+			sp = nbt.getDouble("sp");
+			QuestOutput = nbt.getDouble("QuestOutput");
+			QuestActive = nbt.getString("QuestActive");
+			Description = nbt.getString("Description");
+			Healed = nbt.getDouble("Healed");
+			SimpleQuest = nbt.getDouble("SimpleQuest");
+			CooldownExp = nbt.getDouble("CooldownExp");
+			Mastery = nbt.getDouble("Mastery");
+			RCTCount2 = nbt.getDouble("RCTCount2");
+			CEPlus = nbt.getDouble("CEPlus");
+			BarrierlessCount = nbt.getDouble("BarrierlessCount");
+			random = nbt.getDouble("random");
+			CECap = nbt.getDouble("CECap");
+			GH = nbt.getDouble("GH");
+			SH = nbt.getDouble("SH");
+			Mahoraga = nbt.getDouble("Mahoraga");
+			TrueTechnique = nbt.getDouble("TrueTechnique");
 		}
 	}
 
@@ -1150,6 +1259,32 @@ public class JujutsucraftaddonModVariables {
 					variables.SimpleDomainLevel = message.data.SimpleDomainLevel;
 					variables.friend_num = message.data.friend_num;
 					variables.blackflashmastery = message.data.blackflashmastery;
+					variables.Profession = message.data.Profession;
+					variables.ProfessionEXP = message.data.ProfessionEXP;
+					variables.Element = message.data.Element;
+					variables.Level = message.data.Level;
+					variables.History = message.data.History;
+					variables.VowPower = message.data.VowPower;
+					variables.Vow2 = message.data.Vow2;
+					variables.Vow3 = message.data.Vow3;
+					variables.Vow4 = message.data.Vow4;
+					variables.sp = message.data.sp;
+					variables.QuestOutput = message.data.QuestOutput;
+					variables.QuestActive = message.data.QuestActive;
+					variables.Description = message.data.Description;
+					variables.Healed = message.data.Healed;
+					variables.SimpleQuest = message.data.SimpleQuest;
+					variables.CooldownExp = message.data.CooldownExp;
+					variables.Mastery = message.data.Mastery;
+					variables.RCTCount2 = message.data.RCTCount2;
+					variables.CEPlus = message.data.CEPlus;
+					variables.BarrierlessCount = message.data.BarrierlessCount;
+					variables.random = message.data.random;
+					variables.CECap = message.data.CECap;
+					variables.GH = message.data.GH;
+					variables.SH = message.data.SH;
+					variables.Mahoraga = message.data.Mahoraga;
+					variables.TrueTechnique = message.data.TrueTechnique;
 				}
 			});
 			context.setPacketHandled(true);

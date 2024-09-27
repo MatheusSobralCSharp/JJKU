@@ -20,7 +20,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 public class JjkuTeamJoinCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuTeamJoin")
+		event.getDispatcher().register(Commands.literal("jjkurTeamJoin")
 
 				.then(Commands.argument("teamName", StringArgumentType.word()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

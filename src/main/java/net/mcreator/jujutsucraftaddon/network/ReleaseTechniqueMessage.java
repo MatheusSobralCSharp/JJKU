@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.jujutsucraftaddon.procedures.ReleaseTechniqueOnKeyPressedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.OpenMenuProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.function.Supplier;
@@ -52,7 +52,7 @@ public class ReleaseTechniqueMessage {
 			return;
 		if (type == 0) {
 
-			ReleaseTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
+			OpenMenuProcedure.execute(world, x, y, z, entity);
 		}
 	}
 

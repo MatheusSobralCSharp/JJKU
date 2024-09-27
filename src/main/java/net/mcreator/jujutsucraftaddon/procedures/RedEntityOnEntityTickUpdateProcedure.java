@@ -57,7 +57,7 @@ public class RedEntityOnEntityTickUpdateProcedure {
 											_ent.level().getServer(), _ent),
 									("execute as @s at @s unless entity @e[nbt={ForgeData:{purple:2d}},distance=..300] run summon jujutsucraft:purple ~ ~ ~ {ForgeData:{BlockDamage:0.0d,BlockRange:0.0d,COOLDOWN_TICKS:10.0d,Damage:378000d,DomainAttack:0b,ExtinctionBlock:0b,attack:0b,NameRanged_ranged:0.8395166333921098d,cnt1:1.0d,cnt3:1.0d,cnt6:"
 											+ ((world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_PURPLE_RANGE)) + ""
-													+ ".0d,cnt_brokenBrain:0.0d,Name_Ranged:0.821,cnt_bullet_hit:-4.0d,cnt_life:6.0d,cnt_target:0.0d,effect:0.0d,effectConfirm:0.0d,explode:1b,ignore:0b,knockback:0.0d,noEffect:0b,noParticle:0b,projectile_type:0.0d,skill:215.0d,swing:0b},Attributes:[{Name:\"minecraft:generic.max_health\",Base:20000.0d}],ActiveEffects:[{Id:5,Amplifier:27,Duration:-1,ShowParticles:false}]}")));
+													+ ".0d,cnt_brokenBrain:0.0d,Name_Ranged:0.821,cnt_bullet_hit:-4.0d,cnt_life:6.0d,cnt_target:0.0d,effect:0.0d,effectConfirm:0.0d,explode:1b,ignore:0b,knockback:0.0d,noEffect:0b,noParticle:0b,projectile_type:0.0d,skill:215.0d,swing:0b},Attributes:[{Name:\"minecraft:generic.max_health\",Base:20000.0d}],ActiveEffects:[{Id:5,Amplifier:20,Duration:-1,ShowParticles:false}]}")));
 						}
 					}
 					if (world instanceof Level _level) {

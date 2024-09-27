@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jujutsucraft:blood_ball",
+   "jujutsucraft:blood_ball",
     "jujutsucraft:blue",
     "jujutsucraft:domain_expansion_entity",
     "jujutsucraft:entity_black_flash",
@@ -104,6 +104,19 @@
     "jujutsucraft:entity_doors",
     "jujutsucraft:slot",
     "jujutsucraft:entity_jinichi_domain_1",
-    "jujutsucraft:entity_jinichi_domain_2"
+    "jujutsucraft:entity_jinichi_domain_2",
+    "jujutsucraft:entity_hand",
+    "jujutsucraft:panda_normal",
+    "jujutsucraft:panda_gorilla",
+    "jujutsucraft:doll_1",
+    "jujutsucraft:entity_slash",
+    "jujutsucraft:entity_broom",
+    "jujutsucraft:resonance",
+    "jujutsucraft:moon_dregs",
+    "jujutsucraft:true_sphere",
+    "jujutsucraft:entity_threefold_affliction",
+    "jujutsucraft:liquid_metal",
+    "jujutsucraft:needle",
+    "jujutsucraft:kaichi"
   ]
 }

@@ -22,7 +22,7 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 public class JjkuDomainSizeSetCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuDomainSizeSet").requires(s -> s.hasPermission(4)).then(Commands.argument("DomainSize", DoubleArgumentType.doubleArg()).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurDomainSizeSet").requires(s -> s.hasPermission(4)).then(Commands.argument("DomainSize", DoubleArgumentType.doubleArg()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

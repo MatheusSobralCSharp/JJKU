@@ -116,7 +116,7 @@
     },
     "entityDataEntries": [],
     "onRightClickedOn": {
-      "name": "ShokoIeriSchoolRightClickedOnEntity"
+      "name": "QuestOutput1"
     },
     "onMobTickUpdate": {
       "name": "ShokoIeriSchoolOnEntityTickUpdate"

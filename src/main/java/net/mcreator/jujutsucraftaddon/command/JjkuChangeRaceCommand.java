@@ -23,7 +23,7 @@ import net.mcreator.jujutsucraftaddon.procedures.ChangeRaceProcedureProcedure;
 public class JjkuChangeRaceCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuChangeRace").requires(s -> s.hasPermission(4)).then(Commands.literal("CursedSpirit").then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurChangeRace").requires(s -> s.hasPermission(4)).then(Commands.literal("CursedSpirit").then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

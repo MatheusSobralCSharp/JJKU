@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.mcreator.jujutsucraftaddon.procedures.PassiveKeybindOnKeyReleasedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.KeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
@@ -52,7 +53,11 @@ public class ChangeTechniqueMessage {
 			return;
 		if (type == 0) {
 
-			KeyPressedProcedure.execute(world, x, y, z, entity);
+			KeyPressedProcedure.execute(world, entity);
+		}
+		if (type == 1) {
+
+			PassiveKeybindOnKeyReleasedProcedure.execute(world, x, y, z, entity);
 		}
 	}
 

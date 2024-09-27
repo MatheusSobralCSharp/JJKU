@@ -78,6 +78,7 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.ADJUCHA_SPAWN_EGG.get());
 				tabData.accept(JujutsucraftaddonModItems.SATUSHI_SPAWN_EGG.get());
 				tabData.accept(JujutsucraftaddonModItems.ANTI_VEIL_SPAWN_EGG.get());
+				tabData.accept(JujutsucraftaddonModItems.FAKE_CLONES_SPAWN_EGG.get());
 			})
 
 					.build());
@@ -103,6 +104,7 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.SWORD_KUSAKABE.get());
 				tabData.accept(JujutsucraftaddonModItems.BLOOD_EDGE.get());
 				tabData.accept(JujutsucraftaddonModItems.YUUN.get());
+				tabData.accept(JujutsucraftaddonModItems.WUKONG_STAFF.get());
 			})
 
 					.build());
@@ -127,6 +129,12 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.VEIL_TALISMAN.get());
 				tabData.accept(JujutsucraftaddonModItems.ITEM_DOMAIN_SIZE_SET.get());
 				tabData.accept(JujutsucraftaddonModItems.NUH_UH_1.get());
+				tabData.accept(JujutsucraftaddonModItems.PROFESSION.get());
+				tabData.accept(JujutsucraftaddonModItems.ELEMENT_REST.get());
+				tabData.accept(JujutsucraftaddonModItems.MEDICINE.get());
+				tabData.accept(JujutsucraftaddonModItems.YOKU_BUCKET.get());
+				tabData.accept(JujutsucraftaddonModItems.KYOKA.get());
+				tabData.accept(JujutsucraftaddonModBlocks.SNOW_DOMAIN.get().asItem());
 			})
 
 					.build());

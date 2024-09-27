@@ -19,7 +19,7 @@ import net.mcreator.jujutsucraftaddon.procedures.IniviteTeamProcedure;
 public class JjkuInviteTeamCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuInviteTeam")
+		event.getDispatcher().register(Commands.literal("jjkurInviteTeam")
 
 				.then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

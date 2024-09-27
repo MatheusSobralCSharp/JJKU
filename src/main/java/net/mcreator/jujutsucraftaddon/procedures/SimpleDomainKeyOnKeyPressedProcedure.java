@@ -24,7 +24,7 @@ public class SimpleDomainKeyOnKeyPressedProcedure {
 					});
 				}
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal(("Simple Domain Mastery: " + "On")), false);
+					_player.displayClientMessage(Component.literal((Component.translatable("dialoguesimple").getString() + ": On")), false);
 				if (entity instanceof Player _player)
 					_player.closeContainer();
 			} else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleDomain == true) {
@@ -36,7 +36,7 @@ public class SimpleDomainKeyOnKeyPressedProcedure {
 					});
 				}
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal(("Simple Domain Mastery: " + "Off")), false);
+					_player.displayClientMessage(Component.literal((Component.translatable("dialoguesimple").getString() + ": Off")), false);
 				if (entity instanceof Player _player)
 					_player.closeContainer();
 			}

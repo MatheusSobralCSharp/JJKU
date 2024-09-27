@@ -119,7 +119,7 @@ public class GojoSchoolEntity extends Monster {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		GojoSchoolEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+		GojoSchoolEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

@@ -1,11 +1,10 @@
 {
-	"attributes":
-	{
-		"common":
-		{
-			"impact":1.2,
-			"max_strikes":2
-		}
-	},
-	"type":"wom:satsujin"
-}
+    "type": "jujutsucraft:katana_sheathed",
+    "attributes": {
+        "common": {
+            "armor_negation": 0.0,
+                "impact": 1.5,
+            "max_strikes": 2
+        }
+    }
+ }

@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 
-import net.mcreator.jujutsucraftaddon.procedures.ExtensionDomainKeyOnPressedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.HabilityWheelKeyOnKeyPressed1Procedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.function.Supplier;
@@ -52,7 +52,7 @@ public class ExtensionKeybindMessage {
 			return;
 		if (type == 0) {
 
-			ExtensionDomainKeyOnPressedProcedure.execute(world, entity);
+			HabilityWheelKeyOnKeyPressed1Procedure.execute(world, entity);
 		}
 	}
 

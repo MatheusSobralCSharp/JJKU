@@ -3,10 +3,13 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "NONE",
-    "keyBindingName": "Change Technique",
+    "keyBindingName": "Swap Mode",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
       "name": "KeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "PassiveKeybindOnKeyReleased"
     }
   }
 }

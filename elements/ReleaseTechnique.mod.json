@@ -3,10 +3,10 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "NONE",
-    "keyBindingName": "Release Technique",
+    "keyBindingName": "Jujutsu Menu",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
-      "name": "ReleaseTechniqueOnKeyPressed"
+      "name": "OpenMenu"
     }
   }
 }

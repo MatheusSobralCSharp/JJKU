@@ -6,7 +6,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.TestrMenu;
@@ -22,11 +22,11 @@ public class TestrScreen extends AbstractContainerScreen<TestrMenu> {
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	ImageButton imagebutton_nomiddle;
-	ImageButton imagebutton_noleft;
-	ImageButton imagebutton_noleftdown;
-	ImageButton imagebutton_noright;
-	ImageButton imagebutton_norightdown;
+	private final static HashMap<String, String> textstate = new HashMap<>();
+	Button button_select;
+	Button button_select1;
+	Button button_select2;
+	Button button_select3;
 
 	public TestrScreen(TestrMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -35,8 +35,8 @@ public class TestrScreen extends AbstractContainerScreen<TestrMenu> {
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
-		this.imageWidth = 200;
-		this.imageHeight = 200;
+		this.imageWidth = 450;
+		this.imageHeight = 400;
 	}
 
 	@Override
@@ -51,6 +51,15 @@ public class TestrScreen extends AbstractContainerScreen<TestrMenu> {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
+
+		guiGraphics.blit(new ResourceLocation("jujutsucraftaddon:textures/screens/health.png"), this.leftPos + 26, this.topPos + 106, 0, 0, 60, 90, 60, 90);
+
+		guiGraphics.blit(new ResourceLocation("jujutsucraftaddon:textures/screens/technique.png"), this.leftPos + 96, this.topPos + 194, 0, 0, 60, 90, 60, 90);
+
+		guiGraphics.blit(new ResourceLocation("jujutsucraftaddon:textures/screens/strength2.png"), this.leftPos + 194, this.topPos + 84, 0, 0, 60, 90, 60, 90);
+
+		guiGraphics.blit(new ResourceLocation("jujutsucraftaddon:textures/screens/meditation2.png"), this.leftPos + 343, this.topPos + 198, 0, 0, 60, 90, 60, 90);
+
 		RenderSystem.disableBlend();
 	}
 
@@ -64,56 +73,60 @@ public class TestrScreen extends AbstractContainerScreen<TestrMenu> {
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_gives_more_power_but_your_attac"), 253, 86, -12779521, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_but_your_attacks_are_weaker_af"), 266, 111, -3997697, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_scales_per_binding_vow"), 263, 125, -458752, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_consequences"), 285, 98, -655360, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_gives_more_health_and_defense"), 14, 91, -12779521, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_consequences1"), 102, 112, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_your_attacks_can_hurt_yourself"), 96, 128, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_gives_temp_output"), 181, 199, -16711681, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_gives_10000_cursed_levels"), 307, 142, -16711681, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_you_cant_reach_120_anymore"), 164, 214, -16777216, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_your_progression_get_slower"), 297, 154, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_scales_per_binding_vow1"), 306, 181, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_you_get_debuffed_per_each_respaw"), 158, 229, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_weakness_respawn"), 93, 141, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_each_hit_has_a_chance_of_do_2x_d"), 159, 246, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_dying_clear_your_inv"), 315, 167, -65536, false);
+		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.testr.label_scales_per_binding_vow2"), 181, 265, -65536, false);
 	}
 
 	@Override
 	public void init() {
 		super.init();
-		imagebutton_nomiddle = new ImageButton(this.leftPos + 68, this.topPos + 7, 58, 132, 0, 0, 132, new ResourceLocation("jujutsucraftaddon:textures/screens/atlas/imagebutton_nomiddle.png"), 58, 264, e -> {
+		button_select = Button.builder(Component.translatable("gui.jujutsucraftaddon.testr.button_select"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(0, x, y, z));
-				TestrButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(0, x, y, z, textstate));
+				TestrButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
-		});
-		guistate.put("button:imagebutton_nomiddle", imagebutton_nomiddle);
-		this.addRenderableWidget(imagebutton_nomiddle);
-		imagebutton_noleft = new ImageButton(this.leftPos + 10, this.topPos + 74, 81, 43, 0, 0, 43, new ResourceLocation("jujutsucraftaddon:textures/screens/atlas/imagebutton_noleft.png"), 81, 86, e -> {
+		}).bounds(this.leftPos + 26, this.topPos + 198, 56, 20).build();
+		guistate.put("button:button_select", button_select);
+		this.addRenderableWidget(button_select);
+		button_select1 = Button.builder(Component.translatable("gui.jujutsucraftaddon.testr.button_select1"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(1, x, y, z));
-				TestrButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(1, x, y, z, textstate));
+				TestrButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
-		});
-		guistate.put("button:imagebutton_noleft", imagebutton_noleft);
-		this.addRenderableWidget(imagebutton_noleft);
-		imagebutton_noleftdown = new ImageButton(this.leftPos + 44, this.topPos + 108, 58, 73, 0, 0, 73, new ResourceLocation("jujutsucraftaddon:textures/screens/atlas/imagebutton_noleftdown.png"), 58, 146, e -> {
+		}).bounds(this.leftPos + 96, this.topPos + 287, 56, 20).build();
+		guistate.put("button:button_select1", button_select1);
+		this.addRenderableWidget(button_select1);
+		button_select2 = Button.builder(Component.translatable("gui.jujutsucraftaddon.testr.button_select2"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(2, x, y, z));
-				TestrButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(2, x, y, z, textstate));
+				TestrButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
 			}
-		});
-		guistate.put("button:imagebutton_noleftdown", imagebutton_noleftdown);
-		this.addRenderableWidget(imagebutton_noleftdown);
-		imagebutton_noright = new ImageButton(this.leftPos + 104, this.topPos + 74, 81, 43, 0, 0, 43, new ResourceLocation("jujutsucraftaddon:textures/screens/atlas/imagebutton_noright.png"), 81, 86, e -> {
+		}).bounds(this.leftPos + 194, this.topPos + 174, 56, 20).build();
+		guistate.put("button:button_select2", button_select2);
+		this.addRenderableWidget(button_select2);
+		button_select3 = Button.builder(Component.translatable("gui.jujutsucraftaddon.testr.button_select3"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(3, x, y, z));
-				TestrButtonMessage.handleButtonAction(entity, 3, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(3, x, y, z, textstate));
+				TestrButtonMessage.handleButtonAction(entity, 3, x, y, z, textstate);
 			}
-		});
-		guistate.put("button:imagebutton_noright", imagebutton_noright);
-		this.addRenderableWidget(imagebutton_noright);
-		imagebutton_norightdown = new ImageButton(this.leftPos + 95, this.topPos + 112, 58, 69, 0, 0, 69, new ResourceLocation("jujutsucraftaddon:textures/screens/atlas/imagebutton_norightdown.png"), 58, 138, e -> {
-			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new TestrButtonMessage(4, x, y, z));
-				TestrButtonMessage.handleButtonAction(entity, 4, x, y, z);
-			}
-		});
-		guistate.put("button:imagebutton_norightdown", imagebutton_norightdown);
-		this.addRenderableWidget(imagebutton_norightdown);
+		}).bounds(this.leftPos + 343, this.topPos + 290, 56, 20).build();
+		guistate.put("button:button_select3", button_select3);
+		this.addRenderableWidget(button_select3);
 	}
 }

@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphics;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.StorageArmoryMenu;
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.HashMap;
 
@@ -19,6 +20,7 @@ public class StorageArmoryScreen extends AbstractContainerScreen<StorageArmoryMe
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 
 	public StorageArmoryScreen(StorageArmoryMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -49,6 +51,10 @@ public class StorageArmoryScreen extends AbstractContainerScreen<StorageArmoryMe
 		RenderSystem.disableBlend();
 	}
 
+	public static HashMap<String, String> getTextboxValues() {
+		return textstate;
+	}
+
 	@Override
 	public boolean keyPressed(int key, int b, int c) {
 		if (key == 256) {
@@ -61,6 +67,8 @@ public class StorageArmoryScreen extends AbstractContainerScreen<StorageArmoryMe
 	@Override
 	public void containerTick() {
 		super.containerTick();
+		JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new StorageArmoryMenu.StorageArmoryOtherMessage(0, x, y, z, textstate));
+		StorageArmoryMenu.StorageArmoryOtherMessage.handleOtherAction(entity, 0, x, y, z, textstate);
 	}
 
 	@Override

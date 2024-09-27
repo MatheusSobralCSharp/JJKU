@@ -41,7 +41,7 @@ public class CleaveWebEntity extends PathfinderMob {
 		super(type, world);
 		setMaxUpStep(0.6f);
 		xpReward = 0;
-		setNoAi(false);
+		setNoAi(true);
 		setPersistenceRequired();
 		refreshDimensions();
 	}
@@ -49,12 +49,6 @@ public class CleaveWebEntity extends PathfinderMob {
 	@Override
 	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
-	}
-
-	@Override
-	protected void registerGoals() {
-		super.registerGoals();
-
 	}
 
 	@Override

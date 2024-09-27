@@ -16,7 +16,9 @@ import net.minecraft.world.item.ArmorItem;
 
 import net.mcreator.jujutsucraftaddon.item.YuunItem;
 import net.mcreator.jujutsucraftaddon.item.YutaRingItem;
+import net.mcreator.jujutsucraftaddon.item.YokuItem;
 import net.mcreator.jujutsucraftaddon.item.YesIAmItem;
+import net.mcreator.jujutsucraftaddon.item.WukongStaffItem;
 import net.mcreator.jujutsucraftaddon.item.WhiteCapeItem;
 import net.mcreator.jujutsucraftaddon.item.WheelItem;
 import net.mcreator.jujutsucraftaddon.item.WarstaffItem;
@@ -63,12 +65,15 @@ import net.mcreator.jujutsucraftaddon.item.RandomCTChangerItem;
 import net.mcreator.jujutsucraftaddon.item.RaceChangerItem;
 import net.mcreator.jujutsucraftaddon.item.RCTItem;
 import net.mcreator.jujutsucraftaddon.item.PurpleCapeItem;
+import net.mcreator.jujutsucraftaddon.item.ProfessionItem;
 import net.mcreator.jujutsucraftaddon.item.NuhUhItem;
 import net.mcreator.jujutsucraftaddon.item.NuhUh1Item;
 import net.mcreator.jujutsucraftaddon.item.MugiwaraItem;
 import net.mcreator.jujutsucraftaddon.item.ModernEraSorcererItem;
 import net.mcreator.jujutsucraftaddon.item.MobTamerItem;
+import net.mcreator.jujutsucraftaddon.item.MedicineItem;
 import net.mcreator.jujutsucraftaddon.item.MasterySimpleDomainItemItem;
+import net.mcreator.jujutsucraftaddon.item.KyokaItem;
 import net.mcreator.jujutsucraftaddon.item.KokusenScrollItem;
 import net.mcreator.jujutsucraftaddon.item.KokusenItem;
 import net.mcreator.jujutsucraftaddon.item.KoganePointsItem;
@@ -104,6 +109,7 @@ import net.mcreator.jujutsucraftaddon.item.ExtensionTechniqueSymbolItem;
 import net.mcreator.jujutsucraftaddon.item.EvidenceItem;
 import net.mcreator.jujutsucraftaddon.item.ErItem;
 import net.mcreator.jujutsucraftaddon.item.EnchaindeItem;
+import net.mcreator.jujutsucraftaddon.item.ElementRestItem;
 import net.mcreator.jujutsucraftaddon.item.DisplaySkillItem;
 import net.mcreator.jujutsucraftaddon.item.DisplayDomainItem;
 import net.mcreator.jujutsucraftaddon.item.DisplayCTNumberItem;
@@ -112,6 +118,7 @@ import net.mcreator.jujutsucraftaddon.item.DecisiveBlackItem;
 import net.mcreator.jujutsucraftaddon.item.CursedWombItem;
 import net.mcreator.jujutsucraftaddon.item.CursedPowerLevelScrollItem;
 import net.mcreator.jujutsucraftaddon.item.CursedFistItem;
+import net.mcreator.jujutsucraftaddon.item.ClonerItem;
 import net.mcreator.jujutsucraftaddon.item.CleaveWebbItem;
 import net.mcreator.jujutsucraftaddon.item.ClanChangerItem;
 import net.mcreator.jujutsucraftaddon.item.ChantsItem;
@@ -274,6 +281,16 @@ public class JujutsucraftaddonModItems {
 	public static final RegistryObject<Item> YES_I_AM = REGISTRY.register("yes_i_am", () -> new YesIAmItem());
 	public static final RegistryObject<Item> NUH_UH_1 = REGISTRY.register("nuh_uh_1", () -> new NuhUh1Item());
 	public static final RegistryObject<Item> YE_SPAWN_EGG = REGISTRY.register("ye_spawn_egg", () -> new ForgeSpawnEggItem(JujutsucraftaddonModEntities.YE, -1, -1, new Item.Properties()));
+	public static final RegistryObject<Item> PROFESSION = REGISTRY.register("profession", () -> new ProfessionItem());
+	public static final RegistryObject<Item> ELEMENT_REST = REGISTRY.register("element_rest", () -> new ElementRestItem());
+	public static final RegistryObject<Item> MEDICINE = REGISTRY.register("medicine", () -> new MedicineItem());
+	public static final RegistryObject<Item> WUKONG_STAFF = REGISTRY.register("wukong_staff", () -> new WukongStaffItem());
+	public static final RegistryObject<Item> CLONER = REGISTRY.register("cloner", () -> new ClonerItem());
+	public static final RegistryObject<Item> YOKU_BUCKET = REGISTRY.register("yoku_bucket", () -> new YokuItem());
+	public static final RegistryObject<Item> FAKE_CLONES_SPAWN_EGG = REGISTRY.register("fake_clones_spawn_egg", () -> new ForgeSpawnEggItem(JujutsucraftaddonModEntities.FAKE_CLONES, -1, -1, new Item.Properties()));
+	public static final RegistryObject<Item> CLONE_SPAWN_EGG = REGISTRY.register("clone_spawn_egg", () -> new ForgeSpawnEggItem(JujutsucraftaddonModEntities.CLONE, -1, -1, new Item.Properties()));
+	public static final RegistryObject<Item> KYOKA = REGISTRY.register("kyoka", () -> new KyokaItem());
+	public static final RegistryObject<Item> SNOW_DOMAIN = block(JujutsucraftaddonModBlocks.SNOW_DOMAIN);
 
 	// Start of user code block custom items
 	// End of user code block custom items

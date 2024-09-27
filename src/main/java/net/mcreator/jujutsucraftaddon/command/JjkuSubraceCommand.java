@@ -24,7 +24,7 @@ import net.mcreator.jujutsucraftaddon.procedures.SetRace2Procedure;
 public class JjkuSubraceCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuSubRace").requires(s -> s.hasPermission(4)).then(Commands.literal("Tengen").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurSubRace").requires(s -> s.hasPermission(4)).then(Commands.literal("Tengen").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

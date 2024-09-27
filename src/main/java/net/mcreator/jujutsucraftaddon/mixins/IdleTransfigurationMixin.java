@@ -1,7 +1,9 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
 
+import net.mcreator.jujutsucraft.procedures.CursedTechniqueItadoriProcedure;
 import net.mcreator.jujutsucraft.procedures.IdleTransfigurationProcedure;
+import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraft.procedures.RangeAttackProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -29,7 +31,7 @@ public abstract class IdleTransfigurationMixin {
      * @reason Yes
      */
     @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+    public static void execute(LevelAccessor world, Entity entity) {
         if (entity != null) {
             boolean worldCutter = false;
             double x_pos = 0.0;
@@ -62,8 +64,8 @@ public abstract class IdleTransfigurationMixin {
             if (var10000 instanceof LivingEntity) {
                 EntityAnchorArgument.Anchor var10001 = Anchor.EYES;
                 Vec3 var10002;
-                LivingEntity var10004;
                 Mob _mobEnt;
+                LivingEntity var10004;
                 if (entity instanceof Mob) {
                     _mobEnt = (Mob)entity;
                     var10004 = _mobEnt.getTarget();
@@ -71,7 +73,7 @@ public abstract class IdleTransfigurationMixin {
                     var10004 = null;
                 }
 
-                double var28 = var10004.getX();
+                double var22 = var10004.getX();
                 LivingEntity var10005;
                 if (entity instanceof Mob) {
                     _mobEnt = (Mob) entity;
@@ -80,7 +82,7 @@ public abstract class IdleTransfigurationMixin {
                     var10005 = null;
                 }
 
-                double var29 = var10005.getY();
+                double var23 = var10005.getY();
                 LivingEntity var10006;
                 if (entity instanceof Mob) {
                     _mobEnt = (Mob)entity;
@@ -89,7 +91,7 @@ public abstract class IdleTransfigurationMixin {
                     var10006 = null;
                 }
 
-                var29 += (double)var10006.getBbHeight() * 0.5;
+                var23 += (double)var10006.getBbHeight() * 0.5;
                 if (entity instanceof Mob) {
                     _mobEnt = (Mob)entity;
                     var10006 = _mobEnt.getTarget();
@@ -97,7 +99,7 @@ public abstract class IdleTransfigurationMixin {
                     var10006 = null;
                 }
 
-                var10002 = new Vec3(var28, var29, var10006.getZ());
+                var10002 = new Vec3(var22, var23, var10006.getZ());
                 entity.lookAt(var10001, var10002);
             }
 

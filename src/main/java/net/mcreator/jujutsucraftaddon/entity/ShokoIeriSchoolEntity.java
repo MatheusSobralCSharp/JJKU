@@ -35,8 +35,8 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
 
 import net.mcreator.jujutsucraftaddon.procedures.SorcererSpawnedProcedure;
-import net.mcreator.jujutsucraftaddon.procedures.ShokoIeriSchoolRightClickedOnEntityProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ShokoIeriSchoolOnEntityTickUpdateProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.QuestOutput1Procedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
 
 import javax.annotation.Nullable;
@@ -117,7 +117,7 @@ public class ShokoIeriSchoolEntity extends Monster {
 		Entity entity = this;
 		Level world = this.level();
 
-		ShokoIeriSchoolRightClickedOnEntityProcedure.execute(world, x, y, z, sourceentity);
+		QuestOutput1Procedure.execute(world, x, y, z, sourceentity);
 		return retval;
 	}
 

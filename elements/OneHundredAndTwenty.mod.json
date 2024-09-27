@@ -15,6 +15,9 @@
     "renderStatusInHUD": true,
     "onStarted": {
       "name": "OneHundredAndTwentyEffectStartedapplied"
+    },
+    "onExpired": {
+      "name": "OneHundredAndTwentyEffectExpires"
     }
   }
 }

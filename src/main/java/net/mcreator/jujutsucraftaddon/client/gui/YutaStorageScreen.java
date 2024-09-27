@@ -22,6 +22,7 @@ public class YutaStorageScreen extends AbstractContainerScreen<YutaStorageMenu> 
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_clear_copied_slots;
 
 	public YutaStorageScreen(YutaStorageMenu container, Inventory inventory, Component text) {
@@ -53,6 +54,10 @@ public class YutaStorageScreen extends AbstractContainerScreen<YutaStorageMenu> 
 		RenderSystem.disableBlend();
 	}
 
+	public static HashMap<String, String> getTextboxValues() {
+		return textstate;
+	}
+
 	@Override
 	public boolean keyPressed(int key, int b, int c) {
 		if (key == 256) {
@@ -65,6 +70,8 @@ public class YutaStorageScreen extends AbstractContainerScreen<YutaStorageMenu> 
 	@Override
 	public void containerTick() {
 		super.containerTick();
+		JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new YutaStorageMenu.YutaStorageOtherMessage(0, x, y, z, textstate));
+		YutaStorageMenu.YutaStorageOtherMessage.handleOtherAction(entity, 0, x, y, z, textstate);
 	}
 
 	@Override
@@ -76,8 +83,8 @@ public class YutaStorageScreen extends AbstractContainerScreen<YutaStorageMenu> 
 		super.init();
 		button_clear_copied_slots = Button.builder(Component.translatable("gui.jujutsucraftaddon.yuta_storage.button_clear_copied_slots"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new YutaStorageButtonMessage(0, x, y, z));
-				YutaStorageButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new YutaStorageButtonMessage(0, x, y, z, textstate));
+				YutaStorageButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 39, this.topPos + 202, 119, 20).build();
 		guistate.put("button:button_clear_copied_slots", button_clear_copied_slots);

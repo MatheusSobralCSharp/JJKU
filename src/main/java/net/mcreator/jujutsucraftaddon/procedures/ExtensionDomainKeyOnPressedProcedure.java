@@ -32,7 +32,7 @@ public class ExtensionDomainKeyOnPressedProcedure {
 						});
 					}
 					if (entity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal(("Extension Technique: " + "On")), false);
+						_player.displayClientMessage(Component.literal((Component.translatable("dialogueextension").getString() + ": On")), false);
 					if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 10) {
 						if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(JujutsucraftaddonModItems.BLOOD_EDGE.get())) : false)) {
 							if (entity instanceof Player _player) {
@@ -53,7 +53,7 @@ public class ExtensionDomainKeyOnPressedProcedure {
 						});
 					}
 					if (entity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal(("Extension Technique: " + "Off")), false);
+						_player.displayClientMessage(Component.literal((Component.translatable("dialogueextension").getString() + ": Off")), false);
 					if (entity instanceof Player _player)
 						_player.closeContainer();
 				}

@@ -18,7 +18,7 @@ import net.mcreator.jujutsucraftaddon.procedures.LeaveTeamProcedure;
 public class JjkuLeaveTeamCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuLeaveTeam")
+		event.getDispatcher().register(Commands.literal("jjkurLeaveTeam")
 
 				.executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

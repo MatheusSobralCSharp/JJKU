@@ -4,13 +4,13 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="jujutsucraftaddon"
-version="7.7"
-displayName="JJKU"
+version="1.91"
+displayName="JJKUR"
 displayURL="https://mcreator.net"
 logoFile="logo.png"
 credits="Made With Mcreator ( By Satushi )"
 authors="Satushi"
-description="A New JujutsuCraft ( Orca ) Experience ADD-ON"
+description="Reworked Addon, Jujutsu Kaisen: Majutsu-shi no yō ni"
 
 # Start of user code block mod configuration
 # End of user code block mod configuration

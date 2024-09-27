@@ -1,0 +1,103 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 500,
+    "height": 500,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "fistlevel1.png",
+          "use1Xscale": true,
+          "x": 42,
+          "y": 89
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "fistlevel2.png",
+          "use1Xscale": true,
+          "x": 177,
+          "y": 88
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "120.2.png",
+          "use1Xscale": true,
+          "x": 309,
+          "y": 87
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_unlock_level_1",
+          "text": "Unlock Level 1",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Level1Quest"
+          },
+          "displayCondition": {
+            "name": "Level1Quest1"
+          },
+          "width": 98,
+          "height": 20,
+          "x": 22,
+          "y": 159
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_unlock_level_2",
+          "text": "Unlock Level 2",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Level2Quest"
+          },
+          "displayCondition": {
+            "name": "Level2Req"
+          },
+          "width": 98,
+          "height": 20,
+          "x": 156,
+          "y": 159
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_unlock_level_3",
+          "text": "Unlock Level 3",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Level3Quest"
+          },
+          "displayCondition": {
+            "name": "Level3Req"
+          },
+          "width": 98,
+          "height": 20,
+          "x": 289,
+          "y": 159
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

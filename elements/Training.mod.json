@@ -1,0 +1,26 @@
+{
+  "_fv": 60,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Training",
+    "icon": "communityicon_gjmpgn4931761.png",
+    "color": {
+      "value": -13172737,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "isBad": false,
+    "isBenefitical": true,
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true,
+    "onStarted": {
+      "name": "TrainingEffectStartedapplied"
+    },
+    "onActiveTick": {
+      "name": "TrainingOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "TrainingEffectExpires"
+    }
+  }
+}

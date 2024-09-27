@@ -27,7 +27,7 @@ public class BarrierlessKeyOnKeyPressedProcedure {
 						});
 					}
 					if (entity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal(("Barrierless Domain: " + "On")), false);
+						_player.displayClientMessage(Component.literal((Component.translatable("dialoguebarrierless").getString() + ": On")), false);
 					if (entity instanceof Player _player)
 						_player.closeContainer();
 				} else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true) {
@@ -39,7 +39,7 @@ public class BarrierlessKeyOnKeyPressedProcedure {
 						});
 					}
 					if (entity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal(("Barrierless Domain: " + "Off")), false);
+						_player.displayClientMessage(Component.literal((Component.translatable("dialoguebarrierless").getString() + ": Off")), false);
 					if (entity instanceof Player _player)
 						_player.closeContainer();
 				}

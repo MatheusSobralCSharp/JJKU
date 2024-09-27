@@ -7,9 +7,6 @@
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
       "name": "PassiveKeybindOnKeyPressed"
-    },
-    "onKeyReleased": {
-      "name": "PassiveKeybindOnKeyReleased1"
     }
   }
 }

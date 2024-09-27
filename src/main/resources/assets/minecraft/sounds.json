@@ -17,6 +17,14 @@
       { 
         "name": "music/menu/piseiro",
         "weight": 5
+      },
+      { 
+        "name": "music/menu/bakadarou",
+        "weight": 5
+      },
+      { 
+        "name": "music/menu/bakamitai",
+        "weight": 5
       }
     ], "replace": "true"
   }

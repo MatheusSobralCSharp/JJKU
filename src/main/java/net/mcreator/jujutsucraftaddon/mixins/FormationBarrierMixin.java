@@ -82,9 +82,6 @@ public abstract class FormationBarrierMixin {
             Mob _mobEnt;
             LivingEntity var69;
 
-            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain) {
-                BarrierlessAndCompressedProcedure.execute(world, entity);
-            }
 
             if (entity.getPersistentData().getDouble("cnt3") < 20.0) {
                 entity.getPersistentData().putDouble("select", 0.0);
@@ -158,7 +155,16 @@ public abstract class FormationBarrierMixin {
                     }
                 }
             } else {
-                domainRadius = MapVariables.get(world).DomainExpansionRadius;
+                if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true){
+                    BarrierlessAndCompressedProcedure.execute(world, entity);
+                    domainRadius = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain;
+                } else {
+                    if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).startsWith("jujutsucraft")){
+                        domainRadius = 22.0;
+                    } else {
+                        domainRadius = 22.0;
+                    }
+                }
                 entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
                 entity.setDeltaMovement(new Vec3(0.0, Math.min(entity.getDeltaMovement().y(), 0.0), 0.0));
                 if (entity instanceof LivingEntity) {

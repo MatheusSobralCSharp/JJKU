@@ -49,7 +49,7 @@ public class TodoHitProcedure2Procedure {
 					}.getValue()));
 					(entitytospawn).load(dataIndex3);
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MANIFESTATION.get(), 100, 1));
+						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MANIFESTATION.get(), 200, 1));
 					{
 						Entity _ent = entity;
 						_ent.teleportTo((sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()));
@@ -88,7 +88,7 @@ public class TodoHitProcedure2Procedure {
 					}.getValue()));
 					(entitytospawn).load(dataIndex3);
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MANIFESTATION.get(), 60, 1));
+						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MANIFESTATION.get(), 200, 1));
 					{
 						Entity _ent = entity;
 						_ent.teleportTo((sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()));

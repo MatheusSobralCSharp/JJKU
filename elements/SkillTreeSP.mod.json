@@ -1,0 +1,328 @@
+{
+  "_fv": 60,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 500,
+    "height": 500,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": false,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty",
+          "text": "+",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Health"
+          },
+          "width": 30,
+          "height": 20,
+          "x": 33,
+          "y": 108
+        }
+      },
+      {
+        "type": "entitymodel",
+        "data": {
+          "entityModel": {
+            "name": "ReturnEntity"
+          },
+          "scale": 60,
+          "rotationX": 0,
+          "followMouseMovement": true,
+          "x": 204,
+          "y": 164
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty1",
+          "text": "+",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CE"
+          },
+          "width": 30,
+          "height": 20,
+          "x": 33,
+          "y": 143
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_empty2",
+          "text": "+",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Speed"
+          },
+          "width": 30,
+          "height": 20,
+          "x": 33,
+          "y": 179
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "healer.png",
+          "use1Xscale": true,
+          "x": 89,
+          "y": 74
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "teste3.png",
+          "use1Xscale": true,
+          "x": 65,
+          "y": 94
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "ce.png",
+          "use1Xscale": true,
+          "x": 65,
+          "y": 130
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_changes_your_health_attribute",
+          "text": {
+            "fixedValue": "Changes Your Health Attribute"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 91,
+          "y": 105
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_changes_your_ce_cursed_energ",
+          "text": {
+            "fixedValue": "Changes Your ( CE ) Cursed Energy Amount by 100"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 91,
+          "y": 141
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "speed.png",
+          "use1Xscale": true,
+          "x": 65,
+          "y": 165
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_doubles_your_base_speed",
+          "text": {
+            "fixedValue": "Doubles Your Base Speed"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 90,
+          "y": 176
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_fight_your_spirit",
+          "text": "Train Your Spirit",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "StartTrain"
+          },
+          "width": 113,
+          "height": 20,
+          "x": 286,
+          "y": 147
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "sukunaspirit.png",
+          "use1Xscale": true,
+          "x": 312,
+          "y": 87
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_meditate_agressive_with_your_spi",
+          "text": {
+            "fixedValue": "Meditate Agressive With Your Spirit ( Damage Him For More Skill Points )"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 331,
+          "y": 122
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_skill_points",
+          "text": {
+            "fixedValue": "Skill Points: ",
+            "name": "ReturnSkillPoints"
+          },
+          "color": {
+            "value": -16711690,
+            "falpha": 0.0
+          },
+          "x": 273,
+          "y": 220
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_return_burnout_exp",
+          "text": {
+            "fixedValue": "",
+            "name": "ReturnBurnoutExp"
+          },
+          "color": {
+            "value": -4325121,
+            "falpha": 0.0
+          },
+          "x": 6,
+          "y": 27
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_rct_mastery_quest",
+          "text": "RCT Mastery Quest",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "SpawnYujiAndYuta"
+          },
+          "displayCondition": {
+            "name": "ReturnSecret"
+          },
+          "width": 113,
+          "height": 20,
+          "x": 286,
+          "y": 45
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_return_amount",
+          "text": {
+            "fixedValue": "",
+            "name": "ReturnAmount"
+          },
+          "color": {
+            "value": -65536,
+            "falpha": 0.0
+          },
+          "displayCondition": {
+            "name": "ReturnSecret2"
+          },
+          "x": 255,
+          "y": 199
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_unlock_extension_technique",
+          "text": "Unlock Extension Technique",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "UnlockExtension"
+          },
+          "width": 161,
+          "height": 20,
+          "x": 263,
+          "y": 172
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_return_barrierless_exp",
+          "text": {
+            "fixedValue": "",
+            "name": "ReturnBarrierlessExp"
+          },
+          "color": {
+            "value": -12139777,
+            "falpha": 0.0
+          },
+          "x": 5,
+          "y": 50
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_return_simple",
+          "text": {
+            "fixedValue": "",
+            "name": "ReturnSimple"
+          },
+          "color": {
+            "value": -3342337,
+            "falpha": 0.0
+          },
+          "x": 7,
+          "y": 8
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "100%",
+          "name": "speedslider",
+          "width": 120,
+          "height": 20,
+          "x": 32,
+          "y": 212
+        }
+      },
+      {
+        "type": "checkbox",
+        "data": {
+          "name": "checkspeed",
+          "text": "Speed Slider",
+          "x": 8,
+          "y": 212
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

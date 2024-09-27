@@ -2,7 +2,7 @@
   "_fv": 60,
   "_type": "command",
   "definition": {
-    "commandName": "jjkuCreateTeam",
+    "commandName": "jjkurCreateTeam",
     "type": "STANDARD",
     "permissionLevel": "No requirement",
     "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"string\"><field name=\"type\">word</field><field name=\"name\">teamName</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">Createteam</field><next><block type=\"call_procedure\"><field name=\"procedure\">JjkuCreate</field></block></next></block></statement></block></next></block></xml>"

@@ -18,7 +18,7 @@ import net.mcreator.jujutsucraftaddon.procedures.KoganeItemProcedure;
 public class JjkuKoganeCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkuKogane")
+		event.getDispatcher().register(Commands.literal("jjkurKogane")
 
 				.executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

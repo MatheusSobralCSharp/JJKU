@@ -24,7 +24,7 @@ public class JjkuChangeCEFormerCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(
-				Commands.literal("jjkuChangeCEformer").requires(s -> s.hasPermission(4)).then(Commands.argument("CEFormerValue", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+				Commands.literal("jjkurChangeCEformer").requires(s -> s.hasPermission(4)).then(Commands.argument("CEFormerValue", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

@@ -1,7 +1,5 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,15 +26,7 @@ public class WorldSlashKeyOnKeyPressedProcedure {
 					if (!(entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(JujutsucraftaddonModMobEffects.MANIFESTATION.get()))) {
 						if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 1
 								|| (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
-							if (new Object() {
-								double convert(String s) {
-									try {
-										return Double.parseDouble(s.trim());
-									} catch (Exception e) {
-									}
-									return 0;
-								}
-							}.convert(ReturnlevelProcedure.execute(world, entity)) >= 100000) {
+							if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel >= 5) {
 								if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).WorldSlash == false) {
 									{
 										boolean _setval = true;
@@ -48,7 +38,7 @@ public class WorldSlashKeyOnKeyPressedProcedure {
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.WORLD_SLASH_EFFECT.get(), 1200, 1, false, false));
 									if (entity instanceof Player _player && !_player.level().isClientSide())
-										_player.displayClientMessage(Component.literal(("Sekai o Tatsu Zangeki: " + "On")), false);
+										_player.displayClientMessage(Component.literal((Component.translatable("dialoguews").getString() + ": On")), false);
 								} else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).WorldSlash == true) {
 									{
 										boolean _setval = false;
@@ -60,7 +50,7 @@ public class WorldSlashKeyOnKeyPressedProcedure {
 									if (entity instanceof LivingEntity _entity)
 										_entity.removeEffect(JujutsucraftaddonModMobEffects.WORLD_SLASH_EFFECT.get());
 									if (entity instanceof Player _player && !_player.level().isClientSide())
-										_player.displayClientMessage(Component.literal(("Sekai o Tatsu Zangeki: " + "Off")), false);
+										_player.displayClientMessage(Component.literal((Component.translatable("dialoguews").getString() + ": Off")), false);
 								}
 							}
 						}

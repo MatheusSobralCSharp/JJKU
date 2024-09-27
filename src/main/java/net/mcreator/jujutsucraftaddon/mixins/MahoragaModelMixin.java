@@ -46,18 +46,60 @@ public abstract class MahoragaModelMixin {
            }
        }
 
-       if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_CE_MODIFIER)) {
-           if (!(entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()))) {
-               CEFixProcedure.execute(world, entity);
-           }
-       }
-
+       //Holding Key Stuff
        if (entity.getPersistentData().getBoolean("HR")) {
            Outline3Procedure.execute(world, x, y, z, entity);
        }
 
-        if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) {
-            NoCooldownProcedure.execute(world, entity);
+        if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                .orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer != (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                .orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer
+                + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).CEPlus) {
+            if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer == 200) {
+                {
+                    double _setval = ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer
+                            + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).CEPlus);
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                        capability.PlayerCursePowerFormer = _setval;
+                        capability.syncPlayerVariables(entity);
+                    });
+                }
+                {
+                    double _setval = ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer * 20);
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                        capability.PlayerCursePowerMAX = _setval;
+                        capability.syncPlayerVariables(entity);
+                    });
+                }
+            } else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer == 400) {
+                {
+                    double _setval = ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer
+                            + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).CEPlus);
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                        capability.PlayerCursePowerFormer = _setval;
+                        capability.syncPlayerVariables(entity);
+                    });
+                }
+                {
+                    double _setval = ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer * 20);
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                        capability.PlayerCursePowerMAX = _setval;
+                        capability.syncPlayerVariables(entity);
+                    });
+                }
+            }
+        }
+
+
+
+
+
+        if (entity.getPersistentData().getBoolean("PRESS_BURNOUT")) {
+            CounterBurnoutProcedure.execute(entity);
+        }
+
+        if (entity.getPersistentData().getBoolean("Meditation")) {
+            MeditationPassiveProcedure.execute(world, entity);
         }
 
         if (entity.isSprinting()) {
@@ -68,48 +110,29 @@ public abstract class MahoragaModelMixin {
             AutoRCTNewProcedure.execute(entity);
         }
 
-
-        if (entity.getPersistentData().getBoolean("PRESS_BURNOUT")) {
-            CounterBurnoutProcedure.execute(entity);
-        }
         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain) {
             ExtensionTickProcedure.execute(world, x, y, z, entity);
         }
 
-
         if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2) == -1) {
-
-            if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Rejected Zenin")) {
-                if (!(entity instanceof LivingEntity _livEnt8 && _livEnt8.hasEffect(MobEffects.REGENERATION))) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 3, false, false));
-                }
-            }
-
             if (!(entity instanceof LivingEntity _livEnt8 && _livEnt8.hasEffect(MobEffects.REGENERATION))) {
                 if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                     _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 2, false, false));
             }
-        } else if (entity.getPersistentData().getDouble("CursedSpirit") == 1) {
-            if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Disaster Curses")) {
-                if (!(entity instanceof LivingEntity _livEnt8 && _livEnt8.hasEffect(MobEffects.REGENERATION))) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 4, false, false));
-                }
-            }
-            if (entity instanceof ServerPlayer _plr7 && _plr7.level() instanceof ServerLevel && _plr7.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr7.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:reverse_cursed_technique_2")))).isDone()) {
-                if (!_plr7.hasEffect(MobEffects.REGENERATION)) {
-                    LivingEntity _entity = (LivingEntity) entity;
-                    if (!_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 3, false, false));
-                }
-            } else {
-                if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(MobEffects.REGENERATION))) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 2, false, false));
+        } else if (entity.getPersistentData().getDouble("CursedSpirit") == 1 && entity.getPersistentData().getDouble("CurseUser") == 0 ) {
+            if (!world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_CURSED_SPIRIT_RCT)) {
+                if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Disaster Curses")) {
+                    if (!(entity instanceof LivingEntity _livEnt8 && _livEnt8.hasEffect(MobEffects.REGENERATION))) {
+                        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                            _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 3, false, false));
+                    }
+                } else {
+                    if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(MobEffects.REGENERATION))) {
+                        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                            _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 2, false, false));
+                    }
                 }
             }
         }
-
     }
 }

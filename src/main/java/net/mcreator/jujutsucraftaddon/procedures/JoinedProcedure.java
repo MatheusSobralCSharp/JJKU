@@ -1,15 +1,12 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.network.chat.Component;
 
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
@@ -46,9 +43,12 @@ public class JoinedProcedure {
 				});
 			}
 		}
-		if (ModList.get().isLoaded("kubejs")) {
-			ServerPlayer player = (ServerPlayer) entity;
-			player.connection.disconnect(Component.literal("Remove Kubejs From your Mods Folder is incompatible."));
+		{
+			double _setval = (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_CE_CAP));
+			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.CECap = _setval;
+				capability.syncPlayerVariables(entity);
+			});
 		}
 	}
 }

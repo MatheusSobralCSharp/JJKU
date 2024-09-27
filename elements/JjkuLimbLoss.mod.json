@@ -6,7 +6,7 @@
     "displayName": "JJKU Limb Loss",
     "description": "Let Players Lose Limbs?",
     "category": "MISC",
-    "defaultValueLogic": true,
+    "defaultValueLogic": false,
     "defaultValueNumber": 0
   }
 }

@@ -12,7 +12,7 @@ import net.mcreator.jujutsucraftaddon.procedures.BindingVowEffectExpiresProcedur
 
 public class BindingVowMobEffect extends MobEffect {
 	public BindingVowMobEffect() {
-		super(MobEffectCategory.NEUTRAL, -3407872);
+		super(MobEffectCategory.BENEFICIAL, -3407872);
 	}
 
 	@Override

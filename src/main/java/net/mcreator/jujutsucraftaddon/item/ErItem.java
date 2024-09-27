@@ -18,6 +18,6 @@ public class ErItem extends Item {
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
 		if (selected)
-			ErItemInHandTickProcedure.execute(entity);
+			ErItemInHandTickProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 }

@@ -3,7 +3,7 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "DECIMAL",
-    "keyBindingName": "Special Power",
+    "keyBindingName": "Singularity Power",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
       "name": "TestAnimationOnKeyPressed"

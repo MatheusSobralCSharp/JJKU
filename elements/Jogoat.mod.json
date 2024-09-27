@@ -685,6 +685,23 @@
             "varname": "smallpoxdeity",
             "enablecomment": false,
             "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 41.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Ino Takuma",
+            "varname": "ino",
+            "enablecomment": false,
+            "stringlist": []
           }
         ]
       }

@@ -3,6 +3,8 @@ package net.mcreator.jujutsucraftaddon.procedures;
 import net.mcreator.jujutsucraft.procedures.SelectGetoProcedure;
 import net.mcreator.jujutsucraft.procedures.*;
 import net.mcreator.jujutsucraftaddon.configuration.JogoatConfiguration;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
@@ -13,91 +15,136 @@ public class TestProcedureeProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Player entity, HashMap guistate) {
 		if (entity != null && guistate != null) {
 
-			double random = Math.random();
+			double random = Mth.nextInt(RandomSource.create(), 1, 100);
 
-			if (random <= 0.01 * (double) JogoatConfiguration.SUKUNA.get()) {
+			if (random <= (double) JogoatConfiguration.SUKUNA.get()) {
 				SelectSukunaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.GOJO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= (double) JogoatConfiguration.GOJO.get()) {
 				SelectGojoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.OGI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= (double) JogoatConfiguration.OGI.get()) {
 				SelectOgiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.MAKI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <=  (double) JogoatConfiguration.MAKI.get()) {
 				SelectMakiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.DHRUV.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= (double) JogoatConfiguration.DHRUV.get()) {
 				SelectDhruvLakdawallaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.MAHORAGA.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.MAHORAGA.get()) {
 				SelectMahoragaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.TSUKUMO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.TSUKUMO.get()) {
 				SelectTsukumoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.YAGA.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.YAGA.get()) {
 				SelectYagaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.KUROURUSHI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.KUROURUSHI.get()) {
 				SelectKurourushiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.ISHIGORI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.ISHIGORI.get()) {
 				SelectIshigoriProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.NISHIMIYA.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.NISHIMIYA.get()) {
 				SelectNishimiyaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			}  else if (random <= 0.01 * (double) JogoatConfiguration.TODO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			}  else if (random <= JogoatConfiguration.TODO.get()) {
 				SelectTodoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.DAGON.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.DAGON.get()) {
 				SelectDagonProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.MIGUEL.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.MIGUEL.get()) {
 				SelectMiguelProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.OKKOTSU.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.OKKOTSU.get()) {
 				SelectOkkotsuProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.MEIMEI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.MEIMEI.get()) {
 				SelectMeiMeiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.YOROZU.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.YOROZU.get()) {
 				SelectYorozuProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.URAUME.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.URAUME.get()) {
 				SelectUraumeProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.GETO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.GETO.get()) {
 				SelectGetoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.CHOSO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.CHOSO.get()) {
 				SelectChosoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.TAKAKOURO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.TAKAKOURO.get()) {
 				SelectTakakoUroProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.ITADORI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.ITADORI.get()) {
 				SelectItadoriProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.KUSAKABE.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.KUSAKABE.get()) {
 				SelectKusakabeProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.JUNPE.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.JUNPE.get()) {
 				SelectJunpeProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.JOGO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.JOGO.get()) {
 				SelectJogoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.TAKABA.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.TAKABA.get()) {
 				SelectTakabaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.HIGURUMA.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.HIGURUMA.get()) {
 				SelectHigurumaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.ANGEL.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.ANGEL.get()) {
 				SelectAngelProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.HAKARI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.HAKARI.get()) {
 				SelectHakariProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.MAHITO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.MAHITO.get()) {
 				SelectMahitoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.CHOJURO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.CHOJURO.get()) {
 				SelectChojuroProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.NANAMI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.NANAMI.get()) {
 				SelectNanamiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.FUSHIGURO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.FUSHIGURO.get()) {
 				SelectFushiguroProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.SMALLPOXDEITY.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.SMALLPOXDEITY.get()) {
 				SelectSmallpoxDeityProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.INUMAKI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.INUMAKI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
 				SelectInumakiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.KUGISAKI.get()) {
+			} else if (random <= JogoatConfiguration.KUGISAKI.get()) {
 				SelectKugisakiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.HANAMI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.HANAMI.get()) {
 				SelectHanamiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.KASHIMO.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.KASHIMO.get()) {
 				SelectKashimoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.JINICHI.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.JINICHI.get()) {
 				SelectJinichiProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
-			} else if (random <= 0.01 * (double) JogoatConfiguration.NAOYA.get()) {
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.NAOYA.get()) {
 				SelectNaoyaProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
+				RandomizedSelectionProcedure.execute(entity);
+			} else if (random <= JogoatConfiguration.INO.get()) {
+				SelectInoProcedure.execute(world, (double) x, (double) y, (double) z, entity, guistate);
+				RandomizedSelectionProcedure.execute(entity);
 			}
 
+
 			if (entity instanceof Player) {
+				RandomizedSelectionProcedure.execute(entity);
 				Player player = (Player) entity;
 				ItemStack stackToRemove = new ItemStack(JujutsucraftaddonModItems.RANDOM_CT_CHANGER.get());
 				player.getInventory().clearOrCountMatchingItems(p -> stackToRemove.getItem() == p.getItem(), 1, player.inventoryMenu.getCraftSlots());

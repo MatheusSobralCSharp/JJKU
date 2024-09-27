@@ -41,6 +41,8 @@ import net.mcreator.jujutsucraftaddon.client.renderer.HakariRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.GojoSchoolRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.GojoMangaRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.GegeAkutamiRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.FakeClonesRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.CloneRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.CleaveWebRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.CircleRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.BlueEntityRenderer;
@@ -90,5 +92,7 @@ public class JujutsucraftaddonModEntityRenderers {
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.U.get(), URenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.TESTING_VERSION.get(), TestingVersionRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.YE.get(), YeRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.FAKE_CLONES.get(), FakeClonesRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.CLONE.get(), CloneRenderer::new);
 	}
 }

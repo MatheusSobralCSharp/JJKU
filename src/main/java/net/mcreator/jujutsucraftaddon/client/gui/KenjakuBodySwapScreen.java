@@ -27,6 +27,7 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	private final static HashMap<String, String> textstate = new HashMap<>();
 	Button button_select;
 	Button button_select1;
 	Button button_select2;
@@ -73,11 +74,6 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 	}
 
 	@Override
-	public void containerTick() {
-		super.containerTick();
-	}
-
-	@Override
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font, Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.label_geto_ct"), 10, 16, -12829636, false);
 		guiGraphics.drawString(this.font,
@@ -95,16 +91,16 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 		super.init();
 		button_select = Button.builder(Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.button_select"), e -> {
 			if (true) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(0, x, y, z));
-				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 0, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(0, x, y, z, textstate));
+				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 99, this.topPos + 11, 56, 20).build();
 		guistate.put("button:button_select", button_select);
 		this.addRenderableWidget(button_select);
 		button_select1 = Button.builder(Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.button_select1"), e -> {
 			if (Condition1Procedure.execute(entity)) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(1, x, y, z));
-				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 1, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(1, x, y, z, textstate));
+				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 81, this.topPos + 43, 56, 20).build(builder -> new Button(builder) {
 			@Override
@@ -117,8 +113,8 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 		this.addRenderableWidget(button_select1);
 		button_select2 = Button.builder(Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.button_select2"), e -> {
 			if (Condition2Procedure.execute(entity)) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(2, x, y, z));
-				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 2, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(2, x, y, z, textstate));
+				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 81, this.topPos + 77, 56, 20).build(builder -> new Button(builder) {
 			@Override
@@ -131,8 +127,8 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 		this.addRenderableWidget(button_select2);
 		button_x = Button.builder(Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.button_x"), e -> {
 			if (Condition2Procedure.execute(entity)) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(3, x, y, z));
-				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 3, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(3, x, y, z, textstate));
+				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 3, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 146, this.topPos + 77, 30, 20).build(builder -> new Button(builder) {
 			@Override
@@ -145,8 +141,8 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 		this.addRenderableWidget(button_x);
 		button_x1 = Button.builder(Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.button_x1"), e -> {
 			if (Condition1Procedure.execute(entity)) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(4, x, y, z));
-				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 4, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(4, x, y, z, textstate));
+				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 4, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 146, this.topPos + 43, 30, 20).build(builder -> new Button(builder) {
 			@Override
@@ -159,8 +155,8 @@ public class KenjakuBodySwapScreen extends AbstractContainerScreen<KenjakuBodySw
 		this.addRenderableWidget(button_x1);
 		button_select3 = Button.builder(Component.translatable("gui.jujutsucraftaddon.kenjaku_body_swap.button_select3"), e -> {
 			if (ConditionYutaProcedure.execute(entity)) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(5, x, y, z));
-				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 5, x, y, z);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new KenjakuBodySwapButtonMessage(5, x, y, z, textstate));
+				KenjakuBodySwapButtonMessage.handleButtonAction(entity, 5, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 99, this.topPos + 110, 56, 20).build(builder -> new Button(builder) {
 			@Override

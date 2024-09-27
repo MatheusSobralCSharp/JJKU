@@ -58,7 +58,7 @@ public abstract class DomainEntityMixin {
             double z_dis_p = 0.0;
             double cnt2 = 0.0;
             double dis_p = 0.0;
-            range = (double)Math.round(MapVariables.get(world).DomainExpansionRadius + 3.0);
+            range = (double)Math.round(entity.getPersistentData().getDouble("DomainExpansionSizer") + 3.0);
             entity.setDeltaMovement(new Vec3(0.0, 0.0, 0.0));
             Entity _ent = entity;
             _ent.teleportTo(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos"), entity.getPersistentData().getDouble("z_pos"));
