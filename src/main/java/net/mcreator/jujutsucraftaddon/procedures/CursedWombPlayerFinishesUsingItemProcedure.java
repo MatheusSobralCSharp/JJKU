@@ -26,7 +26,7 @@ public class CursedWombPlayerFinishesUsingItemProcedure {
 			}
 		} else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 21
 				|| (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 10) {
-			if (Math.random() <= 0.05) {
+			if (Math.random() <= 0.1) {
 				{
 					String _setval = "Death Painting";
 					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {

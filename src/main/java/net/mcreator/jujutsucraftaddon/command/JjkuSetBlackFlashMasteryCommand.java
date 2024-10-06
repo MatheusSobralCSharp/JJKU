@@ -23,8 +23,8 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 public class JjkuSetBlackFlashMasteryCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(
-				Commands.literal("jjkurSetBlackFlashMastery").requires(s -> s.hasPermission(4)).then(Commands.argument("Value", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+		event.getDispatcher()
+				.register(Commands.literal("jjkurBlackFlashMastery").requires(s -> s.hasPermission(4)).then(Commands.argument("Value", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

@@ -12,8 +12,8 @@ import net.minecraft.core.Direction;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 
 public class FistJogoProcedure {
-	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
-		if (entity == null || sourceentity == null)
+	public static void execute(LevelAccessor world, Entity sourceentity) {
+		if (sourceentity == null)
 			return;
 		if ((sourceentity.getDirection()) == Direction.NORTH) {
 			if (world instanceof ServerLevel _level)
@@ -36,15 +36,11 @@ public class FistJogoProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, (sourceentity.getX()), (sourceentity.getY() + 1), (sourceentity.getZ() - 0.5), 0, 0, 0, 0, 1);
 		}
-		if (entity.getRemainingFireTicks() > 0) {
-			if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 3, false, false));
-		}
 		if (sourceentity.isInLava()) {
 			if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 3, false, false));
 		}
-		if (!(sourceentity instanceof LivingEntity _livEnt44 && _livEnt44.hasEffect(JujutsucraftaddonModMobEffects.JOGO_FLAME.get()))) {
+		if (!(sourceentity instanceof LivingEntity _livEnt42 && _livEnt42.hasEffect(JujutsucraftaddonModMobEffects.JOGO_FLAME.get()))) {
 			if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.JOGO_FLAME.get(), -1, 3, false, false));
 		}

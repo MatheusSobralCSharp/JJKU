@@ -1,0 +1,17 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "cover": "",
+        "surface": "",
+        "rope": "",
+        "bottem": "",
+        "back": "",
+        "handle": "",
+        "inside": "",
+        "blade": ""
+      },
+      "name": "default"
+    }
+  }
+}

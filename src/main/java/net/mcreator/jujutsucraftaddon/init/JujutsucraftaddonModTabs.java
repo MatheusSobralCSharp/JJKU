@@ -51,6 +51,7 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.INUMAKI_ARMOR_HELMET.get());
 				tabData.accept(JujutsucraftaddonModItems.MUGIWARA_HELMET.get());
 				tabData.accept(JujutsucraftaddonModItems.GOJO_CHESTPLATE.get());
+				tabData.accept(JujutsucraftaddonModItems.VERGIL_CHESTPLATE.get());
 			})
 
 					.build());
@@ -100,11 +101,19 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.SWORD_OKKOTSU_THREE.get());
 				tabData.accept(JujutsucraftaddonModItems.WARSTAFF.get());
 				tabData.accept(JujutsucraftaddonModItems.ITADORI_ARMS.get());
+				tabData.accept(JujutsucraftaddonModItems.SWORD_JIN_WOO.get());
+				tabData.accept(JujutsucraftaddonModItems.SWORD_JIN_WOO_TWO.get());
 				tabData.accept(JujutsucraftaddonModItems.BULLET.get());
 				tabData.accept(JujutsucraftaddonModItems.SWORD_KUSAKABE.get());
 				tabData.accept(JujutsucraftaddonModItems.BLOOD_EDGE.get());
 				tabData.accept(JujutsucraftaddonModItems.YUUN.get());
 				tabData.accept(JujutsucraftaddonModItems.WUKONG_STAFF.get());
+				tabData.accept(JujutsucraftaddonModItems.NOZARASHI.get());
+				tabData.accept(JujutsucraftaddonModItems.NOZARASHI_SHIKAI.get());
+				tabData.accept(JujutsucraftaddonModItems.NOZARASHI_BANKAI.get());
+				tabData.accept(JujutsucraftaddonModItems.YAMATO.get());
+				tabData.accept(JujutsucraftaddonModItems.YAMATO_2.get());
+				tabData.accept(JujutsucraftaddonModItems.YAMATO_3.get());
 			})
 
 					.build());
@@ -135,6 +144,7 @@ public class JujutsucraftaddonModTabs {
 				tabData.accept(JujutsucraftaddonModItems.YOKU_BUCKET.get());
 				tabData.accept(JujutsucraftaddonModItems.KYOKA.get());
 				tabData.accept(JujutsucraftaddonModBlocks.SNOW_DOMAIN.get().asItem());
+				tabData.accept(JujutsucraftaddonModItems.TAGGING.get());
 			})
 
 					.build());

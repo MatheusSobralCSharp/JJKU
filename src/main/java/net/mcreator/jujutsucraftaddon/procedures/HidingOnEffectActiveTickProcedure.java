@@ -29,24 +29,32 @@ public class HidingOnEffectActiveTickProcedure {
 							return dataIndex1.getCompound("ForgeData").getString("OWNER_UUID");
 						}
 					}.getValue()).equals(entity.getStringUUID())) {
-						{
-							Entity _ent = entity;
-							_ent.setYRot(entityiterator.getYRot());
-							_ent.setXRot(entityiterator.getXRot());
-							_ent.setYBodyRot(_ent.getYRot());
-							_ent.setYHeadRot(_ent.getYRot());
-							_ent.yRotO = _ent.getYRot();
-							_ent.xRotO = _ent.getXRot();
-							if (_ent instanceof LivingEntity _entity) {
-								_entity.yBodyRotO = _entity.getYRot();
-								_entity.yHeadRotO = _entity.getYRot();
+						if ((new Object() {
+							public String getValue() {
+								CompoundTag dataIndex3 = new CompoundTag();
+								entityiterator.saveWithoutId(dataIndex3);
+								return dataIndex3.getCompound("ForgeData").getString("OWNER_UUID");
 							}
-						}
-						{
-							Entity _ent = entity;
-							_ent.teleportTo((entityiterator.getX()), (entityiterator.getY() + 1), (entityiterator.getZ()));
-							if (_ent instanceof ServerPlayer _serverPlayer)
-								_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY() + 1), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+						}.getValue()).equals(entity.getStringUUID())) {
+							{
+								Entity _ent = entity;
+								_ent.setYRot(entityiterator.getYRot());
+								_ent.setXRot(entityiterator.getXRot());
+								_ent.setYBodyRot(_ent.getYRot());
+								_ent.setYHeadRot(_ent.getYRot());
+								_ent.yRotO = _ent.getYRot();
+								_ent.xRotO = _ent.getXRot();
+								if (_ent instanceof LivingEntity _entity) {
+									_entity.yBodyRotO = _entity.getYRot();
+									_entity.yHeadRotO = _entity.getYRot();
+								}
+							}
+							{
+								Entity _ent = entity;
+								_ent.teleportTo((entityiterator.getX()), (entityiterator.getY() + 1), (entityiterator.getZ()));
+								if (_ent instanceof ServerPlayer _serverPlayer)
+									_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY() + 1), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+							}
 						}
 					}
 				}

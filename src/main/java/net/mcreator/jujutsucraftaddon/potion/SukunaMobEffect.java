@@ -6,12 +6,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 
+import net.mcreator.jujutsucraftaddon.procedures.SukunaEffectStartedappliedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SukunaEffectExpiresProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.IfPlayerHasSukunaProcedure;
 
 public class SukunaMobEffect extends MobEffect {
 	public SukunaMobEffect() {
 		super(MobEffectCategory.BENEFICIAL, -1);
+	}
+
+	@Override
+	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		SukunaEffectStartedappliedProcedure.execute(entity);
 	}
 
 	@Override

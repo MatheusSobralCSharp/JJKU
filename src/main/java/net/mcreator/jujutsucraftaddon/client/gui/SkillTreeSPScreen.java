@@ -8,11 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.Minecraft;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.SkillTreeSPMenu;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnSkillPointsProcedure;
@@ -36,14 +33,13 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 	private final int x, y, z;
 	private final Player entity;
 	private final static HashMap<String, String> textstate = new HashMap<>();
-	public static EditBox speedslider;
-	public static Checkbox checkspeed;
 	Button button_empty;
 	Button button_empty1;
 	Button button_empty2;
 	Button button_fight_your_spirit;
 	Button button_rct_mastery_quest;
 	Button button_unlock_extension_technique;
+	Button button_toggle_dash;
 
 	public SkillTreeSPScreen(SkillTreeSPMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -60,7 +56,6 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(guiGraphics);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		speedslider.render(guiGraphics, mouseX, mouseY, partialTicks);
 		if (ReturnEntityProcedure.execute(entity) instanceof LivingEntity livingEntity) {
 			InventoryScreen.renderEntityInInventoryFollowsAngle(guiGraphics, this.leftPos + 250, this.topPos + 314, 60, 0f + (float) Math.atan((this.leftPos + 250 - mouseX) / 40.0), (float) Math.atan((this.topPos + 265 - mouseY) / 40.0),
 					livingEntity);
@@ -101,22 +96,7 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 			this.minecraft.player.closeContainer();
 			return true;
 		}
-		if (speedslider.isFocused())
-			return speedslider.keyPressed(key, b, c);
 		return super.keyPressed(key, b, c);
-	}
-
-	@Override
-	public void containerTick() {
-		super.containerTick();
-		speedslider.tick();
-	}
-
-	@Override
-	public void resize(Minecraft minecraft, int width, int height) {
-		String speedsliderValue = speedslider.getValue();
-		super.resize(minecraft, width, height);
-		speedslider.setValue(speedsliderValue);
 	}
 
 	@Override
@@ -142,33 +122,8 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 	@Override
 	public void init() {
 		super.init();
-		speedslider = new EditBox(this.font, this.leftPos + 69, this.topPos + 343, 118, 18, Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.speedslider")) {
-			@Override
-			public void insertText(String text) {
-				super.insertText(text);
-				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.speedslider").getString());
-				else
-					setSuggestion(null);
-			}
-
-			@Override
-			public void moveCursorTo(int pos) {
-				super.moveCursorTo(pos);
-				if (getValue().isEmpty())
-					setSuggestion(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.speedslider").getString());
-				else
-					setSuggestion(null);
-			}
-		};
-		speedslider.setSuggestion(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.speedslider").getString());
-		speedslider.setMaxLength(32767);
-		guistate.put("text:speedslider", speedslider);
-		this.addWidget(this.speedslider);
 		button_empty = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_empty"), e -> {
 			if (true) {
-				textstate.put("textin:speedslider", speedslider.getValue());
-				textstate.put("checkboxin:checkspeed", checkspeed.selected() ? "true" : "false");
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(0, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 0, x, y, z, textstate);
 			}
@@ -177,8 +132,6 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 		this.addRenderableWidget(button_empty);
 		button_empty1 = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_empty1"), e -> {
 			if (true) {
-				textstate.put("textin:speedslider", speedslider.getValue());
-				textstate.put("checkboxin:checkspeed", checkspeed.selected() ? "true" : "false");
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(1, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 1, x, y, z, textstate);
 			}
@@ -187,8 +140,6 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 		this.addRenderableWidget(button_empty1);
 		button_empty2 = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_empty2"), e -> {
 			if (true) {
-				textstate.put("textin:speedslider", speedslider.getValue());
-				textstate.put("checkboxin:checkspeed", checkspeed.selected() ? "true" : "false");
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(2, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 2, x, y, z, textstate);
 			}
@@ -197,8 +148,6 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 		this.addRenderableWidget(button_empty2);
 		button_fight_your_spirit = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_fight_your_spirit"), e -> {
 			if (true) {
-				textstate.put("textin:speedslider", speedslider.getValue());
-				textstate.put("checkboxin:checkspeed", checkspeed.selected() ? "true" : "false");
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(3, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 3, x, y, z, textstate);
 			}
@@ -207,8 +156,6 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 		this.addRenderableWidget(button_fight_your_spirit);
 		button_rct_mastery_quest = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_rct_mastery_quest"), e -> {
 			if (ReturnSecretProcedure.execute(entity)) {
-				textstate.put("textin:speedslider", speedslider.getValue());
-				textstate.put("checkboxin:checkspeed", checkspeed.selected() ? "true" : "false");
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(4, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 4, x, y, z, textstate);
 			}
@@ -223,16 +170,19 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 		this.addRenderableWidget(button_rct_mastery_quest);
 		button_unlock_extension_technique = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_unlock_extension_technique"), e -> {
 			if (true) {
-				textstate.put("textin:speedslider", speedslider.getValue());
-				textstate.put("checkboxin:checkspeed", checkspeed.selected() ? "true" : "false");
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(5, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 5, x, y, z, textstate);
 			}
 		}).bounds(this.leftPos + 299, this.topPos + 302, 161, 20).build();
 		guistate.put("button:button_unlock_extension_technique", button_unlock_extension_technique);
 		this.addRenderableWidget(button_unlock_extension_technique);
-		checkspeed = new Checkbox(this.leftPos + 44, this.topPos + 342, 20, 20, Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.checkspeed"), false);
-		guistate.put("checkbox:checkspeed", checkspeed);
-		this.addRenderableWidget(checkspeed);
+		button_toggle_dash = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash"), e -> {
+			if (true) {
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(6, x, y, z, textstate));
+				SkillTreeSPButtonMessage.handleButtonAction(entity, 6, x, y, z, textstate);
+			}
+		}).bounds(this.leftPos + 101, this.topPos + 341, 82, 20).build();
+		guistate.put("button:button_toggle_dash", button_toggle_dash);
+		this.addRenderableWidget(button_toggle_dash);
 	}
 }

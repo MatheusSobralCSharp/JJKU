@@ -2,12 +2,14 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.procedures.Animations2Procedure;
-import net.mcreator.jujutsucraftaddon.procedures.HRAttack1Procedure;
-import net.mcreator.jujutsucraftaddon.procedures.ManjiKickProcedure;
-import net.mcreator.jujutsucraftaddon.procedures.NueSummonProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.*;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,6 +35,17 @@ public abstract class KeyPressedOnTickMixin {
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
             HRAttack1Procedure.execute(world, x, y, z, entity);
         }
+
+        if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).contains("Clone")) {
+            if (!(entity instanceof LivingEntity _livEnt4 && _livEnt4.hasEffect(JujutsucraftaddonModMobEffects.CLONE_TICKED.get()))) {
+                SpawnCloneProcedure.execute(world, x, y, z, entity);
+                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                    _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.CLONE_TICKED.get(), -1, 1, false, false));
+                if (entity instanceof Player _player && !_player.level().isClientSide())
+                    _player.displayClientMessage(Component.literal("Soul Body"), false);
+            }
+        }
+
 
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2
                 || (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 1) {

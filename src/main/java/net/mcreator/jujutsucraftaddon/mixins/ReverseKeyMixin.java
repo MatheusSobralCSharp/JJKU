@@ -175,11 +175,11 @@ public abstract class ReverseKeyMixin {
                         double level2;
                         entity.getPersistentData().putBoolean("PRESS_M", true);
 
-                        if (entity.getPersistentData().getBoolean("CursedSpirit") == true && entity.getPersistentData().getBoolean("CurseUser") == false && entity.getPersistentData().getDouble("RCT") != 1) {
+                        if (entity.getPersistentData().getBoolean("CursedSpirit") == true && entity.getPersistentData().getBoolean("CurseUser") == false) {
                             if (entity instanceof LivingEntity) {
                                 _entity = (LivingEntity)entity;
                                 if (!_entity.level().isClientSide()) {
-                                    _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, Integer.MAX_VALUE, (int)(Math.round(level) * -1L), true, true));
+                                    _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 2, 1000, true, true));
                                 }
                             }
                         } else {
@@ -196,6 +196,14 @@ public abstract class ReverseKeyMixin {
 
                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                 _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent), "effect give @s jujutsucraft:reverse_cursed_technique infinite " + Math.round(level2) + " true");
+                                {
+                                    double _setval = level2;
+                                    entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                                        capability.levelrct = _setval;
+                                        capability.syncPlayerVariables(entity);
+                                    });
+                                }
+
                                 RCTLevelProcedure.execute(entity);
                             }
 

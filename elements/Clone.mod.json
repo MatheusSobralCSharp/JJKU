@@ -114,7 +114,13 @@
     "stepSound": {
       "value": ""
     },
-    "entityDataEntries": [],
+    "entityDataEntries": [
+      {
+        "name": "Testing",
+        "type": "string",
+        "value": "None"
+      }
+    ],
     "onMobTickUpdate": {
       "name": "CloneOnEntityTickUpdate"
     },

@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffect;
 
 import net.mcreator.jujutsucraftaddon.procedures.DashOnEffectActiveTickProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.DashEffectStartedappliedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.DashEffectExpiresProcedure;
 
 public class DashMobEffect extends MobEffect {
 	public DashMobEffect() {
@@ -22,6 +23,12 @@ public class DashMobEffect extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
 		DashOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+	}
+
+	@Override
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.removeAttributeModifiers(entity, attributeMap, amplifier);
+		DashEffectExpiresProcedure.execute(entity);
 	}
 
 	@Override

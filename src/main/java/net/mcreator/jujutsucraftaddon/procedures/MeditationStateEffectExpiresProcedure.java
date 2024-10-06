@@ -37,17 +37,8 @@ public class MeditationStateEffectExpiresProcedure {
 						_entity.removeAllEffects();
 					if (entityiterator instanceof LivingEntity _entity)
 						_entity.setHealth(2);
-					{
-						Entity _ent = entityiterator;
-						if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill");
-						}
-					}
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SMOKE, (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 5, 3, 3, 3, 1);
-					if (!entityiterator.level().isClientSide())
-						entityiterator.discard();
 					if (entity instanceof Player _player && !_player.level().isClientSide())
 						_player.displayClientMessage(Component.literal(("Training Finished! Your Reward: " + entity.getPersistentData().getDouble("PointsSpirit") / 50 + "SP")), false);
 					{
@@ -59,6 +50,15 @@ public class MeditationStateEffectExpiresProcedure {
 						});
 					}
 					entity.getPersistentData().putDouble("PointsSpirit", 0);
+					{
+						Entity _ent = entityiterator;
+						if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill");
+						}
+					}
+					if (!entityiterator.level().isClientSide())
+						entityiterator.discard();
 				}
 			}
 		}

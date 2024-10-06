@@ -20,39 +20,54 @@ public class KeyPressedProcedure {
 				&& _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone()) {
 			if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori")) {
 				if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Death Painting")) {
-					if ((entity.getPersistentData().getString("Mode")).equals("") || (entity.getPersistentData().getString("Mode")).equals("Itadori")) {
-						entity.getPersistentData().putString("Mode", "Blood");
-						{
-							double _setval = 10;
-							entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-								capability.PlayerCurseTechnique2 = _setval;
-								capability.syncPlayerVariables(entity);
-							});
+					if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel <= 3) {
+						if ((entity.getPersistentData().getString("Mode")).equals("Blood") || (entity.getPersistentData().getString("Mode")).equals("")) {
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(Component.literal("\u00A7c\u00A7n\u00A7lItadori"), false);
+							{
+								double _setval = 21;
+								entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+									capability.PlayerCurseTechnique2 = _setval;
+									capability.syncPlayerVariables(entity);
+								});
+							}
+							entity.getPersistentData().putString("Mode", "Itadori");
+						} else if ((entity.getPersistentData().getString("Mode")).equals("Itadori")) {
+							entity.getPersistentData().putString("Mode", "Blood");
+							{
+								double _setval = 10;
+								entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+									capability.PlayerCurseTechnique2 = _setval;
+									capability.syncPlayerVariables(entity);
+								});
+							}
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(Component.literal("\u00A74\u00A7n\u00A7lBlood"), false);
 						}
-						if (entity instanceof Player _player && !_player.level().isClientSide())
-							_player.displayClientMessage(Component.literal(("Your CT Mode is: " + "Blood")), false);
-					} else if ((entity.getPersistentData().getString("Mode")).equals("Blood")) {
-						entity.getPersistentData().putString("Mode", "Shrine");
-						{
-							double _setval = 1;
-							entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-								capability.PlayerCurseTechnique2 = _setval;
-								capability.syncPlayerVariables(entity);
-							});
+					} else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel > 3) {
+						if ((entity.getPersistentData().getString("Mode")).equals("Shrine") || (entity.getPersistentData().getString("Mode")).equals("")) {
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(Component.literal("\u00A7c\u00A7n\u00A7lItadori"), false);
+							{
+								double _setval = 21;
+								entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+									capability.PlayerCurseTechnique2 = _setval;
+									capability.syncPlayerVariables(entity);
+								});
+							}
+							entity.getPersistentData().putString("Mode", "Itadori");
+						} else if ((entity.getPersistentData().getString("Mode")).equals("Itadori")) {
+							entity.getPersistentData().putString("Mode", "Shrine");
+							{
+								double _setval = 1;
+								entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+									capability.PlayerCurseTechnique2 = _setval;
+									capability.syncPlayerVariables(entity);
+								});
+							}
+							if (entity instanceof Player _player && !_player.level().isClientSide())
+								_player.displayClientMessage(Component.literal("\u00A71\u00A7n\u00A7lSoul Shrine"), false);
 						}
-						if (entity instanceof Player _player && !_player.level().isClientSide())
-							_player.displayClientMessage(Component.literal(("Your CT Mode is: " + "Shrine")), false);
-					} else if ((entity.getPersistentData().getString("Mode")).equals("Shrine")) {
-						if (entity instanceof Player _player && !_player.level().isClientSide())
-							_player.displayClientMessage(Component.literal(("Your CT Mode is: " + "Itadori")), false);
-						{
-							double _setval = 21;
-							entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-								capability.PlayerCurseTechnique2 = _setval;
-								capability.syncPlayerVariables(entity);
-							});
-						}
-						entity.getPersistentData().putString("Mode", "Itadori");
 					}
 				}
 			}

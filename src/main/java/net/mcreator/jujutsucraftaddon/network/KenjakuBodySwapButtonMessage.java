@@ -13,12 +13,14 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.KenjakuBodySwapMenu;
-import net.mcreator.jujutsucraftaddon.procedures.SetYutaCTProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.KenjakuCTClickProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.CTSet2Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.CTSet1Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.CTNameClicked2Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.CTNameClicked1Procedure;
+import net.mcreator.jujutsucraftaddon.procedures.Body3Procedure;
+import net.mcreator.jujutsucraftaddon.procedures.Body2Procedure;
+import net.mcreator.jujutsucraftaddon.procedures.Body1Procedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 import java.util.function.Supplier;
@@ -102,7 +104,15 @@ public class KenjakuBodySwapButtonMessage {
 		}
 		if (buttonID == 5) {
 
-			SetYutaCTProcedure.execute(world, entity);
+			Body1Procedure.execute(entity);
+		}
+		if (buttonID == 6) {
+
+			Body2Procedure.execute(entity);
+		}
+		if (buttonID == 7) {
+
+			Body3Procedure.execute(entity);
 		}
 	}
 

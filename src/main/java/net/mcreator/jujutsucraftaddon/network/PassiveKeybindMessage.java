@@ -52,7 +52,7 @@ public class PassiveKeybindMessage {
 			return;
 		if (type == 0) {
 
-			PassiveKeybindOnKeyPressedProcedure.execute(world, entity);
+			PassiveKeybindOnKeyPressedProcedure.execute(world, x, y, z, entity);
 		}
 	}
 

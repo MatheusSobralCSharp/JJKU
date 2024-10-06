@@ -151,144 +151,143 @@ public abstract class MalevolentShrine2Mixin {
                             ((LivingEntity) entity_a).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(2.0 + Math.random());
                         }
                     }
-                }
-            } else if (entity.getPersistentData().getDouble("cnt1") > 0.0) {
-                Level _level;
-                if (entity.getPersistentData().getDouble("cnt1") == 1.0) {
-                    if (entity instanceof LivingEntity) {
-                        _entity = (LivingEntity) entity;
-                        _entity.swing(InteractionHand.MAIN_HAND, true);
-                    }
+                 } else {
+                     Level _level;
+                     if (entity.getPersistentData().getDouble("cnt1") == 1.0) {
+                         if (entity instanceof LivingEntity) {
+                             _entity = (LivingEntity) entity;
+                             _entity.swing(InteractionHand.MAIN_HAND, true);
+                         }
 
-                    Vec3 _center = new Vec3(entity.getPersistentData().getDouble("x_pos_doma"), entity.getPersistentData().getDouble("y_pos_doma"), entity.getPersistentData().getDouble("z_pos_doma"));
-                    List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, (new AABB(_center, _center)).inflate(dis / 2.0), (e) -> {
-                        return true;
-                    }).stream().sorted(Comparator.comparingDouble((_entcnd) -> {
-                        return _entcnd.distanceToSqr(_center);
-                    })).toList();
-                    Iterator var29 = _entfound.iterator();
+                         Vec3 _center = new Vec3(entity.getPersistentData().getDouble("x_pos_doma"), entity.getPersistentData().getDouble("y_pos_doma"), entity.getPersistentData().getDouble("z_pos_doma"));
+                         List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, (new AABB(_center, _center)).inflate(dis / 2.0), (e) -> {
+                             return true;
+                         }).stream().sorted(Comparator.comparingDouble((_entcnd) -> {
+                             return _entcnd.distanceToSqr(_center);
+                         })).toList();
+                         Iterator var29 = _entfound.iterator();
 
-                    while (var29.hasNext()) {
-                        Entity entityiterator = (Entity) var29.next();
-                        if (entityiterator instanceof LivingEntity) {
-                            Entity _ent = entityiterator;
-                            if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "effect give @s blindness 2 0 true");
-                            }
-                        }
-                    }
+                         while (var29.hasNext()) {
+                             Entity entityiterator = (Entity) var29.next();
+                             if (entityiterator instanceof LivingEntity) {
+                                 Entity _ent = entityiterator;
+                                 if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                     _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "effect give @s blindness 2 0 true");
+                                 }
+                             }
+                         }
 
-                    if (world instanceof Level) {
-                        _level = (Level) world;
-                        if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:wind_chime")), SoundSource.NEUTRAL, 3.0F, 1.0F);
-                        } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:wind_chime")), SoundSource.NEUTRAL, 3.0F, 1.0F, false);
-                        }
-                    }
+                         if (world instanceof Level) {
+                             _level = (Level) world;
+                             if (!_level.isClientSide()) {
+                                 _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:wind_chime")), SoundSource.NEUTRAL, 3.0F, 1.0F);
+                             } else {
+                                 _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:wind_chime")), SoundSource.NEUTRAL, 3.0F, 1.0F, false);
+                             }
+                         }
 
-                    if (world instanceof Level) {
-                        _level = (Level) world;
-                        if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:slow_motion_end")), SoundSource.NEUTRAL, 3.0F, 1.0F);
-                        } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:slow_motion_end")), SoundSource.NEUTRAL, 3.0F, 1.0F, false);
-                        }
-                    }
-                }
+                         if (world instanceof Level) {
+                             _level = (Level) world;
+                             if (!_level.isClientSide()) {
+                                 _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:slow_motion_end")), SoundSource.NEUTRAL, 3.0F, 1.0F);
+                             } else {
+                                 _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:slow_motion_end")), SoundSource.NEUTRAL, 3.0F, 1.0F, false);
+                             }
+                         }
+                     }
 
-                if (entity.getPersistentData().getDouble("cnt1") > 33.0 && entity.getPersistentData().getDouble("cnt1") == 34.0) {
-                    yaw = (double) entity.getYRot();
-                    pitch = (double) entity.getXRot();
-                    RotateEntityProcedure.execute(entity.getPersistentData().getDouble("x_pos_doma"), entity.getPersistentData().getDouble("y_pos_doma"), entity.getPersistentData().getDouble("z_pos_doma"), entity);
-                    entity.setYRot(entity.getYRot());
-                    entity.setXRot(0.0F);
-                    entity.setYBodyRot(entity.getYRot());
-                    entity.setYHeadRot(entity.getYRot());
-                    entity.yRotO = entity.getYRot();
-                    entity.xRotO = entity.getXRot();
-                    LivingEntity _entity2;
-                    if (entity instanceof LivingEntity) {
-                        _entity2 = (LivingEntity) entity;
-                        _entity2.yBodyRotO = _entity2.getYRot();
-                        _entity2.yHeadRotO = _entity2.getYRot();
-                    }
+                     if (entity.getPersistentData().getDouble("cnt1") > 33.0 && entity.getPersistentData().getDouble("cnt1") == 34.0) {
+                         yaw = (double) entity.getYRot();
+                         pitch = (double) entity.getXRot();
+                         RotateEntityProcedure.execute(entity.getPersistentData().getDouble("x_pos_doma"), entity.getPersistentData().getDouble("y_pos_doma"), entity.getPersistentData().getDouble("z_pos_doma"), entity);
+                         entity.setYRot(entity.getYRot());
+                         entity.setXRot(0.0F);
+                         entity.setYBodyRot(entity.getYRot());
+                         entity.setYHeadRot(entity.getYRot());
+                         entity.yRotO = entity.getYRot();
+                         entity.xRotO = entity.getXRot();
+                         LivingEntity _entity2;
+                         if (entity instanceof LivingEntity) {
+                             _entity2 = (LivingEntity) entity;
+                             _entity2.yBodyRotO = _entity2.getYRot();
+                             _entity2.yHeadRotO = _entity2.getYRot();
+                         }
 
-                    if (!entity.level().isClientSide() && entity.getServer() != null) {
-                        entity.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(), entity.getDisplayName(), entity.level().getServer(), entity), "effect give @s slowness 1 10 true");
-                    }
+                         if (!entity.level().isClientSide() && entity.getServer() != null) {
+                             entity.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(), entity.getDisplayName(), entity.level().getServer(), entity), "effect give @s slowness 1 10 true");
+                         }
 
-                    entity.getPersistentData().putDouble("x_pos", entity.getPersistentData().getDouble("x_pos_doma"));
-                    entity.getPersistentData().putDouble("y_pos", entity.getPersistentData().getDouble("y_pos_doma"));
-                    entity.getPersistentData().putDouble("z_pos", entity.getPersistentData().getDouble("z_pos_doma"));
+                         entity.getPersistentData().putDouble("x_pos", entity.getPersistentData().getDouble("x_pos_doma"));
+                         entity.getPersistentData().putDouble("y_pos", entity.getPersistentData().getDouble("y_pos_doma"));
+                         entity.getPersistentData().putDouble("z_pos", entity.getPersistentData().getDouble("z_pos_doma"));
 
-                    for (int index0 = 0; index0 < 100 && !world.getBlockState(BlockPos.containing(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos") - 1.0, entity.getPersistentData().getDouble("z_pos"))).canOcclude(); ++index0) {
-                        entity.getPersistentData().putDouble("y_pos", entity.getPersistentData().getDouble("y_pos") - 1.0);
-                        if (entity.getPersistentData().getDouble("y_pos") <= 0.0) {
-                            entity.getPersistentData().putDouble("y_pos", 0.0);
-                            break;
-                        }
-                    }
+                         for (int index0 = 0; index0 < 100 && !world.getBlockState(BlockPos.containing(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos") - 1.0, entity.getPersistentData().getDouble("z_pos"))).canOcclude(); ++index0) {
+                             entity.getPersistentData().putDouble("y_pos", entity.getPersistentData().getDouble("y_pos") - 1.0);
+                             if (entity.getPersistentData().getDouble("y_pos") <= 0.0) {
+                                 entity.getPersistentData().putDouble("y_pos", 0.0);
+                                 break;
+                             }
+                         }
 
-                    x_pos = entity.getPersistentData().getDouble("x_pos_doma") - Math.cos(Math.toRadians((double) (entity.getYRot() + 90.0F))) * Math.cos(Math.toRadians(0.0)) * (JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius - 5.0);
-                    y_pos = entity.getPersistentData().getDouble("y_pos");
-                    z_pos = entity.getPersistentData().getDouble("z_pos_doma") - Math.sin(Math.toRadians((double) (entity.getYRot() + 90.0F))) * Math.cos(Math.toRadians(0.0)) * (JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius - 5.0);
+                         x_pos = entity.getPersistentData().getDouble("x_pos_doma") - Math.cos(Math.toRadians((double) (entity.getYRot() + 90.0F))) * Math.cos(Math.toRadians(0.0)) * (JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius - 5.0);
+                         y_pos = entity.getPersistentData().getDouble("y_pos");
+                         z_pos = entity.getPersistentData().getDouble("z_pos_doma") - Math.sin(Math.toRadians((double) (entity.getYRot() + 90.0F))) * Math.cos(Math.toRadians(0.0)) * (JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius - 5.0);
 
-                    if (world instanceof ServerLevel) {
-                        if (world instanceof ServerLevel) {
-                            ServerLevel _level2 = (ServerLevel) world;
-                            Commands var32 = _level2.getServer().getCommands();
-                            CommandSourceStack var33 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level2, 4, "", Component.literal(""), _level2.getServer(), (Entity) null)).withSuppressedOutput();
-                            int var10002 = entity.getDirection() != Direction.NORTH && entity.getDirection() != Direction.SOUTH ? 90 : 0;
-                            var32.performPrefixedCommand(var33, "summon jujutsucraft:entity_malevolent_shrine ~ ~ ~ {Invulnerable:1b,Rotation:[" + var10002 + "F,0F]}");
-                        }
+                         if (world instanceof ServerLevel) {
+                             if (world instanceof ServerLevel) {
+                                 ServerLevel _level2 = (ServerLevel) world;
+                                 Commands var32 = _level2.getServer().getCommands();
+                                 CommandSourceStack var33 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level2, 4, "", Component.literal(""), _level2.getServer(), (Entity) null)).withSuppressedOutput();
+                                 int var10002 = entity.getDirection() != Direction.NORTH && entity.getDirection() != Direction.SOUTH ? 90 : 0;
+                                 var32.performPrefixedCommand(var33, "summon jujutsucraft:entity_malevolent_shrine ~ ~ ~ {Invulnerable:1b,Rotation:[" + var10002 + "F,0F]}");
+                             }
 
-                        if (entity.getPersistentData().getDouble("NameRanged") == 0.0) {
-                            entity.getPersistentData().putDouble("NameRanged", Math.random());
-                        }
+                             if (entity.getPersistentData().getDouble("NameRanged") == 0.0) {
+                                 entity.getPersistentData().putDouble("NameRanged", Math.random());
+                             }
 
-                        if (!world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
-                            return true;
-                        }).isEmpty()) {
-                            entity_a = (Entity) world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
-                                return true;
-                            }).stream().sorted(((new Object() {
-                                Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-                                    return Comparator.comparingDouble((_entcnd) -> {
-                                        return _entcnd.distanceToSqr(_x, _y, _z);
-                                    });
-                                }
-                            })).compareDistOf(x_pos, y_pos, z_pos)).findFirst().orElse((EntityMalevolentShrineEntity) null);
-                            entity_a.getPersistentData().putDouble("NameRanged_ranged", entity.getPersistentData().getDouble("NameRanged"));
-                            entity_a.getPersistentData().putString("OWNER_UUID", entity.getStringUUID());
-                        }
+                             if (!world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
+                                 return true;
+                             }).isEmpty()) {
+                                 entity_a = (Entity) world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
+                                     return true;
+                                 }).stream().sorted(((new Object() {
+                                     Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+                                         return Comparator.comparingDouble((_entcnd) -> {
+                                             return _entcnd.distanceToSqr(_x, _y, _z);
+                                         });
+                                     }
+                                 })).compareDistOf(x_pos, y_pos, z_pos)).findFirst().orElse((EntityMalevolentShrineEntity) null);
+                                 entity_a.getPersistentData().putDouble("NameRanged_ranged", entity.getPersistentData().getDouble("NameRanged"));
+                                 entity_a.getPersistentData().putString("OWNER_UUID", entity.getStringUUID());
+                             }
 
-                        if (world instanceof Level) {
-                            _level = (Level) world;
-                            if (!_level.isClientSide()) {
-                                _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:piano_horror")), SoundSource.NEUTRAL, 3.0F, 0.75F);
-                            } else {
-                                _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:piano_horror")), SoundSource.NEUTRAL, 3.0F, 0.75F, false);
-                            }
-                        }
+                             if (world instanceof Level) {
+                                 _level = (Level) world;
+                                 if (!_level.isClientSide()) {
+                                     _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:piano_horror")), SoundSource.NEUTRAL, 3.0F, 0.75F);
+                                 } else {
+                                     _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:piano_horror")), SoundSource.NEUTRAL, 3.0F, 0.75F, false);
+                                 }
+                             }
 
-                        entity.getPersistentData().putDouble("y_pos_doma", y_pos + 1.0);
-                        entity.setYRot((float) yaw);
-                        entity.setXRot((float) pitch);
-                        entity.setYBodyRot(entity.getYRot());
-                        entity.setYHeadRot(entity.getYRot());
-                        entity.yRotO = entity.getYRot();
-                        entity.xRotO = entity.getXRot();
-                        if (entity instanceof LivingEntity) {
-                            _entity = (LivingEntity) entity;
-                            _entity.yBodyRotO = _entity.getYRot();
-                            _entity.yHeadRotO = _entity.getYRot();
-                        }
-                    }
-                }
-
-                PlayAnimationProcedure.execute(entity);
+                             entity.getPersistentData().putDouble("y_pos_doma", y_pos + 1.0);
+                             entity.setYRot((float) yaw);
+                             entity.setXRot((float) pitch);
+                             entity.setYBodyRot(entity.getYRot());
+                             entity.setYHeadRot(entity.getYRot());
+                             entity.yRotO = entity.getYRot();
+                             entity.xRotO = entity.getXRot();
+                             if (entity instanceof LivingEntity) {
+                                 _entity = (LivingEntity) entity;
+                                 _entity.yBodyRotO = _entity.getYRot();
+                                 _entity.yHeadRotO = _entity.getYRot();
+                             }
+                         }
+                     }
+                 }
             }
+            PlayAnimationProcedure.execute(entity);
         }
     }
 }

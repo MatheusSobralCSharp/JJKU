@@ -283,14 +283,6 @@ public abstract class KeyPressedLogicMixin {
                                         T1 = 15;
                                         S1 = 9;
                                     }
-                                } else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).contains("Hanami")) {
-                                    if (!entity.isShiftKeyDown()) {
-                                        T1 = 14;
-                                        S1 = 10;
-                                    } else {
-                                        T1 = 14;
-                                        S1 = 5;
-                                    }
                                 } else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).contains("Dagon")) {
                                     if (!entity.isShiftKeyDown()) {
                                         T1 = 8;

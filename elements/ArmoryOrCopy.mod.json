@@ -2,7 +2,7 @@
   "_fv": 60,
   "_type": "keybind",
   "definition": {
-    "triggerKey": "V",
+    "triggerKey": "H",
     "keyBindingName": "Armory Or Copy Key",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {

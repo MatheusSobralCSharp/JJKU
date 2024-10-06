@@ -1,20 +1,20 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.CommandSourceStack;
 
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class ChangeFameProcedure {
-	public static void execute(CommandContext<CommandSourceStack> arguments) {
+	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
 		{
-			double _setval = DoubleArgumentType.getDouble(arguments, "CursePowerFormer");
+			double _setval = (DoubleArgumentType.getDouble(arguments, "CursePowerFormer"));
 			(new Object() {
 				public Entity getEntity() {
 					try {

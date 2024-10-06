@@ -114,4 +114,23 @@ public class JujutsucraftaddonModSounds {
 	public static final RegistryObject<SoundEvent> WU9 = REGISTRY.register("wu9", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "wu9")));
 	public static final RegistryObject<SoundEvent> WU10 = REGISTRY.register("wu10", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "wu10")));
 	public static final RegistryObject<SoundEvent> KYOKA = REGISTRY.register("kyoka", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "kyoka")));
+	public static final RegistryObject<SoundEvent> NOZARASHI = REGISTRY.register("nozarashi", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "nozarashi")));
+	public static final RegistryObject<SoundEvent> NOZARASHITRUE = REGISTRY.register("nozarashitrue", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "nozarashitrue")));
+	public static final RegistryObject<SoundEvent> YUJIDOMAIN = REGISTRY.register("yujidomain", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "yujidomain")));
+	public static final RegistryObject<SoundEvent> SUKUNAHEART = REGISTRY.register("sukunaheart", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sukunaheart")));
+	public static final RegistryObject<SoundEvent> MUSIC1 = REGISTRY.register("music1", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music1")));
+	public static final RegistryObject<SoundEvent> MUSIC2 = REGISTRY.register("music2", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music2")));
+	public static final RegistryObject<SoundEvent> MUSIC3 = REGISTRY.register("music3", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music3")));
+	public static final RegistryObject<SoundEvent> MUSIC4 = REGISTRY.register("music4", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music4")));
+	public static final RegistryObject<SoundEvent> SUKUNAVC1 = REGISTRY.register("sukunavc1", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sukunavc1")));
+	public static final RegistryObject<SoundEvent> SUKUNAVC2 = REGISTRY.register("sukunavc2", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sukunavc2")));
+	public static final RegistryObject<SoundEvent> SUKUNAVC3 = REGISTRY.register("sukunavc3", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sukunavc3")));
+	public static final RegistryObject<SoundEvent> SUKUNAVC4 = REGISTRY.register("sukunavc4", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sukunavc4")));
+	public static final RegistryObject<SoundEvent> SUKUNAVC5 = REGISTRY.register("sukunavc5", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "sukunavc5")));
+	public static final RegistryObject<SoundEvent> MUSIC5 = REGISTRY.register("music5", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music5")));
+	public static final RegistryObject<SoundEvent> MUSIC6 = REGISTRY.register("music6", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music6")));
+	public static final RegistryObject<SoundEvent> MUSIC7 = REGISTRY.register("music7", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music7")));
+	public static final RegistryObject<SoundEvent> MUSIC8 = REGISTRY.register("music8", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music8")));
+	public static final RegistryObject<SoundEvent> MUSIC9 = REGISTRY.register("music9", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music9")));
+	public static final RegistryObject<SoundEvent> MUSIC10 = REGISTRY.register("music10", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music10")));
 }

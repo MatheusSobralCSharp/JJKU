@@ -56,7 +56,16 @@
     "GetDomainBlockMixin",
     "MalevolentShrineActiveMixin",
     "MalevolentShrine2Mixin",
-    "RenderCloudProcedureMixin"
+    "InoRyuMixin",
+    "RyuKaichiMixin",
+    "GuardEffectMixin",
+    "GuardEffect2Mixin",
+    "KeybindFowardMixin",
+    "PlayerRendererMixin",
+    "AbstractClientPlayerMixin",
+    "RunningAnimationMixin",
+    "FingerWhenusedMixin",
+    "SukunaEffectMixin"
   ],
   "client": [],
   "minVersion": "0.8"

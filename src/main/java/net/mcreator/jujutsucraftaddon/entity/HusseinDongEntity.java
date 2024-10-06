@@ -52,7 +52,7 @@ public class HusseinDongEntity extends Monster {
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
-		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(JujutsucraftaddonModItems.YUUN.get()));
+		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(JujutsucraftaddonModItems.WUKONG_STAFF.get()));
 		this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(JujutsucraftaddonModItems.KIMONO_BLACK_CHESTPLATE.get()));
 		this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(JujutsucraftaddonModItems.KIMONO_BLACK_LEGGINGS.get()));
 	}
@@ -144,7 +144,7 @@ public class HusseinDongEntity extends Monster {
 		builder = builder.add(Attributes.MAX_HEALTH, 900);
 		builder = builder.add(Attributes.ARMOR, 30);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 10);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 256);
 		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 2);
 		builder = builder.add(Attributes.ATTACK_KNOCKBACK, 4);
 		return builder;

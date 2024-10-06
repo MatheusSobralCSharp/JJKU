@@ -1,0 +1,35 @@
+{
+  "_fv": 60,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 2,
+    "blockingRenderType": 0,
+    "texture": "purple4",
+    "customModelName": "sheath:default",
+    "blockingModelName": "Normal blocking",
+    "name": "Sheath",
+    "specialInformation": {
+      "fixedValue": [
+        "[Ability] Bury The Light"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:Weapons"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.0,
+    "enchantability": 2,
+    "damageVsEntity": 4.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}

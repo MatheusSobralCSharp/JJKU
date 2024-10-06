@@ -10,10 +10,17 @@ import net.minecraft.client.model.HumanoidModel;
 
 import net.mcreator.jujutsucraftaddon.entity.UiUiEntity;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+
 public class UiUiRenderer extends HumanoidMobRenderer<UiUiEntity, HumanoidModel<UiUiEntity>> {
 	public UiUiRenderer(EntityRendererProvider.Context context) {
 		super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
 		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+	}
+
+	@Override
+	protected void scale(UiUiEntity entity, PoseStack poseStack, float f) {
+		poseStack.scale(0.75f, 0.75f, 0.75f);
 	}
 
 	@Override

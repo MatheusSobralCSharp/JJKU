@@ -20,6 +20,7 @@ import net.mcreator.jujutsucraftaddon.client.renderer.URenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.TestingVersionRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.TestingEntityRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.TanjerinaRenderer;
+import net.mcreator.jujutsucraftaddon.client.renderer.SukunaRRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.SukunaNoShirtRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.SukunaMangaRenderer;
 import net.mcreator.jujutsucraftaddon.client.renderer.SukunaFushiguroRenderer;
@@ -94,5 +95,6 @@ public class JujutsucraftaddonModEntityRenderers {
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.YE.get(), YeRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.FAKE_CLONES.get(), FakeClonesRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.CLONE.get(), CloneRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.SUKUNA_R.get(), SukunaRRenderer::new);
 	}
 }

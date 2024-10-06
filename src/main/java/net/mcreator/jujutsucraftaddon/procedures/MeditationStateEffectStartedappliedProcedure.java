@@ -23,7 +23,7 @@ public class MeditationStateEffectStartedappliedProcedure {
 			_player.displayClientMessage(Component.literal("Your Training With Your Inner-Spirit Starts Now... Good Luck!"), false);
 		if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
 			if (world instanceof ServerLevel _serverLevel) {
-				Entity entitytospawn = JujutsucraftModEntities.GOJO_SATORU.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+				Entity entitytospawn = JujutsucraftModEntities.FUSHIGURO_TOJI.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 				if (entitytospawn != null) {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);

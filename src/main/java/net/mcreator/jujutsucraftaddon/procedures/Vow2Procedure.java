@@ -14,7 +14,7 @@ public class Vow2Procedure {
 		if (entity == null)
 			return;
 		{
-			double _setval = 500;
+			double _setval = 30;
 			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.Output = _setval;
 				capability.syncPlayerVariables(entity);

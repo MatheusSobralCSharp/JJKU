@@ -808,5 +808,157 @@
         "stream": false
       }
     ]
+  },
+  "nozarashi": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:nozarashi-_mp3cut.net_",
+        "stream": false
+      }
+    ]
+  },
+  "nozarashitrue": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:nozarashi",
+        "stream": false
+      }
+    ]
+  },
+  "yujidomain": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:yujiidomain",
+        "stream": false
+      }
+    ]
+  },
+  "sukunaheart": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:sukunavc1",
+        "stream": false
+      }
+    ]
+  },
+  "music1": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music1",
+        "stream": true
+      }
+    ]
+  },
+  "music2": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music2",
+        "stream": true
+      }
+    ]
+  },
+  "music3": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music3",
+        "stream": true
+      }
+    ]
+  },
+  "music4": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music4",
+        "stream": true
+      }
+    ]
+  },
+  "sukunavc1": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:annoyingbrat",
+        "stream": false
+      }
+    ]
+  },
+  "sukunavc2": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:bakana",
+        "stream": false
+      }
+    ]
+  },
+  "sukunavc3": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:bindingvowsukuna",
+        "stream": false
+      }
+    ]
+  },
+  "sukunavc4": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:brat",
+        "stream": false
+      }
+    ]
+  },
+  "sukunavc5": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:youreboring",
+        "stream": false
+      }
+    ]
+  },
+  "music5": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music5",
+        "stream": true
+      }
+    ]
+  },
+  "music6": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music6",
+        "stream": true
+      }
+    ]
+  },
+  "music7": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music7",
+        "stream": false
+      }
+    ]
+  },
+  "music8": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music8",
+        "stream": false
+      }
+    ]
+  },
+  "music9": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music9",
+        "stream": true
+      }
+    ]
+  },
+  "music10": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:music10",
+        "stream": true
+      }
+    ]
   }
 }

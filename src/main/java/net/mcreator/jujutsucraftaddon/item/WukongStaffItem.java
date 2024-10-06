@@ -1,6 +1,7 @@
 
 package net.mcreator.jujutsucraftaddon.item;
 
+import net.minecraft.world.item.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.core.animation.RawAnimation;
@@ -15,11 +16,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -45,13 +41,13 @@ import java.util.List;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.ImmutableMultimap;
 
-public class WukongStaffItem extends Item implements GeoItem {
+public class WukongStaffItem extends SwordItem implements GeoItem {
 	private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 	public String animationprocedure = "empty";
 	public static ItemDisplayContext transformType;
 
 	public WukongStaffItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
+		super(Tiers.DIAMOND, 3, -2.4f, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
 	}
 
 	@Override
@@ -152,14 +148,14 @@ public class WukongStaffItem extends Item implements GeoItem {
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		WukongStaffLivingEntityIsHitWithItemProcedure.execute(entity.level(), entity, sourceentity, itemstack);
+		WukongStaffLivingEntityIsHitWithItemProcedure.execute(entity.level(), sourceentity, entity, itemstack);
 		return retval;
 	}
 
 	@Override
 	public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity) {
 		boolean retval = super.onEntitySwing(itemstack, entity);
-		WukongStaffEntitySwingsItemProcedure.execute(entity.level(), entity, itemstack);
+		WukongStaffEntitySwingsItemProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
 		return retval;
 	}
 

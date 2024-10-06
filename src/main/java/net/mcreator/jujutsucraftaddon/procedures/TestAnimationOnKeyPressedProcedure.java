@@ -47,6 +47,41 @@ public class TestAnimationOnKeyPressedProcedure {
 					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 3, false, false));
 			}
 		}
+		if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Kenjaku")) {
+			if ((((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).tag1).equals("One") == false
+					|| ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).tag1).equals("Three"))
+					&& ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).tag1).equals("Two") == false) {
+				{
+					String _setval = "One";
+					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+						capability.tag1 = _setval;
+						capability.syncPlayerVariables(entity);
+					});
+				}
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("Swapped For First Body"), true);
+			} else if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).tag1).equals("One")) {
+				{
+					String _setval = "Two";
+					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+						capability.tag1 = _setval;
+						capability.syncPlayerVariables(entity);
+					});
+				}
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("Swapped For Second Body"), true);
+			} else if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).tag1).equals("Two")) {
+				{
+					String _setval = "Three";
+					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+						capability.tag1 = _setval;
+						capability.syncPlayerVariables(entity);
+					});
+				}
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("Swapped For Third Body"), true);
+			}
+		}
 		if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
 			if (!entity.isShiftKeyDown()) {
 				{
@@ -56,17 +91,17 @@ public class TestAnimationOnKeyPressedProcedure {
 						if (!(entityiterator == entity)) {
 							if ((new Object() {
 								public String getValue() {
-									CompoundTag dataIndex8 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex8);
-									return dataIndex8.getCompound("ForgeData").getString("OWNER_UUID");
+									CompoundTag dataIndex11 = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex11);
+									return dataIndex11.getCompound("ForgeData").getString("OWNER_UUID");
 								}
 							}.getValue()).equals(entity.getStringUUID())) {
-								if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get()))) {
+								if (!(entity instanceof LivingEntity _livEnt13 && _livEnt13.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get()))) {
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-										_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.HIDING.get(), 300, 1, false, false));
+										_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.HIDING.get(), 100, 1, false, false));
 									if (entity instanceof Player _player && !_player.level().isClientSide())
 										_player.displayClientMessage(Component.literal("Lovely..."), false);
-								} else if (entity instanceof LivingEntity _livEnt13 && _livEnt13.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get())) {
+								} else if (entity instanceof LivingEntity _livEnt16 && _livEnt16.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get())) {
 									if (entity instanceof Player _player && !_player.level().isClientSide())
 										_player.displayClientMessage(Component.literal("Skill On Cooldown"), false);
 								}

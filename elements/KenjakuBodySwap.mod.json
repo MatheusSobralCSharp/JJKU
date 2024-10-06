@@ -3,7 +3,7 @@
   "_type": "gui",
   "definition": {
     "type": 0,
-    "width": 200,
+    "width": 300,
     "height": 166,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
@@ -21,8 +21,8 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 124,
-          "y": 53
+          "x": 88,
+          "y": 54
         }
       },
       {
@@ -36,7 +36,7 @@
           },
           "width": 56,
           "height": 20,
-          "x": 213,
+          "x": 210,
           "y": 48
         }
       },
@@ -52,7 +52,7 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 123,
+          "x": 87,
           "y": 85
         }
       },
@@ -68,7 +68,7 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 123,
+          "x": 85,
           "y": 118
         }
       },
@@ -145,39 +145,48 @@
         }
       },
       {
-        "type": "label",
+        "type": "button",
         "data": {
-          "name": "label_yuta_ct",
-          "text": {
-            "fixedValue": "Yuta CT:"
+          "name": "button_clear_body_1",
+          "text": "Clear Body 1",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Body1"
           },
-          "color": {
-            "value": -12829636,
-            "falpha": 0.0
-          },
-          "displayCondition": {
-            "name": "ConditionYuta"
-          },
-          "x": 123,
-          "y": 153
+          "width": 87,
+          "height": 20,
+          "x": 74,
+          "y": 146
         }
       },
       {
         "type": "button",
         "data": {
-          "name": "button_select3",
-          "text": "Select",
+          "name": "button_clear_body_2",
+          "text": "Clear Body 2",
           "isUndecorated": false,
           "onClick": {
-            "name": "SetYutaCT"
+            "name": "Body2"
           },
-          "displayCondition": {
-            "name": "ConditionYuta"
-          },
-          "width": 56,
+          "width": 87,
           "height": 20,
-          "x": 213,
-          "y": 147
+          "x": 173,
+          "y": 146
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_clear_body_3",
+          "text": "Clear Body 3",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Body3"
+          },
+          "width": 87,
+          "height": 20,
+          "x": 270,
+          "y": 146
         }
       }
     ],

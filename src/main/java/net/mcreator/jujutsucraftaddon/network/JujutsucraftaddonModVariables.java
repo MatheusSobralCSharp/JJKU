@@ -258,6 +258,16 @@ public class JujutsucraftaddonModVariables {
 			clone.SH = original.SH;
 			clone.Mahoraga = original.Mahoraga;
 			clone.TrueTechnique = original.TrueTechnique;
+			clone.MobTexture = original.MobTexture;
+			clone.MobModel = original.MobModel;
+			clone.MobTexture2 = original.MobTexture2;
+			clone.MobTexture3 = original.MobTexture3;
+			clone.Dash = original.Dash;
+			clone.tag1 = original.tag1;
+			clone.tag2 = original.tag2;
+			clone.tag3 = original.tag3;
+			clone.BGM = original.BGM;
+			clone.levelrct = original.levelrct;
 			if (!event.isWasDeath()) {
 				clone.InventoryArmorySlot0 = original.InventoryArmorySlot0;
 				clone.InventoryArmorySlot2 = original.InventoryArmorySlot2;
@@ -348,6 +358,7 @@ public class JujutsucraftaddonModVariables {
 		public double DomainExpansion = 0;
 		public double map = 0;
 		public double Setup = 0;
+		public double Sukuna = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -362,6 +373,7 @@ public class JujutsucraftaddonModVariables {
 			DomainExpansion = nbt.getDouble("DomainExpansion");
 			map = nbt.getDouble("map");
 			Setup = nbt.getDouble("Setup");
+			Sukuna = nbt.getDouble("Sukuna");
 		}
 
 		@Override
@@ -372,6 +384,7 @@ public class JujutsucraftaddonModVariables {
 			nbt.putDouble("DomainExpansion", DomainExpansion);
 			nbt.putDouble("map", map);
 			nbt.putDouble("Setup", Setup);
+			nbt.putDouble("Sukuna", Sukuna);
 			return nbt;
 		}
 
@@ -660,6 +673,16 @@ public class JujutsucraftaddonModVariables {
 		public double SH = 0;
 		public double Mahoraga = 0;
 		public double TrueTechnique = 0;
+		public String MobTexture = "\"\"";
+		public String MobModel = "\"\"";
+		public String MobTexture2 = "\"\"";
+		public String MobTexture3 = "\"\"";
+		public boolean Dash = false;
+		public String tag1 = "\"\"";
+		public String tag2 = "\"\"";
+		public String tag3 = "\"\"";
+		public boolean BGM = false;
+		public double levelrct = 0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -864,6 +887,16 @@ public class JujutsucraftaddonModVariables {
 			nbt.putDouble("SH", SH);
 			nbt.putDouble("Mahoraga", Mahoraga);
 			nbt.putDouble("TrueTechnique", TrueTechnique);
+			nbt.putString("MobTexture", MobTexture);
+			nbt.putString("MobModel", MobModel);
+			nbt.putString("MobTexture2", MobTexture2);
+			nbt.putString("MobTexture3", MobTexture3);
+			nbt.putBoolean("Dash", Dash);
+			nbt.putString("tag1", tag1);
+			nbt.putString("tag2", tag2);
+			nbt.putString("tag3", tag3);
+			nbt.putBoolean("BGM", BGM);
+			nbt.putDouble("levelrct", levelrct);
 			return nbt;
 		}
 
@@ -1065,6 +1098,16 @@ public class JujutsucraftaddonModVariables {
 			SH = nbt.getDouble("SH");
 			Mahoraga = nbt.getDouble("Mahoraga");
 			TrueTechnique = nbt.getDouble("TrueTechnique");
+			MobTexture = nbt.getString("MobTexture");
+			MobModel = nbt.getString("MobModel");
+			MobTexture2 = nbt.getString("MobTexture2");
+			MobTexture3 = nbt.getString("MobTexture3");
+			Dash = nbt.getBoolean("Dash");
+			tag1 = nbt.getString("tag1");
+			tag2 = nbt.getString("tag2");
+			tag3 = nbt.getString("tag3");
+			BGM = nbt.getBoolean("BGM");
+			levelrct = nbt.getDouble("levelrct");
 		}
 	}
 
@@ -1285,6 +1328,16 @@ public class JujutsucraftaddonModVariables {
 					variables.SH = message.data.SH;
 					variables.Mahoraga = message.data.Mahoraga;
 					variables.TrueTechnique = message.data.TrueTechnique;
+					variables.MobTexture = message.data.MobTexture;
+					variables.MobModel = message.data.MobModel;
+					variables.MobTexture2 = message.data.MobTexture2;
+					variables.MobTexture3 = message.data.MobTexture3;
+					variables.Dash = message.data.Dash;
+					variables.tag1 = message.data.tag1;
+					variables.tag2 = message.data.tag2;
+					variables.tag3 = message.data.tag3;
+					variables.BGM = message.data.BGM;
+					variables.levelrct = message.data.levelrct;
 				}
 			});
 			context.setPacketHandled(true);

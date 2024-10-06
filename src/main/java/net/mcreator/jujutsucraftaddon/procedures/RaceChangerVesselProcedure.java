@@ -34,7 +34,7 @@ public class RaceChangerVesselProcedure {
 			});
 		}
 		{
-			double _setval = -2.0;
+			double _setval = 1.0;
 			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.PlayerProfession = _setval;
 				capability.syncPlayerVariables(entity);

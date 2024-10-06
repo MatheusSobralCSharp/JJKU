@@ -28,7 +28,7 @@
       "falpha": 0.0
     },
     "creativeTab": {
-      "value": "MISC"
+      "value": "No creative tab entry"
     },
     "isBoss": false,
     "bossBarColor": "PINK",
@@ -101,11 +101,11 @@
     "stepSound": {
       "value": ""
     },
-    "whenMobIsHurt": {
-      "name": "ItadoriShinjukuEntityIsHurt"
+    "onRightClickedOn": {
+      "name": "IgrisRightClickedOnEntity"
     },
-    "onInitialSpawn": {
-      "name": "Shadow1OnInitialEntitySpawn"
+    "onMobTickUpdate": {
+      "name": "CloneOnEntityTickUpdate"
     },
     "hasAI": true,
     "aiBase": "(none)",
@@ -115,22 +115,22 @@
     "animation1": "idle",
     "animation2": "walk",
     "animation3": "",
-    "animation4": "",
+    "animation4": "attack",
     "animation5": "",
     "animation6": "",
     "animation7": "",
     "animation8": "fly",
     "animation9": "",
-    "animation10": "fly",
+    "animation10": "run",
     "enable2": true,
     "enable3": false,
-    "enable4": false,
+    "enable4": true,
     "enable5": false,
     "enable6": false,
     "enable7": false,
     "enable8": false,
     "enable9": false,
-    "enable10": false,
+    "enable10": true,
     "breedable": true,
     "tameable": true,
     "disableDeathRotation": false,

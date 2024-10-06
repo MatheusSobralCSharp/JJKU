@@ -15,5 +15,12 @@ public class JjkuResetProcedure {
 				capability.syncPlayerVariables(entity);
 			});
 		}
+		{
+			double _setval = 0;
+			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.SimpleQuest = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
 	}
 }

@@ -1,7 +1,9 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraftaddon.entity.UiUiEntity;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -11,14 +13,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.effect.MobEffect;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import java.util.Comparator;
+import java.util.List;
 
 
 @Mixin(value = SimpleDomainEffectStartedappliedProcedure.class, remap = false)
@@ -59,10 +66,35 @@ public abstract class SimpleDomainVowMixin {
                 var10000 = 0;
             }
 
-            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleQuest == 4) {
+            if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 11){
+                {
+                    final Vec3 _center = new Vec3(x, y, z);
+                    List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(100 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+                    for (Entity entityiterator : _entfound) {
+                        if (entityiterator instanceof UiUiEntity) {
+                            if ((entityiterator.getPersistentData().getString("OWNER_UUID")).equals(entity.getStringUUID())) {
+                                {
+                                    Entity _ent = entityiterator;
+                                    _ent.teleportTo(x, y, z);
+                                    if (_ent instanceof ServerPlayer _serverPlayer)
+                                        _serverPlayer.connection.teleport(x, y, z, _ent.getYRot(), _ent.getXRot());
+                                }
+                                if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                                    _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get(), 400,
+                                            (int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier() : 0)
+                                                    + 3),
+                                            false, false));
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleQuest >= 3.0) {
                 if (entity.getPersistentData().getDouble("cnt_simpledomain") < 18000.0) {
                     label68 : {
-                        entity.getPersistentData().putDouble("cnt_simpledomain", entity.getPersistentData().getDouble("cnt_m") + 1.0);
+                        entity.getPersistentData().putDouble("cnt_simpledomain", entity.getPersistentData().getDouble("cnt_simpledomain") + 1.0);
                     }
                 } else if (entity.getPersistentData().getDouble("cnt_simpledomain") == 18000.0) {
                     if (entity instanceof ServerPlayer _player) {

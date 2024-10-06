@@ -34,6 +34,9 @@ public class RandomCTProcedureProcedure {
 			return;
 		if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_RANDOM_CT) == true) {
 			if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:cursed_technique_changer")) {
+				if (event != null && event.isCancelable()) {
+					event.setCanceled(true);
+				}
 				if (entity instanceof Player _player)
 					_player.closeContainer();
 				if (entity instanceof Player _player) {

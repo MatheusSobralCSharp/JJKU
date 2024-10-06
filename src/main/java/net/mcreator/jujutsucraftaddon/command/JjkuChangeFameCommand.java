@@ -36,7 +36,7 @@ public class JjkuChangeFameCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					ChangeFameProcedure.execute(arguments);
+					ChangeFameProcedure.execute(world, arguments);
 					return 0;
 				}))));
 	}

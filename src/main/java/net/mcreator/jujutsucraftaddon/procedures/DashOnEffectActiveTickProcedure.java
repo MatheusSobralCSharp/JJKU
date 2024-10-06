@@ -41,13 +41,13 @@ public class DashOnEffectActiveTickProcedure {
 		if (!(entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get()))) {
 			if (!world.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(new Vec3(x, y, z), 30, 30, 30), e -> true).isEmpty() && entity.onGround()) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 20, 1, false, false));
+					_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 1, 1, false, false));
 				entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x() + entity.getLookAngle().x * 5), (entity.getDeltaMovement().y() + 0.25 + entity.getLookAngle().y * 0.125), (entity.getDeltaMovement().z() + entity.getLookAngle().z * 5)));
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 254, false, false));
 				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 7) {
 					for (int index0 = 0; index0 < 20; index0++) {
-						world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.DASH_1.get()), (x + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 4), (y + 0 + Mth.nextDouble(RandomSource.create(), 0, 5) * 4),
+						world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.DASH_1.get()), (x + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 4), (y + 0 + 0 * 4),
 								(z + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 4), 0, 0, 0);
 					}
 					if (world instanceof Level _level) {
@@ -59,7 +59,7 @@ public class DashOnEffectActiveTickProcedure {
 					}
 				} else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 7) {
 					for (int index1 = 0; index1 < 20; index1++) {
-						world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLUE.get()), (x + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 4), (y + 0 + Mth.nextDouble(RandomSource.create(), 0, 5) * 4),
+						world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLUE.get()), (x + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 4), (y + 0 + 0 * 4),
 								(z + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 4), 0, 0, 0);
 					}
 					if (world instanceof Level _level) {
@@ -90,9 +90,9 @@ public class DashOnEffectActiveTickProcedure {
 					final Vec3 _center = new Vec3(x, y, z);
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(20 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 					for (Entity entityiterator : _entfound) {
-						if (entityiterator instanceof LivingEntity && entityiterator instanceof LivingEntity _livEnt28 && _livEnt28.hasEffect(MobEffects.LEVITATION) && entityiterator.isNoGravity()
-								&& (!(entityiterator instanceof LivingEntity _livEnt30 && _livEnt30.hasEffect(JujutsucraftaddonModMobEffects.DASH.get()))
-										|| !(entityiterator instanceof LivingEntity _livEnt31 && _livEnt31.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get())))) {
+						if (entityiterator instanceof LivingEntity && entityiterator instanceof LivingEntity _livEnt26 && _livEnt26.hasEffect(MobEffects.LEVITATION) && entityiterator.isNoGravity()
+								&& (!(entityiterator instanceof LivingEntity _livEnt28 && _livEnt28.hasEffect(JujutsucraftaddonModMobEffects.DASH.get()))
+										|| !(entityiterator instanceof LivingEntity _livEnt29 && _livEnt29.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get())))) {
 							{
 								Entity _ent = entity;
 								_ent.teleportTo((entityiterator.getX()), (entityiterator.getY() + 1), (entityiterator.getZ() - 1));

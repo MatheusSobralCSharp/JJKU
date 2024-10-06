@@ -1,0 +1,41 @@
+{
+  "_fv": 60,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 1,
+    "blockingRenderType": 0,
+    "texture": "pngkey.com-kanji-png-3125397",
+    "customModelName": "nozarashishikai:default",
+    "blockingModelName": "Normal blocking",
+    "name": "Nozarashi Shikai",
+    "specialInformation": {
+      "fixedValue": [
+        "[Ability] Cut Everything"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:Weapons"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 1.0,
+    "enchantability": 2,
+    "damageVsEntity": 40.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onEntityHitWith": {
+      "name": "NozarashiLivingEntityIsHitWithTool"
+    },
+    "onEntitySwing": {
+      "name": "NozarashiShikaiEntitySwingsItem"
+    }
+  }
+}

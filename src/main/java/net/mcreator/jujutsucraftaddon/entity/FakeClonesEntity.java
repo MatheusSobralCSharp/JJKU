@@ -75,7 +75,7 @@ public class FakeClonesEntity extends TamableAnimal {
 			}
 		});
 		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
-		this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1, (float) 10, (float) 2, false) {
+		this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1, (float) 20, (float) 2, false) {
 			@Override
 			public boolean canUse() {
 				double x = FakeClonesEntity.this.getX();
@@ -224,7 +224,7 @@ public class FakeClonesEntity extends TamableAnimal {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		CloneOnEntityTickUpdateProcedure.execute(this.level(), this);
+		CloneOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(),this);;
 	}
 
 	@Override

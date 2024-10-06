@@ -1,9 +1,6 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.entity.BlueEntity;
-import net.mcreator.jujutsucraft.entity.GojoSatoruEntity;
-import net.mcreator.jujutsucraft.entity.PurpleEntity;
-import net.mcreator.jujutsucraft.entity.RedEntity;
+import net.mcreator.jujutsucraft.entity.*;
 import net.mcreator.jujutsucraft.init.JujutsucraftModAttributes;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;

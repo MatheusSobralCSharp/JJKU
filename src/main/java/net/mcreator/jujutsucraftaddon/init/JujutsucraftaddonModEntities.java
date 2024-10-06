@@ -26,6 +26,7 @@ import net.mcreator.jujutsucraftaddon.entity.TestingVersionEntity;
 import net.mcreator.jujutsucraftaddon.entity.TestingEntityEntity;
 import net.mcreator.jujutsucraftaddon.entity.TestProjectileEntity;
 import net.mcreator.jujutsucraftaddon.entity.TanjerinaEntity;
+import net.mcreator.jujutsucraftaddon.entity.SukunaREntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaNoShirtEntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaMangaEntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaFushiguroEntity;
@@ -197,6 +198,10 @@ public class JujutsucraftaddonModEntities {
 			EntityType.Builder.<CloneEntity>of(CloneEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CloneEntity::new)
 
 					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<SukunaREntity>> SUKUNA_R = register("sukuna_r",
+			EntityType.Builder.<SukunaREntity>of(SukunaREntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(SukunaREntity::new)
+
+					.sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -243,6 +248,7 @@ public class JujutsucraftaddonModEntities {
 			YeEntity.init();
 			FakeClonesEntity.init();
 			CloneEntity.init();
+			SukunaREntity.init();
 		});
 	}
 
@@ -286,5 +292,6 @@ public class JujutsucraftaddonModEntities {
 		event.put(YE.get(), YeEntity.createAttributes().build());
 		event.put(FAKE_CLONES.get(), FakeClonesEntity.createAttributes().build());
 		event.put(CLONE.get(), CloneEntity.createAttributes().build());
+		event.put(SUKUNA_R.get(), SukunaREntity.createAttributes().build());
 	}
 }

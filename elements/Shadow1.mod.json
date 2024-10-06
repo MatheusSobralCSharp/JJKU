@@ -101,14 +101,11 @@
     "stepSound": {
       "value": ""
     },
-    "whenMobIsHurt": {
-      "name": "ItadoriShinjukuEntityIsHurt"
-    },
     "onRightClickedOn": {
-      "name": "Shadow1RightClickedOnEntity"
+      "name": "IgrisRightClickedOnEntity"
     },
-    "onInitialSpawn": {
-      "name": "Shadow1OnInitialEntitySpawn"
+    "onMobTickUpdate": {
+      "name": "CloneOnEntityTickUpdate"
     },
     "hasAI": true,
     "aiBase": "(none)",
@@ -118,7 +115,7 @@
     "animation1": "idle",
     "animation2": "walk",
     "animation3": "",
-    "animation4": "",
+    "animation4": "attack",
     "animation5": "",
     "animation6": "",
     "animation7": "",
@@ -127,7 +124,7 @@
     "animation10": "fly",
     "enable2": true,
     "enable3": false,
-    "enable4": false,
+    "enable4": true,
     "enable5": false,
     "enable6": false,
     "enable7": false,

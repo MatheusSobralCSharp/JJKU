@@ -36,14 +36,20 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.nbt.CompoundTag;
 
 import net.mcreator.jujutsucraftaddon.procedures.ConditionFollowProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.CloneOnEntityTickUpdateProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
 
 public class CloneEntity extends TamableAnimal {
+	public static final EntityDataAccessor<String> DATA_Testing = SynchedEntityData.defineId(CloneEntity.class, EntityDataSerializers.STRING);
+
 	public CloneEntity(PlayMessages.SpawnEntity packet, Level world) {
 		this(JujutsucraftaddonModEntities.CLONE.get(), world);
 	}
@@ -59,6 +65,12 @@ public class CloneEntity extends TamableAnimal {
 	@Override
 	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_Testing, "");
 	}
 
 	@Override
@@ -138,6 +150,19 @@ public class CloneEntity extends TamableAnimal {
 	}
 
 	@Override
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.putString("DataTesting", this.entityData.get(DATA_Testing));
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		if (compound.contains("DataTesting"))
+			this.entityData.set(DATA_Testing, compound.getString("DataTesting"));
+	}
+
+	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
 		ItemStack itemstack = sourceentity.getItemInHand(hand);
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
@@ -183,7 +208,7 @@ public class CloneEntity extends TamableAnimal {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		CloneOnEntityTickUpdateProcedure.execute(this.level(), this);
+		CloneOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

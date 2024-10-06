@@ -18,6 +18,9 @@
     },
     "onActiveTick": {
       "name": "DashOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "DashEffectExpires"
     }
   }
 }

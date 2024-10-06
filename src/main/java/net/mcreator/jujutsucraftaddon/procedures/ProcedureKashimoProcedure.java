@@ -18,17 +18,15 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
 
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
-import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
 
 import java.util.List;
 import java.util.Comparator;
@@ -40,22 +38,26 @@ public class ProcedureKashimoProcedure {
 		if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 7) {
 			if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 				if (entity.isShiftKeyDown()) {
-					if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Lightning Strike")) {
+					if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+							.equals(Component.translatable("jujutsu.technique.kashimo1").getString())) {
 						entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 							capability.PlayerSelectCurseTechniqueName = "Thunder Storm";
 							capability.syncPlayerVariables(entity);
 						});
-					} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Knockback Attack")) {
+					} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+							.equals(Component.translatable("jujutsu.technique.attack2").getString())) {
 						entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 							capability.PlayerSelectCurseTechniqueName = "Kaminari";
 							capability.syncPlayerVariables(entity);
 						});
-					} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Attack")) {
+					} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+							.equals(Component.translatable("jujutsu.technique.attack1").getString())) {
 						entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 							capability.PlayerSelectCurseTechniqueName = "Speed Blitz";
 							capability.syncPlayerVariables(entity);
 						});
-					} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Barrage Attack")) {
+					} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+							.equals(Component.translatable("jujutsu.technique.attack3").getString())) {
 						entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 							capability.PlayerSelectCurseTechniqueName = "Genju Kohaku";
 							capability.syncPlayerVariables(entity);
@@ -69,54 +71,14 @@ public class ProcedureKashimoProcedure {
 									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
 									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()),
 									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(5)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
-							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 							for (Entity entityiterator : _entfound) {
 								if (!(entity == entityiterator)) {
-									{
-										Entity _ent = entityiterator;
-										if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-											_ent.getServer().getCommands()
-													.performPrefixedCommand(
-															new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(),
-																	_ent.getDisplayName(), _ent.level().getServer(), _ent),
-															"execute as @s unless entity @e[type=jujutsucraft:thunder_impact,distance=..10] run summon jujutsucraft:thunder_impact ~ ~ ~");
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Kaminari")) {
-					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
-						if (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex20 = new CompoundTag();
-								entity.saveWithoutId(dataIndex20);
-								return dataIndex20.getCompound("ForgeData").getDouble("cnt1");
-							}
-						}.getValue() == 1) {
-							{
-								final Vec3 _center = new Vec3(
-										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
-												.getX()),
-										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
-												.getY()),
-										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
-												.getZ()));
-								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
-								for (Entity entityiterator : _entfound) {
-									if (!(entity == entityiterator)) {
-										if (world instanceof ServerLevel _level) {
-											LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-											entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(entityiterator.getX(), entityiterator.getY(), entityiterator.getZ())));;
-											_level.addFreshEntity(entityToSpawn);
-										}
-										if (world instanceof ServerLevel _serverLevel) {
-											Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
-													MobSpawnType.MOB_SUMMONED);
-											if (entitytospawn != null) {
-												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-											}
+									if (world instanceof ServerLevel _serverLevel) {
+										Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+												MobSpawnType.MOB_SUMMONED);
+										if (entitytospawn != null) {
+											entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 											CompoundTag dataIndex1 = new CompoundTag();
 											(entitytospawn).saveWithoutId(dataIndex1);
 											dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
@@ -137,9 +99,122 @@ public class ProcedureKashimoProcedure {
 														entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
 											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 												_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+											_serverLevel.addFreshEntity(entitytospawn);
 										}
-										entityiterator.hurt(
-												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
+									}
+									if (world instanceof ServerLevel _serverLevel) {
+										Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+												MobSpawnType.MOB_SUMMONED);
+										if (entitytospawn != null) {
+											entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+											CompoundTag dataIndex1 = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex1);
+											dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+											(entitytospawn).load(dataIndex1);
+											CompoundTag dataIndex3 = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex3);
+											dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex2 = new CompoundTag();
+													entity.saveWithoutId(dataIndex2);
+													return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
+												}
+											}.getValue()));
+											(entitytospawn).load(dataIndex3);
+											((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+												_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+														entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+												_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+											_serverLevel.addFreshEntity(entitytospawn);
+										}
+									}
+									if (world instanceof ServerLevel _serverLevel) {
+										Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+												MobSpawnType.MOB_SUMMONED);
+										if (entitytospawn != null) {
+											entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+											CompoundTag dataIndex1 = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex1);
+											dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+											(entitytospawn).load(dataIndex1);
+											CompoundTag dataIndex3 = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex3);
+											dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex2 = new CompoundTag();
+													entity.saveWithoutId(dataIndex2);
+													return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
+												}
+											}.getValue()));
+											(entitytospawn).load(dataIndex3);
+											((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+												_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+														entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+												_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+											_serverLevel.addFreshEntity(entitytospawn);
+										}
+									}
+								}
+							}
+						}
+					}
+				} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Kaminari")) {
+					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+						if (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex62 = new CompoundTag();
+								entity.saveWithoutId(dataIndex62);
+								return dataIndex62.getCompound("ForgeData").getDouble("cnt1");
+							}
+						}.getValue() == 1) {
+							{
+								final Vec3 _center = new Vec3(
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getX()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getY()),
+										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+												.getZ()));
+								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+								for (Entity entityiterator : _entfound) {
+									if (!(entity == entityiterator)) {
+										if (world instanceof ServerLevel _level) {
+											LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+											entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(entityiterator.getX(), entityiterator.getY(), entityiterator.getZ())));;
+											_level.addFreshEntity(entityToSpawn);
+										}
+										if (world instanceof ServerLevel _serverLevel) {
+											Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+													MobSpawnType.MOB_SUMMONED);
+											if (entitytospawn != null) {
+												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+												CompoundTag dataIndex1 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex1);
+												dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+												(entitytospawn).load(dataIndex1);
+												CompoundTag dataIndex3 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex3);
+												dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+													public double getValue() {
+														CompoundTag dataIndex2 = new CompoundTag();
+														entity.saveWithoutId(dataIndex2);
+														return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
+													}
+												}.getValue()));
+												(entitytospawn).load(dataIndex3);
+												((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+															entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+												_serverLevel.addFreshEntity(entitytospawn);
+											}
+										}
 									}
 								}
 							}
@@ -149,9 +224,9 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex47 = new CompoundTag();
-								entity.saveWithoutId(dataIndex47);
-								return dataIndex47.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex87 = new CompoundTag();
+								entity.saveWithoutId(dataIndex87);
+								return dataIndex87.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
@@ -174,7 +249,35 @@ public class ProcedureKashimoProcedure {
 												_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 										}
 										entityiterator.hurt(
-												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
+												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 25);
+										if (world instanceof ServerLevel _serverLevel) {
+											Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+													MobSpawnType.MOB_SUMMONED);
+											if (entitytospawn != null) {
+												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+												CompoundTag dataIndex1 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex1);
+												dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+												(entitytospawn).load(dataIndex1);
+												CompoundTag dataIndex3 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex3);
+												dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+													public double getValue() {
+														CompoundTag dataIndex2 = new CompoundTag();
+														entity.saveWithoutId(dataIndex2);
+														return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
+													}
+												}.getValue()));
+												(entitytospawn).load(dataIndex3);
+												((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+															entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+												_serverLevel.addFreshEntity(entitytospawn);
+											}
+										}
 									}
 								}
 							}
@@ -184,9 +287,9 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex62 = new CompoundTag();
-								entity.saveWithoutId(dataIndex62);
-								return dataIndex62.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex115 = new CompoundTag();
+								entity.saveWithoutId(dataIndex115);
+								return dataIndex115.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
@@ -197,7 +300,7 @@ public class ProcedureKashimoProcedure {
 												.getY()),
 										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(1)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
 												.getZ()));
-								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+								List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 								for (Entity entityiterator : _entfound) {
 									if (!(entity == entityiterator)) {
 										{
@@ -206,38 +309,68 @@ public class ProcedureKashimoProcedure {
 											if (_ent instanceof ServerPlayer _serverPlayer)
 												_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 										}
-										entityiterator.hurt(
-												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 50);
 										if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 											_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
 										if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 											_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 254, false, false));
 										if (world instanceof ServerLevel _serverLevel) {
-											Entity entitytospawn = JujutsucraftModEntities.ENERGY_BALL_WHITE.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+											Entity entitytospawn = JujutsucraftModEntities.THUNDER_IMPACT.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
 													MobSpawnType.MOB_SUMMONED);
 											if (entitytospawn != null) {
 												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+												CompoundTag dataIndex1 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex1);
+												dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+												(entitytospawn).load(dataIndex1);
+												CompoundTag dataIndex3 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex3);
+												dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+													public double getValue() {
+														CompoundTag dataIndex2 = new CompoundTag();
+														entity.saveWithoutId(dataIndex2);
+														return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
+													}
+												}.getValue()));
+												(entitytospawn).load(dataIndex3);
+												((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+															entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+												_serverLevel.addFreshEntity(entitytospawn);
 											}
-											CompoundTag dataIndex1 = new CompoundTag();
-											(entitytospawn).saveWithoutId(dataIndex1);
-											dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
-											(entitytospawn).load(dataIndex1);
-											CompoundTag dataIndex3 = new CompoundTag();
-											(entitytospawn).saveWithoutId(dataIndex3);
-											dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-												public double getValue() {
-													CompoundTag dataIndex2 = new CompoundTag();
-													entity.saveWithoutId(dataIndex2);
-													return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
-												}
-											}.getValue()));
-											(entitytospawn).load(dataIndex3);
-											((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
-											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-												_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
-														entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
-											if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-												_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+										}
+										if (world instanceof ServerLevel _serverLevel) {
+											Entity entitytospawn = JujutsucraftModEntities.ENTITY_BLACK_FLASH.get().spawn(_serverLevel, BlockPos.containing((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())),
+													MobSpawnType.MOB_SUMMONED);
+											if (entitytospawn != null) {
+												entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+												CompoundTag dataIndex1 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex1);
+												dataIndex1.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+												(entitytospawn).load(dataIndex1);
+												CompoundTag dataIndex3 = new CompoundTag();
+												(entitytospawn).saveWithoutId(dataIndex3);
+												dataIndex3.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+													public double getValue() {
+														CompoundTag dataIndex2 = new CompoundTag();
+														entity.saveWithoutId(dataIndex2);
+														return dataIndex2.getCompound("ForgeData").getDouble("friend_num");
+													}
+												}.getValue()));
+												(entitytospawn).load(dataIndex3);
+												((LivingEntity) (entitytospawn)).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
+															entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0, false, false));
+												if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+													_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 2, false, false));
+												entityiterator.hurt(
+														new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
+														50);
+												_serverLevel.addFreshEntity(entitytospawn);
+											}
 										}
 									}
 								}

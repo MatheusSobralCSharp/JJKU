@@ -1,0 +1,38 @@
+{
+  "_fv": 60,
+  "_type": "tool",
+  "definition": {
+    "toolType": "Sword",
+    "renderType": 2,
+    "blockingRenderType": 0,
+    "texture": "mai_gun",
+    "customModelName": "yamatosheath:default",
+    "blockingModelName": "Normal blocking",
+    "name": "Yamato Sheathed",
+    "specialInformation": {
+      "fixedValue": [
+        "[Ability] I AM THE STORM THAT IS APPROACHING"
+      ]
+    },
+    "creativeTab": {
+      "value": "CUSTOM:Weapons"
+    },
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 0.1,
+    "enchantability": 2,
+    "damageVsEntity": 20.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "glowCondition": {
+      "fixedValue": false
+    },
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "Yamato2Rightclicked"
+    }
+  }
+}

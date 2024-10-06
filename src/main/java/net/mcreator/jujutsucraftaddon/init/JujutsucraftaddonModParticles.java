@@ -37,6 +37,7 @@ import net.mcreator.jujutsucraftaddon.client.particle.IceParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.HorizontalSlashParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.HorizontalSlashBlackParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.HorizontalSlash2Particle;
+import net.mcreator.jujutsucraftaddon.client.particle.HorizontalSlash1Particle;
 import net.mcreator.jujutsucraftaddon.client.particle.HorizontalKaiParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.HitImpactParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.HaitiParticle;
@@ -124,5 +125,6 @@ public class JujutsucraftaddonModParticles {
 		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.KOKUSEN_3.get(), Kokusen3Particle::provider);
 		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.KOKUSEN_4.get(), Kokusen4Particle::provider);
 		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.KOKUSEN_5.get(), Kokusen5Particle::provider);
+		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.HORIZONTAL_SLASH_1.get(), HorizontalSlash1Particle::provider);
 	}
 }

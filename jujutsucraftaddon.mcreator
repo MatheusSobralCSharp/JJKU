@@ -3847,7 +3847,7 @@
       "type": "animatedentity",
       "sortid": 594,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "shadow_1",
       "metadata": {
         "files": [
@@ -3863,7 +3863,7 @@
       "type": "animatedentity",
       "sortid": 596,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "igris",
       "metadata": {
         "files": [
@@ -4878,6 +4878,22 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
           },
           {
             "name": "world",
@@ -6021,20 +6037,6 @@
       "path": "~/Effects"
     },
     {
-      "name": "CounterKeybind",
-      "type": "keybind",
-      "sortid": 763,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "counter_keybind",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/network/CounterKeybindMessage.java"
-        ]
-      },
-      "path": "~/KeyBinds"
-    },
-    {
       "name": "CounterKeybindOnKeyPressed",
       "type": "procedure",
       "sortid": 764,
@@ -6049,6 +6051,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -6535,46 +6541,6 @@
       "path": "~/CTs"
     },
     {
-      "name": "JogoExtension",
-      "type": "procedure",
-      "sortid": 827,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "jogo_extension",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/JogoExtensionProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CTs"
-    },
-    {
       "name": "UiUiSpawn",
       "type": "procedure",
       "sortid": 832,
@@ -6585,28 +6551,7 @@
         "files": [
           "src/main/java/net/mcreator/jujutsucraftaddon/procedures/UiUiSpawnProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CTs"
     },
@@ -6625,6 +6570,18 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
           },
           {
             "name": "world",
@@ -8738,7 +8695,7 @@
       "type": "procedure",
       "sortid": 994,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "if_player_has_sukuna",
       "metadata": {
         "files": [
@@ -9726,7 +9683,7 @@
       "type": "procedure",
       "sortid": 1075,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "change_fame",
       "metadata": {
         "files": [
@@ -9736,6 +9693,10 @@
           {
             "name": "arguments",
             "type": "cmdcontext"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -11669,6 +11630,18 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -12463,7 +12436,7 @@
       "type": "procedure",
       "sortid": 1299,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "procedure_kashimo",
       "metadata": {
         "files": [
@@ -13169,10 +13142,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "sourceentity",
             "type": "entity"
           },
@@ -13318,6 +13287,10 @@
           "src/main/java/net/mcreator/jujutsucraftaddon/procedures/CounterProcedureProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "damagesource",
+            "type": "damagesource"
+          },
           {
             "name": "entity",
             "type": "entity"
@@ -14629,50 +14602,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "amount",
-            "type": "number"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CTs"
-    },
-    {
-      "name": "VoicelinesBack",
-      "type": "procedure",
-      "sortid": 1425,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "voicelines_back",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/VoicelinesBackProcedure.java"
-        ],
-        "dependencies": [
-          {
             "name": "damagesource",
             "type": "damagesource"
           },
@@ -14799,50 +14728,6 @@
           {
             "name": "sourceentity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CTs"
-    },
-    {
-      "name": "Attack1",
-      "type": "procedure",
-      "sortid": 1440,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "attack_1",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Attack1Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "amount",
-            "type": "number"
           },
           {
             "name": "x",
@@ -15005,7 +14890,7 @@
       "type": "procedure",
       "sortid": 1455,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "die_1",
       "metadata": {
         "files": [
@@ -16166,34 +16051,6 @@
       "path": "~/SpecialInterations"
     },
     {
-      "name": "Die2",
-      "type": "procedure",
-      "sortid": 1544,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "die_2",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Die2Procedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/SpecialInterations"
-    },
-    {
       "name": "HeianOnEffectActiveTick",
       "type": "procedure",
       "sortid": 1545,
@@ -17226,20 +17083,6 @@
       "path": "~/ProceduresAI"
     },
     {
-      "name": "JjkuFriend",
-      "type": "command",
-      "sortid": 1595,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "jjku_friend",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkuFriendCommand.java"
-        ]
-      },
-      "path": "~/GameRule"
-    },
-    {
       "name": "JjkuCanTameSukuna",
       "type": "gamerule",
       "sortid": 1596,
@@ -18028,56 +17871,6 @@
         ]
       },
       "path": "~/ProceduresAI"
-    },
-    {
-      "name": "ClickAnimationOnKeyPressed",
-      "type": "procedure",
-      "sortid": 1643,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "click_animation_on_key_pressed",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ClickAnimationOnKeyPressedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/ProceduresAI"
-    },
-    {
-      "name": "ClickAnimation",
-      "type": "keybind",
-      "sortid": 1644,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "click_animation",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/network/ClickAnimationMessage.java"
-        ]
-      },
-      "path": "~/SpecialInterations"
     },
     {
       "name": "TestAnimationOnKeyPressed",
@@ -19238,6 +19031,9 @@
       "locked_code": false,
       "registry_name": "domain_type_on_key_pressed",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/DomainTypeOnKeyPressedProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -19819,7 +19615,7 @@
       "type": "animateditem",
       "sortid": 1739,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "yuun",
       "metadata": {
         "files": [
@@ -20688,30 +20484,6 @@
           {
             "name": "entity",
             "type": "entity"
-          }
-        ]
-      },
-      "path": "~/ProceduresAI"
-    },
-    {
-      "name": "Joined",
-      "type": "procedure",
-      "sortid": 1803,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "joined",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/JoinedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
@@ -22409,54 +22181,6 @@
       "path": "~/Professions"
     },
     {
-      "name": "ElementalAttack",
-      "type": "procedure",
-      "sortid": 1887,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "elemental_attack",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ElementalAttackProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "damagesource",
-            "type": "damagesource"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "amount",
-            "type": "number"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/Professions"
-    },
-    {
       "name": "Condition",
       "type": "procedure",
       "sortid": 1888,
@@ -24121,6 +23845,9 @@
       "locked_code": false,
       "registry_name": "jogoat_spawn",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/JogoatSpawnProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -24172,6 +23899,9 @@
       "locked_code": false,
       "registry_name": "vow_2",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Vow2Procedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -24301,6 +24031,9 @@
       "locked_code": false,
       "registry_name": "meditation_passive",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MeditationPassiveProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -24321,6 +24054,9 @@
       "locked_code": false,
       "registry_name": "meditation_on_key_pressed",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MeditationOnKeyPressedProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -24372,6 +24108,9 @@
       "locked_code": false,
       "registry_name": "meditation_state_effect_startedapplied",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MeditationStateEffectStartedappliedProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -26802,7 +26541,7 @@
       "type": "procedure",
       "sortid": 2087,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "wukong_staff_entity_swings_item",
       "metadata": {
         "files": [
@@ -26818,6 +26557,18 @@
             "type": "itemstack"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -26829,7 +26580,7 @@
       "type": "animateditem",
       "sortid": 2088,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "wukong_staff",
       "metadata": {
         "files": [
@@ -27031,6 +26782,18 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
           },
           {
             "name": "world",
@@ -27302,6 +27065,9 @@
       "locked_code": false,
       "registry_name": "fix",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FixProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -27848,18 +27614,13 @@
       "locked_code": false,
       "registry_name": "mahoraga_disable",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MahoragaDisableProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "arguments",
             "type": "cmdcontext"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       }
@@ -27887,6 +27648,9 @@
       "locked_code": false,
       "registry_name": "fake_clones_entity_is_hurt",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FakeClonesEntityIsHurtProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -28076,7 +27840,7 @@
       "type": "tool",
       "sortid": 2154,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "kyoka",
       "metadata": {
         "files": [
@@ -28093,6 +27857,9 @@
       "locked_code": false,
       "registry_name": "spawn_fake_clone",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SpawnFakeCloneProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -28235,11 +28002,10 @@
       "locked_code": false,
       "registry_name": "snow_domain_on_tick_update",
       "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SnowDomainOnTickUpdateProcedure.java"
+        ],
         "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
           {
             "name": "x",
             "type": "number"
@@ -28317,15 +28083,2444 @@
       }
     },
     {
-      "name": "RenderCloudProcedure",
-      "type": "mixin",
-      "sortid": 2167,
+      "name": "NozarashiLivingEntityIsHitWithTool",
+      "type": "procedure",
+      "sortid": 2168,
       "compiles": true,
-      "locked_code": true,
-      "registry_name": "render_cloud_procedure",
+      "locked_code": false,
+      "registry_name": "nozarashi_living_entity_is_hit_with_tool",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/RenderCloudProcedureMixin.java"
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiLivingEntityIsHitWithToolProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NozarashiEntitySwingsItem",
+      "type": "procedure",
+      "sortid": 2169,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_entity_swings_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiEntitySwingsItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Nozarashi",
+      "type": "tool",
+      "sortid": 2170,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/NozarashiItem.java",
+          "src/main/resources/assets/jujutsucraftaddon/models/item/nozarashi.json"
+        ]
+      }
+    },
+    {
+      "name": "AIOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2171,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/AIOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AI",
+      "type": "potioneffect",
+      "sortid": 2172,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/AIMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Quake",
+      "type": "potioneffect",
+      "sortid": 2174,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quake",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/QuakeMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "QuakeOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2175,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "quake_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/QuakeOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "QuakeEffectTradeBack",
+      "type": "procedure",
+      "sortid": 2176,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quake_effect_trade_back",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/QuakeEffectTradeBackProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NozarashiRightclicked",
+      "type": "procedure",
+      "sortid": 2177,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AwakeEffectExpires",
+      "type": "procedure",
+      "sortid": 2178,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "awake_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/AwakeEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AwakeOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2179,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "awake_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/AwakeOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Awake",
+      "type": "potioneffect",
+      "sortid": 2180,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "awake",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/AwakeMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "NozarashiShikai",
+      "type": "tool",
+      "sortid": 2181,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_shikai",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/NozarashiShikaiItem.java",
+          "src/main/resources/assets/jujutsucraftaddon/models/item/nozarashi_shikai.json"
+        ]
+      }
+    },
+    {
+      "name": "NozarashiToolInHandTick",
+      "type": "procedure",
+      "sortid": 2182,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_tool_in_hand_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiToolInHandTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NozarashiShikaiLivingEntityIsHitWithTool",
+      "type": "procedure",
+      "sortid": 2183,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_shikai_living_entity_is_hit_with_tool",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiShikaiLivingEntityIsHitWithToolProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NozarashiShikaiEntitySwingsItem",
+      "type": "procedure",
+      "sortid": 2184,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_shikai_entity_swings_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiShikaiEntitySwingsItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NozarashiBankai",
+      "type": "tool",
+      "sortid": 2185,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_bankai",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/NozarashiBankaiItem.java",
+          "src/main/resources/assets/jujutsucraftaddon/models/item/nozarashi_bankai.json"
+        ]
+      }
+    },
+    {
+      "name": "NozarashiBankaiEntitySwingsItem",
+      "type": "procedure",
+      "sortid": 2186,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozarashi_bankai_entity_swings_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NozarashiBankaiEntitySwingsItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SpawnCloneBased",
+      "type": "procedure",
+      "sortid": 2187,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spawn_clone_based",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SpawnCloneBasedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClonesDong",
+      "type": "procedure",
+      "sortid": 2188,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clones_dong",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ClonesDongProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReturnUi",
+      "type": "procedure",
+      "sortid": 2189,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "return_ui",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ReturnUiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UiUiAI",
+      "type": "procedure",
+      "sortid": 2190,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ui_ui_ai",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/UiUiAIProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReturnUi2",
+      "type": "procedure",
+      "sortid": 2191,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "return_ui_2",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ReturnUi2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReturnDomain",
+      "type": "procedure",
+      "sortid": 2192,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "return_domain",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ReturnDomainProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CloneTicked",
+      "type": "potioneffect",
+      "sortid": 2194,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clone_ticked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/CloneTickedMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "InoRyu",
+      "type": "mixin",
+      "sortid": 2195,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "ino_ryu",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/InoRyuMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "RyuKaichi",
+      "type": "mixin",
+      "sortid": 2196,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "ryu_kaichi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/RyuKaichiMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "NaoyaBuffs",
+      "type": "procedure",
+      "sortid": 2197,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "naoya_buffs",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NaoyaBuffsProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NaoyaAwakening",
+      "type": "potioneffect",
+      "sortid": 2198,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "naoya_awakening",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/NaoyaAwakeningMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "NaoyaAwakeningEffectStartedapplied",
+      "type": "procedure",
+      "sortid": 2199,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "naoya_awakening_effect_startedapplied",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NaoyaAwakeningEffectStartedappliedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NaoyaAwakeningEffectExpires",
+      "type": "procedure",
+      "sortid": 2200,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "naoya_awakening_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/NaoyaAwakeningEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkurClone",
+      "type": "command",
+      "sortid": 2201,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_clone",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurCloneCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "Setbm",
+      "type": "procedure",
+      "sortid": 2202,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "setbm",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SetbmProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetHealer",
+      "type": "procedure",
+      "sortid": 2203,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "set_healer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SetHealerProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetWarrior",
+      "type": "procedure",
+      "sortid": 2204,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "set_warrior",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SetWarriorProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetSage",
+      "type": "procedure",
+      "sortid": 2205,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "set_sage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SetSageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkurSetProfession",
+      "type": "command",
+      "sortid": 2206,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_set_profession",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurSetProfessionCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "SendMessage",
+      "type": "procedure",
+      "sortid": 2207,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "send_message",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SendMessageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SendMessage2",
+      "type": "procedure",
+      "sortid": 2208,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "send_message_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SendMessage2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SendMessage3",
+      "type": "procedure",
+      "sortid": 2209,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "send_message_3",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SendMessage3Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkurFriend",
+      "type": "command",
+      "sortid": 2210,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_friend",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurFriendCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "JjkurUnfriend",
+      "type": "command",
+      "sortid": 2211,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_unfriend",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurUnfriendCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "Unfriend",
+      "type": "procedure",
+      "sortid": 2212,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "unfriend",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/UnfriendProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HorizontalSlash1",
+      "type": "particle",
+      "sortid": 2213,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "horizontal_slash_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/client/particle/HorizontalSlash1Particle.java",
+          "src/main/resources/assets/jujutsucraftaddon/particles/horizontal_slash_1.json"
+        ]
+      }
+    },
+    {
+      "name": "YamatoEntitySwingsItem",
+      "type": "procedure",
+      "sortid": 2214,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "yamato_entity_swings_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/YamatoEntitySwingsItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "YamatoToolInHandTick",
+      "type": "procedure",
+      "sortid": 2215,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "yamato_tool_in_hand_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/YamatoToolInHandTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Yamato",
+      "type": "tool",
+      "sortid": 2216,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "yamato",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/jujutsucraftaddon/models/item/yamato.json",
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/YamatoItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Yamato2",
+      "type": "tool",
+      "sortid": 2217,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "yamato_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/jujutsucraftaddon/models/item/yamato_2.json",
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/Yamato2Item.java"
+        ]
+      }
+    },
+    {
+      "name": "Yamato3",
+      "type": "tool",
+      "sortid": 2218,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "yamato_3",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/Yamato3Item.java",
+          "src/main/resources/assets/jujutsucraftaddon/models/item/yamato_3.json"
+        ]
+      }
+    },
+    {
+      "name": "Yamato2Rightclicked",
+      "type": "procedure",
+      "sortid": 2219,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "yamato_2_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Yamato2RightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "YamatoRightclicked",
+      "type": "procedure",
+      "sortid": 2220,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "yamato_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/YamatoRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CounterAnimationOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2221,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "counter_animation_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/CounterAnimationOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CounterAnimation",
+      "type": "potioneffect",
+      "sortid": 2222,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "counter_animation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/CounterAnimationMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "GuardEffect",
+      "type": "mixin",
+      "sortid": 2223,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "guard_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/GuardEffectMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "GuardEffect2",
+      "type": "mixin",
+      "sortid": 2224,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "guard_effect_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/GuardEffect2Mixin.java"
+        ]
+      }
+    },
+    {
+      "name": "KeybindFoward",
+      "type": "mixin",
+      "sortid": 2225,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "keybind_foward",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/KeybindFowardMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "DashCooldownEffectExpires",
+      "type": "procedure",
+      "sortid": 2227,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dash_cooldown_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/DashCooldownEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DashEffectExpires",
+      "type": "procedure",
+      "sortid": 2228,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dash_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/DashEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BodySwapKenjaku",
+      "type": "procedure",
+      "sortid": 2229,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "body_swap_kenjaku",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/BodySwapKenjakuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerRenderer",
+      "type": "mixin",
+      "sortid": 2230,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "player_renderer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/PlayerRendererMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "PrintVar",
+      "type": "procedure",
+      "sortid": 2231,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "print_var",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/PrintVarProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tagging",
+      "type": "item",
+      "sortid": 2232,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tagging",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/jujutsucraftaddon/models/item/tagging.json",
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/TaggingItem.java"
+        ]
+      }
+    },
+    {
+      "name": "AbstractClientPlayer",
+      "type": "mixin",
+      "sortid": 2233,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "abstract_client_player",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/AbstractClientPlayerMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "IgrisRightClickedOnEntity",
+      "type": "procedure",
+      "sortid": 2234,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "igris_right_clicked_on_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/IgrisRightClickedOnEntityProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AttackedShadows",
+      "type": "procedure",
+      "sortid": 2235,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "attacked_shadows",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/AttackedShadowsProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RunningAnimation",
+      "type": "mixin",
+      "sortid": 2236,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "running_animation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/RunningAnimationMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "PlayerAnimHandler",
+      "type": "code",
+      "sortid": 2238,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "player_anim_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/PlayerAnimHandler.java"
+        ]
+      }
+    },
+    {
+      "name": "VergilChestplateTickEvent",
+      "type": "procedure",
+      "sortid": 2239,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vergil_chestplate_tick_event",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/VergilChestplateTickEventProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vergil",
+      "type": "animatedarmor",
+      "sortid": 2240,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "vergil",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/jujutsucraftaddon/models/item/vergil_chestplate.json",
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/VergilItem.java",
+          "src/main/java/net/mcreator/jujutsucraftaddon/item/model/VergilModel.java",
+          "src/main/java/net/mcreator/jujutsucraftaddon/client/renderer/VergilArmorRenderer.java"
+        ]
+      }
+    },
+    {
+      "name": "ClickAnimation2",
+      "type": "procedure",
+      "sortid": 2241,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "click_animation_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ClickAnimation2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CounterOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2242,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "counter_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/CounterOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CounterEffectExpires",
+      "type": "procedure",
+      "sortid": 2243,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "counter_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/CounterEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FingerWhenused",
+      "type": "mixin",
+      "sortid": 2244,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "finger_whenused",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/FingerWhenusedMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "JjkuOnlyOneSukuna",
+      "type": "gamerule",
+      "sortid": 2245,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjku_only_one_sukuna",
+      "metadata": {
+        "files": [],
+        "type": "logic"
+      }
+    },
+    {
+      "name": "SukunaR",
+      "type": "animatedentity",
+      "sortid": 2247,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "sukuna_r",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/entity/SukunaREntity.java",
+          "src/main/java/net/mcreator/jujutsucraftaddon/entity/layer/SukunaRLayer.java",
+          "src/main/java/net/mcreator/jujutsucraftaddon/entity/model/SukunaRModel.java",
+          "src/main/resources/assets/jujutsucraftaddon/models/item/sukuna_r_spawn_egg.json",
+          "src/main/java/net/mcreator/jujutsucraftaddon/client/renderer/SukunaRRenderer.java"
+        ]
+      }
+    },
+    {
+      "name": "SukunaKeybindOnKeyPressed",
+      "type": "procedure",
+      "sortid": 2248,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_keybind_on_key_pressed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SukunaKeybindOnKeyPressedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FatigueOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2253,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fatigue_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FatigueOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Fatigue",
+      "type": "potioneffect",
+      "sortid": 2254,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fatigue",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/FatigueMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "MilkNerf",
+      "type": "procedure",
+      "sortid": 2255,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "milk_nerf",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MilkNerfProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MilkNerf2",
+      "type": "procedure",
+      "sortid": 2256,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "milk_nerf_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MilkNerf2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SukunaRRightClickedOnEntity",
+      "type": "procedure",
+      "sortid": 2257,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_r_right_clicked_on_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SukunaRRightClickedOnEntityProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SukunaEffect",
+      "type": "mixin",
+      "sortid": 2259,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "sukuna_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/SukunaEffectMixin.java"
+        ]
+      }
+    },
+    {
+      "name": "PlayRandomMusi",
+      "type": "procedure",
+      "sortid": 2260,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "play_random_musi",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/PlayRandomMusiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MusicEffectStartedapplied",
+      "type": "procedure",
+      "sortid": 2261,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "music_effect_startedapplied",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/MusicEffectStartedappliedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Music",
+      "type": "potioneffect",
+      "sortid": 2262,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "music",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/MusicMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Target2",
+      "type": "procedure",
+      "sortid": 2263,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "target_2",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Target2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TrueDamage",
+      "type": "damagetype",
+      "sortid": 2264,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "true_damage",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/jujutsucraftaddon/damage_type/true_damage.json"
+        ]
+      }
+    },
+    {
+      "name": "SukunaKeybindOnKeyPressed1",
+      "type": "procedure",
+      "sortid": 2266,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_keybind_on_key_pressed_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SukunaKeybindOnKeyPressed1Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FatigueEffectStartedapplied",
+      "type": "procedure",
+      "sortid": 2267,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fatigue_effect_startedapplied",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FatigueEffectStartedappliedProcedure.java"
+        ],
+        "dependencies": []
+      }
+    },
+    {
+      "name": "JjkurSukuna",
+      "type": "command",
+      "sortid": 2268,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_sukuna",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurSukunaCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "SukunaROnInitialEntitySpawn",
+      "type": "procedure",
+      "sortid": 2269,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_r_on_initial_entity_spawn",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SukunaROnInitialEntitySpawnProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveOwnerEffectExpires",
+      "type": "procedure",
+      "sortid": 2270,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "remove_owner_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/RemoveOwnerEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveOwner",
+      "type": "potioneffect",
+      "sortid": 2271,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "remove_owner",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/RemoveOwnerMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "SukunaEffectStartedapplied",
+      "type": "procedure",
+      "sortid": 2272,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_effect_startedapplied",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SukunaEffectStartedappliedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SukunaHearyOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2273,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_heary_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SukunaHearyOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SukunaHeary",
+      "type": "potioneffect",
+      "sortid": 2274,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_heary",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/SukunaHearyMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "UseFinger",
+      "type": "procedure",
+      "sortid": 2275,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "use_finger",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/UseFingerProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UseFinger2",
+      "type": "procedure",
+      "sortid": 2276,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "use_finger_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/UseFinger2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SukunaVC",
+      "type": "potioneffect",
+      "sortid": 2277,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sukuna_vc",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/SukunaVCMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Completed10",
+      "type": "procedure",
+      "sortid": 2278,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "completed_10",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Completed10Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkuBGM",
+      "type": "gamerule",
+      "sortid": 2279,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjku_bgm",
+      "metadata": {
+        "files": [],
+        "type": "logic"
+      }
+    },
+    {
+      "name": "Faint",
+      "type": "procedure",
+      "sortid": 2280,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "faint",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FaintProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ExpiredOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2281,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "expired_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ExpiredOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Expired",
+      "type": "potioneffect",
+      "sortid": 2282,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "expired",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/ExpiredMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "FaintedEffectExpires",
+      "type": "procedure",
+      "sortid": 2283,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fainted_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FaintedEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Fainted",
+      "type": "potioneffect",
+      "sortid": 2284,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fainted",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/FaintedMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "RandomDie",
+      "type": "procedure",
+      "sortid": 2285,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "random_die",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/RandomDieProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FaintedOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2286,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fainted_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/FaintedOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClanSung",
+      "type": "procedure",
+      "sortid": 2287,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clan_sung",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ClanSungProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClanZaraki",
+      "type": "procedure",
+      "sortid": 2288,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clan_zaraki",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ClanZarakiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DashToggl",
+      "type": "procedure",
+      "sortid": 2289,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dash_toggl",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/DashTogglProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ContainedOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 2290,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "contained_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ContainedOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Contained",
+      "type": "potioneffect",
+      "sortid": 2291,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "contained",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/potion/ContainedMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Contain",
+      "type": "procedure",
+      "sortid": 2292,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "contain",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/ContainProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Body1",
+      "type": "procedure",
+      "sortid": 2293,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "body_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Body1Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Body2",
+      "type": "procedure",
+      "sortid": 2294,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "body_2",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Body2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Body3",
+      "type": "procedure",
+      "sortid": 2295,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "body_3",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/Body3Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkurStats",
+      "type": "command",
+      "sortid": 2296,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_stats",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurStatsCommand.java"
+        ]
+      }
+    },
+    {
+      "name": "BGM",
+      "type": "procedure",
+      "sortid": 2297,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bgm",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/BGMProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkurBGM",
+      "type": "command",
+      "sortid": 2298,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjkur_bgm",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/command/JjkurBGMCommand.java"
         ]
       }
     }
@@ -29542,6 +31737,72 @@
       "type": "number",
       "scope": "player_persistent",
       "value": "0"
+    },
+    {
+      "name": "MobTexture",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "MobModel",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "MobTexture2",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "MobTexture3",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "Sukuna",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dash",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "tag1",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "tag2",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "tag3",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "BGM",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "levelrct",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
     }
   ],
   "sound_elements": [
@@ -30336,6 +32597,158 @@
       ],
       "category": "neutral",
       "subtitle": ""
+    },
+    {
+      "name": "nozarashi",
+      "files": [
+        "nozarashi-_mp3cut.net_"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "nozarashitrue",
+      "files": [
+        "nozarashi"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "yujidomain",
+      "files": [
+        "yujiidomain"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "sukunaheart",
+      "files": [
+        "sukunavc1"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "music1",
+      "files": [
+        "music1"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "music2",
+      "files": [
+        "music2"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "music3",
+      "files": [
+        "music3"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "music4",
+      "files": [
+        "music4"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "sukunavc1",
+      "files": [
+        "annoyingbrat"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "sukunavc2",
+      "files": [
+        "bakana"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "sukunavc3",
+      "files": [
+        "bindingvowsukuna"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "sukunavc4",
+      "files": [
+        "brat"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "sukunavc5",
+      "files": [
+        "youreboring"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "music5",
+      "files": [
+        "music5"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "music6",
+      "files": [
+        "music6"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "music7",
+      "files": [
+        "music7"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "music8",
+      "files": [
+        "music8"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    },
+    {
+      "name": "music9",
+      "files": [
+        "music9"
+      ],
+      "category": "music",
+      "subtitle": ""
+    },
+    {
+      "name": "music10",
+      "files": [
+        "music10"
+      ],
+      "category": "music",
+      "subtitle": ""
     }
   ],
   "tag_elements": {
@@ -30350,20 +32763,20 @@
       "subtitles.yoaimo": "",
       "gui.jujutsucraftaddon.quest_7.button_reset": "Reset",
       "advancements.hr.title": "HR",
-      "advancements.world_slash_advancement.descr": "Unlocked WorldSlash, Use your power and show what a real jujutsu is",
       "gui.jujutsucraftaddon.quest_14.label_history_mode": "JJK History Mode",
+      "advancements.world_slash_advancement.descr": "Unlocked WorldSlash, Use your power and show what a real jujutsu is",
       "item.jujutsucraftaddon.sukuna_armor_three_helmet": "Sukuna Mark ( Helmet Heian )",
-      "subtitles.nanamitheme": "",
       "effect.jujutsucraftaddon.anim": "Anim",
+      "subtitles.nanamitheme": "",
       "effect.jujutsucraftaddon.red_effect": "Red",
-      "effect.jujutsucraftaddon.anti_heal": "Anti Healing",
       "gamerule.jjkuAutoRCT.description": "This gamerule enable and disable the AUTO-RCT for pvp purposes ( deafult is enabled )",
+      "effect.jujutsucraftaddon.anti_heal": "Anti Healing",
       "effect.jujutsucraftaddon.dagon": "Dagon",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.button_start": "Start",
       "subtitles.tripping": "",
       "item.jujutsucraftaddon.white_cape_helmet": "Decisive Helmet",
-      "gui.jujutsucraftaddon.quest_8.label_beat_toji_with_geto_and_gojo": "Eishu Detention Center",
       "gui.jujutsucraftaddon.story_mode_sukuna_2.label_beat_the_disaster_curses": "Beat Fingerer",
+      "gui.jujutsucraftaddon.quest_8.label_beat_toji_with_geto_and_gojo": "Eishu Detention Center",
       "block.jujutsucraftaddon.yoku": "Yoku",
       "key.jujutsucraftaddon.domain_type": "Domain Type",
       "subtitles.kokusenmahito": "",
@@ -30371,15 +32784,17 @@
       "key.jujutsucraftaddon.history_mode": "History Mode",
       "gui.jujutsucraftaddon.race_change.button_incarnated_sorcerer": "Incarnated Sorcerer",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.label_beat_the_disaster_curses": "Train Yuji and Yuta",
+      "effect.jujutsucraftaddon.remove_owner": "Remove Owner",
       "gui.jujutsucraftaddon.testr.label_your_progression_get_slower": "Your Progression Get Slower",
       "gamerule.jjkuRCTLevelCap.description": "Set The RCT Level Effect Cap Value",
       "entity.jujutsucraftaddon.sukuna_no_shirt": "Sukuna (Weak, 1st Season)",
       "entity.jujutsucraftaddon.veil": "Veil",
       "subtitles.playfulhit": "",
-      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
       "gamerule.jjkuLimbLossSpeed": "JJKU Limb Loss Speed",
-      "advancements.nah_id_win.title": "Nah I\u0027d Win",
+      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
+      "effect.jujutsucraftaddon.ai": "AI",
       "advancements.kuroroshi_ct.descr": "idk",
+      "advancements.nah_id_win.title": "Nah I\u0027d Win",
       "gui.jujutsucraftaddon.testr.button_select": "Select",
       "item.jujutsucraftaddon.igris_spawn_egg": "Igris (Shadow) Spawn Egg",
       "item.jujutsucraftaddon.fake_clones_spawn_egg": "Fake Clones Spawn Egg",
@@ -30409,12 +32824,13 @@
       "effect.jujutsucraftaddon.one_hundred_and_twenty": "120%",
       "gui.jujutsucraftaddon.skill_tree_sp.tooltip_changes_your_ce_cursed_energ": "Changes Your ( CE ) Cursed Energy Amount by 100",
       "gamerule.jjkuSukunaPossessionEnabled": "JJKU Sukuna Possession Enabled",
-      "item.jujutsucraftaddon.sung_jin_woo_helmet": "Decisive Helmet",
       "item.jujutsucraftaddon.reverse_level_scroll": "RCT Level Scroll",
+      "item.jujutsucraftaddon.sung_jin_woo_helmet": "Decisive Helmet",
       "advancements.we_ball.title": "We Ball",
       "subtitles.tucadonca": "",
-      "gui.jujutsucraftaddon.quest_1.button_start": "Start",
       "key.jujutsucraftaddon.key_wheel": "Power Wheel",
+      "gui.jujutsucraftaddon.quest_1.button_start": "Start",
+      "subtitles.nozarashitrue": "",
       "gamerule.jjkuNoBlackFlashCutscene.description": "Disable or enable black flash custcene",
       "gamerule.jjkuCursedSpiritRate.description": "Change Spawn Rate of Cursed Spirits ( default is 0, 1 \u003d 1% chance  )",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select": "Select",
@@ -30427,8 +32843,8 @@
       "gui.jujutsucraftaddon.story_mode_sukuna_6.button_start": "Start",
       "gui.jujutsucraftaddon.quest_9.button_reset": "Reset",
       "gui.jujutsucraftaddon.profession_gui.button_healer": "Healer",
-      "item.jujutsucraftaddon.clan_changer": "Clan Changer",
       "gamerule.jjkuAutoRCT": "JJKU Auto RCT",
+      "item.jujutsucraftaddon.clan_changer": "Clan Changer",
       "gamerule.jjkuSpawnOverworld.description": "Despawn Jujutsu Mobs in Overworld? ( default is off/disabled )",
       "gui.jujutsucraftaddon.quest_11.label_chapter_1_hidden_inventory_arc": "Chapter 3: Mahito Hunt Arc",
       "item.jujutsucraftaddon.mastery_simple_domain_item": "Gojo Training 2",
@@ -30445,11 +32861,13 @@
       "subtitles.playfulhit2": "",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_beat_the_disaster_curses": "Beat Mahoraga",
       "item.jujutsucraftaddon.strongest_of_history_recommendation": "Strongest History Sorcerer Recommendation",
+      "item.jujutsucraftaddon.vergil_leggings": "Vergil Leggings",
       "item.jujutsucraftaddon.blue_entity_spawn_egg": "Blue Entity Spawn Egg",
       "effect.jujutsucraftaddon.simple_domain_max": "Simple MAX",
       "gui.jujutsucraftaddon.quest_6.button_reset": "Reset",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_positive_energy": "Imbue With Positive Energy",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_3": "Clan Slot 3:",
+      "gamerule.jjkuOnlyOneSukuna": "JJKU Only One Sukuna In Server",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_2": "Clan Slot 2:",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_1": "Clan Slot 1:",
       "gui.jujutsucraftaddon.skill_tree_sp.label_cursed_energy": "Cursed Energy",
@@ -30462,16 +32880,17 @@
       "item.jujutsucraftaddon.maki_preparation_spawn_egg": "Maki Preparation Spawn Egg",
       "effect.jujutsucraftaddon.rct_cut": "RCT Cut",
       "effect.jujutsucraftaddon.overtime": "Overtime",
+      "item.jujutsucraftaddon.sukuna_r_spawn_egg": "Sukuna R Spawn Egg",
       "item.jujutsucraftaddon.yoku_bucket": "Yoku Bucket",
       "subtitles.gojovstoji": "",
       "effect.jujutsucraftaddon.hour_cinderella": "Hour Cinderella",
-      "entity.jujutsucraftaddon.yuta_culling_games": "Yuta Last Arc ( Manga )",
       "gamerule.jjkuCursedSpiritRate": "Jjku Cursed Spirit Spawn Rate",
+      "entity.jujutsucraftaddon.yuta_culling_games": "Yuta Last Arc ( Manga )",
       "gui.jujutsucraftaddon.gojo_train.label_avoid_the_max_damage_possible": "Avoid The Max Damage Possible",
       "gamerule.jjkuLimbLossSpeed.description": "Changes the how often you can lose limbs and how much rare ( higher values \u003d more chance )",
       "item.jujutsucraftaddon.barrierlesssymbol": "Gojo Training 2",
-      "item.jujutsucraftaddon.mugiwara_chestplate": "Mugiwara Chestplate",
       "item.jujutsucraftaddon.sukuna_manga_spawn_egg": "Sukuna Manga Spawn Egg",
+      "item.jujutsucraftaddon.mugiwara_chestplate": "Mugiwara Chestplate",
       "entity.jujutsucraftaddon.maki_preparation": "Maki Preparation",
       "item.jujutsucraftaddon.sword_okkotsu": "Mimicry Katana (Black)",
       "effect.jujutsucraftaddon.base_potion": "base",
@@ -30485,15 +32904,24 @@
       "effect.jujutsucraftaddon.sukuna_powers": "Sukuna World",
       "effect.jujutsucraftaddon.manifestation": "Manifestation",
       "item.jujutsucraftaddon.nuh_uh": "Nuh Uh",
+      "subtitles.music4": "",
+      "subtitles.music5": "",
+      "subtitles.music2": "",
+      "subtitles.music3": "",
       "subtitles.clap": "",
       "effect.jujutsucraftaddon.soroiro": "Soroiro",
       "gui.jujutsucraftaddon.yuta_storage.button_clear_copied_slots": "Clear Copied Slots",
+      "subtitles.music8": "",
       "gamerule.jjkuMahoragaCanAdaptEverything": "JJKU Mahoraga Can Adapt Everything",
+      "subtitles.music9": "",
+      "subtitles.music6": "",
+      "subtitles.music7": "",
       "subtitles.batto": "",
       "item.jujutsucraftaddon.item_test_2": "Item Test 2",
       "advancements.gojo_training_part_1.descr": "You did it, now you are the strongest?",
       "entity.jujutsucraftaddon.tanjerina": "Tanjerina",
       "gamerule.jjkuGojoOnlySixEyes": "Gojo CT Only Six Eyes",
+      "subtitles.music1": "",
       "item.jujutsucraftaddon.red_cape_chestplate": "Battle Chestplate (Red Version)",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.button_start": "Start",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_x1": "X",
@@ -30502,6 +32930,7 @@
       "gui.jujutsucraftaddon.quest_7.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_4.button_continue": "Continue",
       "advancements.cleave_web_advancement.title": "Ganbare Ganbare",
+      "effect.jujutsucraftaddon.fatigue": "Fatigue",
       "key.jujutsucraftaddon.cursed_energy_shield": "Cursed Energy Shield",
       "item.jujutsucraftaddon.armory_helmet": "Armory Helmet",
       "gamerule.jjkuCanTameSukuna.description": "Let Players Friends with Sukuna if give fingers? ( default is false )",
@@ -30512,11 +32941,11 @@
       "item.jujutsucraftaddon.warstaff": "Warstaff",
       "amount4": " When You Get 2500 EXP, Talk With Gojo",
       "amount3": "Your Reverse Curse Technique Burnout Experience: ",
-      "amount2": " RCT Level for Unlock Mastery",
-      "item.jujutsucraftaddon.sword_detect": "Check Cursed Power",
       "gui.jujutsucraftaddon.overlay_brain_5.label_braindamage": "Brain Damage: 100%",
-      "item.jujutsucraftaddon.yuta_culling_games_spawn_egg": "Yuta Last Arc ( Manga ) Spawn Egg",
+      "item.jujutsucraftaddon.sword_detect": "Check Cursed Power",
+      "amount2": " RCT Level for Unlock Mastery",
       "amount1": "You Still Need: ",
+      "item.jujutsucraftaddon.yuta_culling_games_spawn_egg": "Yuta Last Arc ( Manga ) Spawn Egg",
       "item.jujutsucraftaddon.mugiwara_leggings": "Mugiwara Leggings",
       "gui.jujutsucraftaddon.story_mode_sukuna_7.button_start": "Start",
       "gamerule.jjkuSukunaPossessionPerLife.description": "Disable or enable sukuna possession per life ( normal is enabled )",
@@ -30530,7 +32959,6 @@
       "item_group.jujutsucraftaddon.jujutsu_scrolls": "Jujutsu Addon Scrolls",
       "gui.jujutsucraftaddon.profession_gui.button_jujutsu_sage": "Jujutsu Sage",
       "gui.jujutsucraftaddon.veils.VeilSize": "TemporaryVeilSize",
-      "key.jujutsucraftaddon.counter_keybind": "Keybind Counter",
       "advancements.test_ad.descr": "t",
       "advancements.welcome_to_jujutsu_plus.descr": "You just joined, have fun \u003c3",
       "gui.jujutsucraftaddon.testr.button_select2": "Select",
@@ -30548,14 +32976,14 @@
       "item.jujutsucraftaddon.kimono_white_helmet": "Decisive Helmet",
       "gamerule.jjkuSukunaRate.description": "Change Spawn Rate of Sukunas ( default is 100, 1 \u003d 1% chance  )",
       "gui.jujutsucraftaddon.story_mode_sukuna_2.label_hard": "(HARD?)",
-      "effect.jujutsucraftaddon.animation_two": "Animation Two",
       "item.jujutsucraftaddon.gojo_training_3": "Gojo Training 2",
-      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
+      "effect.jujutsucraftaddon.animation_two": "Animation Two",
       "gui.jujutsucraftaddon.quest_7.label_miguel_vs_gojo": "Sukuna vs Fingerer",
+      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "item.jujutsucraftaddon.gojo_training_1": "Gojo Training 1",
       "gui.jujutsucraftaddon.quest_6.label_beat_toji_with_geto_and_gojo": "Eishu Detention Center",
-      "advancements.reverse_cursed_output.descr": "Talk with Shoko and Learn RCT Output",
       "gamerule.jjkuCECap": "JJKU Cursed Energy Cap",
+      "advancements.reverse_cursed_output.descr": "Talk with Shoko and Learn RCT Output",
       "item.jujutsucraftaddon.decisive_black_chestplate": "Decisive Chestplate (Black Version)",
       "gui.jujutsucraftaddon.quest_8.label_history_mode": "JJK History Mode",
       "item.jujutsucraftaddon.decisive_chestplate": "Decisive Battle Chestplate",
@@ -30566,17 +32994,17 @@
       "gamerule.jjkmNoPowerProgression": "JJKM No Power Progression",
       "item.jujutsucraftaddon.gojo_leggings": "Gojo Leggings",
       "gui.jujutsucraftaddon.quest_4.button_reset": "Reset",
-      "gui.jujutsucraftaddon.quest_13.label_history_mode": "JJK History Mode",
       "advancements.cursed_fists.descr": "Imbue your Cursed Energy in your own Fists",
+      "gui.jujutsucraftaddon.quest_13.label_history_mode": "JJK History Mode",
       "advancements.jackpott.title": "Tuca Donca",
       "advancements.nahhh.title": "Nahhh",
       "effect.jujutsucraftaddon.binding_vow_cooldown": "Vow Cooldown",
       "advancements.rampage.title": "Kokusen: Rampage State",
       "advancements.gojo_training_part_4.title": "Gojo Training Part 4",
-      "gui.jujutsucraftaddon.testr.label_gives_more_power_but_your_attac": "Gives More Power ( Up to 10x )",
       "subtitles.purelove": "",
-      "gui.jujutsucraftaddon.quest_13.button_continue": "Continue",
+      "gui.jujutsucraftaddon.testr.label_gives_more_power_but_your_attac": "Gives More Power ( Up to 10x )",
       "subtitles.piercingblood": "",
+      "gui.jujutsucraftaddon.quest_13.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_10.button_continue": "Continue",
       "gui.jujutsucraftaddon.future_sight_sukuna.label_someone_is_aiming_a_cursed_techn": "OPPONENT IS AIMING A SUKUNA CURSED TECHNIQUE",
       "subtitles.itadorivsmahito": "",
@@ -30595,9 +33023,14 @@
       "gamerule.jjkuGojoRate.description": "Change Spawn Rate of gojo ( default is 0, higher values less rate for spawning )",
       "key.jujutsucraftaddon.extension_keybind": "Fast Swap Mastery Keybind",
       "gamerule.jjkmNoPowerProgression.description": "Disable Power Scale progression limiting to original mod power values, default \u003d disabled",
-      "effect.jujutsucraftaddon.c_dtakaba": "C Dtakaba",
+      "subtitles.sukunavc3": "",
+      "subtitles.sukunavc4": "",
+      "subtitles.sukunavc5": "",
       "gui.jujutsucraftaddon.clan_change.button_store2": "Store",
+      "effect.jujutsucraftaddon.c_dtakaba": "C Dtakaba",
       "advancements.barrierless_domain_perfected.title": "Perfect Ryoiki Tenkai",
+      "subtitles.sukunavc1": "",
+      "subtitles.sukunavc2": "",
       "gamerule.jjkuHPCap.description": "Set The Hp Cap of players with scroll",
       "item.jujutsucraftaddon.wukong_staff": "Wukong Staff",
       "gui.jujutsucraftaddon.clan_change.button_store1": "Store",
@@ -30612,8 +33045,8 @@
       "gamerule.jjkuCurseUsersRate": "Jjku Curse Users Spawn Rate",
       "subtitles.gojodeath": "",
       "item.jujutsucraftaddon.profession": "Profession Chooser",
-      "item.jujutsucraftaddon.ui_ui_spawn_egg": "Ui Ui (chosomygloriouskingg skin) Spawn Egg",
       "item.jujutsucraftaddon.kimono_black_chestplate": "Kimono Chestplate ( Toji Fushiguro )",
+      "item.jujutsucraftaddon.ui_ui_spawn_egg": "Ui Ui (chosomygloriouskingg skin) Spawn Egg",
       "entity.jujutsucraftaddon.u": "U",
       "item.jujutsucraftaddon.testo_3": "Gojo Training 1",
       "item.jujutsucraftaddon.testo_2": "Gojo Training 1",
@@ -30630,8 +33063,8 @@
       "item.jujutsucraftaddon.kimono_black_boots": "Decisive Boots",
       "item.jujutsucraftaddon.trolololo": "Trolololo",
       "gui.jujutsucraftaddon.race_change.button_sorcerer_hunter": "Sorcerer Hunter",
-      "effect.jujutsucraftaddon.cooldown_toji": "Cooldown Toji",
       "advancements.cursed_fists.title": "Divergent Fist",
+      "effect.jujutsucraftaddon.cooldown_toji": "Cooldown Toji",
       "item.jujutsucraftaddon.steel_arm": "Steel Arm",
       "gui.jujutsucraftaddon.story_mode_gojo_6.button_start": "Start",
       "gui.jujutsucraftaddon.kenjaku_body_swap.label_yuta_ct": "Yuta CT:",
@@ -30674,13 +33107,14 @@
       "gui.jujutsucraftaddon.world_skill.label_simple_domain": "Simple Domain",
       "gui.jujutsucraftaddon.testr.label_weakness_respawn": "Weakness Respawn",
       "item.jujutsucraftaddon.display_ct_number": "Display CT Number",
-      "gui.jujutsucraftaddon.quest_2.button_reset": "Reset",
       "item.jujutsucraftaddon.armory_leggings": "Armory Leggings",
+      "gui.jujutsucraftaddon.quest_2.button_reset": "Reset",
       "gui.jujutsucraftaddon.testr.label_consequences1": "Consequences:",
       "advancements.enchained.descr": "Sukuna now is free, you lost every power but something great is coming...",
       "gamerule.jjkuRCTLimit": "JJKU RCT Limit",
       "gui.jujutsucraftaddon.story_mode_sukuna_7.label_beat_the_disaster_curses": "Beat Gojo",
       "advancements.reverse_cursed_burnout.title": "Reverse Cursed Technique: Burnout",
+      "effect.jujutsucraftaddon.counter_animation": "Counter Animation",
       "item.jujutsucraftaddon.testing_entity_spawn_egg": "Testing Entity Spawn Egg",
       "gui.jujutsucraftaddon.story_mode_sukuna_6.label_beat_the_disaster_curses": "Beat Yorozu",
       "subtitles.nanami": "",
@@ -30723,6 +33157,7 @@
       "gui.jujutsucraftaddon.kogane_ui.button_empty": "?????",
       "effect.jujutsucraftaddon.gojo_blue_anim": "Blue Red",
       "gui.jujutsucraftaddon.story_mode_gojo_3.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "death.attack.true_damage.player": "%1$s died whilst trying to escape %2$s",
       "entity.jujutsucraftaddon.gojo_school": "Gojo School",
       "entity.jujutsucraftaddon.testing_entity": "Testing Entity",
       "subtitles.slash2": "",
@@ -30730,9 +33165,11 @@
       "item.jujutsucraftaddon.white_cape_boots": "Decisive Boots",
       "item.jujutsucraftaddon.yuta_ring": "Yuta Ring",
       "gui.jujutsucraftaddon.story_mode_gojo_2.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "effect.jujutsucraftaddon.expired": "Expired",
       "gui.jujutsucraftaddon.quest_12.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_3.label_beat_toji_with_geto_and_gojo": "Night Parade of a Hundred Demons",
       "gamerule.jjkuSukunaPossessionPerLife": "JJKU Sukuna Possession Per Life",
+      "effect.jujutsucraftaddon.quake": "Quake",
       "gui.jujutsucraftaddon.output.label_empty": "",
       "gui.jujutsucraftaddon.gojo_train.label_hard": "HARD",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_hard": "(HARD?)",
@@ -30743,6 +33180,7 @@
       "gamerule.jjkuIdleTransfigurationLevel.description": "Default \u003d 2, Orca \u003d 0",
       "item.jujutsucraftaddon.shoko": "Sex Eyes",
       "entity.jujutsucraftaddon.testing_version": "Testing Version",
+      "effect.jujutsucraftaddon.awake": "Awake",
       "item.jujutsucraftaddon.gege_akutami_spawn_egg": "Gege\u0027s Akutami (TechnoDagger Skin) Spawn Egg",
       "advancements.perfect_simple_domain.descr": "Mastery your Simple Domain Usage ( Now you can turn auto-simple and it\u0027s more stronger simple domain )",
       "gamerule.jjkuCEModifier.description": "Let JJKU Modify your Cursed Energy ( CE ) ?",
@@ -30779,8 +33217,10 @@
       "gamerule.jjkuAnimations": "JJKU Animations",
       "item.jujutsucraftaddon.sung_jin_woo_chestplate": "Sung Jin Woo Chestplate (Black Version)",
       "entity.jujutsucraftaddon.hakari": "Hakari",
+      "item.jujutsucraftaddon.yamato_3": "Sheath",
       "gamerule.jjkuCERegen": "JJKU CE Regen",
       "item.jujutsucraftaddon.kimono_white_chestplate": "Kimono White Chestplate",
+      "item.jujutsucraftaddon.yamato_2": "Sheath",
       "gui.jujutsucraftaddon.quest_12.button_reset": "Reset",
       "gui.jujutsucraftaddon.skill_tree_sp.checkspeed": "Speed Slider",
       "gamerule.jjkuRikaPureLove": "JJKU Rika Pure Love",
@@ -30796,8 +33236,10 @@
       "advancements.sorcerer_strongest_of_modern.title": "Strongest Modern Sorcerer",
       "gui.jujutsucraftaddon.race_change.button_cursed_spirit": "Cursed Spirit",
       "gamerule.jjkuSpawnChanger.description": "That buffs normal jjc entities and allow jjku entities spawns",
+      "death.attack.true_damage": "%1$s died",
       "gui.jujutsucraftaddon.quest_5.label_miguel_vs_gojo": "Gojo vs Sukuna(1 Finger)",
       "gamerule.jjkuCanStealGojo": "JJKU Steal Gojo",
+      "effect.jujutsucraftaddon.naoya_awakening": "Naoya Awakening",
       "item.jujutsucraftaddon.mugiwara_helmet": "Straw Hat",
       "advancements.enchained.title": "Enchained",
       "entity.jujutsucraftaddon.sukuna_fushiguro": "Sukuna Fushiguro",
@@ -30827,6 +33269,7 @@
       "advancements.welcome_to_jujutsu_plus.title": "Welcome To Jujutsu Plus",
       "item.jujutsucraftaddon.shadow_1_spawn_egg": "Beru (Shadow) Spawn Egg",
       "advancements.vibe_check.descr": "Vibe check",
+      "death.attack.true_damage.item": "%1$s was killed by %2$s using %3$s",
       "subtitles.wu10": "",
       "advancements.sorcerer_strongest_of_history.descr": "Show for them what a real jujutsu is",
       "entity.jujutsucraftaddon.angell": "Angell",
@@ -30847,9 +33290,11 @@
       "dialogueextension": "Extension Technique",
       "effect.jujutsucraftaddon.cd_takaba_2": "Cd TAKABA 2",
       "gui.jujutsucraftaddon.quest_11.button_continue": "Continue",
+      "item.jujutsucraftaddon.tagging": "Tagging",
       "entity.jujutsucraftaddon.cleave_web": "Cleave Web",
       "gui.jujutsucraftaddon.quest_10.label_beat_toji_with_geto_and_gojo": "Unknow Road",
       "effect.jujutsucraftaddon.jogo_flame": "Jogo Flame",
+      "subtitles.sukunaheart": "",
       "gui.jujutsucraftaddon.clan_change.button_jujutsu_sorcerer": "Jujutsu Sorcerer",
       "advancements.i_just_do_kaboom.descr": "ishigori lol",
       "item.jujutsucraftaddon.decisive_black_boots": "Decisive Boots",
@@ -30860,6 +33305,7 @@
       "subtitles.wukongtheme": "",
       "gui.jujutsucraftaddon.quest_4.label_chapter_1_hidden_inventory_arc": "Chapter 1: Cursed Child Arc",
       "item.jujutsucraftaddon.jjku_check_1": "Jjku Check 1",
+      "item.jujutsucraftaddon.vergil_helmet": "Vergil Helmet",
       "subtitles.taun": "",
       "item.jujutsucraftaddon.wheel": "Sex Eyes",
       "item.jujutsucraftaddon.rct": "Gojo Training 1",
@@ -30888,6 +33334,7 @@
       "gui.jujutsucraftaddon.testr.label_gives_temp_output": "Gives Temp 500x Output",
       "gui.jujutsucraftaddon.gojo_train.label_train_your_reflexes_with_gojo_a": "Train your Reflexes with Gojo,",
       "item.jujutsucraftaddon.yuun": "Dark Yuun",
+      "item.jujutsucraftaddon.nozarashi_shikai": "Nozarashi Shikai",
       "entity.jujutsucraftaddon.clone": "Clone",
       "gamerule.jjkuHardcoreMode.description": "Make AIs better, more powerfull and less their cooldowns",
       "item.jujutsucraftaddon.decisive_black_helmet": "Decisive Helmet",
@@ -30895,6 +33342,7 @@
       "item.jujutsucraftaddon.jujutsu_coin": "Jujutsu Coin",
       "gamerule.jjkuTucaDonca": "JJKU Tuca Donca Plays?",
       "subtitles.meditationsong": "",
+      "effect.jujutsucraftaddon.fainted": "Fainted",
       "effect.jujutsucraftaddon.vow_friend": "Vow Friend",
       "advancements.sorcerer_strongest_of_modern.descr": "Wow, you really are \"The Strongest\" huh?",
       "subtitles.vibraslap": "",
@@ -30903,6 +33351,7 @@
       "effect.jujutsucraftaddon.domain_effect_start": "Domain",
       "gui.jujutsucraftaddon.race_change.button_jujutsu_sorcerer": "Jujutsu Sorcerer",
       "gui.jujutsucraftaddon.quest_10.label_chapter_1_hidden_inventory_arc": "Chapter 3: Mahito Hunt Arc",
+      "effect.jujutsucraftaddon.sukuna_vc": "Sukuna VC",
       "gamerule.jjkuWaterWalk.description": "Enable or Disable walk in water",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_negative_energy": "Imbue With Negative Energy",
       "advancements.save_me_mahoraga.title": "Save Me Mahoraga",
@@ -30930,7 +33379,6 @@
       "gui.jujutsucraftaddon.quest_2.label_chapter_1_hidden_inventory_arc": "Chapter 0: Hidden Inventory Arc",
       "gamerule.jjkuSukunaPossessionRate": "JJKU Sukuna Possession Rate",
       "item.jujutsucraftaddon.red_entity_spawn_egg": "Red Entity Spawn Egg",
-      "key.jujutsucraftaddon.click_animation": "Click Animation",
       "effect.jujutsucraftaddon.black_flash_cut": "Black Flash Cut",
       "gamerule.jjkuMobSpawningRate.description": "Changes Jujutsu Craft Mob Spawn Rate ( less values \u003d less spawning )",
       "effect.jujutsucraftaddon.shrine_effect": "Shrine",
@@ -30950,6 +33398,7 @@
       "effect.jujutsucraftaddon.counter": "Counter",
       "item.jujutsucraftaddon.trait_recommendation": "Trait Recommendation",
       "item.jujutsucraftaddon.testing_version_spawn_egg": "Testing Version Spawn Egg",
+      "subtitles.yujidomain": "",
       "key.jujutsucraftaddon.change_technique": "Swap Mode",
       "gamerule.jjkuBlackFlashReworked": "JJKU BF Reworked",
       "gamerule.jjkuNoCooldown.description": "Self-Explain ( disables cooldown when set to true )",
@@ -30991,6 +33440,7 @@
       "subtitles.kokusentodo": "",
       "gui.jujutsucraftaddon.profession_gui.button_warrior": "Warrior",
       "advancements.hr.descr": "Destroy, Everything",
+      "item.jujutsucraftaddon.yamato": "Yamato",
       "item.jujutsucraftaddon.sukuna_armor_three_chestplate": "Sukuna Markings ( Chestplate Heian )",
       "subtitles.hit2": "",
       "subtitles.hit3": "",
@@ -31001,6 +33451,7 @@
       "fluid.jujutsucraftaddon.yoku": "Yoku",
       "subtitles.rikasummon": "",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
+      "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
       "item.jujutsucraftaddon.nuh_uh_1": "Nuh Uh 1",
       "item.jujutsucraftaddon.kimono_black_leggings": "Kimono Leggings ( Toji Fushiguro )",
       "subtitles.purplexplode": "",
@@ -31032,6 +33483,7 @@
       "effect.jujutsucraftaddon.itadori_awakening": "Itadori Awakening",
       "gamerule.jjkuDropRate": "JJKU Drop Rate",
       "effect.jujutsucraftaddon.size": "Size Change",
+      "effect.jujutsucraftaddon.contained": "Contained",
       "gamerule.jjkuPurpleRange.description": "That change the range of purple for low end computers (deafult \u003d 200)",
       "effect.jujutsucraftaddon.hiding": "Hiding",
       "effect.jujutsucraftaddon.blue_effect": "Shrine",
@@ -31044,6 +33496,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select2": "Select",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select1": "Select",
       "item.jujutsucraftaddon.gojo_training_final": "Gojo Training 2",
+      "gamerule.jjkuOnlyOneSukuna.description": "Let Only One Sukuna Player In Server?",
       "item.jujutsucraftaddon.sukuna_fushiguro_spawn_egg": "Sukuna Fushiguro Spawn Egg",
       "advancements.cursed_to_exist.title": "Cursed To Exist",
       "gamerule.jjkuLimbLoss.description": "Let Players Lose Limbs?",
@@ -31092,11 +33545,15 @@
       "block.jujutsucraftaddon.snow_domain": "Snow Domain",
       "effect.jujutsucraftaddon.riding_effect": "Riding",
       "gui.jujutsucraftaddon.elements.button_select4": "Select",
+      "gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash": "Toggle Dash",
       "gui.jujutsucraftaddon.elements.button_select3": "Select",
       "gui.jujutsucraftaddon.quest_14.label_chapter_1_hidden_inventory_arc": "Chapter 5: Death Painting Arc",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_2": "Clear Body 2",
       "advancements.ultimate_power.descr": "Unlock your hidden power from Heian Era",
       "gamerule.jjkuAnimations.description": "Disable jjku animations? ( default is true/enabled )",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_1": "Clear Body 1",
       "item.jujutsucraftaddon.bullet": "Toji Glock",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_3": "Clear Body 3",
       "gamerule.jjkuSukunaLevel": "JJKU Sukuna Cost Level",
       "entity.jujutsucraftaddon.sukuna_manga": "Sukuna Manga",
       "effect.jujutsucraftaddon.jackpot": "Jackpot",
@@ -31106,6 +33563,7 @@
       "item.jujutsucraftaddon.er": "Er",
       "advancements.angel_ct.title": "Angel CT",
       "entity.jujutsucraftaddon.ironkk": "1ronkkk",
+      "item.jujutsucraftaddon.nozarashi": "Nozarashi",
       "gui.jujutsucraftaddon.race_change.button_vessel": "Vessel",
       "dialoguearct": "Automatic Reverse Cursed Technique ",
       "gui.jujutsucraftaddon.kogane_ui.button_random_player_punishment": "Random Player Punishment",
@@ -31117,6 +33575,7 @@
       "advancements.jogoat_god.descr": "Become The Jujutsu God Jogoat",
       "gamerule.jjkuRandomCT": "JJKU Random CT",
       "gamerule.jjkuWaterWalk": "JJKU Water Walking",
+      "subtitles.music10": "",
       "subtitles.swing5": "",
       "subtitles.swing4": "",
       "gamerule.jjkuNoArmorySpirit": "JJKU No Armory Spirit",
@@ -31124,6 +33583,7 @@
       "item.jujutsucraftaddon.purple_cape_helmet": "Decisive Helmet",
       "subtitles.swing2": "",
       "subtitles.swing1": "",
+      "gamerule.jjkuBGM": "JJKU BGM",
       "subtitles.blackflashtheme": "",
       "advancements.reverse_cursed_output.title": "Reverse Cursed Technique: Output Learning",
       "item.jujutsucraftaddon.itadori_arms": "Itadori Gauntlets",
@@ -31131,6 +33591,7 @@
       "gamerule.enableSukunaPVP": "Enable Sukuna PVP?",
       "item.jujutsucraftaddon.gojo_school_spawn_egg": "Gojo School Spawn Egg",
       "effect.jujutsucraftaddon.domain_time": "Domain Time",
+      "effect.jujutsucraftaddon.sukuna_heary": "Sukuna Heary",
       "gamerule.jjkuCullingGames": "JJKU Culling Games",
       "advancements.kakucho_jutsushiki.title": "New Shadow Style: Simple Domain",
       "subtitles.overtime": "",
@@ -31138,9 +33599,11 @@
       "gui.jujutsucraftaddon.quest_12.label_miguel_vs_gojo": "Everyone vs Hanami",
       "effect.jujutsucraftaddon.gojo_rampage": "Rampage Zone",
       "effect.jujutsucraftaddon.hwb": "HWB",
+      "gamerule.jjkuBGM.description": "Enable Or Disable Background lo-fi Music",
       "effect.jujutsucraftaddon.sukuna": "SukunaTookOver",
       "item.jujutsucraftaddon.enchainde": "Enchained",
       "gamerule.jjkuBlackFlashReworked.description": "Default \u003d true, this change for the new system of black flash in jjku ( turn off if you wan\u0027t the old one )",
+      "item.jujutsucraftaddon.vergil_boots": "Vergil Boots",
       "item.jujutsucraftaddon.s_oulbook": "Soul Research Book",
       "item.jujutsucraftaddon.purple_cape_leggings": "Battle Leggings (Purple Version)",
       "gui.jujutsucraftaddon.quest_2.label_beat_toji_with_geto_and_gojo": "Toji vs Gojo Rematch",
@@ -31170,6 +33633,8 @@
       "gamerule.jjkuSukunaLevel.description": "Change The Sukuna Cost Reduction Level ( higher \u003d higher cost, default \u003d 1 )",
       "gui.jujutsucraftaddon.kogane_ui.button_random_item": "Random Item",
       "item.jujutsucraftaddon.evidence": "Evidence",
+      "item.jujutsucraftaddon.vergil_chestplate": "Vergil Chestplate",
+      "effect.jujutsucraftaddon.music": "Music",
       "subtitles.satorugojo": "Purple Theme",
       "effect.jujutsucraftaddon.rampage_zone": "Rampage Zone",
       "item.jujutsucraftaddon.sword_jin_woo_two": "Kamish Dagger",
@@ -31187,6 +33652,7 @@
       "effect.jujutsucraftaddon.broken_brain": "Brain Damage",
       "gamerule.jjkuRikaPureLove.description": "Change the Rika Pure Love Size destruction ( default \u003d 5 )",
       "gamerule.jjkuZoneStack.description": "Let Black Flashes Zone Stack?",
+      "subtitles.nozarashi": "",
       "gui.jujutsucraftaddon.gojo_train.button_start": "Start",
       "gamerule.jjkuNoArmorySpirit.description": "Disable Armory Spirit to Spawn?",
       "subtitles.sword": "",
@@ -31206,6 +33672,7 @@
       "effect.jujutsucraftaddon.anim_4": "Anim 4",
       "effect.jujutsucraftaddon.anim_3": "Anim 3",
       "item.jujutsucraftaddon.decisive_leggings": "Decisive Leggings",
+      "effect.jujutsucraftaddon.clone_ticked": "Clone Ticked",
       "gamerule.jjkuTojiRate.description": "Change Spawn Rate of Fushiguro Toji ( default is 100, 1 \u003d 1% chance  )",
       "gamerule.jjkuPurpleRange": "JJKU Purple Range",
       "dialogue21": "§l주술 시작 가이드, §4§l첫 번째 경로 - 몹 처치, 주술 몹을 처치하면 저주받은 레벨을 얻을 수 있으며, 저주받은 레벨은 파워 레벨을 높이는 데 사용되며, 각각 진행 상황에 따라 달라집니다.",
@@ -31230,7 +33697,10 @@
       "item.jujutsucraftaddon.decisive_helmet": "Decisive Helmet",
       "gamerule.jjkuCursedSpiritRCT.description": "Enable Or Disable Cursed Spirit RCT ( Changes for Regen if Disabled, Default \u003d Disabled )",
       "key.jujutsucraftaddon.hability_wheel_key": "Binding Vow Key",
+      "dialoguesoul3": "",
+      "dialoguesoul2": "Soul Cleave",
       "subtitles.standproudsukuna": "",
+      "dialoguesoul1": "Soul Dismantle",
       "advancements.ogi_trash.title": "Ogi Trash",
       "advancements.judgeman.descr": "Guilty, Death Penalty",
       "gamerule.jjkuSukunaHealthPossession.description": "Change The Health You Need for Possession ( default \u003d 40 )",
@@ -31244,6 +33714,7 @@
       "subtitles.getovstoji": "",
       "gui.jujutsucraftaddon.skill_tree.button_unlock_level_3": "Unlock Level 3",
       "subtitles.wu7": "",
+      "item.jujutsucraftaddon.nozarashi_bankai": "Nozarashi Bankai",
       "subtitles.wu6": "",
       "subtitles.sword4": "",
       "advancements.nah_id_win.descr": "Would you Lose?",
@@ -31300,13 +33771,15 @@
       "key.jujutsucraftaddon.history_mode": "History Mode",
       "gui.jujutsucraftaddon.race_change.button_incarnated_sorcerer": "Incarnated Sorcerer",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.label_beat_the_disaster_curses": "Beat Fingerer",
+      "effect.jujutsucraftaddon.remove_owner": "Remove Owner",
       "gui.jujutsucraftaddon.testr.label_your_progression_get_slower": "Your Progression Get Slower",
       "gamerule.jjkuRCTLevelCap.description": "Set The RCT Level Effect Cap Value",
-      "entity.jujutsucraftaddon.sukuna_no_shirt": "Sukuna (Weak, 1st Season)",
       "entity.jujutsucraftaddon.veil": "Veil",
+      "entity.jujutsucraftaddon.sukuna_no_shirt": "Sukuna (Weak, 1st Season)",
       "subtitles.playfulhit": "",
-      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
       "gamerule.jjkuLimbLossSpeed": "JJKU Limb Loss Speed",
+      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
+      "effect.jujutsucraftaddon.ai": "AI",
       "advancements.nah_id_win.title": "Nah I\u0027d Win",
       "advancements.kuroroshi_ct.descr": "idk",
       "gui.jujutsucraftaddon.testr.button_select": "Select",
@@ -31326,12 +33799,12 @@
       "gamerule.jjkuTojiRate": "Jjku Toji Spawn Rate",
       "item.jujutsucraftaddon.white_cape_leggings": "Battle  Leggings (White Version)",
       "item.jujutsucraftaddon.red_cape_helmet": "Decisive Helmet",
-      "subtitles.punch5": "",
-      "subtitles.senketsu": "",
-      "subtitles.hitblade1": "",
       "key.jujutsucraftaddon.test_animation": "Singularity Power",
-      "subtitles.punch6": "",
+      "subtitles.hitblade1": "",
+      "subtitles.senketsu": "",
+      "subtitles.punch5": "",
       "gamerule.jjkuSukunaPossessionRate.description": "Change Sukuna Possession Rate",
+      "subtitles.punch6": "",
       "subtitles.hitblade3": "",
       "gamerule.jjkuHardcoreMode": "JJKU Hardcore Mode",
       "subtitles.hitblade2": "",
@@ -31344,6 +33817,7 @@
       "subtitles.tucadonca": "",
       "gui.jujutsucraftaddon.quest_1.button_start": "Start",
       "key.jujutsucraftaddon.key_wheel": "Power Wheel",
+      "subtitles.nozarashitrue": "",
       "gamerule.jjkuNoBlackFlashCutscene.description": "Disable or enable black flash custcene",
       "gamerule.jjkuCursedSpiritRate.description": "Change Spawn Rate of Cursed Spirits ( default is 0, 1 \u003d 1% chance  )",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select": "Select",
@@ -31374,11 +33848,13 @@
       "subtitles.playfulhit2": "",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_beat_the_disaster_curses": "Beat Maki and Yuji",
       "item.jujutsucraftaddon.strongest_of_history_recommendation": "Strongest History Sorcerer Recommendation",
+      "item.jujutsucraftaddon.vergil_leggings": "Vergil Leggings",
       "item.jujutsucraftaddon.blue_entity_spawn_egg": "Blue Entity Spawn Egg",
       "effect.jujutsucraftaddon.simple_domain_max": "Simple MAX",
       "gui.jujutsucraftaddon.quest_6.button_reset": "Reset",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_positive_energy": "Imbue With Positive Energy",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_3": "Clan Slot 3:",
+      "gamerule.jjkuOnlyOneSukuna": "JJKU Only One Sukuna In Server",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_2": "Clan Slot 2:",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_1": "Clan Slot 1:",
       "gui.jujutsucraftaddon.skill_tree_sp.label_cursed_energy": "Cursed Energy",
@@ -31391,6 +33867,7 @@
       "item.jujutsucraftaddon.maki_preparation_spawn_egg": "Maki Preparation Spawn Egg",
       "effect.jujutsucraftaddon.rct_cut": "RCT Cut",
       "effect.jujutsucraftaddon.overtime": "Overtime",
+      "item.jujutsucraftaddon.sukuna_r_spawn_egg": "Sukuna R Spawn Egg",
       "item.jujutsucraftaddon.yoku_bucket": "Yoku Bucket",
       "subtitles.gojovstoji": "",
       "effect.jujutsucraftaddon.hour_cinderella": "Hour Cinderella",
@@ -31414,15 +33891,24 @@
       "effect.jujutsucraftaddon.sukuna_powers": "Sukuna World",
       "effect.jujutsucraftaddon.manifestation": "Manifestation",
       "item.jujutsucraftaddon.nuh_uh": "Nuh Uh",
+      "subtitles.music4": "",
+      "subtitles.music5": "",
+      "subtitles.music2": "",
+      "subtitles.music3": "",
       "subtitles.clap": "",
-      "effect.jujutsucraftaddon.soroiro": "Soroiro",
       "gui.jujutsucraftaddon.yuta_storage.button_clear_copied_slots": "Clear Copied Slots",
+      "effect.jujutsucraftaddon.soroiro": "Soroiro",
+      "subtitles.music8": "",
       "gamerule.jjkuMahoragaCanAdaptEverything": "JJKU Mahoraga Can Adapt Everything",
+      "subtitles.music9": "",
+      "subtitles.music6": "",
+      "subtitles.music7": "",
       "subtitles.batto": "",
       "item.jujutsucraftaddon.item_test_2": "Item Test 2",
       "advancements.gojo_training_part_1.descr": "You did it, now you are the strongest?",
       "entity.jujutsucraftaddon.tanjerina": "Tanjerina",
       "gamerule.jjkuGojoOnlySixEyes": "Gojo CT Only Six Eyes",
+      "subtitles.music1": "",
       "item.jujutsucraftaddon.red_cape_chestplate": "Battle Chestplate (Red Version)",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.button_start": "Start",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_x1": "X",
@@ -31431,6 +33917,7 @@
       "gui.jujutsucraftaddon.quest_7.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_4.button_continue": "Continue",
       "advancements.cleave_web_advancement.title": "Ganbare Ganbare",
+      "effect.jujutsucraftaddon.fatigue": "Fatigue",
       "key.jujutsucraftaddon.cursed_energy_shield": "Cursed Energy Shield",
       "item.jujutsucraftaddon.armory_helmet": "Armory Helmet",
       "gamerule.jjkuCanTameSukuna.description": "Let Players Friends with Sukuna if give fingers? ( default is false )",
@@ -31459,7 +33946,6 @@
       "item_group.jujutsucraftaddon.jujutsu_scrolls": "Jujutsu Addon Scrolls",
       "gui.jujutsucraftaddon.profession_gui.button_jujutsu_sage": "Jujutsu Sage",
       "gui.jujutsucraftaddon.veils.VeilSize": "TemporaryVeilSize",
-      "key.jujutsucraftaddon.counter_keybind": "Keybind Counter",
       "advancements.test_ad.descr": "t",
       "advancements.welcome_to_jujutsu_plus.descr": "You just joined, have fun \u003c3",
       "gui.jujutsucraftaddon.testr.button_select2": "Select",
@@ -31479,8 +33965,8 @@
       "gui.jujutsucraftaddon.story_mode_sukuna_2.label_hard": "(HARD?)",
       "effect.jujutsucraftaddon.animation_two": "Animation Two",
       "item.jujutsucraftaddon.gojo_training_3": "Gojo Training 2",
-      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "gui.jujutsucraftaddon.quest_7.label_miguel_vs_gojo": "Sukuna vs Fingerer",
+      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "item.jujutsucraftaddon.gojo_training_1": "Gojo Training 1",
       "gui.jujutsucraftaddon.quest_6.label_beat_toji_with_geto_and_gojo": "Eishu Detention Center",
       "advancements.reverse_cursed_output.descr": "Talk with Shoko and Learn RCT Output",
@@ -31524,9 +34010,14 @@
       "gamerule.jjkuGojoRate.description": "Change Spawn Rate of gojo ( default is 0, higher values less rate for spawning )",
       "key.jujutsucraftaddon.extension_keybind": "Fast Swap Mastery Keybind",
       "gamerule.jjkmNoPowerProgression.description": "Disable Power Scale progression limiting to original mod power values, default \u003d disabled",
+      "subtitles.sukunavc3": "",
+      "subtitles.sukunavc4": "",
+      "subtitles.sukunavc5": "",
       "effect.jujutsucraftaddon.c_dtakaba": "C Dtakaba",
       "gui.jujutsucraftaddon.clan_change.button_store2": "Store",
       "advancements.barrierless_domain_perfected.title": "Perfect Ryoiki Tenkai",
+      "subtitles.sukunavc1": "",
+      "subtitles.sukunavc2": "",
       "gamerule.jjkuHPCap.description": "Set The Hp Cap of players with scroll",
       "item.jujutsucraftaddon.wukong_staff": "Wukong Staff",
       "gui.jujutsucraftaddon.clan_change.button_store1": "Store",
@@ -31576,8 +34067,8 @@
       "gui.jujutsucraftaddon.storage_armory.button_clear_copied_slots": "Clear Copied Slots",
       "item.jujutsucraftaddon.inumakiii": "Gojo Training 1",
       "dialoguebeg1": "§3§lSome CT\u0027s has their Own Progression, check in trello, Be Sure You\u0027re In The Right One, Check And Change Gamerules for what you want, Welcome To Our Experience!",
-      "item.jujutsucraftaddon.cursed_womb": "Cursed Womb",
       "gui.jujutsucraftaddon.skill_tree_sp.label_health": "Health",
+      "item.jujutsucraftaddon.cursed_womb": "Cursed Womb",
       "gamerule.jjkuSukunaRate": "Jjku Sukuna Spawn Rate",
       "gui.jujutsucraftaddon.skill_tree_sp.button_empty": "+",
       "gui.jujutsucraftaddon.skill_tree_sp.label_skill_points": "Skill Points: ",
@@ -31603,13 +34094,14 @@
       "gui.jujutsucraftaddon.world_skill.label_simple_domain": "Simple Domain",
       "gui.jujutsucraftaddon.testr.label_weakness_respawn": "Weakness Respawn",
       "item.jujutsucraftaddon.display_ct_number": "Display CT Number",
-      "gui.jujutsucraftaddon.quest_2.button_reset": "Reset",
       "item.jujutsucraftaddon.armory_leggings": "Armory Leggings",
+      "gui.jujutsucraftaddon.quest_2.button_reset": "Reset",
       "gui.jujutsucraftaddon.testr.label_consequences1": "Consequences:",
       "advancements.enchained.descr": "Sukuna now is free, you lost every power but something great is coming...",
       "gamerule.jjkuRCTLimit": "JJKU RCT Limit",
       "gui.jujutsucraftaddon.story_mode_sukuna_7.label_beat_the_disaster_curses": "Beat Kashimo Hajime",
       "advancements.reverse_cursed_burnout.title": "Reverse Cursed Technique: Burnout",
+      "effect.jujutsucraftaddon.counter_animation": "Counter Animation",
       "item.jujutsucraftaddon.testing_entity_spawn_egg": "Testing Entity Spawn Egg",
       "gui.jujutsucraftaddon.story_mode_sukuna_6.label_beat_the_disaster_curses": "Beat Satoru Gojo",
       "subtitles.nanami": "",
@@ -31652,6 +34144,7 @@
       "gui.jujutsucraftaddon.kogane_ui.button_empty": "?????",
       "effect.jujutsucraftaddon.gojo_blue_anim": "Blue Red",
       "gui.jujutsucraftaddon.story_mode_gojo_3.label_beat_the_disaster_curses": "Beat The Dead Body",
+      "death.attack.true_damage.player": "%1$s died whilst trying to escape %2$s",
       "entity.jujutsucraftaddon.gojo_school": "Gojo School",
       "entity.jujutsucraftaddon.testing_entity": "Testing Entity",
       "subtitles.slash2": "",
@@ -31659,9 +34152,11 @@
       "item.jujutsucraftaddon.white_cape_boots": "Decisive Boots",
       "item.jujutsucraftaddon.yuta_ring": "Yuta Ring",
       "gui.jujutsucraftaddon.story_mode_gojo_2.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "effect.jujutsucraftaddon.expired": "Expired",
       "gui.jujutsucraftaddon.quest_12.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_3.label_beat_toji_with_geto_and_gojo": "Night Parade of a Hundred Demons",
       "gamerule.jjkuSukunaPossessionPerLife": "JJKU Sukuna Possession Per Life",
+      "effect.jujutsucraftaddon.quake": "Quake",
       "gui.jujutsucraftaddon.output.label_empty": "",
       "gui.jujutsucraftaddon.gojo_train.label_hard": "HARD",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_hard": "(HARD?)",
@@ -31672,6 +34167,7 @@
       "gamerule.jjkuIdleTransfigurationLevel.description": "Default \u003d 2, Orca \u003d 0",
       "item.jujutsucraftaddon.shoko": "Sex Eyes",
       "entity.jujutsucraftaddon.testing_version": "Testing Version",
+      "effect.jujutsucraftaddon.awake": "Awake",
       "item.jujutsucraftaddon.gege_akutami_spawn_egg": "Gege\u0027s Akutami (TechnoDagger Skin) Spawn Egg",
       "advancements.perfect_simple_domain.descr": "Mastery your Simple Domain Usage ( Now you can turn auto-simple and it\u0027s more stronger simple domain )",
       "gamerule.jjkuCEModifier.description": "Let JJKU Modify your Cursed Energy ( CE ) ?",
@@ -31708,8 +34204,10 @@
       "gamerule.jjkuAnimations": "JJKU Animations",
       "item.jujutsucraftaddon.sung_jin_woo_chestplate": "Sung Jin Woo Chestplate (Black Version)",
       "entity.jujutsucraftaddon.hakari": "Hakari",
+      "item.jujutsucraftaddon.yamato_3": "Sheath",
       "gamerule.jjkuCERegen": "JJKU CE Regen",
       "item.jujutsucraftaddon.kimono_white_chestplate": "Kimono White Chestplate",
+      "item.jujutsucraftaddon.yamato_2": "Yamato Sheathed",
       "gui.jujutsucraftaddon.quest_12.button_reset": "Reset",
       "gui.jujutsucraftaddon.skill_tree_sp.checkspeed": "Speed Slider",
       "gamerule.jjkuRikaPureLove": "JJKU Rika Pure Love",
@@ -31725,8 +34223,10 @@
       "advancements.sorcerer_strongest_of_modern.title": "Strongest Modern Sorcerer",
       "gui.jujutsucraftaddon.race_change.button_cursed_spirit": "Cursed Spirit",
       "gamerule.jjkuSpawnChanger.description": "That buffs normal jjc entities and allow jjku entities spawns",
+      "death.attack.true_damage": "%1$s died",
       "gui.jujutsucraftaddon.quest_5.label_miguel_vs_gojo": "Gojo vs Sukuna(1 Finger)",
       "gamerule.jjkuCanStealGojo": "JJKU Steal Gojo",
+      "effect.jujutsucraftaddon.naoya_awakening": "Naoya Awakening",
       "item.jujutsucraftaddon.mugiwara_helmet": "Straw Hat",
       "advancements.enchained.title": "Enchained",
       "entity.jujutsucraftaddon.sukuna_fushiguro": "Sukuna Fushiguro",
@@ -31756,6 +34256,7 @@
       "advancements.welcome_to_jujutsu_plus.title": "Welcome To Jujutsu Plus",
       "item.jujutsucraftaddon.shadow_1_spawn_egg": "Beru (Shadow) Spawn Egg",
       "advancements.vibe_check.descr": "Vibe check",
+      "death.attack.true_damage.item": "%1$s was killed by %2$s using %3$s",
       "subtitles.wu10": "",
       "advancements.sorcerer_strongest_of_history.descr": "Show for them what a real jujutsu is",
       "entity.jujutsucraftaddon.angell": "Angell",
@@ -31776,9 +34277,11 @@
       "dialogueextension": "Extension Technique",
       "effect.jujutsucraftaddon.cd_takaba_2": "Cd TAKABA 2",
       "gui.jujutsucraftaddon.quest_11.button_continue": "Continue",
+      "item.jujutsucraftaddon.tagging": "Tagging",
       "entity.jujutsucraftaddon.cleave_web": "Cleave Web",
       "gui.jujutsucraftaddon.quest_10.label_beat_toji_with_geto_and_gojo": "Unknow Road",
       "effect.jujutsucraftaddon.jogo_flame": "Jogo Flame",
+      "subtitles.sukunaheart": "",
       "gui.jujutsucraftaddon.clan_change.button_jujutsu_sorcerer": "Jujutsu Sorcerer",
       "advancements.i_just_do_kaboom.descr": "ishigori lol",
       "item.jujutsucraftaddon.decisive_black_boots": "Decisive Boots",
@@ -31789,6 +34292,7 @@
       "subtitles.wukongtheme": "",
       "gui.jujutsucraftaddon.quest_4.label_chapter_1_hidden_inventory_arc": "Chapter 1: Cursed Child Arc",
       "item.jujutsucraftaddon.jjku_check_1": "Jjku Check 1",
+      "item.jujutsucraftaddon.vergil_helmet": "Vergil Helmet",
       "subtitles.taun": "",
       "item.jujutsucraftaddon.wheel": "Sex Eyes",
       "item.jujutsucraftaddon.rct": "Gojo Training 1",
@@ -31817,6 +34321,7 @@
       "gui.jujutsucraftaddon.testr.label_gives_temp_output": "Gives Temp 500x Output",
       "gui.jujutsucraftaddon.gojo_train.label_train_your_reflexes_with_gojo_a": "Train your Reflexes with Gojo,",
       "item.jujutsucraftaddon.yuun": "Dark Yuun",
+      "item.jujutsucraftaddon.nozarashi_shikai": "Nozarashi Shikai",
       "entity.jujutsucraftaddon.clone": "Clone",
       "gamerule.jjkuHardcoreMode.description": "Make AIs better, more powerfull and less their cooldowns",
       "item.jujutsucraftaddon.decisive_black_helmet": "Decisive Helmet",
@@ -31824,6 +34329,7 @@
       "item.jujutsucraftaddon.jujutsu_coin": "Jujutsu Coin",
       "gamerule.jjkuTucaDonca": "JJKU Tuca Donca Plays?",
       "subtitles.meditationsong": "",
+      "effect.jujutsucraftaddon.fainted": "Fainted",
       "effect.jujutsucraftaddon.vow_friend": "Vow Friend",
       "advancements.sorcerer_strongest_of_modern.descr": "Wow, you really are \"The Strongest\" huh?",
       "subtitles.vibraslap": "",
@@ -31832,6 +34338,7 @@
       "effect.jujutsucraftaddon.domain_effect_start": "Domain",
       "gui.jujutsucraftaddon.race_change.button_jujutsu_sorcerer": "Jujutsu Sorcerer",
       "gui.jujutsucraftaddon.quest_10.label_chapter_1_hidden_inventory_arc": "Chapter 3: Mahito Hunt Arc",
+      "effect.jujutsucraftaddon.sukuna_vc": "Sukuna VC",
       "gamerule.jjkuWaterWalk.description": "Enable or Disable walk in water",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_negative_energy": "Imbue With Negative Energy",
       "advancements.save_me_mahoraga.title": "Save Me Mahoraga",
@@ -31859,7 +34366,6 @@
       "gui.jujutsucraftaddon.quest_2.label_chapter_1_hidden_inventory_arc": "Chapter 0: Hidden Inventory Arc",
       "gamerule.jjkuSukunaPossessionRate": "JJKU Sukuna Possession Rate",
       "item.jujutsucraftaddon.red_entity_spawn_egg": "Red Entity Spawn Egg",
-      "key.jujutsucraftaddon.click_animation": "Click Animation",
       "effect.jujutsucraftaddon.black_flash_cut": "Black Flash Cut",
       "gamerule.jjkuMobSpawningRate.description": "Changes Jujutsu Craft Mob Spawn Rate ( higher values \u003d less spawning )",
       "effect.jujutsucraftaddon.shrine_effect": "Shrine",
@@ -31879,6 +34385,7 @@
       "effect.jujutsucraftaddon.counter": "Counter",
       "item.jujutsucraftaddon.trait_recommendation": "Trait Recommendation",
       "item.jujutsucraftaddon.testing_version_spawn_egg": "Testing Version Spawn Egg",
+      "subtitles.yujidomain": "",
       "key.jujutsucraftaddon.change_technique": "Swap Mode",
       "gamerule.jjkuBlackFlashReworked": "JJKU BF Reworked",
       "gamerule.jjkuNoCooldown.description": "Self-Explain ( disables cooldown when set to true )",
@@ -31920,6 +34427,7 @@
       "subtitles.kokusentodo": "",
       "gui.jujutsucraftaddon.profession_gui.button_warrior": "Warrior",
       "advancements.hr.descr": "Destroy, Everything",
+      "item.jujutsucraftaddon.yamato": "Yamato",
       "item.jujutsucraftaddon.sukuna_armor_three_chestplate": "Sukuna Markings ( Chestplate Heian )",
       "subtitles.hit2": "",
       "subtitles.hit3": "",
@@ -31930,6 +34438,7 @@
       "fluid.jujutsucraftaddon.yoku": "Yoku",
       "subtitles.rikasummon": "",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
+      "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
       "item.jujutsucraftaddon.nuh_uh_1": "Nuh Uh 1",
       "item.jujutsucraftaddon.kimono_black_leggings": "Kimono Leggings ( Toji Fushiguro )",
       "subtitles.purplexplode": "",
@@ -31961,6 +34470,7 @@
       "effect.jujutsucraftaddon.itadori_awakening": "Itadori Awakening",
       "gamerule.jjkuDropRate": "JJKU Drop Rate",
       "effect.jujutsucraftaddon.size": "Size Change",
+      "effect.jujutsucraftaddon.contained": "Contained",
       "gamerule.jjkuPurpleRange.description": "That change the range of purple for low end computers (deafult \u003d 200)",
       "effect.jujutsucraftaddon.hiding": "Hiding",
       "effect.jujutsucraftaddon.blue_effect": "Shrine",
@@ -31973,6 +34483,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select2": "Select",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select1": "Select",
       "item.jujutsucraftaddon.gojo_training_final": "Gojo Training 2",
+      "gamerule.jjkuOnlyOneSukuna.description": "Let Only One Sukuna Player In Server?",
       "item.jujutsucraftaddon.sukuna_fushiguro_spawn_egg": "Sukuna Fushiguro Spawn Egg",
       "advancements.cursed_to_exist.title": "Cursed To Exist",
       "gamerule.jjkuLimbLoss.description": "Let Players Lose Limbs?",
@@ -32021,11 +34532,15 @@
       "block.jujutsucraftaddon.snow_domain": "Snow Domain",
       "effect.jujutsucraftaddon.riding_effect": "Riding",
       "gui.jujutsucraftaddon.elements.button_select4": "Select",
+      "gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash": "Toggle Dash",
       "gui.jujutsucraftaddon.elements.button_select3": "Select",
       "gui.jujutsucraftaddon.quest_14.label_chapter_1_hidden_inventory_arc": "Chapter 5: Death Painting Arc",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_2": "Clear Body 2",
       "advancements.ultimate_power.descr": "Unlock your hidden power from Heian Era",
       "gamerule.jjkuAnimations.description": "Disable jjku animations? ( default is true/enabled )",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_1": "Clear Body 1",
       "item.jujutsucraftaddon.bullet": "Toji Glock",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_3": "Clear Body 3",
       "gamerule.jjkuSukunaLevel": "JJKU Sukuna Cost Level",
       "entity.jujutsucraftaddon.sukuna_manga": "Sukuna Manga",
       "effect.jujutsucraftaddon.jackpot": "Jackpot",
@@ -32035,6 +34550,7 @@
       "item.jujutsucraftaddon.er": "Er",
       "advancements.angel_ct.title": "Angel CT",
       "entity.jujutsucraftaddon.ironkk": "1ronkkk",
+      "item.jujutsucraftaddon.nozarashi": "Nozarashi",
       "gui.jujutsucraftaddon.race_change.button_vessel": "Vessel",
       "dialoguearct": "Automatic Reverse Cursed Technique ",
       "gui.jujutsucraftaddon.kogane_ui.button_random_player_punishment": "Random Player Punishment",
@@ -32046,6 +34562,7 @@
       "advancements.jogoat_god.descr": "Become The Jujutsu God Jogoat",
       "gamerule.jjkuRandomCT": "JJKU Random CT",
       "gamerule.jjkuWaterWalk": "JJKU Water Walking",
+      "subtitles.music10": "",
       "subtitles.swing5": "",
       "subtitles.swing4": "",
       "gamerule.jjkuNoArmorySpirit": "JJKU No Armory Spirit",
@@ -32053,6 +34570,7 @@
       "item.jujutsucraftaddon.purple_cape_helmet": "Decisive Helmet",
       "subtitles.swing2": "",
       "subtitles.swing1": "",
+      "gamerule.jjkuBGM": "JJKU BGM",
       "subtitles.blackflashtheme": "",
       "advancements.reverse_cursed_output.title": "Reverse Cursed Technique: Output Learning",
       "item.jujutsucraftaddon.itadori_arms": "Itadori Gauntlets",
@@ -32060,6 +34578,7 @@
       "gamerule.enableSukunaPVP": "Enable Sukuna PVP?",
       "item.jujutsucraftaddon.gojo_school_spawn_egg": "Gojo School Spawn Egg",
       "effect.jujutsucraftaddon.domain_time": "Domain Time",
+      "effect.jujutsucraftaddon.sukuna_heary": "Sukuna Heary",
       "gamerule.jjkuCullingGames": "JJKU Culling Games",
       "advancements.kakucho_jutsushiki.title": "New Shadow Style: Simple Domain",
       "subtitles.overtime": "",
@@ -32067,9 +34586,11 @@
       "gui.jujutsucraftaddon.quest_12.label_miguel_vs_gojo": "Everyone vs Hanami",
       "effect.jujutsucraftaddon.gojo_rampage": "Rampage Zone",
       "effect.jujutsucraftaddon.hwb": "HWB",
+      "gamerule.jjkuBGM.description": "Enable Or Disable Background lo-fi Music",
       "effect.jujutsucraftaddon.sukuna": "SukunaTookOver",
       "item.jujutsucraftaddon.enchainde": "Enchained",
       "gamerule.jjkuBlackFlashReworked.description": "Default \u003d true, this change for the new system of black flash in jjku ( turn off if you wan\u0027t the old one )",
+      "item.jujutsucraftaddon.vergil_boots": "Vergil Boots",
       "item.jujutsucraftaddon.s_oulbook": "Soul Research Book",
       "item.jujutsucraftaddon.purple_cape_leggings": "Battle Leggings (Purple Version)",
       "gui.jujutsucraftaddon.quest_2.label_beat_toji_with_geto_and_gojo": "Toji vs Gojo Rematch",
@@ -32099,6 +34620,8 @@
       "gamerule.jjkuSukunaLevel.description": "Change The Sukuna Cost Reduction Level ( higher \u003d higher cost, default \u003d 1 )",
       "gui.jujutsucraftaddon.kogane_ui.button_random_item": "Random Item",
       "item.jujutsucraftaddon.evidence": "Evidence",
+      "item.jujutsucraftaddon.vergil_chestplate": "Vergil Chestplate",
+      "effect.jujutsucraftaddon.music": "Music",
       "subtitles.satorugojo": "Purple Theme",
       "effect.jujutsucraftaddon.rampage_zone": "Rampage Zone",
       "item.jujutsucraftaddon.sword_jin_woo_two": "Kamish Dagger",
@@ -32116,6 +34639,7 @@
       "effect.jujutsucraftaddon.broken_brain": "Brain Damage",
       "gamerule.jjkuRikaPureLove.description": "Change the Rika Pure Love Size destruction ( default \u003d 5 )",
       "gamerule.jjkuZoneStack.description": "Let Black Flashes Zone Stack?",
+      "subtitles.nozarashi": "",
       "gui.jujutsucraftaddon.gojo_train.button_start": "Start",
       "gamerule.jjkuNoArmorySpirit.description": "Disable Armory Spirit to Spawn?",
       "subtitles.sword": "",
@@ -32135,6 +34659,7 @@
       "effect.jujutsucraftaddon.anim_4": "Anim 4",
       "effect.jujutsucraftaddon.anim_3": "Anim 3",
       "item.jujutsucraftaddon.decisive_leggings": "Decisive Leggings",
+      "effect.jujutsucraftaddon.clone_ticked": "Clone Ticked",
       "gamerule.jjkuTojiRate.description": "Change Spawn Rate of Fushiguro Toji ( default is 100, 1 \u003d 1% chance  )",
       "gamerule.jjkuPurpleRange": "JJKU Purple Range",
       "dialogue21": "§lJujutsu Starting Guide, §4§lFirst Path - Killing Mobs, Killing JujutsuCraft Mobs Can Give You Cursed Levels, Cursed Levels That are Used for get more Power Level, Each One Has Your Progression",
@@ -32159,7 +34684,10 @@
       "item.jujutsucraftaddon.decisive_helmet": "Decisive Helmet",
       "gamerule.jjkuCursedSpiritRCT.description": "Enable Or Disable Cursed Spirit RCT ( Changes for Regen if Disabled, Default \u003d Disabled )",
       "key.jujutsucraftaddon.hability_wheel_key": "Binding Vow Key",
+      "dialoguesoul3": "",
+      "dialoguesoul2": "Soul Cleave",
       "subtitles.standproudsukuna": "",
+      "dialoguesoul1": "Soul Dismantle",
       "advancements.ogi_trash.title": "Ogi Trash",
       "advancements.judgeman.descr": "Guilty, Death Penalty",
       "gamerule.jjkuSukunaHealthPossession.description": "Change The Health You Need for Possession ( default \u003d 40 )",
@@ -32173,6 +34701,7 @@
       "subtitles.getovstoji": "",
       "gui.jujutsucraftaddon.skill_tree.button_unlock_level_3": "Unlock Level 3",
       "subtitles.wu7": "",
+      "item.jujutsucraftaddon.nozarashi_bankai": "Nozarashi Bankai",
       "subtitles.wu6": "",
       "subtitles.sword4": "",
       "advancements.nah_id_win.descr": "Would you Lose?",
@@ -32229,13 +34758,15 @@
       "key.jujutsucraftaddon.history_mode": "History Mode",
       "gui.jujutsucraftaddon.race_change.button_incarnated_sorcerer": "Feiticeiro Encarnado",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.label_beat_the_disaster_curses": "Train Yuji and Yuta",
+      "effect.jujutsucraftaddon.remove_owner": "Remove Owner",
       "gui.jujutsucraftaddon.testr.label_your_progression_get_slower": "Your Progression Get Slower",
       "gamerule.jjkuRCTLevelCap.description": "Set The RCT Level Effect Cap Value",
-      "entity.jujutsucraftaddon.veil": "Veil",
       "entity.jujutsucraftaddon.sukuna_no_shirt": "Sukuna (Weak, 1st Season)",
+      "entity.jujutsucraftaddon.veil": "Veil",
       "subtitles.playfulhit": "",
-      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
       "gamerule.jjkuLimbLossSpeed": "JJKU Limb Loss Speed",
+      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
+      "effect.jujutsucraftaddon.ai": "AI",
       "advancements.kuroroshi_ct.descr": "idk",
       "advancements.nah_id_win.title": "Nah I\u0027d Win",
       "item.jujutsucraftaddon.igris_spawn_egg": "Igris (Shadow) Spawn Egg",
@@ -32255,12 +34786,12 @@
       "gamerule.jjkuTojiRate": "Jjku Toji Spawn Rate",
       "item.jujutsucraftaddon.white_cape_leggings": "Battle  Leggings (White Version)",
       "item.jujutsucraftaddon.red_cape_helmet": "Decisive Helmet",
-      "key.jujutsucraftaddon.test_animation": "Test Animation",
-      "subtitles.hitblade1": "",
-      "subtitles.senketsu": "",
       "subtitles.punch5": "",
-      "gamerule.jjkuSukunaPossessionRate.description": "Change Sukuna Possession Rate",
+      "subtitles.senketsu": "",
+      "subtitles.hitblade1": "",
+      "key.jujutsucraftaddon.test_animation": "Test Animation",
       "subtitles.punch6": "",
+      "gamerule.jjkuSukunaPossessionRate.description": "Change Sukuna Possession Rate",
       "subtitles.hitblade3": "",
       "gamerule.jjkuHardcoreMode": "JJKU Hardcore Mode",
       "subtitles.hitblade2": "",
@@ -32273,6 +34804,7 @@
       "subtitles.tucadonca": "",
       "key.jujutsucraftaddon.key_wheel": "Roda de Poderes Key",
       "gui.jujutsucraftaddon.quest_1.button_start": "Start",
+      "subtitles.nozarashitrue": "",
       "gamerule.jjkuNoBlackFlashCutscene.description": "Disable or enable black flash custcene",
       "gamerule.jjkuCursedSpiritRate.description": "Change Spawn Rate of Cursed Spirits ( default is 0, higher values less rate for spawning )",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select": "Select",
@@ -32303,11 +34835,13 @@
       "subtitles.playfulhit2": "",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_beat_the_disaster_curses": "Beat Mahoraga",
       "item.jujutsucraftaddon.strongest_of_history_recommendation": "Strongest Modern Sorcerer Recommendation",
+      "item.jujutsucraftaddon.vergil_leggings": "Vergil Leggings",
       "item.jujutsucraftaddon.blue_entity_spawn_egg": "Blue Entity Spawn Egg",
       "effect.jujutsucraftaddon.simple_domain_max": "Simple MAX",
       "gui.jujutsucraftaddon.quest_6.button_reset": "Reset",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_positive_energy": "Imbue With Positive Energy",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_3": "Clan Slot 3:",
+      "gamerule.jjkuOnlyOneSukuna": "JJKU Only One Sukuna In Server",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_2": "Clan Slot 2:",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_1": "Clan Slot 1:",
       "gui.jujutsucraftaddon.skill_tree_sp.label_cursed_energy": "Cursed Energy",
@@ -32320,6 +34854,7 @@
       "item.jujutsucraftaddon.maki_preparation_spawn_egg": "Maki Preparation Spawn Egg",
       "effect.jujutsucraftaddon.rct_cut": "RCT Cut",
       "effect.jujutsucraftaddon.overtime": "Overtime",
+      "item.jujutsucraftaddon.sukuna_r_spawn_egg": "Sukuna R Spawn Egg",
       "item.jujutsucraftaddon.yoku_bucket": "Yoku Bucket",
       "subtitles.gojovstoji": "",
       "effect.jujutsucraftaddon.hour_cinderella": "Hour Cinderella",
@@ -32343,15 +34878,24 @@
       "effect.jujutsucraftaddon.sukuna_powers": "Sukuna Imbued",
       "effect.jujutsucraftaddon.manifestation": "Manifestation",
       "item.jujutsucraftaddon.nuh_uh": "Nuh Uh",
+      "subtitles.music4": "",
+      "subtitles.music5": "",
+      "subtitles.music2": "",
+      "subtitles.music3": "",
       "subtitles.clap": "",
-      "effect.jujutsucraftaddon.soroiro": "Soroiro",
       "gui.jujutsucraftaddon.yuta_storage.button_clear_copied_slots": "Clear Copied Slots",
+      "effect.jujutsucraftaddon.soroiro": "Soroiro",
+      "subtitles.music8": "",
       "gamerule.jjkuMahoragaCanAdaptEverything": "JJKU Mahoraga Can Adapt Everything",
+      "subtitles.music9": "",
+      "subtitles.music6": "",
+      "subtitles.music7": "",
       "subtitles.batto": "",
       "item.jujutsucraftaddon.item_test_2": "Item Test 2",
       "advancements.gojo_training_part_1.descr": "Você conseguiu, agora você é o mais forte?",
       "entity.jujutsucraftaddon.tanjerina": "Tanjerina",
       "gamerule.jjkuGojoOnlySixEyes": "Gojo CT Only Six Eyes",
+      "subtitles.music1": "",
       "item.jujutsucraftaddon.red_cape_chestplate": "Battle Chestplate (Red Version)",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.button_start": "Start",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_x1": "X",
@@ -32360,6 +34904,7 @@
       "gui.jujutsucraftaddon.quest_7.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_4.button_continue": "Continue",
       "advancements.cleave_web_advancement.title": "Ganbare Ganbare",
+      "effect.jujutsucraftaddon.fatigue": "Fatigue",
       "key.jujutsucraftaddon.cursed_energy_shield": "Cursed Energy Shield",
       "item.jujutsucraftaddon.armory_helmet": "Armory Helmet",
       "gamerule.jjkuCanTameSukuna.description": "Let Players Friends with Sukuna if give fingers? ( default is false )",
@@ -32389,7 +34934,6 @@
       "gui.jujutsucraftaddon.profession_gui.button_jujutsu_sage": "Jujutsu Sage",
       "gui.jujutsucraftaddon.veils.VeilSize": "TemporaryVeilSize",
       "advancements.test_ad.descr": "t",
-      "key.jujutsucraftaddon.counter_keybind": "Counter Key",
       "advancements.welcome_to_jujutsu_plus.descr": "Você acabou de entrar, divirta-se \u003c3",
       "gui.jujutsucraftaddon.testr.button_select2": "Select",
       "gui.jujutsucraftaddon.testr.button_select3": "Select",
@@ -32408,8 +34952,8 @@
       "gui.jujutsucraftaddon.story_mode_sukuna_2.label_hard": "(HARD?)",
       "item.jujutsucraftaddon.gojo_training_3": "Gojo Training 2",
       "effect.jujutsucraftaddon.animation_two": "Animation Two",
-      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "gui.jujutsucraftaddon.quest_7.label_miguel_vs_gojo": "Yuji vs Fingerer",
+      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "item.jujutsucraftaddon.gojo_training_1": "Gojo Training 1",
       "gui.jujutsucraftaddon.quest_6.label_beat_toji_with_geto_and_gojo": "The King of Curses Reborn",
       "gamerule.jjkuCECap": "JJKU Cursed Energy Cap",
@@ -32453,9 +34997,14 @@
       "gamerule.jjkuGojoRate.description": "Change Spawn Rate of gojo ( default is 0, higher values less rate for spawning )",
       "key.jujutsucraftaddon.extension_keybind": "Extension Keybind",
       "gamerule.jjkmNoPowerProgression.description": "Disable Power Scale progression limiting to original mod power values, default \u003d disabled",
+      "subtitles.sukunavc3": "",
+      "subtitles.sukunavc4": "",
+      "subtitles.sukunavc5": "",
       "gui.jujutsucraftaddon.clan_change.button_store2": "Store",
       "effect.jujutsucraftaddon.c_dtakaba": "C Dtakaba",
       "advancements.barrierless_domain_perfected.title": "Expansão de Domínio Perfeita",
+      "subtitles.sukunavc1": "",
+      "subtitles.sukunavc2": "",
       "gamerule.jjkuHPCap.description": "Set The Hp Cap of players with scroll",
       "item.jujutsucraftaddon.wukong_staff": "Wukong Staff",
       "gui.jujutsucraftaddon.clan_change.button_store1": "Store",
@@ -32505,8 +35054,8 @@
       "gui.jujutsucraftaddon.storage_armory.button_clear_copied_slots": "Clear Copied Slots",
       "item.jujutsucraftaddon.inumakiii": "Gojo Training 1",
       "dialoguebeg1": "§3§lAlguns CTs têm sua própria progressão, verifique no trello, certifique-se de que está no correto, verifique e altere as regras do jogo para o que você deseja, bem-vindo à nossa experiência!",
-      "item.jujutsucraftaddon.cursed_womb": "Cursed Womb",
       "gui.jujutsucraftaddon.skill_tree_sp.label_health": "Health",
+      "item.jujutsucraftaddon.cursed_womb": "Cursed Womb",
       "gamerule.jjkuSukunaRate": "Jjku Sukuna Spawn Rate",
       "gui.jujutsucraftaddon.skill_tree_sp.button_empty": "+",
       "gui.jujutsucraftaddon.skill_tree_sp.label_skill_points": "Skill Points: ",
@@ -32532,13 +35081,14 @@
       "gui.jujutsucraftaddon.world_skill.label_simple_domain": "Domínio Simples Masterizado",
       "gui.jujutsucraftaddon.testr.label_weakness_respawn": "Weakness Respawn",
       "item.jujutsucraftaddon.display_ct_number": "Display CT Number",
-      "item.jujutsucraftaddon.armory_leggings": "Armory Leggings",
       "gui.jujutsucraftaddon.quest_2.button_reset": "Reset",
+      "item.jujutsucraftaddon.armory_leggings": "Armory Leggings",
       "gui.jujutsucraftaddon.testr.label_consequences1": "Consequences:",
       "advancements.enchained.descr": "Sukuna agora está livre, você perdeu todos os poderes, mas algo grande está por vir... ",
       "gamerule.jjkuRCTLimit": "JJKU RCT Limit",
       "gui.jujutsucraftaddon.story_mode_sukuna_7.label_beat_the_disaster_curses": "Beat Gojo",
       "advancements.reverse_cursed_burnout.title": "Técnica Amaldiçoada reversa: Burnout",
+      "effect.jujutsucraftaddon.counter_animation": "Counter Animation",
       "item.jujutsucraftaddon.testing_entity_spawn_egg": "Testing Entity Spawn Egg",
       "gui.jujutsucraftaddon.story_mode_sukuna_6.label_beat_the_disaster_curses": "Beat Yorozu",
       "gamerule.jjkuTakabaRemoveArmor.description": "Change the takaba skill for remove armor ( default \u003d enabled )",
@@ -32581,6 +35131,7 @@
       "gui.jujutsucraftaddon.kogane_ui.button_empty": "?????",
       "effect.jujutsucraftaddon.gojo_blue_anim": "Gojo Imbued",
       "gui.jujutsucraftaddon.story_mode_gojo_3.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "death.attack.true_damage.player": "%1$s died whilst trying to escape %2$s",
       "entity.jujutsucraftaddon.gojo_school": "Gojo School",
       "entity.jujutsucraftaddon.testing_entity": "Testing Entity",
       "subtitles.slash2": "",
@@ -32588,9 +35139,11 @@
       "item.jujutsucraftaddon.white_cape_boots": "Decisive Boots",
       "item.jujutsucraftaddon.yuta_ring": "Yuta Ring",
       "gui.jujutsucraftaddon.story_mode_gojo_2.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "effect.jujutsucraftaddon.expired": "Expired",
       "gui.jujutsucraftaddon.quest_12.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_3.label_beat_toji_with_geto_and_gojo": "Toji vs Gojo Rematch",
       "gamerule.jjkuSukunaPossessionPerLife": "JJKU Sukuna Possession Per Life",
+      "effect.jujutsucraftaddon.quake": "Quake",
       "gui.jujutsucraftaddon.output.label_empty": "",
       "gui.jujutsucraftaddon.gojo_train.label_hard": "HARD",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_hard": "(HARD?)",
@@ -32601,6 +35154,7 @@
       "gamerule.jjkuIdleTransfigurationLevel.description": "Default \u003d 2, Orca \u003d 0",
       "item.jujutsucraftaddon.shoko": "Sex Eyes",
       "entity.jujutsucraftaddon.testing_version": "Testing Version",
+      "effect.jujutsucraftaddon.awake": "Awake",
       "item.jujutsucraftaddon.gege_akutami_spawn_egg": "Gege\u0027s Akutami (TechnoDagger Skin) Spawn Egg",
       "advancements.perfect_simple_domain.descr": "Domine o uso do domínio simples (agora você pode ativar automaticamente e o domínio simples é mais forte)",
       "gamerule.jjkuCEModifier.description": "Let JJKU Modify your Cursed Energy ( CE ) ?",
@@ -32637,8 +35191,10 @@
       "gamerule.jjkuAnimations": "JJKU Animations",
       "item.jujutsucraftaddon.sung_jin_woo_chestplate": "Sung Jin Woo Chestplate (Black Version)",
       "entity.jujutsucraftaddon.hakari": "Hakari",
+      "item.jujutsucraftaddon.yamato_3": "Sheath",
       "gamerule.jjkuCERegen": "JJKU CE Regen",
       "item.jujutsucraftaddon.kimono_white_chestplate": "Kimono White Chestplate",
+      "item.jujutsucraftaddon.yamato_2": "Sheath",
       "gui.jujutsucraftaddon.quest_12.button_reset": "Reset",
       "gui.jujutsucraftaddon.skill_tree_sp.checkspeed": "Speed Slider",
       "gamerule.jjkuRikaPureLove": "JJKU Rika Pure Love",
@@ -32654,8 +35210,10 @@
       "advancements.sorcerer_strongest_of_modern.title": "O feiticeiro moderno mais forte",
       "gui.jujutsucraftaddon.race_change.button_cursed_spirit": "Espírito Amaldiçoado",
       "gamerule.jjkuSpawnChanger.description": "That buffs normal jjc entities and allow jjku entities spawns",
+      "death.attack.true_damage": "%1$s died",
       "gui.jujutsucraftaddon.quest_5.label_miguel_vs_gojo": "Yuta vs Geto",
       "gamerule.jjkuCanStealGojo": "JJKU Steal Gojo",
+      "effect.jujutsucraftaddon.naoya_awakening": "Naoya Awakening",
       "item.jujutsucraftaddon.mugiwara_helmet": "Straw Hat",
       "advancements.enchained.title": "Enchained",
       "entity.jujutsucraftaddon.sukuna_fushiguro": "Sukuna Fushiguro",
@@ -32685,6 +35243,7 @@
       "entity.jujutsucraftaddon.shadow_1": "Beru (Shadow)",
       "item.jujutsucraftaddon.shadow_1_spawn_egg": "Beru (Shadow) Spawn Egg",
       "advancements.vibe_check.descr": "Vibe check",
+      "death.attack.true_damage.item": "%1$s was killed by %2$s using %3$s",
       "subtitles.wu10": "",
       "advancements.sorcerer_strongest_of_history.descr": "Mostre a eles o que é um verdadeiro jujutsu",
       "entity.jujutsucraftaddon.angell": "Angell",
@@ -32705,9 +35264,11 @@
       "dialogueextension": "Técnica De Extensão",
       "effect.jujutsucraftaddon.cd_takaba_2": "Cd TAKABA 2",
       "gui.jujutsucraftaddon.quest_11.button_continue": "Continue",
+      "item.jujutsucraftaddon.tagging": "Tagging",
       "entity.jujutsucraftaddon.cleave_web": "Cleave Web",
       "gui.jujutsucraftaddon.quest_10.label_beat_toji_with_geto_and_gojo": "Unknow Road",
       "effect.jujutsucraftaddon.jogo_flame": "Jogo Flame",
+      "subtitles.sukunaheart": "",
       "gui.jujutsucraftaddon.clan_change.button_jujutsu_sorcerer": "Feiticeiro Jujutsu",
       "advancements.i_just_do_kaboom.descr": "ishigori lol",
       "item.jujutsucraftaddon.decisive_black_boots": "Decisive Boots",
@@ -32718,6 +35279,7 @@
       "subtitles.wukongtheme": "",
       "gui.jujutsucraftaddon.quest_4.label_chapter_1_hidden_inventory_arc": "Chapter 1: Cursed Child Arc",
       "item.jujutsucraftaddon.jjku_check_1": "Jjku Check 1",
+      "item.jujutsucraftaddon.vergil_helmet": "Vergil Helmet",
       "subtitles.taun": "",
       "item.jujutsucraftaddon.wheel": "Sex Eyes",
       "item.jujutsucraftaddon.rct": "Gojo Training 1",
@@ -32746,6 +35308,7 @@
       "gui.jujutsucraftaddon.testr.label_gives_temp_output": "Gives Temp 500x Output",
       "gui.jujutsucraftaddon.gojo_train.label_train_your_reflexes_with_gojo_a": "Train your Reflexes with Gojo,",
       "item.jujutsucraftaddon.yuun": "Dark Yuun",
+      "item.jujutsucraftaddon.nozarashi_shikai": "Nozarashi Shikai",
       "entity.jujutsucraftaddon.clone": "Clone",
       "gamerule.jjkuHardcoreMode.description": "Make AIs better, more powerfull and less their cooldowns",
       "item.jujutsucraftaddon.decisive_black_helmet": "Decisive Helmet",
@@ -32753,6 +35316,7 @@
       "item.jujutsucraftaddon.jujutsu_coin": "Jujutsu Coin",
       "gamerule.jjkuTucaDonca": "JJKU Tuca Donca Plays?",
       "subtitles.meditationsong": "",
+      "effect.jujutsucraftaddon.fainted": "Fainted",
       "effect.jujutsucraftaddon.vow_friend": "Vow Friend",
       "advancements.sorcerer_strongest_of_modern.descr": "Uau, você realmente é “o mais forte”, não é?",
       "subtitles.vibraslap": "",
@@ -32761,6 +35325,7 @@
       "effect.jujutsucraftaddon.domain_effect_start": "Domain",
       "gui.jujutsucraftaddon.race_change.button_jujutsu_sorcerer": "Feiticeiro Jujutsu",
       "gui.jujutsucraftaddon.quest_10.label_chapter_1_hidden_inventory_arc": "Chapter 2: Fearsome Womb Arc",
+      "effect.jujutsucraftaddon.sukuna_vc": "Sukuna VC",
       "gamerule.jjkuWaterWalk.description": "Enable or Disable walk in water",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_negative_energy": "Imbue With Negative Energy",
       "advancements.save_me_mahoraga.title": "Save Me Mahoraga",
@@ -32788,7 +35353,6 @@
       "gui.jujutsucraftaddon.quest_2.label_chapter_1_hidden_inventory_arc": "Chapter 0: Hidden Inventory Arc",
       "gamerule.jjkuSukunaPossessionRate": "JJKU Sukuna Possession Rate",
       "item.jujutsucraftaddon.red_entity_spawn_egg": "Red Entity Spawn Egg",
-      "key.jujutsucraftaddon.click_animation": "Click Animation",
       "effect.jujutsucraftaddon.black_flash_cut": "Black Flash Cut",
       "gamerule.jjkuMobSpawningRate.description": "Changes Jujutsu Craft Mob Spawn Rate ( less values \u003d less spawning )",
       "effect.jujutsucraftaddon.shrine_effect": "Shrine",
@@ -32808,6 +35372,7 @@
       "effect.jujutsucraftaddon.counter": "Counter",
       "item.jujutsucraftaddon.trait_recommendation": "Trait Recommendation",
       "item.jujutsucraftaddon.testing_version_spawn_egg": "Testing Version Spawn Egg",
+      "subtitles.yujidomain": "",
       "key.jujutsucraftaddon.change_technique": "Change Technique",
       "gamerule.jjkuBlackFlashReworked": "JJKU BF Reworked",
       "gamerule.jjkuNoCooldown.description": "Self-Explain ( disables cooldown when set to true )",
@@ -32849,6 +35414,7 @@
       "subtitles.kokusentodo": "",
       "gui.jujutsucraftaddon.profession_gui.button_warrior": "Warrior",
       "advancements.hr.descr": "Someone took my heart",
+      "item.jujutsucraftaddon.yamato": "Yamato",
       "item.jujutsucraftaddon.sukuna_armor_three_chestplate": "Marcas do Sukuna ( Chestplate Heian )",
       "subtitles.hit2": "",
       "subtitles.hit3": "",
@@ -32859,6 +35425,7 @@
       "fluid.jujutsucraftaddon.yoku": "Yoku",
       "subtitles.rikasummon": "",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
+      "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
       "item.jujutsucraftaddon.nuh_uh_1": "Nuh Uh 1",
       "item.jujutsucraftaddon.kimono_black_leggings": "Kimono Leggings ( Toji Fushiguro )",
       "subtitles.purplexplode": "",
@@ -32890,6 +35457,7 @@
       "effect.jujutsucraftaddon.itadori_awakening": "Despertar do Itadori",
       "gamerule.jjkuDropRate": "JJKU Drop Rate",
       "effect.jujutsucraftaddon.size": "Size Change",
+      "effect.jujutsucraftaddon.contained": "Contained",
       "gamerule.jjkuPurpleRange.description": "That change the range of purple for low end computers (deafult \u003d 200)",
       "effect.jujutsucraftaddon.hiding": "Hiding",
       "effect.jujutsucraftaddon.blue_effect": "Shrine",
@@ -32902,6 +35470,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select2": "Select",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select1": "Select",
       "item.jujutsucraftaddon.gojo_training_final": "Gojo Training 2",
+      "gamerule.jjkuOnlyOneSukuna.description": "Let Only One Sukuna Player In Server?",
       "item.jujutsucraftaddon.sukuna_fushiguro_spawn_egg": "Sukuna Fushiguro Spawn Egg",
       "advancements.cursed_to_exist.title": "Amaldiçoado por existir ",
       "gamerule.jjkuLimbLoss.description": "Let Players Lose Limbs?",
@@ -32950,11 +35519,15 @@
       "block.jujutsucraftaddon.snow_domain": "Snow Domain",
       "effect.jujutsucraftaddon.riding_effect": "Riding",
       "gui.jujutsucraftaddon.elements.button_select4": "Select",
+      "gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash": "Toggle Dash",
       "gui.jujutsucraftaddon.elements.button_select3": "Select",
       "gui.jujutsucraftaddon.quest_14.label_chapter_1_hidden_inventory_arc": "Chapter 5: Death Painting Arc",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_2": "Clear Body 2",
       "advancements.ultimate_power.descr": "Desbloqueie seu poder oculto da Era Heian",
       "gamerule.jjkuAnimations.description": "Disable jjku animations? ( default is true/enabled )",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_1": "Clear Body 1",
       "item.jujutsucraftaddon.bullet": "Toji Glock",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_3": "Clear Body 3",
       "gamerule.jjkuSukunaLevel": "JJKU Sukuna Cost Level",
       "entity.jujutsucraftaddon.sukuna_manga": "Sukuna Manga",
       "effect.jujutsucraftaddon.jackpot": "Jackpot",
@@ -32964,6 +35537,7 @@
       "item.jujutsucraftaddon.er": "Er",
       "advancements.angel_ct.title": "Angel CT",
       "entity.jujutsucraftaddon.ironkk": "1ronkk",
+      "item.jujutsucraftaddon.nozarashi": "Nozarashi",
       "gui.jujutsucraftaddon.race_change.button_vessel": "Vessel",
       "dialoguearct": "Técnica de Reversão Automática",
       "gui.jujutsucraftaddon.kogane_ui.button_random_player_punishment": "Random Player Punishment",
@@ -32975,6 +35549,7 @@
       "advancements.jogoat_god.descr": "Become The Jujutsu God Jogoat",
       "gamerule.jjkuRandomCT": "JJKU Random CT",
       "gamerule.jjkuWaterWalk": "JJKU Water Walking",
+      "subtitles.music10": "",
       "subtitles.swing5": "",
       "subtitles.swing4": "",
       "gamerule.jjkuNoArmorySpirit": "JJKU No Armory Spirit",
@@ -32982,6 +35557,7 @@
       "item.jujutsucraftaddon.purple_cape_helmet": "Decisive Helmet",
       "subtitles.swing2": "",
       "subtitles.swing1": "",
+      "gamerule.jjkuBGM": "JJKU BGM",
       "subtitles.blackflashtheme": "",
       "advancements.reverse_cursed_output.title": "Técnica de Amaldiçoada Reversa: Aprendizado de saída",
       "item.jujutsucraftaddon.itadori_arms": "Itadori Gauntlets",
@@ -32989,6 +35565,7 @@
       "gamerule.enableSukunaPVP": "Enable Sukuna PVP?",
       "item.jujutsucraftaddon.gojo_school_spawn_egg": "Gojo School Spawn Egg",
       "effect.jujutsucraftaddon.domain_time": "Domain Time",
+      "effect.jujutsucraftaddon.sukuna_heary": "Sukuna Heary",
       "gamerule.jjkuCullingGames": "JJKU Culling Games",
       "advancements.kakucho_jutsushiki.title": "Novo estilo de sombra: Domínio simples",
       "subtitles.overtime": "",
@@ -32996,9 +35573,11 @@
       "gui.jujutsucraftaddon.quest_12.label_miguel_vs_gojo": "Yuji \u0026 Nanami vs Mahito",
       "effect.jujutsucraftaddon.gojo_rampage": "Rampage Zone",
       "effect.jujutsucraftaddon.hwb": "HWB",
+      "gamerule.jjkuBGM.description": "Enable Or Disable Background lo-fi Music",
       "effect.jujutsucraftaddon.sukuna": "SukunaTookOver",
       "item.jujutsucraftaddon.enchainde": "Sex Eyes",
       "gamerule.jjkuBlackFlashReworked.description": "Deafult \u003d true, this change for the new system of black flash in jjku ( turn off if you wan\u0027t the old one )",
+      "item.jujutsucraftaddon.vergil_boots": "Vergil Boots",
       "item.jujutsucraftaddon.s_oulbook": "Soul Research Book",
       "item.jujutsucraftaddon.purple_cape_leggings": "Battle Leggings (Purple Version)",
       "gui.jujutsucraftaddon.quest_2.label_beat_toji_with_geto_and_gojo": "Beat Toji With Geto and Gojo",
@@ -33028,6 +35607,8 @@
       "gamerule.jjkuSukunaLevel.description": "Change The Sukuna Cost Reduction Level ( higher \u003d higher cost, default \u003d 1 )",
       "gui.jujutsucraftaddon.kogane_ui.button_random_item": "Random Item",
       "item.jujutsucraftaddon.evidence": "Evidence",
+      "item.jujutsucraftaddon.vergil_chestplate": "Vergil Chestplate",
+      "effect.jujutsucraftaddon.music": "Music",
       "subtitles.satorugojo": "",
       "effect.jujutsucraftaddon.rampage_zone": "Rampage Zone",
       "item.jujutsucraftaddon.sword_jin_woo_two": "Kamish Dagger",
@@ -33045,6 +35626,7 @@
       "effect.jujutsucraftaddon.broken_brain": "Brain Damage",
       "gamerule.jjkuRikaPureLove.description": "Change the Rika Pure Love Size",
       "gamerule.jjkuZoneStack.description": "Let Black Flashes Zone Stack?",
+      "subtitles.nozarashi": "",
       "gui.jujutsucraftaddon.gojo_train.button_start": "Start",
       "gamerule.jjkuNoArmorySpirit.description": "Disable Armory Spirit to Spawn?",
       "subtitles.sword": "",
@@ -33064,6 +35646,7 @@
       "effect.jujutsucraftaddon.anim_4": "Anim 4",
       "effect.jujutsucraftaddon.anim_3": "Anim 3",
       "item.jujutsucraftaddon.decisive_leggings": "Decisive Leggings",
+      "effect.jujutsucraftaddon.clone_ticked": "Clone Ticked",
       "gamerule.jjkuTojiRate.description": "Change Spawn Rate of Fushiguro Toji ( default is 0, 1 \u003d 1% chance  )",
       "gamerule.jjkuPurpleRange": "JJKU Purple Range",
       "dialogue21": "§Guia inicial de Jujutsu, §4§lPrimeiro caminho - Matando Mobs, Matando Mobs de JujutsuCraft pode lhe dar níveis amaldiçoados, níveis amaldiçoados que são usados para obter mais nível de poder, cada um tem sua progressão",
@@ -33088,7 +35671,10 @@
       "item.jujutsucraftaddon.decisive_helmet": "Decisive Helmet",
       "gamerule.jjkuCursedSpiritRCT.description": "Enable Or Disable Cursed Spirit RCT ( Changes for Regen if Disabled, Default \u003d Disabled )",
       "key.jujutsucraftaddon.hability_wheel_key": "Roda de Votos Key",
+      "dialoguesoul3": "",
+      "dialoguesoul2": "Clivar Da Alma",
       "subtitles.standproudsukuna": "",
+      "dialoguesoul1": "Desmantelar Da Alma",
       "advancements.ogi_trash.title": "Ogi Trash",
       "advancements.judgeman.descr": "Guilty, Death Penalty",
       "gamerule.jjkuSukunaHealthPossession.description": "Change The Health You Need for Possession ( default \u003d 40 )",
@@ -33102,6 +35688,7 @@
       "subtitles.getovstoji": "",
       "gui.jujutsucraftaddon.skill_tree.button_unlock_level_3": "Unlock Level 3",
       "subtitles.wu7": "",
+      "item.jujutsucraftaddon.nozarashi_bankai": "Nozarashi Bankai",
       "subtitles.wu6": "",
       "subtitles.sword4": "",
       "advancements.nah_id_win.descr": "Would you Lose?",
@@ -33158,13 +35745,15 @@
       "key.jujutsucraftaddon.history_mode": "History Mode",
       "gui.jujutsucraftaddon.race_change.button_incarnated_sorcerer": "呪詛師 ",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.label_beat_the_disaster_curses": "Train Yuji and Yuta",
+      "effect.jujutsucraftaddon.remove_owner": "Remove Owner",
       "gui.jujutsucraftaddon.testr.label_your_progression_get_slower": "Your Progression Get Slower",
       "gamerule.jjkuRCTLevelCap.description": "Set The RCT Level Effect Cap Value",
-      "entity.jujutsucraftaddon.veil": "Veil",
       "entity.jujutsucraftaddon.sukuna_no_shirt": "Sukuna (Weak, 1st Season)",
+      "entity.jujutsucraftaddon.veil": "Veil",
       "subtitles.playfulhit": "",
-      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
       "gamerule.jjkuLimbLossSpeed": "JJKU Limb Loss Speed",
+      "gamerule.jjkuHistoryMode.description": "Default \u003d Enabled (Self-explain)",
+      "effect.jujutsucraftaddon.ai": "AI",
       "advancements.kuroroshi_ct.descr": "idk",
       "advancements.nah_id_win.title": "Nah I\u0027d Win",
       "item.jujutsucraftaddon.igris_spawn_egg": "Igris (Shadow) Spawn Egg",
@@ -33184,12 +35773,12 @@
       "gamerule.jjkuTojiRate": "Jjku Toji Spawn Rate",
       "item.jujutsucraftaddon.white_cape_leggings": "Battle  Leggings (White Version)",
       "item.jujutsucraftaddon.red_cape_helmet": "Decisive Helmet",
-      "key.jujutsucraftaddon.test_animation": "Test Animation",
-      "subtitles.hitblade1": "",
-      "subtitles.senketsu": "",
       "subtitles.punch5": "",
-      "gamerule.jjkuSukunaPossessionRate.description": "Change Sukuna Possession Rate",
+      "subtitles.senketsu": "",
+      "subtitles.hitblade1": "",
+      "key.jujutsucraftaddon.test_animation": "Test Animation",
       "subtitles.punch6": "",
+      "gamerule.jjkuSukunaPossessionRate.description": "Change Sukuna Possession Rate",
       "subtitles.hitblade3": "",
       "gamerule.jjkuHardcoreMode": "JJKU Hardcore Mode",
       "subtitles.hitblade2": "",
@@ -33202,6 +35791,7 @@
       "subtitles.tucadonca": "",
       "key.jujutsucraftaddon.key_wheel": "Power Wheel",
       "gui.jujutsucraftaddon.quest_1.button_start": "Start",
+      "subtitles.nozarashitrue": "",
       "gamerule.jjkuNoBlackFlashCutscene.description": "Disable or enable black flash custcene",
       "gamerule.jjkuCursedSpiritRate.description": "Change Spawn Rate of Cursed Spirits ( default is 0, higher values less rate for spawning )",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select": "Select",
@@ -33232,11 +35822,13 @@
       "subtitles.playfulhit2": "",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_beat_the_disaster_curses": "Beat Mahoraga",
       "item.jujutsucraftaddon.strongest_of_history_recommendation": "Strongest Modern Sorcerer Recommendation",
+      "item.jujutsucraftaddon.vergil_leggings": "Vergil Leggings",
       "item.jujutsucraftaddon.blue_entity_spawn_egg": "Blue Entity Spawn Egg",
       "effect.jujutsucraftaddon.simple_domain_max": "Simple MAX",
       "gui.jujutsucraftaddon.quest_6.button_reset": "Reset",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_positive_energy": "Imbue With Positive Energy",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_3": "Clan Slot 3:",
+      "gamerule.jjkuOnlyOneSukuna": "JJKU Only One Sukuna In Server",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_2": "Clan Slot 2:",
       "gui.jujutsucraftaddon.clan_change.label_clan_slot_1": "Clan Slot 1:",
       "gui.jujutsucraftaddon.skill_tree_sp.label_cursed_energy": "Cursed Energy",
@@ -33249,6 +35841,7 @@
       "item.jujutsucraftaddon.maki_preparation_spawn_egg": "Maki Preparation Spawn Egg",
       "effect.jujutsucraftaddon.rct_cut": "RCT Cut",
       "effect.jujutsucraftaddon.overtime": "Overtime",
+      "item.jujutsucraftaddon.sukuna_r_spawn_egg": "Sukuna R Spawn Egg",
       "item.jujutsucraftaddon.yoku_bucket": "Yoku Bucket",
       "subtitles.gojovstoji": "",
       "effect.jujutsucraftaddon.hour_cinderella": "Hour Cinderella",
@@ -33272,15 +35865,24 @@
       "effect.jujutsucraftaddon.sukuna_powers": "Sukuna Imbued",
       "effect.jujutsucraftaddon.manifestation": "Manifestation",
       "item.jujutsucraftaddon.nuh_uh": "Nuh Uh",
+      "subtitles.music4": "",
+      "subtitles.music5": "",
+      "subtitles.music2": "",
+      "subtitles.music3": "",
       "subtitles.clap": "",
-      "effect.jujutsucraftaddon.soroiro": "Soroiro",
       "gui.jujutsucraftaddon.yuta_storage.button_clear_copied_slots": "Clear Copied Slots",
+      "effect.jujutsucraftaddon.soroiro": "Soroiro",
+      "subtitles.music8": "",
       "gamerule.jjkuMahoragaCanAdaptEverything": "JJKU Mahoraga Can Adapt Everything",
+      "subtitles.music9": "",
+      "subtitles.music6": "",
+      "subtitles.music7": "",
       "subtitles.batto": "",
       "item.jujutsucraftaddon.item_test_2": "Item Test 2",
       "advancements.gojo_training_part_1.descr": "やったね、これで最強だ？",
       "entity.jujutsucraftaddon.tanjerina": "Tanjerina",
       "gamerule.jjkuGojoOnlySixEyes": "Gojo CT Only Six Eyes",
+      "subtitles.music1": "",
       "item.jujutsucraftaddon.red_cape_chestplate": "Battle Chestplate (Red Version)",
       "gui.jujutsucraftaddon.story_mode_sukuna_1.button_start": "Start",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_x1": "X",
@@ -33289,6 +35891,7 @@
       "gui.jujutsucraftaddon.quest_7.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_4.button_continue": "Continue",
       "advancements.cleave_web_advancement.title": "Ganbare Ganbare",
+      "effect.jujutsucraftaddon.fatigue": "Fatigue",
       "key.jujutsucraftaddon.cursed_energy_shield": "Cursed Energy Shield",
       "item.jujutsucraftaddon.armory_helmet": "Armory Helmet",
       "gamerule.jjkuCanTameSukuna.description": "Let Players Friends with Sukuna if give fingers? ( default is false )",
@@ -33318,7 +35921,6 @@
       "gui.jujutsucraftaddon.profession_gui.button_jujutsu_sage": "Jujutsu Sage",
       "gui.jujutsucraftaddon.veils.VeilSize": "TemporaryVeilSize",
       "advancements.test_ad.descr": "t",
-      "key.jujutsucraftaddon.counter_keybind": "Keybind Counter",
       "advancements.welcome_to_jujutsu_plus.descr": "参加したばかりだから、楽しんでね \u003c3",
       "gui.jujutsucraftaddon.testr.button_select2": "Select",
       "gui.jujutsucraftaddon.testr.button_select3": "Select",
@@ -33337,8 +35939,8 @@
       "gui.jujutsucraftaddon.story_mode_sukuna_2.label_hard": "(HARD?)",
       "item.jujutsucraftaddon.gojo_training_3": "Gojo Training 2",
       "effect.jujutsucraftaddon.animation_two": "Animation Two",
-      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "gui.jujutsucraftaddon.quest_7.label_miguel_vs_gojo": "Yuji vs Fingerer",
+      "item.jujutsucraftaddon.gojo_training_2": "Gojo Training 2",
       "item.jujutsucraftaddon.gojo_training_1": "Gojo Training 1",
       "gui.jujutsucraftaddon.quest_6.label_beat_toji_with_geto_and_gojo": "The King of Curses Reborn",
       "gamerule.jjkuCECap": "JJKU Cursed Energy Cap",
@@ -33382,9 +35984,14 @@
       "gamerule.jjkuGojoRate.description": "Change Spawn Rate of gojo ( default is 0, higher values less rate for spawning )",
       "key.jujutsucraftaddon.extension_keybind": "Extension Keybind",
       "gamerule.jjkmNoPowerProgression.description": "Disable Power Scale progression limiting to original mod power values, default \u003d disabled",
+      "subtitles.sukunavc3": "",
+      "subtitles.sukunavc4": "",
+      "subtitles.sukunavc5": "",
       "gui.jujutsucraftaddon.clan_change.button_store2": "Store",
       "effect.jujutsucraftaddon.c_dtakaba": "C Dtakaba",
       "advancements.barrierless_domain_perfected.title": "完璧なエリア拡大",
+      "subtitles.sukunavc1": "",
+      "subtitles.sukunavc2": "",
       "gamerule.jjkuHPCap.description": "Set The Hp Cap of players with scroll",
       "item.jujutsucraftaddon.wukong_staff": "Wukong Staff",
       "gui.jujutsucraftaddon.clan_change.button_store1": "Store",
@@ -33434,8 +36041,8 @@
       "gui.jujutsucraftaddon.storage_armory.button_clear_copied_slots": "Clear Copied Slots",
       "item.jujutsucraftaddon.inumakiii": "Gojo Training 1",
       "dialoguebeg1": "§3§lいくつかのCTには独自のプログレッションがあります、トレロで確認してください、あなたが正しいCTにいることを確認してください、あなたが望むもののためにゲームルールを確認し、変更してください、私たちの経験へようこそ！",
-      "item.jujutsucraftaddon.cursed_womb": "Cursed Womb",
       "gui.jujutsucraftaddon.skill_tree_sp.label_health": "Health",
+      "item.jujutsucraftaddon.cursed_womb": "Cursed Womb",
       "gamerule.jjkuSukunaRate": "Jjku Sukuna Spawn Rate",
       "gui.jujutsucraftaddon.skill_tree_sp.button_empty": "+",
       "gui.jujutsucraftaddon.skill_tree_sp.label_skill_points": "Skill Points: ",
@@ -33461,13 +36068,14 @@
       "gui.jujutsucraftaddon.world_skill.label_simple_domain": "シンプルなドメインの習得",
       "gui.jujutsucraftaddon.testr.label_weakness_respawn": "Weakness Respawn",
       "item.jujutsucraftaddon.display_ct_number": "Display CT Number",
-      "item.jujutsucraftaddon.armory_leggings": "Armory Leggings",
       "gui.jujutsucraftaddon.quest_2.button_reset": "Reset",
+      "item.jujutsucraftaddon.armory_leggings": "Armory Leggings",
       "gui.jujutsucraftaddon.testr.label_consequences1": "Consequences:",
       "advancements.enchained.descr": "Sukuna now is free, you lost every power but something great is coming...",
       "gamerule.jjkuRCTLimit": "JJKU RCT Limit",
       "gui.jujutsucraftaddon.story_mode_sukuna_7.label_beat_the_disaster_curses": "Beat Gojo",
       "advancements.reverse_cursed_burnout.title": "逆呪いのテクニック バーンアウト",
+      "effect.jujutsucraftaddon.counter_animation": "Counter Animation",
       "item.jujutsucraftaddon.testing_entity_spawn_egg": "Testing Entity Spawn Egg",
       "gui.jujutsucraftaddon.story_mode_sukuna_6.label_beat_the_disaster_curses": "Beat Yorozu",
       "gamerule.jjkuTakabaRemoveArmor.description": "Change the takaba skill for remove armor ( default \u003d enabled )",
@@ -33510,6 +36118,7 @@
       "gui.jujutsucraftaddon.kogane_ui.button_empty": "?????",
       "effect.jujutsucraftaddon.gojo_blue_anim": "Gojo Imbued",
       "gui.jujutsucraftaddon.story_mode_gojo_3.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "death.attack.true_damage.player": "%1$s died whilst trying to escape %2$s",
       "entity.jujutsucraftaddon.gojo_school": "Gojo School",
       "entity.jujutsucraftaddon.testing_entity": "Testing Entity",
       "subtitles.slash2": "",
@@ -33517,9 +36126,11 @@
       "item.jujutsucraftaddon.white_cape_boots": "Decisive Boots",
       "item.jujutsucraftaddon.yuta_ring": "Yuta Ring",
       "gui.jujutsucraftaddon.story_mode_gojo_2.label_beat_the_disaster_curses": "Beat The Disaster Curses",
+      "effect.jujutsucraftaddon.expired": "Expired",
       "gui.jujutsucraftaddon.quest_12.button_continue": "Continue",
       "gui.jujutsucraftaddon.quest_3.label_beat_toji_with_geto_and_gojo": "Toji vs Gojo Rematch",
       "gamerule.jjkuSukunaPossessionPerLife": "JJKU Sukuna Possession Per Life",
+      "effect.jujutsucraftaddon.quake": "Quake",
       "gui.jujutsucraftaddon.output.label_empty": "",
       "gui.jujutsucraftaddon.gojo_train.label_hard": "HARD",
       "gui.jujutsucraftaddon.story_mode_sukuna_4.label_hard": "(HARD?)",
@@ -33530,6 +36141,7 @@
       "gamerule.jjkuIdleTransfigurationLevel.description": "Default \u003d 2, Orca \u003d 0",
       "item.jujutsucraftaddon.shoko": "Sex Eyes",
       "entity.jujutsucraftaddon.testing_version": "Testing Version",
+      "effect.jujutsucraftaddon.awake": "Awake",
       "item.jujutsucraftaddon.gege_akutami_spawn_egg": "Gege\u0027s Akutami (TechnoDagger Skin) Spawn Egg",
       "advancements.perfect_simple_domain.descr": "シンプル・ドメインの使い方をマスターしよう（オート・シンプルが使えるようになり、より強力なシンプル・ドメインが使えるようになった）",
       "gamerule.jjkuCEModifier.description": "Let JJKU Modify your Cursed Energy ( CE ) ?",
@@ -33566,8 +36178,10 @@
       "gamerule.jjkuAnimations": "JJKU Animations",
       "item.jujutsucraftaddon.sung_jin_woo_chestplate": "Sung Jin Woo Chestplate (Black Version)",
       "entity.jujutsucraftaddon.hakari": "Hakari",
+      "item.jujutsucraftaddon.yamato_3": "Sheath",
       "gamerule.jjkuCERegen": "JJKU CE Regen",
       "item.jujutsucraftaddon.kimono_white_chestplate": "Kimono White Chestplate",
+      "item.jujutsucraftaddon.yamato_2": "Sheath",
       "gui.jujutsucraftaddon.quest_12.button_reset": "Reset",
       "gui.jujutsucraftaddon.skill_tree_sp.checkspeed": "Speed Slider",
       "gamerule.jjkuRikaPureLove": "JJKU Rika Pure Love",
@@ -33583,8 +36197,10 @@
       "advancements.sorcerer_strongest_of_modern.title": "最強のモダン・ソーサラー",
       "gui.jujutsucraftaddon.race_change.button_cursed_spirit": "呪霊",
       "gamerule.jjkuSpawnChanger.description": "That buffs normal jjc entities and allow jjku entities spawns",
+      "death.attack.true_damage": "%1$s died",
       "gui.jujutsucraftaddon.quest_5.label_miguel_vs_gojo": "Yuta vs Geto",
       "gamerule.jjkuCanStealGojo": "JJKU Steal Gojo",
+      "effect.jujutsucraftaddon.naoya_awakening": "Naoya Awakening",
       "item.jujutsucraftaddon.mugiwara_helmet": "Straw Hat",
       "advancements.enchained.title": "Enchained",
       "entity.jujutsucraftaddon.sukuna_fushiguro": "Sukuna Fushiguro",
@@ -33614,6 +36230,7 @@
       "entity.jujutsucraftaddon.shadow_1": "Beru (Shadow)",
       "item.jujutsucraftaddon.shadow_1_spawn_egg": "Beru (Shadow) Spawn Egg",
       "advancements.vibe_check.descr": "Vibe check",
+      "death.attack.true_damage.item": "%1$s was killed by %2$s using %3$s",
       "subtitles.wu10": "",
       "advancements.sorcerer_strongest_of_history.descr": "彼らに本当の柔術とは何かを示す。",
       "entity.jujutsucraftaddon.angell": "Angell",
@@ -33634,9 +36251,11 @@
       "dialogueextension": "エクステンション・テクニック",
       "effect.jujutsucraftaddon.cd_takaba_2": "Cd TAKABA 2",
       "gui.jujutsucraftaddon.quest_11.button_continue": "Continue",
+      "item.jujutsucraftaddon.tagging": "Tagging",
       "entity.jujutsucraftaddon.cleave_web": "Cleave Web",
       "gui.jujutsucraftaddon.quest_10.label_beat_toji_with_geto_and_gojo": "Unknow Road",
       "effect.jujutsucraftaddon.jogo_flame": "Jogo Flame",
+      "subtitles.sukunaheart": "",
       "gui.jujutsucraftaddon.clan_change.button_jujutsu_sorcerer": "呪術師 ",
       "advancements.i_just_do_kaboom.descr": "ishigori lol",
       "item.jujutsucraftaddon.decisive_black_boots": "Decisive Boots",
@@ -33647,6 +36266,7 @@
       "subtitles.wukongtheme": "",
       "gui.jujutsucraftaddon.quest_4.label_chapter_1_hidden_inventory_arc": "Chapter 1: Cursed Child Arc",
       "item.jujutsucraftaddon.jjku_check_1": "Jjku Check 1",
+      "item.jujutsucraftaddon.vergil_helmet": "Vergil Helmet",
       "subtitles.taun": "",
       "item.jujutsucraftaddon.wheel": "Sex Eyes",
       "item.jujutsucraftaddon.rct": "Gojo Training 1",
@@ -33675,6 +36295,7 @@
       "gui.jujutsucraftaddon.testr.label_gives_temp_output": "Gives Temp 500x Output",
       "gui.jujutsucraftaddon.gojo_train.label_train_your_reflexes_with_gojo_a": "Train your Reflexes with Gojo,",
       "item.jujutsucraftaddon.yuun": "Dark Yuun",
+      "item.jujutsucraftaddon.nozarashi_shikai": "Nozarashi Shikai",
       "entity.jujutsucraftaddon.clone": "Clone",
       "gamerule.jjkuHardcoreMode.description": "Make AIs better, more powerfull and less their cooldowns",
       "item.jujutsucraftaddon.decisive_black_helmet": "Decisive Helmet",
@@ -33682,6 +36303,7 @@
       "item.jujutsucraftaddon.jujutsu_coin": "Jujutsu Coin",
       "gamerule.jjkuTucaDonca": "JJKU Tuca Donca Plays?",
       "subtitles.meditationsong": "",
+      "effect.jujutsucraftaddon.fainted": "Fainted",
       "effect.jujutsucraftaddon.vow_friend": "Vow Friend",
       "advancements.sorcerer_strongest_of_modern.descr": "ワオ、君は本当に 「最強 」だね。",
       "subtitles.vibraslap": "",
@@ -33690,6 +36312,7 @@
       "effect.jujutsucraftaddon.domain_effect_start": "Domain",
       "gui.jujutsucraftaddon.race_change.button_jujutsu_sorcerer": "呪術師 ",
       "gui.jujutsucraftaddon.quest_10.label_chapter_1_hidden_inventory_arc": "Chapter 2: Fearsome Womb Arc",
+      "effect.jujutsucraftaddon.sukuna_vc": "Sukuna VC",
       "gamerule.jjkuWaterWalk.description": "Enable or Disable walk in water",
       "gui.jujutsucraftaddon.cursed_energy_selector.button_imbue_with_negative_energy": "Imbue With Negative Energy",
       "advancements.save_me_mahoraga.title": "Save Me Mahoraga",
@@ -33717,7 +36340,6 @@
       "gui.jujutsucraftaddon.quest_2.label_chapter_1_hidden_inventory_arc": "Chapter 0: Hidden Inventory Arc",
       "gamerule.jjkuSukunaPossessionRate": "JJKU Sukuna Possession Rate",
       "item.jujutsucraftaddon.red_entity_spawn_egg": "Red Entity Spawn Egg",
-      "key.jujutsucraftaddon.click_animation": "Click Animation",
       "effect.jujutsucraftaddon.black_flash_cut": "Black Flash Cut",
       "gamerule.jjkuMobSpawningRate.description": "Changes Jujutsu Craft Mob Spawn Rate ( less values \u003d less spawning )",
       "effect.jujutsucraftaddon.shrine_effect": "Shrine",
@@ -33737,6 +36359,7 @@
       "effect.jujutsucraftaddon.counter": "Counter",
       "item.jujutsucraftaddon.trait_recommendation": "Trait Recommendation",
       "item.jujutsucraftaddon.testing_version_spawn_egg": "Testing Version Spawn Egg",
+      "subtitles.yujidomain": "",
       "key.jujutsucraftaddon.change_technique": "Change Technique",
       "gamerule.jjkuBlackFlashReworked": "JJKU BF Reworked",
       "gamerule.jjkuNoCooldown.description": "Self-Explain ( disables cooldown when set to true )",
@@ -33778,6 +36401,7 @@
       "subtitles.kokusentodo": "",
       "gui.jujutsucraftaddon.profession_gui.button_warrior": "Warrior",
       "advancements.hr.descr": "Someone took my heart",
+      "item.jujutsucraftaddon.yamato": "Yamato",
       "item.jujutsucraftaddon.sukuna_armor_three_chestplate": "Sukuna Markings ( Chestplate Heian )",
       "subtitles.hit2": "",
       "subtitles.hit3": "",
@@ -33788,6 +36412,7 @@
       "fluid.jujutsucraftaddon.yoku": "Yoku",
       "subtitles.rikasummon": "",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
+      "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
       "item.jujutsucraftaddon.nuh_uh_1": "Nuh Uh 1",
       "item.jujutsucraftaddon.kimono_black_leggings": "Kimono Leggings ( Toji Fushiguro )",
       "subtitles.purplexplode": "",
@@ -33819,6 +36444,7 @@
       "effect.jujutsucraftaddon.itadori_awakening": "Itadori Awakening",
       "gamerule.jjkuDropRate": "JJKU Drop Rate",
       "effect.jujutsucraftaddon.size": "Size Change",
+      "effect.jujutsucraftaddon.contained": "Contained",
       "gamerule.jjkuPurpleRange.description": "That change the range of purple for low end computers (deafult \u003d 200)",
       "effect.jujutsucraftaddon.hiding": "Hiding",
       "effect.jujutsucraftaddon.blue_effect": "Shrine",
@@ -33831,6 +36457,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select2": "Select",
       "gui.jujutsucraftaddon.kenjaku_body_swap.button_select1": "Select",
       "item.jujutsucraftaddon.gojo_training_final": "Gojo Training 2",
+      "gamerule.jjkuOnlyOneSukuna.description": "Let Only One Sukuna Player In Server?",
       "item.jujutsucraftaddon.sukuna_fushiguro_spawn_egg": "Sukuna Fushiguro Spawn Egg",
       "advancements.cursed_to_exist.title": "Cursed To Exist",
       "gamerule.jjkuLimbLoss.description": "Let Players Lose Limbs?",
@@ -33879,11 +36506,15 @@
       "block.jujutsucraftaddon.snow_domain": "Snow Domain",
       "effect.jujutsucraftaddon.riding_effect": "Riding",
       "gui.jujutsucraftaddon.elements.button_select4": "Select",
+      "gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash": "Toggle Dash",
       "gui.jujutsucraftaddon.elements.button_select3": "Select",
       "gui.jujutsucraftaddon.quest_14.label_chapter_1_hidden_inventory_arc": "Chapter 5: Death Painting Arc",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_2": "Clear Body 2",
       "advancements.ultimate_power.descr": "平安時代の秘めた力を解き放つ",
       "gamerule.jjkuAnimations.description": "Disable jjku animations? ( default is true/enabled )",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_1": "Clear Body 1",
       "item.jujutsucraftaddon.bullet": "Toji Glock",
+      "gui.jujutsucraftaddon.kenjaku_body_swap.button_clear_body_3": "Clear Body 3",
       "gamerule.jjkuSukunaLevel": "JJKU Sukuna Cost Level",
       "entity.jujutsucraftaddon.sukuna_manga": "Sukuna Manga",
       "effect.jujutsucraftaddon.jackpot": "Jackpot",
@@ -33893,6 +36524,7 @@
       "item.jujutsucraftaddon.er": "Er",
       "advancements.angel_ct.title": "Angel CT",
       "entity.jujutsucraftaddon.ironkk": "1ronkk",
+      "item.jujutsucraftaddon.nozarashi": "Nozarashi",
       "gui.jujutsucraftaddon.race_change.button_vessel": "Vessel",
       "dialoguearct": "自動逆呪い技",
       "gui.jujutsucraftaddon.kogane_ui.button_random_player_punishment": "Random Player Punishment",
@@ -33904,6 +36536,7 @@
       "advancements.jogoat_god.descr": "Become The Jujutsu God Jogoat",
       "gamerule.jjkuRandomCT": "JJKU Random CT",
       "gamerule.jjkuWaterWalk": "JJKU Water Walking",
+      "subtitles.music10": "",
       "subtitles.swing5": "",
       "subtitles.swing4": "",
       "gamerule.jjkuNoArmorySpirit": "JJKU No Armory Spirit",
@@ -33911,6 +36544,7 @@
       "item.jujutsucraftaddon.purple_cape_helmet": "Decisive Helmet",
       "subtitles.swing2": "",
       "subtitles.swing1": "",
+      "gamerule.jjkuBGM": "JJKU BGM",
       "subtitles.blackflashtheme": "",
       "advancements.reverse_cursed_output.title": "逆呪いのテクニック アウトプット学習",
       "item.jujutsucraftaddon.itadori_arms": "Itadori Gauntlets",
@@ -33918,6 +36552,7 @@
       "gamerule.enableSukunaPVP": "Enable Sukuna PVP?",
       "item.jujutsucraftaddon.gojo_school_spawn_egg": "Gojo School Spawn Egg",
       "effect.jujutsucraftaddon.domain_time": "Domain Time",
+      "effect.jujutsucraftaddon.sukuna_heary": "Sukuna Heary",
       "gamerule.jjkuCullingGames": "JJKU Culling Games",
       "advancements.kakucho_jutsushiki.title": "シン・陰流「簡易領域」",
       "subtitles.overtime": "",
@@ -33925,9 +36560,11 @@
       "gui.jujutsucraftaddon.quest_12.label_miguel_vs_gojo": "Yuji \u0026 Nanami vs Mahito",
       "effect.jujutsucraftaddon.gojo_rampage": "Rampage Zone",
       "effect.jujutsucraftaddon.hwb": "HWB",
+      "gamerule.jjkuBGM.description": "Enable Or Disable Background lo-fi Music",
       "effect.jujutsucraftaddon.sukuna": "SukunaTookOver",
       "item.jujutsucraftaddon.enchainde": "Sex Eyes",
       "gamerule.jjkuBlackFlashReworked.description": "Deafult \u003d true, this change for the new system of black flash in jjku ( turn off if you wan\u0027t the old one )",
+      "item.jujutsucraftaddon.vergil_boots": "Vergil Boots",
       "item.jujutsucraftaddon.s_oulbook": "Soul Research Book",
       "item.jujutsucraftaddon.purple_cape_leggings": "Battle Leggings (Purple Version)",
       "gui.jujutsucraftaddon.quest_2.label_beat_toji_with_geto_and_gojo": "Beat Toji With Geto and Gojo",
@@ -33957,6 +36594,8 @@
       "gamerule.jjkuSukunaLevel.description": "Change The Sukuna Cost Reduction Level ( higher \u003d higher cost, default \u003d 1 )",
       "gui.jujutsucraftaddon.kogane_ui.button_random_item": "Random Item",
       "item.jujutsucraftaddon.evidence": "Evidence",
+      "item.jujutsucraftaddon.vergil_chestplate": "Vergil Chestplate",
+      "effect.jujutsucraftaddon.music": "Music",
       "subtitles.satorugojo": "",
       "effect.jujutsucraftaddon.rampage_zone": "Rampage Zone",
       "item.jujutsucraftaddon.sword_jin_woo_two": "Kamish Dagger",
@@ -33974,6 +36613,7 @@
       "effect.jujutsucraftaddon.broken_brain": "Brain Damage",
       "gamerule.jjkuRikaPureLove.description": "Change the Rika Pure Love Size",
       "gamerule.jjkuZoneStack.description": "Let Black Flashes Zone Stack?",
+      "subtitles.nozarashi": "",
       "gui.jujutsucraftaddon.gojo_train.button_start": "Start",
       "gamerule.jjkuNoArmorySpirit.description": "Disable Armory Spirit to Spawn?",
       "subtitles.sword": "",
@@ -33993,6 +36633,7 @@
       "effect.jujutsucraftaddon.anim_4": "Anim 4",
       "effect.jujutsucraftaddon.anim_3": "Anim 3",
       "item.jujutsucraftaddon.decisive_leggings": "Decisive Leggings",
+      "effect.jujutsucraftaddon.clone_ticked": "Clone Ticked",
       "gamerule.jjkuTojiRate.description": "Change Spawn Rate of Fushiguro Toji ( default is 0, 1 \u003d 1% chance  )",
       "gamerule.jjkuPurpleRange": "JJKU Purple Range",
       "dialogue21": "§4§l最初の道 - モブを殺す、柔術を殺すクラフトモブはあなたに呪われたレベルを与えることができます。 ",
@@ -34017,7 +36658,10 @@
       "item.jujutsucraftaddon.decisive_helmet": "Decisive Helmet",
       "gamerule.jjkuCursedSpiritRCT.description": "Enable Or Disable Cursed Spirit RCT ( Changes for Regen if Disabled, Default \u003d Disabled )",
       "key.jujutsucraftaddon.hability_wheel_key": "Binding Vow Key",
+      "dialoguesoul3": "",
+      "dialoguesoul2": "魂の薙ぎ払い",
       "subtitles.standproudsukuna": "",
+      "dialoguesoul1": "魂の解体",
       "advancements.ogi_trash.title": "Ogi Trash",
       "advancements.judgeman.descr": "Guilty, Death Penalty",
       "gamerule.jjkuSukunaHealthPossession.description": "Change The Health You Need for Possession ( default \u003d 40 )",
@@ -34031,6 +36675,7 @@
       "subtitles.getovstoji": "",
       "gui.jujutsucraftaddon.skill_tree.button_unlock_level_3": "Unlock Level 3",
       "subtitles.wu7": "",
+      "item.jujutsucraftaddon.nozarashi_bankai": "Nozarashi Bankai",
       "subtitles.wu6": "",
       "subtitles.sword4": "",
       "advancements.nah_id_win.descr": "Would you Lose?",
@@ -34203,7 +36848,7 @@
   "workspaceSettings": {
     "modid": "jujutsucraftaddon",
     "modName": "JJKUR",
-    "version": "1.91",
+    "version": "3.1",
     "description": "Reworked Addon, Jujutsu Kaisen: Majutsu-shi no yō ni",
     "author": "Satushi",
     "websiteURL": "https://mcreator.net",

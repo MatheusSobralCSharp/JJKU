@@ -43,7 +43,7 @@ public abstract class RCTActiveMixin {
     }
 
 
-    @Inject(method = "execute", at = @At("TAIL"), remap = false)
+    @Inject(method = "execute", at = @At("HEAD"), remap = false)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci){
         if (((JujutsucraftaddonModVariables.PlayerVariables)entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTOutputActive) {
             RctOutputProcedure.execute(world, entity);

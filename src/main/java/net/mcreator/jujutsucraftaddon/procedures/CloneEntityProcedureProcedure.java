@@ -523,6 +523,174 @@ public class CloneEntityProcedureProcedure {
 					}
 				}
 			}
+		} else {
+			if (new Object() {
+				public double getValue() {
+					CompoundTag dataIndex142 = new CompoundTag();
+					entity.saveWithoutId(dataIndex142);
+					return dataIndex142.getCompound("ForgeData").getDouble("skill");
+				}
+			}.getValue() > 0) {
+				if (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex143 = new CompoundTag();
+						entity.saveWithoutId(dataIndex143);
+						return dataIndex143.getCompound("ForgeData").getDouble("cnt4");
+					}
+				}.getValue() >= 1250) {
+					if ((entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
+						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+							_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1),
+									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get()).getAmplifier() : 0) + 1),
+									false, false));
+						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+							_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), 100,
+									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get()).getAmplifier() : 0) + 1), false,
+									false));
+						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+							_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 50,
+									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())
+											? _livEnt.getEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()).getAmplifier()
+											: 0) + 0),
+									false, false));
+						if (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex148 = new CompoundTag();
+								entity.saveWithoutId(dataIndex148);
+								return dataIndex148.getCompound("ForgeData").getDouble("cnt1");
+							}
+						}.getValue() < 45) {
+							CompoundTag dataIndex150 = new CompoundTag();
+							entity.saveWithoutId(dataIndex150);
+							dataIndex150.getCompound("ForgeData").putDouble("cnt1", (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex149 = new CompoundTag();
+									entity.saveWithoutId(dataIndex149);
+									return dataIndex149.getCompound("ForgeData").getDouble("cnt1");
+								}
+							}.getValue() + 1));
+							entity.load(dataIndex150);
+						}
+						if (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex151 = new CompoundTag();
+								entity.saveWithoutId(dataIndex151);
+								return dataIndex151.getCompound("ForgeData").getDouble("cnt3");
+							}
+						}.getValue() < 20) {
+							CompoundTag dataIndex153 = new CompoundTag();
+							entity.saveWithoutId(dataIndex153);
+							dataIndex153.getCompound("ForgeData").putDouble("cnt3", (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex152 = new CompoundTag();
+									entity.saveWithoutId(dataIndex152);
+									return dataIndex152.getCompound("ForgeData").getDouble("cnt1");
+								}
+							}.getValue() + 1));
+							entity.load(dataIndex153);
+						}
+						entity.getPersistentData().putBoolean("PRESS_Z", true);
+					} else if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+						entity.getPersistentData().putBoolean("PRESS_Z", false);
+					}
+				} else {
+					if ((entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) == false) {
+						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+							_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), 100,
+									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get()).getAmplifier() : 0) + 1), false,
+									false));
+						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+							_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 50,
+									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())
+											? _livEnt.getEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()).getAmplifier()
+											: 0) + 0),
+									false, false));
+						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+							_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1),
+									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get()).getAmplifier() : 0) + 1),
+									false, false));
+						entity.getPersistentData().putBoolean("PRESS_Z", true);
+					} else if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+						if (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex163 = new CompoundTag();
+								entity.saveWithoutId(dataIndex163);
+								return dataIndex163.getCompound("ForgeData").getDouble("cnt6");
+							}
+						}.getValue() < 6) {
+							if (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex164 = new CompoundTag();
+									entity.saveWithoutId(dataIndex164);
+									return dataIndex164.getCompound("ForgeData").getDouble("cnt1");
+								}
+							}.getValue() < 10) {
+								CompoundTag dataIndex166 = new CompoundTag();
+								entity.saveWithoutId(dataIndex166);
+								dataIndex166.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex165 = new CompoundTag();
+										entity.saveWithoutId(dataIndex165);
+										return dataIndex165.getCompound("ForgeData").getDouble("cnt6");
+									}
+								}.getValue() + 1));
+								entity.load(dataIndex166);
+							}
+							if (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex167 = new CompoundTag();
+									entity.saveWithoutId(dataIndex167);
+									return dataIndex167.getCompound("ForgeData").getDouble("cnt5");
+								}
+							}.getValue() >= 1) {
+								CompoundTag dataIndex169 = new CompoundTag();
+								entity.saveWithoutId(dataIndex169);
+								dataIndex169.getCompound("ForgeData").putDouble("cnt5", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex168 = new CompoundTag();
+										entity.saveWithoutId(dataIndex168);
+										return dataIndex168.getCompound("ForgeData").getDouble("cnt5");
+									}
+								}.getValue() + 1));
+								entity.load(dataIndex169);
+								CompoundTag dataIndex171 = new CompoundTag();
+								entity.saveWithoutId(dataIndex171);
+								dataIndex171.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex170 = new CompoundTag();
+										entity.saveWithoutId(dataIndex170);
+										return dataIndex170.getCompound("ForgeData").getDouble("cnt6");
+									}
+								}.getValue() + 1));
+								entity.load(dataIndex171);
+							}
+							if (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex172 = new CompoundTag();
+									entity.saveWithoutId(dataIndex172);
+									return dataIndex172.getCompound("ForgeData").getDouble("cnt1");
+								}
+							}.getValue() > 10) {
+								CompoundTag dataIndex174 = new CompoundTag();
+								entity.saveWithoutId(dataIndex174);
+								dataIndex174.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex173 = new CompoundTag();
+										entity.saveWithoutId(dataIndex173);
+										return dataIndex173.getCompound("ForgeData").getDouble("cnt6");
+									}
+								}.getValue() + 1));
+								entity.load(dataIndex174);
+							}
+							entity.getPersistentData().putBoolean("PRESS_Z", true);
+						} else {
+							if (entity.getPersistentData().getBoolean("PRESS_Z") == true) {
+								entity.getPersistentData().putBoolean("PRESS_Z", false);
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

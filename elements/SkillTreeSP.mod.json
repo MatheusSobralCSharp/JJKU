@@ -297,23 +297,18 @@
         }
       },
       {
-        "type": "textfield",
+        "type": "button",
         "data": {
-          "placeholder": "100%",
-          "name": "speedslider",
-          "width": 120,
+          "name": "button_toggle_dash",
+          "text": "Toggle Dash",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "DashToggl"
+          },
+          "width": 82,
           "height": 20,
-          "x": 32,
-          "y": 212
-        }
-      },
-      {
-        "type": "checkbox",
-        "data": {
-          "name": "checkspeed",
-          "text": "Speed Slider",
-          "x": 8,
-          "y": 212
+          "x": 65,
+          "y": 211
         }
       }
     ],

@@ -7,6 +7,6 @@
     "description": "Default = 2, Orca = 0",
     "category": "MISC",
     "defaultValueLogic": false,
-    "defaultValueNumber": 2
+    "defaultValueNumber": 1
   }
 }

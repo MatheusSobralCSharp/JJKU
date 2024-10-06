@@ -31,8 +31,6 @@ import net.mcreator.jujutsucraftaddon.network.DomainExpansionMessage;
 import net.mcreator.jujutsucraftaddon.network.DashKeybindMessage;
 import net.mcreator.jujutsucraftaddon.network.CursedWeaponMessage;
 import net.mcreator.jujutsucraftaddon.network.CursedEnergyShieldMessage;
-import net.mcreator.jujutsucraftaddon.network.CounterKeybindMessage;
-import net.mcreator.jujutsucraftaddon.network.ClickAnimationMessage;
 import net.mcreator.jujutsucraftaddon.network.ChangeTechniqueMessage;
 import net.mcreator.jujutsucraftaddon.network.BurnoutKeyMessage;
 import net.mcreator.jujutsucraftaddon.network.ArmoryOrCopyMessage;
@@ -72,7 +70,7 @@ public class JujutsucraftaddonModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping ARMORY_OR_COPY = new KeyMapping("key.jujutsucraftaddon.armory_or_copy", GLFW.GLFW_KEY_V, "key.categories.jujutsucraftaddon") {
+	public static final KeyMapping ARMORY_OR_COPY = new KeyMapping("key.jujutsucraftaddon.armory_or_copy", GLFW.GLFW_KEY_H, "key.categories.jujutsucraftaddon") {
 		private boolean isDownOld = false;
 
 		@Override
@@ -94,19 +92,6 @@ public class JujutsucraftaddonModKeyMappings {
 			if (isDownOld != isDown && isDown) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new HabilityWheelKeyMessage(0, 0));
 				HabilityWheelKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping COUNTER_KEYBIND = new KeyMapping("key.jujutsucraftaddon.counter_keybind", GLFW.GLFW_KEY_V, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CounterKeybindMessage(0, 0));
-				CounterKeybindMessage.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
@@ -182,19 +167,6 @@ public class JujutsucraftaddonModKeyMappings {
 			if (isDownOld != isDown && isDown) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ExtensionKeybindMessage(0, 0));
 				ExtensionKeybindMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping CLICK_ANIMATION = new KeyMapping("key.jujutsucraftaddon.click_animation", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ClickAnimationMessage(0, 0));
-				ClickAnimationMessage.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
@@ -282,7 +254,7 @@ public class JujutsucraftaddonModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping CHANGE_TECHNIQUE = new KeyMapping("key.jujutsucraftaddon.change_technique", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
+	public static final KeyMapping CHANGE_TECHNIQUE = new KeyMapping("key.jujutsucraftaddon.change_technique", GLFW.GLFW_KEY_V, "key.categories.jujutsucraftaddon") {
 		private boolean isDownOld = false;
 
 		@Override
@@ -364,13 +336,11 @@ public class JujutsucraftaddonModKeyMappings {
 		event.register(DASH_KEYBIND);
 		event.register(ARMORY_OR_COPY);
 		event.register(HABILITY_WHEEL_KEY);
-		event.register(COUNTER_KEYBIND);
 		event.register(KEY_WHEEL);
 		event.register(ANIMATION_KEYBIND);
 		event.register(PASSIVE_KEYBIND);
 		event.register(DOMAIN_EXPANSION);
 		event.register(EXTENSION_KEYBIND);
-		event.register(CLICK_ANIMATION);
 		event.register(TEST_ANIMATION);
 		event.register(BURNOUT_KEY);
 		event.register(WATER_WALKING);
@@ -393,13 +363,11 @@ public class JujutsucraftaddonModKeyMappings {
 				DASH_KEYBIND.consumeClick();
 				ARMORY_OR_COPY.consumeClick();
 				HABILITY_WHEEL_KEY.consumeClick();
-				COUNTER_KEYBIND.consumeClick();
 				KEY_WHEEL.consumeClick();
 				ANIMATION_KEYBIND.consumeClick();
 				PASSIVE_KEYBIND.consumeClick();
 				DOMAIN_EXPANSION.consumeClick();
 				EXTENSION_KEYBIND.consumeClick();
-				CLICK_ANIMATION.consumeClick();
 				TEST_ANIMATION.consumeClick();
 				BURNOUT_KEY.consumeClick();
 				WATER_WALKING.consumeClick();
