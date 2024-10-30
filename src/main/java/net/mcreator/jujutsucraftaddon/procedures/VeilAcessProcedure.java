@@ -18,34 +18,36 @@ public class VeilAcessProcedure {
 		if (entity == null)
 			return;
 		if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.ENABLE_SUKUNA_PVP) == true) {
-			CompoundTag dataIndex3 = new CompoundTag();
-			(new Object() {
-				public Entity getEntity() {
-					try {
-						return EntityArgument.getEntity(arguments, "Player");
-					} catch (CommandSyntaxException e) {
-						e.printStackTrace();
-						return null;
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(new Object() {
+					public Entity getEntity() {
+						try {
+							return EntityArgument.getEntity(arguments, "Player");
+						} catch (CommandSyntaxException e) {
+							e.printStackTrace();
+							return null;
+						}
 					}
-				}
-			}.getEntity()).saveWithoutId(dataIndex3);
-			dataIndex3.getCompound("ForgeData").putString("VeilUUID", (new Object() {
-				public String getValue() {
-					CompoundTag dataIndex2 = new CompoundTag();
-					entity.saveWithoutId(dataIndex2);
-					return dataIndex2.getCompound("ForgeData").getString("VeilUUID");
-				}
-			}.getValue()));
-			(new Object() {
-				public Entity getEntity() {
-					try {
-						return EntityArgument.getEntity(arguments, "Player");
-					} catch (CommandSyntaxException e) {
-						e.printStackTrace();
-						return null;
+				}.getEntity()).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putString("VeilUUID", (new Object() {
+					public String getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("VeilUUID");
 					}
-				}
-			}.getEntity()).load(dataIndex3);
+				}.getValue()));
+				(new Object() {
+					public Entity getEntity() {
+						try {
+							return EntityArgument.getEntity(arguments, "Player");
+						} catch (CommandSyntaxException e) {
+							e.printStackTrace();
+							return null;
+						}
+					}
+				}.getEntity()).load(dataIndex);
+			}
 			if ((new Object() {
 				public Entity getEntity() {
 					try {

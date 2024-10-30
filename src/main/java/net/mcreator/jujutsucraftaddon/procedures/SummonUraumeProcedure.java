@@ -19,9 +19,9 @@ public class SummonUraumeProcedure {
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) <= (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1) / 2) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex2 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex2);
-					return dataIndex2.getCompound("ForgeData").getDouble("Started");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("Started");
 				}
 			}.getValue() == 0) {
 				if (world instanceof ServerLevel _serverLevel) {
@@ -29,47 +29,57 @@ public class SummonUraumeProcedure {
 					if (entitytospawn != null) {
 						entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					}
-					CompoundTag dataIndex5 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex5);
-					dataIndex5.getCompound("ForgeData").putString("OWNER_UUID", (sourceentity.getStringUUID()));
-					(entitytospawn).load(dataIndex5);
-					CompoundTag dataIndex8 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex8);
-					dataIndex8.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex7 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex7);
-							return dataIndex7.getCompound("ForgeData").getDouble("friend_num");
-						}
-					}.getValue()));
-					(entitytospawn).load(dataIndex8);
-					CompoundTag dataIndex11 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex11);
-					dataIndex11.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex10 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex10);
-							return dataIndex10.getCompound("ForgeData").getDouble("friend_num");
-						}
-					}.getValue()));
-					(entitytospawn).load(dataIndex11);
-					CompoundTag dataIndex14 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex14);
-					dataIndex14.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex13 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex13);
-							return dataIndex13.getCompound("ForgeData").getDouble("friend_num");
-						}
-					}.getValue()));
-					(entitytospawn).load(dataIndex14);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putString("OWNER_UUID", (sourceentity.getStringUUID()));
+						(entitytospawn).load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+							}
+						}.getValue()));
+						(entitytospawn).load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+							}
+						}.getValue()));
+						(entitytospawn).load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+							}
+						}.getValue()));
+						(entitytospawn).load(dataIndex);
+					}
 				}
 				if (entity instanceof Player _player && !_player.level().isClientSide())
 					_player.displayClientMessage(Component.literal("Uraume..."), false);
-				CompoundTag dataIndex17 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex17);
-				dataIndex17.getCompound("ForgeData").putDouble("Started", 1);
-				sourceentity.load(dataIndex17);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("Started", 1);
+					sourceentity.load(dataIndex);
+				}
 			}
 		}
 	}

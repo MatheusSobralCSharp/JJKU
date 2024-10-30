@@ -25,36 +25,42 @@ public class UiUiRightClickedOnEntityProcedure {
 						_toTame.tame(_owner);
 					if (entity instanceof TamableAnimal _toTame && sourceentity instanceof Player _owner)
 						_toTame.tame(_owner);
-					CompoundTag dataIndex8 = new CompoundTag();
-					entity.saveWithoutId(dataIndex8);
-					dataIndex8.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex7 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex7);
-							return dataIndex7.getCompound("ForgeData").getDouble("friend_num");
-						}
-					}.getValue()));
-					entity.load(dataIndex8);
-					CompoundTag dataIndex10 = new CompoundTag();
-					entity.saveWithoutId(dataIndex10);
-					dataIndex10.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex9 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex9);
-							return dataIndex9.getCompound("ForgeData").getDouble("friend_num");
-						}
-					}.getValue()));
-					entity.load(dataIndex10);
-					CompoundTag dataIndex12 = new CompoundTag();
-					entity.saveWithoutId(dataIndex12);
-					dataIndex12.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex11 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex11);
-							return dataIndex11.getCompound("ForgeData").getDouble("friend_num");
-						}
-					}.getValue()));
-					entity.load(dataIndex12);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+							}
+						}.getValue()));
+						entity.load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+							}
+						}.getValue()));
+						entity.load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+							}
+						}.getValue()));
+						entity.load(dataIndex);
+					}
 				}
 			}
 		}

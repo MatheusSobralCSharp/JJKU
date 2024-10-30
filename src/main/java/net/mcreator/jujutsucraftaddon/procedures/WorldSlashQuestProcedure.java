@@ -28,16 +28,16 @@ public class WorldSlashQuestProcedure {
 						&& _plr2.getAdvancements().getOrStartProgress(_plr2.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"))).isDone())) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex3 = new CompoundTag();
-							entity.saveWithoutId(dataIndex3);
-							return dataIndex3.getCompound("ForgeData").getDouble("TenShadowsTechnique13");
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("TenShadowsTechnique13");
 						}
 					}.getValue() == -2) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex4 = new CompoundTag();
-								entity.saveWithoutId(dataIndex4);
-								return dataIndex4.getCompound("ForgeData").getDouble("TenShadowsTechnique14");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("TenShadowsTechnique14");
 							}
 						}.getValue() == -2) {
 							if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) <= 50) {
@@ -61,10 +61,12 @@ public class WorldSlashQuestProcedure {
 										capability.syncPlayerVariables(entity);
 									});
 								}
-								CompoundTag dataIndex10 = new CompoundTag();
-								entity.saveWithoutId(dataIndex10);
-								dataIndex10.getCompound("ForgeData").putBoolean("PRESS_Z", true);
-								entity.load(dataIndex10);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putBoolean("PRESS_Z", true);
+									entity.load(dataIndex);
+								}
 								{
 									Entity _ent = entity;
 									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -73,10 +75,12 @@ public class WorldSlashQuestProcedure {
 												"execute as @s run effect give @s jujutsucraft:cursed_technique");
 									}
 								}
-								CompoundTag dataIndex12 = new CompoundTag();
-								entity.saveWithoutId(dataIndex12);
-								dataIndex12.getCompound("ForgeData").putDouble("skill", 105);
-								entity.load(dataIndex12);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("skill", 105);
+									entity.load(dataIndex);
+								}
 								if (entity instanceof ServerPlayer _player) {
 									Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:world_slash_advancement"));
 									AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);

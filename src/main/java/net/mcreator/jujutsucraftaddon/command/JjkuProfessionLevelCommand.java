@@ -24,7 +24,7 @@ public class JjkuProfessionLevelCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher()
-				.register(Commands.literal("jjkurProfessionLevel").requires(s -> s.hasPermission(4)).then(Commands.argument("Player", EntityArgument.player()).then(Commands.argument("Level", DoubleArgumentType.doubleArg()).executes(arguments -> {
+				.register(Commands.literal("jjkurProfessionLevel").requires(s -> s.hasPermission(2)).then(Commands.argument("Player", EntityArgument.player()).then(Commands.argument("Level", DoubleArgumentType.doubleArg()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

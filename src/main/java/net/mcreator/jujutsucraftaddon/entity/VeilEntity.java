@@ -29,6 +29,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
@@ -42,6 +45,9 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
 import javax.annotation.Nullable;
 
 public class VeilEntity extends Monster {
+	public static final EntityDataAccessor<Boolean> DATA_flag = SynchedEntityData.defineId(VeilEntity.class, EntityDataSerializers.BOOLEAN);
+	public static final EntityDataAccessor<Integer> DATA_FlagColor = SynchedEntityData.defineId(VeilEntity.class, EntityDataSerializers.INT);
+
 	public VeilEntity(PlayMessages.SpawnEntity packet, Level world) {
 		this(JujutsucraftaddonModEntities.VEIL.get(), world);
 	}
@@ -58,6 +64,13 @@ public class VeilEntity extends Monster {
 	@Override
 	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(DATA_flag, false);
+		this.entityData.define(DATA_FlagColor, 0);
 	}
 
 	@Override
@@ -147,6 +160,22 @@ public class VeilEntity extends Monster {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
 		VeilOnInitialEntitySpawnProcedure.execute(this);
 		return retval;
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.putBoolean("Dataflag", this.entityData.get(DATA_flag));
+		compound.putInt("DataFlagColor", this.entityData.get(DATA_FlagColor));
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		if (compound.contains("Dataflag"))
+			this.entityData.set(DATA_flag, compound.getBoolean("Dataflag"));
+		if (compound.contains("DataFlagColor"))
+			this.entityData.set(DATA_FlagColor, compound.getInt("DataFlagColor"));
 	}
 
 	@Override

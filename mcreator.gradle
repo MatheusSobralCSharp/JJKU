@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-  implementation fg.deobf('curse.maven:sorceryfight-471288:5655808')
+  implementation fg.deobf("curse.maven:sorceryfight-471288:5840968")
 }
 
 

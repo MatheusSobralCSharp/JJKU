@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "gamerule",
   "definition": {
     "type": "Number",
@@ -7,6 +7,6 @@
     "description": "Set The Cursed Energy Amount Cap",
     "category": "MISC",
     "defaultValueLogic": false,
-    "defaultValueNumber": 1200
+    "defaultValueNumber": 2400
   }
 }

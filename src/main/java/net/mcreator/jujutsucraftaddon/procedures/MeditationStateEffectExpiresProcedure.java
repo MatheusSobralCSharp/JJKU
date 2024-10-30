@@ -4,7 +4,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
@@ -28,15 +27,11 @@ public class MeditationStateEffectExpiresProcedure {
 			for (Entity entityiterator : _entfound) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex0 = new CompoundTag();
-						entityiterator.saveWithoutId(dataIndex0);
-						return dataIndex0.getCompound("ForgeData").getDouble("Spirit");
+						CompoundTag dataIndex = new CompoundTag();
+						entityiterator.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("Spirit");
 					}
 				}.getValue() == 1) {
-					if (entityiterator instanceof LivingEntity _entity)
-						_entity.removeAllEffects();
-					if (entityiterator instanceof LivingEntity _entity)
-						_entity.setHealth(2);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SMOKE, (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 5, 3, 3, 3, 1);
 					if (entity instanceof Player _player && !_player.level().isClientSide())
@@ -49,7 +44,6 @@ public class MeditationStateEffectExpiresProcedure {
 							capability.syncPlayerVariables(entity);
 						});
 					}
-					entity.getPersistentData().putDouble("PointsSpirit", 0);
 					{
 						Entity _ent = entityiterator;
 						if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -57,6 +51,7 @@ public class MeditationStateEffectExpiresProcedure {
 									_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill");
 						}
 					}
+					entity.getPersistentData().putDouble("PointsSpirit", 0);
 					if (!entityiterator.level().isClientSide())
 						entityiterator.discard();
 				}

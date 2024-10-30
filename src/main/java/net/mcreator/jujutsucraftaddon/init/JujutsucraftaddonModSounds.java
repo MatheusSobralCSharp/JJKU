@@ -133,4 +133,6 @@ public class JujutsucraftaddonModSounds {
 	public static final RegistryObject<SoundEvent> MUSIC8 = REGISTRY.register("music8", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music8")));
 	public static final RegistryObject<SoundEvent> MUSIC9 = REGISTRY.register("music9", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music9")));
 	public static final RegistryObject<SoundEvent> MUSIC10 = REGISTRY.register("music10", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "music10")));
+	public static final RegistryObject<SoundEvent> KAI = REGISTRY.register("kai", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "kai")));
+	public static final RegistryObject<SoundEvent> DISMANTLE = REGISTRY.register("dismantle", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("jujutsucraftaddon", "dismantle")));
 }

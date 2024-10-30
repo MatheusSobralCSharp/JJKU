@@ -93,6 +93,10 @@ public class TestProjectileEntity extends AbstractArrow implements ItemSupplier 
 		return shoot(world, entity, source, 100f, 5, 5);
 	}
 
+	public static TestProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
+		return shoot(world, entity, source, pullingPower * 100f, 5, 5);
+	}
+
 	public static TestProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
 		TestProjectileEntity entityarrow = new TestProjectileEntity(JujutsucraftaddonModEntities.TEST_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);

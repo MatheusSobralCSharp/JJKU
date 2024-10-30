@@ -7,9 +7,11 @@ public class RemoveOwnerEffectExpiresProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		CompoundTag dataIndex0 = new CompoundTag();
-		entity.saveWithoutId(dataIndex0);
-		dataIndex0.putString("Owner", "");
-		entity.load(dataIndex0);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.putString("Owner", "");
+			entity.load(dataIndex);
+		}
 	}
 }

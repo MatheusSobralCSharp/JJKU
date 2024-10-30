@@ -4,12 +4,16 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.particles.SimpleParticleType;
 
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
+import net.mcreator.jujutsucraftaddon.entity.CloneEntity;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 public class ManifestationEffectExpiresProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
 		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).startsWith("jujutsucraft")) {
@@ -46,6 +50,14 @@ public class ManifestationEffectExpiresProcedure {
 					capability.syncPlayerVariables(entity);
 				});
 			}
+		}
+		if (entity instanceof CloneEntity) {
+			if (!entity.level().isClientSide())
+				entity.discard();
+			if (world instanceof ServerLevel _level)
+				_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLUEE.get()), x, y, z, 5, 0, 0, 0, 1);
+			if (world instanceof ServerLevel _level)
+				_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLUE.get()), x, y, z, 5, 0, 0, 0, 1);
 		}
 	}
 }

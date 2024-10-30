@@ -37,9 +37,9 @@ public class SlashProcedureProcedure {
 				if (entity instanceof LivingEntity) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex2 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex2);
-							return dataIndex2.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 105) {
 						if (Math.random() < 0.5) {
@@ -55,9 +55,9 @@ public class SlashProcedureProcedure {
 				if (entity instanceof LivingEntity) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex12 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex12);
-							return dataIndex12.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 105) {
 						if (Math.random() < 0.5) {
@@ -78,9 +78,9 @@ public class SlashProcedureProcedure {
 					if (entity instanceof LivingEntity) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex24 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex24);
-								return dataIndex24.getCompound("ForgeData").getDouble("skill");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("skill");
 							}
 						}.getValue() == 105) {
 							for (int index0 = 0; index0 < 100; index0++) {
@@ -123,15 +123,15 @@ public class SlashProcedureProcedure {
 			}
 			if (!(new Object() {
 				public double getValue() {
-					CompoundTag dataIndex78 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex78);
-					return dataIndex78.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() >= 1 || new Object() {
 				public double getValue() {
-					CompoundTag dataIndex79 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex79);
-					return dataIndex79.getCompound("ForgeData").getDouble("skill_domain");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill_domain");
 				}
 			}.getValue() > 0)) {
 				if (Math.random() > 0.7 && Math.random() <= 1) {
@@ -189,9 +189,9 @@ public class SlashProcedureProcedure {
 						if (entity instanceof LivingEntity) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex117 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex117);
-									return dataIndex117.getCompound("ForgeData").getDouble("skill");
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("skill");
 								}
 							}.getValue() == 105) {
 								for (int index1 = 0; index1 < 100; index1++) {

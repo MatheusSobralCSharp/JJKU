@@ -32,9 +32,9 @@ public class GojoMoveBlueProcedure {
 						if (entity instanceof LivingEntity _livEnt5 && _livEnt5.hasEffect(JujutsucraftaddonModMobEffects.GOJO_IMBUED_POWER.get())) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex6 = new CompoundTag();
-									entity.saveWithoutId(dataIndex6);
-									return dataIndex6.getCompound("ForgeData").getDouble("skill");
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("skill");
 								}
 							}.getValue() == 201) {
 								{

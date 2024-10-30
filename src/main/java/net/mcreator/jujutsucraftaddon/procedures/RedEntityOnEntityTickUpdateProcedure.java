@@ -42,9 +42,9 @@ public class RedEntityOnEntityTickUpdateProcedure {
 			for (Entity entityiterator : _entfound) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex6 = new CompoundTag();
-						entityiterator.saveWithoutId(dataIndex6);
-						return dataIndex6.getCompound("ForgeData").getDouble("blue");
+						CompoundTag dataIndex = new CompoundTag();
+						entityiterator.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("blue");
 					}
 				}.getValue() == 1) {
 					if (!entity.level().isClientSide())

@@ -34,7 +34,7 @@ public class ContainProcedure {
 					if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, -1, 1, false, false));
 					if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.CONTAINED.get(), 20, 1, false, false));
+						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.CONTAINED.get(), 80, 1, false, false));
 				}
 			}
 		}

@@ -48,9 +48,9 @@ public class VeilSpawnedProcedure {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == JujutsucraftaddonModItems.VEIL_TALISMAN.get()) {
 				if ((new Object() {
 					public boolean getValue() {
-						CompoundTag dataIndex3 = new CompoundTag();
-						entity.saveWithoutId(dataIndex3);
-						return dataIndex3.getCompound("ForgeData").getBoolean("VeilEnabled");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("VeilEnabled");
 					}
 				}.getValue()) != true) {
 					X = entity.getX();
@@ -68,7 +68,7 @@ public class VeilSpawnedProcedure {
 									if (Math.sqrt(Math.pow(X - x + xi, 2) + Math.pow(Y - y + i, 2) + Math.pow(Z - z + zi, 2)) >= DoubleArgumentType.getDouble(arguments, "VeilSize") - 3) {
 										if (world instanceof ServerLevel _origLevel) {
 											LevelAccessor _worldorig = world;
-											world = _origLevel.getServer().getLevel(entity.level().dimension());
+											world = _origLevel.getServer().getLevel(Level.OVERWORLD);
 											if (world != null) {
 												oldblock = ForgeRegistries.BLOCKS.getKey((world.getBlockState(BlockPos.containing(x + xi, y + i, z + zi))).getBlock()).toString();
 												direction = new Object() {
@@ -171,25 +171,33 @@ public class VeilSpawnedProcedure {
 						LevelAccessor _worldorig = world;
 						world = _origLevel.getServer().getLevel(entity.level().dimension());
 						if (world != null) {
-							if (world instanceof ServerLevel _serverLevel) {
-								Entity entitytospawn = JujutsucraftaddonModEntities.VEIL.get().spawn(_serverLevel, BlockPos.containing(X, Y, Z), MobSpawnType.MOB_SUMMONED);
-								if (entitytospawn != null) {
-									entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+							if (world instanceof ServerLevel _level) {
+								if (world instanceof ServerLevel _serverLevel) {
+									Entity entitytospawn = JujutsucraftaddonModEntities.VEIL.get().spawn(_serverLevel, BlockPos.containing(X, Y, Z), MobSpawnType.MOB_SUMMONED);
+									if (entitytospawn != null) {
+										entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+									}
+									(entitytospawn).getPersistentData().putDouble("TemporaryVeilsSize", Math.round(DoubleArgumentType.getDouble(arguments, "VeilSize")));
+									(entitytospawn).getPersistentData().putDouble("TemporaryVeilsTimer", (DoubleArgumentType.getDouble(arguments, "VeilDurationInMinutes") * 60 * 20));
+									{
+										CompoundTag dataIndex = new CompoundTag();
+										(entitytospawn).saveWithoutId(dataIndex);
+										dataIndex.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+										(entitytospawn).load(dataIndex);
+									}
+									{
+										CompoundTag dataIndex = new CompoundTag();
+										entity.saveWithoutId(dataIndex);
+										dataIndex.getCompound("ForgeData").putString("VeilUUID", ((entitytospawn).getStringUUID()));
+										entity.load(dataIndex);
+									}
+									{
+										CompoundTag dataIndex = new CompoundTag();
+										entity.saveWithoutId(dataIndex);
+										dataIndex.getCompound("ForgeData").putBoolean("VeilEnabled", true);
+										entity.load(dataIndex);
+									}
 								}
-								(entitytospawn).getPersistentData().putDouble("TemporaryVeilsSize", Math.round(DoubleArgumentType.getDouble(arguments, "VeilSize")));
-								(entitytospawn).getPersistentData().putDouble("TemporaryVeilsTimer", (DoubleArgumentType.getDouble(arguments, "VeilDurationInMinutes") * 60 * 20));
-								CompoundTag dataIndex60 = new CompoundTag();
-								(entitytospawn).saveWithoutId(dataIndex60);
-								dataIndex60.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
-								(entitytospawn).load(dataIndex60);
-								CompoundTag dataIndex63 = new CompoundTag();
-								entity.saveWithoutId(dataIndex63);
-								dataIndex63.getCompound("ForgeData").putString("VeilUUID", ((entitytospawn).getStringUUID()));
-								entity.load(dataIndex63);
-								CompoundTag dataIndex64 = new CompoundTag();
-								entity.saveWithoutId(dataIndex64);
-								dataIndex64.getCompound("ForgeData").putBoolean("VeilEnabled", true);
-								entity.load(dataIndex64);
 							}
 						}
 						world = _worldorig;

@@ -21,57 +21,57 @@ public class ErItemInHandTickProcedure {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("cnt1: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex1 = new CompoundTag();
-						entity.saveWithoutId(dataIndex1);
-						return dataIndex1.getCompound("ForgeData").getDouble("cnt1");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("cnt2: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex3 = new CompoundTag();
-						entity.saveWithoutId(dataIndex3);
-						return dataIndex3.getCompound("ForgeData").getDouble("cnt2");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt2");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("cnt3: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex5 = new CompoundTag();
-						entity.saveWithoutId(dataIndex5);
-						return dataIndex5.getCompound("ForgeData").getDouble("cnt3");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt3");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("cnt4: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex7 = new CompoundTag();
-						entity.saveWithoutId(dataIndex7);
-						return dataIndex7.getCompound("ForgeData").getDouble("cnt4");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt4");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("cnt5: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex9 = new CompoundTag();
-						entity.saveWithoutId(dataIndex9);
-						return dataIndex9.getCompound("ForgeData").getDouble("cnt5");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt5");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("cnt6: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex11 = new CompoundTag();
-						entity.saveWithoutId(dataIndex11);
-						return dataIndex11.getCompound("ForgeData").getDouble("cnt6");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("Range: " + (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex13 = new CompoundTag();
-						entity.saveWithoutId(dataIndex13);
-						return dataIndex13.getCompound("ForgeData").getDouble("Range");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("Range");
 					}
 				}.getValue()))), false);
 		} else {
@@ -83,65 +83,65 @@ public class ErItemInHandTickProcedure {
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("cnt1: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex16 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex16);
-									return dataIndex16.getCompound("ForgeData").getDouble("cnt1");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("skill: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex18 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex18);
-									return dataIndex18.getCompound("ForgeData").getDouble("cnt1");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("cnt2: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex20 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex20);
-									return dataIndex20.getCompound("ForgeData").getDouble("cnt2");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt2");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("cnt3: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex22 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex22);
-									return dataIndex22.getCompound("ForgeData").getDouble("cnt3");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt3");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("cnt4: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex24 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex24);
-									return dataIndex24.getCompound("ForgeData").getDouble("cnt4");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt4");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("cnt5: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex26 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex26);
-									return dataIndex26.getCompound("ForgeData").getDouble("cnt5");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt5");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("cnt6: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex28 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex28);
-									return dataIndex28.getCompound("ForgeData").getDouble("cnt6");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 								}
 							}.getValue()))), false);
 						if (entity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("Range: " + (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex30 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex30);
-									return dataIndex30.getCompound("ForgeData").getDouble("Range");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("Range");
 								}
 							}.getValue()))), false);
 					}

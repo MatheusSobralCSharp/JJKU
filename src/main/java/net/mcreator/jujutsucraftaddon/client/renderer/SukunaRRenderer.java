@@ -1,31 +1,46 @@
 
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.MultiBufferSource;
-
-import net.mcreator.jujutsucraftaddon.entity.model.SukunaRModel;
-import net.mcreator.jujutsucraftaddon.entity.layer.SukunaRLayer;
-import net.mcreator.jujutsucraftaddon.entity.SukunaREntity;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.mcreator.jujutsucraftaddon.entity.SukunaREntity;
+import net.mcreator.jujutsucraftaddon.entity.layer.SukunaRLayer;
+import net.mcreator.jujutsucraftaddon.entity.model.SukunaRModel;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.renderer.layer.ItemArmorGeoLayer;
 
 public class SukunaRRenderer extends GeoEntityRenderer<SukunaREntity> {
+
 	public SukunaRRenderer(EntityRendererProvider.Context renderManager) {
 		super(renderManager, new SukunaRModel());
 		this.shadowRadius = 0.5f;
 		this.addRenderLayer(new SukunaRLayer(this));
+		this.addRenderLayer(new ItemArmorGeoLayer<>(this));
 	}
+
 
 
 	@Override
 	public RenderType getRenderType(SukunaREntity animatable, ResourceLocation texture, MultiBufferSource bufferSource, float partialTick) {
+
+		LivingEntity livingEntity = animatable.getOwner();
+
+		if (livingEntity != null) {
+			EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+			EntityRenderer<? super LivingEntity> livingRenderer = entityRenderDispatcher.getRenderer(livingEntity);
+			ResourceLocation ownerTexture = livingRenderer.getTextureLocation(livingEntity);
+			return RenderType.entityTranslucent(ownerTexture);
+		}
+
 		return RenderType.entityTranslucent(getTextureLocation(animatable));
 	}
 

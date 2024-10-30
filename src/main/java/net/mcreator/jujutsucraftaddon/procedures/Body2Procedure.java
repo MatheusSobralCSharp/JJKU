@@ -15,5 +15,12 @@ public class Body2Procedure {
 				capability.syncPlayerVariables(entity);
 			});
 		}
+		{
+			String _setval = "";
+			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.SkinName2 = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
 	}
 }

@@ -30,76 +30,80 @@ import net.mcreator.jujutsucraftaddon.entity.GojoSchoolEntity;
 import net.mcreator.jujutsucraftaddon.entity.GojoMangaEntity;
 import net.mcreator.jujutsucraftaddon.entity.AngellEntity;
 import net.mcreator.jujutsucraftaddon.entity.AdjuchaEntity;
+import net.mcreator.jujutsucraft.entity.RikaEntity;
+import net.mcreator.jujutsucraft.entity.Rika2Entity;
+
+import java.util.Objects;
 
 public class TargetProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).startsWith("jujutsucraft")) {
+		if ((Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType())).toString()).startsWith("jujutsucraft")) {
 			if ((new Object() {
 				public double getValue() {
-					CompoundTag dataIndex1 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex1);
-					return dataIndex1.getCompound("ForgeData").getDouble("select");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("select");
 				}
 			}.getValue() > 0 || new Object() {
 				public double getValue() {
-					CompoundTag dataIndex2 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex2);
-					return dataIndex2.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 510 || new Object() {
 				public double getValue() {
-					CompoundTag dataIndex3 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex3);
-					return dataIndex3.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 515 || new Object() {
 				public double getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex4);
-					return dataIndex4.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 617 || new Object() {
 				public double getValue() {
-					CompoundTag dataIndex5 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex5);
-					return dataIndex5.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 618 || new Object() {
 				public double getValue() {
-					CompoundTag dataIndex6 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex6);
-					return dataIndex6.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 1520) && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex7 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex7);
-					return dataIndex7.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() > 0 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex8 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex8);
-					return dataIndex8.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() < 10) {
 				Nuesummon2Procedure.execute(world, x, y, z, sourceentity);
-				if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:rika_2")) {
+				if (entity instanceof RikaEntity || entity instanceof Rika2Entity) {
 					RikaAIBuffedProcedure.execute(world, entity, sourceentity);
 				} else if (sourceentity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:ten_shadows_technique")))) {
 					ShadowsAIBuffedProcedure.execute(entity);
 				}
 			} else if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex12 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex12);
-					return dataIndex12.getCompound("ForgeData").getDouble("skill_domain");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill_domain");
 				}
 			}.getValue() > 0) {
 				if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_DOMAIN_NERF) == true) {
-					if (!(sourceentity instanceof LivingEntity _livEnt14 && _livEnt14.hasEffect(JujutsucraftaddonModMobEffects.DOMAIN_BREAK.get()))) {
+					if (!(sourceentity instanceof LivingEntity _livEnt11 && _livEnt11.hasEffect(JujutsucraftaddonModMobEffects.DOMAIN_BREAK.get()))) {
 						if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.DOMAIN_BREAK.get(), -1, 1, false, false));
 					}

@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "tool",
   "definition": {
     "toolType": "Pickaxe",
@@ -14,18 +14,16 @@
         "[Ability] uhh??"
       ]
     },
-    "creativeTab": {
-      "value": "No creative tab entry"
-    },
-    "harvestLevel": 1,
+    "creativeTabs": [],
     "efficiency": 4.0,
     "attackSpeed": 2.0,
     "enchantability": 2,
     "damageVsEntity": 15.0,
     "usageCount": 250,
-    "blocksAffected": [],
     "repairItems": [],
     "immuneToFire": false,
+    "blockDropsTier": "STONE",
+    "blocksAffected": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false
   }

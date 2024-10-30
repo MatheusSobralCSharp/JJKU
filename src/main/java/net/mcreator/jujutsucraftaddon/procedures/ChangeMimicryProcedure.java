@@ -14,16 +14,16 @@ public class ChangeMimicryProcedure {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == JujutsucraftaddonModItems.SWORD_OKKOTSU.get()) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex2 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex2);
-					return dataIndex2.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() > 1) {
 				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("skill", (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex3 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex3);
-						return dataIndex3.getCompound("ForgeData").getDouble("skill");
+						CompoundTag dataIndex = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("skill");
 					}
 				}.getValue()));
 			}
@@ -31,16 +31,16 @@ public class ChangeMimicryProcedure {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("skill") == 0) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex10 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex10);
-						return dataIndex10.getCompound("ForgeData").getDouble("skill");
+						CompoundTag dataIndex = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("skill");
 					}
 				}.getValue() > 1) {
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("skill", (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex11 = new CompoundTag();
-							sourceentity.saveWithoutId(dataIndex11);
-							return dataIndex11.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue()));
 				}

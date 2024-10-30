@@ -7,9 +7,11 @@ public class FaintProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		CompoundTag dataIndex0 = new CompoundTag();
-		entity.saveWithoutId(dataIndex0);
-		dataIndex0.getCompound("ForgeData").putDouble("Fainted", 1);
-		entity.load(dataIndex0);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putDouble("Fainted", 1);
+			entity.load(dataIndex);
+		}
 	}
 }

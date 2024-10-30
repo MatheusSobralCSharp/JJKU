@@ -13,7 +13,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
@@ -30,22 +29,8 @@ public class SukunaROnInitialEntitySpawnProcedure {
 			final Vec3 _center = new Vec3(x, y, z);
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 			for (Entity entityiterator : _entfound) {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				dataIndex0.putString("Owner", "");
-				entity.load(dataIndex0);
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.REMOVE_OWNER.get(), 60, 1, false, false));
-				if (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex2 = new CompoundTag();
-						entity.saveWithoutId(dataIndex2);
-						return dataIndex2.getCompound("ForgeData").getDouble("DeathCount");
-					}
-				}.getValue() == 1) {
-					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.SUKUNA_HEARY.get(), 20, 1, false, false));
-				}
+					_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.SUKUNA_HEARY.get(), 20, 1, false, false));
 			}
 		}
 		for (Entity entityiterator : new ArrayList<>(world.players())) {

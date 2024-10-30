@@ -23,9 +23,9 @@ public class Nuesummon2Procedure {
 		if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex1 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex1);
-					return dataIndex1.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 617) {
 				{
@@ -38,15 +38,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex3 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex3);
-					return dataIndex3.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 220 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex4);
-					return dataIndex4.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				{
@@ -73,15 +73,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex8 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex8);
-					return dataIndex8.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 120 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex9 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex9);
-					return dataIndex9.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				{
@@ -108,15 +108,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex13 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex13);
-					return dataIndex13.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 620 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex14 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex14);
-					return dataIndex14.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				{
@@ -143,15 +143,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex18 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex18);
-					return dataIndex18.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 1520 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex19 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex19);
-					return dataIndex19.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				if (world instanceof Level _level) {
@@ -178,15 +178,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex23 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex23);
-					return dataIndex23.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 820 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex24 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex24);
-					return dataIndex24.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				if (world instanceof Level _level) {
@@ -213,15 +213,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex28 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex28);
-					return dataIndex28.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 618 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex29 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex29);
-					return dataIndex29.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				{
@@ -242,15 +242,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex32 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex32);
-					return dataIndex32.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 710 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex33 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex33);
-					return dataIndex33.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				{
@@ -273,15 +273,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex36 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex36);
-					return dataIndex36.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 420 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex37 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex37);
-					return dataIndex37.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				if (world instanceof Level _level) {
@@ -308,15 +308,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex41 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex41);
-					return dataIndex41.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 520 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex42 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex42);
-					return dataIndex42.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				if (world instanceof Level _level) {
@@ -343,15 +343,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex46 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex46);
-					return dataIndex46.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 510 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex47 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex47);
-					return dataIndex47.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				if (world instanceof Level _level) {
@@ -364,15 +364,15 @@ public class Nuesummon2Procedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex49 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex49);
-					return dataIndex49.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 515 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex50 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex50);
-					return dataIndex50.getCompound("ForgeData").getDouble("cnt1");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 				}
 			}.getValue() == 3) {
 				if (world instanceof Level _level) {

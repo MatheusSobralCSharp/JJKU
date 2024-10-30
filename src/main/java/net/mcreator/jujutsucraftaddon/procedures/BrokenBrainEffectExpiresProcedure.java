@@ -16,9 +16,11 @@ public class BrokenBrainEffectExpiresProcedure {
 				capability.syncPlayerVariables(entity);
 			});
 		}
-		CompoundTag dataIndex0 = new CompoundTag();
-		entity.saveWithoutId(dataIndex0);
-		dataIndex0.getCompound("ForgeData").putDouble("brokenBrain", 0);
-		entity.load(dataIndex0);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putDouble("brokenBrain", 0);
+			entity.load(dataIndex);
+		}
 	}
 }

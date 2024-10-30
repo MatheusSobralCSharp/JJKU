@@ -1,19 +1,16 @@
 
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.MultiBufferSource;
-
-import net.mcreator.jujutsucraftaddon.entity.model.IgrisModel;
-import net.mcreator.jujutsucraftaddon.entity.IgrisEntity;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.mcreator.jujutsucraftaddon.entity.IgrisEntity;
+import net.mcreator.jujutsucraftaddon.entity.model.IgrisModel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class IgrisRenderer extends GeoEntityRenderer<IgrisEntity> {
 	public IgrisRenderer(EntityRendererProvider.Context renderManager) {

@@ -45,23 +45,23 @@ public class WhenHitPlayerProcedure {
 			if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 				if (!(new Object() {
 					public String getValue() {
-						CompoundTag dataIndex5 = new CompoundTag();
-						entity.saveWithoutId(dataIndex5);
-						return dataIndex5.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID())) {
 					WhenHitJunpeiProcedure.execute(world, entity, sourceentity);
 				} else if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex7 = new CompoundTag();
-						entity.saveWithoutId(dataIndex7);
-						return dataIndex7.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID()) && (new Object() {
 					public boolean getValue() {
-						CompoundTag dataIndex9 = new CompoundTag();
-						entity.saveWithoutId(dataIndex9);
-						return dataIndex9.getCompound("ForgeData").getBoolean("Buffed");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 					}
 				}.getValue()) == false) {
 					((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size")))
@@ -70,10 +70,12 @@ public class WhenHitPlayerProcedure {
 							.setBaseValue((((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 10));
 					if (entity instanceof LivingEntity _entity)
 						_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-					CompoundTag dataIndex16 = new CompoundTag();
-					entity.saveWithoutId(dataIndex16);
-					dataIndex16.getCompound("ForgeData").putBoolean("Buffed", true);
-					entity.load(dataIndex16);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putBoolean("Buffed", true);
+						entity.load(dataIndex);
+					}
 				}
 			}
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 20) {
@@ -131,9 +133,9 @@ public class WhenHitPlayerProcedure {
 			if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 				if (!((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:garuda") && (new Object() {
 					public String getValue() {
-						CompoundTag dataIndex65 = new CompoundTag();
-						entity.saveWithoutId(dataIndex65);
-						return dataIndex65.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID()))) {
 					if (world instanceof ServerLevel _level)
@@ -145,15 +147,15 @@ public class WhenHitPlayerProcedure {
 								(entity.getZ() + Mth.nextDouble(RandomSource.create(), 0, 1)), (int) Mth.nextDouble(RandomSource.create(), 0, 4), 0, 0, 0, (Mth.nextDouble(RandomSource.create(), 0, 1)));
 				} else if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:garuda") && (new Object() {
 					public String getValue() {
-						CompoundTag dataIndex85 = new CompoundTag();
-						entity.saveWithoutId(dataIndex85);
-						return dataIndex85.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID()) && (new Object() {
 					public boolean getValue() {
-						CompoundTag dataIndex87 = new CompoundTag();
-						entity.saveWithoutId(dataIndex87);
-						return dataIndex87.getCompound("ForgeData").getBoolean("Buffed");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 					}
 				}.getValue()) == false) {
 					((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size")))
@@ -162,10 +164,12 @@ public class WhenHitPlayerProcedure {
 							.setBaseValue((((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 10));
 					if (entity instanceof LivingEntity _entity)
 						_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-					CompoundTag dataIndex94 = new CompoundTag();
-					entity.saveWithoutId(dataIndex94);
-					dataIndex94.getCompound("ForgeData").putBoolean("Buffed", true);
-					entity.load(dataIndex94);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putBoolean("Buffed", true);
+						entity.load(dataIndex);
+					}
 				}
 			}
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 24) {
@@ -230,15 +234,15 @@ public class WhenHitPlayerProcedure {
 						|| (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:polymorphic_soul_isomer")
 						|| (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:transfigured_human_1")) && (new Object() {
 							public String getValue() {
-								CompoundTag dataIndex162 = new CompoundTag();
-								entity.saveWithoutId(dataIndex162);
-								return dataIndex162.getCompound("ForgeData").getString("OWNER_UUID");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 							}
 						}.getValue()).equals(sourceentity.getStringUUID()) && (new Object() {
 							public boolean getValue() {
-								CompoundTag dataIndex164 = new CompoundTag();
-								entity.saveWithoutId(dataIndex164);
-								return dataIndex164.getCompound("ForgeData").getBoolean("Buffed");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 							}
 						}.getValue()) == false) {
 					((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size")))
@@ -250,19 +254,21 @@ public class WhenHitPlayerProcedure {
 								(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) + 1), false, false));
 					if (entity instanceof LivingEntity _entity)
 						_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-					CompoundTag dataIndex173 = new CompoundTag();
-					entity.saveWithoutId(dataIndex173);
-					dataIndex173.getCompound("ForgeData").putBoolean("Buffed", true);
-					entity.load(dataIndex173);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putBoolean("Buffed", true);
+						entity.load(dataIndex);
+					}
 				}
 			}
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5) {
 			if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
 				if (!(((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2")) && (new Object() {
 					public String getValue() {
-						CompoundTag dataIndex177 = new CompoundTag();
-						entity.saveWithoutId(dataIndex177);
-						return dataIndex177.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID()))) {
 					if (world instanceof ServerLevel _level)
@@ -273,15 +279,15 @@ public class WhenHitPlayerProcedure {
 								(Mth.nextDouble(RandomSource.create(), 0, 1)));
 				} else if (((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2")) && (new Object() {
 					public String getValue() {
-						CompoundTag dataIndex195 = new CompoundTag();
-						entity.saveWithoutId(dataIndex195);
-						return dataIndex195.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID()) && (new Object() {
 					public boolean getValue() {
-						CompoundTag dataIndex197 = new CompoundTag();
-						entity.saveWithoutId(dataIndex197);
-						return dataIndex197.getCompound("ForgeData").getBoolean("Buffed");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 					}
 				}.getValue()) == false) {
 					((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size")))
@@ -293,15 +299,19 @@ public class WhenHitPlayerProcedure {
 					if (entity instanceof LivingEntity _entity)
 						_entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 					if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).locker == 1) {
-						CompoundTag dataIndex206 = new CompoundTag();
-						entity.saveWithoutId(dataIndex206);
-						dataIndex206.getCompound("ForgeData").putBoolean("Buffed2", true);
-						entity.load(dataIndex206);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putBoolean("Buffed2", true);
+							entity.load(dataIndex);
+						}
 					}
-					CompoundTag dataIndex207 = new CompoundTag();
-					entity.saveWithoutId(dataIndex207);
-					dataIndex207.getCompound("ForgeData").putBoolean("Buffed", true);
-					entity.load(dataIndex207);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putBoolean("Buffed", true);
+						entity.load(dataIndex);
+					}
 				}
 			}
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 19) {

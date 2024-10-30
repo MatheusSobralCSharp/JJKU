@@ -1,6 +1,5 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.entity.EntityTornadoEntity;
 import net.mcreator.jujutsucraft.entity.SukunaFushiguroEntity;
 import net.mcreator.jujutsucraft.entity.SukunaPerfectEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
@@ -22,6 +21,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -33,9 +33,9 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-
-import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import java.util.Objects;
 
 @Mixin(value = DismantleProcedure.class, remap = false)
 public abstract class DismantleWMixin {
@@ -70,7 +70,7 @@ public abstract class DismantleWMixin {
                     if (entity instanceof Player) {
                         if (entity instanceof ServerPlayer) {
                             ServerPlayer _plr3 = (ServerPlayer)entity;
-                            if (_plr3.level() instanceof ServerLevel && _plr3.getAdvancements().getOrStartProgress(_plr3.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_dismantle_cut_the_world"))).isDone()) {
+                            if (_plr3.level() instanceof ServerLevel && _plr3.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr3.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_dismantle_cut_the_world")))).isDone()) {
                                 break label428;
                             }
                         }

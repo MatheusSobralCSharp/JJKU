@@ -1,19 +1,16 @@
 
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.MultiBufferSource;
-
-import net.mcreator.jujutsucraftaddon.entity.model.Shadow1Model;
-import net.mcreator.jujutsucraftaddon.entity.Shadow1Entity;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.mcreator.jujutsucraftaddon.entity.Shadow1Entity;
+import net.mcreator.jujutsucraftaddon.entity.model.Shadow1Model;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class Shadow1Renderer extends GeoEntityRenderer<Shadow1Entity> {
 	public Shadow1Renderer(EntityRendererProvider.Context renderManager) {

@@ -166,9 +166,9 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex62 = new CompoundTag();
-								entity.saveWithoutId(dataIndex62);
-								return dataIndex62.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
@@ -224,9 +224,9 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex87 = new CompoundTag();
-								entity.saveWithoutId(dataIndex87);
-								return dataIndex87.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{
@@ -287,9 +287,9 @@ public class ProcedureKashimoProcedure {
 					if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex115 = new CompoundTag();
-								entity.saveWithoutId(dataIndex115);
-								return dataIndex115.getCompound("ForgeData").getDouble("cnt1");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 							}
 						}.getValue() == 1) {
 							{

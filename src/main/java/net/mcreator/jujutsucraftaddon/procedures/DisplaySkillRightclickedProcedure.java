@@ -16,9 +16,9 @@ public class DisplaySkillRightclickedProcedure {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("Your skill number is: " + new java.text.DecimalFormat("##.##").format(new Object() {
 					public double getValue() {
-						CompoundTag dataIndex1 = new CompoundTag();
-						entity.saveWithoutId(dataIndex1);
-						return dataIndex1.getCompound("ForgeData").getDouble("skill");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("skill");
 					}
 				}.getValue()))), false);
 			if (entity instanceof Player _player && !_player.level().isClientSide())

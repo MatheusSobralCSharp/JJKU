@@ -29,30 +29,36 @@ public class SpawnYujiAndYutaProcedure {
 						.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 10));
 				if ((entitytospawn) instanceof LivingEntity _entity)
 					_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-				CompoundTag dataIndex10 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex10);
-				dataIndex10.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
-				(entitytospawn).load(dataIndex10);
-				CompoundTag dataIndex13 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex13);
-				dataIndex13.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex12 = new CompoundTag();
-						entity.saveWithoutId(dataIndex12);
-						return dataIndex12.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex13);
-				CompoundTag dataIndex16 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex16);
-				dataIndex16.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex15 = new CompoundTag();
-						entity.saveWithoutId(dataIndex15);
-						return dataIndex15.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex16);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+					(entitytospawn).load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
 				if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 29, false, false));
 				if ((entitytospawn) instanceof LivingEntity _entity) {
@@ -82,10 +88,12 @@ public class SpawnYujiAndYutaProcedure {
 					_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 				if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 29, false, false));
-				CompoundTag dataIndex35 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex35);
-				dataIndex35.getCompound("ForgeData").putDouble("RCTM", 1);
-				(entitytospawn).load(dataIndex35);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("RCTM", 1);
+					(entitytospawn).load(dataIndex);
+				}
 				_serverLevel.addFreshEntity(entitytospawn);
 			}
 		}

@@ -71,4 +71,10 @@ public class JujutsucraftaddonModParticleTypes {
 	public static final RegistryObject<SimpleParticleType> KOKUSEN_4 = REGISTRY.register("kokusen_4", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> KOKUSEN_5 = REGISTRY.register("kokusen_5", () -> new SimpleParticleType(false));
 	public static final RegistryObject<SimpleParticleType> HORIZONTAL_SLASH_1 = REGISTRY.register("horizontal_slash_1", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> SUKUNA_SLASH = REGISTRY.register("sukuna_slash", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> SLASH = REGISTRY.register("slash", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> BLACK_FLASH_1 = REGISTRY.register("black_flash_1", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> BLACK_FLASH_2 = REGISTRY.register("black_flash_2", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> BLACK_FLASH_3 = REGISTRY.register("black_flash_3", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> BLACK_FLASH_4 = REGISTRY.register("black_flash_4", () -> new SimpleParticleType(false));
 }

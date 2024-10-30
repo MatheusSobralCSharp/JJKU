@@ -2,19 +2,18 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
-import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraft.procedures.JackpotEffectStartedappliedProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
-import net.minecraft.world.effect.MobEffects;
-
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = JackpotEffectStartedappliedProcedure.class, remap = false)
@@ -83,6 +82,8 @@ public abstract class UIJujutsuCraftMixin {
                     if (!_entity.level().isClientSide()) {
                         _entity.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.ZONE.get(), (int)tick, (int)(4.0 + level), false, false));
                     }
+
+
 
                     _entity = (LivingEntity)entity;
                     if (!_entity.level().isClientSide()) {

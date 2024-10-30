@@ -23,15 +23,17 @@ public class BrokenBrainOnEffectActiveTickProcedure {
 		}.checkGamemode(entity))) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex1 = new CompoundTag();
-					entity.saveWithoutId(dataIndex1);
-					return dataIndex1.getCompound("ForgeData").getDouble("brokenBrain");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("brokenBrain");
 				}
 			}.getValue() != 2) {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				dataIndex2.getCompound("ForgeData").putDouble("brokenBrain", 2);
-				entity.load(dataIndex2);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("brokenBrain", 2);
+					entity.load(dataIndex);
+				}
 			}
 		}
 	}

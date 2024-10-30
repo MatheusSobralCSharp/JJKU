@@ -290,9 +290,9 @@ public class ShrineEffectOnEffectActiveTickProcedure {
 		}
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex630 = new CompoundTag();
-				entity.saveWithoutId(dataIndex630);
-				return dataIndex630.getCompound("ForgeData").getDouble("skill_domain");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("skill_domain");
 			}
 		}.getValue() == 0) {
 			if (entity instanceof LivingEntity _entity)

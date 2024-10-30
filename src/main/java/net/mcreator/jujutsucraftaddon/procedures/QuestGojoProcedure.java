@@ -43,9 +43,9 @@ public class QuestGojoProcedure {
 		}
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex3 = new CompoundTag();
-				entity.saveWithoutId(dataIndex3);
-				return dataIndex3.getCompound("ForgeData").getDouble("CursedSpirit");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("CursedSpirit");
 			}
 		}.getValue() == 1) {
 			{

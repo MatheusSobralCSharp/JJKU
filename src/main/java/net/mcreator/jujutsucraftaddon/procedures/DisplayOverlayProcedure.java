@@ -156,7 +156,7 @@ public class DisplayOverlayProcedure {
 											.findFirst().orElse(null)) instanceof ServerPlayer)) {
 								if (new Object() {
 									public double getValue() {
-										CompoundTag dataIndex40 = new CompoundTag();
+										CompoundTag dataIndex = new CompoundTag();
 										((Entity) world
 												.getEntitiesOfClass(LivingEntity.class,
 														AABB.ofSize(
@@ -185,13 +185,13 @@ public class DisplayOverlayProcedure {
 																.getBlockPos().getY()),
 														(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																.getBlockPos().getZ())))
-												.findFirst().orElse(null)).saveWithoutId(dataIndex40);
-										return dataIndex40.getCompound("ForgeData").getDouble("skill");
+												.findFirst().orElse(null)).saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("skill");
 									}
 								}.getValue() > 10) {
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex45 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -219,8 +219,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex45);
-											return dataIndex45.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1600, 1607)) {
 										{
@@ -232,7 +232,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex51 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -260,8 +260,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex51);
-											return dataIndex51.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 200, 220)) {
 										{
@@ -273,7 +273,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex57 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -301,8 +301,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex57);
-											return dataIndex57.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2100, 2102)) {
 										{
@@ -314,7 +314,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex63 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -342,8 +342,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex63);
-											return dataIndex63.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 600, 620)) {
 										{
@@ -355,7 +355,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex69 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -383,8 +383,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex69);
-											return dataIndex69.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 300, 320)) {
 										{
@@ -396,7 +396,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex75 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -424,8 +424,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex75);
-											return dataIndex75.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), -100, -96)) {
 										{
@@ -437,7 +437,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex81 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -465,8 +465,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex81);
-											return dataIndex81.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 500, 520)) {
 										{
@@ -478,7 +478,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex87 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -506,8 +506,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex87);
-											return dataIndex87.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2900, 2920)) {
 										{
@@ -519,7 +519,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex93 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -547,8 +547,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex93);
-											return dataIndex93.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2000, 2020)) {
 										{
@@ -560,7 +560,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex99 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -588,8 +588,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex99);
-											return dataIndex99.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1900, 1920)) {
 										{
@@ -601,7 +601,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex105 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -629,8 +629,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex105);
-											return dataIndex105.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2200, 2220)) {
 										{
@@ -642,7 +642,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex111 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -670,8 +670,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex111);
-											return dataIndex111.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2600, 2620)) {
 										{
@@ -683,7 +683,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex117 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -711,8 +711,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex117);
-											return dataIndex117.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1300, 1320)) {
 										{
@@ -724,7 +724,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex123 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -752,8 +752,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex123);
-											return dataIndex123.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1100, 1120)) {
 										{
@@ -765,7 +765,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex129 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -793,8 +793,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex129);
-											return dataIndex129.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 900, 920)) {
 										{
@@ -806,7 +806,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex135 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -834,8 +834,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex135);
-											return dataIndex135.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1800, 1820)) {
 										{
@@ -847,7 +847,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex141 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -875,8 +875,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex141);
-											return dataIndex141.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 3100, 3105)) {
 										{
@@ -888,7 +888,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex147 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -916,8 +916,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex147);
-											return dataIndex147.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2700, 2720)) {
 										{
@@ -929,7 +929,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex153 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -957,8 +957,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex153);
-											return dataIndex153.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1200, 1220)) {
 										{
@@ -970,7 +970,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex159 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -998,8 +998,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex159);
-											return dataIndex159.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 700, 715)) {
 										{
@@ -1011,7 +1011,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex165 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1039,8 +1039,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex165);
-											return dataIndex165.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1700, 1715)) {
 										{
@@ -1052,7 +1052,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex171 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1080,8 +1080,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex171);
-											return dataIndex171.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2800, 2820)) {
 										{
@@ -1093,7 +1093,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex177 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1121,8 +1121,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex177);
-											return dataIndex177.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 3000, 3005)) {
 										{
@@ -1134,7 +1134,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex183 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1162,8 +1162,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex183);
-											return dataIndex183.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 100, 120)) {
 										{
@@ -1175,7 +1175,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex189 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1203,8 +1203,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex189);
-											return dataIndex189.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2400, 2420)) {
 										{
@@ -1216,7 +1216,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex195 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1244,8 +1244,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex195);
-											return dataIndex195.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 800, 820)) {
 										{
@@ -1257,7 +1257,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex201 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1285,8 +1285,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex201);
-											return dataIndex201.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1400, 1420)) {
 										{
@@ -1298,7 +1298,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex207 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1326,8 +1326,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex207);
-											return dataIndex207.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1500, 1520)) {
 										{
@@ -1339,7 +1339,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex213 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1367,8 +1367,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex213);
-											return dataIndex213.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 400, 420)) {
 										{
@@ -1380,7 +1380,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex219 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1408,8 +1408,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex219);
-											return dataIndex219.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 1000, 1020)) {
 										{
@@ -1421,7 +1421,7 @@ public class DisplayOverlayProcedure {
 										}
 									} else if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex225 = new CompoundTag();
+											CompoundTag dataIndex = new CompoundTag();
 											((Entity) world
 													.getEntitiesOfClass(LivingEntity.class,
 															AABB.ofSize(
@@ -1449,8 +1449,8 @@ public class DisplayOverlayProcedure {
 																	.getBlockPos().getY()),
 															(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(20)), ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, entity))
 																	.getBlockPos().getZ())))
-													.findFirst().orElse(null)).saveWithoutId(dataIndex225);
-											return dataIndex225.getCompound("ForgeData").getDouble("skill");
+													.findFirst().orElse(null)).saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("skill");
 										}
 									}.getValue() == Mth.nextInt(RandomSource.create(), 2300, 2320)) {
 										{

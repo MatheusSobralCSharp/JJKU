@@ -46,6 +46,7 @@ public class JogoatConfiguration {
 	public static final ForgeConfigSpec.ConfigValue<Double> TAKAKOURO;
 	public static final ForgeConfigSpec.ConfigValue<Double> SMALLPOXDEITY;
 	public static final ForgeConfigSpec.ConfigValue<Double> INO;
+	public static final ForgeConfigSpec.ConfigValue<Double> KAORI;
 	static {
 		BUILDER.push("Jujutsu Random Rates");
 		GOJO = BUILDER.define("Gojo", (double) 1);
@@ -89,6 +90,7 @@ public class JogoatConfiguration {
 		TAKAKOURO = BUILDER.define("TakakoUro", (double) 39);
 		SMALLPOXDEITY = BUILDER.define("SmallpoxDeity", (double) 40);
 		INO = BUILDER.define("Ino Takuma", (double) 41);
+		KAORI = BUILDER.define("Kaori", (double) 42);
 		BUILDER.pop();
 
 		SPEC = BUILDER.build();

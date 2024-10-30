@@ -4,7 +4,10 @@ import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.procedures.*;
+import net.mcreator.jujutsucraftaddon.procedures.Animations2Procedure;
+import net.mcreator.jujutsucraftaddon.procedures.HRAttack1Procedure;
+import net.mcreator.jujutsucraftaddon.procedures.NueSummonProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.SpawnCloneProcedure;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -32,6 +35,7 @@ public abstract class KeyPressedOnTickMixin {
             }
         }
 
+
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
             HRAttack1Procedure.execute(world, x, y, z, entity);
         }
@@ -42,7 +46,7 @@ public abstract class KeyPressedOnTickMixin {
                 if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                     _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.CLONE_TICKED.get(), -1, 1, false, false));
                 if (entity instanceof Player _player && !_player.level().isClientSide())
-                    _player.displayClientMessage(Component.literal("Soul Body"), false);
+                    _player.displayClientMessage(Component.literal("Summoning Clone"), true);
             }
         }
 

@@ -1,10 +1,6 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -24,22 +20,8 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
-import javax.annotation.Nullable;
-
-@Mod.EventBusSubscriber
 public class YutaRingLivingEntityIsHitWithItemProcedure {
-	@SubscribeEvent
-	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
-		if (event.getHand() != event.getEntity().getUsedItemHand())
-			return;
-		execute(event, event.getLevel(), event.getTarget(), event.getEntity());
-	}
-
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
-		execute(null, world, entity, sourceentity);
-	}
-
-	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
 		double domainRadius = 0;
@@ -47,9 +29,9 @@ public class YutaRingLivingEntityIsHitWithItemProcedure {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2")) {
 				if ((new Object() {
 					public String getValue() {
-						CompoundTag dataIndex3 = new CompoundTag();
-						entity.saveWithoutId(dataIndex3);
-						return dataIndex3.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(sourceentity.getStringUUID())) {
 					if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == JujutsucraftaddonModItems.YUTA_RING.get()) {
@@ -63,10 +45,12 @@ public class YutaRingLivingEntityIsHitWithItemProcedure {
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1,
 									(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) + 30), false, false));
-						CompoundTag dataIndex15 = new CompoundTag();
-						entity.saveWithoutId(dataIndex15);
-						dataIndex15.getCompound("ForgeData").putBoolean("Final", true);
-						entity.load(dataIndex15);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putBoolean("Final", true);
+							entity.load(dataIndex);
+						}
 						{
 							double _setval = 0;
 							sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -109,10 +93,12 @@ public class YutaRingLivingEntityIsHitWithItemProcedure {
 								capability.syncPlayerVariables(sourceentity);
 							});
 						}
-						CompoundTag dataIndex16 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex16);
-						dataIndex16.getCompound("ForgeData").putDouble("RikaRing", 0);
-						sourceentity.load(dataIndex16);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("RikaRing", 0);
+							sourceentity.load(dataIndex);
+						}
 						if (sourceentity instanceof Player _player && !_player.level().isClientSide())
 							_player.displayClientMessage(Component.literal(("I LOVE YOU " + sourceentity.getDisplayName().getString() + "!!!!!!")), false);
 						if (sourceentity instanceof Player _player && !_player.level().isClientSide())

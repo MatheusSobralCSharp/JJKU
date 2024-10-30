@@ -10,6 +10,7 @@ public class VowClearProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
+		double test = 0;
 		{
 			double _setval = 1;
 			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {

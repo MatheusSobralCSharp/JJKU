@@ -12,8 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.particles.ParticleTypes;
 
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-
 public class DagonHurtProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
@@ -28,26 +26,18 @@ public class DagonHurtProcedure {
 		double TrackZ = 0;
 		double TrackY = 0;
 		double TrackX = 0;
-		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftaddonModMobEffects.DAGON.get())) {
-			if (entity.isShiftKeyDown()) {
-				if (Math.random() <= 0.5) {
-					if (world instanceof Level _level && !_level.isClientSide())
-						_level.explode(null, (sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()), 4, Level.ExplosionInteraction.NONE);
-				}
-			}
-		}
 		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2")) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex8 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex8);
-					return dataIndex8.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 0 && new Object() {
 				public double getValue() {
-					CompoundTag dataIndex9 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex9);
-					return dataIndex9.getCompound("ForgeData").getDouble("skill_domain");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill_domain");
 				}
 			}.getValue() == 0) {
 				if (Math.random() < 0.005) {

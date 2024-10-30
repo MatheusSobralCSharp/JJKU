@@ -15,18 +15,24 @@ public class AutoMakeProcedure {
 			return;
 		if (entity instanceof ServerPlayer && ((ServerPlayer) entity).level() instanceof ServerLevel
 				&& ((ServerPlayer) entity).getAdvancements().getOrStartProgress(((ServerPlayer) entity).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_special"))).isDone()) {
-			CompoundTag dataIndex1 = new CompoundTag();
-			entity.saveWithoutId(dataIndex1);
-			dataIndex1.getCompound("ForgeData").putDouble("TenShadowsTechnique11", (-2));
-			entity.load(dataIndex1);
-			CompoundTag dataIndex2 = new CompoundTag();
-			entity.saveWithoutId(dataIndex2);
-			dataIndex2.getCompound("ForgeData").putDouble("TenShadowsTechnique5", (-2));
-			entity.load(dataIndex2);
-			CompoundTag dataIndex3 = new CompoundTag();
-			entity.saveWithoutId(dataIndex3);
-			dataIndex3.getCompound("ForgeData").putDouble("TenShadowsTechnique9", (-2));
-			entity.load(dataIndex3);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("TenShadowsTechnique11", (-2));
+				entity.load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("TenShadowsTechnique5", (-2));
+				entity.load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("TenShadowsTechnique9", (-2));
+				entity.load(dataIndex);
+			}
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal("Auto-Made Agito"), false);
 		}

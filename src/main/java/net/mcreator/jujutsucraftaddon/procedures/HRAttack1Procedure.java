@@ -1,6 +1,7 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.network.NetworkDirection;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -17,8 +19,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.Connection;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.BlockPos;
@@ -27,10 +32,12 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
 import java.util.List;
+import java.util.Iterator;
 import java.util.Comparator;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
@@ -63,6 +70,20 @@ public class HRAttack1Procedure {
 												var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 												if (animation != null && !animation.isActive()) {
 													animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "hunt"))));
+												}
+											}
+										}
+										if (!world.isClientSide()) {
+											if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+												List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+												synchronized (connections) {
+													Iterator<Connection> iterator = connections.iterator();
+													while (iterator.hasNext()) {
+														Connection connection = iterator.next();
+														if (!connection.isConnecting() && connection.isConnected())
+															JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("hunt"), entity.getId(), false), connection,
+																	NetworkDirection.PLAY_TO_CLIENT);
+													}
 												}
 											}
 										}
@@ -114,6 +135,20 @@ public class HRAttack1Procedure {
 												}
 											}
 										}
+										if (!world.isClientSide()) {
+											if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+												List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+												synchronized (connections) {
+													Iterator<Connection> iterator = connections.iterator();
+													while (iterator.hasNext()) {
+														Connection connection = iterator.next();
+														if (!connection.isConnecting() && connection.isConnected())
+															JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("playful"), entity.getId(), false), connection,
+																	NetworkDirection.PLAY_TO_CLIENT);
+													}
+												}
+											}
+										}
 										if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 											_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.RCT_CUT.get(), 240, 1, false, false));
 										if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -151,6 +186,20 @@ public class HRAttack1Procedure {
 												var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 												if (animation != null && !animation.isActive()) {
 													animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "speedsword1"))));
+												}
+											}
+										}
+										if (!world.isClientSide()) {
+											if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+												List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+												synchronized (connections) {
+													Iterator<Connection> iterator = connections.iterator();
+													while (iterator.hasNext()) {
+														Connection connection = iterator.next();
+														if (!connection.isConnecting() && connection.isConnected())
+															JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("speedsword1"), entity.getId(), false), connection,
+																	NetworkDirection.PLAY_TO_CLIENT);
+													}
 												}
 											}
 										}
@@ -192,6 +241,20 @@ public class HRAttack1Procedure {
 												var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 												if (animation != null && !animation.isActive()) {
 													animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "speedsword2"))));
+												}
+											}
+										}
+										if (!world.isClientSide()) {
+											if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+												List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+												synchronized (connections) {
+													Iterator<Connection> iterator = connections.iterator();
+													while (iterator.hasNext()) {
+														Connection connection = iterator.next();
+														if (!connection.isConnecting() && connection.isConnected())
+															JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("speedsword2"), entity.getId(), false), connection,
+																	NetworkDirection.PLAY_TO_CLIENT);
+													}
 												}
 											}
 										}

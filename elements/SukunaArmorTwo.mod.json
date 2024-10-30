@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "armor",
   "definition": {
     "enableHelmet": true,
@@ -10,9 +10,11 @@
     "textureLeggings": "",
     "enableBoots": false,
     "textureBoots": "",
-    "creativeTab": {
-      "value": "CUSTOM:Armors"
-    },
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Armors"
+      }
+    ],
     "armorTextureFile": "armor_clear_",
     "helmetName": "Sukuna Mark ( Helmet )",
     "bodyName": "Sukuna Markings ( Chestplate )",

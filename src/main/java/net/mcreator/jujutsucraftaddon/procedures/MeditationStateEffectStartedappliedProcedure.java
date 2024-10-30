@@ -28,10 +28,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex7 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex7);
-					dataIndex7.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex7);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -50,10 +52,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
-					CompoundTag dataIndex27 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex27);
-					dataIndex27.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex27);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					_serverLevel.addFreshEntity(entitytospawn);
 				}
 			}
@@ -64,10 +68,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex35 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex35);
-					dataIndex35.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex35);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -82,10 +88,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex49 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex49);
-					dataIndex49.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex49);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -100,10 +108,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex63 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex63);
-					dataIndex63.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex63);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -118,10 +128,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex77 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex77);
-					dataIndex77.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex77);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -136,10 +148,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex91 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex91);
-					dataIndex91.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex91);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -154,10 +168,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex105 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex105);
-					dataIndex105.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex105);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -172,10 +188,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex119 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex119);
-					dataIndex119.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex119);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -190,10 +208,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex133 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex133);
-					dataIndex133.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex133);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -208,10 +228,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex147 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex147);
-					dataIndex147.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex147);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -226,10 +248,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex161 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex161);
-					dataIndex161.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex161);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -244,10 +268,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex175 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex175);
-					dataIndex175.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex175);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -262,10 +288,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex189 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex189);
-					dataIndex189.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex189);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -280,10 +308,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex203 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex203);
-					dataIndex203.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex203);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -298,10 +328,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex217 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex217);
-					dataIndex217.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex217);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -316,10 +348,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex231 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex231);
-					dataIndex231.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex231);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -334,10 +368,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex245 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex245);
-					dataIndex245.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex245);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -352,10 +388,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex259 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex259);
-					dataIndex259.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex259);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -370,10 +408,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex273 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex273);
-					dataIndex273.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex273);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -388,10 +428,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex287 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex287);
-					dataIndex287.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex287);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -406,10 +448,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex301 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex301);
-					dataIndex301.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex301);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -425,10 +469,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex315 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex315);
-					dataIndex315.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex315);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -447,10 +493,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
-					CompoundTag dataIndex335 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex335);
-					dataIndex335.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex335);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					_serverLevel.addFreshEntity(entitytospawn);
 				}
 			}
@@ -461,10 +509,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex343 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex343);
-					dataIndex343.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex343);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -479,10 +529,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex357 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex357);
-					dataIndex357.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex357);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -497,10 +549,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex371 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex371);
-					dataIndex371.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex371);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -515,10 +569,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex385 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex385);
-					dataIndex385.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex385);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -533,10 +589,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex399 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex399);
-					dataIndex399.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex399);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -551,10 +609,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex413 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex413);
-					dataIndex413.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex413);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -569,10 +629,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex427 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex427);
-					dataIndex427.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex427);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -587,10 +649,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex441 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex441);
-					dataIndex441.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex441);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -605,10 +669,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex455 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex455);
-					dataIndex455.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex455);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -623,10 +689,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex469 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex469);
-					dataIndex469.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex469);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -641,10 +709,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex483 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex483);
-					dataIndex483.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex483);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -659,10 +729,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex497 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex497);
-					dataIndex497.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex497);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -677,10 +749,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex511 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex511);
-					dataIndex511.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex511);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -695,10 +769,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex525 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex525);
-					dataIndex525.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex525);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -713,10 +789,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex539 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex539);
-					dataIndex539.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex539);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)
@@ -731,10 +809,12 @@ public class MeditationStateEffectStartedappliedProcedure {
 					entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(10000);
 					((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-					CompoundTag dataIndex553 = new CompoundTag();
-					(entitytospawn).saveWithoutId(dataIndex553);
-					dataIndex553.getCompound("ForgeData").putDouble("Spirit", 1);
-					(entitytospawn).load(dataIndex553);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						(entitytospawn).saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("Spirit", 1);
+						(entitytospawn).load(dataIndex);
+					}
 					if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 253, false, false));
 					if ((entitytospawn) instanceof LivingEntity _entity)

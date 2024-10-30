@@ -26,9 +26,9 @@ public class ShokoIeriSchoolRightClickedOnEntityProcedure {
 			return;
 		if ((new Object() {
 			public boolean getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getBoolean("JujutsuSorcerer");
+				CompoundTag dataIndex = new CompoundTag();
+				sourceentity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getBoolean("JujutsuSorcerer");
 			}
 		}.getValue()) == true) {
 			if (world instanceof Level _level) {

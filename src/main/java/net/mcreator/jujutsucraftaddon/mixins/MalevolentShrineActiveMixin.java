@@ -1,12 +1,10 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.entity.EntityTreeEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.BlockDestroyAllDirectionProcedure;
 import net.mcreator.jujutsucraft.procedures.MalevolentShrineActiveProcedure;
-import net.mcreator.jujutsucraft.procedures.MeimeiDomainExpansionProcedure;
 import net.mcreator.jujutsucraft.procedures.RangeAttackProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
@@ -19,12 +17,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
-
-import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = MalevolentShrineActiveProcedure.class, remap = false)

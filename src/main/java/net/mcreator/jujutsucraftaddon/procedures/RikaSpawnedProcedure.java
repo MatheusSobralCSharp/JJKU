@@ -25,9 +25,9 @@ public class RikaSpawnedProcedure {
 				if (!(entityiterator == sourceentity)) {
 					if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:rika_2") && (new Object() {
 						public String getValue() {
-							CompoundTag dataIndex2 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex2);
-							return dataIndex2.getCompound("ForgeData").getString("OWNER_UUID");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 						}
 					}.getValue()).equals(sourceentity.getStringUUID())) {
 						if (!(entityiterator instanceof LivingEntity _livEnt4 && _livEnt4.hasEffect(MobEffects.REGENERATION))) {
@@ -36,47 +36,53 @@ public class RikaSpawnedProcedure {
 						}
 						if (!(new Object() {
 							public double getValue() {
-								CompoundTag dataIndex6 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex6);
-								return dataIndex6.getCompound("ForgeData").getDouble("friend_num_worker");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num_worker");
 							}
 						}.getValue() == new Object() {
 							public double getValue() {
-								CompoundTag dataIndex7 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex7);
-								return dataIndex7.getCompound("ForgeData").getDouble("friend_num_worker");
+								CompoundTag dataIndex = new CompoundTag();
+								entityiterator.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("friend_num_worker");
 							}
 						}.getValue())) {
-							CompoundTag dataIndex9 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex9);
-							dataIndex9.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex8 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex8);
-									return dataIndex8.getCompound("ForgeData").getDouble("friend_num");
-								}
-							}.getValue()));
-							entityiterator.load(dataIndex9);
-							CompoundTag dataIndex11 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex11);
-							dataIndex11.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex10 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex10);
-									return dataIndex10.getCompound("ForgeData").getDouble("friend_num");
-								}
-							}.getValue()));
-							entityiterator.load(dataIndex11);
-							CompoundTag dataIndex13 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex13);
-							dataIndex13.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex12 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex12);
-									return dataIndex12.getCompound("ForgeData").getDouble("friend_num");
-								}
-							}.getValue()));
-							entityiterator.load(dataIndex13);
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entityiterator.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										sourceentity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+									}
+								}.getValue()));
+								entityiterator.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entityiterator.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										sourceentity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+									}
+								}.getValue()));
+								entityiterator.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entityiterator.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										sourceentity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+									}
+								}.getValue()));
+								entityiterator.load(dataIndex);
+							}
 						}
 					}
 				}

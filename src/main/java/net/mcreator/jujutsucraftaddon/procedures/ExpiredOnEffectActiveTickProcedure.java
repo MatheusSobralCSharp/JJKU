@@ -9,9 +9,11 @@ public class ExpiredOnEffectActiveTickProcedure {
 		if (entity == null)
 			return;
 		if (world.isClientSide()) {
-			if (Minecraft.getInstance().gameRenderer.currentEffect() != null) {
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-			}
+			Minecraft.getInstance().gameRenderer.shutdownEffect();
+			Minecraft.getInstance().gameRenderer.shutdownEffect();
+			Minecraft.getInstance().gameRenderer.shutdownEffect();
+			Minecraft.getInstance().gameRenderer.shutdownEffect();
+			Minecraft.getInstance().gameRenderer.shutdownEffect();
 		}
 	}
 }

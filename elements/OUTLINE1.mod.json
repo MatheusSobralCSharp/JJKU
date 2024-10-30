@@ -1,0 +1,22 @@
+{
+  "_fv": 66,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "OUTLINE 1",
+    "icon": "armory_jurei.png",
+    "color": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true,
+    "onActiveTick": {
+      "name": "OUTLINE1OnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "OUTLINE1EffectExpires"
+    }
+  }
+}

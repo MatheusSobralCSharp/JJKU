@@ -23,9 +23,9 @@ public class RikaAIBuffedProcedure {
 		double TrackX = 0;
 		if ((new Object() {
 			public boolean getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getBoolean("Buffed");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 			}
 		}.getValue()) == true) {
 			if (Math.random() <= 0.01) {
@@ -64,9 +64,9 @@ public class RikaAIBuffedProcedure {
 		}
 		if ((new Object() {
 			public boolean getValue() {
-				CompoundTag dataIndex24 = new CompoundTag();
-				entity.saveWithoutId(dataIndex24);
-				return dataIndex24.getCompound("ForgeData").getBoolean("Buffed2");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getBoolean("Buffed2");
 			}
 		}.getValue()) == true) {
 			if (Math.random() <= 0.02) {

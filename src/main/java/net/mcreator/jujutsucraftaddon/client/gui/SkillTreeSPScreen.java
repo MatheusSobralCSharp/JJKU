@@ -3,10 +3,8 @@ package net.mcreator.jujutsucraftaddon.client.gui;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.GuiGraphics;
@@ -16,7 +14,6 @@ import net.mcreator.jujutsucraftaddon.procedures.ReturnSkillPointsProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnSimpleProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnSecretProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnSecret2Procedure;
-import net.mcreator.jujutsucraftaddon.procedures.ReturnEntityProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnBurnoutExpProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnBarrierlessExpProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ReturnAmountProcedure;
@@ -38,8 +35,10 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 	Button button_empty2;
 	Button button_fight_your_spirit;
 	Button button_rct_mastery_quest;
-	Button button_unlock_extension_technique;
 	Button button_toggle_dash;
+	Button button_toggle_impact_frames;
+	Button button_toggle_music_ost;
+	Button button_unlock_extension;
 
 	public SkillTreeSPScreen(SkillTreeSPMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -56,10 +55,6 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(guiGraphics);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		if (ReturnEntityProcedure.execute(entity) instanceof LivingEntity livingEntity) {
-			InventoryScreen.renderEntityInInventoryFollowsAngle(guiGraphics, this.leftPos + 250, this.topPos + 314, 60, 0f + (float) Math.atan((this.leftPos + 250 - mouseX) / 40.0), (float) Math.atan((this.topPos + 265 - mouseY) / 40.0),
-					livingEntity);
-		}
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
 		if (mouseX > leftPos + 127 && mouseX < leftPos + 151 && mouseY > topPos + 235 && mouseY < topPos + 259)
 			guiGraphics.renderTooltip(font, Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.tooltip_changes_your_health_attribute"), mouseX, mouseY);
@@ -103,14 +98,14 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		guiGraphics.drawString(this.font,
 
-				ReturnSkillPointsProcedure.execute(entity), 309, 350, -16711690, false);
+				ReturnSkillPointsProcedure.execute(entity), 320, 350, -16711690, false);
 		guiGraphics.drawString(this.font,
 
 				ReturnBurnoutExpProcedure.execute(entity), 42, 157, -4325121, false);
 		if (ReturnSecret2Procedure.execute(entity))
 			guiGraphics.drawString(this.font,
 
-					ReturnAmountProcedure.execute(entity), 291, 329, -65536, false);
+					ReturnAmountProcedure.execute(entity), 104, 351, -65536, false);
 		guiGraphics.drawString(this.font,
 
 				ReturnBarrierlessExpProcedure.execute(entity), 41, 180, -12139777, false);
@@ -159,7 +154,7 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(4, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 4, x, y, z, textstate);
 			}
-		}).bounds(this.leftPos + 322, this.topPos + 175, 113, 20).build(builder -> new Button(builder) {
+		}).bounds(this.leftPos + 322, this.topPos + 194, 113, 20).build(builder -> new Button(builder) {
 			@Override
 			public void render(GuiGraphics guiGraphics, int gx, int gy, float ticks) {
 				if (ReturnSecretProcedure.execute(entity))
@@ -168,21 +163,37 @@ public class SkillTreeSPScreen extends AbstractContainerScreen<SkillTreeSPMenu> 
 		});
 		guistate.put("button:button_rct_mastery_quest", button_rct_mastery_quest);
 		this.addRenderableWidget(button_rct_mastery_quest);
-		button_unlock_extension_technique = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_unlock_extension_technique"), e -> {
+		button_toggle_dash = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash"), e -> {
 			if (true) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(5, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 5, x, y, z, textstate);
 			}
-		}).bounds(this.leftPos + 299, this.topPos + 302, 161, 20).build();
-		guistate.put("button:button_unlock_extension_technique", button_unlock_extension_technique);
-		this.addRenderableWidget(button_unlock_extension_technique);
-		button_toggle_dash = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_toggle_dash"), e -> {
+		}).bounds(this.leftPos + 206, this.topPos + 308, 82, 20).build();
+		guistate.put("button:button_toggle_dash", button_toggle_dash);
+		this.addRenderableWidget(button_toggle_dash);
+		button_toggle_impact_frames = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_toggle_impact_frames"), e -> {
 			if (true) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(6, x, y, z, textstate));
 				SkillTreeSPButtonMessage.handleButtonAction(entity, 6, x, y, z, textstate);
 			}
-		}).bounds(this.leftPos + 101, this.topPos + 341, 82, 20).build();
-		guistate.put("button:button_toggle_dash", button_toggle_dash);
-		this.addRenderableWidget(button_toggle_dash);
+		}).bounds(this.leftPos + 186, this.topPos + 276, 129, 20).build();
+		guistate.put("button:button_toggle_impact_frames", button_toggle_impact_frames);
+		this.addRenderableWidget(button_toggle_impact_frames);
+		button_toggle_music_ost = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_toggle_music_ost"), e -> {
+			if (true) {
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(7, x, y, z, textstate));
+				SkillTreeSPButtonMessage.handleButtonAction(entity, 7, x, y, z, textstate);
+			}
+		}).bounds(this.leftPos + 195, this.topPos + 247, 108, 20).build();
+		guistate.put("button:button_toggle_music_ost", button_toggle_music_ost);
+		this.addRenderableWidget(button_toggle_music_ost);
+		button_unlock_extension = Button.builder(Component.translatable("gui.jujutsucraftaddon.skill_tree_sp.button_unlock_extension"), e -> {
+			if (true) {
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new SkillTreeSPButtonMessage(8, x, y, z, textstate));
+				SkillTreeSPButtonMessage.handleButtonAction(entity, 8, x, y, z, textstate);
+			}
+		}).bounds(this.leftPos + 324, this.topPos + 304, 108, 20).build();
+		guistate.put("button:button_unlock_extension", button_unlock_extension);
+		this.addRenderableWidget(button_unlock_extension);
 	}
 }

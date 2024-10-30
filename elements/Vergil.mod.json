@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "animatedarmor",
   "definition": {
     "enableHelmet": false,
@@ -16,6 +16,7 @@
     "creativeTab": {
       "value": "CUSTOM:Armors"
     },
+    "creativeTabs": [],
     "armorTextureFile": "yamato1.6.png",
     "model": "jacket.geo.json",
     "idle": "idle",

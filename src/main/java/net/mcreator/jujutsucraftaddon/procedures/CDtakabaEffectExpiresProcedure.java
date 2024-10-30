@@ -7,5 +7,7 @@ public class CDtakabaEffectExpiresProcedure {
 		if (entity == null)
 			return;
 		entity.setInvulnerable(false);
+		entity.setInvulnerable(false);
+		entity.setInvulnerable(false);
 	}
 }

@@ -26,7 +26,6 @@ public class JujutsucraftaddonModTabs {
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.jujutsucraftaddon.armors")).icon(() -> new ItemStack(JujutsucraftaddonModItems.GOJO_TRAINING_FINAL.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(JujutsucraftaddonModItems.DECISIVE_CHESTPLATE.get());
 				tabData.accept(JujutsucraftaddonModItems.DECISIVE_LEGGINGS.get());
-				tabData.accept(JujutsucraftaddonModItems.ARMORY_CHESTPLATE.get());
 				tabData.accept(JujutsucraftaddonModItems.DECISIVE_BLACK_CHESTPLATE.get());
 				tabData.accept(JujutsucraftaddonModItems.DECISIVE_BLACK_LEGGINGS.get());
 				tabData.accept(JujutsucraftaddonModItems.SUNG_JIN_WOO_CHESTPLATE.get());
@@ -164,6 +163,10 @@ public class JujutsucraftaddonModTabs {
 		if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
 			tabData.accept(JujutsucraftaddonModItems.TESTING_VERSION_SPAWN_EGG.get());
 			tabData.accept(JujutsucraftaddonModItems.YE_SPAWN_EGG.get());
+		} else if (tabData.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+			tabData.accept(JujutsucraftaddonModItems.RED_ENTITY_SPAWN_EGG.get());
+			tabData.accept(JujutsucraftaddonModItems.BLUE_ENTITY_SPAWN_EGG.get());
+			tabData.accept(JujutsucraftaddonModItems.SUKUNA_R_SPAWN_EGG.get());
 		}
 	}
 }

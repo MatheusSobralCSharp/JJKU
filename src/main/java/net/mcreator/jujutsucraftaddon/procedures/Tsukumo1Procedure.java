@@ -17,9 +17,9 @@ public class Tsukumo1Procedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("skill");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("skill");
 			}
 		}.getValue() > 0) {
 			{
@@ -38,15 +38,15 @@ public class Tsukumo1Procedure {
 			}
 		} else if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex4 = new CompoundTag();
-				entity.saveWithoutId(dataIndex4);
-				return dataIndex4.getCompound("ForgeData").getDouble("skill");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("skill");
 			}
 		}.getValue() == 0 && new Object() {
 			public double getValue() {
-				CompoundTag dataIndex5 = new CompoundTag();
-				entity.saveWithoutId(dataIndex5);
-				return dataIndex5.getCompound("ForgeData").getDouble("cnt6");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 			}
 		}.getValue() > 0) {
 			{

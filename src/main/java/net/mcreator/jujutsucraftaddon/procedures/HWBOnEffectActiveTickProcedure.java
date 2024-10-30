@@ -48,9 +48,9 @@ public class HWBOnEffectActiveTickProcedure {
 						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, 1, false, false));
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex22 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex22);
-							return dataIndex22.getCompound("ForgeData").getDouble("CursedSpirit");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("CursedSpirit");
 						}
 					}.getValue() == 1) {
 						entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 100);

@@ -48,9 +48,9 @@ public class RightClickRikaProcedure {
 			if (((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2"))
 					&& (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5 && (new Object() {
 						public String getValue() {
-							CompoundTag dataIndex4 = new CompoundTag();
-							entity.saveWithoutId(dataIndex4);
-							return dataIndex4.getCompound("ForgeData").getString("OWNER_UUID");
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 						}
 					}.getValue()).equals(sourceentity.getStringUUID())) {
 				if (!sourceentity.isShiftKeyDown()) {
@@ -70,6 +70,9 @@ public class RightClickRikaProcedure {
 					}
 				}
 			}
+			SwordKusakabeTwoProcedure.execute(entity, sourceentity);
+			SoulBookWhenRightClickedProcedure.execute(entity, sourceentity);
+			NanamiCTWeaponProcedure.execute(entity, sourceentity);
 		}
 	}
 }

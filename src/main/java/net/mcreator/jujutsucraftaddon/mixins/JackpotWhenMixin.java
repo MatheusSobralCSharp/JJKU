@@ -2,7 +2,8 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
-import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraft.procedures.JackpotEffectStartedappliedProcedure;
+import net.mcreator.jujutsucraft.procedures.JackpotOnEffectActiveTickProcedure;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;

@@ -9,9 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.InteractionHand;
 
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 import net.mcreator.jujutsucraft.init.JujutsucraftModItems;
-
 
 public class EntitySpawnedProcedure {
 	public static void execute(Entity entity) {

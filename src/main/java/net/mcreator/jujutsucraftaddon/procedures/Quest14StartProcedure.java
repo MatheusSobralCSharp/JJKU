@@ -42,36 +42,42 @@ public class Quest14StartProcedure {
 			Entity entitytospawn = JujutsucraftModEntities.ITADORI_YUJI.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 			if (entitytospawn != null) {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-				CompoundTag dataIndex12 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex12);
-				dataIndex12.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
-				(entitytospawn).load(dataIndex12);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
+					(entitytospawn).load(dataIndex);
+				}
 				if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 29, false, false));
 				((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 						.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 7));
 				if ((entitytospawn) instanceof LivingEntity _entity)
 					_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-				CompoundTag dataIndex25 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex25);
-				dataIndex25.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex24 = new CompoundTag();
-						entity.saveWithoutId(dataIndex24);
-						return dataIndex24.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex25);
-				CompoundTag dataIndex28 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex28);
-				dataIndex28.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex27 = new CompoundTag();
-						entity.saveWithoutId(dataIndex27);
-						return dataIndex27.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex28);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
 				for (int index0 = 0; index0 < 20; index0++) {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get()), x, y, (z + 5), 3, 3, 3, 3, 1);
@@ -83,36 +89,42 @@ public class Quest14StartProcedure {
 			Entity entitytospawn = JujutsucraftModEntities.NOBARA_KUGISAKI.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 			if (entitytospawn != null) {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-				CompoundTag dataIndex34 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex34);
-				dataIndex34.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
-				(entitytospawn).load(dataIndex34);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
+					(entitytospawn).load(dataIndex);
+				}
 				if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 29, false, false));
 				((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 						.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 7));
 				if ((entitytospawn) instanceof LivingEntity _entity)
 					_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-				CompoundTag dataIndex47 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex47);
-				dataIndex47.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex46 = new CompoundTag();
-						entity.saveWithoutId(dataIndex46);
-						return dataIndex46.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex47);
-				CompoundTag dataIndex50 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex50);
-				dataIndex50.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex49 = new CompoundTag();
-						entity.saveWithoutId(dataIndex49);
-						return dataIndex49.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex50);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
 				for (int index1 = 0; index1 < 20; index1++) {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get()), x, y, (z + 5), 3, 3, 3, 3, 1);

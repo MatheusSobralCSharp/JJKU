@@ -164,7 +164,7 @@ public abstract class HairpinTechniqueMixin {
                 }
 
                 if (SUCCESS) {
-                    range = 1.0 * CNT6 * 3;
+                    range = 1.0 * CNT6 * 2;
                     Level _level;
                     if (world instanceof Level) {
                         _level = (Level)world;

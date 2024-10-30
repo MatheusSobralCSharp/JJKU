@@ -12,9 +12,9 @@ public class SwordDetectRightclickedProcedure {
 		if (entity instanceof Player _player && !_player.level().isClientSide())
 			_player.displayClientMessage(Component.literal(("Your Skill is: " + (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex0 = new CompoundTag();
-					entity.saveWithoutId(dataIndex0);
-					return dataIndex0.getCompound("ForgeData").getString("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getString("skill");
 				}
 			}.getValue()))), false);
 	}

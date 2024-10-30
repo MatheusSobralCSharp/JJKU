@@ -1,13 +1,12 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.mcreator.jujutsucraft.procedures.SelectGetoProcedure;
 import net.mcreator.jujutsucraft.procedures.*;
 import net.mcreator.jujutsucraftaddon.configuration.JogoatConfiguration;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,6 +73,7 @@ public class TestProcedureeProcedure {
 		addCTRange("JINICHI", JogoatConfiguration.JINICHI.get());
 		addCTRange("NAOYA", JogoatConfiguration.NAOYA.get());
 		addCTRange("INO", JogoatConfiguration.INO.get());
+		addCTRange("KAORI", JogoatConfiguration.KAORI.get());
 	}
 
 	public static String selectRandomCT() {
@@ -218,6 +218,9 @@ public class TestProcedureeProcedure {
 						break;
 					case "NAOYA":
 						SelectNaoyaProcedure.execute(world, x, y, z, entity, guistate);
+						break;
+					case "KAORI":
+						SelectKaoriProcedure.execute(world, x, y, z, entity, guistate);
 						break;
 					case "INO":
 						SelectInoProcedure.execute(world, x, y, z, entity, guistate);

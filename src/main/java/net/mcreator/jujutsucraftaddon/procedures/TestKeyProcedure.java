@@ -20,9 +20,9 @@ public class TestKeyProcedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("brokenBrain");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("brokenBrain");
 			}
 		}.getValue() != 2) {
 			if (entity instanceof ServerPlayer && ((ServerPlayer) entity).level() instanceof ServerLevel
@@ -31,16 +31,16 @@ public class TestKeyProcedure {
 					if (((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex4 = new CompoundTag();
-								entity.saveWithoutId(dataIndex4);
-								return dataIndex4.getCompound("ForgeData").getDouble("cnt3");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("cnt3");
 							}
 						}.getValue() < 20) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex5 = new CompoundTag();
-									entity.saveWithoutId(dataIndex5);
-									return dataIndex5.getCompound("ForgeData").getDouble("cnt3");
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("cnt3");
 								}
 							}.getValue() == 0) {
 								if (((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.SIX_EYES.get())) == false) {
@@ -63,35 +63,45 @@ public class TestKeyProcedure {
 									}
 								}
 							}
-							CompoundTag dataIndex10 = new CompoundTag();
-							entity.saveWithoutId(dataIndex10);
-							dataIndex10.getCompound("ForgeData").putDouble("PRESS_Z", 1);
-							entity.load(dataIndex10);
-							CompoundTag dataIndex12 = new CompoundTag();
-							entity.saveWithoutId(dataIndex12);
-							dataIndex12.getCompound("ForgeData").putDouble("select", ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique));
-							entity.load(dataIndex12);
-							CompoundTag dataIndex13 = new CompoundTag();
-							entity.saveWithoutId(dataIndex13);
-							dataIndex13.getCompound("ForgeData").putDouble("StartDomainAttack", 1);
-							entity.load(dataIndex13);
-							CompoundTag dataIndex15 = new CompoundTag();
-							entity.saveWithoutId(dataIndex15);
-							dataIndex15.getCompound("ForgeData").putDouble("skill",
-									(20 + 100 * (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique));
-							entity.load(dataIndex15);
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("PRESS_Z", 1);
+								entity.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("select", ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique));
+								entity.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("StartDomainAttack", 1);
+								entity.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("skill",
+										(20 + 100 * (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique));
+								entity.load(dataIndex);
+							}
 							if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 								_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), (-1), 1, false, false));
-							CompoundTag dataIndex18 = new CompoundTag();
-							entity.saveWithoutId(dataIndex18);
-							dataIndex18.getCompound("ForgeData").putDouble("cnt3", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex17 = new CompoundTag();
-									entity.saveWithoutId(dataIndex17);
-									return dataIndex17.getCompound("ForgeData").getDouble("cnt3");
-								}
-							}.getValue() + 1));
-							entity.load(dataIndex18);
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("cnt3", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										entity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("cnt3");
+									}
+								}.getValue() + 1));
+								entity.load(dataIndex);
+							}
 						}
 					}
 				}

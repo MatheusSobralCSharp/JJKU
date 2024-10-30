@@ -22,7 +22,7 @@ import net.mcreator.jujutsucraftaddon.procedures.MahoragaDisableProcedure;
 public class MahoragaCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurMahoragaWheel").requires(s -> s.hasPermission(4)).then(Commands.literal("Enable").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurMahoragaWheel").requires(s -> s.hasPermission(2)).then(Commands.literal("Enable").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

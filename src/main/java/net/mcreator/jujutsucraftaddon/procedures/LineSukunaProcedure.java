@@ -18,21 +18,23 @@ public class LineSukunaProcedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("PRESS_Z");
+				CompoundTag dataIndex = new CompoundTag();
+				sourceentity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("PRESS_Z");
 			}
 		}.getValue() == 0) {
-			if (Math.random() < 0.005) {
-				CompoundTag dataIndex2 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex2);
-				dataIndex2.getCompound("ForgeData").putDouble("Lines", (Mth.nextInt(RandomSource.create(), 1, 2)));
-				sourceentity.load(dataIndex2);
+			if (Math.random() < 0.05) {
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("Lines", (Mth.nextInt(RandomSource.create(), 1, 2)));
+					sourceentity.load(dataIndex);
+				}
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex3 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex3);
-						return dataIndex3.getCompound("ForgeData").getDouble("Lines");
+						CompoundTag dataIndex = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("Lines");
 					}
 				}.getValue() == 1) {
 					if (world instanceof Level _level) {
@@ -44,9 +46,9 @@ public class LineSukunaProcedure {
 					}
 				} else if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex5 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex5);
-						return dataIndex5.getCompound("ForgeData").getDouble("Lines");
+						CompoundTag dataIndex = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("Lines");
 					}
 				}.getValue() == 2) {
 					if (world instanceof Level _level) {

@@ -45,7 +45,7 @@ public class HealerP2Procedure {
 		if (command.contains("jjc_heal")) {
 			if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Sage")) {
 				{
-					double _setval = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount + 1;
+					double _setval = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount + 2;
 					entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 						capability.RCTCount = _setval;
 						capability.syncPlayerVariables(entity);
@@ -128,6 +128,8 @@ public class HealerP2Procedure {
 				if (command.contains("jjc_heal")) {
 					if (event != null && event.isCancelable()) {
 						event.setCanceled(true);
+					} else if (event != null && event.hasResult()) {
+						event.setResult(Event.Result.DENY);
 					}
 				}
 			}

@@ -24,21 +24,21 @@ public class DropItems3Procedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("JujutsuSorcerer");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("JujutsuSorcerer");
 			}
 		}.getValue() == 1 || new Object() {
 			public double getValue() {
-				CompoundTag dataIndex1 = new CompoundTag();
-				entity.saveWithoutId(dataIndex1);
-				return dataIndex1.getCompound("ForgeData").getDouble("CurseUser");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("CurseUser");
 			}
 		}.getValue() == 1 || new Object() {
 			public double getValue() {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				return dataIndex2.getCompound("ForgeData").getDouble("CursedSpirit");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("CursedSpirit");
 			}
 		}.getValue() == 1) {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:kenjaku")) {

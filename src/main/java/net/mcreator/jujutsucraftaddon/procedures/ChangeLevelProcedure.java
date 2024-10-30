@@ -1,5 +1,6 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.CommandSourceStack;
@@ -11,9 +12,9 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class ChangeLevelProcedure {
-	public static void execute(CommandContext<CommandSourceStack> arguments) {
+	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
 		{
-			double _setval = DoubleArgumentType.getDouble(arguments, "LevelYouWant");
+			double _setval = (DoubleArgumentType.getDouble(arguments, "LevelYouWant"));
 			(new Object() {
 				public Entity getEntity() {
 					try {

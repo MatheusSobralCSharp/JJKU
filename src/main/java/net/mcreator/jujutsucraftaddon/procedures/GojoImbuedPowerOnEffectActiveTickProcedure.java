@@ -1,11 +1,13 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.network.NetworkDirection;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -15,6 +17,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.Connection;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
@@ -24,10 +27,12 @@ import net.minecraft.client.player.AbstractClientPlayer;
 
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
 import java.util.List;
+import java.util.Iterator;
 import java.util.Comparator;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
@@ -60,24 +65,24 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 						&& _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:gojo_training_part_3"))).isDone()) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex2 = new CompoundTag();
-							entity.saveWithoutId(dataIndex2);
-							return dataIndex2.getCompound("ForgeData").getDouble("PRESS_Z");
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("PRESS_Z");
 						}
 					}.getValue() == 1) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex3 = new CompoundTag();
-								entity.saveWithoutId(dataIndex3);
-								return dataIndex3.getCompound("ForgeData").getDouble("skill");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("skill");
 							}
 						}.getValue() == 207) {
 							if (entity.isShiftKeyDown()) {
 								if (new Object() {
 									public double getValue() {
-										CompoundTag dataIndex5 = new CompoundTag();
-										entity.saveWithoutId(dataIndex5);
-										return dataIndex5.getCompound("ForgeData").getDouble("cnt6");
+										CompoundTag dataIndex = new CompoundTag();
+										entity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 									}
 								}.getValue() >= 1) {
 									{
@@ -88,9 +93,9 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 											if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:red")) {
 												if ((new Object() {
 													public String getValue() {
-														CompoundTag dataIndex7 = new CompoundTag();
-														entityiterator.saveWithoutId(dataIndex7);
-														return dataIndex7.getCompound("ForgeData").getString("OWNER_UUID");
+														CompoundTag dataIndex = new CompoundTag();
+														entityiterator.saveWithoutId(dataIndex);
+														return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 													}
 												}.getValue()).equals(entity.getStringUUID())) {
 													if (!(entityiterator instanceof LivingEntity _livEnt9 && _livEnt9.hasEffect(JujutsucraftaddonModMobEffects.RED_EFFECT.get()))) {
@@ -106,18 +111,18 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 						}
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex12 = new CompoundTag();
-								entity.saveWithoutId(dataIndex12);
-								return dataIndex12.getCompound("ForgeData").getDouble("skill");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("skill");
 							}
 						}.getValue() == 215) {
 							if (entity.isShiftKeyDown()) {
 								if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Output >= 2) {
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex14 = new CompoundTag();
-											entity.saveWithoutId(dataIndex14);
-											return dataIndex14.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() >= 0) {
 										{
@@ -177,6 +182,20 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 								var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 								if (animation != null && !animation.isActive()) {
 									animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "murasaki2"))));
+								}
+							}
+						}
+						if (!world.isClientSide()) {
+							if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+								List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+								synchronized (connections) {
+									Iterator<Connection> iterator = connections.iterator();
+									while (iterator.hasNext()) {
+										Connection connection = iterator.next();
+										if (!connection.isConnecting() && connection.isConnected())
+											JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("murasaki2"), entity.getId(), false), connection,
+													NetworkDirection.PLAY_TO_CLIENT);
+									}
 								}
 							}
 						}
@@ -254,17 +273,17 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 						if (entity.onGround()) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex46 = new CompoundTag();
-									entity.saveWithoutId(dataIndex46);
-									return dataIndex46.getCompound("ForgeData").getDouble("skill");
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("skill");
 								}
 							}.getValue() == 215) {
 								if (!entity.isShiftKeyDown()) {
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex48 = new CompoundTag();
-											entity.saveWithoutId(dataIndex48);
-											return dataIndex48.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() == 1) {
 										if (!(entity instanceof LivingEntity _livEnt49 && _livEnt49.hasEffect(JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))) {
@@ -288,15 +307,15 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 									}
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex51 = new CompoundTag();
-											entity.saveWithoutId(dataIndex51);
-											return dataIndex51.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() > 1 && new Object() {
 										public double getValue() {
-											CompoundTag dataIndex52 = new CompoundTag();
-											entity.saveWithoutId(dataIndex52);
-											return dataIndex52.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() < 3) {
 										if (world instanceof ServerLevel _level)
@@ -304,15 +323,15 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 									}
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex54 = new CompoundTag();
-											entity.saveWithoutId(dataIndex54);
-											return dataIndex54.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() > 3 && new Object() {
 										public double getValue() {
-											CompoundTag dataIndex55 = new CompoundTag();
-											entity.saveWithoutId(dataIndex55);
-											return dataIndex55.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() < 5) {
 										if (world instanceof ServerLevel _level)
@@ -320,9 +339,9 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 									}
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex57 = new CompoundTag();
-											entity.saveWithoutId(dataIndex57);
-											return dataIndex57.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() > 5) {
 										if (world instanceof ServerLevel _level)
@@ -330,38 +349,42 @@ public class GojoImbuedPowerOnEffectActiveTickProcedure {
 									}
 									if (new Object() {
 										public double getValue() {
-											CompoundTag dataIndex59 = new CompoundTag();
-											entity.saveWithoutId(dataIndex59);
-											return dataIndex59.getCompound("ForgeData").getDouble("cnt6");
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 										}
 									}.getValue() > 5) {
 										if (new Object() {
 											public double getValue() {
-												CompoundTag dataIndex60 = new CompoundTag();
-												entity.saveWithoutId(dataIndex60);
-												return dataIndex60.getCompound("ForgeData").getDouble("cnt6");
+												CompoundTag dataIndex = new CompoundTag();
+												entity.saveWithoutId(dataIndex);
+												return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 											}
 										}.getValue() <= 50) {
-											CompoundTag dataIndex62 = new CompoundTag();
-											entity.saveWithoutId(dataIndex62);
-											dataIndex62.getCompound("ForgeData").putDouble("cnt6", (new Object() {
-												public double getValue() {
-													CompoundTag dataIndex61 = new CompoundTag();
-													entity.saveWithoutId(dataIndex61);
-													return dataIndex61.getCompound("ForgeData").getDouble("cnt6");
-												}
-											}.getValue() + 1));
-											entity.load(dataIndex62);
-											CompoundTag dataIndex64 = new CompoundTag();
-											entity.saveWithoutId(dataIndex64);
-											dataIndex64.getCompound("ForgeData").putDouble("Range", (new Object() {
-												public double getValue() {
-													CompoundTag dataIndex63 = new CompoundTag();
-													entity.saveWithoutId(dataIndex63);
-													return dataIndex63.getCompound("ForgeData").getDouble("Range");
-												}
-											}.getValue() + 1));
-											entity.load(dataIndex64);
+											{
+												CompoundTag dataIndex = new CompoundTag();
+												entity.saveWithoutId(dataIndex);
+												dataIndex.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+													public double getValue() {
+														CompoundTag dataIndex = new CompoundTag();
+														entity.saveWithoutId(dataIndex);
+														return dataIndex.getCompound("ForgeData").getDouble("cnt6");
+													}
+												}.getValue() + 1));
+												entity.load(dataIndex);
+											}
+											{
+												CompoundTag dataIndex = new CompoundTag();
+												entity.saveWithoutId(dataIndex);
+												dataIndex.getCompound("ForgeData").putDouble("Range", (new Object() {
+													public double getValue() {
+														CompoundTag dataIndex = new CompoundTag();
+														entity.saveWithoutId(dataIndex);
+														return dataIndex.getCompound("ForgeData").getDouble("Range");
+													}
+												}.getValue() + 1));
+												entity.load(dataIndex);
+											}
 										}
 									}
 								}

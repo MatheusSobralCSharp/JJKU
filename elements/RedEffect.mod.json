@@ -1,23 +1,19 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Red",
-    "icon": "curse_red.png",
+    "icon": "curse_red",
     "color": {
       "value": -1,
       "falpha": 0.0
     },
     "isInstant": false,
-    "isBad": false,
-    "isBenefitical": false,
+    "mobEffectCategory": "NEUTRAL",
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
     "onStarted": {
       "name": "RedEffectEffectStartedapplied"
-    },
-    "onActiveTick": {
-      "name": "RedEffectOnEffectActiveTick"
     }
   }
 }

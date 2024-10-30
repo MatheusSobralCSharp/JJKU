@@ -47,9 +47,9 @@ public class SoundsNPCsProcedure {
 					if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:fushiguro_toji")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex9 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex9);
-								return dataIndex9.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:geto_suguru")) {
@@ -60,17 +60,19 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:getovstoji")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex12 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex12);
-								dataIndex12.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex12);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex13 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex13);
-								return dataIndex13.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:gojo_satoru_school_days")) {
@@ -81,18 +83,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:gojovstoji")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex16 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex16);
-								dataIndex16.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex16);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:sukuna_fushiguro")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex18 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex18);
-								return dataIndex18.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:gojo_satoru")) {
@@ -103,18 +107,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:judas")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex21 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex21);
-								dataIndex21.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex21);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:nanami_kento")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex23 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex23);
-								return dataIndex23.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:mahito")) {
@@ -125,18 +131,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:nanami")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex26 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex26);
-								dataIndex26.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex26);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:itadori_yuji_shibuya")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex28 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex28);
-								return dataIndex28.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:mahito")) {
@@ -147,18 +155,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:itadorivsmahito")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex31 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex31);
-								dataIndex31.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex31);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:itadori_yuji_shibuya")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex33 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex33);
-								return dataIndex33.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:choso")) {
@@ -169,18 +179,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:chosovsyuuuji")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex36 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex36);
-								dataIndex36.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex36);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:fushiguro_toji_bug")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex38 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex38);
-								return dataIndex38.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:dagon_2")) {
@@ -191,18 +203,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:tojivsdagonvsyujivsmahito")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex41 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex41);
-								dataIndex41.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex41);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:sukuna")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex43 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex43);
-								return dataIndex43.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:jogo")) {
@@ -213,18 +227,20 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:sukunavsjogo")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex46 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex46);
-								dataIndex46.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex46);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					} else if ((ForgeRegistries.ENTITY_TYPES.getKey(sourceentity.getType()).toString()).equals("jujutsucraft:okkotsu_yuta")) {
 						if (new Object() {
 							public double getValue() {
-								CompoundTag dataIndex48 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex48);
-								return dataIndex48.getCompound("ForgeData").getDouble("Fight");
+								CompoundTag dataIndex = new CompoundTag();
+								sourceentity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("Fight");
 							}
 						}.getValue() == 0) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:geto_suguru_curse_user")) {
@@ -235,10 +251,12 @@ public class SoundsNPCsProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:yutavsgeto")), SoundSource.NEUTRAL, 1, 1, false);
 									}
 								}
-								CompoundTag dataIndex51 = new CompoundTag();
-								sourceentity.saveWithoutId(dataIndex51);
-								dataIndex51.getCompound("ForgeData").putDouble("Fight", 1);
-								sourceentity.load(dataIndex51);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									sourceentity.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+									sourceentity.load(dataIndex);
+								}
 							}
 						}
 					}

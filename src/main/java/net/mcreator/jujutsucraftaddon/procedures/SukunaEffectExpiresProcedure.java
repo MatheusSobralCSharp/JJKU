@@ -30,16 +30,16 @@ public class SukunaEffectExpiresProcedure {
 			for (Entity entityiterator : _entfound) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex0 = new CompoundTag();
-						entityiterator.saveWithoutId(dataIndex0);
-						return dataIndex0.getCompound("ForgeData").getDouble("Demon");
+						CompoundTag dataIndex = new CompoundTag();
+						entityiterator.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("Demon");
 					}
 				}.getValue() == 1) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex1 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex1);
-							return dataIndex1.getCompound("ForgeData").getDouble("DeathCount");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("DeathCount");
 						}
 					}.getValue() == 1) {
 						{

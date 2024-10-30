@@ -20,7 +20,7 @@ import net.mcreator.jujutsucraftaddon.procedures.VowClearProcedure;
 public class JjkuClearVowsCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurClearVows").requires(s -> s.hasPermission(4)).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurClearVows").requires(s -> s.hasPermission(2)).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

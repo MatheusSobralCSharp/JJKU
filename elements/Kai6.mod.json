@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "particle",
   "definition": {
     "texture": "kai22.png",
@@ -7,7 +7,9 @@
     "frameDuration": 2,
     "width": 0.2,
     "height": 0.19999999999999998,
-    "scale": 20.0,
+    "scale": {
+      "fixedValue": 20.0
+    },
     "speedFactor": 0.0,
     "gravity": 0.0,
     "maxAge": 20,

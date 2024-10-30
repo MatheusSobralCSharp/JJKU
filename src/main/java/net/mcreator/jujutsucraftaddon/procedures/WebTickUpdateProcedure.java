@@ -26,6 +26,7 @@ import net.minecraft.commands.CommandSource;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.entity.CleaveWebEntity;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
 import java.util.List;
 import java.util.Comparator;
@@ -48,52 +49,55 @@ public class WebTickUpdateProcedure {
 				final Vec3 _center = new Vec3(x, y, z);
 				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 				for (Entity entityiterator : _entfound) {
-					if (entityiterator instanceof LivingEntity && !(entityiterator instanceof CleaveWebEntity)) {
+					if (!(entityiterator == entity)) {
 						if ((new Object() {
 							public String getValue() {
-								CompoundTag dataIndex35 = new CompoundTag();
-								entity.saveWithoutId(dataIndex35);
-								return dataIndex35.getCompound("ForgeData").getString("OWNER_UUID");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 							}
 						}.getValue()).equals(entityiterator.getStringUUID()) == false) {
-							if (world instanceof ServerLevel _level)
-								_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.HAITI.get()), (entityiterator.getX()), (entityiterator.getY() + Mth.nextDouble(RandomSource.create(), 0, 2)), (entityiterator.getZ()), 1, 0,
-										0, 0, 1);
-							if (Math.random() <= 0.01) {
-								if (world instanceof Level _level) {
-									if (!_level.isClientSide()) {
-										_level.playSound(null, BlockPos.containing(entityiterator.getX(), entityiterator.getY(), entityiterator.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:swordsweeep")),
-												SoundSource.NEUTRAL, 1, 1);
-									} else {
-										_level.playLocalSound((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:swordsweeep")),
-												SoundSource.NEUTRAL, 1, 1, false);
+							if ((entityiterator instanceof LivingEntity && ((LivingEntity) entityiterator).hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) == false) {
+								if (world instanceof ServerLevel _level)
+									_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.HAITI.get()), (entityiterator.getX()), (entityiterator.getY() + Mth.nextDouble(RandomSource.create(), 0, 2)), (entityiterator.getZ()), 1,
+											0, 0, 0, 1);
+								if (Math.random() <= 0.01) {
+									if (world instanceof Level _level) {
+										if (!_level.isClientSide()) {
+											_level.playSound(null, BlockPos.containing(entityiterator.getX(), entityiterator.getY(), entityiterator.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:swordsweeep")),
+													SoundSource.NEUTRAL, 1, 1);
+										} else {
+											_level.playLocalSound((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:swordsweeep")),
+													SoundSource.NEUTRAL, 1, 1, false);
+										}
 									}
 								}
-							}
-							entityiterator.makeStuckInBlock(Blocks.AIR.defaultBlockState(), new Vec3(0.25, 0.05, 0.25));
-							if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60,
-										(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.WEAKNESS) ? _livEnt.getEffect(MobEffects.WEAKNESS).getAmplifier() : 0) + 1), false, false));
-							if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60,
-										(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.CONFUSION) ? _livEnt.getEffect(MobEffects.CONFUSION).getAmplifier() : 0) + 1), false, false));
-							if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.POISON, 60,
-										(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.CONFUSION) ? _livEnt.getEffect(MobEffects.CONFUSION).getAmplifier() : 0) + 1), false, false));
-							if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60,
-										(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ? _livEnt.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() : 0) + 1), false, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null,
-											4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "execute as @s run effect give @s jujutsucraft:cancel_cursed_technique 2 2 true");
+								entityiterator.makeStuckInBlock(Blocks.AIR.defaultBlockState(), new Vec3(0.25, 0.05, 0.25));
+								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+									_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60,
+											(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.WEAKNESS) ? _livEnt.getEffect(MobEffects.WEAKNESS).getAmplifier() : 0) + 1), false, false));
+								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+									_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60,
+											(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.CONFUSION) ? _livEnt.getEffect(MobEffects.CONFUSION).getAmplifier() : 0) + 1), false, false));
+								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+									_entity.addEffect(new MobEffectInstance(MobEffects.POISON, 60,
+											(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.CONFUSION) ? _livEnt.getEffect(MobEffects.CONFUSION).getAmplifier() : 0) + 1), false, false));
+								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
+									_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60,
+											(int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ? _livEnt.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() : 0) + 1), false, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+												_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+												"execute as @s run effect give @s jujutsucraft:cancel_cursed_technique 2 2 true");
+									}
 								}
+								JujutsucraftaddonMod.queueServerWork(100, () -> {
+									if (!entity.level().isClientSide())
+										entity.discard();
+								});
 							}
-							JujutsucraftaddonMod.queueServerWork(100, () -> {
-								if (!entity.level().isClientSide())
-									entity.discard();
-							});
 						}
 					}
 				}

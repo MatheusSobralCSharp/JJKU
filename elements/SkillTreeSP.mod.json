@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -23,19 +23,6 @@
           "height": 20,
           "x": 33,
           "y": 108
-        }
-      },
-      {
-        "type": "entitymodel",
-        "data": {
-          "entityModel": {
-            "name": "ReturnEntity"
-          },
-          "scale": 60,
-          "rotationX": 0,
-          "followMouseMovement": true,
-          "x": 204,
-          "y": 164
         }
       },
       {
@@ -192,7 +179,7 @@
             "value": -16711690,
             "falpha": 0.0
           },
-          "x": 273,
+          "x": 284,
           "y": 220
         }
       },
@@ -227,7 +214,7 @@
           "width": 113,
           "height": 20,
           "x": 286,
-          "y": 45
+          "y": 64
         }
       },
       {
@@ -245,23 +232,8 @@
           "displayCondition": {
             "name": "ReturnSecret2"
           },
-          "x": 255,
-          "y": 199
-        }
-      },
-      {
-        "type": "button",
-        "data": {
-          "name": "button_unlock_extension_technique",
-          "text": "Unlock Extension Technique",
-          "isUndecorated": false,
-          "onClick": {
-            "name": "UnlockExtension"
-          },
-          "width": 161,
-          "height": 20,
-          "x": 263,
-          "y": 172
+          "x": 68,
+          "y": 221
         }
       },
       {
@@ -307,8 +279,53 @@
           },
           "width": 82,
           "height": 20,
-          "x": 65,
-          "y": 211
+          "x": 170,
+          "y": 178
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_impact_frames",
+          "text": "Toggle Impact Frames",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Frames"
+          },
+          "width": 129,
+          "height": 20,
+          "x": 150,
+          "y": 146
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_music_ost",
+          "text": "Toggle Music Ost",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Ost"
+          },
+          "width": 108,
+          "height": 20,
+          "x": 159,
+          "y": 117
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_unlock_extension",
+          "text": "Unlock Extension",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "UnlockExtension"
+          },
+          "width": 108,
+          "height": 20,
+          "x": 288,
+          "y": 174
         }
       }
     ],

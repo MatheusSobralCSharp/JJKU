@@ -34,15 +34,17 @@ public class YutaRingItemInInventoryTickProcedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex10 = new CompoundTag();
-					entity.saveWithoutId(dataIndex10);
-					return dataIndex10.getCompound("ForgeData").getDouble("RikaRing");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("RikaRing");
 				}
 			}.getValue() == 0) {
-				CompoundTag dataIndex11 = new CompoundTag();
-				entity.saveWithoutId(dataIndex11);
-				dataIndex11.getCompound("ForgeData").putDouble("RikaRing", 1);
-				entity.load(dataIndex11);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("RikaRing", 1);
+					entity.load(dataIndex);
+				}
 			}
 		}
 	}

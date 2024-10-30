@@ -32,10 +32,12 @@ public class JogoatSpawnProcedure {
 					_player.displayClientMessage(Component.literal("As the strongest curse, JOGOAT fought the fraud, the king curses. He Began to open his domain. Sukuna shrunk back in then, Jogo said, \"Stand proud sukuna you are strong.\"."),
 							false);
 				(entitytospawn).setCustomName(Component.literal("Jogoat"));
-				CompoundTag dataIndex4 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex4);
-				dataIndex4.getCompound("ForgeData").putDouble("Jogoat", 1);
-				(entitytospawn).load(dataIndex4);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("Jogoat", 1);
+					(entitytospawn).load(dataIndex);
+				}
 				((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 						.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 100));
 				if ((entitytospawn) instanceof LivingEntity _entity)

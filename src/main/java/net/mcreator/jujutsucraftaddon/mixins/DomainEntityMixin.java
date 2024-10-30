@@ -1,7 +1,6 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables.MapVariables;
 import net.mcreator.jujutsucraft.procedures.AIDomainExpansionEntityProcedure;
 import net.mcreator.jujutsucraft.procedures.JujutsuBarrierUpdateTickProcedure;
 import net.minecraft.core.BlockPos;

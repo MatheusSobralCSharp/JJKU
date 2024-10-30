@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "item",
   "definition": {
     "renderType": 1,
@@ -9,9 +9,11 @@
     "states": [],
     "name": "Itadori Gauntlets",
     "rarity": "EPIC",
-    "creativeTab": {
-      "value": "CUSTOM:Weapons"
-    },
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Weapons"
+      }
+    ],
     "stackSize": 1,
     "enchantability": 22,
     "useDuration": 0,
@@ -37,11 +39,9 @@
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
-    "onRightClickedInAir": {
-      "name": "ItadoriArmsRightclicked"
-    },
     "enableRanged": false,
     "shootConstantly": false,
+    "rangedItemChargesPower": false,
     "projectile": {
       "value": "CUSTOM:BulletProjectile"
     },

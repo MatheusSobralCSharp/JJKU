@@ -13,7 +13,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -50,97 +49,22 @@ public class WorldSlashProcedure {
 				if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:sukuna_body_chestplate")
 						|| (entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftaddonModMobEffects.BINDING_VOW.get()) ? _livEnt.getEffect(JujutsucraftaddonModMobEffects.BINDING_VOW.get()).getAmplifier() : 0) <= 4) {
 					if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel >= 5) {
-						if (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex12 = new CompoundTag();
-								entity.saveWithoutId(dataIndex12);
-								return dataIndex12.getCompound("ForgeData").getDouble("PRESS_Z");
-							}
-						}.getValue() == 1) {
-							if (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex13 = new CompoundTag();
-									entity.saveWithoutId(dataIndex13);
-									return dataIndex13.getCompound("ForgeData").getDouble("skill");
-								}
-							}.getValue() == 107) {
-								if (new Object() {
-									public double getValue() {
-										CompoundTag dataIndex14 = new CompoundTag();
-										entity.saveWithoutId(dataIndex14);
-										return dataIndex14.getCompound("ForgeData").getDouble("cnt6");
-									}
-								}.getValue() >= 5) {
-									if (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex15 = new CompoundTag();
-											entity.saveWithoutId(dataIndex15);
-											return dataIndex15.getCompound("ForgeData").getDouble("cnt6");
-										}
-									}.getValue() <= 30) {
-										CompoundTag dataIndex17 = new CompoundTag();
-										entity.saveWithoutId(dataIndex17);
-										dataIndex17.getCompound("ForgeData").putDouble("cnt6", (new Object() {
-											public double getValue() {
-												CompoundTag dataIndex16 = new CompoundTag();
-												entity.saveWithoutId(dataIndex16);
-												return dataIndex16.getCompound("ForgeData").getDouble("cnt6");
-											}
-										}.getValue() + 1));
-										entity.load(dataIndex17);
+						if (entity.getPersistentData().getDouble("PRESS_Z") == 1) {
+							if (entity.getPersistentData().getDouble("skill") == 107) {
+								if (entity.getPersistentData().getDouble("cnt6") >= 5) {
+									if (entity.getPersistentData().getDouble("cnt6") <= 30) {
+										entity.getPersistentData().putDouble("cnt6", (entity.getPersistentData().getDouble("cnt6") + 1));
 									}
 								}
 							}
-							if (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex18 = new CompoundTag();
-									entity.saveWithoutId(dataIndex18);
-									return dataIndex18.getCompound("ForgeData").getDouble("skill");
-								}
-							}.getValue() == 105) {
-								if (new Object() {
-									public double getValue() {
-										CompoundTag dataIndex19 = new CompoundTag();
-										entity.saveWithoutId(dataIndex19);
-										return dataIndex19.getCompound("ForgeData").getDouble("cnt6");
+							if (entity.getPersistentData().getDouble("skill") == 105) {
+								if (entity.getPersistentData().getDouble("cnt6") >= 5) {
+									if (entity.getPersistentData().getDouble("cnt6") <= 75) {
+										entity.getPersistentData().putDouble("cnt6", (entity.getPersistentData().getDouble("cnt6") + 1));
 									}
-								}.getValue() >= 5) {
-									if (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex20 = new CompoundTag();
-											entity.saveWithoutId(dataIndex20);
-											return dataIndex20.getCompound("ForgeData").getDouble("cnt6");
-										}
-									}.getValue() <= 75) {
-										CompoundTag dataIndex22 = new CompoundTag();
-										entity.saveWithoutId(dataIndex22);
-										dataIndex22.getCompound("ForgeData").putDouble("cnt6", (new Object() {
-											public double getValue() {
-												CompoundTag dataIndex21 = new CompoundTag();
-												entity.saveWithoutId(dataIndex21);
-												return dataIndex21.getCompound("ForgeData").getDouble("cnt6");
-											}
-										}.getValue() + 1));
-										entity.load(dataIndex22);
-									}
-									if (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex23 = new CompoundTag();
-											entity.saveWithoutId(dataIndex23);
-											return dataIndex23.getCompound("ForgeData").getDouble("cnt6");
-										}
-									}.getValue() >= 75) {
-										if (!(new Object() {
-											public double getValue() {
-												CompoundTag dataIndex24 = new CompoundTag();
-												entity.saveWithoutId(dataIndex24);
-												return dataIndex24.getCompound("ForgeData").getDouble("brokenBrain");
-											}
-										}.getValue() == 2)) {
-											CompoundTag dataIndex25 = new CompoundTag();
-											entity.saveWithoutId(dataIndex25);
-											dataIndex25.getCompound("ForgeData").putDouble("brokenBrain", 2);
-											entity.load(dataIndex25);
+									if (entity.getPersistentData().getDouble("cnt6") >= 75) {
+										if (!(entity.getPersistentData().getDouble("brokenBrain") == 2)) {
+											entity.getPersistentData().putDouble("brokenBrain", 2);
 										}
 										{
 											final Vec3 _center = new Vec3(x, y, z);
@@ -194,27 +118,9 @@ public class WorldSlashProcedure {
 									}
 								}
 							}
-						} else if (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex37 = new CompoundTag();
-								entity.saveWithoutId(dataIndex37);
-								return dataIndex37.getCompound("ForgeData").getDouble("PRESS_Z");
-							}
-						}.getValue() == 0) {
-							if (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex38 = new CompoundTag();
-									entity.saveWithoutId(dataIndex38);
-									return dataIndex38.getCompound("ForgeData").getDouble("cnt6");
-								}
-							}.getValue() >= 5) {
-								if (new Object() {
-									public double getValue() {
-										CompoundTag dataIndex39 = new CompoundTag();
-										entity.saveWithoutId(dataIndex39);
-										return dataIndex39.getCompound("ForgeData").getDouble("cnt6");
-									}
-								}.getValue() >= 30) {
+						} else if (entity.getPersistentData().getDouble("PRESS_Z") == 0) {
+							if (entity.getPersistentData().getDouble("cnt6") >= 5) {
+								if (entity.getPersistentData().getDouble("cnt6") >= 30) {
 									{
 										Entity _ent = entity;
 										if (!_ent.level().isClientSide() && _ent.getServer() != null) {

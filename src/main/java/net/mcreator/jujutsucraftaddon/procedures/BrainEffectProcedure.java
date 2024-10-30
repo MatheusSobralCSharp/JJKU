@@ -12,9 +12,9 @@ public class BrainEffectProcedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("brokenBrain");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("brokenBrain");
 			}
 		}.getValue() >= 2) {
 			if (!(entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(MobEffects.CONFUSION))) {

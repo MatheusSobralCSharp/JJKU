@@ -23,7 +23,7 @@ import net.mcreator.jujutsucraftaddon.procedures.ChangeRaceProcedureProcedure;
 public class JjkuChangeRaceCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurChangeRace").requires(s -> s.hasPermission(4)).then(Commands.literal("CursedSpirit").then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurChangeRace").requires(s -> s.hasPermission(2)).then(Commands.literal("CursedSpirit").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();
@@ -35,9 +35,9 @@ public class JjkuChangeRaceCommand {
 			if (entity != null)
 				direction = entity.getDirection();
 
-			ChangeRaceProcedureSpiritProcedure.execute(arguments);
+			ChangeRaceProcedureSpiritProcedure.execute(world, arguments);
 			return 0;
-		}))).then(Commands.literal("JujutsuSorcerer").then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
+		}))).then(Commands.literal("JujutsuSorcerer").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();
@@ -49,9 +49,9 @@ public class JjkuChangeRaceCommand {
 			if (entity != null)
 				direction = entity.getDirection();
 
-			ChangeRaceProcedureProcedure.execute(arguments);
+			ChangeRaceProcedureProcedure.execute(world, arguments);
 			return 0;
-		}))).then(Commands.literal("CurseUser").then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
+		}))).then(Commands.literal("CurseUser").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();
@@ -63,7 +63,7 @@ public class JjkuChangeRaceCommand {
 			if (entity != null)
 				direction = entity.getDirection();
 
-			ChangeRaceProcedureUserProcedure.execute(arguments);
+			ChangeRaceProcedureUserProcedure.execute(world, arguments);
 			return 0;
 		}))));
 	}

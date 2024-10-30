@@ -8,9 +8,13 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.network.chat.Component;
 
+import net.mcreator.jujutsucraftaddon.procedures.SwordJinWooTwoRightclickedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SwordJinWooLivingEntityIsHitWithToolProcedure;
 
 import java.util.List;
@@ -49,6 +53,13 @@ public class SwordJinWooTwoItem extends SwordItem {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
 		SwordJinWooLivingEntityIsHitWithToolProcedure.execute(entity, sourceentity);
 		return retval;
+	}
+
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+		SwordJinWooTwoRightclickedProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		return ar;
 	}
 
 	@Override

@@ -30,9 +30,9 @@ public class TrainingEffectExpiresProcedure {
 			for (Entity entityiterator : _entfound) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex0 = new CompoundTag();
-						entityiterator.saveWithoutId(dataIndex0);
-						return dataIndex0.getCompound("ForgeData").getDouble("GojoBurn");
+						CompoundTag dataIndex = new CompoundTag();
+						entityiterator.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("GojoBurn");
 					}
 				}.getValue() == 1) {
 					if (entity.getPersistentData().getDouble("Timer") <= 0) {

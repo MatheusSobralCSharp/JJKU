@@ -40,10 +40,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex12 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex12);
-						dataIndex12.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex12);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -83,10 +85,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex50 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex50);
-						dataIndex50.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex50);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -143,10 +147,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex105 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex105);
-						dataIndex105.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex105);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -169,10 +175,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex126 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex126);
-						dataIndex126.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex126);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -210,10 +218,12 @@ public class SpawnJogoatProcedure {
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 28, false, false));
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-						CompoundTag dataIndex160 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex160);
-						dataIndex160.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex160);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
 						if ((entitytospawn) instanceof LivingEntity _entity)
@@ -242,10 +252,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex188 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex188);
-						dataIndex188.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex188);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -268,10 +280,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex209 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex209);
-						dataIndex209.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex209);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -294,10 +308,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 2));
-						CompoundTag dataIndex230 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex230);
-						dataIndex230.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex230);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -320,10 +336,12 @@ public class SpawnJogoatProcedure {
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
-						CompoundTag dataIndex251 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex251);
-						dataIndex251.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex251);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						if ((entitytospawn) instanceof Mob _entity && entity instanceof LivingEntity _ent)
@@ -361,10 +379,12 @@ public class SpawnJogoatProcedure {
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 28, false, false));
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-						CompoundTag dataIndex285 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex285);
-						dataIndex285.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex285);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
 						if ((entitytospawn) instanceof LivingEntity _entity)
@@ -387,10 +407,12 @@ public class SpawnJogoatProcedure {
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 28, false, false));
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-						CompoundTag dataIndex306 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex306);
-						dataIndex306.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex306);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
 						if ((entitytospawn) instanceof LivingEntity _entity)
@@ -400,10 +422,12 @@ public class SpawnJogoatProcedure {
 						_serverLevel.addFreshEntity(entitytospawn);
 					}
 				}
-				CompoundTag dataIndex318 = new CompoundTag();
-				entity.saveWithoutId(dataIndex318);
-				dataIndex318.getCompound("ForgeData").putDouble("IsMahoraga", 1);
-				entity.load(dataIndex318);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("IsMahoraga", 1);
+					entity.load(dataIndex);
+				}
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -431,10 +455,12 @@ public class SpawnJogoatProcedure {
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 28, false, false));
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-						CompoundTag dataIndex330 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex330);
-						dataIndex330.getCompound("ForgeData").putDouble("GH", 1);
-						(entitytospawn).load(dataIndex330);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("GH", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 3));
 						if ((entitytospawn) instanceof LivingEntity _entity)

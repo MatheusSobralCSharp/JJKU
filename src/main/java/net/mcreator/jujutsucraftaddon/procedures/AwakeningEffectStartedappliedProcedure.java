@@ -14,11 +14,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 public class AwakeningEffectStartedappliedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -46,14 +43,11 @@ public class AwakeningEffectStartedappliedProcedure {
 			}
 		}
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SIX_EYES.get(), -1, 0, false, false));
-		{
-			boolean _setval = true;
-			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.FlagSixEyes = _setval;
-				capability.syncPlayerVariables(entity);
-			});
-		}
+			_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.AWAKENING.get(), -1, 0, false, false));
+		entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+			capability.FlagSixEyes = true;
+			capability.syncPlayerVariables(entity);
+		});
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
 				_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:gojo")), SoundSource.NEUTRAL, 1, 1);

@@ -16,9 +16,9 @@ public class ShadowsAIBuffedProcedure {
 		double TrackX = 0;
 		if ((new Object() {
 			public boolean getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getBoolean("Buffed");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 			}
 		}.getValue()) == true) {
 			if (Math.random() <= 0.005) {

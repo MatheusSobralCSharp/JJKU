@@ -1,12 +1,22 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.minecraftforge.network.NetworkDirection;
+
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.Connection;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.client.player.AbstractClientPlayer;
+
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
+
+import java.util.List;
+import java.util.Iterator;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
@@ -30,6 +40,19 @@ public class AwakeningEffectExpiresProcedure {
 				var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 				if (animation != null) {
 					animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "idle"))));
+				}
+			}
+		}
+		if (!world.isClientSide()) {
+			if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+				List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+				synchronized (connections) {
+					Iterator<Connection> iterator = connections.iterator();
+					while (iterator.hasNext()) {
+						Connection connection = iterator.next();
+						if (!connection.isConnecting() && connection.isConnected())
+							JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("idle"), entity.getId(), true), connection, NetworkDirection.PLAY_TO_CLIENT);
+					}
 				}
 			}
 		}

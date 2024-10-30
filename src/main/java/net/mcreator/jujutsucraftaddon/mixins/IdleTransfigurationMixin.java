@@ -1,9 +1,7 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
 
-import net.mcreator.jujutsucraft.procedures.CursedTechniqueItadoriProcedure;
 import net.mcreator.jujutsucraft.procedures.IdleTransfigurationProcedure;
-import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraft.procedures.RangeAttackProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -14,9 +12,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ClipContext.Block;
 import net.minecraft.world.level.ClipContext.Fluid;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;

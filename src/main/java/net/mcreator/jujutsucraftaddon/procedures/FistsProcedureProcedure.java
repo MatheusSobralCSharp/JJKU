@@ -21,7 +21,6 @@ public class FistsProcedureProcedure {
 			FistItadoriProcedure.execute(world, sourceentity);
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 15) {
 			FistMahitoProcedure.execute(world, sourceentity);
-			MahitoExtensionProcedure.execute(world, entity);
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 5) {
 			FistYutaProcedure.execute(world, sourceentity);
 		} else if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 9) {

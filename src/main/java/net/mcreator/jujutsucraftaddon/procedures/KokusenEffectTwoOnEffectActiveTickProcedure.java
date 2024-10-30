@@ -1,18 +1,23 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.network.NetworkDirection;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.Connection;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.BlockPos;
@@ -27,6 +32,7 @@ import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 import java.util.List;
+import java.util.Iterator;
 import java.util.Comparator;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
@@ -50,6 +56,20 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 						}
 					}
 				}
+				if (!world.isClientSide()) {
+					if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+						List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+						synchronized (connections) {
+							Iterator<Connection> iterator = connections.iterator();
+							while (iterator.hasNext()) {
+								Connection connection = iterator.next();
+								if (!connection.isConnecting() && connection.isConnected())
+									JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal(("punch" + Mth.nextInt(RandomSource.create(), 1, 10))), entity.getId(), false),
+											connection, NetworkDirection.PLAY_TO_CLIENT);
+							}
+						}
+					}
+				}
 				if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE) == false) {
 					{
 						double _setval = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Kokusen + 1;
@@ -69,9 +89,9 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 								&& !(entityiterator instanceof LivingEntity _livEnt5 && _livEnt5.hasEffect(JujutsucraftaddonModMobEffects.GOJO_RAMPAGE.get()))) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex6 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex6);
-									return dataIndex6.getCompound("ForgeData").getDouble("Kokusen");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("Kokusen");
 								}
 							}.getValue() == 1) {
 								entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())));
@@ -110,9 +130,9 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 								&& !(entityiterator instanceof LivingEntity _livEnt25 && _livEnt25.hasEffect(JujutsucraftaddonModMobEffects.GOJO_RAMPAGE.get()))) {
 							if (new Object() {
 								public double getValue() {
-									CompoundTag dataIndex26 = new CompoundTag();
-									entityiterator.saveWithoutId(dataIndex26);
-									return dataIndex26.getCompound("ForgeData").getDouble("Kokusen");
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("Kokusen");
 								}
 							}.getValue() == 1) {
 								entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())));
@@ -160,10 +180,12 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 								JujutsucraftaddonMod.queueServerWork(10, () -> {
 									for (int index5 = 0; index5 < 1; index5++) {
 										if (!(entityiterator instanceof LivingEntity _livEnt81 && _livEnt81.hasEffect(JujutsucraftaddonModMobEffects.RAMPAGE_ZONE.get()))) {
-											CompoundTag dataIndex82 = new CompoundTag();
-											entityiterator.saveWithoutId(dataIndex82);
-											dataIndex82.getCompound("ForgeData").putDouble("Kokusen", 0);
-											entityiterator.load(dataIndex82);
+											{
+												CompoundTag dataIndex = new CompoundTag();
+												entityiterator.saveWithoutId(dataIndex);
+												dataIndex.getCompound("ForgeData").putDouble("Kokusen", 0);
+												entityiterator.load(dataIndex);
+											}
 										}
 										{
 											double _setval = 0;
@@ -204,6 +226,20 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 						var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 						if (animation != null && !animation.isActive()) {
 							animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", ("punch" + Mth.nextInt(RandomSource.create(), 1, 10))))));
+						}
+					}
+				}
+				if (!world.isClientSide()) {
+					if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+						List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+						synchronized (connections) {
+							Iterator<Connection> iterator = connections.iterator();
+							while (iterator.hasNext()) {
+								Connection connection = iterator.next();
+								if (!connection.isConnecting() && connection.isConnected())
+									JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal(("punch" + Mth.nextInt(RandomSource.create(), 1, 10))), entity.getId(), false),
+											connection, NetworkDirection.PLAY_TO_CLIENT);
+							}
 						}
 					}
 				}
@@ -250,10 +286,12 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 									for (int index6 = 0; index6 < 1; index6++) {
 										if (!(entityiterator instanceof LivingEntity _livEnt118 && _livEnt118.hasEffect(JujutsucraftaddonModMobEffects.RAMPAGE_ZONE.get()))) {
 											entityiterator.setDeltaMovement(new Vec3((100 * Math.cos((entity.getYRot() + 90) * (Math.PI / 180))), 0, (100 * Math.sin((entity.getYRot() + 90) * (Math.PI / 180)))));
-											CompoundTag dataIndex122 = new CompoundTag();
-											entityiterator.saveWithoutId(dataIndex122);
-											dataIndex122.getCompound("ForgeData").putDouble("Kokusen", 0);
-											entityiterator.load(dataIndex122);
+											{
+												CompoundTag dataIndex = new CompoundTag();
+												entityiterator.saveWithoutId(dataIndex);
+												dataIndex.getCompound("ForgeData").putDouble("Kokusen", 0);
+												entityiterator.load(dataIndex);
+											}
 										}
 										{
 											double _setval = 0;
@@ -282,9 +320,9 @@ public class KokusenEffectTwoOnEffectActiveTickProcedure {
 									&& entityiterator instanceof LivingEntity _livEnt128 && _livEnt128.hasEffect(JujutsucraftaddonModMobEffects.GOJO_RAMPAGE.get())) {
 								if (new Object() {
 									public double getValue() {
-										CompoundTag dataIndex129 = new CompoundTag();
-										entityiterator.saveWithoutId(dataIndex129);
-										return dataIndex129.getCompound("ForgeData").getDouble("Kokusen");
+										CompoundTag dataIndex = new CompoundTag();
+										entityiterator.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("Kokusen");
 									}
 								}.getValue() == 1) {
 									entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())));

@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "particle",
   "definition": {
     "texture": "thunderblue.png",
@@ -7,7 +7,9 @@
     "frameDuration": 1,
     "width": 2.0,
     "height": 2.0,
-    "scale": 2.0,
+    "scale": {
+      "fixedValue": 2.0
+    },
     "speedFactor": 0.5,
     "gravity": 0.0,
     "maxAge": 23,

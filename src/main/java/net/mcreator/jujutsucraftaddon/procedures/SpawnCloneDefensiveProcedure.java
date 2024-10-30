@@ -14,6 +14,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 public class SpawnCloneDefensiveProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -24,14 +25,18 @@ public class SpawnCloneDefensiveProcedure {
 			if (entitytospawn != null) {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 			}
-			CompoundTag dataIndex2 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex2);
-			dataIndex2.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
-			(entitytospawn).load(dataIndex2);
-			CompoundTag dataIndex5 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex5);
-			dataIndex5.putString("Owner", (entity.getStringUUID()));
-			(entitytospawn).load(dataIndex5);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.putString("Owner", (entity.getStringUUID()));
+				(entitytospawn).load(dataIndex);
+			}
 			((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).getBaseValue());
 			((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
 					.setBaseValue(((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getBaseValue());
@@ -86,64 +91,84 @@ public class SpawnCloneDefensiveProcedure {
 					_living.setItemSlot(EquipmentSlot.HEAD, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY));
 				}
 			}
-			CompoundTag dataIndex43 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex43);
-			dataIndex43.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-				public double getValue() {
-					CompoundTag dataIndex42 = new CompoundTag();
-					entity.saveWithoutId(dataIndex42);
-					return dataIndex42.getCompound("ForgeData").getDouble("friend_num");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex43);
-			CompoundTag dataIndex46 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex46);
-			dataIndex46.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-				public double getValue() {
-					CompoundTag dataIndex45 = new CompoundTag();
-					entity.saveWithoutId(dataIndex45);
-					return dataIndex45.getCompound("ForgeData").getDouble("friend_num");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex46);
-			CompoundTag dataIndex48 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex48);
-			dataIndex48.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
-			(entitytospawn).load(dataIndex48);
-			CompoundTag dataIndex50 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex50);
-			dataIndex50.getCompound("ForgeData").putBoolean("Player", true);
-			(entitytospawn).load(dataIndex50);
-			CompoundTag dataIndex53 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex53);
-			dataIndex53.getCompound("ForgeData").putBoolean("JujutsuSorcerer", (new Object() {
-				public boolean getValue() {
-					CompoundTag dataIndex52 = new CompoundTag();
-					entity.saveWithoutId(dataIndex52);
-					return dataIndex52.getCompound("ForgeData").getBoolean("JujutsuSorcerer");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex53);
-			CompoundTag dataIndex56 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex56);
-			dataIndex56.getCompound("ForgeData").putBoolean("CursedSpirit", (new Object() {
-				public boolean getValue() {
-					CompoundTag dataIndex55 = new CompoundTag();
-					entity.saveWithoutId(dataIndex55);
-					return dataIndex55.getCompound("ForgeData").getBoolean("CursedSpirit");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex56);
-			CompoundTag dataIndex59 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex59);
-			dataIndex59.getCompound("ForgeData").putBoolean("CurseUser", (new Object() {
-				public boolean getValue() {
-					CompoundTag dataIndex58 = new CompoundTag();
-					entity.saveWithoutId(dataIndex58);
-					return dataIndex58.getCompound("ForgeData").getBoolean("CurseUser");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex59);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("Tagged", (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2);
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putBoolean("Player", true);
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putBoolean("JujutsuSorcerer", (new Object() {
+					public boolean getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("JujutsuSorcerer");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putBoolean("CursedSpirit", (new Object() {
+					public boolean getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("CursedSpirit");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putBoolean("CurseUser", (new Object() {
+					public boolean getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getBoolean("CurseUser");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
 		}
 	}
 }

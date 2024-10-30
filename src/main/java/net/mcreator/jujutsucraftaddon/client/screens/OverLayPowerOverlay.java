@@ -34,7 +34,7 @@ public class OverLayPowerOverlay {
 			y = entity.getY();
 			z = entity.getZ();
 		}
-		if (OverLayPowerDisplayOverlayIngameProcedure.execute(entity)) {
+		if (OverLayPowerDisplayOverlayIngameProcedure.execute(world, entity)) {
 			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
 					ReturnOPProcedure.execute(entity), w / 2 + -45, h / 2 + -104, -256, false);

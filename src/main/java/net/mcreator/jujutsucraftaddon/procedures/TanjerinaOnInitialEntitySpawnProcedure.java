@@ -15,11 +15,11 @@ public class TanjerinaOnInitialEntitySpawnProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1000000, 3, false, false));
+			_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, -1, 3, false, false));
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1000000, 1, false, false));
+			_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, -1, 1, false, false));
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1000000, 31, false, false));
+			_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 31, false, false));
 		if (entity instanceof LivingEntity _entity) {
 			ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.SWORD_JIN_WOO.get()).copy();
 			_setstack.setCount(1);

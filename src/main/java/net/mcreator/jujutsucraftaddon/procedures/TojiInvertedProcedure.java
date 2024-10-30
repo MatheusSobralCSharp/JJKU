@@ -1,10 +1,7 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.network.NetworkDirection;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
@@ -22,7 +19,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.Connection;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.BlockPos;
@@ -31,11 +29,12 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
-import javax.annotation.Nullable;
-
 import java.util.List;
+import java.util.Iterator;
 import java.util.Comparator;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
@@ -44,45 +43,41 @@ import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.IAnimation;
 
-@Mod.EventBusSubscriber
 public class TojiInvertedProcedure {
-	@SubscribeEvent
-	public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-		if (event.getHand() != event.getEntity().getUsedItemHand())
-			return;
-		execute(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), event.getEntity());
-	}
-
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		execute(null, world, x, y, z, entity);
-	}
-
-	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
 		double particleRadius = 0;
 		double particleAmount = 0;
 		if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mode).equals("Speed Mode")) {
 			if (entity.isShiftKeyDown()) {
-				if (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex1 = new CompoundTag();
-						entity.saveWithoutId(dataIndex1);
-						return dataIndex1.getCompound("ForgeData").getDouble("NBT_CursePowerAmount");
-					}
-				}.getValue() == 0) {
+				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower == 0) {
 					if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:inverted_spear_of_heaven")) {
 						{
 							final Vec3 _center = new Vec3(x, y, z);
 							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(6 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 							for (Entity entityiterator : _entfound) {
 								if (entityiterator instanceof LivingEntity) {
-									if (!((ForgeRegistries.ITEMS.getKey((entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:inverted_spear_of_heaven"))) {
+									if (!(entityiterator == entity)) {
 										if (world.isClientSide()) {
 											if (entity instanceof AbstractClientPlayer player) {
 												var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 												if (animation != null && !animation.isActive()) {
 													animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "tojispear"))));
+												}
+											}
+										}
+										if (!world.isClientSide()) {
+											if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+												List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+												synchronized (connections) {
+													Iterator<Connection> iterator = connections.iterator();
+													while (iterator.hasNext()) {
+														Connection connection = iterator.next();
+														if (!connection.isConnecting() && connection.isConnected())
+															JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("tojispear"), entity.getId(), false), connection,
+																	NetworkDirection.PLAY_TO_CLIENT);
+													}
 												}
 											}
 										}
@@ -99,7 +94,7 @@ public class TojiInvertedProcedure {
 										if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 											_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 260, 254, false, false));
 										entityiterator.hurt(
-												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 1);
+												new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))), 40);
 										if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 											_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.ANIMATION_ONE.get(), 260, 254, false, false));
 										if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -128,13 +123,7 @@ public class TojiInvertedProcedure {
 					}
 				}
 			} else if (!entity.isShiftKeyDown()) {
-				if (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex27 = new CompoundTag();
-						entity.saveWithoutId(dataIndex27);
-						return dataIndex27.getCompound("ForgeData").getDouble("NBT_CursePowerAmount");
-					}
-				}.getValue() == 0) {
+				if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower == 0) {
 					if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:inverted_spear_of_heaven")) {
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.TOJI_EFFECT.get(), 80, 1, false, false));
@@ -146,6 +135,20 @@ public class TojiInvertedProcedure {
 								}
 							}
 						}
+						if (!world.isClientSide()) {
+							if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+								List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+								synchronized (connections) {
+									Iterator<Connection> iterator = connections.iterator();
+									while (iterator.hasNext()) {
+										Connection connection = iterator.next();
+										if (!connection.isConnecting() && connection.isConnected())
+											JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("tojidomainbreaker"), entity.getId(), false), connection,
+													NetworkDirection.PLAY_TO_CLIENT);
+									}
+								}
+							}
+						}
 						{
 							final Vec3 _center = new Vec3(x, y, z);
 							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
@@ -154,7 +157,7 @@ public class TojiInvertedProcedure {
 									if (entityiterator instanceof LivingEntity _entity)
 										_entity.removeAllEffects();
 									entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:damage_curse")))),
-											1);
+											40);
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2));
 									if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())

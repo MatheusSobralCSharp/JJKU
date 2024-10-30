@@ -54,20 +54,22 @@ import net.minecraft.commands.CommandSource;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
+import java.util.Objects;
+
 public class BlackFlashedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        if (((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get())) == false) {
+        if (!((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()))) {
             if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                 _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 6000, 0, false, false));
         } else if ((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get())) {
-            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK) == true) {
-                if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? ((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get()).getAmplifier() : 0) <= (world.getLevelData()
+            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK)) {
+                if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) <= (world.getLevelData()
                         .getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK_CAP))) {
                     if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                         _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 6000,
-                                (int) ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? ((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get()).getAmplifier() : 0) + 1),
+                                (int) ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) + 1),
                                 false, false));
                 }
             }
@@ -100,7 +102,7 @@ public class BlackFlashedProcedure {
                 	});
             	}
         	} else {
-				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel < 4) {
+				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel < 5) {
 					{
                 		double _setval = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel + 1;
                 		entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -111,8 +113,8 @@ public class BlackFlashedProcedure {
 
                 }
             }
-        } else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel >= 6) {
-            if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Warrior") == true) {
+        } else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).OutputLevel >= 5) {
+            if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Warrior")) {
                 if (!(entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(JujutsucraftaddonModMobEffects.ONE_HUNDRED_AND_TWENTY.get()))) {
                     if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                         _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.ONE_HUNDRED_AND_TWENTY.get(), 1200, 1, false, false));
@@ -132,7 +134,7 @@ public class BlackFlashedProcedure {
                         }
                     }
                 }
-            } else if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Warrior") == false) {
+            } else if (!((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Warrior")) {
                 {
                     double _setval = 1;
                     entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -144,11 +146,11 @@ public class BlackFlashedProcedure {
 
         }
         if (entity instanceof ServerPlayer _plr16 && _plr16.level() instanceof ServerLevel
-                && _plr16.getAdvancements().getOrStartProgress(_plr16.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"))).isDone()) {
+                && _plr16.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr16.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash")))).isDone()) {
             ItadoriClan2Procedure.execute(world, entity);
         }
         if (!(entity instanceof ServerPlayer _plr17 && _plr17.level() instanceof ServerLevel
-                && _plr17.getAdvancements().getOrStartProgress(_plr17.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"))).isDone())) {
+                && _plr17.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr17.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash")))).isDone())) {
             if (Math.random() < 0.005) {
                 {
                     Entity _ent = entity;
@@ -161,13 +163,13 @@ public class BlackFlashedProcedure {
                 }
             }
         } else if (entity instanceof ServerPlayer _plr19 && _plr19.level() instanceof ServerLevel
-                && _plr19.getAdvancements().getOrStartProgress(_plr19.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash"))).isDone()) {
+                && _plr19.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr19.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:mastery_black_flash")))).isDone()) {
             {
                 Entity _ent = entity;
                 if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                     _ent.getServer().getCommands().performPrefixedCommand(
                             new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
-                                    _ent.level().getServer(), _ent),
+                                    Objects.requireNonNull(_ent.level().getServer()), _ent),
                             "execute if entity @s[advancements={jujutsucraft:black_flash=true}] as @s[advancements={jujutsucraft:black_flash=true}] run advancement grant @s only jujutsucraftaddon:rampage");
                 }
             }
@@ -175,31 +177,31 @@ public class BlackFlashedProcedure {
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 15) {
             if (world instanceof Level _level) {
                 if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusenmahito")), SoundSource.NEUTRAL, 1, 1);
+                    _level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusenmahito"))), SoundSource.NEUTRAL, 1, 1);
                 } else {
-                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusenmahito")), SoundSource.NEUTRAL, 1, 1, false);
+                    _level.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusenmahito"))), SoundSource.NEUTRAL, 1, 1, false);
                 }
             }
         } else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 21) {
             if (world instanceof Level _level) {
                 if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusen")), SoundSource.NEUTRAL, 1, 1);
+                    _level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusen"))), SoundSource.NEUTRAL, 1, 1);
                 } else {
-                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusen")), SoundSource.NEUTRAL, 1, 1, false);
+                    _level.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusen"))), SoundSource.NEUTRAL, 1, 1, false);
                 }
             }
         } else if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 20) {
             if (world instanceof Level _level) {
                 if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusentodo")), SoundSource.NEUTRAL, 1, 1);
+                    _level.playSound(null, BlockPos.containing(x, y, z), Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusentodo"))), SoundSource.NEUTRAL, 1, 1);
                 } else {
-                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusentodo")), SoundSource.NEUTRAL, 1, 1, false);
+                    _level.playLocalSound(x, y, z, Objects.requireNonNull(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:kokusentodo"))), SoundSource.NEUTRAL, 1, 1, false);
                 }
             }
         }
         if (entity instanceof ServerPlayer _plr27 && _plr27.level() instanceof ServerLevel
-                && _plr27.getAdvancements().getOrStartProgress(_plr27.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:rampage"))).isDone()) {
-            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE) == false) {
+                && _plr27.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr27.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:rampage")))).isDone()) {
+            if (!world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE)) {
                 if (!(entity instanceof LivingEntity _livEnt29 && _livEnt29.hasEffect(JujutsucraftaddonModMobEffects.KOKUSEN_EFFECT_TWO.get()))) {
                     if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                         _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.KOKUSEN_EFFECT_TWO.get(), 300, 1, false, false));
@@ -245,7 +247,7 @@ public class BlackFlashedProcedure {
                         _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_5.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5),
                                 (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 1, 2) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5), 5, 0, 0, 0, 1);
                 }
-            } else if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE) == true) {
+            } else if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE)) {
                 world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_1.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5),
                         (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 0.3, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), 1, 1) * 5), 0, 0, 0);
                 if (world instanceof ServerLevel _level)

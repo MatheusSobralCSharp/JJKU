@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "tool",
   "definition": {
     "toolType": "Sword",
@@ -14,21 +14,23 @@
         "[Ability] I AM THE STORM THAT IS APPROACHING"
       ]
     },
-    "creativeTab": {
-      "value": "CUSTOM:Weapons"
-    },
-    "harvestLevel": 1,
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Weapons"
+      }
+    ],
     "efficiency": 4.0,
     "attackSpeed": 0.1,
     "enchantability": 2,
     "damageVsEntity": 20.0,
     "usageCount": 0,
-    "blocksAffected": [],
     "glowCondition": {
       "fixedValue": false
     },
     "repairItems": [],
     "immuneToFire": false,
+    "blockDropsTier": "STONE",
+    "blocksAffected": [],
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {

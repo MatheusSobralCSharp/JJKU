@@ -75,6 +75,10 @@ public class BulletProjectileEntity extends AbstractArrow implements ItemSupplie
 		return shoot(world, entity, source, 100f, 2, 1);
 	}
 
+	public static BulletProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
+		return shoot(world, entity, source, pullingPower * 100f, 2, 1);
+	}
+
 	public static BulletProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
 		BulletProjectileEntity entityarrow = new BulletProjectileEntity(JujutsucraftaddonModEntities.BULLET_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);

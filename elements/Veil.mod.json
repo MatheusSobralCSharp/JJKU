@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "livingentity",
   "definition": {
     "mobName": "Veil",
@@ -21,7 +21,26 @@
     "boundingBoxScale": {
       "fixedValue": 1.0
     },
-    "modelLayers": [],
+    "modelLayers": [
+      {
+        "model": "Default",
+        "texture": "21.png",
+        "disableHurtOverlay": false,
+        "glow": false,
+        "condition": {
+          "name": "VeilDisplayCondition"
+        }
+      },
+      {
+        "model": "Default",
+        "texture": "22.png",
+        "disableHurtOverlay": false,
+        "glow": false,
+        "condition": {
+          "name": "VeilDisplayCondition"
+        }
+      }
+    ],
     "modelWidth": 0.6,
     "modelHeight": 1.8,
     "modelShadowSize": 0.5,
@@ -35,9 +54,7 @@
       "value": -1,
       "falpha": 0.0
     },
-    "creativeTab": {
-      "value": "No creative tab entry"
-    },
+    "creativeTabs": [],
     "isBoss": false,
     "bossBarColor": "PINK",
     "bossBarType": "PROGRESS",
@@ -114,7 +131,20 @@
     "stepSound": {
       "value": ""
     },
-    "entityDataEntries": [],
+    "entityDataEntries": [
+      {
+        "name": "flag",
+        "type": "logic",
+        "value": false
+      },
+      {
+        "min": -2147483648,
+        "max": 2147483647,
+        "name": "FlagColor",
+        "type": "integer",
+        "value": 0
+      }
+    ],
     "whenMobDies": {
       "name": "VeilEntityDies"
     },
@@ -144,6 +174,15 @@
     "minNumberOfMobsPerGroup": 4,
     "maxNumberOfMobsPerGroup": 4,
     "restrictionBiomes": [],
-    "spawnInDungeons": false
+    "spawnInDungeons": false,
+    "raidSpawnsCount": [
+      4,
+      3,
+      3,
+      4,
+      4,
+      4,
+      2
+    ]
   }
 }

@@ -1,6 +1,6 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
@@ -9,34 +9,34 @@ import net.minecraft.nbt.CompoundTag;
 import net.mcreator.jujutsucraftaddon.world.inventory.RaceChangeMenu;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 public class RaceChangerVesselProcedure {
-	public static void execute(Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CompoundTag dataIndex0 = new CompoundTag();
-		entity.saveWithoutId(dataIndex0);
-		dataIndex0.getCompound("ForgeData").putBoolean("JujutsuSorcerer", false);
-		entity.load(dataIndex0);
-		CompoundTag dataIndex1 = new CompoundTag();
-		entity.saveWithoutId(dataIndex1);
-		dataIndex1.getCompound("ForgeData").putBoolean("CurseUser", true);
-		entity.load(dataIndex1);
-		CompoundTag dataIndex2 = new CompoundTag();
-		entity.saveWithoutId(dataIndex2);
-		dataIndex2.getCompound("ForgeData").putBoolean("CursedSpirit", false);
-		entity.load(dataIndex2);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putBoolean("JujutsuSorcerer", false);
+			entity.load(dataIndex);
+		}
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putBoolean("CurseUser", true);
+			entity.load(dataIndex);
+		}
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putBoolean("CursedSpirit", false);
+			entity.load(dataIndex);
+		}
 		{
 			boolean _setval = true;
 			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.IsVessel = _setval;
-				capability.syncPlayerVariables(entity);
-			});
-		}
-		{
-			double _setval = 1.0;
-			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.PlayerProfession = _setval;
 				capability.syncPlayerVariables(entity);
 			});
 		}
@@ -54,11 +54,18 @@ public class RaceChangerVesselProcedure {
 				capability.syncPlayerVariables(entity);
 			});
 		}
+		{
+			double _setval = 1;
+			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+				capability.PlayerProfession = _setval;
+				capability.syncPlayerVariables(entity);
+			});
+		}
 		if (entity instanceof Player _player) {
 			ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get());
 			_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 		}
-		if (entity instanceof Player _plr4 && _plr4.containerMenu instanceof RaceChangeMenu) {
+		if (entity instanceof Player _plr5 && _plr5.containerMenu instanceof RaceChangeMenu) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 		}

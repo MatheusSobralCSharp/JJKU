@@ -27,21 +27,21 @@ public class ProcedureGetoProcedure {
 				if (!(entityiterator == entity)) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex1 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex1);
-							return dataIndex1.getCompound("ForgeData").getDouble("CursedSpirit");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("CursedSpirit");
 						}
 					}.getValue() == 1 && (new Object() {
 						public String getValue() {
-							CompoundTag dataIndex2 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex2);
-							return dataIndex2.getCompound("ForgeData").getString("OWNER_UUID");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 						}
 					}.getValue()).equals(entity.getStringUUID()) && (new Object() {
 						public boolean getValue() {
-							CompoundTag dataIndex4 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex4);
-							return dataIndex4.getCompound("ForgeData").getBoolean("Buffed");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getBoolean("Buffed");
 						}
 					}.getValue()) == false) {
 						((LivingEntity) entity).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size")))
@@ -57,10 +57,12 @@ public class ProcedureGetoProcedure {
 						}
 						if (entityiterator instanceof LivingEntity _entity)
 							_entity.setHealth(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-						CompoundTag dataIndex12 = new CompoundTag();
-						entityiterator.saveWithoutId(dataIndex12);
-						dataIndex12.getCompound("ForgeData").putBoolean("Buffed", true);
-						entityiterator.load(dataIndex12);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putBoolean("Buffed", true);
+							entityiterator.load(dataIndex);
+						}
 					}
 				}
 			}

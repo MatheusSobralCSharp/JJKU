@@ -1,18 +1,27 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.minecraftforge.network.NetworkDirection;
+
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.Connection;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.client.player.AbstractClientPlayer;
 
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
+
+import java.util.List;
+import java.util.Iterator;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
@@ -45,6 +54,19 @@ public class MurasakiEffectOnEffectActiveTickProcedure {
 					}
 				}
 			}
+			if (!world.isClientSide()) {
+				if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+					List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+					synchronized (connections) {
+						Iterator<Connection> iterator = connections.iterator();
+						while (iterator.hasNext()) {
+							Connection connection = iterator.next();
+							if (!connection.isConnecting() && connection.isConnected())
+								JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("soka"), entity.getId(), false), connection, NetworkDirection.PLAY_TO_CLIENT);
+						}
+					}
+				}
+			}
 		}
 		if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).sokamona >= 400
 				&& (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).sokamona < 700) {
@@ -62,6 +84,19 @@ public class MurasakiEffectOnEffectActiveTickProcedure {
 					var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
 					if (animation != null) {
 						animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "idle"))));
+					}
+				}
+			}
+			if (!world.isClientSide()) {
+				if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
+					List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
+					synchronized (connections) {
+						Iterator<Connection> iterator = connections.iterator();
+						while (iterator.hasNext()) {
+							Connection connection = iterator.next();
+							if (!connection.isConnecting() && connection.isConnected())
+								JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("idle"), entity.getId(), true), connection, NetworkDirection.PLAY_TO_CLIENT);
+						}
 					}
 				}
 			}
@@ -94,9 +129,9 @@ public class MurasakiEffectOnEffectActiveTickProcedure {
 				&& (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Murasaki < 800) {
 			if ((new Object() {
 				public boolean getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					entity.saveWithoutId(dataIndex4);
-					return dataIndex4.getCompound("ForgeData").getBoolean("PRESS_Z");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getBoolean("PRESS_Z");
 				}
 			}.getValue()) == false) {
 				{

@@ -23,7 +23,7 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 public class JjkuBaseCeCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurBaseCe").requires(s -> s.hasPermission(4)).then(Commands.argument("CE", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurBaseCe").requires(s -> s.hasPermission(2)).then(Commands.argument("CE", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

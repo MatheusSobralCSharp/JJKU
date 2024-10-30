@@ -24,26 +24,30 @@ public class SwordOkkotsu3Procedure {
 		}
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				return dataIndex2.getCompound("ForgeData").getDouble("skill");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("skill");
 			}
 		}.getValue() >= 2) {
 			itemstack.getOrCreateTag().putDouble("Copied", (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex3 = new CompoundTag();
-					entity.saveWithoutId(dataIndex3);
-					return dataIndex3.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue()));
-			CompoundTag dataIndex8 = new CompoundTag();
-			sourceentity.saveWithoutId(dataIndex8);
-			dataIndex8.getCompound("ForgeData").putDouble("skill", (itemstack.getOrCreateTag().getDouble("Copied")));
-			sourceentity.load(dataIndex8);
-			CompoundTag dataIndex9 = new CompoundTag();
-			sourceentity.saveWithoutId(dataIndex9);
-			dataIndex9.getCompound("ForgeData").putDouble("PRESS_Z", 1);
-			sourceentity.load(dataIndex9);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				sourceentity.saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("skill", (itemstack.getOrCreateTag().getDouble("Copied")));
+				sourceentity.load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				sourceentity.saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("PRESS_Z", 1);
+				sourceentity.load(dataIndex);
+			}
 			{
 				Entity _ent = sourceentity;
 				if (!_ent.level().isClientSide() && _ent.getServer() != null) {

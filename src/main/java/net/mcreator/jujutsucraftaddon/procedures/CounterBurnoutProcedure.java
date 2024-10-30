@@ -1,20 +1,21 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+
+import java.util.Objects;
 
 public class CounterBurnoutProcedure {
 	public static void execute(Entity entity) {
@@ -22,11 +23,11 @@ public class CounterBurnoutProcedure {
 			return;
 		if (entity instanceof LivingEntity) {
 			if (entity instanceof ServerPlayer _plr1 && _plr1.level() instanceof ServerLevel
-					&& _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:reverse_cursed_burnout"))).isDone()) {
+					&& _plr1.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:reverse_cursed_burnout")))).isDone()) {
 				double repeats = 0.0;
 				String endtext = "";
 				if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BrainDamage != 5) {
-					if (entity.getPersistentData().getBoolean("PRESS_BURNOUT") == true) {
+					if (entity.getPersistentData().getBoolean("PRESS_BURNOUT")) {
 						LivingEntity _livEnt9;
 						Player _player;
 						if (entity.getPersistentData().getDouble("cnt_v") < 20.0) {
@@ -138,7 +139,7 @@ public class CounterBurnoutProcedure {
 												_ent.getServer().getCommands()
 														.performPrefixedCommand(
 																new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-																		_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+																		_ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent),
 																"execute as @s at @s run particle jujutsucraft:particle_curse_power_red ~ ~1.8 ~ 0 0 0 0.1 10 normal");
 											}
 										} else if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.JACKPOT.get())) {
@@ -146,7 +147,7 @@ public class CounterBurnoutProcedure {
 												_ent.getServer().getCommands()
 														.performPrefixedCommand(
 																new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-																		_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+																		_ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent),
 																"execute as @s at @s run particle jujutsucraft:particle_curse_power_green ~ ~1.8 ~ 0 0 0 0.1 10 normal");
 											}
 										} else {
@@ -154,7 +155,7 @@ public class CounterBurnoutProcedure {
 												_ent.getServer().getCommands()
 														.performPrefixedCommand(
 																new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-																		_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+																		_ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent),
 																"execute as @s at @s run particle jujutsucraft:particle_curse_power_blue ~ ~1.8 ~ 0 0 0 0.1 10 normal");
 											}
 										}

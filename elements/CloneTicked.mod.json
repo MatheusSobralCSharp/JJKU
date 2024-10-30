@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Clone Ticked",
@@ -9,9 +9,8 @@
       "falpha": 0.0
     },
     "isInstant": false,
-    "isBad": false,
-    "isBenefitical": true,
-    "renderStatusInInventory": true,
-    "renderStatusInHUD": true
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": false,
+    "renderStatusInHUD": false
   }
 }

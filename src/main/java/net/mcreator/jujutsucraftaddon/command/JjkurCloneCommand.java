@@ -20,7 +20,7 @@ import net.mcreator.jujutsucraftaddon.procedures.SpawnCloneProcedure;
 public class JjkurCloneCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurClone").requires(s -> s.hasPermission(4)).executes(arguments -> {
+		event.getDispatcher().register(Commands.literal("jjkurClone").requires(s -> s.hasPermission(2)).executes(arguments -> {
 			Level world = arguments.getSource().getUnsidedLevel();
 			double x = arguments.getSource().getPosition().x();
 			double y = arguments.getSource().getPosition().y();

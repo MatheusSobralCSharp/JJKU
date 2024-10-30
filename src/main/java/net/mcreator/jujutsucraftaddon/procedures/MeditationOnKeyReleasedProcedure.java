@@ -13,6 +13,8 @@ public class MeditationOnKeyReleasedProcedure {
 			return;
 		if (entity instanceof LivingEntity _entity)
 			_entity.removeEffect(MobEffects.BLINDNESS);
+		if (entity instanceof LivingEntity _entity)
+			_entity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "particle",
   "definition": {
     "texture": "fistosfinal4.png",
@@ -7,7 +7,9 @@
     "frameDuration": 2,
     "width": 0.2,
     "height": 0.2,
-    "scale": 3.0,
+    "scale": {
+      "fixedValue": 3.0
+    },
     "speedFactor": 0.0,
     "gravity": 0.0,
     "maxAge": 20,

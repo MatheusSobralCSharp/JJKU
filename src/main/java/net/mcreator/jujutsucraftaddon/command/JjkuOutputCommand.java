@@ -24,7 +24,7 @@ public class JjkuOutputCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher()
-				.register(Commands.literal("jjkurOutput").requires(s -> s.hasPermission(4)).then(Commands.argument("Output", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
+				.register(Commands.literal("jjkurOutput").requires(s -> s.hasPermission(2)).then(Commands.argument("Output", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

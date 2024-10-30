@@ -4,7 +4,6 @@ import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.KeyReverseCursedTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.procedures.RCTLevelProcedure;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.Direction;
@@ -16,14 +15,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-
-import java.util.Objects;
 
 @Mixin(value = KeyReverseCursedTechniqueOnKeyPressedProcedure.class, remap = false)
 public abstract class ReverseKeyMixin {
@@ -168,48 +164,66 @@ public abstract class ReverseKeyMixin {
                             _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.GUARD.get());
                         }
 
-
-                        JujutsucraftaddonModVariables.PlayerVariables playerVariables = entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY).orElse(new JujutsucraftaddonModVariables.PlayerVariables());
-                        int RCTCount = (int) playerVariables.RCTCount;
-                        int RCTLimitLevel = (int) playerVariables.RCTLimitLevel;
-                        double level2;
                         entity.getPersistentData().putBoolean("PRESS_M", true);
-
-                        if (entity.getPersistentData().getBoolean("CursedSpirit") == true && entity.getPersistentData().getBoolean("CurseUser") == false) {
-                            if (entity instanceof LivingEntity) {
-                                _entity = (LivingEntity)entity;
-                                if (!_entity.level().isClientSide()) {
-                                    _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 2, 1000, true, true));
+                        if (entity.getPersistentData().getBoolean("CursedSpirit") || (entity.getPersistentData().getDouble("CursedSpirit") == 1)) {
+                            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).rctspirit) {
+                                if (entity instanceof LivingEntity) {
+                                    _entity = (LivingEntity) entity;
+                                    if (!_entity.level().isClientSide()) {
+                                        _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, (int) (Math.round(level) * -1L), true, true));
+                                    }
                                 }
                             }
                         } else {
-                            _ent = entity;
-                            if (RCTCount / 50000 < RCTLimitLevel && RCTLimitLevel > 0.0 && entity instanceof ServerPlayer _plr1
-                                    && _plr1.level() instanceof ServerLevel && _plr1.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus")))).isDone()) {
-                                level2 = Math.round(level) * ((double) RCTCount / 50000);
-                            } else if (RCTCount / 50000 > RCTLimitLevel && RCTLimitLevel > 0.0 && entity instanceof ServerPlayer _plr1
-                                    && _plr1.level() instanceof ServerLevel && _plr1.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus")))).isDone()) {
-                                level2 = Math.round(level) + RCTLimitLevel;
-                            } else {
-                                level2 = level;
-                            }
-
-                            if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent), "effect give @s jujutsucraft:reverse_cursed_technique infinite " + Math.round(level2) + " true");
-                                {
-                                    double _setval = level2;
-                                    entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                                        capability.levelrct = _setval;
-                                        capability.syncPlayerVariables(entity);
-                                    });
+                            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTLimitLevel > 0
+                                    && (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount > 0) {
+                                if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount > 5000) {
+                                    {
+                                        _ent = entity;
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(
+                                                    new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
+                                                            _ent.level().getServer(), _ent),
+                                                    ("effect give @s jujutsucraft:reverse_cursed_technique infinite "
+                                                            + Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount / 5000) + " true"));
+                                        }
+                                    }
+                                } else {
+                                    {
+                                        _ent = entity;
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+                                                    _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("effect give @s jujutsucraft:reverse_cursed_technique infinite " + 1 + " true"));
+                                        }
+                                    }
                                 }
-
-                                RCTLevelProcedure.execute(entity);
+                            } else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTLimitLevel > 0
+                                    && (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount / 5000 > (entity
+                                    .getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTLimitLevel) {
+                                {
+                                    _ent = entity;
+                                    if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                        _ent.getServer().getCommands().performPrefixedCommand(
+                                                new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
+                                                        _ent.level().getServer(), _ent),
+                                                ("effect give @s jujutsucraft:reverse_cursed_technique infinite "
+                                                        + Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTLimitLevel) + " true"));
+                                    }
+                                }
+                            } else if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTLimitLevel == 0) {
+                                {
+                                    _ent = entity;
+                                    if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                        _ent.getServer().getCommands().performPrefixedCommand(
+                                                new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
+                                                        _ent.level().getServer(), _ent),
+                                                ("effect give @s jujutsucraft:reverse_cursed_technique infinite "
+                                                        + Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTCount / 5000) + " true"));
+                                    }
+                                }
                             }
-
                         }
                     }
-
 
                     _ent = entity;
                     if (!_ent.level().isClientSide() && _ent.getServer() != null) {

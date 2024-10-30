@@ -15,9 +15,9 @@ public class ItadoriShinjukuEntityIsHurtProcedure {
 			if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null) {
 				if (!(new Object() {
 					public String getValue() {
-						CompoundTag dataIndex3 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex3);
-						return dataIndex3.getCompound("ForgeData").getString("OWNER_UUID");
+						CompoundTag dataIndex = new CompoundTag();
+						sourceentity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 					}
 				}.getValue()).equals(entity.getStringUUID())) {
 					if (entity instanceof Mob _entity && sourceentity instanceof LivingEntity _ent)

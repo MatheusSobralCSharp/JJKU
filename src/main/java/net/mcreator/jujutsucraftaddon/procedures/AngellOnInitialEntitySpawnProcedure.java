@@ -8,9 +8,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 import net.mcreator.jujutsucraft.init.JujutsucraftModItems;
-
 
 public class AngellOnInitialEntitySpawnProcedure {
 	public static void execute(Entity entity) {

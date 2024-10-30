@@ -96,5 +96,7 @@ public class JujutsucraftaddonModEntityRenderers {
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.FAKE_CLONES.get(), FakeClonesRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.CLONE.get(), CloneRenderer::new);
 		event.registerEntityRenderer(JujutsucraftaddonModEntities.SUKUNA_R.get(), SukunaRRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.DISMANTLE.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(JujutsucraftaddonModEntities.DISMANTLE_VARIANT.get(), ThrownItemRenderer::new);
 	}
 }

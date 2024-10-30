@@ -58,9 +58,9 @@ public class MovingRedProcedure {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:red")) {
 								if ((new Object() {
 									public String getValue() {
-										CompoundTag dataIndex17 = new CompoundTag();
-										entityiterator.saveWithoutId(dataIndex17);
-										return dataIndex17.getCompound("ForgeData").getString("OWNER_UUID");
+										CompoundTag dataIndex = new CompoundTag();
+										entityiterator.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 									}
 								}.getValue()).equals(entity.getStringUUID())) {
 									{
@@ -101,9 +101,9 @@ public class MovingRedProcedure {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:blue")) {
 								if ((new Object() {
 									public String getValue() {
-										CompoundTag dataIndex35 = new CompoundTag();
-										entityiterator.saveWithoutId(dataIndex35);
-										return dataIndex35.getCompound("ForgeData").getString("OWNER_UUID");
+										CompoundTag dataIndex = new CompoundTag();
+										entityiterator.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 									}
 								}.getValue()).equals(entity.getStringUUID())) {
 									{

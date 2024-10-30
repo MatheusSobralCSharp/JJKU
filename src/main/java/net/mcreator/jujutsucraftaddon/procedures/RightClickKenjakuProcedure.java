@@ -28,14 +28,14 @@ public class RightClickKenjakuProcedure {
 	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
 		if (event.getHand() != event.getEntity().getUsedItemHand())
 			return;
-		execute(event, event.getLevel(), event.getTarget(), event.getEntity());
+		execute(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), event.getTarget(), event.getEntity());
 	}
 
-	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
-		execute(null, world, entity, sourceentity);
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
+		execute(null, world, x, y, z, entity, sourceentity);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, Entity sourceentity) {
+	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
 		if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).IsVessel == true) {
@@ -83,40 +83,48 @@ public class RightClickKenjakuProcedure {
 				if ((ForgeRegistries.ITEMS.getKey((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:sukuna_finger")) {
 					if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_CAN_TAME_SUKUNA) == true) {
 						if (Math.random() <= 0.1) {
-							CompoundTag dataIndex11 = new CompoundTag();
-							entity.saveWithoutId(dataIndex11);
-							dataIndex11.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex10 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex10);
-									return dataIndex10.getCompound("ForgeData").getDouble("friend_num");
-								}
-							}.getValue()));
-							entity.load(dataIndex11);
-							CompoundTag dataIndex13 = new CompoundTag();
-							entity.saveWithoutId(dataIndex13);
-							dataIndex13.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex12 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex12);
-									return dataIndex12.getCompound("ForgeData").getDouble("friend_num");
-								}
-							}.getValue()));
-							entity.load(dataIndex13);
-							CompoundTag dataIndex15 = new CompoundTag();
-							entity.saveWithoutId(dataIndex15);
-							dataIndex15.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-								public double getValue() {
-									CompoundTag dataIndex14 = new CompoundTag();
-									sourceentity.saveWithoutId(dataIndex14);
-									return dataIndex14.getCompound("ForgeData").getDouble("friend_num");
-								}
-							}.getValue()));
-							entity.load(dataIndex15);
-							CompoundTag dataIndex17 = new CompoundTag();
-							entity.saveWithoutId(dataIndex17);
-							dataIndex17.getCompound("ForgeData").putString("OWNER_UUID", (sourceentity.getStringUUID()));
-							entity.load(dataIndex17);
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										sourceentity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+									}
+								}.getValue()));
+								entity.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										sourceentity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+									}
+								}.getValue()));
+								entity.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+									public double getValue() {
+										CompoundTag dataIndex = new CompoundTag();
+										sourceentity.saveWithoutId(dataIndex);
+										return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+									}
+								}.getValue()));
+								entity.load(dataIndex);
+							}
+							{
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								dataIndex.getCompound("ForgeData").putString("OWNER_UUID", (sourceentity.getStringUUID()));
+								entity.load(dataIndex);
+							}
 							if (sourceentity instanceof Player _player && !_player.level().isClientSide())
 								_player.displayClientMessage(Component.literal(("\"I will join your side and kill everyone that you wan't, " + "" + sourceentity.getDisplayName().getString())), false);
 						}
@@ -131,5 +139,8 @@ public class RightClickKenjakuProcedure {
 				}
 			}
 		}
+		RightClickBuffProcedure.execute(world, x, y, z, entity, sourceentity);
+		YutaRingLivingEntityIsHitWithItemProcedure.execute(world, entity, sourceentity);
+		YagaDollNew2Procedure.execute(world, x, y, z, entity, sourceentity);
 	}
 }

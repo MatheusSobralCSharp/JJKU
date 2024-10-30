@@ -1,15 +1,17 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraft.procedures.PlayerSetProfessionProcedure;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.spongepowered.asm.mixin.Overwrite;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+
+import java.util.Objects;
 
 @Mixin(value = PlayerSetProfessionProcedure.class, remap = false)
 public abstract class WhenPlayerRespawnMixin {
@@ -43,7 +45,7 @@ public abstract class WhenPlayerRespawnMixin {
                  entity.getPersistentData().putBoolean("NonSorcerer", false);
              }
 
-             ((LivingEntity)entity).getAttribute((Attribute) ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:profession"))).setBaseValue(((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique);
+             Objects.requireNonNull(((LivingEntity) entity).getAttribute((Attribute) ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:profession")))).setBaseValue(((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique);
          }
      }
 

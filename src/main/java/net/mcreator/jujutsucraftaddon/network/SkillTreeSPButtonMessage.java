@@ -17,7 +17,9 @@ import net.mcreator.jujutsucraftaddon.procedures.UnlockExtensionProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.StartTrainProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SpeedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SpawnYujiAndYutaProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.OstProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.HealthProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.FramesProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.DashTogglProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.CEProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
@@ -103,11 +105,19 @@ public class SkillTreeSPButtonMessage {
 		}
 		if (buttonID == 5) {
 
-			UnlockExtensionProcedure.execute(world, x, y, z, entity);
+			DashTogglProcedure.execute(entity);
 		}
 		if (buttonID == 6) {
 
-			DashTogglProcedure.execute(entity);
+			FramesProcedure.execute(entity);
+		}
+		if (buttonID == 7) {
+
+			OstProcedure.execute(entity);
+		}
+		if (buttonID == 8) {
+
+			UnlockExtensionProcedure.execute(world, x, y, z, entity);
 		}
 	}
 

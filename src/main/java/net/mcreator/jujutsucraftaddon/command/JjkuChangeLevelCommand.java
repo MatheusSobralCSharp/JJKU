@@ -24,7 +24,7 @@ public class JjkuChangeLevelCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(
-				Commands.literal("jjkurChangePlayerLevel").requires(s -> s.hasPermission(4)).then(Commands.argument("LevelYouWant", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+				Commands.literal("jjkurChangePlayerLevel").requires(s -> s.hasPermission(2)).then(Commands.argument("LevelYouWant", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
@@ -36,7 +36,7 @@ public class JjkuChangeLevelCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					ChangeLevelProcedure.execute(arguments);
+					ChangeLevelProcedure.execute(world, arguments);
 					return 0;
 				}))));
 	}

@@ -50,9 +50,9 @@ public class VeilBlockEntityCollidesInTheBlockProcedure {
 					if (entityiterator instanceof VeilEntity) {
 						if ((new Object() {
 							public String getValue() {
-								CompoundTag dataIndex4 = new CompoundTag();
-								entity.saveWithoutId(dataIndex4);
-								return dataIndex4.getCompound("ForgeData").getString("VeilUUID");
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getString("VeilUUID");
 							}
 						}.getValue()).equals(entityiterator.getStringUUID())) {
 							{

@@ -1,6 +1,6 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraft.procedures.AIBlueProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SetCustomizedProcedure;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;

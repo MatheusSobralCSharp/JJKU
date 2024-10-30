@@ -3,7 +3,10 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.entity.MeteorEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
-import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraft.procedures.BlockDestroyAllDirectionProcedure;
+import net.mcreator.jujutsucraft.procedures.MaximumMeteorProcedure;
+import net.mcreator.jujutsucraft.procedures.PlayAnimationProcedure;
+import net.mcreator.jujutsucraft.procedures.SetRangedAmmoProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -20,7 +23,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +35,6 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-
 import org.spongepowered.asm.mixin.Overwrite;
 
 import java.util.Comparator;

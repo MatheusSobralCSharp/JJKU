@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "animatedarmor",
   "definition": {
     "enableHelmet": false,
@@ -19,6 +19,7 @@
     "creativeTab": {
       "value": "CUSTOM:Armors"
     },
+    "creativeTabs": [],
     "armorTextureFile": "sungjin.png",
     "model": "decisive2.geo.json",
     "idle": "idle",

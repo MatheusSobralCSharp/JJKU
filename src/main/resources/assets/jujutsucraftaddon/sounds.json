@@ -90,6 +90,7 @@
     ]
   },
   "dash": {
+    "subtitle": "subtitles.dash",
     "sounds": [
       {
         "name": "jujutsucraftaddon:dash",
@@ -98,6 +99,7 @@
     ]
   },
   "sword": {
+    "subtitle": "subtitles.sword",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword_sweep",
@@ -178,6 +180,7 @@
     ]
   },
   "swordblock": {
+    "subtitle": "subtitles.swordblock",
     "sounds": [
       {
         "name": "jujutsucraftaddon:swordblock",
@@ -186,6 +189,7 @@
     ]
   },
   "aka2": {
+    "subtitle": "subtitles.aka2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:aka2",
@@ -194,6 +198,7 @@
     ]
   },
   "karate": {
+    "subtitle": "subtitles.karate",
     "sounds": [
       {
         "name": "jujutsucraftaddon:karate",
@@ -202,6 +207,7 @@
     ]
   },
   "punch2": {
+    "subtitle": "subtitles.punch2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:punch2",
@@ -210,6 +216,7 @@
     ]
   },
   "kokusen": {
+    "subtitle": "subtitles.kokusen",
     "sounds": [
       {
         "name": "jujutsucraftaddon:kokusencut",
@@ -218,6 +225,7 @@
     ]
   },
   "tucadonca": {
+    "subtitle": "subtitles.tucadonca",
     "sounds": [
       {
         "name": "jujutsucraftaddon:hakari1",
@@ -226,6 +234,7 @@
     ]
   },
   "sukunavsmaho": {
+    "subtitle": "subtitles.sukunavsmaho",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sukunavsmaho",
@@ -234,6 +243,7 @@
     ]
   },
   "sukunavsjogo": {
+    "subtitle": "subtitles.sukunavsjogo",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sukunavsjogo",
@@ -242,6 +252,7 @@
     ]
   },
   "tojivsdagonvsyujivsmahito": {
+    "subtitle": "subtitles.tojivsdagonvsyujivsmahito",
     "sounds": [
       {
         "name": "jujutsucraftaddon:tojivsdagonvsyujivsmahito",
@@ -250,6 +261,7 @@
     ]
   },
   "gojovstoji": {
+    "subtitle": "subtitles.gojovstoji",
     "sounds": [
       {
         "name": "jujutsucraftaddon:gojovstoji",
@@ -258,6 +270,7 @@
     ]
   },
   "yutavsgeto": {
+    "subtitle": "subtitles.yutavsgeto",
     "sounds": [
       {
         "name": "jujutsucraftaddon:yutavsgeto",
@@ -266,6 +279,7 @@
     ]
   },
   "getovstoji": {
+    "subtitle": "subtitles.getovstoji",
     "sounds": [
       {
         "name": "jujutsucraftaddon:getovstoji",
@@ -274,6 +288,7 @@
     ]
   },
   "nanami": {
+    "subtitle": "subtitles.nanami",
     "sounds": [
       {
         "name": "jujutsucraftaddon:overtimenanami",
@@ -282,6 +297,7 @@
     ]
   },
   "overtime": {
+    "subtitle": "subtitles.overtime",
     "sounds": [
       {
         "name": "jujutsucraftaddon:overtime",
@@ -290,6 +306,7 @@
     ]
   },
   "purplexplode": {
+    "subtitle": "subtitles.purplexplode",
     "sounds": [
       {
         "name": "jujutsucraftaddon:muraski",
@@ -298,6 +315,7 @@
     ]
   },
   "taun": {
+    "subtitle": "subtitles.taun",
     "sounds": [
       {
         "name": "jujutsucraftaddon:taun",
@@ -306,6 +324,7 @@
     ]
   },
   "laughsukuna": {
+    "subtitle": "subtitles.laughsukuna",
     "sounds": [
       {
         "name": "jujutsucraftaddon:laugh",
@@ -314,6 +333,7 @@
     ]
   },
   "yoaimo": {
+    "subtitle": "subtitles.yoaimo",
     "sounds": [
       {
         "name": "jujutsucraftaddon:yoaimo",
@@ -322,6 +342,7 @@
     ]
   },
   "kurusogojo": {
+    "subtitle": "subtitles.kurusogojo",
     "sounds": [
       {
         "name": "jujutsucraftaddon:kurusogojo",
@@ -330,6 +351,7 @@
     ]
   },
   "gojodeath": {
+    "subtitle": "subtitles.gojodeath",
     "sounds": [
       {
         "name": "jujutsucraftaddon:gojodeatham",
@@ -338,6 +360,7 @@
     ]
   },
   "gabare": {
+    "subtitle": "subtitles.gabare",
     "sounds": [
       {
         "name": "jujutsucraftaddon:ganbareamp",
@@ -346,6 +369,7 @@
     ]
   },
   "hit": {
+    "subtitle": "subtitles.hit",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blunt_hit1",
@@ -354,6 +378,7 @@
     ]
   },
   "hit2": {
+    "subtitle": "subtitles.hit2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blunt_hit2",
@@ -362,6 +387,7 @@
     ]
   },
   "hit3": {
+    "subtitle": "subtitles.hit3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blunt_hit3",
@@ -370,6 +396,7 @@
     ]
   },
   "hitblade1": {
+    "subtitle": "subtitles.hitblade1",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blade_hit1",
@@ -378,6 +405,7 @@
     ]
   },
   "hitblade2": {
+    "subtitle": "subtitles.hitblade2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blade_hit2",
@@ -386,6 +414,7 @@
     ]
   },
   "hitblade3": {
+    "subtitle": "subtitles.hitblade3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blade_hit3",
@@ -394,6 +423,7 @@
     ]
   },
   "domainbreaker": {
+    "subtitle": "subtitles.domainbreaker",
     "sounds": [
       {
         "name": "jujutsucraftaddon:domain_breaker",
@@ -402,6 +432,7 @@
     ]
   },
   "maximumblu": {
+    "subtitle": "subtitles.maximumblu",
     "sounds": [
       {
         "name": "jujutsucraftaddon:ao",
@@ -410,6 +441,7 @@
     ]
   },
   "tojispear": {
+    "subtitle": "subtitles.tojispear",
     "sounds": [
       {
         "name": "jujutsucraftaddon:tojispear",
@@ -418,6 +450,7 @@
     ]
   },
   "playfulhit": {
+    "subtitle": "subtitles.playfulhit",
     "sounds": [
       {
         "name": "jujutsucraftaddon:playfulhit",
@@ -426,6 +459,7 @@
     ]
   },
   "playfulhit2": {
+    "subtitle": "subtitles.playfulhit2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:playfulhi2",
@@ -434,6 +468,7 @@
     ]
   },
   "playfulhit3": {
+    "subtitle": "subtitles.playfulhit3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:playfulhit3",
@@ -442,6 +477,7 @@
     ]
   },
   "playfulhit4": {
+    "subtitle": "subtitles.playfulhit4",
     "sounds": [
       {
         "name": "jujutsucraftaddon:playfulhit4",
@@ -450,6 +486,7 @@
     ]
   },
   "tojichains": {
+    "subtitle": "subtitles.tojichains",
     "sounds": [
       {
         "name": "jujutsucraftaddon:tojichains",
@@ -458,6 +495,7 @@
     ]
   },
   "itadorivsmahito": {
+    "subtitle": "subtitles.itadorivsmahito",
     "sounds": [
       {
         "name": "jujutsucraftaddon:itadorivsmahito",
@@ -466,6 +504,7 @@
     ]
   },
   "nanamitheme": {
+    "subtitle": "subtitles.nanamitheme",
     "sounds": [
       {
         "name": "jujutsucraftaddon:nanamitheme",
@@ -474,6 +513,7 @@
     ]
   },
   "chosovsitadori": {
+    "subtitle": "subtitles.chosovsitadori",
     "sounds": [
       {
         "name": "jujutsucraftaddon:choso",
@@ -482,6 +522,7 @@
     ]
   },
   "meteor": {
+    "subtitle": "subtitles.meteor",
     "sounds": [
       {
         "name": "jujutsucraftaddon:meteor",
@@ -490,6 +531,7 @@
     ]
   },
   "chosovsyuuuji": {
+    "subtitle": "subtitles.chosovsyuuuji",
     "sounds": [
       {
         "name": "jujutsucraftaddon:chosovsyuuuuji",
@@ -498,6 +540,7 @@
     ]
   },
   "isohsound": {
+    "subtitle": "subtitles.isohsound",
     "sounds": [
       {
         "name": "jujutsucraftaddon:inverted_spear_of_heaven",
@@ -506,6 +549,7 @@
     ]
   },
   "batto": {
+    "subtitle": "subtitles.batto",
     "sounds": [
       {
         "name": "jujutsucraftaddon:batto",
@@ -514,6 +558,7 @@
     ]
   },
   "clap": {
+    "subtitle": "subtitles.clap",
     "sounds": [
       {
         "name": "jujutsucraftaddon:clap",
@@ -522,6 +567,7 @@
     ]
   },
   "judas": {
+    "subtitle": "subtitles.judas",
     "sounds": [
       {
         "name": "jujutsucraftaddon:judas",
@@ -530,6 +576,7 @@
     ]
   },
   "okkotsudomainvc": {
+    "subtitle": "subtitles.okkotsudomainvc",
     "sounds": [
       {
         "name": "jujutsucraftaddon:okkotsudomain",
@@ -538,6 +585,7 @@
     ]
   },
   "purelove": {
+    "subtitle": "subtitles.purelove",
     "sounds": [
       {
         "name": "jujutsucraftaddon:purelove",
@@ -546,6 +594,7 @@
     ]
   },
   "rikasummon": {
+    "subtitle": "subtitles.rikasummon",
     "sounds": [
       {
         "name": "jujutsucraftaddon:summonrika",
@@ -554,6 +603,7 @@
     ]
   },
   "kokusenmahito": {
+    "subtitle": "subtitles.kokusenmahito",
     "sounds": [
       {
         "name": "jujutsucraftaddon:mahito_black_flash_v2",
@@ -562,6 +612,7 @@
     ]
   },
   "kokusentodo": {
+    "subtitle": "subtitles.kokusentodo",
     "sounds": [
       {
         "name": "jujutsucraftaddon:todo_black_flash",
@@ -570,6 +621,7 @@
     ]
   },
   "senketsu": {
+    "subtitle": "subtitles.senketsu",
     "sounds": [
       {
         "name": "jujutsucraftaddon:senketsuu",
@@ -578,6 +630,7 @@
     ]
   },
   "piercingblood": {
+    "subtitle": "subtitles.piercingblood",
     "sounds": [
       {
         "name": "jujutsucraftaddon:piercing-blood",
@@ -586,6 +639,7 @@
     ]
   },
   "tripping": {
+    "subtitle": "subtitles.tripping",
     "sounds": [
       {
         "name": "jujutsucraftaddon:tripping",
@@ -594,6 +648,7 @@
     ]
   },
   "rushhr": {
+    "subtitle": "subtitles.rushhr",
     "sounds": [
       {
         "name": "jujutsucraftaddon:onrush",
@@ -602,6 +657,7 @@
     ]
   },
   "slash2": {
+    "subtitle": "subtitles.slash2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:slash1",
@@ -610,6 +666,7 @@
     ]
   },
   "sword4": {
+    "subtitle": "subtitles.sword4",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword",
@@ -618,6 +675,7 @@
     ]
   },
   "swing1": {
+    "subtitle": "subtitles.swing1",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword_swing1",
@@ -626,6 +684,7 @@
     ]
   },
   "swing2": {
+    "subtitle": "subtitles.swing2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword_swing2",
@@ -634,6 +693,7 @@
     ]
   },
   "swing3": {
+    "subtitle": "subtitles.swing3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword_swing3",
@@ -642,6 +702,7 @@
     ]
   },
   "swing4": {
+    "subtitle": "subtitles.swing4",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword_swing4",
@@ -650,6 +711,7 @@
     ]
   },
   "swing5": {
+    "subtitle": "subtitles.swing5",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sword_swing5",
@@ -658,6 +720,7 @@
     ]
   },
   "punch5": {
+    "subtitle": "subtitles.punch5",
     "sounds": [
       {
         "name": "jujutsucraftaddon:punch1",
@@ -666,6 +729,7 @@
     ]
   },
   "punch6": {
+    "subtitle": "subtitles.punch6",
     "sounds": [
       {
         "name": "jujutsucraftaddon:punch2",
@@ -674,6 +738,7 @@
     ]
   },
   "blackflashtheme": {
+    "subtitle": "subtitles.blackflashtheme",
     "sounds": [
       {
         "name": "jujutsucraftaddon:blackflashtheme",
@@ -682,6 +747,7 @@
     ]
   },
   "standproudsukuna": {
+    "subtitle": "subtitles.standproudsukuna",
     "sounds": [
       {
         "name": "jujutsucraftaddon:standproudsukuna",
@@ -690,6 +756,7 @@
     ]
   },
   "meditationsong": {
+    "subtitle": "subtitles.meditationsong",
     "sounds": [
       {
         "name": "jujutsucraftaddon:meditation",
@@ -698,6 +765,7 @@
     ]
   },
   "cinderella": {
+    "subtitle": "subtitles.cinderella",
     "sounds": [
       {
         "name": "jujutsucraftaddon:24hour",
@@ -706,6 +774,7 @@
     ]
   },
   "vibraslap": {
+    "subtitle": "subtitles.vibraslap",
     "sounds": [
       {
         "name": "jujutsucraftaddon:vibraslap",
@@ -714,6 +783,7 @@
     ]
   },
   "wukongtheme": {
+    "subtitle": "subtitles.wukongtheme",
     "sounds": [
       {
         "name": "jujutsucraftaddon:wukong",
@@ -722,6 +792,7 @@
     ]
   },
   "wukongult": {
+    "subtitle": "subtitles.wukongult",
     "sounds": [
       {
         "name": "jujutsucraftaddon:bell",
@@ -730,6 +801,7 @@
     ]
   },
   "wu1": {
+    "subtitle": "subtitles.wu1",
     "sounds": [
       {
         "name": "jujutsucraftaddon:staff1",
@@ -738,6 +810,7 @@
     ]
   },
   "wu2": {
+    "subtitle": "subtitles.wu2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:staff2",
@@ -746,6 +819,7 @@
     ]
   },
   "wu3": {
+    "subtitle": "subtitles.wu3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:staff3",
@@ -754,6 +828,7 @@
     ]
   },
   "wu4": {
+    "subtitle": "subtitles.wu4",
     "sounds": [
       {
         "name": "jujutsucraftaddon:staff4",
@@ -762,6 +837,7 @@
     ]
   },
   "wu6": {
+    "subtitle": "subtitles.wu6",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sequencestaff",
@@ -770,6 +846,7 @@
     ]
   },
   "wu7": {
+    "subtitle": "subtitles.wu7",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sequencestaff2",
@@ -778,6 +855,7 @@
     ]
   },
   "wu8": {
+    "subtitle": "subtitles.wu8",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sequencestaff3",
@@ -786,6 +864,7 @@
     ]
   },
   "wu9": {
+    "subtitle": "subtitles.wu9",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sequencestaff4",
@@ -794,6 +873,7 @@
     ]
   },
   "wu10": {
+    "subtitle": "subtitles.wu10",
     "sounds": [
       {
         "name": "jujutsucraftaddon:bell",
@@ -802,6 +882,7 @@
     ]
   },
   "kyoka": {
+    "subtitle": "subtitles.kyoka",
     "sounds": [
       {
         "name": "jujutsucraftaddon:shatter_-kyoka-suigetsu_-_mp3cut.net_",
@@ -810,6 +891,7 @@
     ]
   },
   "nozarashi": {
+    "subtitle": "subtitles.nozarashi",
     "sounds": [
       {
         "name": "jujutsucraftaddon:nozarashi-_mp3cut.net_",
@@ -818,6 +900,7 @@
     ]
   },
   "nozarashitrue": {
+    "subtitle": "subtitles.nozarashitrue",
     "sounds": [
       {
         "name": "jujutsucraftaddon:nozarashi",
@@ -826,6 +909,7 @@
     ]
   },
   "yujidomain": {
+    "subtitle": "subtitles.yujidomain",
     "sounds": [
       {
         "name": "jujutsucraftaddon:yujiidomain",
@@ -834,6 +918,7 @@
     ]
   },
   "sukunaheart": {
+    "subtitle": "subtitles.sukunaheart",
     "sounds": [
       {
         "name": "jujutsucraftaddon:sukunavc1",
@@ -842,6 +927,7 @@
     ]
   },
   "music1": {
+    "subtitle": "subtitles.music1",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music1",
@@ -850,6 +936,7 @@
     ]
   },
   "music2": {
+    "subtitle": "subtitles.music2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music2",
@@ -858,6 +945,7 @@
     ]
   },
   "music3": {
+    "subtitle": "subtitles.music3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music3",
@@ -866,6 +954,7 @@
     ]
   },
   "music4": {
+    "subtitle": "subtitles.music4",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music4",
@@ -874,6 +963,7 @@
     ]
   },
   "sukunavc1": {
+    "subtitle": "subtitles.sukunavc1",
     "sounds": [
       {
         "name": "jujutsucraftaddon:annoyingbrat",
@@ -882,6 +972,7 @@
     ]
   },
   "sukunavc2": {
+    "subtitle": "subtitles.sukunavc2",
     "sounds": [
       {
         "name": "jujutsucraftaddon:bakana",
@@ -890,6 +981,7 @@
     ]
   },
   "sukunavc3": {
+    "subtitle": "subtitles.sukunavc3",
     "sounds": [
       {
         "name": "jujutsucraftaddon:bindingvowsukuna",
@@ -898,6 +990,7 @@
     ]
   },
   "sukunavc4": {
+    "subtitle": "subtitles.sukunavc4",
     "sounds": [
       {
         "name": "jujutsucraftaddon:brat",
@@ -906,6 +999,7 @@
     ]
   },
   "sukunavc5": {
+    "subtitle": "subtitles.sukunavc5",
     "sounds": [
       {
         "name": "jujutsucraftaddon:youreboring",
@@ -914,6 +1008,7 @@
     ]
   },
   "music5": {
+    "subtitle": "subtitles.music5",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music5",
@@ -922,6 +1017,7 @@
     ]
   },
   "music6": {
+    "subtitle": "subtitles.music6",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music6",
@@ -930,6 +1026,7 @@
     ]
   },
   "music7": {
+    "subtitle": "subtitles.music7",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music7",
@@ -938,6 +1035,7 @@
     ]
   },
   "music8": {
+    "subtitle": "subtitles.music8",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music8",
@@ -946,6 +1044,7 @@
     ]
   },
   "music9": {
+    "subtitle": "subtitles.music9",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music9",
@@ -954,10 +1053,29 @@
     ]
   },
   "music10": {
+    "subtitle": "subtitles.music10",
     "sounds": [
       {
         "name": "jujutsucraftaddon:music10",
         "stream": true
+      }
+    ]
+  },
+  "kai": {
+    "subtitle": "subtitles.kai",
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:sword",
+        "stream": false
+      }
+    ]
+  },
+  "dismantle": {
+    "subtitle": "subtitles.dismantle",
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:slash1",
+        "stream": false
       }
     ]
   }

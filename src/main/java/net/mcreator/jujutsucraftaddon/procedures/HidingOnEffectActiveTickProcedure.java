@@ -24,16 +24,16 @@ public class HidingOnEffectActiveTickProcedure {
 				if (!(entity == entityiterator)) {
 					if ((new Object() {
 						public String getValue() {
-							CompoundTag dataIndex1 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex1);
-							return dataIndex1.getCompound("ForgeData").getString("OWNER_UUID");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 						}
 					}.getValue()).equals(entity.getStringUUID())) {
 						if ((new Object() {
 							public String getValue() {
-								CompoundTag dataIndex3 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex3);
-								return dataIndex3.getCompound("ForgeData").getString("OWNER_UUID");
+								CompoundTag dataIndex = new CompoundTag();
+								entityiterator.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
 							}
 						}.getValue()).equals(entity.getStringUUID())) {
 							{

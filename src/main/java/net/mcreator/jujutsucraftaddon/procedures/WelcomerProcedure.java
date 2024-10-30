@@ -36,10 +36,10 @@ public class WelcomerProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Advancement advancement, Entity entity) {
 		if (advancement == null || entity == null)
 			return;
-		if (world instanceof Level _lvl0 && _lvl0.getServer() != null && _lvl0.getServer().getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:start_jujutsu_craft")).equals(advancement)) {
-			if (entity instanceof Player || entity instanceof ServerPlayer) {
-				if (!(entity instanceof ServerPlayer _plr3 && _plr3.level() instanceof ServerLevel
-						&& _plr3.getAdvancements().getOrStartProgress(_plr3.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus"))).isDone())) {
+		if (!(world instanceof Level _lvl0 && _lvl0.getServer() != null && _lvl0.getServer().getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:are_you_satoru_gojo")).equals(advancement))) {
+			if (world instanceof Level _lvl0 && _lvl0.getServer() != null && _lvl0.getServer().getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:start_jujutsu_craft")).equals(advancement)) {
+				if (!(entity instanceof ServerPlayer _plr1 && _plr1.level() instanceof ServerLevel
+						&& _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus"))).isDone())) {
 					if (entity instanceof ServerPlayer _player) {
 						Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus"));
 						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -49,30 +49,22 @@ public class WelcomerProcedure {
 						}
 					}
 					if (entity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CLAN_CHANGER.get());
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-					}
-
-					if (entity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.PROFESSION.get());
-						_setstack.setCount(1);
-						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-					}
-
-					if (entity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get());
+						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CLAN_CHANGER.get()).copy();
 						_setstack.setCount(1);
 						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 					}
 					if (entity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CELLPHONE.get());
+						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RACE_CHANGER.get()).copy();
 						_setstack.setCount(1);
 						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 					}
-					BookProcedureProcedure.execute(entity);
 					if (entity instanceof Player _player) {
-						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RANDOM_CT_CHANGER.get());
+						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.CELLPHONE.get()).copy();
+						_setstack.setCount(1);
+						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+					}
+					if (entity instanceof Player _player) {
+						ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.RANDOM_CT_CHANGER.get()).copy();
 						_setstack.setCount(1);
 						ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 					}

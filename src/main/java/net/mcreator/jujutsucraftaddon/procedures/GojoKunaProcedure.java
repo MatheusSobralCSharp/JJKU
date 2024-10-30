@@ -16,9 +16,9 @@ public class GojoKunaProcedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("Fight");
+				CompoundTag dataIndex = new CompoundTag();
+				sourceentity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("Fight");
 			}
 		}.getValue() == 0) {
 			if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:sukuna_fushiguro")) {
@@ -29,51 +29,59 @@ public class GojoKunaProcedure {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:murasakii")), SoundSource.NEUTRAL, 1, 1, false);
 					}
 				}
-				CompoundTag dataIndex3 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex3);
-				dataIndex3.getCompound("ForgeData").putDouble("Fight", 1);
-				sourceentity.load(dataIndex3);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("Fight", 1);
+					sourceentity.load(dataIndex);
+				}
 			}
 		}
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex4 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex4);
-				return dataIndex4.getCompound("ForgeData").getDouble("skill");
+				CompoundTag dataIndex = new CompoundTag();
+				sourceentity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("skill");
 			}
 		}.getValue() == 215) {
 			if (!(new Object() {
 				public double getValue() {
-					CompoundTag dataIndex5 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex5);
-					return dataIndex5.getCompound("ForgeData").getDouble("cnt5");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt5");
 				}
 			}.getValue() == 50)) {
-				CompoundTag dataIndex7 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex7);
-				dataIndex7.getCompound("ForgeData").putDouble("cnt5", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex6 = new CompoundTag();
-						sourceentity.saveWithoutId(dataIndex6);
-						return dataIndex6.getCompound("ForgeData").getDouble("cnt5");
-					}
-				}.getValue() + 1));
-				sourceentity.load(dataIndex7);
-				CompoundTag dataIndex8 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex8);
-				dataIndex8.getCompound("ForgeData").putDouble("PRESS_Z", 1);
-				sourceentity.load(dataIndex8);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("cnt5", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							sourceentity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("cnt5");
+						}
+					}.getValue() + 1));
+					sourceentity.load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("PRESS_Z", 1);
+					sourceentity.load(dataIndex);
+				}
 			} else if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex9 = new CompoundTag();
-					sourceentity.saveWithoutId(dataIndex9);
-					return dataIndex9.getCompound("ForgeData").getDouble("cnt5");
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("cnt5");
 				}
 			}.getValue() == 50) {
-				CompoundTag dataIndex10 = new CompoundTag();
-				sourceentity.saveWithoutId(dataIndex10);
-				dataIndex10.getCompound("ForgeData").putDouble("PRESS_Z", 0);
-				sourceentity.load(dataIndex10);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					sourceentity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("PRESS_Z", 0);
+					sourceentity.load(dataIndex);
+				}
 			}
 		}
 	}

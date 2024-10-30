@@ -163,10 +163,12 @@ public class Medicine1Procedure {
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 7));
 						if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 23, false, false));
-						CompoundTag dataIndex26 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex26);
-						dataIndex26.getCompound("ForgeData").putDouble("K1", 1);
-						(entitytospawn).load(dataIndex26);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("K1", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						_serverLevel.addFreshEntity(entitytospawn);
@@ -180,10 +182,12 @@ public class Medicine1Procedure {
 								.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 7));
 						if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 23, false, false));
-						CompoundTag dataIndex39 = new CompoundTag();
-						(entitytospawn).saveWithoutId(dataIndex39);
-						dataIndex39.getCompound("ForgeData").putDouble("K1", 1);
-						(entitytospawn).load(dataIndex39);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							(entitytospawn).saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("K1", 1);
+							(entitytospawn).load(dataIndex);
+						}
 						if ((entitytospawn) instanceof LivingEntity _entity)
 							_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
 						_serverLevel.addFreshEntity(entitytospawn);

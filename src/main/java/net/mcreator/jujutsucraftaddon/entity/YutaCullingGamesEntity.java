@@ -23,7 +23,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.sounds.SoundEvent;
@@ -33,7 +32,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
 
 import net.mcreator.jujutsucraftaddon.procedures.YutaCullingSpawnProcedure;
-import net.mcreator.jujutsucraftaddon.procedures.OkkotsuAttackedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.AngellOnEntityTickUpdateProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
@@ -103,20 +101,6 @@ public class YutaCullingGamesEntity extends Monster {
 	@Override
 	public SoundEvent getDeathSound() {
 		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.death"));
-	}
-
-	@Override
-	public boolean hurt(DamageSource damagesource, float amount) {
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
-		Level world = this.level();
-		Entity entity = this;
-		Entity sourceentity = damagesource.getEntity();
-		Entity immediatesourceentity = damagesource.getDirectEntity();
-
-		OkkotsuAttackedProcedure.execute(entity, sourceentity);
-		return super.hurt(damagesource, amount);
 	}
 
 	@Override

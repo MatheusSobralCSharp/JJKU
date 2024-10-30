@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Contained",
@@ -9,12 +9,14 @@
       "falpha": 0.0
     },
     "isInstant": false,
-    "isBad": false,
-    "isBenefitical": true,
+    "mobEffectCategory": "BENEFICIAL",
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
     "onActiveTick": {
       "name": "ContainedOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "ContainedEffectExpires"
     }
   }
 }

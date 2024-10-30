@@ -16,7 +16,7 @@ public class JackpotMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		JackpotEffectProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ());
+		JackpotEffectProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

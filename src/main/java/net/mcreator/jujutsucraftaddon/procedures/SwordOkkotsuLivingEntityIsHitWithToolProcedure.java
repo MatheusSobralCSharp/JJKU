@@ -21,28 +21,16 @@ public class SwordOkkotsuLivingEntityIsHitWithToolProcedure {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 5, false, false));
 		}
-		if (new Object() {
-			public double getValue() {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				return dataIndex2.getCompound("ForgeData").getDouble("skill");
-			}
-		}.getValue() >= 2) {
+		if (entity.getPersistentData().getDouble("skill") >= 2) {
 			itemstack.getOrCreateTag().putDouble("skill", (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex3 = new CompoundTag();
-					entity.saveWithoutId(dataIndex3);
-					return dataIndex3.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue()));
-			CompoundTag dataIndex8 = new CompoundTag();
-			sourceentity.saveWithoutId(dataIndex8);
-			dataIndex8.getCompound("ForgeData").putDouble("skill", (itemstack.getOrCreateTag().getDouble("skill")));
-			sourceentity.load(dataIndex8);
-			CompoundTag dataIndex9 = new CompoundTag();
-			sourceentity.saveWithoutId(dataIndex9);
-			dataIndex9.getCompound("ForgeData").putDouble("PRESS_Z", 1);
-			sourceentity.load(dataIndex9);
+			sourceentity.getPersistentData().putDouble("skill", (itemstack.getOrCreateTag().getDouble("skill")));
+			sourceentity.getPersistentData().putDouble("PRESS_Z", 1);
 			{
 				Entity _ent = sourceentity;
 				if (!_ent.level().isClientSide() && _ent.getServer() != null) {

@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "animatedarmor",
   "definition": {
     "enableHelmet": true,
@@ -13,6 +13,7 @@
     "creativeTab": {
       "value": "CUSTOM:Armors"
     },
+    "creativeTabs": [],
     "armorTextureFile": "straw_hat_armor_textures.png",
     "model": "straw_hat.geo.json",
     "idle": "idle",

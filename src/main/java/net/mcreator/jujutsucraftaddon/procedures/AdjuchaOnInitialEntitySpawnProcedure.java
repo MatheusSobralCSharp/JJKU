@@ -19,13 +19,17 @@ public class AdjuchaOnInitialEntitySpawnProcedure {
 		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).setBaseValue(5);
 		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(20);
 		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS).setBaseValue(0.2);
-		CompoundTag dataIndex6 = new CompoundTag();
-		entity.saveWithoutId(dataIndex6);
-		dataIndex6.getCompound("ForgeData").putBoolean("Adjucha", true);
-		entity.load(dataIndex6);
-		CompoundTag dataIndex7 = new CompoundTag();
-		entity.saveWithoutId(dataIndex7);
-		dataIndex7.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
-		entity.load(dataIndex7);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putBoolean("Adjucha", true);
+			entity.load(dataIndex);
+		}
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
+			entity.load(dataIndex);
+		}
 	}
 }

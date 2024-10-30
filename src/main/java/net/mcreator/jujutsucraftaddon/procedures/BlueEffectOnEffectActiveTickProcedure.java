@@ -29,19 +29,23 @@ public class BlueEffectOnEffectActiveTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		CompoundTag dataIndex0 = new CompoundTag();
-		entity.saveWithoutId(dataIndex0);
-		dataIndex0.getCompound("ForgeData").putDouble("cnt1", 5);
-		entity.load(dataIndex0);
-		CompoundTag dataIndex1 = new CompoundTag();
-		entity.saveWithoutId(dataIndex1);
-		dataIndex1.getCompound("ForgeData").putDouble("cnt2", 1);
-		entity.load(dataIndex1);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putDouble("cnt1", 5);
+			entity.load(dataIndex);
+		}
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putDouble("cnt2", 1);
+			entity.load(dataIndex);
+		}
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				return dataIndex2.getCompound("ForgeData").getDouble("blue");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("blue");
 			}
 		}.getValue() == 1) {
 			{
@@ -50,9 +54,9 @@ public class BlueEffectOnEffectActiveTickProcedure {
 				for (Entity entityiterator : _entfound) {
 					if (entityiterator.isShiftKeyDown() && new Object() {
 						public double getValue() {
-							CompoundTag dataIndex4 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex4);
-							return dataIndex4.getCompound("ForgeData").getDouble("skill");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("skill");
 						}
 					}.getValue() == 200) {
 						if (entityiterator instanceof LivingEntity _livEnt5 && _livEnt5.hasEffect(JujutsucraftaddonModMobEffects.GOJO_IMBUED_POWER.get())) {
@@ -87,46 +91,54 @@ public class BlueEffectOnEffectActiveTickProcedure {
 						}
 					} else if ((entityiterator.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Purple > 0
 							&& (entityiterator.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Purple < 800) {
-						CompoundTag dataIndex11 = new CompoundTag();
-						entity.saveWithoutId(dataIndex11);
-						dataIndex11.getCompound("ForgeData").putString("OWNER_UUID", (new Object() {
-							public String getValue() {
-								CompoundTag dataIndex10 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex10);
-								return dataIndex10.getCompound("ForgeData").getString("OWNER_UUID");
-							}
-						}.getValue()));
-						entity.load(dataIndex11);
-						CompoundTag dataIndex13 = new CompoundTag();
-						entity.saveWithoutId(dataIndex13);
-						dataIndex13.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex12 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex12);
-								return dataIndex12.getCompound("ForgeData").getDouble("friend_num");
-							}
-						}.getValue()));
-						entity.load(dataIndex13);
-						CompoundTag dataIndex15 = new CompoundTag();
-						entity.saveWithoutId(dataIndex15);
-						dataIndex15.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex14 = new CompoundTag();
-								entity.saveWithoutId(dataIndex14);
-								return dataIndex14.getCompound("ForgeData").getDouble("friend_num");
-							}
-						}.getValue()));
-						entity.load(dataIndex15);
-						CompoundTag dataIndex17 = new CompoundTag();
-						entity.saveWithoutId(dataIndex17);
-						dataIndex17.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-							public double getValue() {
-								CompoundTag dataIndex16 = new CompoundTag();
-								entity.saveWithoutId(dataIndex16);
-								return dataIndex16.getCompound("ForgeData").getDouble("friend_num");
-							}
-						}.getValue()));
-						entity.load(dataIndex17);
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putString("OWNER_UUID", (new Object() {
+								public String getValue() {
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
+								}
+							}.getValue()));
+							entity.load(dataIndex);
+						}
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+								}
+							}.getValue()));
+							entity.load(dataIndex);
+						}
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+								}
+							}.getValue()));
+							entity.load(dataIndex);
+						}
+						{
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							dataIndex.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+								public double getValue() {
+									CompoundTag dataIndex = new CompoundTag();
+									entity.saveWithoutId(dataIndex);
+									return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+								}
+							}.getValue()));
+							entity.load(dataIndex);
+						}
 					}
 				}
 			}
@@ -136,9 +148,9 @@ public class BlueEffectOnEffectActiveTickProcedure {
 				for (Entity entityiterator : _entfound) {
 					if (new Object() {
 						public double getValue() {
-							CompoundTag dataIndex19 = new CompoundTag();
-							entityiterator.saveWithoutId(dataIndex19);
-							return dataIndex19.getCompound("ForgeData").getDouble("red");
+							CompoundTag dataIndex = new CompoundTag();
+							entityiterator.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("red");
 						}
 					}.getValue() == 2) {
 						if (!entity.level().isClientSide())
@@ -168,27 +180,33 @@ public class BlueEffectOnEffectActiveTickProcedure {
 			}
 		} else if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex26 = new CompoundTag();
-				entity.saveWithoutId(dataIndex26);
-				return dataIndex26.getCompound("ForgeData").getDouble("blue");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("blue");
 			}
 		}.getValue() == 3) {
 			{
 				final Vec3 _center = new Vec3(x, y, z);
 				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(8 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 				for (Entity entityiterator : _entfound) {
-					CompoundTag dataIndex27 = new CompoundTag();
-					entity.saveWithoutId(dataIndex27);
-					dataIndex27.getCompound("ForgeData").putDouble("cnt1", 28);
-					entity.load(dataIndex27);
-					CompoundTag dataIndex28 = new CompoundTag();
-					entity.saveWithoutId(dataIndex28);
-					dataIndex28.getCompound("ForgeData").putDouble("cnt2", 1);
-					entity.load(dataIndex28);
-					CompoundTag dataIndex29 = new CompoundTag();
-					entity.saveWithoutId(dataIndex29);
-					dataIndex29.getCompound("ForgeData").putDouble("cnt6", 5);
-					entity.load(dataIndex29);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("cnt1", 28);
+						entity.load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("cnt2", 1);
+						entity.load(dataIndex);
+					}
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("cnt6", 5);
+						entity.load(dataIndex);
+					}
 					if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:red")) {
 						if (!entity.level().isClientSide())
 							entity.discard();

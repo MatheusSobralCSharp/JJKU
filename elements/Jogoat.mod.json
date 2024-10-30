@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "config",
   "definition": {
     "pools": [
@@ -700,6 +700,23 @@
             "comment": "",
             "vardisplay": "Ino Takuma",
             "varname": "ino",
+            "enablecomment": false,
+            "stringlist": []
+          },
+          {
+            "item": {
+              "value": ""
+            },
+            "silkTouchMode": 1,
+            "block": {
+              "value": ""
+            },
+            "logicField": 0,
+            "numberField": 42.0,
+            "textDefault": "",
+            "comment": "",
+            "vardisplay": "Kaori",
+            "varname": "kaori",
             "enablecomment": false,
             "stringlist": []
           }

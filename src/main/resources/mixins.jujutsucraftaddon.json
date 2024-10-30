@@ -65,7 +65,15 @@
     "AbstractClientPlayerMixin",
     "RunningAnimationMixin",
     "FingerWhenusedMixin",
-    "SukunaEffectMixin"
+    "SukunaEffectMixin",
+    "SimpleDomainKeyMixin",
+    "WhenRespawnedMixin",
+    "PlayerMixinMixin",
+    "PacketInjectMixin",
+    "PlayerMixin",
+    "AttachCapabilitiesMixin",
+    "PlayerTickEventMixin",
+    "WhenRespawnMixin"
   ],
   "client": [],
   "minVersion": "0.8"

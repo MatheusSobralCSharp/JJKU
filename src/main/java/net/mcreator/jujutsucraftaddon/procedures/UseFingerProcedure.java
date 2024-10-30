@@ -46,6 +46,8 @@ public class UseFingerProcedure {
 							_player.displayClientMessage(Component.literal("\u00A74\u00A7n\u00A7lYou can't do this"), false);
 						if (event != null && event.isCancelable()) {
 							event.setCanceled(true);
+						} else if (event != null && event.hasResult()) {
+							event.setResult(Event.Result.DENY);
 						}
 					}
 				}

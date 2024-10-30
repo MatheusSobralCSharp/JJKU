@@ -19,9 +19,5 @@
     "welcome_to_jujutsu_plus_0": {
       "trigger": "minecraft:impossible"
     }
-  },
-  "rewards": {
-    "experience": 0,
-    "function": "jujutsucraftaddon:ct_number_join_2"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "animatedarmor",
   "definition": {
     "enableHelmet": false,
@@ -10,9 +10,7 @@
     "textureLeggings": "",
     "enableBoots": false,
     "textureBoots": "",
-    "creativeTab": {
-      "value": "CUSTOM:Armors"
-    },
+    "creativeTabs": [],
     "armorTextureFile": "cursedspirit_armoury.png",
     "model": "inventory_curse.geo.json",
     "idle": "idle",

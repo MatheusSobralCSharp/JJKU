@@ -1,10 +1,8 @@
 package net.mcreator.jujutsucraftaddon.entity.model;
 
-import software.bernie.geckolib.model.GeoModel;
-
-import net.minecraft.resources.ResourceLocation;
-
 import net.mcreator.jujutsucraftaddon.entity.Shadow1Entity;
+import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.model.GeoModel;
 
 public class Shadow1Model extends GeoModel<Shadow1Entity> {
 	@Override

@@ -79,15 +79,15 @@ public class RaceChangeButtonMessage {
 			return;
 		if (buttonID == 0) {
 
-			RaceChangerCursedSpiritProcedure.execute(entity);
+			RaceChangerCursedSpiritProcedure.execute(world, entity);
 		}
 		if (buttonID == 1) {
 
-			RaceChangerSorcererProcedure.execute(entity);
+			RaceChangerSorcererProcedure.execute(world, entity);
 		}
 		if (buttonID == 2) {
 
-			RaceChangerVesselProcedure.execute(entity);
+			RaceChangerVesselProcedure.execute(world, entity);
 		}
 	}
 

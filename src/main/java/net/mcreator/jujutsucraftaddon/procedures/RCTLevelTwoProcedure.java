@@ -48,9 +48,9 @@ public class RCTLevelTwoProcedure {
 		if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_RCT_LIMIT) == true) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex5 = new CompoundTag();
-					entity.saveWithoutId(dataIndex5);
-					return dataIndex5.getCompound("ForgeData").getDouble("PRESS_M");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("PRESS_M");
 				}
 			}.getValue() == 1) {
 				if ((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get())) {
@@ -92,9 +92,9 @@ public class RCTLevelTwoProcedure {
 		} else if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_RCT_LIMIT) == false) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex12 = new CompoundTag();
-					entity.saveWithoutId(dataIndex12);
-					return dataIndex12.getCompound("ForgeData").getDouble("PRESS_M");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("PRESS_M");
 				}
 			}.getValue() == 1) {
 				if ((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get())) {

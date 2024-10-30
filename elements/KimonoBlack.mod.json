@@ -1,5 +1,5 @@
 {
-  "_fv": 60,
+  "_fv": 66,
   "_type": "animatedarmor",
   "definition": {
     "enableHelmet": false,
@@ -16,9 +16,11 @@
     "onLeggingsTick": {
       "name": "KimonoLeggingsBlack"
     },
-    "creativeTab": {
-      "value": "CUSTOM:Armors"
-    },
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Armors"
+      }
+    ],
     "armorTextureFile": "naobitooo.png",
     "model": "kimonoblack.geo.json",
     "idle": "idle",

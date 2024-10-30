@@ -15,6 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.BlockPos;
@@ -34,7 +35,8 @@ public class ChosoExtensionTwoProcedure {
 		if (entity == null)
 			return;
 		double timerce = 0;
-		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Piercing Blood")) {
+		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+				.equals(Component.translatable("jujutsu.technique.choso3").getString())) {
 			if (entity.isShiftKeyDown()) {
 				entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.PlayerSelectCurseTechniqueName = "Blood Shield";
@@ -50,9 +52,9 @@ public class ChosoExtensionTwoProcedure {
 			if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex7 = new CompoundTag();
-						entity.saveWithoutId(dataIndex7);
-						return dataIndex7.getCompound("ForgeData").getDouble("cnt1");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt1");
 					}
 				}.getValue() == 2) {
 					if (world instanceof Level _level) {
@@ -126,7 +128,8 @@ public class ChosoExtensionTwoProcedure {
 					}
 				}
 			}
-		} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Convergence")) {
+		} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+				.equals(Component.translatable("jujutsu.technique.choso2").getString())) {
 			if (entity.isShiftKeyDown()) {
 				entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.PlayerSelectCurseTechniqueName = "Blood Recover";
@@ -134,7 +137,7 @@ public class ChosoExtensionTwoProcedure {
 				});
 			}
 		} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Blood Recover")) {
-			if (!(entity instanceof LivingEntity _livEnt45 && _livEnt45.hasEffect(MobEffects.REGENERATION))) {
+			if (!(entity instanceof LivingEntity _livEnt47 && _livEnt47.hasEffect(MobEffects.REGENERATION))) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 1, false, false));
 			}

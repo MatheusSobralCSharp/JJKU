@@ -33,9 +33,9 @@ public class IfPlayerHasSukunaProcedure {
 			for (Entity entityiterator : _entfound) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex0 = new CompoundTag();
-						entityiterator.saveWithoutId(dataIndex0);
-						return dataIndex0.getCompound("ForgeData").getDouble("Demon");
+						CompoundTag dataIndex = new CompoundTag();
+						entityiterator.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("Demon");
 					}
 				}.getValue() == 1) {
 					{

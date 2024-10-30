@@ -26,7 +26,7 @@ public class JujutsucraftaddonModFluids {
 	public static final RegistryObject<FlowingFluid> FLOWING_YOKU = REGISTRY.register("flowing_yoku", () -> new YokuFluid.Flowing());
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-	public static class ClientSideHandler {
+	public static class FluidsClientSideHandler {
 		@SubscribeEvent
 		public static void clientSetup(FMLClientSetupEvent event) {
 			ItemBlockRenderTypes.setRenderLayer(YOKU.get(), RenderType.translucent());

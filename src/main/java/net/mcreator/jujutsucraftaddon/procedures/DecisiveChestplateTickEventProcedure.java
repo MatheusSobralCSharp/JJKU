@@ -11,10 +11,10 @@ public class DecisiveChestplateTickEventProcedure {
 	public static void execute(Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		if (entity.onGround() == false) {
+		if (!entity.onGround()) {
 			if (itemstack.getItem() instanceof DecisiveItem armor && armor instanceof GeoItem)
 				itemstack.getOrCreateTag().putString("geckoAnim", "float2");
-		} else if (entity.onGround() == true) {
+		} else if (entity.onGround()) {
 			if (itemstack.getItem() instanceof DecisiveItem armor && armor instanceof GeoItem)
 				itemstack.getOrCreateTag().putString("geckoAnim", "empty");
 		}

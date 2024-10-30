@@ -12,27 +12,29 @@ public class GojoAwakeningOnEffectActiveTickProcedure {
 			return;
 		if (new Object() {
 			public double getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getCompound("ForgeData").getDouble("cnt6");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 			}
 		}.getValue() > 0 && new Object() {
 			public double getValue() {
-				CompoundTag dataIndex1 = new CompoundTag();
-				entity.saveWithoutId(dataIndex1);
-				return dataIndex1.getCompound("ForgeData").getDouble("cnt6");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 			}
 		}.getValue() < 40) {
-			CompoundTag dataIndex3 = new CompoundTag();
-			entity.saveWithoutId(dataIndex3);
-			dataIndex3.getCompound("ForgeData").putDouble("cnt6", (new Object() {
-				public double getValue() {
-					CompoundTag dataIndex2 = new CompoundTag();
-					entity.saveWithoutId(dataIndex2);
-					return dataIndex2.getCompound("ForgeData").getDouble("cnt6");
-				}
-			}.getValue() + 1));
-			entity.load(dataIndex3);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt6");
+					}
+				}.getValue() + 1));
+				entity.load(dataIndex);
+			}
 		}
 		if (!(entity instanceof LivingEntity _livEnt4 && _livEnt4.hasEffect(MobEffects.REGENERATION))) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())

@@ -20,6 +20,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.Direction;
@@ -63,7 +64,8 @@ public class ProcedureUraumeProcedure {
 				world.setBlock(_bp, _bs, 3);
 			}
 		}
-		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Attack")) {
+		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+				.equals(Component.translatable("jujutsu.technique.attack1").getString())) {
 			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.PlayerSelectCurseTechniqueName = "Ice Shield";
 				capability.syncPlayerVariables(entity);
@@ -74,26 +76,29 @@ public class ProcedureUraumeProcedure {
 			if (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 				if (new Object() {
 					public double getValue() {
-						CompoundTag dataIndex10 = new CompoundTag();
-						entity.saveWithoutId(dataIndex10);
-						return dataIndex10.getCompound("ForgeData").getDouble("cnt6");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("cnt6");
 					}
 				}.getValue() < 75) {
-					CompoundTag dataIndex12 = new CompoundTag();
-					entity.saveWithoutId(dataIndex12);
-					dataIndex12.getCompound("ForgeData").putDouble("cnt6", (new Object() {
-						public double getValue() {
-							CompoundTag dataIndex11 = new CompoundTag();
-							entity.saveWithoutId(dataIndex11);
-							return dataIndex11.getCompound("ForgeData").getDouble("cnt6");
-						}
-					}.getValue() + 1));
-					entity.load(dataIndex12);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.getCompound("ForgeData").putDouble("cnt6", (new Object() {
+							public double getValue() {
+								CompoundTag dataIndex = new CompoundTag();
+								entity.saveWithoutId(dataIndex);
+								return dataIndex.getCompound("ForgeData").getDouble("cnt6");
+							}
+						}.getValue() + 1));
+						entity.load(dataIndex);
+					}
 				}
 			}
 		}
 		if (entity.isShiftKeyDown()) {
-			if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Knockback Attack")) {
+			if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+					.equals(Component.translatable("jujutsu.technique.attack2").getString())) {
 				entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.PlayerSelectCurseTechniqueName = "Ice Age";
 					capability.syncPlayerVariables(entity);

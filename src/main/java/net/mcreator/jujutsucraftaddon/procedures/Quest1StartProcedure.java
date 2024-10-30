@@ -25,63 +25,77 @@ public class Quest1StartProcedure {
 			if (entitytospawn != null) {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 			}
-			CompoundTag dataIndex4 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex4);
-			dataIndex4.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
-			(entitytospawn).load(dataIndex4);
-			CompoundTag dataIndex6 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex6);
-			dataIndex6.getCompound("ForgeData").putDouble("Quest", 1);
-			(entitytospawn).load(dataIndex6);
-			CompoundTag dataIndex9 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex9);
-			dataIndex9.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-				public double getValue() {
-					CompoundTag dataIndex8 = new CompoundTag();
-					entity.saveWithoutId(dataIndex8);
-					return dataIndex8.getCompound("ForgeData").getDouble("friend_num");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex9);
-			CompoundTag dataIndex12 = new CompoundTag();
-			(entitytospawn).saveWithoutId(dataIndex12);
-			dataIndex12.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-				public double getValue() {
-					CompoundTag dataIndex11 = new CompoundTag();
-					entity.saveWithoutId(dataIndex11);
-					return dataIndex11.getCompound("ForgeData").getDouble("friend_num");
-				}
-			}.getValue()));
-			(entitytospawn).load(dataIndex12);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("Quest", 1);
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				(entitytospawn).saveWithoutId(dataIndex);
+				dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+					public double getValue() {
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+					}
+				}.getValue()));
+				(entitytospawn).load(dataIndex);
+			}
 		}
 		if (world instanceof ServerLevel _serverLevel) {
 			Entity entitytospawn = JujutsucraftModEntities.GETO_SUGURU.get().spawn(_serverLevel, BlockPos.containing(x, y, (z + 5)), MobSpawnType.MOB_SUMMONED);
 			if (entitytospawn != null) {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-				CompoundTag dataIndex17 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex17);
-				dataIndex17.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
-				(entitytospawn).load(dataIndex17);
-				CompoundTag dataIndex20 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex20);
-				dataIndex20.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex19 = new CompoundTag();
-						entity.saveWithoutId(dataIndex19);
-						return dataIndex19.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex20);
-				CompoundTag dataIndex23 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex23);
-				dataIndex23.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-					public double getValue() {
-						CompoundTag dataIndex22 = new CompoundTag();
-						entity.saveWithoutId(dataIndex22);
-						return dataIndex22.getCompound("ForgeData").getDouble("friend_num");
-					}
-				}.getValue()));
-				(entitytospawn).load(dataIndex23);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putString("OWNER_UUID", ((entitytospawn).getStringUUID()));
+					(entitytospawn).load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+						public double getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+						}
+					}.getValue()));
+					(entitytospawn).load(dataIndex);
+				}
 				_serverLevel.addFreshEntity(entitytospawn);
 			}
 		}
@@ -89,10 +103,14 @@ public class Quest1StartProcedure {
 			Entity entitytospawn = JujutsucraftModEntities.FUSHIGURO_TOJI.get().spawn(_serverLevel, BlockPos.containing(x, y, (z + 5)), MobSpawnType.MOB_SUMMONED);
 			if (entitytospawn != null) {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-				for (int index0 = 0; index0 < 20; index0++) {
-					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.SQUID_INK, x, y, (z + 5), 3, 3, 3, 3, 1);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("TojiQuest", 1);
+					(entitytospawn).load(dataIndex);
 				}
+				if (world instanceof ServerLevel _level)
+					_level.sendParticles(ParticleTypes.SQUID_INK, x, y, (z + 5), 3, 3, 3, 3, 1);
 				_serverLevel.addFreshEntity(entitytospawn);
 			}
 		}

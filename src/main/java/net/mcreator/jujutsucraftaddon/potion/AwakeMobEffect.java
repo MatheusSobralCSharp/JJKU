@@ -22,7 +22,7 @@ public class AwakeMobEffect extends MobEffect {
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		AwakeEffectExpiresProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ());
+		AwakeEffectExpiresProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

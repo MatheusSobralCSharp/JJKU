@@ -1,0 +1,22 @@
+{
+  "_fv": 66,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Maho Effecto",
+    "icon": "anti_heal",
+    "color": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": false,
+    "renderStatusInHUD": false,
+    "onStarted": {
+      "name": "MahoEffectoEffectStartedapplied"
+    },
+    "onExpired": {
+      "name": "MahoEffectoEffectExpires"
+    }
+  }
+}

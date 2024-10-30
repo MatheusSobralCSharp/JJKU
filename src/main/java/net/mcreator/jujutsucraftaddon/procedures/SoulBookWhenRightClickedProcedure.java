@@ -2,10 +2,6 @@ package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
@@ -20,22 +16,8 @@ import net.minecraft.advancements.Advancement;
 
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 
-import javax.annotation.Nullable;
-
-@Mod.EventBusSubscriber
 public class SoulBookWhenRightClickedProcedure {
-	@SubscribeEvent
-	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
-		if (event.getHand() != event.getEntity().getUsedItemHand())
-			return;
-		execute(event, event.getTarget(), event.getEntity());
-	}
-
 	public static void execute(Entity entity, Entity sourceentity) {
-		execute(null, entity, sourceentity);
-	}
-
-	private static void execute(@Nullable Event event, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
 		if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:choso")) {

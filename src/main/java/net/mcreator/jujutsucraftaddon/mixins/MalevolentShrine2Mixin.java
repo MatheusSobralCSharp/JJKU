@@ -5,7 +5,10 @@ import net.mcreator.jujutsucraft.entity.EntityTreeEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModAttributes;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
-import net.mcreator.jujutsucraft.procedures.*;
+import net.mcreator.jujutsucraft.procedures.DomainExpansionCreateBarrierProcedure;
+import net.mcreator.jujutsucraft.procedures.MalevolentShrineProcedure;
+import net.mcreator.jujutsucraft.procedures.PlayAnimationProcedure;
+import net.mcreator.jujutsucraft.procedures.RotateEntityProcedure;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -15,11 +18,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
@@ -30,8 +33,6 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-
-import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Overwrite;
 
 import java.util.Comparator;
@@ -41,8 +42,8 @@ import java.util.List;
 @Mixin(value = MalevolentShrineProcedure.class, remap = false)
 public abstract class MalevolentShrine2Mixin {
     /**
-     * @author
-     * @reason
+     * @author Satushi
+     * @reason Change Shrine
      */
     @Overwrite
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {

@@ -12,14 +12,18 @@ public class KenjakuBallRightclickedProcedure {
 	public static void execute(Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		CompoundTag dataIndex0 = new CompoundTag();
-		entity.saveWithoutId(dataIndex0);
-		dataIndex0.getCompound("ForgeData").putDouble("PRESS_Z", 1);
-		entity.load(dataIndex0);
-		CompoundTag dataIndex3 = new CompoundTag();
-		entity.saveWithoutId(dataIndex3);
-		dataIndex3.getCompound("ForgeData").putDouble("skill", (itemstack.getOrCreateTag().getDouble("skill")));
-		entity.load(dataIndex3);
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putDouble("PRESS_Z", 1);
+			entity.load(dataIndex);
+		}
+		{
+			CompoundTag dataIndex = new CompoundTag();
+			entity.saveWithoutId(dataIndex);
+			dataIndex.getCompound("ForgeData").putDouble("skill", (itemstack.getOrCreateTag().getDouble("skill")));
+			entity.load(dataIndex);
+		}
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

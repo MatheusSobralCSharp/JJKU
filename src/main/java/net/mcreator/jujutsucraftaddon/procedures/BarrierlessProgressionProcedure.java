@@ -24,10 +24,12 @@ public class BarrierlessProgressionProcedure {
 				entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
 				((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
 						.setBaseValue((((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 5));
-				CompoundTag dataIndex5 = new CompoundTag();
-				(entitytospawn).saveWithoutId(dataIndex5);
-				dataIndex5.getCompound("ForgeData").putDouble("Barrierless", 1);
-				(entitytospawn).load(dataIndex5);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					(entitytospawn).saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("Barrierless", 1);
+					(entitytospawn).load(dataIndex);
+				}
 				if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, -1, 29, false, false));
 				if ((entitytospawn) instanceof LivingEntity _entity)

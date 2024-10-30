@@ -49,6 +49,8 @@ import net.mcreator.jujutsucraftaddon.entity.GojoSchoolEntity;
 import net.mcreator.jujutsucraftaddon.entity.GojoMangaEntity;
 import net.mcreator.jujutsucraftaddon.entity.GegeAkutamiEntity;
 import net.mcreator.jujutsucraftaddon.entity.FakeClonesEntity;
+import net.mcreator.jujutsucraftaddon.entity.DismantleVariantEntity;
+import net.mcreator.jujutsucraftaddon.entity.DismantleEntity;
 import net.mcreator.jujutsucraftaddon.entity.CloneEntity;
 import net.mcreator.jujutsucraftaddon.entity.CleaveWebEntity;
 import net.mcreator.jujutsucraftaddon.entity.CircleEntity;
@@ -202,6 +204,10 @@ public class JujutsucraftaddonModEntities {
 			EntityType.Builder.<SukunaREntity>of(SukunaREntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(SukunaREntity::new)
 
 					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<DismantleEntity>> DISMANTLE = register("dismantle",
+			EntityType.Builder.<DismantleEntity>of(DismantleEntity::new, MobCategory.MISC).setCustomClientFactory(DismantleEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<DismantleVariantEntity>> DISMANTLE_VARIANT = register("dismantle_variant", EntityType.Builder.<DismantleVariantEntity>of(DismantleVariantEntity::new, MobCategory.MISC)
+			.setCustomClientFactory(DismantleVariantEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

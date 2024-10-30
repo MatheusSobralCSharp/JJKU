@@ -89,9 +89,14 @@ public class SukunaKeybindOnKeyPressed1Procedure {
 				}
 			}
 		} else {
-			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal("CONTAIN SUKUNA"), false);
-			ContainProcedure.execute(world, x, y, z, entity);
+			if ((entity instanceof ServerPlayer && ((ServerPlayer) entity).level() instanceof ServerLevel
+					&& ((ServerPlayer) entity).getAdvancements().getOrStartProgress(((ServerPlayer) entity).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sukuna_finger_7"))).isDone()) == false) {
+				if (Math.random() <= 0.3) {
+					if (entity instanceof Player _player && !_player.level().isClientSide())
+						_player.displayClientMessage(Component.literal("CONTAIN SUKUNA"), false);
+					ContainProcedure.execute(world, x, y, z, entity);
+				}
+			}
 		}
 		if ((entity instanceof ServerPlayer && ((ServerPlayer) entity).level() instanceof ServerLevel
 				&& ((ServerPlayer) entity).getAdvancements().getOrStartProgress(((ServerPlayer) entity).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sukuna_finger_7"))).isDone()) == false) {
@@ -136,8 +141,8 @@ public class SukunaKeybindOnKeyPressed1Procedure {
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 			for (Entity entityiterator : _entfound) {
 				if (!(entityiterator == entity)) {
-					if (entityiterator instanceof ServerPlayer _plr28 && _plr28.level() instanceof ServerLevel
-							&& _plr28.getAdvancements().getOrStartProgress(_plr28.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus"))).isDone()) {
+					if (entityiterator instanceof ServerPlayer _plr29 && _plr29.level() instanceof ServerLevel
+							&& _plr29.getAdvancements().getOrStartProgress(_plr29.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:welcome_to_jujutsu_plus"))).isDone()) {
 						if ((entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 6) {
 							if (Math.random() <= 0.05) {
 								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -146,97 +151,114 @@ public class SukunaKeybindOnKeyPressed1Procedure {
 									Entity entitytospawn = JujutsucraftaddonModEntities.SUKUNA_R.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 									if (entitytospawn != null) {
 										entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-									}
-									(entitytospawn).setCustomName(Component.literal((entityiterator.getDisplayName().getString())));
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
-											.setBaseValue((1 + ((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getBaseValue()));
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK)
-											.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK).getBaseValue());
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
-											.setBaseValue((((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 40));
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE)
-											.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE).getBaseValue());
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE).setBaseValue(256);
-									if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-										_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SUKUNA_EFFECT.get(), (-1),
-												(int) (((entitytospawn) instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())
-														? _livEnt.getEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()).getAmplifier()
-														: 0) + 16),
-												false, false));
-									if ((entitytospawn) instanceof LivingEntity _entity)
-										_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-									CompoundTag dataIndex60 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex60);
-									dataIndex60.putString("Owner", (entityiterator.getStringUUID()));
-									(entitytospawn).load(dataIndex60);
-									if ((entitytospawn) instanceof LivingEntity _entity) {
-										ItemStack _setstack = (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-										_setstack.setCount(1);
-										_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
-										if (_entity instanceof Player _player)
-											_player.getInventory().setChanged();
-									}
-									{
-										Entity _entity = (entitytospawn);
-										if (_entity instanceof Player _player) {
-											_player.getInventory().armor.set(0, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
-											_player.getInventory().setChanged();
-										} else if (_entity instanceof LivingEntity _living) {
-											_living.setItemSlot(EquipmentSlot.FEET, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
+										(entitytospawn).setCustomName(Component.literal((entityiterator.getDisplayName().getString())));
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
+												.setBaseValue((1 + ((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getBaseValue()));
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK)
+												.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK).getBaseValue());
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
+												.setBaseValue((((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 40));
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE)
+												.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE).getBaseValue());
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE).setBaseValue(256);
+										if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+											_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SUKUNA_EFFECT.get(), (-1),
+													(int) (((entitytospawn) instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())
+															? _livEnt.getEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()).getAmplifier()
+															: 0) + 16),
+													false, false));
+										if ((entitytospawn) instanceof LivingEntity _entity)
+											_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.putString("Owner", (entityiterator.getStringUUID()));
+											(entitytospawn).load(dataIndex);
 										}
+										if ((entitytospawn) instanceof LivingEntity _entity) {
+											ItemStack _setstack = (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+											_setstack.setCount(1);
+											_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+											if (_entity instanceof Player _player)
+												_player.getInventory().setChanged();
+										}
+										{
+											Entity _entity = (entitytospawn);
+											if (_entity instanceof Player _player) {
+												_player.getInventory().armor.set(0, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
+												_player.getInventory().setChanged();
+											} else if (_entity instanceof LivingEntity _living) {
+												_living.setItemSlot(EquipmentSlot.FEET, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
+											}
+										}
+										{
+											Entity _entity = (entitytospawn);
+											if (_entity instanceof Player _player) {
+												_player.getInventory().armor.set(1, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
+												_player.getInventory().setChanged();
+											} else if (_entity instanceof LivingEntity _living) {
+												_living.setItemSlot(EquipmentSlot.LEGS, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
+											}
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("God", 1);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("Demon", 1);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex = new CompoundTag();
+													entityiterator.saveWithoutId(dataIndex);
+													return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+												}
+											}.getValue()));
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex = new CompoundTag();
+													entityiterator.saveWithoutId(dataIndex);
+													return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+												}
+											}.getValue()));
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("Tagged",
+													(entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putBoolean("CurseUser", true);
+											(entitytospawn).load(dataIndex);
+										}
+										_serverLevel.addFreshEntity(entitytospawn);
 									}
-									{
-										Entity _entity = (entitytospawn);
-										if (_entity instanceof Player _player) {
-											_player.getInventory().armor.set(1, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
-											_player.getInventory().setChanged();
-										} else if (_entity instanceof LivingEntity _living) {
-											_living.setItemSlot(EquipmentSlot.LEGS, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
-										}
-									}
-									CompoundTag dataIndex71 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex71);
-									dataIndex71.getCompound("ForgeData").putDouble("God", 1);
-									(entitytospawn).load(dataIndex71);
-									CompoundTag dataIndex73 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex73);
-									dataIndex73.getCompound("ForgeData").putDouble("Demon", 1);
-									(entitytospawn).load(dataIndex73);
-									CompoundTag dataIndex76 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex76);
-									dataIndex76.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex75 = new CompoundTag();
-											entityiterator.saveWithoutId(dataIndex75);
-											return dataIndex75.getCompound("ForgeData").getDouble("friend_num");
-										}
-									}.getValue()));
-									(entitytospawn).load(dataIndex76);
-									CompoundTag dataIndex79 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex79);
-									dataIndex79.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex78 = new CompoundTag();
-											entityiterator.saveWithoutId(dataIndex78);
-											return dataIndex78.getCompound("ForgeData").getDouble("friend_num");
-										}
-									}.getValue()));
-									(entitytospawn).load(dataIndex79);
-									CompoundTag dataIndex82 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex82);
-									dataIndex82.getCompound("ForgeData").putDouble("Tagged",
-											(entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2);
-									(entitytospawn).load(dataIndex82);
-									CompoundTag dataIndex84 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex84);
-									dataIndex84.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
-									(entitytospawn).load(dataIndex84);
-									CompoundTag dataIndex86 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex86);
-									dataIndex86.getCompound("ForgeData").putBoolean("CurseUser", true);
-									(entitytospawn).load(dataIndex86);
 								}
 							}
 						} else if ((entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
@@ -247,97 +269,114 @@ public class SukunaKeybindOnKeyPressed1Procedure {
 									Entity entitytospawn = JujutsucraftaddonModEntities.SUKUNA_R.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 									if (entitytospawn != null) {
 										entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
-									}
-									(entitytospawn).setCustomName(Component.literal((entityiterator.getDisplayName().getString())));
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
-											.setBaseValue((1 + ((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getBaseValue()));
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK)
-											.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK).getBaseValue());
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
-											.setBaseValue((((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 40));
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE)
-											.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE).getBaseValue());
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
-									((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE).setBaseValue(256);
-									if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-										_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SUKUNA_EFFECT.get(), (-1),
-												(int) (((entitytospawn) instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())
-														? _livEnt.getEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()).getAmplifier()
-														: 0) + 16),
-												false, false));
-									if ((entitytospawn) instanceof LivingEntity _entity)
-										_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
-									CompoundTag dataIndex119 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex119);
-									dataIndex119.putString("Owner", (entityiterator.getStringUUID()));
-									(entitytospawn).load(dataIndex119);
-									if ((entitytospawn) instanceof LivingEntity _entity) {
-										ItemStack _setstack = (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
-										_setstack.setCount(1);
-										_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
-										if (_entity instanceof Player _player)
-											_player.getInventory().setChanged();
-									}
-									{
-										Entity _entity = (entitytospawn);
-										if (_entity instanceof Player _player) {
-											_player.getInventory().armor.set(0, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
-											_player.getInventory().setChanged();
-										} else if (_entity instanceof LivingEntity _living) {
-											_living.setItemSlot(EquipmentSlot.FEET, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
+										(entitytospawn).setCustomName(Component.literal((entityiterator.getDisplayName().getString())));
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).setBaseValue(30);
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
+												.setBaseValue((1 + ((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getBaseValue()));
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK)
+												.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK).getBaseValue());
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH)
+												.setBaseValue((((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).getBaseValue() * 40));
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE)
+												.setBaseValue(((LivingEntity) entityiterator).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE).getBaseValue());
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED).setBaseValue(0.3);
+										((LivingEntity) (entitytospawn)).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.FOLLOW_RANGE).setBaseValue(256);
+										if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+											_entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SUKUNA_EFFECT.get(), (-1),
+													(int) (((entitytospawn) instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())
+															? _livEnt.getEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get()).getAmplifier()
+															: 0) + 16),
+													false, false));
+										if ((entitytospawn) instanceof LivingEntity _entity)
+											_entity.setHealth((entitytospawn) instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.putString("Owner", (entityiterator.getStringUUID()));
+											(entitytospawn).load(dataIndex);
 										}
+										if ((entitytospawn) instanceof LivingEntity _entity) {
+											ItemStack _setstack = (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy();
+											_setstack.setCount(1);
+											_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+											if (_entity instanceof Player _player)
+												_player.getInventory().setChanged();
+										}
+										{
+											Entity _entity = (entitytospawn);
+											if (_entity instanceof Player _player) {
+												_player.getInventory().armor.set(0, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
+												_player.getInventory().setChanged();
+											} else if (_entity instanceof LivingEntity _living) {
+												_living.setItemSlot(EquipmentSlot.FEET, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY));
+											}
+										}
+										{
+											Entity _entity = (entitytospawn);
+											if (_entity instanceof Player _player) {
+												_player.getInventory().armor.set(1, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
+												_player.getInventory().setChanged();
+											} else if (_entity instanceof LivingEntity _living) {
+												_living.setItemSlot(EquipmentSlot.LEGS, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
+											}
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("God", 1);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("Demon", 1);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex = new CompoundTag();
+													entityiterator.saveWithoutId(dataIndex);
+													return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+												}
+											}.getValue()));
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+												public double getValue() {
+													CompoundTag dataIndex = new CompoundTag();
+													entityiterator.saveWithoutId(dataIndex);
+													return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+												}
+											}.getValue()));
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putDouble("Tagged",
+													(entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
+											(entitytospawn).load(dataIndex);
+										}
+										{
+											CompoundTag dataIndex = new CompoundTag();
+											(entitytospawn).saveWithoutId(dataIndex);
+											dataIndex.getCompound("ForgeData").putBoolean("CurseUser", true);
+											(entitytospawn).load(dataIndex);
+										}
+										_serverLevel.addFreshEntity(entitytospawn);
 									}
-									{
-										Entity _entity = (entitytospawn);
-										if (_entity instanceof Player _player) {
-											_player.getInventory().armor.set(1, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
-											_player.getInventory().setChanged();
-										} else if (_entity instanceof LivingEntity _living) {
-											_living.setItemSlot(EquipmentSlot.LEGS, (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY));
-										}
-									}
-									CompoundTag dataIndex130 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex130);
-									dataIndex130.getCompound("ForgeData").putDouble("God", 1);
-									(entitytospawn).load(dataIndex130);
-									CompoundTag dataIndex132 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex132);
-									dataIndex132.getCompound("ForgeData").putDouble("Demon", 1);
-									(entitytospawn).load(dataIndex132);
-									CompoundTag dataIndex135 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex135);
-									dataIndex135.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex134 = new CompoundTag();
-											entityiterator.saveWithoutId(dataIndex134);
-											return dataIndex134.getCompound("ForgeData").getDouble("friend_num");
-										}
-									}.getValue()));
-									(entitytospawn).load(dataIndex135);
-									CompoundTag dataIndex138 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex138);
-									dataIndex138.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-										public double getValue() {
-											CompoundTag dataIndex137 = new CompoundTag();
-											entityiterator.saveWithoutId(dataIndex137);
-											return dataIndex137.getCompound("ForgeData").getDouble("friend_num");
-										}
-									}.getValue()));
-									(entitytospawn).load(dataIndex138);
-									CompoundTag dataIndex141 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex141);
-									dataIndex141.getCompound("ForgeData").putDouble("Tagged",
-											(entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2);
-									(entitytospawn).load(dataIndex141);
-									CompoundTag dataIndex143 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex143);
-									dataIndex143.getCompound("ForgeData").putBoolean("UseCursedTechnique", true);
-									(entitytospawn).load(dataIndex143);
-									CompoundTag dataIndex145 = new CompoundTag();
-									(entitytospawn).saveWithoutId(dataIndex145);
-									dataIndex145.getCompound("ForgeData").putBoolean("CurseUser", true);
-									(entitytospawn).load(dataIndex145);
 								}
 							}
 						}

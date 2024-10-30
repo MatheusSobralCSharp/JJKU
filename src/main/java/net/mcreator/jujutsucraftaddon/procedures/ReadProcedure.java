@@ -128,9 +128,9 @@ public class ReadProcedure {
 		if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Okkotsu")) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex36 = new CompoundTag();
-					entity.saveWithoutId(dataIndex36);
-					return dataIndex36.getCompound("ForgeData").getDouble("RikaRing");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("RikaRing");
 				}
 			}.getValue() == 0) {
 				if ((entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(JujutsucraftaddonModItems.YUTA_RING.get())) : false) != true) {
@@ -143,9 +143,9 @@ public class ReadProcedure {
 				}
 			} else if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex39 = new CompoundTag();
-					entity.saveWithoutId(dataIndex39);
-					return dataIndex39.getCompound("ForgeData").getDouble("RikaRing");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("RikaRing");
 				}
 			}.getValue() == 1) {
 				if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(JujutsucraftaddonModItems.YUTA_RING.get())) : false) {

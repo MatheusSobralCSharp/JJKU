@@ -1,10 +1,8 @@
 package net.mcreator.jujutsucraftaddon.item.model;
 
-import software.bernie.geckolib.model.GeoModel;
-
-import net.minecraft.resources.ResourceLocation;
-
 import net.mcreator.jujutsucraftaddon.item.WukongStaffItem;
+import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.model.GeoModel;
 
 public class WukongStaffItemModel extends GeoModel<WukongStaffItem> {
 	@Override

@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
@@ -24,7 +25,8 @@ public class TakabaExtensionTwoProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Attack")) {
+		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+				.equals(Component.translatable("jujutsu.technique.attack1").getString())) {
 			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.PlayerSelectCurseTechniqueName = "HAHAHAHA";
 				capability.syncPlayerVariables(entity);
@@ -32,9 +34,9 @@ public class TakabaExtensionTwoProcedure {
 		} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("HAHAHAHA")) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex3 = new CompoundTag();
-					entity.saveWithoutId(dataIndex3);
-					return dataIndex3.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() > 0) {
 				{
@@ -42,7 +44,7 @@ public class TakabaExtensionTwoProcedure {
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(20 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 					for (Entity entityiterator : _entfound) {
 						if (!(entity == entityiterator)) {
-							if (!(entity instanceof LivingEntity _livEnt5 && _livEnt5.hasEffect(JujutsucraftaddonModMobEffects.C_DTAKABA.get()))) {
+							if (!(entity instanceof LivingEntity _livEnt6 && _livEnt6.hasEffect(JujutsucraftaddonModMobEffects.C_DTAKABA.get()))) {
 								if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_TAKABA_REMOVE_ARMOR) == true) {
 									{
 										Entity _ent = entityiterator;
@@ -77,7 +79,8 @@ public class TakabaExtensionTwoProcedure {
 				}
 			}
 		}
-		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Knockback Attack")) {
+		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+				.equals(Component.translatable("jujutsu.technique.attack2").getString())) {
 			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.PlayerSelectCurseTechniqueName = "Comedy";
 				capability.syncPlayerVariables(entity);
@@ -85,9 +88,9 @@ public class TakabaExtensionTwoProcedure {
 		} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Comedy")) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex15 = new CompoundTag();
-					entity.saveWithoutId(dataIndex15);
-					return dataIndex15.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() > 0) {
 				{
@@ -97,38 +100,44 @@ public class TakabaExtensionTwoProcedure {
 						if (!(entity == entityiterator)) {
 							if ((ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:kenjaku")
 									|| (ForgeRegistries.ENTITY_TYPES.getKey(entityiterator.getType()).toString()).equals("jujutsucraft:okkotsu_yuta_culling_game")) {
-								CompoundTag dataIndex20 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex20);
-								dataIndex20.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-									public double getValue() {
-										CompoundTag dataIndex19 = new CompoundTag();
-										entity.saveWithoutId(dataIndex19);
-										return dataIndex19.getCompound("ForgeData").getDouble("friend_num");
-									}
-								}.getValue()));
-								entityiterator.load(dataIndex20);
-								CompoundTag dataIndex22 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex22);
-								dataIndex22.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-									public double getValue() {
-										CompoundTag dataIndex21 = new CompoundTag();
-										entity.saveWithoutId(dataIndex21);
-										return dataIndex21.getCompound("ForgeData").getDouble("friend_num");
-									}
-								}.getValue()));
-								entityiterator.load(dataIndex22);
-								CompoundTag dataIndex24 = new CompoundTag();
-								entityiterator.saveWithoutId(dataIndex24);
-								dataIndex24.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-									public double getValue() {
-										CompoundTag dataIndex23 = new CompoundTag();
-										entity.saveWithoutId(dataIndex23);
-										return dataIndex23.getCompound("ForgeData").getDouble("friend_num");
-									}
-								}.getValue()));
-								entityiterator.load(dataIndex24);
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+										public double getValue() {
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+										}
+									}.getValue()));
+									entityiterator.load(dataIndex);
+								}
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+										public double getValue() {
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+										}
+									}.getValue()));
+									entityiterator.load(dataIndex);
+								}
+								{
+									CompoundTag dataIndex = new CompoundTag();
+									entityiterator.saveWithoutId(dataIndex);
+									dataIndex.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+										public double getValue() {
+											CompoundTag dataIndex = new CompoundTag();
+											entity.saveWithoutId(dataIndex);
+											return dataIndex.getCompound("ForgeData").getDouble("friend_num");
+										}
+									}.getValue()));
+									entityiterator.load(dataIndex);
+								}
 							}
-							if (!(entity instanceof LivingEntity _livEnt25 && _livEnt25.hasEffect(JujutsucraftaddonModMobEffects.CD_TAKABA_2.get()))) {
+							if (!(entity instanceof LivingEntity _livEnt27 && _livEnt27.hasEffect(JujutsucraftaddonModMobEffects.CD_TAKABA_2.get()))) {
 								{
 									Entity _ent = entityiterator;
 									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -163,7 +172,8 @@ public class TakabaExtensionTwoProcedure {
 				}
 			}
 		}
-		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Barrage Attack")) {
+		if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)
+				.equals(Component.translatable("jujutsu.technique.attack3").getString())) {
 			entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 				capability.PlayerSelectCurseTechniqueName = "Nuh uh";
 				capability.syncPlayerVariables(entity);
@@ -171,15 +181,17 @@ public class TakabaExtensionTwoProcedure {
 		} else if (((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName).equals("Nuh uh")) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex36 = new CompoundTag();
-					entity.saveWithoutId(dataIndex36);
-					return dataIndex36.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() > 0) {
-				if (!(entity instanceof LivingEntity _livEnt37 && _livEnt37.hasEffect(JujutsucraftaddonModMobEffects.C_DTAKABA.get()))) {
+				if (!(entity instanceof LivingEntity _livEnt40 && _livEnt40.hasEffect(JujutsucraftaddonModMobEffects.CD_TAKABA_2.get()))) {
 					entity.setInvulnerable(true);
 					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.C_DTAKABA.get(), 600, 1, false, false));
+					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+						_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.CD_TAKABA_2.get(), 2000, 1, false, false));
 				}
 			}
 		}

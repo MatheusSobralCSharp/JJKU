@@ -18,15 +18,17 @@ public class DomainBreakOnEffectActiveTickProcedure {
 		if ((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex1 = new CompoundTag();
-					entity.saveWithoutId(dataIndex1);
-					return dataIndex1.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 105) {
-				CompoundTag dataIndex2 = new CompoundTag();
-				entity.saveWithoutId(dataIndex2);
-				dataIndex2.getCompound("ForgeData").putDouble("skill", 1);
-				entity.load(dataIndex2);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("skill", 1);
+					entity.load(dataIndex);
+				}
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -37,15 +39,17 @@ public class DomainBreakOnEffectActiveTickProcedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					entity.saveWithoutId(dataIndex4);
-					return dataIndex4.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 215) {
-				CompoundTag dataIndex5 = new CompoundTag();
-				entity.saveWithoutId(dataIndex5);
-				dataIndex5.getCompound("ForgeData").putDouble("skill", 1);
-				entity.load(dataIndex5);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("skill", 1);
+					entity.load(dataIndex);
+				}
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -56,15 +60,17 @@ public class DomainBreakOnEffectActiveTickProcedure {
 			}
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex7 = new CompoundTag();
-					entity.saveWithoutId(dataIndex7);
-					return dataIndex7.getCompound("ForgeData").getDouble("skill");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("skill");
 				}
 			}.getValue() == 405) {
-				CompoundTag dataIndex8 = new CompoundTag();
-				entity.saveWithoutId(dataIndex8);
-				dataIndex8.getCompound("ForgeData").putDouble("skill", 1);
-				entity.load(dataIndex8);
+				{
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					dataIndex.getCompound("ForgeData").putDouble("skill", 1);
+					entity.load(dataIndex);
+				}
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -76,9 +82,9 @@ public class DomainBreakOnEffectActiveTickProcedure {
 		} else if (((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
 			if (new Object() {
 				public double getValue() {
-					CompoundTag dataIndex11 = new CompoundTag();
-					entity.saveWithoutId(dataIndex11);
-					return dataIndex11.getCompound("ForgeData").getDouble("select");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getCompound("ForgeData").getDouble("select");
 				}
 			}.getValue() == 0) {
 				if (entity instanceof LivingEntity _entity)
