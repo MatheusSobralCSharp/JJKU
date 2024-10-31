@@ -12,7 +12,7 @@ public abstract class PacketInjectMixin {
     public PacketInjectMixin(){
     }
 
-    @Inject(at = @At("TAIL") , method = "<init>")
+    @Inject(at = @At("TAIL") , method = "<init>", remap = false)
     private void injectNetworkHandler(CallbackInfo info) {
         // This method will run after the mod's constructor is finished
         JujutsucraftaddonModNetworkHandler.registerMessages();

@@ -35,6 +35,7 @@ import net.mcreator.jujutsucraft.entity.CursedSpiritGrade37Entity;
 
 import javax.annotation.Nullable;
 
+import java.util.jar.Attributes;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber
@@ -147,38 +148,26 @@ public class SpawnedProcedure {
 									}
 								}
 							} // Check if the entity has the specified tags
-							// Check if the entity has the specified tags
-							if (entity.getPersistentData().getDouble("CursedSpirit") == 1 ||
-									entity.getPersistentData().getDouble("CurseUser") == 1 ||
-									entity.getPersistentData().getDouble("JujutsuSorcerer") == 1) {
-
-								// Check if the entity has "ForgeData" and if it's not null
-								if (entity.getPersistentData().contains("ForgeData")) {
-									CompoundTag forgeData = entity.getPersistentData().getCompound("ForgeData");
-									if (forgeData != null) {
-										double buffValue = forgeData.getDouble("buff");
-
-										// If "buff" is not set to 1, apply the health modification
-										if (buffValue != 1) {
-											LivingEntity livingEntity = (LivingEntity) entity;
-
-											// Get the current MAX_HEALTH attribute
-											AttributeInstance maxHealthAttr = livingEntity.getAttribute(Attributes.MAX_HEALTH);
-											if (maxHealthAttr != null) {
-												// Update the MAX_HEALTH attribute based on game difficulty
-												double gameDifficulty = world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DIFFICULTY);
-												double newMaxHealth = 100.0 / gameDifficulty * maxHealthAttr.getBaseValue();
-												maxHealthAttr.setBaseValue(newMaxHealth);
-
-												// Set the entity's health to the new maximum
-												livingEntity.setHealth(livingEntity.getMaxHealth());
-											}
-
-											// Update the "buff" value in the persistent data
-											forgeData.putDouble("buff", 1);
-											entity.getPersistentData().put("ForgeData", forgeData);
-										}
+							if (entity.getPersistentData().getDouble("CursedSpirit") == 1 || entity.getPersistentData().getDouble("CurseUser") == 1 || entity.getPersistentData().getDouble("JujutsuSorcerer") == 1) {
+								// Retrieve the "buff" value from the entity's persistent data
+								CompoundTag forgeData = entity.getPersistentData().getCompound("ForgeData");
+								double buffValue = forgeData.getDouble("buff");
+								// If "buff" is not set to 1, apply the health modification
+								if (buffValue != 1) {
+									LivingEntity livingEntity = (LivingEntity) entity;
+									// Get the current MAX_HEALTH attribute
+									AttributeInstance maxHealthAttr = livingEntity.getAttribute(Attributes.MAX_HEALTH);
+									if (maxHealthAttr != null) {
+										// Update the MAX_HEALTH attribute based on game difficulty
+										double gameDifficulty = world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DIFFICULTY);
+										double newMaxHealth = 100.0 / gameDifficulty * maxHealthAttr.getBaseValue();
+										maxHealthAttr.setBaseValue(newMaxHealth);
+										// Set the entity's health to the new maximum
+										livingEntity.setHealth(livingEntity.getMaxHealth());
 									}
+									// Update the "buff" value in the persistent data
+									forgeData.putDouble("buff", 1);
+									entity.getPersistentData().put("ForgeData", forgeData);
 								}
 							}
 							if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_SPAWN_OVERWORLD)) {
@@ -204,6 +193,8 @@ public class SpawnedProcedure {
 							_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MAHO_EFFECTO.get(), 40, 1, false, false));
 					}
 				}
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("yes"), false);
 			}
 			if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_VANILLA) == true) {
 				if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:vanilla_mob")))) {
