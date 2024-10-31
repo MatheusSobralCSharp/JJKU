@@ -22,8 +22,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = IdleTransfigurationProcedure.class, remap = false)
 public abstract class IdleTransfigurationMixin {
-    public IdleTransfigurationMixin(){
+    public IdleTransfigurationMixin() {
     }
+
     /**
      * @author Satushi
      * @reason Yes
@@ -42,18 +43,18 @@ public abstract class IdleTransfigurationMixin {
             double old_cooldown = 0.0;
             entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
             if (entity instanceof LivingEntity) {
-                LivingEntity _entity = (LivingEntity)entity;
+                LivingEntity _entity = (LivingEntity) entity;
                 if (!_entity.level().isClientSide()) {
                     _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 5, false, false));
                 }
             }
 
-            x_pos = (double)entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(2.0)), Block.OUTLINE, Fluid.NONE, entity)).getBlockPos().getX();
-            y_pos = (double)entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(2.0)), Block.OUTLINE, Fluid.NONE, entity)).getBlockPos().getY();
-            z_pos = (double)entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(2.0)), Block.OUTLINE, Fluid.NONE, entity)).getBlockPos().getZ();
+            x_pos = (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(2.0)), Block.OUTLINE, Fluid.NONE, entity)).getBlockPos().getX();
+            y_pos = (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(2.0)), Block.OUTLINE, Fluid.NONE, entity)).getBlockPos().getY();
+            z_pos = (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(2.0)), Block.OUTLINE, Fluid.NONE, entity)).getBlockPos().getZ();
             LivingEntity var10000;
             if (entity instanceof Mob) {
-                Mob _mobEnt = (Mob)entity;
+                Mob _mobEnt = (Mob) entity;
                 var10000 = _mobEnt.getTarget();
             } else {
                 var10000 = null;
@@ -65,7 +66,7 @@ public abstract class IdleTransfigurationMixin {
                 Mob _mobEnt;
                 LivingEntity var10004;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10004 = _mobEnt.getTarget();
                 } else {
                     var10004 = null;
@@ -83,15 +84,15 @@ public abstract class IdleTransfigurationMixin {
                 double var23 = var10005.getY();
                 LivingEntity var10006;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10006 = _mobEnt.getTarget();
                 } else {
                     var10006 = null;
                 }
 
-                var23 += (double)var10006.getBbHeight() * 0.5;
+                var23 += (double) var10006.getBbHeight() * 0.5;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10006 = _mobEnt.getTarget();
                 } else {
                     var10006 = null;

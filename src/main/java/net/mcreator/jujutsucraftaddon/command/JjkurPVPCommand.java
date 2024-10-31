@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.command;
 
 import net.minecraftforge.fml.common.Mod;
@@ -22,66 +21,66 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 
 @Mod.EventBusSubscriber
 public class JjkurPVPCommand {
-	@SubscribeEvent
-	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurPVP")
+    @SubscribeEvent
+    public static void registerCommand(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("jjkurPVP")
 
-				.then(Commands.literal("Battle").then(Commands.argument("Team", BoolArgumentType.bool()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-					Level world = arguments.getSource().getUnsidedLevel();
-					double x = arguments.getSource().getPosition().x();
-					double y = arguments.getSource().getPosition().y();
-					double z = arguments.getSource().getPosition().z();
-					Entity entity = arguments.getSource().getEntity();
-					if (entity == null && world instanceof ServerLevel _servLevel)
-						entity = FakePlayerFactory.getMinecraft(_servLevel);
-					Direction direction = Direction.DOWN;
-					if (entity != null)
-						direction = entity.getDirection();
+                .then(Commands.literal("Battle").then(Commands.argument("Team", BoolArgumentType.bool()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+                    Level world = arguments.getSource().getUnsidedLevel();
+                    double x = arguments.getSource().getPosition().x();
+                    double y = arguments.getSource().getPosition().y();
+                    double z = arguments.getSource().getPosition().z();
+                    Entity entity = arguments.getSource().getEntity();
+                    if (entity == null && world instanceof ServerLevel _servLevel)
+                        entity = FakePlayerFactory.getMinecraft(_servLevel);
+                    Direction direction = Direction.DOWN;
+                    if (entity != null)
+                        direction = entity.getDirection();
 
-					PVPProcedure.execute(world, arguments, entity);
-					return 0;
-				})))).then(Commands.literal("Flag").then(Commands.argument("Team", BoolArgumentType.bool()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-					Level world = arguments.getSource().getUnsidedLevel();
-					double x = arguments.getSource().getPosition().x();
-					double y = arguments.getSource().getPosition().y();
-					double z = arguments.getSource().getPosition().z();
-					Entity entity = arguments.getSource().getEntity();
-					if (entity == null && world instanceof ServerLevel _servLevel)
-						entity = FakePlayerFactory.getMinecraft(_servLevel);
-					Direction direction = Direction.DOWN;
-					if (entity != null)
-						direction = entity.getDirection();
+                    PVPProcedure.execute(world, arguments, entity);
+                    return 0;
+                })))).then(Commands.literal("Flag").then(Commands.argument("Team", BoolArgumentType.bool()).then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+                    Level world = arguments.getSource().getUnsidedLevel();
+                    double x = arguments.getSource().getPosition().x();
+                    double y = arguments.getSource().getPosition().y();
+                    double z = arguments.getSource().getPosition().z();
+                    Entity entity = arguments.getSource().getEntity();
+                    if (entity == null && world instanceof ServerLevel _servLevel)
+                        entity = FakePlayerFactory.getMinecraft(_servLevel);
+                    Direction direction = Direction.DOWN;
+                    if (entity != null)
+                        direction = entity.getDirection();
 
-					PVPFlagProcedure.execute(world, arguments, entity);
-					return 0;
-				})))).then(Commands.literal("Enable").executes(arguments -> {
-					Level world = arguments.getSource().getUnsidedLevel();
-					double x = arguments.getSource().getPosition().x();
-					double y = arguments.getSource().getPosition().y();
-					double z = arguments.getSource().getPosition().z();
-					Entity entity = arguments.getSource().getEntity();
-					if (entity == null && world instanceof ServerLevel _servLevel)
-						entity = FakePlayerFactory.getMinecraft(_servLevel);
-					Direction direction = Direction.DOWN;
-					if (entity != null)
-						direction = entity.getDirection();
+                    PVPFlagProcedure.execute(world, arguments, entity);
+                    return 0;
+                })))).then(Commands.literal("Enable").executes(arguments -> {
+                    Level world = arguments.getSource().getUnsidedLevel();
+                    double x = arguments.getSource().getPosition().x();
+                    double y = arguments.getSource().getPosition().y();
+                    double z = arguments.getSource().getPosition().z();
+                    Entity entity = arguments.getSource().getEntity();
+                    if (entity == null && world instanceof ServerLevel _servLevel)
+                        entity = FakePlayerFactory.getMinecraft(_servLevel);
+                    Direction direction = Direction.DOWN;
+                    if (entity != null)
+                        direction = entity.getDirection();
 
-					EnableProcedure.execute(entity);
-					return 0;
-				})).then(Commands.literal("Disable").executes(arguments -> {
-					Level world = arguments.getSource().getUnsidedLevel();
-					double x = arguments.getSource().getPosition().x();
-					double y = arguments.getSource().getPosition().y();
-					double z = arguments.getSource().getPosition().z();
-					Entity entity = arguments.getSource().getEntity();
-					if (entity == null && world instanceof ServerLevel _servLevel)
-						entity = FakePlayerFactory.getMinecraft(_servLevel);
-					Direction direction = Direction.DOWN;
-					if (entity != null)
-						direction = entity.getDirection();
+                    EnableProcedure.execute(entity);
+                    return 0;
+                })).then(Commands.literal("Disable").executes(arguments -> {
+                    Level world = arguments.getSource().getUnsidedLevel();
+                    double x = arguments.getSource().getPosition().x();
+                    double y = arguments.getSource().getPosition().y();
+                    double z = arguments.getSource().getPosition().z();
+                    Entity entity = arguments.getSource().getEntity();
+                    if (entity == null && world instanceof ServerLevel _servLevel)
+                        entity = FakePlayerFactory.getMinecraft(_servLevel);
+                    Direction direction = Direction.DOWN;
+                    if (entity != null)
+                        direction = entity.getDirection();
 
-					DisableProcedure.execute(entity);
-					return 0;
-				})));
-	}
+                    DisableProcedure.execute(entity);
+                    return 0;
+                })));
+    }
 }

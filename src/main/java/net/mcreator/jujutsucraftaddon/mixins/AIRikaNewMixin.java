@@ -40,8 +40,8 @@ public abstract class AIRikaNewMixin {
             String ANIME_NAME = "";
             Entity entiry_a = null;
             if (entity instanceof GeoEntity) {
-                NUM1 = ((LivingEntity)entity).getAttribute((Attribute) JujutsucraftModAttributes.ANIMATION1.get()).getBaseValue();
-                NUM2 = ((LivingEntity)entity).getAttribute((Attribute)JujutsucraftModAttributes.ANIMATION2.get()).getBaseValue();
+                NUM1 = ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.ANIMATION1.get()).getBaseValue();
+                NUM2 = ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.ANIMATION2.get()).getBaseValue();
                 if (NUM1 <= -50.0 && NUM1 >= -100.0) {
                     NUM1 += 100.0;
                 }
@@ -52,7 +52,7 @@ public abstract class AIRikaNewMixin {
                 if (NUM3 >= 0.0 && NUM3 <= 4.0) {
                     ItemStack var10000;
                     if (entity instanceof LivingEntity) {
-                        LivingEntity _livEnt = (LivingEntity)entity;
+                        LivingEntity _livEnt = (LivingEntity) entity;
                         var10000 = _livEnt.getMainHandItem();
                     } else {
                         var10000 = ItemStack.EMPTY;
@@ -60,7 +60,8 @@ public abstract class AIRikaNewMixin {
 
                     LivingEntity _livEnt;
                     boolean var18;
-                    label324: {
+                    label324:
+                    {
                         if (!(var10000.getItem() instanceof SwordItem)) {
                             if (entity instanceof LivingEntity) {
                                 _livEnt = (LivingEntity) entity;
@@ -79,7 +80,7 @@ public abstract class AIRikaNewMixin {
 
                                 if (!var10000.is(ItemTags.create(new ResourceLocation("forge:metallic")))) {
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entity;
+                                        _livEnt = (LivingEntity) entity;
                                         var10000 = _livEnt.getMainHandItem();
                                     } else {
                                         var10000 = ItemStack.EMPTY;
@@ -87,7 +88,7 @@ public abstract class AIRikaNewMixin {
 
                                     if (!var10000.is(ItemTags.create(new ResourceLocation("forge:sword")))) {
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entity;
+                                            _livEnt = (LivingEntity) entity;
                                             var10000 = _livEnt.getMainHandItem();
                                         } else {
                                             var10000 = ItemStack.EMPTY;
@@ -107,7 +108,7 @@ public abstract class AIRikaNewMixin {
 
                     sword = var18;
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         var10000 = _livEnt.getMainHandItem();
                     } else {
                         var10000 = ItemStack.EMPTY;
@@ -116,7 +117,7 @@ public abstract class AIRikaNewMixin {
                     Item var19 = var10000.getItem();
                     ItemStack var10001;
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         var10001 = _livEnt.getOffhandItem();
                     } else {
                         var10001 = ItemStack.EMPTY;
@@ -182,155 +183,155 @@ public abstract class AIRikaNewMixin {
 
                 if (!ANIME_NAME.isEmpty()) {
                     if (entity instanceof PandaNormalEntity) {
-                        ((PandaNormalEntity)entity).setAnimation(ANIME_NAME);
+                        ((PandaNormalEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof PandaGorillaEntity) {
-                        ((PandaGorillaEntity)entity).setAnimation(ANIME_NAME);
+                        ((PandaGorillaEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof TodoAoiEntity) {
-                        ((TodoAoiEntity)entity).setAnimation(ANIME_NAME);
+                        ((TodoAoiEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof ZeninChojuroEntity) {
-                        ((ZeninChojuroEntity)entity).setAnimation(ANIME_NAME);
+                        ((ZeninChojuroEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof UroTakakoEntity) {
-                        ((UroTakakoEntity)entity).setAnimation(ANIME_NAME);
+                        ((UroTakakoEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof MiguelDancerEntity) {
-                        ((MiguelDancerEntity)entity).setAnimation(ANIME_NAME);
+                        ((MiguelDancerEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade21Entity) {
-                        ((CursedSpiritGrade21Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade21Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade22Entity) {
-                        ((CursedSpiritGrade22Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade22Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade24Entity) {
-                        ((CursedSpiritGrade24Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade24Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade25Entity) {
-                        ((CursedSpiritGrade25Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade25Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade26Entity) {
-                        ((CursedSpiritGrade26Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade26Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade27Entity) {
-                        ((CursedSpiritGrade27Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade27Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade28Entity) {
-                        ((CursedSpiritGrade28Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade28Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade29Entity) {
-                        ((CursedSpiritGrade29Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade29Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade210Entity) {
-                        ((CursedSpiritGrade210Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade210Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade211Entity) {
-                        ((CursedSpiritGrade211Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade211Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade212Entity) {
-                        ((CursedSpiritGrade212Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade212Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade213Entity) {
-                        ((CursedSpiritGrade213Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade213Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade214Entity) {
-                        ((CursedSpiritGrade214Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade214Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade215Entity) {
-                        ((CursedSpiritGrade215Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade215Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade15Entity) {
-                        ((CursedSpiritGrade15Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade15Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade16Entity) {
-                        ((CursedSpiritGrade16Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade16Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade17Entity) {
-                        ((CursedSpiritGrade17Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade17Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade18Entity) {
-                        ((CursedSpiritGrade18Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade18Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade02Entity) {
-                        ((CursedSpiritGrade02Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade02Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade03Entity) {
-                        ((CursedSpiritGrade03Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade03Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade05Entity) {
-                        ((CursedSpiritGrade05Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade05Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade06Entity) {
-                        ((CursedSpiritGrade06Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade06Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade07Entity) {
-                        ((CursedSpiritGrade07Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade07Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade08Entity) {
-                        ((CursedSpiritGrade08Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade08Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof CursedSpiritGrade09Entity) {
-                        ((CursedSpiritGrade09Entity)entity).setAnimation(ANIME_NAME);
+                        ((CursedSpiritGrade09Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof Dagon2Entity) {
-                        ((Dagon2Entity)entity).setAnimation(ANIME_NAME);
+                        ((Dagon2Entity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof JogoEntity) {
-                        ((JogoEntity)entity).setAnimation(ANIME_NAME);
+                        ((JogoEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof TakadaEntity) {
-                        ((TakadaEntity)entity).setAnimation(ANIME_NAME);
+                        ((TakadaEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof MergedBeastAgitoEntity) {
-                        ((MergedBeastAgitoEntity)entity).setAnimation(ANIME_NAME);
+                        ((MergedBeastAgitoEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof MoonDregsEntity) {
-                        ((MoonDregsEntity)entity).setAnimation(ANIME_NAME);
+                        ((MoonDregsEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) {
-                        ((EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity)entity).setAnimation(ANIME_NAME);
+                        ((EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof ShikigamiHeterocephalusGlaberEntity) {
-                        ((ShikigamiHeterocephalusGlaberEntity)entity).setAnimation(ANIME_NAME);
+                        ((ShikigamiHeterocephalusGlaberEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof RikaEntity) {
@@ -349,11 +350,11 @@ public abstract class AIRikaNewMixin {
                         }
                     }
                     if (entity instanceof RozetsuEntity) {
-                        ((RozetsuEntity)entity).setAnimation(ANIME_NAME);
+                        ((RozetsuEntity) entity).setAnimation(ANIME_NAME);
                     }
 
                     if (entity instanceof Doll1Entity) {
-                        ((Doll1Entity)entity).setAnimation(ANIME_NAME);
+                        ((Doll1Entity) entity).setAnimation(ANIME_NAME);
                     }
                 }
 

@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -11,28 +10,28 @@ import net.mcreator.jujutsucraftaddon.procedures.HidingEffectStartedappliedProce
 import net.mcreator.jujutsucraftaddon.procedures.HidingEffectExpiresProcedure;
 
 public class HidingMobEffect extends MobEffect {
-	public HidingMobEffect() {
-		super(MobEffectCategory.BENEFICIAL, -1);
-	}
+    public HidingMobEffect() {
+        super(MobEffectCategory.BENEFICIAL, -1);
+    }
 
-	@Override
-	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		HidingEffectStartedappliedProcedure.execute(entity);
-	}
+    @Override
+    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        HidingEffectStartedappliedProcedure.execute(entity);
+    }
 
-	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		HidingOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
+    @Override
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        HidingOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+    }
 
-	@Override
-	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		HidingEffectExpiresProcedure.execute(entity);
-	}
+    @Override
+    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        super.removeAttributeModifiers(entity, attributeMap, amplifier);
+        HidingEffectExpiresProcedure.execute(entity);
+    }
 
-	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
-		return true;
-	}
+    @Override
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return true;
+    }
 }

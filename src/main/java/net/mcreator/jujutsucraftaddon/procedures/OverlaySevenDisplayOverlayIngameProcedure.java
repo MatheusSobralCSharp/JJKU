@@ -9,10 +9,10 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 
 public class OverlaySevenDisplayOverlayIngameProcedure {
-	public static boolean execute(LevelAccessor world, Entity entity) {
-		if (entity == null)
-			return false;
-		return (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Kokusen == 19 && entity instanceof LivingEntity _livEnt0
-				&& _livEnt0.hasEffect(JujutsucraftaddonModMobEffects.KOKUSEN_EFFECT_TWO.get()) && world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE) == false;
-	}
+    public static boolean execute(LevelAccessor world, Entity entity) {
+        if (entity == null)
+            return false;
+        return (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Kokusen == 19 && entity instanceof LivingEntity _livEnt0
+                && _livEnt0.hasEffect(JujutsucraftaddonModMobEffects.KOKUSEN_EFFECT_TWO.get()) && world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE) == false;
+    }
 }

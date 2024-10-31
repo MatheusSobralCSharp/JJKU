@@ -6,13 +6,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.Minecraft;
 
 public class OUTLINE1OnEffectActiveTickProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
-		if (entity == null)
-			return;
-		if (world.isClientSide()) {
-			if (Minecraft.getInstance().gameRenderer.currentEffect() == null) {
-				Minecraft.getInstance().gameRenderer.loadEffect(new ResourceLocation("jujutsucraftaddon:shaders/outline.json"));
-			}
-		}
-	}
+    public static void execute(LevelAccessor world, Entity entity) {
+        if (entity == null)
+            return;
+        if (world.isClientSide()) {
+            if (Minecraft.getInstance().gameRenderer.currentEffect() == null) {
+                Minecraft.getInstance().gameRenderer.loadEffect(new ResourceLocation("jujutsucraftaddon:shaders/outline.json"));
+            }
+        }
+    }
 }

@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.command;
 
 import net.minecraftforge.fml.common.Mod;
@@ -16,24 +15,24 @@ import net.mcreator.jujutsucraftaddon.procedures.BGMProcedure;
 
 @Mod.EventBusSubscriber
 public class JjkurBGMCommand {
-	@SubscribeEvent
-	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurBGM")
+    @SubscribeEvent
+    public static void registerCommand(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("jjkurBGM")
 
-				.executes(arguments -> {
-					Level world = arguments.getSource().getUnsidedLevel();
-					double x = arguments.getSource().getPosition().x();
-					double y = arguments.getSource().getPosition().y();
-					double z = arguments.getSource().getPosition().z();
-					Entity entity = arguments.getSource().getEntity();
-					if (entity == null && world instanceof ServerLevel _servLevel)
-						entity = FakePlayerFactory.getMinecraft(_servLevel);
-					Direction direction = Direction.DOWN;
-					if (entity != null)
-						direction = entity.getDirection();
+                .executes(arguments -> {
+                    Level world = arguments.getSource().getUnsidedLevel();
+                    double x = arguments.getSource().getPosition().x();
+                    double y = arguments.getSource().getPosition().y();
+                    double z = arguments.getSource().getPosition().z();
+                    Entity entity = arguments.getSource().getEntity();
+                    if (entity == null && world instanceof ServerLevel _servLevel)
+                        entity = FakePlayerFactory.getMinecraft(_servLevel);
+                    Direction direction = Direction.DOWN;
+                    if (entity != null)
+                        direction = entity.getDirection();
 
-					BGMProcedure.execute(entity);
-					return 0;
-				}));
-	}
+                    BGMProcedure.execute(entity);
+                    return 0;
+                }));
+    }
 }

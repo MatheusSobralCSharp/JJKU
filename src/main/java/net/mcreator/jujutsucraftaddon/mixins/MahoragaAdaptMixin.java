@@ -52,7 +52,7 @@ public abstract class MahoragaAdaptMixin {
     @SubscribeEvent
     public static void onEntityAttacked(LivingAttackEvent event) {
         if (event != null && event.getEntity() != null) {
-            execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource(), event.getEntity(), event.getSource().getEntity(), (double)event.getAmount());
+            execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource(), event.getEntity(), event.getSource().getEntity(), (double) event.getAmount());
         }
 
     }
@@ -83,15 +83,16 @@ public abstract class MahoragaAdaptMixin {
                 LivingEntity _entGetArmor;
                 LivingEntity _livEnt;
                 if (sourceentity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo"))) && !sourceentity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo_no_move"))) && LogicStartPassiveProcedure.execute(entity)) {
-                    NUM1 = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
-                    NUM2 = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
+                    NUM1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
+                    NUM2 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
                     if ((NUM1 == 38.0 || NUM2 == 38.0 || entity instanceof UroTakakoEntity) && sourceentity.getBbWidth() + sourceentity.getBbHeight() <= (entity.getBbWidth() + entity.getBbHeight()) * 4.0F && entity instanceof LivingEntity) {
-                        _entGetArmor = (LivingEntity)entity;
-                        if (_entGetArmor.hasEffect((MobEffect)JujutsucraftModMobEffects.GUARD.get())) {
-                            label522: {
+                        _entGetArmor = (LivingEntity) entity;
+                        if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get())) {
+                            label522:
+                            {
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt = (LivingEntity)entity;
-                                    if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
+                                    _livEnt = (LivingEntity) entity;
+                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
                                         break label522;
                                     }
                                 }
@@ -113,7 +114,7 @@ public abstract class MahoragaAdaptMixin {
                     LivingEntity var10000;
                     Mob _mobEnt;
                     if (sourceentity instanceof Mob) {
-                        _mobEnt = (Mob)sourceentity;
+                        _mobEnt = (Mob) sourceentity;
                         var10000 = _mobEnt.getTarget();
                     } else {
                         var10000 = null;
@@ -123,14 +124,14 @@ public abstract class MahoragaAdaptMixin {
                     Mob _mobEnt3;
                     if (var10000 instanceof LivingEntity) {
                         if (sourceentity instanceof Mob) {
-                            _mobEnt3 = (Mob)sourceentity;
+                            _mobEnt3 = (Mob) sourceentity;
                             var10000 = _mobEnt3.getTarget();
                         } else {
                             var10000 = null;
                         }
 
                         if (entity instanceof Mob) {
-                            Mob _mobEnt4 = (Mob)entity;
+                            Mob _mobEnt4 = (Mob) entity;
                             var10001 = _mobEnt4.getTarget();
                         } else {
                             var10001 = null;
@@ -142,7 +143,8 @@ public abstract class MahoragaAdaptMixin {
                     }
 
                     if (!cancel) {
-                        label523: {
+                        label523:
+                        {
                             if (sourceentity.getPersistentData().getDouble("NameRanged_ranged") != 0.0 && (sourceentity.getPersistentData().getDouble("NameRanged_ranged") == entity.getPersistentData().getDouble("NameRanged") || sourceentity.getPersistentData().getDouble("NameRanged_ranged") == entity.getPersistentData().getDouble("NameRanged_ranged"))) {
                                 cancel = true;
                             }
@@ -151,9 +153,10 @@ public abstract class MahoragaAdaptMixin {
                                 cancel = true;
                             }
 
-                            label502: {
+                            label502:
+                            {
                                 if (entity instanceof TamableAnimal) {
-                                    TamableAnimal _tamEnt = (TamableAnimal)entity;
+                                    TamableAnimal _tamEnt = (TamableAnimal) entity;
                                     if (_tamEnt.isTame()) {
                                         break label502;
                                     }
@@ -163,14 +166,14 @@ public abstract class MahoragaAdaptMixin {
                                     break label523;
                                 }
 
-                                TamableAnimal _tamEnt = (TamableAnimal)sourceentity;
+                                TamableAnimal _tamEnt = (TamableAnimal) sourceentity;
                                 if (!_tamEnt.isTame()) {
                                     break label523;
                                 }
                             }
 
                             if (entity instanceof TamableAnimal) {
-                                TamableAnimal _tamEnt = (TamableAnimal)entity;
+                                TamableAnimal _tamEnt = (TamableAnimal) entity;
                                 var10000 = _tamEnt.getOwner();
                             } else {
                                 var10000 = null;
@@ -178,7 +181,7 @@ public abstract class MahoragaAdaptMixin {
 
                             if (var10000 != sourceentity) {
                                 if (sourceentity instanceof TamableAnimal) {
-                                    TamableAnimal _tamEnt = (TamableAnimal)sourceentity;
+                                    TamableAnimal _tamEnt = (TamableAnimal) sourceentity;
                                     var10000 = _tamEnt.getOwner();
                                 } else {
                                     var10000 = null;
@@ -186,14 +189,14 @@ public abstract class MahoragaAdaptMixin {
 
                                 if (var10000 != entity) {
                                     if (entity instanceof TamableAnimal) {
-                                        TamableAnimal _tamEnt = (TamableAnimal)entity;
+                                        TamableAnimal _tamEnt = (TamableAnimal) entity;
                                         var10000 = _tamEnt.getOwner();
                                     } else {
                                         var10000 = null;
                                     }
 
                                     if (sourceentity instanceof TamableAnimal) {
-                                        TamableAnimal _tamEnt = (TamableAnimal)sourceentity;
+                                        TamableAnimal _tamEnt = (TamableAnimal) sourceentity;
                                         var10001 = _tamEnt.getOwner();
                                     } else {
                                         var10001 = null;
@@ -210,12 +213,14 @@ public abstract class MahoragaAdaptMixin {
                     }
 
                     if (!world.getLevelData().getGameRules().getBoolean(JujutsucraftModGameRules.JUJUTSUPVP) && (sourceentity instanceof Player || sourceentity.getPersistentData().getBoolean("Player")) && (entity instanceof Player || entity.getPersistentData().getBoolean("Player"))) {
-                        label541: {
-                            label505: {
+                        label541:
+                        {
+                            label505:
+                            {
                                 cancel = true;
                                 if (entity instanceof LivingEntity) {
-                                    _entGetArmor = (LivingEntity)entity;
-                                    if (_entGetArmor.hasEffect((MobEffect)JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                    _entGetArmor = (LivingEntity) entity;
+                                    if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                         break label505;
                                     }
                                 }
@@ -224,8 +229,8 @@ public abstract class MahoragaAdaptMixin {
                                     break label541;
                                 }
 
-                                _livEnt = (LivingEntity)sourceentity;
-                                if (!_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                _livEnt = (LivingEntity) sourceentity;
+                                if (!_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     break label541;
                                 }
                             }
@@ -235,16 +240,17 @@ public abstract class MahoragaAdaptMixin {
                     }
 
                     if (entity instanceof Mob) {
-                        _mobEnt = (Mob)entity;
+                        _mobEnt = (Mob) entity;
                         var10000 = _mobEnt.getTarget();
                     } else {
                         var10000 = null;
                     }
 
-                    label545: {
+                    label545:
+                    {
                         if (var10000 != sourceentity || !(entity.getPersistentData().getDouble("cnt_target") > 6.0)) {
                             if (sourceentity instanceof Mob) {
-                                _mobEnt = (Mob)sourceentity;
+                                _mobEnt = (Mob) sourceentity;
                                 var10000 = _mobEnt.getTarget();
                             } else {
                                 var10000 = null;
@@ -264,23 +270,26 @@ public abstract class MahoragaAdaptMixin {
 
                     LivingEntity _livEnt5;
                     int var46;
-                    label399: {
-                        label507: {
+                    label399:
+                    {
+                        label507:
+                        {
                             if (sourceentity instanceof LivingEntity) {
-                                _entGetArmor = (LivingEntity)sourceentity;
-                                if (_entGetArmor.hasEffect((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()) && sourceentity instanceof LivingEntity) {
-                                    _livEnt = (LivingEntity)sourceentity;
-                                    if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+                                _entGetArmor = (LivingEntity) sourceentity;
+                                if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()) && sourceentity instanceof LivingEntity) {
+                                    _livEnt = (LivingEntity) sourceentity;
+                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
                                         break label507;
                                     }
                                 }
                             }
 
-                            label391: {
+                            label391:
+                            {
                                 if (sourceentity instanceof LivingEntity) {
-                                    _livEnt = (LivingEntity)sourceentity;
-                                    if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
-                                        var46 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()).getAmplifier();
+                                    _livEnt = (LivingEntity) sourceentity;
+                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
+                                        var46 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()).getAmplifier();
                                         break label391;
                                     }
                                 }
@@ -297,13 +306,14 @@ public abstract class MahoragaAdaptMixin {
                     }
 
                     if (entity instanceof LivingEntity) {
-                        _entGetArmor = (LivingEntity)entity;
-                        if (_entGetArmor.hasEffect((MobEffect)JujutsucraftModMobEffects.PRAYER_SONG.get())) {
-                            label381: {
+                        _entGetArmor = (LivingEntity) entity;
+                        if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.PRAYER_SONG.get())) {
+                            label381:
+                            {
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt = (LivingEntity)entity;
-                                    if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.GUARD.get())) {
-                                        var46 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
+                                    _livEnt = (LivingEntity) entity;
+                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get())) {
+                                        var46 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
                                         break label381;
                                     }
                                 }
@@ -330,7 +340,7 @@ public abstract class MahoragaAdaptMixin {
                     } else if (!damagesource.is(DamageTypes.MOB_PROJECTILE)) {
                         ItemStack var47;
                         if (sourceentity instanceof LivingEntity) {
-                            _entGetArmor = (LivingEntity)sourceentity;
+                            _entGetArmor = (LivingEntity) sourceentity;
                             var47 = _entGetArmor.getMainHandItem();
                         } else {
                             var47 = ItemStack.EMPTY;
@@ -339,9 +349,10 @@ public abstract class MahoragaAdaptMixin {
                         item_A = var47;
                         Player _plrCldCheck76;
                         if (item_A.is(ItemTags.create(new ResourceLocation("forge:cursed_tool")))) {
-                            label527: {
+                            label527:
+                            {
                                 if (sourceentity instanceof Player) {
-                                    _plrCldCheck76 = (Player)sourceentity;
+                                    _plrCldCheck76 = (Player) sourceentity;
                                     if (_plrCldCheck76.getCooldowns().isOnCooldown(item_A.getItem())) {
                                         break label527;
                                     }
@@ -349,16 +360,16 @@ public abstract class MahoragaAdaptMixin {
 
                                 if (item_A.getItem() == JujutsucraftModItems.INVERTED_SPEAR_OF_HEAVEN.get() || item_A.getItem() == JujutsucraftModItems.BLACK_ROPE.get()) {
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entity;
+                                        _livEnt = (LivingEntity) entity;
                                         if (!_livEnt.level().isClientSide()) {
-                                            _livEnt.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.CANCEL_CURSED_TECHNIQUE.get(), 1, 0, false, false));
+                                            _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.CANCEL_CURSED_TECHNIQUE.get(), 1, 0, false, false));
                                         }
                                     }
 
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entity;
+                                        _livEnt = (LivingEntity) entity;
                                         if (!_livEnt.level().isClientSide()) {
-                                            _livEnt.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.UNSTABLE.get(), 10, 0, false, false));
+                                            _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.UNSTABLE.get(), 10, 0, false, false));
                                         }
                                     }
                                 }
@@ -367,15 +378,16 @@ public abstract class MahoragaAdaptMixin {
 
                         LivingEntity _livEnt6;
                         if (sourceentity instanceof LivingEntity) {
-                            _entGetArmor = (LivingEntity)sourceentity;
-                            if (_entGetArmor.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()) && entity instanceof LivingEntity) {
-                                _livEnt6 = (LivingEntity)entity;
-                                if (_livEnt6.hasEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
-                                    label352: {
+                            _entGetArmor = (LivingEntity) sourceentity;
+                            if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()) && entity instanceof LivingEntity) {
+                                _livEnt6 = (LivingEntity) entity;
+                                if (_livEnt6.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                    label352:
+                                    {
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entity;
-                                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
-                                                var46 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getAmplifier();
+                                            _livEnt = (LivingEntity) entity;
+                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                                var46 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getAmplifier();
                                                 break label352;
                                             }
                                         }
@@ -385,12 +397,13 @@ public abstract class MahoragaAdaptMixin {
 
                                     int var44;
                                     double var48;
-                                    label347: {
-                                        var48 = (double)var46;
+                                    label347:
+                                    {
+                                        var48 = (double) var46;
                                         if (sourceentity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)sourceentity;
-                                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get())) {
-                                                var44 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()).getAmplifier();
+                                            _livEnt = (LivingEntity) sourceentity;
+                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get())) {
+                                                var44 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()).getAmplifier();
                                                 break label347;
                                             }
                                         }
@@ -398,12 +411,13 @@ public abstract class MahoragaAdaptMixin {
                                         var44 = 0;
                                     }
 
-                                    label342: {
-                                        NUM1 = (double)Math.round(var48 - Math.ceil((double)((var44 + 10) / 10)));
+                                    label342:
+                                    {
+                                        NUM1 = (double) Math.round(var48 - Math.ceil((double) ((var44 + 10) / 10)));
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entity;
-                                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
-                                                var48 = (double)_livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getDuration();
+                                            _livEnt = (LivingEntity) entity;
+                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                                var48 = (double) _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getDuration();
                                                 break label342;
                                             }
                                         }
@@ -413,20 +427,20 @@ public abstract class MahoragaAdaptMixin {
 
                                     NUM2 = var48;
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entity;
-                                        _livEnt.removeEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get());
+                                        _livEnt = (LivingEntity) entity;
+                                        _livEnt.removeEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get());
                                     }
 
                                     if (NUM1 >= 0.0) {
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entity;
+                                            _livEnt = (LivingEntity) entity;
                                             if (!_livEnt.level().isClientSide()) {
-                                                _livEnt.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get(), (int)NUM2, (int)NUM1));
+                                                _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get(), (int) NUM2, (int) NUM1));
                                             }
                                         }
 
                                         if (world instanceof ServerLevel) {
-                                            ServerLevel _level = (ServerLevel)world;
+                                            ServerLevel _level = (ServerLevel) world;
                                             _level.sendParticles(ParticleTypes.ENCHANTED_HIT, x, y, z, 20, 0.5, 0.5, 0.5, 1.0);
                                         }
                                     }
@@ -435,7 +449,7 @@ public abstract class MahoragaAdaptMixin {
                         }
 
                         if (sourceentity instanceof LivingEntity) {
-                            _entGetArmor = (LivingEntity)sourceentity;
+                            _entGetArmor = (LivingEntity) sourceentity;
                             var47 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                         } else {
                             var47 = ItemStack.EMPTY;
@@ -443,28 +457,28 @@ public abstract class MahoragaAdaptMixin {
 
                         item_A = var47;
                         if (sourceentity instanceof Player) {
-                            _plrCldCheck76 = (Player)sourceentity;
+                            _plrCldCheck76 = (Player) sourceentity;
                             if (_plrCldCheck76.getCooldowns().isOnCooldown(item_A.getItem())) {
                                 return;
                             }
                         }
 
                         if (item_A.getItem() == JujutsucraftModItems.MAHORAGA_WHEEL_HELMET.get() || item_A.getItem() == JujutsucraftModItems.MAHORAGA_BODY_HELMET.get()) {
-                            mahorage = sourceentity instanceof Player ? ((JujutsucraftModVariables.PlayerVariables)sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 16.0 || (sourceentity.getPersistentData().getDouble("IsMahoraga") == 1.0) || ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1) : sourceentity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity || sourceentity instanceof IgrisEntity || sourceentity instanceof Shadow1Entity;
+                            mahorage = sourceentity instanceof Player ? ((JujutsucraftModVariables.PlayerVariables) sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 16.0 || (sourceentity.getPersistentData().getDouble("IsMahoraga") == 1.0) || ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1) : sourceentity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity || sourceentity instanceof IgrisEntity || sourceentity instanceof Shadow1Entity;
                             NUM1 = 0.0;
                             STR1 = "";
                             if (NUM1 == 0.0 && entity instanceof LivingEntity) {
-                                _livEnt = (LivingEntity)entity;
-                                if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                _livEnt = (LivingEntity) entity;
+                                if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
                                     STR1 = "skill205";
                                     if (item_A.getOrCreateTag().getDouble(STR1) == 0.0) {
                                         NUM1 = 1.0;
                                     } else if (item_A.getOrCreateTag().getDouble(STR1) >= 100.0 && mahorage) {
                                         STR1 = "";
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entity;
+                                            _livEnt = (LivingEntity) entity;
                                             if (!_livEnt.level().isClientSide()) {
-                                                _livEnt.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.NEUTRALIZATION.get(), 1, 1));
+                                                _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get(), 1, 1));
                                             }
                                         }
                                     }
@@ -476,9 +490,9 @@ public abstract class MahoragaAdaptMixin {
                                 if (item_A.getOrCreateTag().getDouble(STR1) == 0.0) {
                                     NUM1 = 1.0;
                                 } else if (item_A.getOrCreateTag().getDouble(STR1) >= 100.0) {
-                                    NUM1 = (double)Math.round(Math.floor(item_A.getOrCreateTag().getDouble(STR1) / 100.0) * 2.5);
+                                    NUM1 = (double) Math.round(Math.floor(item_A.getOrCreateTag().getDouble(STR1) / 100.0) * 2.5);
                                     if (sourceentity instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)sourceentity;
+                                        _livEnt = (LivingEntity) sourceentity;
                                         var47 = _livEnt.getMainHandItem();
                                     } else {
                                         var47 = ItemStack.EMPTY;
@@ -486,7 +500,7 @@ public abstract class MahoragaAdaptMixin {
 
                                     if (var47.isEnchantable()) {
                                         if (sourceentity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)sourceentity;
+                                            _livEnt = (LivingEntity) sourceentity;
                                             var47 = _livEnt.getMainHandItem();
                                         } else {
                                             var47 = ItemStack.EMPTY;
@@ -494,13 +508,14 @@ public abstract class MahoragaAdaptMixin {
 
                                         double var45;
                                         CompoundTag var49;
-                                        label514: {
+                                        label514:
+                                        {
                                             var49 = var47.getOrCreateTag();
                                             ItemStack var10003;
                                             if (entity.getPersistentData().getBoolean("CursedSpirit")) {
                                                 ItemStack var10002;
                                                 if (sourceentity instanceof LivingEntity) {
-                                                    LivingEntity _livEnt7 = (LivingEntity)sourceentity;
+                                                    LivingEntity _livEnt7 = (LivingEntity) sourceentity;
                                                     var10002 = _livEnt7.getMainHandItem();
                                                 } else {
                                                     var10002 = ItemStack.EMPTY;
@@ -509,7 +524,7 @@ public abstract class MahoragaAdaptMixin {
                                                 if (var10002.getItem() == JujutsucraftModItems.SWORD_OF_EXTERMINATION.get()) {
                                                     var45 = NUM1 * -1.0;
                                                     if (sourceentity instanceof LivingEntity) {
-                                                        _livEnt = (LivingEntity)sourceentity;
+                                                        _livEnt = (LivingEntity) sourceentity;
                                                         var10003 = _livEnt.getMainHandItem();
                                                     } else {
                                                         var10003 = ItemStack.EMPTY;
@@ -521,7 +536,7 @@ public abstract class MahoragaAdaptMixin {
                                             }
 
                                             if (sourceentity instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)sourceentity;
+                                                _livEnt = (LivingEntity) sourceentity;
                                                 var10003 = _livEnt.getMainHandItem();
                                             } else {
                                                 var10003 = ItemStack.EMPTY;
@@ -538,7 +553,7 @@ public abstract class MahoragaAdaptMixin {
                             }
 
                             if (NUM1 > 0.0) {
-                                for(int index0 = 0; index0 < 800; ++index0) {
+                                for (int index0 = 0; index0 < 800; ++index0) {
                                     if (item_A.getOrCreateTag().getString("DATA" + Math.round(NUM1)).equals("") || item_A.getOrCreateTag().getString("DATA" + Math.round(NUM1)).equals(STR1)) {
                                         item_A.getOrCreateTag().putString("DATA" + Math.round(NUM1), STR1);
                                         item_A.getOrCreateTag().putDouble(STR1, 1.0);
@@ -549,7 +564,7 @@ public abstract class MahoragaAdaptMixin {
                                 }
 
                                 if (sourceentity instanceof Player) {
-                                    Player _player = (Player)sourceentity;
+                                    Player _player = (Player) sourceentity;
                                     if (!_player.level().isClientSide()) {
                                         _player.displayClientMessage(Component.literal(Component.translatable("jujutsu.message.adaptation_start").getString()), false);
                                     }

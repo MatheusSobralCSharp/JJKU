@@ -60,12 +60,12 @@ public abstract class OverlayMixin {
                     ordinal = 4),
             remap = false)
     private static void injectProcedure(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
-        if (!(Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).startsWith("jujutsucraft"))  {
+        if (!(Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).startsWith("jujutsucraft")) {
             if ((world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_BLACK_FLASH_REWORKED))) {
                 if (entity.getPersistentData().getDouble("cnt_bf") >= 50.0) {
                     if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
                         BlackFlashedProcedure.execute(world, x, y, z, entity);
-                        BFMasteryProcedure.execute(entity);
+                        BFMasteryProcedure.execute(world, entity);
                         entity.getPersistentData().putDouble("cnt_bf", 0);
                         ItadoriClan2Procedure.execute(world, entity);
                         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).ImpactFramesVariable == 0) {
@@ -81,7 +81,7 @@ public abstract class OverlayMixin {
             } else {
                 if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Timer1 == 1) {
                     BlackFlashedProcedure.execute(world, x, y, z, entity);
-                    BFMasteryProcedure.execute(entity);
+                    BFMasteryProcedure.execute(world, entity);
                     entity.getPersistentData().putDouble("cnt_bf", 0);
                     ItadoriClan2Procedure.execute(world, entity);
 

@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
 import net.minecraft.resources.ResourceLocation;
@@ -11,13 +10,13 @@ import net.minecraft.client.model.HumanoidModel;
 import net.mcreator.jujutsucraftaddon.entity.MaleniaEntity;
 
 public class MaleniaRenderer extends HumanoidMobRenderer<MaleniaEntity, HumanoidModel<MaleniaEntity>> {
-	public MaleniaRenderer(EntityRendererProvider.Context context) {
-		super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
-	}
+    public MaleniaRenderer(EntityRendererProvider.Context context) {
+        super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
+        this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(MaleniaEntity entity) {
-		return new ResourceLocation("jujutsucraftaddon:textures/entities/maleniafinal.png");
-	}
+    @Override
+    public ResourceLocation getTextureLocation(MaleniaEntity entity) {
+        return new ResourceLocation("jujutsucraftaddon:textures/entities/maleniafinal.png");
+    }
 }

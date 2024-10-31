@@ -51,6 +51,7 @@ public abstract class PurpleCreatedMixin {
     public PurpleCreatedMixin() {
 
     }
+
     /**
      * @author Sat
      * @reason None
@@ -75,16 +76,16 @@ public abstract class PurpleCreatedMixin {
             entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
             LivingEntity _entity;
             if (entity instanceof LivingEntity) {
-                _entity = (LivingEntity)entity;
+                _entity = (LivingEntity) entity;
                 if (!_entity.level().isClientSide()) {
-                    _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int)entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                    _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                 }
             }
 
             LivingEntity var10000;
             Mob _mobEnt;
             if (entity instanceof Mob) {
-                _mobEnt = (Mob)entity;
+                _mobEnt = (Mob) entity;
                 var10000 = _mobEnt.getTarget();
             } else {
                 var10000 = null;
@@ -93,7 +94,7 @@ public abstract class PurpleCreatedMixin {
             double var54;
             if (var10000 instanceof LivingEntity) {
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10000 = _mobEnt.getTarget();
                 } else {
                     var10000 = null;
@@ -102,7 +103,7 @@ public abstract class PurpleCreatedMixin {
                 var54 = var10000.getX();
                 LivingEntity var10001;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10001 = _mobEnt.getTarget();
                 } else {
                     var10001 = null;
@@ -111,15 +112,15 @@ public abstract class PurpleCreatedMixin {
                 double var55 = var10001.getY();
                 LivingEntity var10002;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10002 = _mobEnt.getTarget();
                 } else {
                     var10002 = null;
                 }
 
-                var55 += (double)var10002.getBbHeight() * 0.5;
+                var55 += (double) var10002.getBbHeight() * 0.5;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10002 = _mobEnt.getTarget();
                 } else {
                     var10002 = null;
@@ -132,7 +133,7 @@ public abstract class PurpleCreatedMixin {
             entity.getPersistentData().putDouble("y_power", entity.getLookAngle().y * 3.0);
             entity.getPersistentData().putDouble("z_power", entity.getLookAngle().z * 3.0);
             if (!(entity instanceof Player) && entity instanceof LivingEntity) {
-                _entity = (LivingEntity)entity;
+                _entity = (LivingEntity) entity;
                 if (!_entity.level().isClientSide()) {
                     _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 15, 9, false, false));
                 }
@@ -149,15 +150,16 @@ public abstract class PurpleCreatedMixin {
             long var60;
             if (entity.getPersistentData().getDouble("cnt1") == 1.0) {
                 if (entity instanceof LivingEntity) {
-                    _entity = (LivingEntity)entity;
+                    _entity = (LivingEntity) entity;
                     if (!_entity.level().isClientSide()) {
                         _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 15, 9, false, false));
                     }
                 }
 
-                label317: {
+                label317:
+                {
                     if (entity instanceof LivingEntity) {
-                        _entity = (LivingEntity)entity;
+                        _entity = (LivingEntity) entity;
                         if (_entity.hasEffect(MobEffects.DAMAGE_BOOST)) {
                             var57 = _entity.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                             break label317;
@@ -167,16 +169,16 @@ public abstract class PurpleCreatedMixin {
                     var57 = 0;
                 }
 
-                HP = (double)(40 + var57 * 20);
-                pitch = Math.toRadians((double)entity.getXRot());
-                yaw = Math.toRadians((double)(entity.getYRot() + 90.0F - 40.0F));
-                x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
-                y_pos = entity.getY() + (double)entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double)entity.getBbWidth());
-                z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
+                HP = (double) (40 + var57 * 20);
+                pitch = Math.toRadians((double) entity.getXRot());
+                yaw = Math.toRadians((double) (entity.getYRot() + 90.0F - 40.0F));
+                x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
+                y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
+                z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                 if (world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
+                    _level = (ServerLevel) world;
                     var56 = _level.getServer().getCommands();
-                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput();
+                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
                     var60 = Math.round(HP);
                     var56.performPrefixedCommand(var59, "summon jujutsucraft:red ~ ~ ~ {Invulnerable:1b,Health:" + var60 + "f,Attributes:[{Name:\"generic.max_health\",Base:" + Math.round(HP) + "},{Name:\"jujutsucraft:size\",Base:20.0}],Rotation:[" + entity.getYRot() + "f," + entity.getXRot() + "f]}");
                 }
@@ -190,8 +192,8 @@ public abstract class PurpleCreatedMixin {
                 })).toList();
                 var45 = _entfound.iterator();
 
-                while(var45.hasNext()) {
-                    entityiterator = (Entity)var45.next();
+                while (var45.hasNext()) {
+                    entityiterator = (Entity) var45.next();
                     if (entityiterator instanceof RedEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                         SetRangedAmmoProcedure.execute(entity, entityiterator);
                         ((LivingEntity) entityiterator).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
@@ -200,14 +202,14 @@ public abstract class PurpleCreatedMixin {
                     }
                 }
 
-                yaw = Math.toRadians((double)(entity.getYRot() + 90.0F + 40.0F));
-                x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
-                y_pos = entity.getY() + (double)entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double)entity.getBbWidth());
-                z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
+                yaw = Math.toRadians((double) (entity.getYRot() + 90.0F + 40.0F));
+                x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
+                y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
+                z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                 if (world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
+                    _level = (ServerLevel) world;
                     var56 = _level.getServer().getCommands();
-                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput();
+                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
                     var60 = Math.round(HP);
                     var56.performPrefixedCommand(var59, "summon jujutsucraft:blue ~ ~ ~ {Invulnerable:1b,Health:" + var60 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                 }
@@ -221,8 +223,8 @@ public abstract class PurpleCreatedMixin {
                 })).toList();
                 var45 = _entfound.iterator();
 
-                while(var45.hasNext()) {
-                    entityiterator = (Entity)var45.next();
+                while (var45.hasNext()) {
+                    entityiterator = (Entity) var45.next();
                     if (entityiterator instanceof BlueEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                         ((LivingEntity) entityiterator).getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:size"))).setBaseValue(5);
                         SetRangedAmmoProcedure.execute(entity, entityiterator);
@@ -234,7 +236,7 @@ public abstract class PurpleCreatedMixin {
                 PlayAnimationProcedure.execute(entity);
                 ItemStack var58;
                 if (entity instanceof LivingEntity) {
-                    _entity = (LivingEntity)entity;
+                    _entity = (LivingEntity) entity;
                     var58 = _entity.getItemBySlot(EquipmentSlot.HEAD);
                 } else {
                     var58 = ItemStack.EMPTY;
@@ -251,27 +253,27 @@ public abstract class PurpleCreatedMixin {
                     })).toList();
                     var45 = _entfound.iterator();
 
-                    while(var45.hasNext()) {
-                        entityiterator = (Entity)var45.next();
+                    while (var45.hasNext()) {
+                        entityiterator = (Entity) var45.next();
                         if (entity != entityiterator && entity.getPersistentData().getDouble("NameRanged") == entityiterator.getPersistentData().getDouble("NameRanged_ranged") && entityiterator.getPersistentData().getBoolean("flag_purple")) {
                             logic_a = true;
                             if (entityiterator instanceof RedEntity) {
-                                yaw = Math.toRadians((double)(entity.getYRot() + 90.0F) + Math.max(40.0 - entity.getPersistentData().getDouble("cnt1") * 4.0, 0.0));
+                                yaw = Math.toRadians((double) (entity.getYRot() + 90.0F) + Math.max(40.0 - entity.getPersistentData().getDouble("cnt1") * 4.0, 0.0));
                             } else if (entityiterator instanceof BlueEntity) {
-                                yaw = Math.toRadians((double)(entity.getYRot() + 90.0F) + Math.max(40.0 - entity.getPersistentData().getDouble("cnt1") * 4.0, 0.0));
+                                yaw = Math.toRadians((double) (entity.getYRot() + 90.0F) + Math.max(40.0 - entity.getPersistentData().getDouble("cnt1") * 4.0, 0.0));
                             } else {
                                 logic_a = false;
                             }
 
                             if (logic_a) {
-                                pitch = Math.toRadians((double)entity.getXRot());
-                                x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
-                                y_pos = entity.getY() + (double)entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double)entity.getBbWidth());
-                                z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
+                                pitch = Math.toRadians((double) entity.getXRot());
+                                x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
+                                y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
+                                z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                                 Entity _ent = entityiterator;
                                 _ent.teleportTo(x_pos, y_pos, z_pos);
                                 if (_ent instanceof ServerPlayer) {
-                                    ServerPlayer _serverPlayer = (ServerPlayer)_ent;
+                                    ServerPlayer _serverPlayer = (ServerPlayer) _ent;
                                     _serverPlayer.connection.teleport(x_pos, y_pos, z_pos, _ent.getYRot(), _ent.getXRot());
                                 }
                             }
@@ -280,12 +282,12 @@ public abstract class PurpleCreatedMixin {
 
                     if (entity.getPersistentData().getDouble("cnt1") == 10.0) {
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.FLASH, x_pos, y_pos, z_pos, 5, 0.25, 0.25, 0.25, 0.0);
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.FLASH, x_pos2, y_pos2, z_pos2, 5, 0.25, 0.25, 0.25, 0.0);
                         }
                     }
@@ -293,16 +295,16 @@ public abstract class PurpleCreatedMixin {
                     if (entity.getPersistentData().getDouble("cnt1") >= 19.0) {
                         Level _level1;
                         if (Math.random() < 0.1 && world instanceof Level) {
-                            _level1 = (Level)world;
+                            _level1 = (Level) world;
                             if (!_level1.isClientSide()) {
-                                _level1.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                                _level1.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                             } else {
-                                _level1.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                                _level1.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                             }
                         }
 
                         if (entity instanceof Mob) {
-                            _mobEnt = (Mob)entity;
+                            _mobEnt = (Mob) entity;
                             var10000 = _mobEnt.getTarget();
                         } else {
                             var10000 = null;
@@ -311,18 +313,20 @@ public abstract class PurpleCreatedMixin {
                         if (var10000 instanceof LivingEntity) {
                             entity.getPersistentData().putBoolean("PRESS_Z", false);
                             if (GetDistanceNearestEnemyProcedure.execute(world, x, y, z, entity) > 12.0) {
-                                label335: {
+                                label335:
+                                {
                                     if (entity instanceof Mob) {
-                                        _mobEnt = (Mob)entity;
+                                        _mobEnt = (Mob) entity;
                                         var10000 = _mobEnt.getTarget();
                                     } else {
                                         var10000 = null;
                                     }
 
                                     if (var10000.getPersistentData().getDouble("skill") != 0.0) {
-                                        label336: {
+                                        label336:
+                                        {
                                             if (entity instanceof Mob) {
-                                                _mobEnt = (Mob)entity;
+                                                _mobEnt = (Mob) entity;
                                                 var10000 = _mobEnt.getTarget();
                                             } else {
                                                 var10000 = null;
@@ -379,20 +383,20 @@ public abstract class PurpleCreatedMixin {
                         if (entity.getPersistentData().getBoolean("PRESS_Z")) {
                             entity.getPersistentData().putDouble("cnt1", 19.0);
                             if (entity instanceof LivingEntity) {
-                                _entity = (LivingEntity)entity;
+                                _entity = (LivingEntity) entity;
                                 if (!_entity.level().isClientSide()) {
                                     _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 9, 5, false, false));
                                 }
                             }
 
-                            yaw = Math.toRadians((double)(entity.getYRot() + 90.0F));
-                            pitch = Math.toRadians((double)entity.getXRot());
-                            x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
-                            y_pos = entity.getY() + (double)entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double)entity.getBbWidth());
-                            z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
+                            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
+                            pitch = Math.toRadians((double) entity.getXRot());
+                            x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
+                            y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
+                            z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                             if (world instanceof ServerLevel) {
-                                _level = (ServerLevel)world;
-                                _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int)(1.0 + entity.getPersistentData().getDouble("cnt6")), 0.25, 0.25, 0.25, 1.0);
+                                _level = (ServerLevel) world;
+                                _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int) (1.0 + entity.getPersistentData().getDouble("cnt6")), 0.25, 0.25, 0.25, 1.0);
                             }
 
                             if (entity.getPersistentData().getDouble("cnt6") < 4.0) {
@@ -401,7 +405,7 @@ public abstract class PurpleCreatedMixin {
                                     entity.getPersistentData().putDouble("cnt5", 0.0);
                                     entity.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6") + 1.0);
                                     if (entity instanceof Player) {
-                                        Player _player = (Player)entity;
+                                        Player _player = (Player) entity;
                                         if (!_player.level().isClientSide()) {
                                             CompoundTag var61 = entity.getPersistentData();
                                             _player.displayClientMessage(Component.literal("§l\"" + Component.translatable("chant.jujutsucraft.purple" + Math.round(var61.getDouble("cnt6"))).getString() + "\""), false);
@@ -409,8 +413,8 @@ public abstract class PurpleCreatedMixin {
                                     }
 
                                     if (entity instanceof Player) {
-                                        double _setval = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 50.0;
-                                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                                        double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 50.0;
+                                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                                             capability.PlayerCursePowerChange = _setval;
                                             capability.syncPlayerVariables(entity);
                                         });
@@ -421,21 +425,21 @@ public abstract class PurpleCreatedMixin {
                                 if (world instanceof Level) {
                                     Level _level2 = (Level) world;
                                     if (!_level2.isClientSide()) {
-                                        _level2.explode((Entity)null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                        _level2.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                     }
                                 }
 
                                 if (world instanceof ServerLevel) {
-                                    _level = (ServerLevel)world;
+                                    _level = (ServerLevel) world;
                                     _level.sendParticles(ParticleTypes.FLASH, x_pos, y_pos, z_pos, 10, 0.25, 0.25, 0.25, 1.5);
                                 }
 
                                 if (world instanceof Level) {
                                     Level _level3 = (Level) world;
                                     if (!_level3.isClientSide()) {
-                                        _level3.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                                        _level3.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                                     } else {
-                                        _level3.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                                        _level3.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                                     }
                                 }
                             }
@@ -443,14 +447,14 @@ public abstract class PurpleCreatedMixin {
                     }
                 } else {
                     if (entity instanceof LivingEntity) {
-                        _entity = (LivingEntity)entity;
+                        _entity = (LivingEntity) entity;
                         if (!_entity.level().isClientSide()) {
                             _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 9, 20, false, false));
                         }
                     }
 
                     if (entity instanceof LivingEntity) {
-                        _entity = (LivingEntity)entity;
+                        _entity = (LivingEntity) entity;
                         var58 = _entity.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var58 = ItemStack.EMPTY;
@@ -458,15 +462,16 @@ public abstract class PurpleCreatedMixin {
 
                     var58.getOrCreateTag().putDouble("P_ANIME1", 107.0);
                     if (entity.getPersistentData().getDouble("cnt2") == 0.0) {
-                        label289: {
+                        label289:
+                        {
                             entity.getPersistentData().putDouble("cnt2", 1.0);
-                            yaw = Math.toRadians((double)(entity.getYRot() + 90.0F));
-                            pitch = Math.toRadians((double)entity.getXRot());
-                            x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
-                            y_pos = entity.getY() + (double)entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double)entity.getBbWidth());
-                            z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double)entity.getBbWidth());
+                            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
+                            pitch = Math.toRadians((double) entity.getXRot());
+                            x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
+                            y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
+                            z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                             if (entity instanceof LivingEntity) {
-                                _entity = (LivingEntity)entity;
+                                _entity = (LivingEntity) entity;
                                 if (_entity.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                     var57 = _entity.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                     break label289;
@@ -476,11 +481,11 @@ public abstract class PurpleCreatedMixin {
                             var57 = 0;
                         }
 
-                        HP = (double)(400 + var57 * 40);
+                        HP = (double) (400 + var57 * 40);
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             var56 = _level.getServer().getCommands();
-                            var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput();
+                            var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
                             var60 = Math.round(HP);
                             var56.performPrefixedCommand(var59, "summon jujutsucraft:purple ~ ~ ~ {Health:" + var60 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                         }
@@ -494,11 +499,11 @@ public abstract class PurpleCreatedMixin {
                         })).toList();
                         var45 = _entfound.iterator();
 
-                        while(var45.hasNext()) {
-                            entityiterator = (Entity)var45.next();
+                        while (var45.hasNext()) {
+                            entityiterator = (Entity) var45.next();
                             if (entityiterator instanceof PurpleEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                                 SetRangedAmmoProcedure.execute(entity, entityiterator);
-                                ((LivingEntity)entityiterator).getAttribute((Attribute)JujutsucraftModAttributes.SIZE.get()).setBaseValue(8.0 * (0.5 + entity.getPersistentData().getDouble("cnt6") * 0.2));
+                                ((LivingEntity) entityiterator).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(8.0 * (0.5 + entity.getPersistentData().getDouble("cnt6") * 0.2));
                                 entityiterator.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6"));
                                 if (entity instanceof Player) {
                                     if (entity.getPersistentData().getDouble("cnt6") >= 6.0) {
@@ -512,22 +517,22 @@ public abstract class PurpleCreatedMixin {
                                 } else {
                                     float var63;
                                     if (entity instanceof LivingEntity) {
-                                        LivingEntity _livEnt = (LivingEntity)entity;
+                                        LivingEntity _livEnt = (LivingEntity) entity;
                                         var63 = _livEnt.getHealth();
                                     } else {
                                         var63 = -1.0F;
                                     }
 
-                                    var54 = (double)var63;
+                                    var54 = (double) var63;
                                     float var62;
                                     if (entity instanceof LivingEntity) {
-                                        LivingEntity _livEnt = (LivingEntity)entity;
+                                        LivingEntity _livEnt = (LivingEntity) entity;
                                         var62 = _livEnt.getMaxHealth();
                                     } else {
                                         var62 = -1.0F;
                                     }
 
-                                    if (var54 < (double)var62 * 0.4) {
+                                    if (var54 < (double) var62 * 0.4) {
                                         entityiterator.getPersistentData().putBoolean("explode", entity instanceof GojoSatoruEntity);
                                     }
                                 }

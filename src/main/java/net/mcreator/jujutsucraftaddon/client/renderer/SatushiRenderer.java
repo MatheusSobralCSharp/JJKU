@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
 import net.mcreator.jujutsucraftaddon.entity.SatushiEntity;
@@ -10,13 +9,13 @@ import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class SatushiRenderer extends HumanoidMobRenderer<SatushiEntity, HumanoidModel<SatushiEntity>> {
-	public SatushiRenderer(EntityRendererProvider.Context context) {
-		super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
-	}
+    public SatushiRenderer(EntityRendererProvider.Context context) {
+        super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
+        this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(SatushiEntity entity) {
-		return new ResourceLocation("jujutsucraftaddon:textures/entities/sukuna_1.png");
-	}
+    @Override
+    public ResourceLocation getTextureLocation(SatushiEntity entity) {
+        return new ResourceLocation("jujutsucraftaddon:textures/entities/sukuna_1.png");
+    }
 }

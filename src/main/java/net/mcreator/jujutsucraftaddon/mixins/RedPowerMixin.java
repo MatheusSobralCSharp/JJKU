@@ -27,7 +27,7 @@ public abstract class RedPowerMixin {
     )
     private static double modifyConstant(double constant, LevelAccessor world) {
         if (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SIX_EYES_LEVEL) > 1) {
-            return (double) world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SIX_EYES_LEVEL)/10;
+            return (double) world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SIX_EYES_LEVEL) / 10;
         } else {
             return 0.1;
         }
@@ -38,7 +38,7 @@ public abstract class RedPowerMixin {
         if (entity instanceof LivingEntity livingEntity) {
             livingEntity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                 if (livingEntity.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
-                    double newCost = Math.round(capability.PlayerSelectCurseTechniqueCost * (double) (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SUKUNA_LEVEL))/10);
+                    double newCost = Math.round(capability.PlayerSelectCurseTechniqueCost * (double) (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SUKUNA_LEVEL)) / 10);
                     capability.PlayerSelectCurseTechniqueCost = newCost;
                     capability.syncPlayerVariables(entity);
                 }

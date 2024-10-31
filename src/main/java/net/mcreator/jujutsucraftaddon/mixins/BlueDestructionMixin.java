@@ -11,9 +11,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = AIBlueProcedure.class)
 public abstract class BlueDestructionMixin {
-    public BlueDestructionMixin(){
+    public BlueDestructionMixin() {
     }
- 
+
     @Inject(method = "execute", at = @At("HEAD"), remap = false)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         SetCustomizedProcedure.execute(world, x, y, z, entity);

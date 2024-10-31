@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,25 +16,25 @@ import net.mcreator.jujutsucraftaddon.procedures.ReverseLevelScrollRightclickedP
 import java.util.List;
 
 public class ReverseLevelScrollItem extends Item {
-	public ReverseLevelScrollItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
-	}
+    public ReverseLevelScrollItem() {
+        super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
+    }
 
-	@Override
-	public float getDestroySpeed(ItemStack par1ItemStack, BlockState par2Block) {
-		return 0f;
-	}
+    @Override
+    public float getDestroySpeed(ItemStack par1ItemStack, BlockState par2Block) {
+        return 0f;
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("[Ability] Gives you more RCT Level"));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        list.add(Component.literal("[Ability] Gives you more RCT Level"));
+    }
 
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		ReverseLevelScrollRightclickedProcedure.execute(entity);
-		return ar;
-	}
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+        ReverseLevelScrollRightclickedProcedure.execute(entity);
+        return ar;
+    }
 }

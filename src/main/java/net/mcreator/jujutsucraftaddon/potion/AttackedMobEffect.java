@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraftforge.client.extensions.common.IClientMobEffectExtensions;
@@ -13,37 +12,37 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.mcreator.jujutsucraftaddon.procedures.AttackedProcedureProcedure;
 
 public class AttackedMobEffect extends MobEffect {
-	public AttackedMobEffect() {
-		super(MobEffectCategory.BENEFICIAL, -1);
-	}
+    public AttackedMobEffect() {
+        super(MobEffectCategory.BENEFICIAL, -1);
+    }
 
-	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		AttackedProcedureProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
+    @Override
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        AttackedProcedureProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+    }
 
-	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
-		return true;
-	}
+    @Override
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return true;
+    }
 
-	@Override
-	public void initializeClient(java.util.function.Consumer<IClientMobEffectExtensions> consumer) {
-		consumer.accept(new IClientMobEffectExtensions() {
-			@Override
-			public boolean isVisibleInInventory(MobEffectInstance effect) {
-				return false;
-			}
+    @Override
+    public void initializeClient(java.util.function.Consumer<IClientMobEffectExtensions> consumer) {
+        consumer.accept(new IClientMobEffectExtensions() {
+            @Override
+            public boolean isVisibleInInventory(MobEffectInstance effect) {
+                return false;
+            }
 
-			@Override
-			public boolean renderInventoryText(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, GuiGraphics guiGraphics, int x, int y, int blitOffset) {
-				return false;
-			}
+            @Override
+            public boolean renderInventoryText(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, GuiGraphics guiGraphics, int x, int y, int blitOffset) {
+                return false;
+            }
 
-			@Override
-			public boolean isVisibleInGui(MobEffectInstance effect) {
-				return false;
-			}
-		});
-	}
+            @Override
+            public boolean isVisibleInGui(MobEffectInstance effect) {
+                return false;
+            }
+        });
+    }
 }

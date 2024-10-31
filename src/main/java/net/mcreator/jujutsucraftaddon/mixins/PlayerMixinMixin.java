@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 public abstract class PlayerMixinMixin {
-
     @Inject(
             method = "getDisplayName",
             at = @At("RETURN"),
@@ -18,32 +17,23 @@ public abstract class PlayerMixinMixin {
     )
     private void onGetName(CallbackInfoReturnable<Component> cir) {
         Player player = (Player) (Object) this;
-
-        player.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-            if ("Kenjaku".equals(capability.Clans)) {
-                String tag = capability.tag1;
-                if (tag != null) {
-                    switch (tag) {
-                        case "One":
-                            if (capability.SkinName1 != null && !capability.SkinName1.isEmpty()) {
-                                cir.setReturnValue(Component.literal(capability.SkinName1));
-                            }
-                            break;
-                        case "Two":
-                            if (capability.SkinName2 != null && !capability.SkinName2.isEmpty()) {
-                                cir.setReturnValue(Component.literal(capability.SkinName2));
-                            }
-                            break;
-                        case "Three":
-                            if (capability.SkinName3 != null && !capability.SkinName3.isEmpty()) {
-                                cir.setReturnValue(Component.literal(capability.SkinName3));
-                            }
-                            break;
-                        default:
-                            break;
+        if (player.isAlive()) {
+            player.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                if ("Kenjaku".equals(capability.Clans)) {
+                    String tag = capability.tag1;
+                    if (tag != null) {
+                        String skinName = switch (tag) {
+                            case "One" -> capability.SkinName1;
+                            case "Two" -> capability.SkinName2;
+                            case "Three" -> capability.SkinName3;
+                            default -> null;
+                        };
+                        if (skinName != null && !skinName.isEmpty()) {
+                            cir.setReturnValue(Component.literal(skinName));
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 }

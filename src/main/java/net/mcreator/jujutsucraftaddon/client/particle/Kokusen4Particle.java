@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.client.particle;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -14,53 +13,53 @@ import net.minecraft.client.multiplayer.ClientLevel;
 
 @OnlyIn(Dist.CLIENT)
 public class Kokusen4Particle extends TextureSheetParticle {
-	public static Kokusen4ParticleProvider provider(SpriteSet spriteSet) {
-		return new Kokusen4ParticleProvider(spriteSet);
-	}
+    public static Kokusen4ParticleProvider provider(SpriteSet spriteSet) {
+        return new Kokusen4ParticleProvider(spriteSet);
+    }
 
-	public static class Kokusen4ParticleProvider implements ParticleProvider<SimpleParticleType> {
-		private final SpriteSet spriteSet;
+    public static class Kokusen4ParticleProvider implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet spriteSet;
 
-		public Kokusen4ParticleProvider(SpriteSet spriteSet) {
-			this.spriteSet = spriteSet;
-		}
+        public Kokusen4ParticleProvider(SpriteSet spriteSet) {
+            this.spriteSet = spriteSet;
+        }
 
-		public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-			return new Kokusen4Particle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
-		}
-	}
+        public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            return new Kokusen4Particle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
+        }
+    }
 
-	private final SpriteSet spriteSet;
+    private final SpriteSet spriteSet;
 
-	protected Kokusen4Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
-		super(world, x, y, z);
-		this.spriteSet = spriteSet;
-		this.setSize(0.2f, 0.2f);
-		this.quadSize *= 2f;
-		this.lifetime = 20;
-		this.gravity = 0f;
-		this.hasPhysics = true;
-		this.xd = vx * 0;
-		this.yd = vy * 0;
-		this.zd = vz * 0;
-		this.setSpriteFromAge(spriteSet);
-	}
+    protected Kokusen4Particle(ClientLevel world, double x, double y, double z, double vx, double vy, double vz, SpriteSet spriteSet) {
+        super(world, x, y, z);
+        this.spriteSet = spriteSet;
+        this.setSize(0.2f, 0.2f);
+        this.quadSize *= 2f;
+        this.lifetime = 20;
+        this.gravity = 0f;
+        this.hasPhysics = true;
+        this.xd = vx * 0;
+        this.yd = vy * 0;
+        this.zd = vz * 0;
+        this.setSpriteFromAge(spriteSet);
+    }
 
-	@Override
-	public int getLightColor(float partialTick) {
-		return 15728880;
-	}
+    @Override
+    public int getLightColor(float partialTick) {
+        return 15728880;
+    }
 
-	@Override
-	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_LIT;
-	}
+    @Override
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_LIT;
+    }
 
-	@Override
-	public void tick() {
-		super.tick();
-		if (!this.removed) {
-			this.setSprite(this.spriteSet.get((this.age / 2) % 12 + 1, 12));
-		}
-	}
+    @Override
+    public void tick() {
+        super.tick();
+        if (!this.removed) {
+            this.setSprite(this.spriteSet.get((this.age / 2) % 12 + 1, 12));
+        }
+    }
 }

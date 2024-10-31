@@ -81,7 +81,8 @@ public abstract class Domain1Mixin {
             String cnt_type;
             BlockState blockstate1;
             LivingEntity _livEnt30;
-            label414: {
+            label414:
+            {
                 logic_a = false;
                 failed = false;
                 noBarrier = false;
@@ -113,12 +114,12 @@ public abstract class Domain1Mixin {
                 BlockState blockstate2 = Blocks.AIR.defaultBlockState();
                 domain_num = entity.getPersistentData().getDouble("skill_domain") > 0.0 ? entity.getPersistentData().getDouble("skill_domain") : entity.getPersistentData().getDouble("select");
                 if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt3 = (LivingEntity)entity;
-                    if (_livEnt3.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                    LivingEntity _livEnt3 = (LivingEntity) entity;
+                    if (_livEnt3.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                         if (entity instanceof LivingEntity) {
-                            _livEnt30 = (LivingEntity)entity;
-                            if (_livEnt30.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                var10000 = (double)_livEnt30.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                            _livEnt30 = (LivingEntity) entity;
+                            if (_livEnt30.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                var10000 = (double) _livEnt30.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                 break label414;
                             }
                         }
@@ -141,21 +142,21 @@ public abstract class Domain1Mixin {
             int index5;
             int index4;
             if (failed && entity instanceof LivingEntity) {
-                _livEnt30 = (LivingEntity)entity;
-                if (_livEnt30.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                _livEnt30 = (LivingEntity) entity;
+                if (_livEnt30.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                     range = 5.0;
-                    x_pos = (double)Math.round(x - range);
+                    x_pos = (double) Math.round(x - range);
 
-                    for(index4 = 0; index4 < (int)Math.round(range * 2.0); ++index4) {
-                        x_dis = Math.pow((double)Math.round(x) - x_pos, 2.0);
-                        y_pos = (double)Math.round(y - range);
+                    for (index4 = 0; index4 < (int) Math.round(range * 2.0); ++index4) {
+                        x_dis = Math.pow((double) Math.round(x) - x_pos, 2.0);
+                        y_pos = (double) Math.round(y - range);
 
-                        for(index5 = 0; index5 < (int)Math.round(range * 2.0); ++index5) {
-                            y_dis = Math.pow((double)Math.round(y) - y_pos, 2.0);
-                            z_pos = (double)Math.round(z - range);
+                        for (index5 = 0; index5 < (int) Math.round(range * 2.0); ++index5) {
+                            y_dis = Math.pow((double) Math.round(y) - y_pos, 2.0);
+                            z_pos = (double) Math.round(z - range);
 
-                            for(int index2 = 0; index2 < (int)Math.round(range * 2.0); ++index2) {
-                                z_dis = Math.pow((double)Math.round(z) - z_pos, 2.0);
+                            for (int index2 = 0; index2 < (int) Math.round(range * 2.0); ++index2) {
+                                z_dis = Math.pow((double) Math.round(z) - z_pos, 2.0);
                                 if (Math.random() < 0.1) {
                                     blockstate1 = world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos));
                                     if (blockstate1.is(BlockTags.create(new ResourceLocation("jujutsucraft:barrier"))) && blockstate1.getBlock() != JujutsucraftModBlocks.IN_BARRIER.get() && blockstate1.getBlock() != JujutsucraftModBlocks.JUJUTSU_BARRIER.get()) {
@@ -169,8 +170,8 @@ public abstract class Domain1Mixin {
                                                 }
                                             })).getValue(world, BlockPos.containing(x_pos, y_pos, z_pos), "old_block");
                                             if (world instanceof ServerLevel) {
-                                                ServerLevel _level = (ServerLevel)world;
-                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + floor);
+                                                ServerLevel _level = (ServerLevel) world;
+                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + floor);
                                             }
 
                                             if (!world.isClientSide()) {
@@ -182,7 +183,7 @@ public abstract class Domain1Mixin {
                                                 }
 
                                                 if (world instanceof Level) {
-                                                    Level _level = (Level)world;
+                                                    Level _level = (Level) world;
                                                     _level.sendBlockUpdated(_bp, _bs, _bs, 3);
                                                 }
                                             }
@@ -220,7 +221,7 @@ public abstract class Domain1Mixin {
                     if (!world.getEntitiesOfClass(DomainExpansionEntityEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 0.1, 0.1, 0.1), (e) -> {
                         return true;
                     }).isEmpty()) {
-                        entity_a = (Entity)world.getEntitiesOfClass(DomainExpansionEntityEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 0.1, 0.1, 0.1), (e) -> {
+                        entity_a = (Entity) world.getEntitiesOfClass(DomainExpansionEntityEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 0.1, 0.1, 0.1), (e) -> {
                             return true;
                         }).stream().sorted(((new Object() {
                             Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
@@ -235,7 +236,7 @@ public abstract class Domain1Mixin {
                     }
 
                     if (world instanceof ServerLevel) {
-                        ServerLevel _level = (ServerLevel)world;
+                        ServerLevel _level = (ServerLevel) world;
                         Entity entityToSpawn = ((EntityType) JujutsucraftModEntities.DOMAIN_EXPANSION_ENTITY.get()).spawn(_level, BlockPos.containing(x_pos, y_pos, z_pos), MobSpawnType.MOB_SUMMONED);
                         if (entityToSpawn != null) {
                             entityToSpawn.setYRot(world.getRandom().nextFloat() * 360.0F);
@@ -247,39 +248,39 @@ public abstract class Domain1Mixin {
                 if (domain_num == 29.0) {
                     speed = 10.0;
                 } else if (entity instanceof LivingEntity) {
-                    _livEnt30 = (LivingEntity)entity;
-                    if (_livEnt30.hasEffect((MobEffect)JujutsucraftModMobEffects.ZONE.get())) {
+                    _livEnt30 = (LivingEntity) entity;
+                    if (_livEnt30.hasEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get())) {
                         speed = 3.0;
                     }
                 }
                 if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true) {
-                   range = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain;
+                    range = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain;
                 } else {
                     range = JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius;
                 }
-                loop_num = (double)Math.round(range * 2.0 + 1.0);
+                loop_num = (double) Math.round(range * 2.0 + 1.0);
                 cnt_type = entity.getPersistentData().getBoolean("Cover") ? "cnt_cover" : "cnt1";
                 cnt2 = entity.getPersistentData().getDouble(cnt_type);
                 cnt2 *= speed;
                 if (cnt2 - speed + 1.0 <= loop_num) {
                     y_floor = entity.getPersistentData().getDouble("y_pos_doma") - 1.0;
-                    x_pos = (double)Math.round(x) - range;
+                    x_pos = (double) Math.round(x) - range;
 
-                    for(int index3 = 0; index3 < (int)loop_num; ++index3) {
-                        x_dis = Math.pow(x_pos - (double)Math.round(x), 2.0);
-                        x_dis_p = Math.pow(x_pos - (double)Math.round(entity.getPersistentData().getDouble("x_pos_doma2")), 2.0);
+                    for (int index3 = 0; index3 < (int) loop_num; ++index3) {
+                        x_dis = Math.pow(x_pos - (double) Math.round(x), 2.0);
+                        x_dis_p = Math.pow(x_pos - (double) Math.round(entity.getPersistentData().getDouble("x_pos_doma2")), 2.0);
                         if (Math.sqrt(x_dis_p) <= cnt2) {
-                            y_pos = (double)Math.round(y) - range;
+                            y_pos = (double) Math.round(y) - range;
 
-                            for(index4 = 0; index4 < (int)loop_num; ++index4) {
-                                y_dis = Math.pow(y_pos - (double)Math.round(y), 2.0);
-                                y_dis_p = Math.pow(y_pos - (double)Math.round(entity.getPersistentData().getDouble("y_pos_doma2")), 2.0);
+                            for (index4 = 0; index4 < (int) loop_num; ++index4) {
+                                y_dis = Math.pow(y_pos - (double) Math.round(y), 2.0);
+                                y_dis_p = Math.pow(y_pos - (double) Math.round(entity.getPersistentData().getDouble("y_pos_doma2")), 2.0);
                                 if (Math.sqrt(y_dis_p) <= cnt2 && y_pos >= -64.0 && y_pos <= 319.0) {
-                                    z_pos = (double)Math.round(z) - range;
+                                    z_pos = (double) Math.round(z) - range;
 
-                                    for(index5 = 0; index5 < (int)loop_num; ++index5) {
-                                        z_dis = Math.pow(z_pos - (double)Math.round(z), 2.0);
-                                        z_dis_p = Math.pow(z_pos - (double)Math.round(entity.getPersistentData().getDouble("z_pos_doma2")), 2.0);
+                                    for (index5 = 0; index5 < (int) loop_num; ++index5) {
+                                        z_dis = Math.pow(z_pos - (double) Math.round(z), 2.0);
+                                        z_dis_p = Math.pow(z_pos - (double) Math.round(entity.getPersistentData().getDouble("z_pos_doma2")), 2.0);
                                         if (Math.sqrt(z_dis_p) <= cnt2) {
                                             dis_p = Math.sqrt(x_dis_p + y_dis_p + z_dis_p);
                                             if (dis_p <= cnt2 + 0.0 && dis_p >= cnt2 - speed) {
@@ -295,8 +296,8 @@ public abstract class Domain1Mixin {
                                                     ServerLevel _level;
                                                     if (noBarrier) {
                                                         if (entity.getPersistentData().getBoolean("Cover") && blockstate1.is(BlockTags.create(new ResourceLocation("jujutsucraft:barrier"))) && world instanceof ServerLevel) {
-                                                            _level = (ServerLevel)world;
-                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + (y_pos <= y_floor ? old_block : inside));
+                                                            _level = (ServerLevel) world;
+                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + (y_pos <= y_floor ? old_block : inside));
                                                         }
                                                     } else {
                                                         logic_a = false;
@@ -322,59 +323,59 @@ public abstract class Domain1Mixin {
                                                             if (dis < range + 0.0) {
                                                                 if (dis >= range - 1.0) {
                                                                     if (world instanceof ServerLevel) {
-                                                                        _level = (ServerLevel)world;
-                                                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + outside);
+                                                                        _level = (ServerLevel) world;
+                                                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + outside);
                                                                     }
                                                                 } else if (dis >= range - 2.0) {
                                                                     if (domain_num == 1.0) {
-                                                                        if (y_pos != y_floor && Math.abs(x_pos - (double)Math.round(x)) % 5.0 != 2.0) {
+                                                                        if (y_pos != y_floor && Math.abs(x_pos - (double) Math.round(x)) % 5.0 != 2.0) {
                                                                             if (world instanceof ServerLevel) {
-                                                                                _level = (ServerLevel)world;
-                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:in_barrier");
+                                                                                _level = (ServerLevel) world;
+                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:in_barrier");
                                                                             }
                                                                         } else if (world instanceof ServerLevel) {
-                                                                            _level = (ServerLevel)world;
-                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + inside);
+                                                                            _level = (ServerLevel) world;
+                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + inside);
                                                                         }
                                                                     } else if (domain_num == 15.0) {
-                                                                        if (y_pos != y_floor && Math.abs(x_pos - (double)Math.round(x)) % 5.0 != 2.0 && Math.abs(y_pos - (double)Math.round(y)) % 5.0 != 2.0 && Math.abs(z_pos - (double)Math.round(z)) % 5.0 != 4.0) {
+                                                                        if (y_pos != y_floor && Math.abs(x_pos - (double) Math.round(x)) % 5.0 != 2.0 && Math.abs(y_pos - (double) Math.round(y)) % 5.0 != 2.0 && Math.abs(z_pos - (double) Math.round(z)) % 5.0 != 4.0) {
                                                                             if (world instanceof ServerLevel) {
-                                                                                _level = (ServerLevel)world;
-                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:in_barrier");
+                                                                                _level = (ServerLevel) world;
+                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:in_barrier");
                                                                             }
                                                                         } else if (world instanceof ServerLevel) {
-                                                                            _level = (ServerLevel)world;
-                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + inside);
+                                                                            _level = (ServerLevel) world;
+                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + inside);
                                                                         }
                                                                     } else if (world instanceof ServerLevel) {
-                                                                        _level = (ServerLevel)world;
-                                                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + inside);
+                                                                        _level = (ServerLevel) world;
+                                                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + inside);
                                                                     }
                                                                 } else if (y_pos <= y_floor) {
                                                                     if (y_pos >= y_floor - 4.0) {
                                                                         if (domain_num == 8.0) {
                                                                             if (dis_p < range * 0.675) {
                                                                                 if (world instanceof ServerLevel) {
-                                                                                    _level = (ServerLevel)world;
-                                                                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:domain_grass");
+                                                                                    _level = (ServerLevel) world;
+                                                                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:domain_grass");
                                                                                 }
                                                                             } else if (!(dis_p < range * 0.9) && !(y_pos < y_floor - 0.5)) {
                                                                                 if (world instanceof ServerLevel) {
-                                                                                    _level = (ServerLevel)world;
-                                                                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:domain_water");
+                                                                                    _level = (ServerLevel) world;
+                                                                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:domain_water");
                                                                                 }
                                                                             } else if (world instanceof ServerLevel) {
-                                                                                _level = (ServerLevel)world;
-                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:domain_sand");
+                                                                                _level = (ServerLevel) world;
+                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:domain_sand");
                                                                             }
                                                                         } else if (domain_num == 27.0) {
                                                                             if (world instanceof ServerLevel) {
-                                                                                _level = (ServerLevel)world;
-                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + (dis < range * 0.5 ? floor : "jujutsucraft:domain_stone_bricks"));
+                                                                                _level = (ServerLevel) world;
+                                                                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + (dis < range * 0.5 ? floor : "jujutsucraft:domain_stone_bricks"));
                                                                             }
                                                                         } else if (world instanceof ServerLevel) {
-                                                                            _level = (ServerLevel)world;
-                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + floor);
+                                                                            _level = (ServerLevel) world;
+                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + floor);
                                                                         }
                                                                     } else {
                                                                         logic_a = false;
@@ -382,12 +383,12 @@ public abstract class Domain1Mixin {
                                                                 } else if (!world.isEmptyBlock(BlockPos.containing(x_pos, y_pos, z_pos))) {
                                                                     if (close_type < 0.0 && !entity.getPersistentData().getBoolean("Cover") && !entity.getPersistentData().getBoolean("Failed")) {
                                                                         if (world instanceof ServerLevel) {
-                                                                            _level = (ServerLevel)world;
-                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ " + floor);
+                                                                            _level = (ServerLevel) world;
+                                                                            _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ " + floor);
                                                                         }
                                                                     } else if (world instanceof ServerLevel) {
-                                                                        _level = (ServerLevel)world;
-                                                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:in_barrier");
+                                                                        _level = (ServerLevel) world;
+                                                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "setblock ~ ~ ~ jujutsucraft:in_barrier");
                                                                     }
                                                                 } else {
                                                                     logic_a = false;
@@ -406,12 +407,12 @@ public abstract class Domain1Mixin {
                                                             })).toList();
                                                             Iterator var72 = _entfound.iterator();
 
-                                                            while(var72.hasNext()) {
-                                                                Entity entityiterator = (Entity)var72.next();
+                                                            while (var72.hasNext()) {
+                                                                Entity entityiterator = (Entity) var72.next();
                                                                 if (!entityiterator.isInvulnerable() && !entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:not_living")))) {
                                                                     entityiterator.teleportTo(entityiterator.getX(), y_floor + 1.0, entityiterator.getZ());
                                                                     if (entityiterator instanceof ServerPlayer) {
-                                                                        ServerPlayer _serverPlayer = (ServerPlayer)entityiterator;
+                                                                        ServerPlayer _serverPlayer = (ServerPlayer) entityiterator;
                                                                         _serverPlayer.connection.teleport(entityiterator.getX(), y_floor + 1.0, entityiterator.getZ(), entityiterator.getYRot(), entityiterator.getXRot());
                                                                     }
                                                                 }
@@ -427,7 +428,7 @@ public abstract class Domain1Mixin {
                                                             }
 
                                                             if (world instanceof Level) {
-                                                                Level _level2 = (Level)world;
+                                                                Level _level2 = (Level) world;
                                                                 _level2.sendBlockUpdated(_bp, _bs, _bs, 3);
                                                             }
                                                         }

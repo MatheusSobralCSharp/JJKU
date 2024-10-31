@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.Level;
@@ -16,20 +15,20 @@ import net.mcreator.jujutsucraftaddon.procedures.SpecialGrade2RecommendationProc
 import java.util.List;
 
 public class FamousGradeRecommendationItem extends Item {
-	public FamousGradeRecommendationItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
-	}
+    public FamousGradeRecommendationItem() {
+        super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("[Ability] Use for unlock Famous Grade"));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        list.add(Component.literal("[Ability] Use for unlock Famous Grade"));
+    }
 
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		SpecialGrade2RecommendationProcedure.execute(entity);
-		return ar;
-	}
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+        SpecialGrade2RecommendationProcedure.execute(entity);
+        return ar;
+    }
 }

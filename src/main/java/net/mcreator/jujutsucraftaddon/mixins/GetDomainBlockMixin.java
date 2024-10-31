@@ -14,7 +14,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = GetDomainBlockProcedure.class, remap = false)
 public abstract class GetDomainBlockMixin {
-    public GetDomainBlockMixin(){}
+    public GetDomainBlockMixin() {
+    }
+
     /**
      * @author Satushi
      * @reason None
@@ -28,7 +30,8 @@ public abstract class GetDomainBlockMixin {
             String floor;
             double domain_num;
             double close_type;
-            label133: {
+            label133:
+            {
                 boolean noBarrier = false;
                 outside = "";
                 inside = "";
@@ -37,12 +40,12 @@ public abstract class GetDomainBlockMixin {
                 close_type = 0.0;
                 domain_num = entity.getPersistentData().getDouble("select") > 0.0 ? entity.getPersistentData().getDouble("select") : entity.getPersistentData().getDouble("skill_domain");
                 if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt3 = (LivingEntity)entity;
+                    LivingEntity _livEnt3 = (LivingEntity) entity;
                     if (_livEnt3.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                         if (entity instanceof LivingEntity) {
-                            LivingEntity _livEnt = (LivingEntity)entity;
-                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                var10000 = (double)_livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                            LivingEntity _livEnt = (LivingEntity) entity;
+                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                var10000 = (double) _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                 break label133;
                             }
                         }
@@ -61,21 +64,21 @@ public abstract class GetDomainBlockMixin {
             floor = "jujutsucraft:block_universe";
             if (domain_num <= 10.0) {
                 if (domain_num == 1.0) {
-                        if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Death Painting")) {
-                           if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori")) {
-                               if (entity instanceof ServerPlayer _plr25 && _plr25.level() instanceof ServerLevel
-                                       && _plr25.getAdvancements().getOrStartProgress(_plr25.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone() && entity instanceof ServerPlayer _plr26
-                                       && _plr26.level() instanceof ServerLevel && _plr26.getAdvancements().getOrStartProgress(_plr26.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained"))).isDone()) {
-                                   inside = "jujutsucraftaddon:snow_domain";
-                                   floor = "jujutsucraftaddon:snow_domain";
-                                   outside = "jujutsucraftaddon:snow_domain";
-                               }
-                           }
-                        } else {
-                            inside = "jujutsucraft:domain_bone";
-                            floor = "jujutsucraft:block_red";
-                            outside = "jujutsucraft:jujutsu_barrier";
+                    if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Death Painting")) {
+                        if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori")) {
+                            if (entity instanceof ServerPlayer _plr25 && _plr25.level() instanceof ServerLevel
+                                    && _plr25.getAdvancements().getOrStartProgress(_plr25.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone() && entity instanceof ServerPlayer _plr26
+                                    && _plr26.level() instanceof ServerLevel && _plr26.getAdvancements().getOrStartProgress(_plr26.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained"))).isDone()) {
+                                inside = "jujutsucraftaddon:snow_domain";
+                                floor = "jujutsucraftaddon:snow_domain";
+                                outside = "jujutsucraftaddon:snow_domain";
+                            }
                         }
+                    } else {
+                        inside = "jujutsucraft:domain_bone";
+                        floor = "jujutsucraft:block_red";
+                        outside = "jujutsucraft:jujutsu_barrier";
+                    }
                 } else if (domain_num == 2.0) {
                     inside = "jujutsucraft:block_universe";
                     floor = "jujutsucraft:block_universe";

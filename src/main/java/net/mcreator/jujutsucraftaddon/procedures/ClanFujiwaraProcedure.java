@@ -10,31 +10,31 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.context.CommandContext;
 
 public class ClanFujiwaraProcedure {
-	public static void execute(CommandContext<CommandSourceStack> arguments) {
-		{
-			String _setval = "Fujiwara";
-			(new Object() {
-				public Entity getEntity() {
-					try {
-						return EntityArgument.getEntity(arguments, "Player");
-					} catch (CommandSyntaxException e) {
-						e.printStackTrace();
-						return null;
-					}
-				}
-			}.getEntity()).getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.Clans = _setval;
-				capability.syncPlayerVariables((new Object() {
-					public Entity getEntity() {
-						try {
-							return EntityArgument.getEntity(arguments, "Player");
-						} catch (CommandSyntaxException e) {
-							e.printStackTrace();
-							return null;
-						}
-					}
-				}.getEntity()));
-			});
-		}
-	}
+    public static void execute(CommandContext<CommandSourceStack> arguments) {
+        {
+            String _setval = "Fujiwara";
+            (new Object() {
+                public Entity getEntity() {
+                    try {
+                        return EntityArgument.getEntity(arguments, "Player");
+                    } catch (CommandSyntaxException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+            }.getEntity()).getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                capability.Clans = _setval;
+                capability.syncPlayerVariables((new Object() {
+                    public Entity getEntity() {
+                        try {
+                            return EntityArgument.getEntity(arguments, "Player");
+                        } catch (CommandSyntaxException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                    }
+                }.getEntity()));
+            });
+        }
+    }
 }

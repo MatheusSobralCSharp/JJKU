@@ -9,15 +9,15 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class ClanIshigoriProcedure {
-	public static void execute(CommandContext<CommandSourceStack> arguments, Entity entity) {
-		if (entity == null)
-			return;
-		{
-			String _setval = StringArgumentType.getString(arguments, "Ishigori");
-			entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.Clans = _setval;
-				capability.syncPlayerVariables(entity);
-			});
-		}
-	}
+    public static void execute(CommandContext<CommandSourceStack> arguments, Entity entity) {
+        if (entity == null)
+            return;
+        {
+            String _setval = StringArgumentType.getString(arguments, "Ishigori");
+            entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                capability.Clans = _setval;
+                capability.syncPlayerVariables(entity);
+            });
+        }
+    }
 }

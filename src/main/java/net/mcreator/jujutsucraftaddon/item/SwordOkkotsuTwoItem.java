@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.Level;
@@ -22,58 +21,58 @@ import net.mcreator.jujutsucraftaddon.procedures.SwordOkkotsu2Procedure;
 import java.util.List;
 
 public class SwordOkkotsuTwoItem extends SwordItem {
-	public SwordOkkotsuTwoItem() {
-		super(new Tier() {
-			public int getUses() {
-				return 250;
-			}
+    public SwordOkkotsuTwoItem() {
+        super(new Tier() {
+            public int getUses() {
+                return 250;
+            }
 
-			public float getSpeed() {
-				return 4f;
-			}
+            public float getSpeed() {
+                return 4f;
+            }
 
-			public float getAttackDamageBonus() {
-				return 4f;
-			}
+            public float getAttackDamageBonus() {
+                return 4f;
+            }
 
-			public int getLevel() {
-				return 1;
-			}
+            public int getLevel() {
+                return 1;
+            }
 
-			public int getEnchantmentValue() {
-				return 2;
-			}
+            public int getEnchantmentValue() {
+                return 2;
+            }
 
-			public Ingredient getRepairIngredient() {
-				return Ingredient.of();
-			}
-		}, 3, -2f, new Item.Properties());
-	}
+            public Ingredient getRepairIngredient() {
+                return Ingredient.of();
+            }
+        }, 3, -2f, new Item.Properties());
+    }
 
-	@Override
-	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		SwordOkkotsu2Procedure.execute(entity, sourceentity, itemstack);
-		return retval;
-	}
+    @Override
+    public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
+        boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
+        SwordOkkotsu2Procedure.execute(entity, sourceentity, itemstack);
+        return retval;
+    }
 
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		SwordOkkotsu2RightClickedProcedure.execute(entity, ar.getObject());
-		return ar;
-	}
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+        SwordOkkotsu2RightClickedProcedure.execute(entity, ar.getObject());
+        return ar;
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("[Ability] Allows you copy moves and Store them inside of the sword"));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        list.add(Component.literal("[Ability] Allows you copy moves and Store them inside of the sword"));
+    }
 
-	@Override
-	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-		super.inventoryTick(itemstack, world, entity, slot, selected);
-		if (selected)
-			SwordOkkotsuTwoToolInHandTickProcedure.execute(world, entity, itemstack);
-	}
+    @Override
+    public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(itemstack, world, entity, slot, selected);
+        if (selected)
+            SwordOkkotsuTwoToolInHandTickProcedure.execute(world, entity, itemstack);
+    }
 }

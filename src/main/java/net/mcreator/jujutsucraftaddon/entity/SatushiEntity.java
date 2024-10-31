@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.entity;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModItems;
@@ -33,112 +32,112 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nullable;
 
 public class SatushiEntity extends Monster {
-	public SatushiEntity(PlayMessages.SpawnEntity packet, Level world) {
-		this(JujutsucraftaddonModEntities.SATUSHI.get(), world);
-	}
+    public SatushiEntity(PlayMessages.SpawnEntity packet, Level world) {
+        this(JujutsucraftaddonModEntities.SATUSHI.get(), world);
+    }
 
-	public SatushiEntity(EntityType<SatushiEntity> type, Level world) {
-		super(type, world);
-		setMaxUpStep(0.6f);
-		xpReward = 0;
-		setNoAi(false);
-		setPersistenceRequired();
-		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(JujutsucraftaddonModItems.MUGIWARA_HELMET.get()));
-		this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(JujutsucraftaddonModItems.KIMONO_WHITE_CHESTPLATE.get()));
-		this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(JujutsucraftaddonModItems.KIMONO_WHITE_LEGGINGS.get()));
-		this.setItemSlot(EquipmentSlot.FEET, new ItemStack(JujutsucraftModItems.CLOTHES_URAUME_BOOTS.get()));
-	}
+    public SatushiEntity(EntityType<SatushiEntity> type, Level world) {
+        super(type, world);
+        setMaxUpStep(0.6f);
+        xpReward = 0;
+        setNoAi(false);
+        setPersistenceRequired();
+        this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(JujutsucraftaddonModItems.MUGIWARA_HELMET.get()));
+        this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(JujutsucraftaddonModItems.KIMONO_WHITE_CHESTPLATE.get()));
+        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(JujutsucraftaddonModItems.KIMONO_WHITE_LEGGINGS.get()));
+        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(JujutsucraftModItems.CLOTHES_URAUME_BOOTS.get()));
+    }
 
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
 
-	@Override
-	protected void registerGoals() {
-		super.registerGoals();
-		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, true) {
-			@Override
-			protected double getAttackReachSqr(LivingEntity entity) {
-				return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
-			}
-		});
-		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1, true) {
-			@Override
-			protected double getAttackReachSqr(LivingEntity entity) {
-				return 4;
-			}
-		});
-		this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
-		this.goalSelector.addGoal(7, new RandomStrollGoal(this, 1));
-		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-		this.goalSelector.addGoal(9, new FloatGoal(this));
-	}
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, true) {
+            @Override
+            protected double getAttackReachSqr(LivingEntity entity) {
+                return this.mob.getBbWidth() * this.mob.getBbWidth() + entity.getBbWidth();
+            }
+        });
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1, true) {
+            @Override
+            protected double getAttackReachSqr(LivingEntity entity) {
+                return 4;
+            }
+        });
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
+        this.goalSelector.addGoal(7, new RandomStrollGoal(this, 1));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(9, new FloatGoal(this));
+    }
 
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEFINED;
-	}
+    @Override
+    public MobType getMobType() {
+        return MobType.UNDEFINED;
+    }
 
-	@Override
-	public boolean removeWhenFarAway(double distanceToClosestPlayer) {
-		return false;
-	}
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return false;
+    }
 
-	@Override
-	public double getMyRidingOffset() {
-		return -0.35D;
-	}
+    @Override
+    public double getMyRidingOffset() {
+        return -0.35D;
+    }
 
-	@Override
-	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt"));
-	}
+    @Override
+    public SoundEvent getHurtSound(DamageSource ds) {
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt"));
+    }
 
-	@Override
-	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.death"));
-	}
+    @Override
+    public SoundEvent getDeathSound() {
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.death"));
+    }
 
-	@Override
-	public boolean hurt(DamageSource damagesource, float amount) {
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
-		Level world = this.level();
-		Entity entity = this;
-		Entity sourceentity = damagesource.getEntity();
-		Entity immediatesourceentity = damagesource.getDirectEntity();
+    @Override
+    public boolean hurt(DamageSource damagesource, float amount) {
+        double x = this.getX();
+        double y = this.getY();
+        double z = this.getZ();
+        Level world = this.level();
+        Entity entity = this;
+        Entity sourceentity = damagesource.getEntity();
+        Entity immediatesourceentity = damagesource.getDirectEntity();
 
-		ItadoriShinjukuEntityIsHurtProcedure.execute(entity, sourceentity);
-		return super.hurt(damagesource, amount);
-	}
+        ItadoriShinjukuEntityIsHurtProcedure.execute(entity, sourceentity);
+        return super.hurt(damagesource, amount);
+    }
 
-	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
-		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		SatushiOnInitialEntitySpawnProcedure.execute(this);
-		return retval;
-	}
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
+        SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
+        SatushiOnInitialEntitySpawnProcedure.execute(this);
+        return retval;
+    }
 
-	@Override
-	public void baseTick() {
-		super.baseTick();
-		SatushiOnEntityTickUpdateProcedure.execute(this.level(), this);
-	}
+    @Override
+    public void baseTick() {
+        super.baseTick();
+        SatushiOnEntityTickUpdateProcedure.execute(this.level(), this);
+    }
 
-	public static void init() {
-	}
+    public static void init() {
+    }
 
-	public static AttributeSupplier.Builder createAttributes() {
-		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-		builder = builder.add(Attributes.MAX_HEALTH, 900);
-		builder = builder.add(Attributes.ARMOR, 30);
-		builder = builder.add(Attributes.ATTACK_DAMAGE, 10);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 256);
-		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 2);
-		builder = builder.add(Attributes.ATTACK_KNOCKBACK, 8);
-		return builder;
-	}
+    public static AttributeSupplier.Builder createAttributes() {
+        AttributeSupplier.Builder builder = Mob.createMobAttributes();
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
+        builder = builder.add(Attributes.MAX_HEALTH, 900);
+        builder = builder.add(Attributes.ARMOR, 30);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 10);
+        builder = builder.add(Attributes.FOLLOW_RANGE, 256);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 2);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 8);
+        return builder;
+    }
 }

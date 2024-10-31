@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.Level;
@@ -16,20 +15,20 @@ import net.mcreator.jujutsucraftaddon.procedures.SpecialGrade1RecommendationRigh
 import java.util.List;
 
 public class SpecialGrade1RecommendationItem extends Item {
-	public SpecialGrade1RecommendationItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
-	}
+    public SpecialGrade1RecommendationItem() {
+        super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("[Ability] Use for unlock special grade 1"));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        list.add(Component.literal("[Ability] Use for unlock special grade 1"));
+    }
 
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		SpecialGrade1RecommendationRightclickedProcedure.execute(entity);
-		return ar;
-	}
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+        SpecialGrade1RecommendationRightclickedProcedure.execute(entity);
+        return ar;
+    }
 }

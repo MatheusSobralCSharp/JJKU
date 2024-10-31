@@ -11,16 +11,19 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({PlayerModel.class})
-public class RunningAnimationMixin<T extends LivingEntity> extends HumanoidModel<T>{
+public class RunningAnimationMixin<T extends LivingEntity> extends HumanoidModel<T> {
     public RunningAnimationMixin(ModelPart p_170677_) {
         super(p_170677_, RenderType::entityTranslucent);
     }
+
     @Inject(
             method = {"setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V"},
             at = {@At("HEAD")}
     )
     public void setupAnimPre(T player, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
-        net.mcreator.jujutsucraftaddon.PlayerAnimHandler.preSprintingAnim(player, (PlayerModel<T>) (Object) this);
+        if (player.isAlive()) {
+            net.mcreator.jujutsucraftaddon.PlayerAnimHandler.preSprintingAnim(player, (PlayerModel<T>) (Object) this);
+        }
 
     }
 
@@ -33,9 +36,11 @@ public class RunningAnimationMixin<T extends LivingEntity> extends HumanoidModel
             )}
     )
     public void setupAnim(T player, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
-        if (limbSwing != 0.0F || ageInTicks != 0.0F || netHeadYaw != 0.0F || headPitch != 0.0F) {
-            net.mcreator.jujutsucraftaddon.PlayerAnimHandler.sprintingAnim(player, (PlayerModel<T>) (Object) this);
-            this.hat.copyFrom(this.head);
+        if (player.isAlive()) {
+            if (limbSwing != 0.0F || ageInTicks != 0.0F || netHeadYaw != 0.0F || headPitch != 0.0F) {
+                net.mcreator.jujutsucraftaddon.PlayerAnimHandler.sprintingAnim(player, (PlayerModel<T>) (Object) this);
+                this.hat.copyFrom(this.head);
+            }
         }
     }
 

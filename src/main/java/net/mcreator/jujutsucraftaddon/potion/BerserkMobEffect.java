@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -10,22 +9,22 @@ import net.mcreator.jujutsucraftaddon.procedures.BerserkOnEffectActiveTickProced
 import net.mcreator.jujutsucraftaddon.procedures.BerserkEffectStartedappliedProcedure;
 
 public class BerserkMobEffect extends MobEffect {
-	public BerserkMobEffect() {
-		super(MobEffectCategory.NEUTRAL, -16777216);
-	}
+    public BerserkMobEffect() {
+        super(MobEffectCategory.NEUTRAL, -16777216);
+    }
 
-	@Override
-	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		BerserkEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
+    @Override
+    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        BerserkEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+    }
 
-	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		BerserkOnEffectActiveTickProcedure.execute();
-	}
+    @Override
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        BerserkOnEffectActiveTickProcedure.execute();
+    }
 
-	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
-		return true;
-	}
+    @Override
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return true;
+    }
 }

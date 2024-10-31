@@ -11,31 +11,31 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class JjkuFlashChancesProcedure {
-	public static void execute(CommandContext<CommandSourceStack> arguments) {
-		{
-			double _setval = DoubleArgumentType.getDouble(arguments, "BlackFlashChance");
-			(new Object() {
-				public Entity getEntity() {
-					try {
-						return EntityArgument.getEntity(arguments, "Player");
-					} catch (CommandSyntaxException e) {
-						e.printStackTrace();
-						return null;
-					}
-				}
-			}.getEntity()).getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.BFChance = _setval;
-				capability.syncPlayerVariables((new Object() {
-					public Entity getEntity() {
-						try {
-							return EntityArgument.getEntity(arguments, "Player");
-						} catch (CommandSyntaxException e) {
-							e.printStackTrace();
-							return null;
-						}
-					}
-				}.getEntity()));
-			});
-		}
-	}
+    public static void execute(CommandContext<CommandSourceStack> arguments) {
+        {
+            double _setval = DoubleArgumentType.getDouble(arguments, "BlackFlashChance");
+            (new Object() {
+                public Entity getEntity() {
+                    try {
+                        return EntityArgument.getEntity(arguments, "Player");
+                    } catch (CommandSyntaxException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+            }.getEntity()).getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                capability.BFChance = _setval;
+                capability.syncPlayerVariables((new Object() {
+                    public Entity getEntity() {
+                        try {
+                            return EntityArgument.getEntity(arguments, "Player");
+                        } catch (CommandSyntaxException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                    }
+                }.getEntity()));
+            });
+        }
+    }
 }

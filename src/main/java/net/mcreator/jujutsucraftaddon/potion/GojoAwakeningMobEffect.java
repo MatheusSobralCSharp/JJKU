@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -10,22 +9,22 @@ import net.mcreator.jujutsucraftaddon.procedures.GojoAwakeningOnEffectActiveTick
 import net.mcreator.jujutsucraftaddon.procedures.GojoAwakeningEffectStartedappliedProcedure;
 
 public class GojoAwakeningMobEffect extends MobEffect {
-	public GojoAwakeningMobEffect() {
-		super(MobEffectCategory.NEUTRAL, -1);
-	}
+    public GojoAwakeningMobEffect() {
+        super(MobEffectCategory.NEUTRAL, -1);
+    }
 
-	@Override
-	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		GojoAwakeningEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
+    @Override
+    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        GojoAwakeningEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+    }
 
-	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		GojoAwakeningOnEffectActiveTickProcedure.execute(entity);
-	}
+    @Override
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        GojoAwakeningOnEffectActiveTickProcedure.execute(entity);
+    }
 
-	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
-		return true;
-	}
+    @Override
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return true;
+    }
 }

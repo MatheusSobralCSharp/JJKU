@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -19,26 +18,26 @@ import net.mcreator.jujutsucraftaddon.procedures.ModernEraSorcererRightclickedPr
 import java.util.List;
 
 public class ModernEraSorcererItem extends Item {
-	public ModernEraSorcererItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
-	}
+    public ModernEraSorcererItem() {
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC));
+    }
 
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public boolean isFoil(ItemStack itemstack) {
-		return true;
-	}
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public boolean isFoil(ItemStack itemstack) {
+        return true;
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("[Ability] Unlock The Strongest Sorcerer of Modern Era Grade"));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        list.add(Component.literal("[Ability] Unlock The Strongest Sorcerer of Modern Era Grade"));
+    }
 
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		ModernEraSorcererRightclickedProcedure.execute(entity);
-		return ar;
-	}
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+        ModernEraSorcererRightclickedProcedure.execute(entity);
+        return ar;
+    }
 }

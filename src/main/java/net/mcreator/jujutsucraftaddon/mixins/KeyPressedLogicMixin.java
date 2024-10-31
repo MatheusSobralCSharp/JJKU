@@ -35,7 +35,7 @@ import java.util.Iterator;
 
 @Mixin(value = StartCursedTechniqueProcedure.class, remap = false)
 public abstract class KeyPressedLogicMixin {
-    public KeyPressedLogicMixin(){
+    public KeyPressedLogicMixin() {
 
     }
 
@@ -63,7 +63,7 @@ public abstract class KeyPressedLogicMixin {
             ItemStack var10000;
             LivingEntity _livEnt11;
             if (entity instanceof LivingEntity) {
-                _livEnt11 = (LivingEntity)entity;
+                _livEnt11 = (LivingEntity) entity;
                 var10000 = _livEnt11.getMainHandItem();
             } else {
                 var10000 = ItemStack.EMPTY;
@@ -73,7 +73,7 @@ public abstract class KeyPressedLogicMixin {
             LivingEntity _livEnt13;
             if (var10000.getOrCreateTag().getBoolean("used_item")) {
                 if (entity instanceof LivingEntity) {
-                    _livEnt13 = (LivingEntity)entity;
+                    _livEnt13 = (LivingEntity) entity;
                     var10000 = _livEnt13.getMainHandItem();
                 } else {
                     var10000 = ItemStack.EMPTY;
@@ -83,7 +83,7 @@ public abstract class KeyPressedLogicMixin {
                 item_use = true;
             } else {
                 if (entity instanceof LivingEntity) {
-                    _livEnt12 = (LivingEntity)entity;
+                    _livEnt12 = (LivingEntity) entity;
                     var10000 = _livEnt12.getOffhandItem();
                 } else {
                     var10000 = ItemStack.EMPTY;
@@ -91,7 +91,7 @@ public abstract class KeyPressedLogicMixin {
 
                 if (var10000.getOrCreateTag().getBoolean("used_item")) {
                     if (entity instanceof LivingEntity) {
-                        _livEnt13 = (LivingEntity)entity;
+                        _livEnt13 = (LivingEntity) entity;
                         var10000 = _livEnt13.getOffhandItem();
                     } else {
                         var10000 = ItemStack.EMPTY;
@@ -112,7 +112,7 @@ public abstract class KeyPressedLogicMixin {
                 }
             } else {
                 boolean _setval = true;
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                     capability.noChangeTechnique = _setval;
                     capability.syncPlayerVariables(entity);
                 });
@@ -120,20 +120,23 @@ public abstract class KeyPressedLogicMixin {
             }
 
             Player _player;
-            label334: {
+            label334:
+            {
                 if (item_use) {
-                    label341: {
+                    label341:
+                    {
                         if (entity instanceof LivingEntity) {
-                            _livEnt11 = (LivingEntity)entity;
+                            _livEnt11 = (LivingEntity) entity;
                             if (_livEnt11.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
                                 break label334;
                             }
                         }
 
-                        label342: {
+                        label342:
+                        {
                             if (entity instanceof LivingEntity) {
-                                _livEnt12 = (LivingEntity)entity;
-                                if (_livEnt12.hasEffect((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME.get())) {
+                                _livEnt12 = (LivingEntity) entity;
+                                if (_livEnt12.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get())) {
                                     break label342;
                                 }
                             }
@@ -142,8 +145,8 @@ public abstract class KeyPressedLogicMixin {
                                 break label341;
                             }
 
-                            _livEnt13 = (LivingEntity)entity;
-                            if (!_livEnt13.hasEffect((MobEffect)JujutsucraftModMobEffects.UNSTABLE.get())) {
+                            _livEnt13 = (LivingEntity) entity;
+                            if (!_livEnt13.hasEffect((MobEffect) JujutsucraftModMobEffects.UNSTABLE.get())) {
                                 break label341;
                             }
                         }
@@ -179,14 +182,14 @@ public abstract class KeyPressedLogicMixin {
                         }
                     })).checkGamemode(entity);
                     if (noUseCursePower) {
-                        NUM1 = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower - 0.0;
+                        NUM1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower - 0.0;
                     } else {
-                        NUM1 = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower - (item_use ? cost : ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueCost);
+                        NUM1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower - (item_use ? cost : ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueCost);
                     }
 
                     if (!(NUM1 >= 0.0) && !CREATIVE) {
                         if (entity instanceof Player) {
-                            _player = (Player)entity;
+                            _player = (Player) entity;
                             if (!_player.level().isClientSide()) {
                                 _player.displayClientMessage(Component.literal(Component.translatable("jujutsu.message.dont_use").getString()), true);
                             }
@@ -199,16 +202,16 @@ public abstract class KeyPressedLogicMixin {
                         double _setval2;
                         if (!CREATIVE) {
                             _setval2 = NUM1;
-                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                                 capability.PlayerCursePower = _setval2;
                                 capability.syncPlayerVariables(entity);
                             });
                         }
 
                         if (item_use) {
-                            T1 = (double)Math.round(Math.floor(skill / 100.0));
-                            T2 = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
-                            S1 = (double)Math.round(Math.floor(skill % 100.0));
+                            T1 = (double) Math.round(Math.floor(skill / 100.0));
+                            T2 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
+                            S1 = (double) Math.round(Math.floor(skill % 100.0));
                         } else {
                             if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 18
                                     && (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
@@ -345,9 +348,9 @@ public abstract class KeyPressedLogicMixin {
                         ResetCounterProcedure.execute(entity);
                         LivingEntity _entity;
                         if (entity instanceof LivingEntity) {
-                            _entity = (LivingEntity)entity;
+                            _entity = (LivingEntity) entity;
                             if (!_entity.level().isClientSide()) {
-                                _entity.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, 0, false, false));
+                                _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, 0, false, false));
                             }
                         }
 
@@ -355,7 +358,7 @@ public abstract class KeyPressedLogicMixin {
                             if (S1 == 20.0) {
                                 Tick = 20.0;
                             } else {
-                                Tick = Math.max((item_use ? cost : ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueCostOrgin) / 2.0, 20.0);
+                                Tick = Math.max((item_use ? cost : ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueCostOrgin) / 2.0, 20.0);
                                 if (STR1.equals(Component.translatable("jujutsu.technique.attack1").getString())) {
                                     Tick = 5.0;
                                 } else if (STR1.equals(Component.translatable("jujutsu.technique.attack2").getString())) {
@@ -406,9 +409,9 @@ public abstract class KeyPressedLogicMixin {
                             Tick = 1.0;
                         }
 
-                        double _setval3 = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber + (double)Math.round(Tick);
+                        double _setval3 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber + (double) Math.round(Tick);
                         double final_setval1 = _setval3;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                             capability.PlayerTechniqueUsedNumber = final_setval1;
                             capability.syncPlayerVariables(entity);
                         });
@@ -417,36 +420,36 @@ public abstract class KeyPressedLogicMixin {
                         Iterator var36;
                         String criteria;
                         ServerPlayer _player2;
-                        if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber > (double)((T1 != 27.0 && T2 != 27.0 ? 4000 : 2000) * (1 + world.getLevelData().getGameRules().getInt(JujutsucraftModGameRules.JUJUTSUUPGRADEDIFFICULTY) / 10)) && entity instanceof ServerPlayer) {
-                            _player2 = (ServerPlayer)entity;
+                        if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber > (double) ((T1 != 27.0 && T2 != 27.0 ? 4000 : 2000) * (1 + world.getLevelData().getGameRules().getInt(JujutsucraftModGameRules.JUJUTSUUPGRADEDIFFICULTY) / 10)) && entity instanceof ServerPlayer) {
+                            _player2 = (ServerPlayer) entity;
                             _adv = _player2.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:mastery_simple_domain"));
                             _ap = _player2.getAdvancements().getOrStartProgress(_adv);
                             if (!_ap.isDone()) {
                                 var36 = _ap.getRemainingCriteria().iterator();
 
-                                while(var36.hasNext()) {
-                                    criteria = (String)var36.next();
+                                while (var36.hasNext()) {
+                                    criteria = (String) var36.next();
                                     _player2.getAdvancements().award(_adv, criteria);
                                 }
                             }
                         }
 
-                        if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber > (double)((T1 != 27.0 && T2 != 27.0 ? 12000 : 100) * (1 + world.getLevelData().getGameRules().getInt(JujutsucraftModGameRules.JUJUTSUUPGRADEDIFFICULTY) / 10)) && entity instanceof ServerPlayer) {
-                            _player2 = (ServerPlayer)entity;
+                        if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerTechniqueUsedNumber > (double) ((T1 != 27.0 && T2 != 27.0 ? 12000 : 100) * (1 + world.getLevelData().getGameRules().getInt(JujutsucraftModGameRules.JUJUTSUUPGRADEDIFFICULTY) / 10)) && entity instanceof ServerPlayer) {
+                            _player2 = (ServerPlayer) entity;
                             _adv = _player2.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:mastery_domain_expansion"));
                             _ap = _player2.getAdvancements().getOrStartProgress(_adv);
                             if (!_ap.isDone()) {
                                 var36 = _ap.getRemainingCriteria().iterator();
 
-                                while(var36.hasNext()) {
-                                    criteria = (String)var36.next();
+                                while (var36.hasNext()) {
+                                    criteria = (String) var36.next();
                                     _player2.getAdvancements().award(_adv, criteria);
                                 }
                             }
                         }
 
                         if (entity instanceof LivingEntity) {
-                            _entity = (LivingEntity)entity;
+                            _entity = (LivingEntity) entity;
                             var10000 = _entity.getMainHandItem();
                         } else {
                             var10000 = ItemStack.EMPTY;
@@ -455,7 +458,7 @@ public abstract class KeyPressedLogicMixin {
                         LivingEntity _livEnt;
                         if (var10000.getItem() == JujutsucraftModItems.LOUDSPEAKER.get()) {
                             if (entity instanceof LivingEntity) {
-                                _livEnt = (LivingEntity)entity;
+                                _livEnt = (LivingEntity) entity;
                                 var10000 = _livEnt.getMainHandItem();
                             } else {
                                 var10000 = ItemStack.EMPTY;
@@ -465,9 +468,9 @@ public abstract class KeyPressedLogicMixin {
                         }
 
                         if (!noUseCursePower) {
-                            if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PhysicalAttack && !item_use) {
+                            if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PhysicalAttack && !item_use) {
                                 if (entity instanceof LivingEntity) {
-                                    _entity = (LivingEntity)entity;
+                                    _entity = (LivingEntity) entity;
                                     var10000 = _entity.getMainHandItem();
                                 } else {
                                     var10000 = ItemStack.EMPTY;
@@ -476,7 +479,7 @@ public abstract class KeyPressedLogicMixin {
                                 if (var10000.getOrCreateTag().getDouble("Power") > 0.0) {
                                     ItemStack var10003;
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entity;
+                                        _livEnt = (LivingEntity) entity;
                                         var10003 = _livEnt.getMainHandItem();
                                     } else {
                                         var10003 = ItemStack.EMPTY;
@@ -486,7 +489,7 @@ public abstract class KeyPressedLogicMixin {
                                 }
 
                                 if (entity instanceof LivingEntity) {
-                                    _entity = (LivingEntity)entity;
+                                    _entity = (LivingEntity) entity;
                                     if (!_entity.level().isClientSide()) {
 
                                         if ((world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) == false) {
@@ -499,23 +502,22 @@ public abstract class KeyPressedLogicMixin {
                                                 _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), 0, false, false));
                                             }
                                             if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower > 1) {
-                                                _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), (int)Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), false, false));
+                                                _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), (int) Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), false, false));
                                             }
 
                                             if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3 > 1) {
-                                                _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.POISON, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, (int)Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3), false, false));
-                                                _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, 0, false, false));
+                                                _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.POISON, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, (int) Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3), false, false));
+                                                _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, 0, false, false));
                                             }
                                         }
 
                                     }
 
 
-
                                     return;
                                 }
                             } else if (entity instanceof LivingEntity) {
-                                _entity = (LivingEntity)entity;
+                                _entity = (LivingEntity) entity;
                                 if (!_entity.level().isClientSide()) {
 
                                     if ((world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_COOLDOWN)) == false) {
@@ -529,13 +531,13 @@ public abstract class KeyPressedLogicMixin {
                                         }
 
                                         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower > 1) {
-                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), (int)Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), false, false));
-                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, 0, false, false));
+                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), (int) Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).VowPower), false, false));
+                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, 0, false, false));
                                         }
 
                                         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3 > 1) {
-                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.POISON, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, (int)Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3), false, false));
-                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int)Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, 0, false, false));
+                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.POISON, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, (int) Math.round((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3), false, false));
+                                            _entity.addEffect(new MobEffectInstance((MobEffect) MobEffects.WEAKNESS, (int) Math.round(Tick * (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Vow3) * 5, 0, false, false));
                                         }
                                     }
                                     if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
@@ -556,13 +558,12 @@ public abstract class KeyPressedLogicMixin {
                                 }
 
 
-
                                 return;
                             }
 
                             return;
                         } else {
-                            entity.getPersistentData().putDouble("COOLDOWN_TICKS", Math.max(entity.getPersistentData().getDouble("COOLDOWN_TICKS"), (double)Math.round(Tick)));
+                            entity.getPersistentData().putDouble("COOLDOWN_TICKS", Math.max(entity.getPersistentData().getDouble("COOLDOWN_TICKS"), (double) Math.round(Tick)));
                             return;
                         }
                     }
@@ -570,7 +571,7 @@ public abstract class KeyPressedLogicMixin {
             }
 
             if (entity instanceof Player) {
-                _player = (Player)entity;
+                _player = (Player) entity;
                 if (!_player.level().isClientSide()) {
                     _player.displayClientMessage(Component.literal(Component.translatable("jujutsu.message.dont_use").getString()), true);
                 }

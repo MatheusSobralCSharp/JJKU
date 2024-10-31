@@ -9,25 +9,25 @@ import net.minecraft.client.Minecraft;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 
 public class OutLinerEffectExpiresProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
-		if (entity == null)
-			return;
-		if (world.isClientSide()) {
-			if (Minecraft.getInstance().gameRenderer.currentEffect() != null) {
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-				Minecraft.getInstance().gameRenderer.shutdownEffect();
-			}
-			Minecraft.getInstance().gameRenderer.shutdownEffect();
-			Minecraft.getInstance().gameRenderer.shutdownEffect();
-			Minecraft.getInstance().gameRenderer.shutdownEffect();
-			Minecraft.getInstance().gameRenderer.shutdownEffect();
-			Minecraft.getInstance().gameRenderer.shutdownEffect();
-		}
-		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.EXPIRED.get(), 20, 1, false, false));
-	}
+    public static void execute(LevelAccessor world, Entity entity) {
+        if (entity == null)
+            return;
+        if (world.isClientSide()) {
+            if (Minecraft.getInstance().gameRenderer.currentEffect() != null) {
+                Minecraft.getInstance().gameRenderer.shutdownEffect();
+                Minecraft.getInstance().gameRenderer.shutdownEffect();
+                Minecraft.getInstance().gameRenderer.shutdownEffect();
+                Minecraft.getInstance().gameRenderer.shutdownEffect();
+                Minecraft.getInstance().gameRenderer.shutdownEffect();
+                Minecraft.getInstance().gameRenderer.shutdownEffect();
+            }
+            Minecraft.getInstance().gameRenderer.shutdownEffect();
+            Minecraft.getInstance().gameRenderer.shutdownEffect();
+            Minecraft.getInstance().gameRenderer.shutdownEffect();
+            Minecraft.getInstance().gameRenderer.shutdownEffect();
+            Minecraft.getInstance().gameRenderer.shutdownEffect();
+        }
+        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+            _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.EXPIRED.get(), 20, 1, false, false));
+    }
 }

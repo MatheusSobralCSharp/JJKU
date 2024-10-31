@@ -57,28 +57,29 @@ public abstract class DomainEntityMixin {
             double z_dis_p = 0.0;
             double cnt2 = 0.0;
             double dis_p = 0.0;
-            range = (double)Math.round(entity.getPersistentData().getDouble("DomainExpansionSizer") + 3.0);
+            range = (double) Math.round(entity.getPersistentData().getDouble("DomainExpansionSizer") + 3.0);
             entity.setDeltaMovement(new Vec3(0.0, 0.0, 0.0));
             Entity _ent = entity;
             _ent.teleportTo(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos"), entity.getPersistentData().getDouble("z_pos"));
             if (_ent instanceof ServerPlayer) {
-                ServerPlayer _serverPlayer = (ServerPlayer)_ent;
+                ServerPlayer _serverPlayer = (ServerPlayer) _ent;
                 _serverPlayer.connection.teleport(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos"), entity.getPersistentData().getDouble("z_pos"), _ent.getYRot(), _ent.getXRot());
             }
 
             LivingEntity _livEnt12;
             if (entity instanceof LivingEntity) {
-                _livEnt12 = (LivingEntity)entity;
+                _livEnt12 = (LivingEntity) entity;
                 if (!_livEnt12.level().isClientSide()) {
                     _livEnt12.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false));
                 }
             }
 
             if (!entity.getPersistentData().getBoolean("Break")) {
-                label88: {
+                label88:
+                {
                     if (entity instanceof LivingEntity) {
-                        _livEnt12 = (LivingEntity)entity;
-                        if (_livEnt12.hasEffect((MobEffect)JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
+                        _livEnt12 = (LivingEntity) entity;
+                        if (_livEnt12.hasEffect((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
                             break label88;
                         }
                     }
@@ -90,8 +91,8 @@ public abstract class DomainEntityMixin {
                 }
 
                 if (entity instanceof LivingEntity) {
-                    _livEnt12 = (LivingEntity)entity;
-                    if (_livEnt12.hasEffect((MobEffect)JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
+                    _livEnt12 = (LivingEntity) entity;
+                    if (_livEnt12.hasEffect((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
                         entity.getPersistentData().putBoolean("Break", false);
                         entity.getPersistentData().putDouble("cnt_life2", 0.0);
                     }
@@ -100,26 +101,26 @@ public abstract class DomainEntityMixin {
 
             if (entity.getPersistentData().getBoolean("Break")) {
                 entity.getPersistentData().putDouble("cnt_break", entity.getPersistentData().getDouble("cnt_break") + 1.0);
-                loop_num = (double)Math.round(range * 2.0 + 1.0);
+                loop_num = (double) Math.round(range * 2.0 + 1.0);
                 cnt2 = entity.getPersistentData().getDouble("cnt_break");
-                y_floor = (double)(Math.round(y) - 1L);
-                x_pos = (double)Math.round(x) - range;
+                y_floor = (double) (Math.round(y) - 1L);
+                x_pos = (double) Math.round(x) - range;
 
-                for(int index0 = 0; index0 < (int)loop_num; ++index0) {
-                    x_dis = Math.pow(x_pos - (double)Math.round(x), 2.0);
-                    x_dis_p = Math.pow(x_pos - (double)Math.round((float)Math.round(x)), 2.0);
+                for (int index0 = 0; index0 < (int) loop_num; ++index0) {
+                    x_dis = Math.pow(x_pos - (double) Math.round(x), 2.0);
+                    x_dis_p = Math.pow(x_pos - (double) Math.round((float) Math.round(x)), 2.0);
                     if (Math.sqrt(x_dis_p) <= cnt2) {
-                        y_pos = (double)Math.round(y) - range;
+                        y_pos = (double) Math.round(y) - range;
 
-                        for(int index1 = 0; index1 < (int)loop_num; ++index1) {
-                            y_dis = Math.pow(y_pos - (double)Math.round(y), 2.0);
-                            y_dis_p = Math.pow(y_pos - (double)Math.round(y), 2.0);
+                        for (int index1 = 0; index1 < (int) loop_num; ++index1) {
+                            y_dis = Math.pow(y_pos - (double) Math.round(y), 2.0);
+                            y_dis_p = Math.pow(y_pos - (double) Math.round(y), 2.0);
                             if (Math.sqrt(y_dis_p) <= cnt2 && y_pos >= -64.0 && y_pos <= 319.0) {
-                                z_pos = (double)Math.round(z) - range;
+                                z_pos = (double) Math.round(z) - range;
 
-                                for(int index2 = 0; index2 < (int)loop_num; ++index2) {
-                                    z_dis = Math.pow(z_pos - (double)Math.round(z), 2.0);
-                                    z_dis_p = Math.pow(z_pos - (double)Math.round(z), 2.0);
+                                for (int index2 = 0; index2 < (int) loop_num; ++index2) {
+                                    z_dis = Math.pow(z_pos - (double) Math.round(z), 2.0);
+                                    z_dis_p = Math.pow(z_pos - (double) Math.round(z), 2.0);
                                     if (Math.sqrt(z_dis_p) <= cnt2) {
                                         dis_p = Math.sqrt(x_dis_p + y_dis_p + z_dis_p);
                                         if (dis_p <= cnt2 + 0.0 && dis_p >= cnt2 - 1.0) {
@@ -144,7 +145,7 @@ public abstract class DomainEntityMixin {
                     ++x_pos;
                 }
 
-                if (entity.getPersistentData().getDouble("cnt_break") >= (double)Math.round(range * 2.0 + 2.0) && !entity.level().isClientSide()) {
+                if (entity.getPersistentData().getDouble("cnt_break") >= (double) Math.round(range * 2.0 + 2.0) && !entity.level().isClientSide()) {
                     entity.discard();
                 }
             }

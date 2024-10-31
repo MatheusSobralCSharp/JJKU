@@ -31,6 +31,7 @@ public abstract class DomainStartedMixin {
     public DomainStartedMixin() {
 
     }
+
     /**
      * @author Sat
      * @reason None
@@ -58,7 +59,7 @@ public abstract class DomainStartedMixin {
             double num_loop = 0.0;
             big = entity.getPersistentData().getBoolean("explode");
             power = 1.0 + entity.getPersistentData().getDouble("cnt6") * 0.1;
-            range = ReturnEntitySizeProcedure.execute(entity) + entity.getPersistentData().getDouble("cnt6")/5;
+            range = ReturnEntitySizeProcedure.execute(entity) + entity.getPersistentData().getDouble("cnt6") / 5;
             if (big) {
                 range *= 1.0;
                 if (entity.getPersistentData().getDouble("cnt3") == 0.0) {
@@ -85,14 +86,14 @@ public abstract class DomainStartedMixin {
                         }).apply(world, entity.getPersistentData().getString("OWNER_UUID"));
                         if (entity.getPersistentData().getDouble("NameRanged_ranged") == entity_a.getPersistentData().getDouble("NameRanged")) {
                             logic_attack = true;
-                            yaw = Math.toRadians((double)(entity_a.getYRot() + 90.0F));
-                            pitch = Math.toRadians((double)entity_a.getXRot());
-                            dis = 1.5 + (double)entity_a.getBbWidth();
+                            yaw = Math.toRadians((double) (entity_a.getYRot() + 90.0F));
+                            pitch = Math.toRadians((double) entity_a.getXRot());
+                            dis = 1.5 + (double) entity_a.getBbWidth();
                             Entity _ent = entity;
-                            _ent.teleportTo(entity_a.getX() + Math.cos(yaw) * Math.cos(pitch) * dis, entity_a.getY() + (double)entity_a.getBbHeight() * 0.5 + Math.sin(pitch) * -1.0 * dis, entity_a.getZ() + Math.sin(yaw) * Math.cos(pitch) * dis);
+                            _ent.teleportTo(entity_a.getX() + Math.cos(yaw) * Math.cos(pitch) * dis, entity_a.getY() + (double) entity_a.getBbHeight() * 0.5 + Math.sin(pitch) * -1.0 * dis, entity_a.getZ() + Math.sin(yaw) * Math.cos(pitch) * dis);
                             if (_ent instanceof ServerPlayer) {
-                                ServerPlayer _serverPlayer = (ServerPlayer)_ent;
-                                _serverPlayer.connection.teleport(entity_a.getX() + Math.cos(yaw) * Math.cos(pitch) * dis, entity_a.getY() + (double)entity_a.getBbHeight() * 0.5 + Math.sin(pitch) * -1.0 * dis, entity_a.getZ() + Math.sin(yaw) * Math.cos(pitch) * dis, _ent.getYRot(), _ent.getXRot());
+                                ServerPlayer _serverPlayer = (ServerPlayer) _ent;
+                                _serverPlayer.connection.teleport(entity_a.getX() + Math.cos(yaw) * Math.cos(pitch) * dis, entity_a.getY() + (double) entity_a.getBbHeight() * 0.5 + Math.sin(pitch) * -1.0 * dis, entity_a.getZ() + Math.sin(yaw) * Math.cos(pitch) * dis, _ent.getYRot(), _ent.getXRot());
                             }
 
                             entity.getPersistentData().putDouble("x_power", entity_a.getPersistentData().getDouble("x_power"));
@@ -103,11 +104,11 @@ public abstract class DomainStartedMixin {
                     }
 
                     if (Math.random() < 0.05 && world instanceof Level) {
-                        _level = (Level)world;
+                        _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float)(0.5 + Math.random()));
+                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()));
                         } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float)(0.5 + Math.random()), false);
+                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()), false);
                         }
                     }
 
@@ -121,32 +122,32 @@ public abstract class DomainStartedMixin {
                     } else {
                         BulletDomainHit2Procedure.execute(world, entity);
                         if (big) {
-                            if (((LivingEntity)entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 400.0) {
-                                ((LivingEntity)entity).getAttribute((Attribute)JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity)entity).getAttribute((Attribute)JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 15.0, 400.0));
+                            if (((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 400.0) {
+                                ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 15.0, 400.0));
                             }
 
                             if (entity.getPersistentData().getDouble("cnt1") == 10.0 && world instanceof Level) {
-                                _level = (Level)world;
+                                _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F);
+                                    _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F);
                                 } else {
-                                    _level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F, false);
+                                    _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F, false);
                                 }
                             }
 
                             if (entity.getPersistentData().getDouble("cnt1") % 4.0 == 1.0 && world instanceof Level) {
-                                _level = (Level)world;
+                                _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float)(1.0 + Math.random()));
+                                    _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float) (1.0 + Math.random()));
                                 } else {
-                                    _level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float)(1.0 + Math.random()), false);
+                                    _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float) (1.0 + Math.random()), false);
                                 }
                             }
                         }
 
                         if (world instanceof ServerLevel) {
-                            ServerLevel _level1 = (ServerLevel)world;
-                            _level1.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), entity.getX(), entity.getY(), entity.getZ(), (int)(5.0 * range), range, range, range, range);
+                            ServerLevel _level1 = (ServerLevel) world;
+                            _level1.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), entity.getX(), entity.getY(), entity.getZ(), (int) (5.0 * range), range, range, range, range);
                         }
 
                         x_power = entity.getPersistentData().getDouble("x_power") * 2.0;
@@ -161,22 +162,22 @@ public abstract class DomainStartedMixin {
 
                         damage = Math.max(80.0 * Math.pow(0.99, entity.getPersistentData().getDouble("cnt_life")), 55.0) * power;
 
-                        for(int index0 = 0; index0 < (int)Math.round(Math.max(dis, 1.0)); ++index0) {
+                        for (int index0 = 0; index0 < (int) Math.round(Math.max(dis, 1.0)); ++index0) {
                             x_pos = entity.getX();
                             y_pos = entity.getY();
                             z_pos = entity.getZ();
                             if (!big && entity.getPersistentData().getDouble("cnt1") >= 12.0) {
                                 if (world.getLevelData().getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) && world.getLevelData().getGameRules().getBoolean(JujutsucraftModGameRules.JUJUTSUPVP)) {
                                     if (world instanceof Level) {
-                                        _level = (Level)world;
+                                        _level = (Level) world;
                                         if (!_level.isClientSide()) {
-                                            _level.explode((Entity)null, x_pos, y_pos, z_pos, (float)(2.0 * range), Level.ExplosionInteraction.MOB);
+                                            _level.explode((Entity) null, x_pos, y_pos, z_pos, (float) (2.0 * range), Level.ExplosionInteraction.MOB);
                                         }
                                     }
                                 } else if (world instanceof Level) {
-                                    _level = (Level)world;
+                                    _level = (Level) world;
                                     if (!_level.isClientSide()) {
-                                        _level.explode((Entity)null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                        _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                     }
                                 }
                             }
@@ -199,8 +200,8 @@ public abstract class DomainStartedMixin {
                             }
 
                             if (world instanceof ServerLevel) {
-                                ServerLevel _level2 = (ServerLevel)world;
-                                _level2.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int)(5.0 * range), range, range, range, range);
+                                ServerLevel _level2 = (ServerLevel) world;
+                                _level2.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int) (5.0 * range), range, range, range, range);
                             }
 
                             if (big) {
@@ -214,7 +215,7 @@ public abstract class DomainStartedMixin {
 
                             entity.teleportTo(entity.getX() + x_power, entity.getY() + y_power, entity.getZ() + z_power);
                             if (entity instanceof ServerPlayer) {
-                                ServerPlayer _serverPlayer = (ServerPlayer)entity;
+                                ServerPlayer _serverPlayer = (ServerPlayer) entity;
                                 _serverPlayer.connection.teleport(entity.getX() + x_power, entity.getY() + y_power, entity.getZ() + z_power, entity.getYRot(), entity.getXRot());
                             }
                         }
@@ -225,7 +226,7 @@ public abstract class DomainStartedMixin {
                             entity.setDeltaMovement(new Vec3(entity.getPersistentData().getDouble("x_power") * 1.0, entity.getPersistentData().getDouble("y_power") * 1.0, entity.getPersistentData().getDouble("z_power") * 1.0));
                         }
                         if (entity.getPersistentData().getBoolean("Murasaki") == false) {
-                            if (entity.getPersistentData().getDouble("cnt1") >= (double)(big ? 80 : 30) && !entity.level().isClientSide()) {
+                            if (entity.getPersistentData().getDouble("cnt1") >= (double) (big ? 80 : 30) && !entity.level().isClientSide()) {
                                 entity.discard();
                             }
                         }

@@ -8,15 +8,15 @@ import net.minecraft.world.entity.Entity;
 import net.mcreator.jujutsucraftaddon.item.RedCapeItem;
 
 public class RedLeggingsProcedure {
-	public static void execute(Entity entity, ItemStack itemstack) {
-		if (entity == null)
-			return;
-		if (entity.onGround() == false) {
-			if (itemstack.getItem() instanceof RedCapeItem armor && armor instanceof GeoItem)
-				itemstack.getOrCreateTag().putString("geckoAnim", "float2");
-		} else if (entity.onGround() == true) {
-			if (itemstack.getItem() instanceof RedCapeItem armor && armor instanceof GeoItem)
-				itemstack.getOrCreateTag().putString("geckoAnim", "empty");
-		}
-	}
+    public static void execute(Entity entity, ItemStack itemstack) {
+        if (entity == null)
+            return;
+        if (entity.onGround() == false) {
+            if (itemstack.getItem() instanceof RedCapeItem armor && armor instanceof GeoItem)
+                itemstack.getOrCreateTag().putString("geckoAnim", "float2");
+        } else if (entity.onGround() == true) {
+            if (itemstack.getItem() instanceof RedCapeItem armor && armor instanceof GeoItem)
+                itemstack.getOrCreateTag().putString("geckoAnim", "empty");
+        }
+    }
 }

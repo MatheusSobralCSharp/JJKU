@@ -1,9 +1,0 @@
-{
-  "_fv": 60,
-  "_type": "function",
-  "definition": {
-    "code": "# Enter the function code here\nscoreboard objectives add CTNumber dummy 1",
-    "name": "ct_number_join_2",
-    "namespace": "mod"
-  }
-}

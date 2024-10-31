@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.Level;
@@ -11,13 +10,13 @@ import net.minecraft.network.chat.Component;
 import java.util.List;
 
 public class VeilTalismanItem extends Item {
-	public VeilTalismanItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
-	}
+    public VeilTalismanItem() {
+        super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("[Ability] Allows You Create a Veil"));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        list.add(Component.literal("[Ability] Allows You Create a Veil"));
+    }
 }

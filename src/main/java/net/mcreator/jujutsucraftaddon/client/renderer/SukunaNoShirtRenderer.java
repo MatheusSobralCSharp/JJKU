@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
 import net.minecraft.resources.ResourceLocation;
@@ -11,13 +10,13 @@ import net.minecraft.client.model.HumanoidModel;
 import net.mcreator.jujutsucraftaddon.entity.SukunaNoShirtEntity;
 
 public class SukunaNoShirtRenderer extends HumanoidMobRenderer<SukunaNoShirtEntity, HumanoidModel<SukunaNoShirtEntity>> {
-	public SukunaNoShirtRenderer(EntityRendererProvider.Context context) {
-		super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
-	}
+    public SukunaNoShirtRenderer(EntityRendererProvider.Context context) {
+        super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
+        this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+    }
 
-	@Override
-	public ResourceLocation getTextureLocation(SukunaNoShirtEntity entity) {
-		return new ResourceLocation("jujutsucraftaddon:textures/entities/sukunanoshirt.png");
-	}
+    @Override
+    public ResourceLocation getTextureLocation(SukunaNoShirtEntity entity) {
+        return new ResourceLocation("jujutsucraftaddon:textures/entities/sukunanoshirt.png");
+    }
 }

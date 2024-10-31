@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(KeySimpleDomainOnKeyPressedProcedure.class)
 public abstract class SimpleDomainKeyMixin {
     @Inject(at = @At("HEAD"), method = "execute", remap = false)
-    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci){
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         SimpleAnimProcedure.execute(world, entity);
     }
 }

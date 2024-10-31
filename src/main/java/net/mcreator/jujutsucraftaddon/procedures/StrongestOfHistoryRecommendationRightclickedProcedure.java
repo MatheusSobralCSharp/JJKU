@@ -12,23 +12,23 @@ import net.minecraft.advancements.Advancement;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 
 public class StrongestOfHistoryRecommendationRightclickedProcedure {
-	public static void execute(Entity entity) {
-		if (entity == null)
-			return;
-		if ((entity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel
-				&& _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_history"))).isDone()) == false) {
-			if (entity instanceof Player _player) {
-				ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.STRONGEST_OF_HISTORY_RECOMMENDATION.get());
-				_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
-			}
-			if (entity instanceof ServerPlayer _player) {
-				Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_history"));
-				AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-				if (!_ap.isDone()) {
-					for (String criteria : _ap.getRemainingCriteria())
-						_player.getAdvancements().award(_adv, criteria);
-				}
-			}
-		}
-	}
+    public static void execute(Entity entity) {
+        if (entity == null)
+            return;
+        if ((entity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel
+                && _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_history"))).isDone()) == false) {
+            if (entity instanceof Player _player) {
+                ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.STRONGEST_OF_HISTORY_RECOMMENDATION.get());
+                _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+            }
+            if (entity instanceof ServerPlayer _player) {
+                Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_history"));
+                AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+                if (!_ap.isDone()) {
+                    for (String criteria : _ap.getRemainingCriteria())
+                        _player.getAdvancements().award(_adv, criteria);
+                }
+            }
+        }
+    }
 }

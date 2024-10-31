@@ -69,7 +69,6 @@
     "SimpleDomainKeyMixin",
     "WhenRespawnedMixin",
     "PlayerMixinMixin",
-    "PacketInjectMixin",
     "PlayerMixin",
     "AttachCapabilitiesMixin",
     "PlayerTickEventMixin",

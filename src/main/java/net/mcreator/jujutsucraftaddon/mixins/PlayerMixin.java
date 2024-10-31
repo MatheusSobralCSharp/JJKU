@@ -51,13 +51,13 @@ public abstract class PlayerMixin {
                 if (entity.getPersistentData().getDouble("cnt1") == 1.0) {
                     soundPitch = 0.75;
 
-                    for(index2 = 0; index2 < 3; ++index2) {
+                    for (index2 = 0; index2 < 3; ++index2) {
                         if (world instanceof Level) {
                             Level _level1 = (Level) world;
                             if (!_level1.isClientSide()) {
-                                _level1.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float)soundPitch);
+                                _level1.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
                             } else {
-                                _level1.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float)soundPitch, false);
+                                _level1.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
                             }
                         }
 
@@ -66,30 +66,30 @@ public abstract class PlayerMixin {
                 }
 
                 if (world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
-                    _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x, y + 1.0, z, 3, 0.5, 1.0, 0.5, 0.0);
+                    _level = (ServerLevel) world;
+                    _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x, y + 1.0, z, 3, 0.5, 1.0, 0.5, 0.0);
                 }
 
             } else if (entity.getPersistentData().getDouble("cnt1") < 17.0) {
                 if (entity.getPersistentData().getDouble("cnt1") == 10.0) {
                     soundPitch = 0.75;
 
-                    for(index2 = 0; index2 < 3; ++index2) {
+                    for (index2 = 0; index2 < 3; ++index2) {
                         if (world instanceof Level) {
-                            Level _level3 = (Level)world;
+                            Level _level3 = (Level) world;
                             if (!_level3.isClientSide()) {
-                                _level3.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float)soundPitch);
+                                _level3.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
                             } else {
-                                _level3.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float)soundPitch, false);
+                                _level3.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
                             }
                         }
 
                         if (world instanceof Level) {
-                            Level _level4 = (Level)world;
+                            Level _level4 = (Level) world;
                             if (!_level4.isClientSide()) {
-                                _level4.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float)soundPitch);
+                                _level4.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
                             } else {
-                                _level4.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float)soundPitch, false);
+                                _level4.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
                             }
                         }
 
@@ -103,7 +103,7 @@ public abstract class PlayerMixin {
 
                 loop_num = 5.0 + entity.getPersistentData().getDouble("cnt1") * 2.0;
 
-                for(index2 = 0; index2 < 2; ++index2) {
+                for (index2 = 0; index2 < 2; ++index2) {
                     rad_now = Math.toRadians(Math.random() * 360.0);
                     pitch = Math.toRadians(0.0);
                     num1 = (Math.random() - 0.5) * 1.6;
@@ -114,25 +114,24 @@ public abstract class PlayerMixin {
                     entity.getPersistentData().putDouble("z_pos", z);
                     entity.getPersistentData().putDouble("cnt2", 0.0);
 
-                    for(int index3 = 0; index3 < (int)loop_num; ++index3) {
+                    for (int index3 = 0; index3 < (int) loop_num; ++index3) {
                         x_pos = entity.getPersistentData().getDouble("x_pos") + Math.cos(rad_now) * (Math.cos(pitch) + Math.abs(Math.sin(rad_now) * Math.sin(pitch))) * (entity.getPersistentData().getDouble("cnt2") + 1.0);
                         y_pos = entity.getPersistentData().getDouble("y_pos") + Math.sin(pitch) * (entity.getPersistentData().getDouble("cnt2") + 1.0) * -1.0;
                         z_pos = entity.getPersistentData().getDouble("z_pos") + Math.sin(rad_now) * (Math.cos(pitch) + Math.abs(Math.cos(rad_now) * Math.sin(pitch))) * (entity.getPersistentData().getDouble("cnt2") + 1.0);
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
-                            _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
+                            _level = (ServerLevel) world;
+                            _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
-                            _level.sendParticles((SimpleParticleType)JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
+                            _level = (ServerLevel) world;
+                            _level.sendParticles((SimpleParticleType) JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
-                            _level.sendParticles((SimpleParticleType)JujutsucraftaddonModParticleTypes.KOKUSEN_4.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
+                            _level = (ServerLevel) world;
+                            _level.sendParticles((SimpleParticleType) JujutsucraftaddonModParticleTypes.KOKUSEN_4.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
                         }
-
 
 
 //                        if (world instanceof ServerLevel) {
@@ -158,12 +157,12 @@ public abstract class PlayerMixin {
                             }
 
                             if (world instanceof ServerLevel) {
-                                _level = (ServerLevel)world;
+                                _level = (ServerLevel) world;
                                 _level.sendParticles(ParticleTypes.EXPLOSION, x_pos, y_pos, z_pos, 5, 0.25, 0.25, 0.25, 0.0);
                             }
 
                             if (world instanceof ServerLevel) {
-                                _level = (ServerLevel)world;
+                                _level = (ServerLevel) world;
                                 _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, 5, 0.25, 0.25, 0.25, 0.0);
                             }
                         }
@@ -186,11 +185,11 @@ public abstract class PlayerMixin {
                 z_pos = z + Math.random() * 16.0 - 8.0;
 
                 if (world instanceof Level) {
-                    Level _level5 = (Level)world;
+                    Level _level5 = (Level) world;
                     if (!_level5.isClientSide()) {
-                        _level5.playSound((Player)null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F);
+                        _level5.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F);
                     } else {
-                        _level5.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F, false);
+                        _level5.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F, false);
                     }
                 }
 

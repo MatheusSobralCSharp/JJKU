@@ -28,6 +28,7 @@ public abstract class KugisakiRightMixin {
     public KugisakiRightMixin() {
 
     }
+
     /**
      * @author Sat
      * @reason None
@@ -38,7 +39,8 @@ public abstract class KugisakiRightMixin {
         if (entity != null) {
             boolean logic_a;
             Player _plr;
-            label83: {
+            label83:
+            {
                 double old_select = 0.0;
                 double old_skill = 0.0;
                 logic_a = false;
@@ -48,14 +50,14 @@ public abstract class KugisakiRightMixin {
                     }
                 }
 
-                LivingEntity _livEnt1 = (LivingEntity)entity;
+                LivingEntity _livEnt1 = (LivingEntity) entity;
                 if (!_livEnt1.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
                     break label83;
                 }
 
 
                 if (entity instanceof Player) {
-                    _plr = (Player)entity;
+                    _plr = (Player) entity;
                     if (!_plr.level().isClientSide()) {
                         _plr.displayClientMessage(Component.literal(Component.translatable("jujutsu.message.dont_use").getString()), true);
                         return;
@@ -70,8 +72,8 @@ public abstract class KugisakiRightMixin {
             Objects.requireNonNull(_iitemhandlerref);
             var10000.ifPresent(_iitemhandlerref::set);
             if (_iitemhandlerref.get() != null) {
-                for(int _idx = 0; _idx < ((IItemHandler)_iitemhandlerref.get()).getSlots(); ++_idx) {
-                    ItemStack itemstackiterator = ((IItemHandler)_iitemhandlerref.get()).getStackInSlot(_idx).copy();
+                for (int _idx = 0; _idx < ((IItemHandler) _iitemhandlerref.get()).getSlots(); ++_idx) {
+                    ItemStack itemstackiterator = ((IItemHandler) _iitemhandlerref.get()).getStackInSlot(_idx).copy();
                     if (itemstackiterator.getItem() == JujutsucraftModItems.NAIL.get()) {
                         logic_a = true;
                         break;
@@ -80,13 +82,14 @@ public abstract class KugisakiRightMixin {
             }
 
             Player _player;
-            label84: {
-                if (!logic_a || !(((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower + ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange >= 10.0)) {
+            label84:
+            {
+                if (!logic_a || !(((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower + ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange >= 10.0)) {
                     if (!(entity instanceof Player)) {
                         break label84;
                     }
 
-                    _plr = (Player)entity;
+                    _plr = (Player) entity;
                     if (!_plr.getAbilities().instabuild) {
                         break label84;
                     }
@@ -94,7 +97,7 @@ public abstract class KugisakiRightMixin {
 
                 KugisakiNailProcedure.execute(world, x, y, z, entity);
                 if (entity instanceof Player) {
-                    _player = (Player)entity;
+                    _player = (Player) entity;
                     _player.getCooldowns().addCooldown(itemstack.getItem(), 3);
                 }
 
@@ -102,7 +105,7 @@ public abstract class KugisakiRightMixin {
             }
 
             if (entity instanceof Player) {
-                _player = (Player)entity;
+                _player = (Player) entity;
                 if (!_player.level().isClientSide()) {
                     _player.displayClientMessage(Component.literal(Component.translatable("jujutsu.message.dont_use").getString()), true);
                 }

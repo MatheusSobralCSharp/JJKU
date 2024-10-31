@@ -8,33 +8,33 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.client.Minecraft;
 
 public class BrokenBrainOnEffectActiveTickProcedure {
-	public static void execute(Entity entity) {
-		if (entity == null)
-			return;
-		if (!(new Object() {
-			public boolean checkGamemode(Entity _ent) {
-				if (_ent instanceof ServerPlayer _serverPlayer) {
-					return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-				} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-					return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null && Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-				}
-				return false;
-			}
-		}.checkGamemode(entity))) {
-			if (new Object() {
-				public double getValue() {
-					CompoundTag dataIndex = new CompoundTag();
-					entity.saveWithoutId(dataIndex);
-					return dataIndex.getCompound("ForgeData").getDouble("brokenBrain");
-				}
-			}.getValue() != 2) {
-				{
-					CompoundTag dataIndex = new CompoundTag();
-					entity.saveWithoutId(dataIndex);
-					dataIndex.getCompound("ForgeData").putDouble("brokenBrain", 2);
-					entity.load(dataIndex);
-				}
-			}
-		}
-	}
+    public static void execute(Entity entity) {
+        if (entity == null)
+            return;
+        if (!(new Object() {
+            public boolean checkGamemode(Entity _ent) {
+                if (_ent instanceof ServerPlayer _serverPlayer) {
+                    return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+                } else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+                    return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null && Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+                }
+                return false;
+            }
+        }.checkGamemode(entity))) {
+            if (new Object() {
+                public double getValue() {
+                    CompoundTag dataIndex = new CompoundTag();
+                    entity.saveWithoutId(dataIndex);
+                    return dataIndex.getCompound("ForgeData").getDouble("brokenBrain");
+                }
+            }.getValue() != 2) {
+                {
+                    CompoundTag dataIndex = new CompoundTag();
+                    entity.saveWithoutId(dataIndex);
+                    dataIndex.getCompound("ForgeData").putDouble("brokenBrain", 2);
+                    entity.load(dataIndex);
+                }
+            }
+        }
+    }
 }

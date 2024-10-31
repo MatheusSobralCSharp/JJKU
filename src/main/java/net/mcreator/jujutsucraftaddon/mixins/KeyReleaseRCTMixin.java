@@ -22,7 +22,7 @@ public abstract class KeyReleaseRCTMixin {
     public static void execute(Entity entity) {
         if (entity != null) {
             if (entity instanceof LivingEntity _entity) {
-                _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get());
+                _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get());
             }
             entity.getPersistentData().putBoolean("PRESS_BURNOUT", false);
             entity.getPersistentData().putDouble("cnt_v", 0);

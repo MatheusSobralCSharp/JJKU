@@ -13484,41 +13484,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "Spawned",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "spawned",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SpawnedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/Procedures"
-    },
-    {
       "name": "JjkuZoneStack",
       "type": "gamerule",
       "compiles": true,
@@ -18921,6 +18886,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -28225,7 +28194,7 @@
       "name": "RespawnedEffectStartedapplied",
       "type": "procedure",
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "respawned_effect_startedapplied",
       "metadata": {
         "files": [
@@ -28382,19 +28351,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "JujutsucraftaddonModNetworkHandler",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "jujutsucraftaddon_mod_network_handler",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/JujutsucraftaddonModNetworkHandler.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
       "name": "PlayerMixin",
       "type": "mixin",
       "compiles": true,
@@ -28438,32 +28394,6 @@
         ]
       },
       "path": "~/Procedures"
-    },
-    {
-      "name": "TextureSyncPacket",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "texture_sync_packet",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/TextureSyncPacket.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "PacketInject",
-      "type": "mixin",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "packet_inject",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/mixins/PacketInjectMixin.java"
-        ]
-      },
-      "path": "~/Mixins"
     },
     {
       "name": "Player",
@@ -29234,45 +29164,6 @@
         ]
       },
       "path": "~/Effects"
-    },
-    {
-      "name": "TextureAnimator",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "texture_animator",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/TextureAnimator.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "HelperMethods",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "helper_methods",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/HelperMethods.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "ParticleHelper",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "particle_helper",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/ParticleHelper.java"
-        ]
-      },
-      "path": "~/CustomElements"
     },
     {
       "name": "Slash",
@@ -30385,110 +30276,6 @@
       "path": "~/Procedures"
     },
     {
-      "name": "InternalPlayerRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "internal_player_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/InternalPlayerRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "KleidersPlayerAnimatedRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "kleiders_player_animated_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/KleidersPlayerAnimatedRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "KleidersIgnoreCancel",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "kleiders_ignore_cancel",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/KleidersIgnoreCancel.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "KleidersSkinRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "kleiders_skin_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/KleidersSkinRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "KleidersPlayerRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "kleiders_player_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/KleidersPlayerRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "KleidersEntityRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "kleiders_entity_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/KleidersEntityRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "ClassicPlayerRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "classic_player_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/ClassicPlayerRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
-      "name": "ExternalPlayerRenderer",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "external_player_renderer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/jujutsucraftaddon/ExternalPlayerRenderer.java"
-        ]
-      },
-      "path": "~/CustomElements"
-    },
-    {
       "name": "SukunaROnInitialEntitySpawn",
       "type": "procedure",
       "compiles": true,
@@ -30762,6 +30549,51 @@
         ]
       },
       "path": "~/Effects"
+    },
+    {
+      "name": "Spawned",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "spawned",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/jujutsucraftaddon/procedures/SpawnedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "JjkuBFMasteryCap",
+      "type": "gamerule",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "jjku_bf_mastery_cap",
+      "metadata": {
+        "files": [],
+        "type": "number"
+      }
     }
   ],
   "variable_elements": [
@@ -31483,13 +31315,13 @@
       "name": "Shadow",
       "type": "string",
       "scope": "player_persistent",
-      "value": "\"None\""
+      "value": ""
     },
     {
       "name": "ShadowName",
       "type": "string",
       "scope": "player_persistent",
-      "value": "\"None\""
+      "value": ""
     },
     {
       "name": "SimpleDomain",
@@ -31501,13 +31333,13 @@
       "name": "SimpleDomainLevel",
       "type": "number",
       "scope": "player_persistent",
-      "value": "1.0"
+      "value": "0.0"
     },
     {
       "name": "SimpleQuest",
       "type": "number",
       "scope": "player_persistent",
-      "value": "0"
+      "value": "0.0"
     },
     {
       "name": "SkinName1",
@@ -33128,6 +32960,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.label_yuta_ct": "Yuta CT:",
       "gamerule.jjkuSorcerersRate": "Jjku Jujutsu Sorcerers Spawn Rate",
       "subtitles.punch": "punch",
+      "gamerule.jjkuBFMasteryCap": "JJKU Black Flash Mastery CAP",
       "gui.jujutsucraftaddon.skill_tree_sp.button_unlock_extension_technique": "Unlock Extension Technique",
       "item.jujutsucraftaddon.special_grade_5": "Gojo Training 1",
       "item.jujutsucraftaddon.special_grade_4": "Gojo Training 1",
@@ -33522,6 +33355,7 @@
       "gamerule.jjkuSukunaPossessionEnabled.description": "Turn on and Off Sukuna Possession",
       "effect.jujutsucraftaddon.kokusen_effect_two": "Kokusen Effect Two",
       "fluid.jujutsucraftaddon.yoku": "Yoku",
+      "gamerule.jjkuBFMasteryCap.description": "Changes Mastery Black Flash Cap ( default \u003d 50 )",
       "subtitles.rikasummon": "e",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
       "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
@@ -34144,6 +33978,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.label_yuta_ct": "Yuta CT:",
       "gamerule.jjkuSorcerersRate": "Jjku Jujutsu Sorcerers Spawn Rate",
       "subtitles.punch": "",
+      "gamerule.jjkuBFMasteryCap": "JJKU Black Flash Mastery CAP",
       "gui.jujutsucraftaddon.skill_tree_sp.button_unlock_extension_technique": "Desbloqueie Sua Técnica De Extensão",
       "item.jujutsucraftaddon.special_grade_5": "Gojo Training 1",
       "item.jujutsucraftaddon.special_grade_4": "Gojo Training 1",
@@ -34538,6 +34373,7 @@
       "gamerule.jjkuSukunaPossessionEnabled.description": "Turn on and Off Sukuna Possession",
       "effect.jujutsucraftaddon.kokusen_effect_two": "Kokusen Effect Two",
       "fluid.jujutsucraftaddon.yoku": "Yoku",
+      "gamerule.jjkuBFMasteryCap.description": "Changes Mastery Black Flash Cap ( default \u003d 50 )",
       "subtitles.rikasummon": "",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
       "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
@@ -35160,6 +34996,7 @@
       "gui.jujutsucraftaddon.kenjaku_body_swap.label_yuta_ct": "Yuta CT:",
       "gamerule.jjkuSorcerersRate": "Jjku Jujutsu Sorcerers Spawn Rate",
       "subtitles.punch": "",
+      "gamerule.jjkuBFMasteryCap": "JJKU Black Flash Mastery CAP",
       "gui.jujutsucraftaddon.skill_tree_sp.button_unlock_extension_technique": "アンロック・エクステンション・テクニック",
       "item.jujutsucraftaddon.special_grade_5": "Gojo Training 1",
       "item.jujutsucraftaddon.special_grade_4": "Gojo Training 1",
@@ -35554,6 +35391,7 @@
       "gamerule.jjkuSukunaPossessionEnabled.description": "Turn on and Off Sukuna Possession",
       "effect.jujutsucraftaddon.kokusen_effect_two": "Kokusen Effect Two",
       "fluid.jujutsucraftaddon.yoku": "Yoku",
+      "gamerule.jjkuBFMasteryCap.description": "Changes Mastery Black Flash Cap ( default \u003d 50 )",
       "subtitles.rikasummon": "",
       "gui.jujutsucraftaddon.quest_4.label_history_mode": "JJK History Mode",
       "entity.jujutsucraftaddon.sukuna_r": "Sukuna R",
@@ -35993,7 +35831,7 @@
   "workspaceSettings": {
     "modid": "jujutsucraftaddon",
     "modName": "JJKUR",
-    "version": "4.3",
+    "version": "4.64",
     "description": "Reworked Addon, Jujutsu Kaisen: Majutsu-shi no yō ni",
     "author": "Satushi",
     "websiteURL": "https://mcreator.net",

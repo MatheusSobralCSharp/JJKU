@@ -36,6 +36,7 @@ import java.util.List;
 public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
     public DomainExpansionOnEffectActiveTickProcedureMixin() {
     }
+
     /**
      * @author Satushi
      * @reason Fixes Domain Barrier Size
@@ -66,11 +67,12 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
             LivingEntity _livEnt157;
             if (entity.isAlive()) {
                 double var10000;
-                label572: {
+                label572:
+                {
                     if (entity instanceof LivingEntity) {
-                        _livEnt157 = (LivingEntity)entity;
+                        _livEnt157 = (LivingEntity) entity;
                         if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                            var10000 = (double)_livEnt157.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
+                            var10000 = (double) _livEnt157.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
                             break label572;
                         }
                     }
@@ -79,10 +81,11 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                 }
 
                 int var67;
-                label567: {
+                label567:
+                {
                     tick_1 = var10000;
                     if (entity instanceof LivingEntity) {
-                        _livEnt157 = (LivingEntity)entity;
+                        _livEnt157 = (LivingEntity) entity;
                         if (_livEnt157.hasEffect(MobEffects.DAMAGE_BOOST)) {
                             var67 = _livEnt157.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                             break label567;
@@ -92,7 +95,7 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                     var67 = 0;
                 }
 
-                str_lv = (double)(var67 + 10);
+                str_lv = (double) (var67 + 10);
                 if (entity.getPersistentData().getDouble("select") != 27.0 && entity.getPersistentData().getDouble("skill_domain") != 27.0) {
                     if (entity.getPersistentData().getDouble("select") == 29.0 || entity.getPersistentData().getDouble("skill_domain") == 29.0) {
                         str_lv *= 2.0;
@@ -113,7 +116,8 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                     }
 
                     int var10001;
-                    label551: {
+                    label551:
+                    {
                         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true) {
                             var10000 = (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain;
                         } else {
@@ -121,9 +125,9 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                         }
 
                         if (entity instanceof LivingEntity) {
-                            _livEnt157 = (LivingEntity)entity;
-                            if (_livEnt157.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                var10001 = _livEnt157.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                            _livEnt157 = (LivingEntity) entity;
+                            if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                var10001 = _livEnt157.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                 break label551;
                             }
                         }
@@ -131,7 +135,7 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                         var10001 = 0;
                     }
 
-                    range = var10000 * (double)(var10001 > 0 ? 18 : 2);
+                    range = var10000 * (double) (var10001 > 0 ? 18 : 2);
                 }
 
                 old_skill = entity.getPersistentData().getDouble("skill");
@@ -149,8 +153,8 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                     Iterator var43 = _entfound.iterator();
 
                     label542:
-                    while(true) {
-                        while(true) {
+                    while (true) {
+                        while (true) {
                             Entity entityiterator;
                             do {
                                 if (!var43.hasNext()) {
@@ -158,11 +162,12 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                         break label542;
                                     }
 
-                                    label510: {
+                                    label510:
+                                    {
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt157 = (LivingEntity)entity;
-                                            if (_livEnt157.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                var67 = _livEnt157.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                            _livEnt157 = (LivingEntity) entity;
+                                            if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                var67 = _livEnt157.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                 break label510;
                                             }
                                         }
@@ -171,29 +176,31 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                     }
 
                                     if (var67 == 0 && entity instanceof LivingEntity) {
-                                        _entity = (LivingEntity)entity;
-                                        _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                                        _entity = (LivingEntity) entity;
+                                        _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
                                     }
                                     break label542;
                                 }
 
-                                entityiterator = (Entity)var43.next();
-                                distance = Math.sqrt(Math.pow(entity.getPersistentData().getDouble("x_pos_doma") - entityiterator.getX(), 2.0) + Math.pow(entity.getPersistentData().getDouble("y_pos_doma") - (entityiterator.getY() + (double)entityiterator.getBbHeight() * 0.5), 2.0) + Math.pow(entity.getPersistentData().getDouble("z_pos_doma") - entityiterator.getZ(), 2.0));
-                            } while(!(distance < range * 0.5));
+                                entityiterator = (Entity) var43.next();
+                                distance = Math.sqrt(Math.pow(entity.getPersistentData().getDouble("x_pos_doma") - entityiterator.getX(), 2.0) + Math.pow(entity.getPersistentData().getDouble("y_pos_doma") - (entityiterator.getY() + (double) entityiterator.getBbHeight() * 0.5), 2.0) + Math.pow(entity.getPersistentData().getDouble("z_pos_doma") - entityiterator.getZ(), 2.0));
+                            } while (!(distance < range * 0.5));
 
                             if (entity == entityiterator) {
                                 logic_a = true;
                             } else {
                                 LivingEntity _livEnt32;
-                                label537: {
+                                label537:
+                                {
                                     if (entityiterator instanceof LivingEntity) {
-                                        _livEnt32 = (LivingEntity)entityiterator;
-                                        if (_livEnt32.hasEffect((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                                            label532: {
+                                        _livEnt32 = (LivingEntity) entityiterator;
+                                        if (_livEnt32.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                                            label532:
+                                            {
                                                 if (entityiterator instanceof LivingEntity) {
-                                                    _livEnt64 = (LivingEntity)entityiterator;
-                                                    if (_livEnt64.hasEffect((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                                                        var10000 = (double)_livEnt64.getEffect((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier();
+                                                    _livEnt64 = (LivingEntity) entityiterator;
+                                                    if (_livEnt64.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                                                        var10000 = (double) _livEnt64.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier();
                                                         break label532;
                                                     }
                                                 }
@@ -201,12 +208,13 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                                 var10000 = 0.0;
                                             }
 
-                                            label527: {
+                                            label527:
+                                            {
                                                 level = var10000;
                                                 if (entityiterator instanceof LivingEntity) {
-                                                    _livEnt64 = (LivingEntity)entityiterator;
-                                                    if (_livEnt64.hasEffect((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                                                        var10000 = (double)_livEnt64.getEffect((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
+                                                    _livEnt64 = (LivingEntity) entityiterator;
+                                                    if (_livEnt64.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                                                        var10000 = (double) _livEnt64.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
                                                         break label527;
                                                     }
                                                 }
@@ -215,16 +223,16 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                             }
 
                                             tick = var10000;
-                                            tick -= (double)Math.round(Math.sqrt(str_lv + 1.0) * 10.0);
+                                            tick -= (double) Math.round(Math.sqrt(str_lv + 1.0) * 10.0);
                                             if (entityiterator instanceof LivingEntity) {
-                                                _livEnt64 = (LivingEntity)entityiterator;
-                                                _livEnt64.removeEffect((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get());
+                                                _livEnt64 = (LivingEntity) entityiterator;
+                                                _livEnt64.removeEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get());
                                             }
 
                                             if (level >= 0.0 && entityiterator instanceof LivingEntity) {
-                                                _livEnt64 = (LivingEntity)entityiterator;
+                                                _livEnt64 = (LivingEntity) entityiterator;
                                                 if (!_livEnt64.level().isClientSide()) {
-                                                    _livEnt64.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.SIMPLE_DOMAIN.get(), (int)tick, (int)level, true, true));
+                                                    _livEnt64.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get(), (int) tick, (int) level, true, true));
                                                 }
                                             }
                                             break label537;
@@ -237,16 +245,16 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                 }
 
                                 if (entityiterator instanceof LivingEntity) {
-                                    _livEnt32 = (LivingEntity)entityiterator;
-                                    if (_livEnt32.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                    _livEnt32 = (LivingEntity) entityiterator;
+                                    if (_livEnt32.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                                         continue;
                                     }
                                 }
 
                                 if (entityiterator.getPersistentData().getDouble("select") == 0.0 && entityiterator instanceof LivingEntity) {
-                                    _livEnt64 = (LivingEntity)entityiterator;
+                                    _livEnt64 = (LivingEntity) entityiterator;
                                     if (!_livEnt64.level().isClientSide()) {
-                                        _livEnt64.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.NEUTRALIZATION.get(), 20, (int)(entity.getPersistentData().getDouble("skill_domain") + 10.0), false, false));
+                                        _livEnt64.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get(), 20, (int) (entity.getPersistentData().getDouble("skill_domain") + 10.0), false, false));
                                     }
                                 }
                             }
@@ -257,7 +265,7 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                 var10000 = entity.getPersistentData().getDouble("oldHealth");
                 float var68;
                 if (entity instanceof LivingEntity) {
-                    _livEnt157 = (LivingEntity)entity;
+                    _livEnt157 = (LivingEntity) entity;
                     var68 = _livEnt157.getHealth();
                 } else {
                     var68 = -1.0F;
@@ -266,47 +274,47 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                 double var10002;
                 LivingEntity _livEnt;
                 CompoundTag var74;
-                if (var10000 != (double)var68) {
+                if (var10000 != (double) var68) {
                     var10000 = entity.getPersistentData().getDouble("oldHealth");
                     if (entity instanceof LivingEntity) {
-                        _entity = (LivingEntity)entity;
+                        _entity = (LivingEntity) entity;
                         var68 = _entity.getHealth();
                     } else {
                         var68 = -1.0F;
                     }
 
-                    if (var10000 > (double)var68) {
+                    if (var10000 > (double) var68) {
                         var74 = entity.getPersistentData();
                         var10002 = entity.getPersistentData().getDouble("totalDamage") + entity.getPersistentData().getDouble("oldHealth");
                         float var10003;
                         if (entity instanceof LivingEntity) {
-                            _livEnt = (LivingEntity)entity;
+                            _livEnt = (LivingEntity) entity;
                             var10003 = _livEnt.getHealth();
                         } else {
                             var10003 = -1.0F;
                         }
 
-                        var74.putDouble("totalDamage", var10002 - (double)var10003);
+                        var74.putDouble("totalDamage", var10002 - (double) var10003);
                     } else {
                         var74 = entity.getPersistentData();
                         var10002 = entity.getPersistentData().getDouble("totalDamage");
                         double var70 = entity.getPersistentData().getDouble("oldHealth");
                         float var10004;
                         if (entity instanceof LivingEntity) {
-                            _livEnt = (LivingEntity)entity;
+                            _livEnt = (LivingEntity) entity;
                             var10004 = _livEnt.getHealth();
                         } else {
                             var10004 = -1.0F;
                         }
 
-                        var74.putDouble("totalDamage", var10002 + (var70 - (double)var10004) * 0.5);
+                        var74.putDouble("totalDamage", var10002 + (var70 - (double) var10004) * 0.5);
                     }
                 }
 
                 var74 = entity.getPersistentData();
                 if (entity instanceof LivingEntity) {
-                    _livEnt157 = (LivingEntity)entity;
-                    var10002 = (double)_livEnt157.getHealth();
+                    _livEnt157 = (LivingEntity) entity;
+                    var10002 = (double) _livEnt157.getHealth();
                 } else {
                     var10002 = -1.0;
                 }
@@ -314,27 +322,27 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                 var74.putDouble("oldHealth", var10002);
                 if ((tick_1 % 20.0 == 0.0 || update1) && entity.getPersistentData().getDouble("select") == 0.0) {
                     if (entity instanceof LivingEntity) {
-                        _entity = (LivingEntity)entity;
+                        _entity = (LivingEntity) entity;
                         var68 = _entity.getMaxHealth();
                     } else {
                         var68 = -1.0F;
                     }
 
-                    double var72 = Math.max((double)Math.max(var68, 1.0F) - Math.max(entity.getPersistentData().getDouble("totalDamage"), 0.0) * 2.0, 0.0);
+                    double var72 = Math.max((double) Math.max(var68, 1.0F) - Math.max(entity.getPersistentData().getDouble("totalDamage"), 0.0) * 2.0, 0.0);
                     float var69;
                     if (entity instanceof LivingEntity) {
-                        _livEnt157 = (LivingEntity)entity;
+                        _livEnt157 = (LivingEntity) entity;
                         var69 = _livEnt157.getMaxHealth();
                     } else {
                         var69 = -1.0F;
                     }
 
-                    domainPower1 = str_lv * (var72 / (double)Math.max(var69, 1.0F)) * Math.min(Math.min(tick_1, 1200.0) / 2400.0 + 0.5, 1.0);
+                    domainPower1 = str_lv * (var72 / (double) Math.max(var69, 1.0F)) * Math.min(Math.min(tick_1, 1200.0) / 2400.0 + 0.5, 1.0);
                     failed = false;
                     logic_a = false;
                     logic_b = false;
 
-                    for(int index0 = 0; index0 < 2; ++index0) {
+                    for (int index0 = 0; index0 < 2; ++index0) {
                         Vec3 _center = new Vec3(entity.getPersistentData().getDouble("x_pos_doma"), entity.getPersistentData().getDouble("y_pos_doma"), entity.getPersistentData().getDouble("z_pos_doma"));
                         List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, (new AABB(_center, _center)).inflate(range / 2.0), (e) -> {
                             return true;
@@ -344,8 +352,8 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                         Iterator var63 = _entfound.iterator();
 
                         label484:
-                        while(true) {
-                            while(true) {
+                        while (true) {
+                            while (true) {
                                 Entity entityiterator;
                                 do {
                                     do {
@@ -354,12 +362,13 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                                 break label484;
                                             }
 
-                                            label373: {
-                                                entityiterator = (Entity)var63.next();
+                                            label373:
+                                            {
+                                                entityiterator = (Entity) var63.next();
                                                 if (entity instanceof LivingEntity) {
-                                                    _livEnt = (LivingEntity)entity;
-                                                    if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                        var67 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                                    _livEnt = (LivingEntity) entity;
+                                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                        var67 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                         break label373;
                                                     }
                                                 }
@@ -368,13 +377,15 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                             }
 
                                             boolean var77;
-                                            label383: {
+                                            label383:
+                                            {
                                                 if (var67 > 0) {
-                                                    label380: {
+                                                    label380:
+                                                    {
                                                         if (entityiterator instanceof LivingEntity) {
-                                                            _livEnt64 = (LivingEntity)entityiterator;
-                                                            if (_livEnt64.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                                var67 = _livEnt64.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                                            _livEnt64 = (LivingEntity) entityiterator;
+                                                            if (_livEnt64.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                                var67 = _livEnt64.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                                 break label380;
                                                             }
                                                         }
@@ -392,22 +403,23 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                             }
 
                                             noClosing = var77;
-                                        } while(entity == entityiterator);
+                                        } while (entity == entityiterator);
 
                                         if (entityiterator instanceof LivingEntity) {
-                                            _livEnt64 = (LivingEntity)entityiterator;
-                                            if (_livEnt64.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                            _livEnt64 = (LivingEntity) entityiterator;
+                                            if (_livEnt64.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                                                 break;
                                             }
                                         }
-                                    } while(entityiterator.getPersistentData().getDouble("select") == 0.0);
+                                    } while (entityiterator.getPersistentData().getDouble("select") == 0.0);
 
-                                    distance = Math.sqrt(Math.pow(entity.getPersistentData().getDouble("x_pos_doma") - entityiterator.getX(), 2.0) + Math.pow(entity.getPersistentData().getDouble("y_pos_doma") - (entityiterator.getY() + (double)entityiterator.getBbHeight() * 0.5), 2.0) + Math.pow(entity.getPersistentData().getDouble("z_pos_doma") - entityiterator.getZ(), 2.0));
-                                } while(!(distance < range * 0.5));
+                                    distance = Math.sqrt(Math.pow(entity.getPersistentData().getDouble("x_pos_doma") - entityiterator.getX(), 2.0) + Math.pow(entity.getPersistentData().getDouble("y_pos_doma") - (entityiterator.getY() + (double) entityiterator.getBbHeight() * 0.5), 2.0) + Math.pow(entity.getPersistentData().getDouble("z_pos_doma") - entityiterator.getZ(), 2.0));
+                                } while (!(distance < range * 0.5));
 
-                                label403: {
+                                label403:
+                                {
                                     if (entityiterator instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entityiterator;
+                                        _livEnt = (LivingEntity) entityiterator;
                                         if (_livEnt.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                             var67 = _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                             break label403;
@@ -417,7 +429,7 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                     var67 = 0;
                                 }
 
-                                domainPower2 = (double)(var67 + 10);
+                                domainPower2 = (double) (var67 + 10);
                                 if (entityiterator.getPersistentData().getDouble("select") != 27.0 && entityiterator.getPersistentData().getDouble("skill_domain") != 27.0) {
                                     if (entityiterator.getPersistentData().getDouble("select") == 29.0 || entityiterator.getPersistentData().getDouble("skill_domain") == 29.0) {
                                         domainPower2 *= 2.0;
@@ -430,11 +442,12 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                 if (entityiterator.getPersistentData().getDouble("select") != 0.0) {
                                     tick_2 = 1200.0;
                                 } else {
-                                    label419: {
+                                    label419:
+                                    {
                                         if (entityiterator instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entityiterator;
-                                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                var10000 = (double)_livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
+                                            _livEnt = (LivingEntity) entityiterator;
+                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                var10000 = (double) _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
                                                 break label419;
                                             }
                                         }
@@ -444,35 +457,37 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
 
                                     tick_2 = var10000;
                                     if (entityiterator instanceof LivingEntity) {
-                                        _livEnt84 = (LivingEntity)entityiterator;
+                                        _livEnt84 = (LivingEntity) entityiterator;
                                         var68 = _livEnt84.getMaxHealth();
                                     } else {
                                         var68 = -1.0F;
                                     }
 
-                                    var72 = Math.max((double)Math.max(var68, 1.0F) - Math.max(entityiterator.getPersistentData().getDouble("totalDamage"), 0.0) * 2.0, 0.0);
+                                    var72 = Math.max((double) Math.max(var68, 1.0F) - Math.max(entityiterator.getPersistentData().getDouble("totalDamage"), 0.0) * 2.0, 0.0);
                                     if (entityiterator instanceof LivingEntity) {
-                                        _livEnt = (LivingEntity)entityiterator;
+                                        _livEnt = (LivingEntity) entityiterator;
                                         var69 = _livEnt.getMaxHealth();
                                     } else {
                                         var69 = -1.0F;
                                     }
 
-                                    domainPower2 = domainPower2 * (var72 / (double)Math.max(var69, 1.0F)) * Math.min(Math.min(tick_2, 1200.0) / 2400.0 + 0.5, 1.0);
+                                    domainPower2 = domainPower2 * (var72 / (double) Math.max(var69, 1.0F)) * Math.min(Math.min(tick_2, 1200.0) / 2400.0 + 0.5, 1.0);
                                 }
 
                                 LivingEntity _livEnt90;
-                                label473: {
+                                label473:
+                                {
                                     if (!(domainPower1 - domainPower2 >= 10.0)) {
                                         if (!logic_a) {
                                             break label473;
                                         }
 
-                                        label469: {
+                                        label469:
+                                        {
                                             if (entityiterator instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)entityiterator;
-                                                if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                    var67 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                                _livEnt = (LivingEntity) entityiterator;
+                                                if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                    var67 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                     break label469;
                                                 }
                                             }
@@ -486,31 +501,32 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                     }
 
                                     if (entityiterator instanceof LivingEntity) {
-                                        _livEnt84 = (LivingEntity)entityiterator;
-                                        if (_livEnt84.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                            label481: {
+                                        _livEnt84 = (LivingEntity) entityiterator;
+                                        if (_livEnt84.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                            label481:
+                                            {
                                                 failed = false;
                                                 logic_b = true;
                                                 entityiterator.getPersistentData().putBoolean("Failed", false);
                                                 entityiterator.getPersistentData().putBoolean("DomainDefeated", !noClosing);
                                                 if (entityiterator instanceof LivingEntity) {
-                                                    _livEnt90 = (LivingEntity)entityiterator;
-                                                    if (_livEnt90.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                    _livEnt90 = (LivingEntity) entityiterator;
+                                                    if (_livEnt90.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                                                         break label481;
                                                     }
                                                 }
 
                                                 if (entityiterator instanceof LivingEntity) {
-                                                    LivingEntity _entity2 = (LivingEntity)entityiterator;
+                                                    LivingEntity _entity2 = (LivingEntity) entityiterator;
                                                     if (!_entity2.level().isClientSide()) {
-                                                        _entity2.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get(), 5, 0, false, false));
+                                                        _entity2.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get(), 5, 0, false, false));
                                                     }
                                                 }
                                             }
 
                                             if (entityiterator instanceof LivingEntity) {
-                                                _livEnt90 = (LivingEntity)entityiterator;
-                                                _livEnt90.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                                                _livEnt90 = (LivingEntity) entityiterator;
+                                                _livEnt90.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
                                             }
                                             continue;
                                         }
@@ -518,7 +534,8 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                 }
 
                                 if (noClosing) {
-                                    label460: {
+                                    label460:
+                                    {
                                         if (tick_1 <= tick_2) {
                                             if (!(tick_2 < 1000.0)) {
                                                 break label460;
@@ -528,14 +545,16 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                         }
 
                                         if (entityiterator instanceof LivingEntity) {
-                                            _livEnt90 = (LivingEntity)entityiterator;
-                                            if (_livEnt90.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                label452: {
-                                                    label592: {
+                                            _livEnt90 = (LivingEntity) entityiterator;
+                                            if (_livEnt90.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                label452:
+                                                {
+                                                    label592:
+                                                    {
                                                         logic_a = true;
                                                         if (entityiterator instanceof Player) {
                                                             if (entityiterator instanceof ServerPlayer) {
-                                                                ServerPlayer _plr92 = (ServerPlayer)entityiterator;
+                                                                ServerPlayer _plr92 = (ServerPlayer) entityiterator;
                                                                 if (_plr92.level() instanceof ServerLevel && _plr92.getAdvancements().getOrStartProgress(_plr92.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:anti_open_barrier_type_domain"))).isDone()) {
                                                                     break label592;
                                                                 }
@@ -545,8 +564,8 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                                         }
 
                                                         if (entityiterator instanceof LivingEntity) {
-                                                            LivingEntity _livEnt94 = (LivingEntity)entityiterator;
-                                                            if (_livEnt94.hasEffect((MobEffect)JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                                            LivingEntity _livEnt94 = (LivingEntity) entityiterator;
+                                                            if (_livEnt94.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                                                 break label592;
                                                             }
                                                         }
@@ -556,7 +575,7 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                                                 break label452;
                                                             }
 
-                                                            ServerPlayer _player = (ServerPlayer)entityiterator;
+                                                            ServerPlayer _player = (ServerPlayer) entityiterator;
                                                             Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:anti_open_barrier_type_domain"));
                                                             AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                                                             if (_ap.isDone()) {
@@ -565,12 +584,12 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
 
                                                             Iterator var55 = _ap.getRemainingCriteria().iterator();
 
-                                                            while(true) {
+                                                            while (true) {
                                                                 if (!var55.hasNext()) {
                                                                     break label452;
                                                                 }
 
-                                                                String criteria = (String)var55.next();
+                                                                String criteria = (String) var55.next();
                                                                 _player.getAdvancements().award(_adv, criteria);
                                                             }
                                                         }
@@ -627,11 +646,12 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
 
                 entity.getPersistentData().putDouble("skill", old_skill);
                 if (!entity.getPersistentData().getBoolean("Failed") && !entity.getPersistentData().getBoolean("Cover")) {
-                    label333: {
+                    label333:
+                    {
                         if (entity instanceof LivingEntity) {
-                            _livEnt157 = (LivingEntity)entity;
-                            if (_livEnt157.hasEffect((MobEffect)JujutsucraftModMobEffects.ZONE.get())) {
-                                var67 = _livEnt157.getEffect((MobEffect)JujutsucraftModMobEffects.ZONE.get()).getDuration();
+                            _livEnt157 = (LivingEntity) entity;
+                            if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get())) {
+                                var67 = _livEnt157.getEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get()).getDuration();
                                 break label333;
                             }
                         }
@@ -640,22 +660,24 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                     }
 
                     if (var67 < 10 && entity instanceof LivingEntity) {
-                        _entity = (LivingEntity)entity;
+                        _entity = (LivingEntity) entity;
                         if (!_entity.level().isClientSide()) {
-                            _entity.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.ZONE.get(), 10, 0, false, false));
+                            _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.ZONE.get(), 10, 0, false, false));
                         }
                     }
                 } else {
                     if (!failed && !entity.getPersistentData().getBoolean("Cover")) {
-                        label608: {
-                            distance = Math.sqrt(Math.pow(entity.getPersistentData().getDouble("x_pos_doma") - entity.getX(), 2.0) + Math.pow(entity.getPersistentData().getDouble("y_pos_doma") - (entity.getY() + (double)entity.getBbHeight() * 0.5), 2.0) + Math.pow(entity.getPersistentData().getDouble("z_pos_doma") - entity.getZ(), 2.0));
+                        label608:
+                        {
+                            distance = Math.sqrt(Math.pow(entity.getPersistentData().getDouble("x_pos_doma") - entity.getX(), 2.0) + Math.pow(entity.getPersistentData().getDouble("y_pos_doma") - (entity.getY() + (double) entity.getBbHeight() * 0.5), 2.0) + Math.pow(entity.getPersistentData().getDouble("z_pos_doma") - entity.getZ(), 2.0));
                             if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BarrierlessDomain == true) {
                                 if (!(distance < (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RadiusDomain)) {
-                                    label353: {
+                                    label353:
+                                    {
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt157 = (LivingEntity)entity;
-                                            if (_livEnt157.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                var67 = _livEnt157.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                            _livEnt157 = (LivingEntity) entity;
+                                            if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                var67 = _livEnt157.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                 break label353;
                                             }
                                         }
@@ -665,19 +687,20 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
 
                                     if (var67 == 0) {
                                         if (entity instanceof LivingEntity) {
-                                            _entity = (LivingEntity)entity;
-                                            _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                                            _entity = (LivingEntity) entity;
+                                            _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
                                         }
                                         break label608;
                                     }
                                 }
                             } else {
                                 if (!(distance < JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius)) {
-                                    label353: {
+                                    label353:
+                                    {
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt157 = (LivingEntity)entity;
-                                            if (_livEnt157.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                var67 = _livEnt157.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                            _livEnt157 = (LivingEntity) entity;
+                                            if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                var67 = _livEnt157.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                 break label353;
                                             }
                                         }
@@ -687,8 +710,8 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
 
                                     if (var67 == 0) {
                                         if (entity instanceof LivingEntity) {
-                                            _entity = (LivingEntity)entity;
-                                            _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                                            _entity = (LivingEntity) entity;
+                                            _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
                                         }
                                         break label608;
                                     }
@@ -700,19 +723,20 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                             entity.getPersistentData().putBoolean("Failed", false);
                             entity.getPersistentData().putBoolean("Cover", true);
                             if (entity instanceof LivingEntity) {
-                                _entity = (LivingEntity)entity;
+                                _entity = (LivingEntity) entity;
                                 if (!_entity.level().isClientSide()) {
                                     int var10005;
                                     MobEffect var71;
                                     int var73;
                                     MobEffectInstance var75;
-                                    label344: {
-                                        var71 = (MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get();
-                                        var73 = (int)(tick_1 + 100.0);
+                                    label344:
+                                    {
+                                        var71 = (MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get();
+                                        var73 = (int) (tick_1 + 100.0);
                                         if (entity instanceof LivingEntity) {
-                                            _livEnt = (LivingEntity)entity;
-                                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                                var10005 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                                            _livEnt = (LivingEntity) entity;
+                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                                var10005 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                                 break label344;
                                             }
                                         }
@@ -725,9 +749,9 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                                 }
                             }
 
-                            entity.getPersistentData().putDouble("x_pos_doma2", (double)Math.round((float)entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()));
-                            entity.getPersistentData().putDouble("y_pos_doma2", (double)Math.round((float)entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()));
-                            entity.getPersistentData().putDouble("z_pos_doma2", (double)Math.round((float)entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
+                            entity.getPersistentData().putDouble("x_pos_doma2", (double) Math.round((float) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()));
+                            entity.getPersistentData().putDouble("y_pos_doma2", (double) Math.round((float) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()));
+                            entity.getPersistentData().putDouble("z_pos_doma2", (double) Math.round((float) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
                         }
                     }
 
@@ -766,25 +790,26 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
 
                 if (!entity.getPersistentData().getBoolean("Cover")) {
                     if (entity instanceof Player) {
-                        double _setval = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 1.0;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                        double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 1.0;
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                             capability.PlayerCursePowerChange = _setval;
                             capability.syncPlayerVariables(entity);
                         });
-                        if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower + ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange <= 0.0 && entity instanceof LivingEntity) {
-                            _livEnt157 = (LivingEntity)entity;
-                            _livEnt157.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                        if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower + ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange <= 0.0 && entity instanceof LivingEntity) {
+                            _livEnt157 = (LivingEntity) entity;
+                            _livEnt157.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
                         }
                     } else if (entity.getPersistentData().getDouble("cnt_target") > 5.0) {
                         entity.getPersistentData().putDouble("cnt_domain_cancel", 0.0);
                     } else {
                         short var76;
-                        label324: {
+                        label324:
+                        {
                             entity.getPersistentData().putDouble("cnt_domain_cancel", entity.getPersistentData().getDouble("cnt_domain_cancel") + 1.0);
                             var10000 = entity.getPersistentData().getDouble("cnt_domain_cancel");
                             if (entity instanceof LivingEntity) {
-                                _livEnt157 = (LivingEntity)entity;
-                                if (_livEnt157.hasEffect((MobEffect)JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                _livEnt157 = (LivingEntity) entity;
+                                if (_livEnt157.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     var76 = 600;
                                     break label324;
                                 }
@@ -793,15 +818,15 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
                             var76 = 100;
                         }
 
-                        if (var10000 > (double)var76 && entity instanceof LivingEntity) {
-                            _entity = (LivingEntity)entity;
-                            _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                        if (var10000 > (double) var76 && entity instanceof LivingEntity) {
+                            _entity = (LivingEntity) entity;
+                            _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
                         }
                     }
                 }
             } else if (entity instanceof LivingEntity) {
-                _livEnt157 = (LivingEntity)entity;
-                _livEnt157.removeEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
+                _livEnt157 = (LivingEntity) entity;
+                _livEnt157.removeEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get());
             }
 
         }

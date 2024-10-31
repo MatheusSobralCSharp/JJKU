@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.command;
 
 import net.minecraftforge.fml.common.Mod;
@@ -19,25 +18,25 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 
 @Mod.EventBusSubscriber
 public class JjkuVeilSummonCommand {
-	@SubscribeEvent
-	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("jjkurVeilSummon")
+    @SubscribeEvent
+    public static void registerCommand(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("jjkurVeilSummon")
 
-				.then(Commands.argument("VeilSize", DoubleArgumentType.doubleArg())
-						.then(Commands.argument("VeilDurationInMinutes", DoubleArgumentType.doubleArg()).then(Commands.argument("LetPeoplePass", BoolArgumentType.bool()).executes(arguments -> {
-							Level world = arguments.getSource().getUnsidedLevel();
-							double x = arguments.getSource().getPosition().x();
-							double y = arguments.getSource().getPosition().y();
-							double z = arguments.getSource().getPosition().z();
-							Entity entity = arguments.getSource().getEntity();
-							if (entity == null && world instanceof ServerLevel _servLevel)
-								entity = FakePlayerFactory.getMinecraft(_servLevel);
-							Direction direction = Direction.DOWN;
-							if (entity != null)
-								direction = entity.getDirection();
+                .then(Commands.argument("VeilSize", DoubleArgumentType.doubleArg())
+                        .then(Commands.argument("VeilDurationInMinutes", DoubleArgumentType.doubleArg()).then(Commands.argument("LetPeoplePass", BoolArgumentType.bool()).executes(arguments -> {
+                            Level world = arguments.getSource().getUnsidedLevel();
+                            double x = arguments.getSource().getPosition().x();
+                            double y = arguments.getSource().getPosition().y();
+                            double z = arguments.getSource().getPosition().z();
+                            Entity entity = arguments.getSource().getEntity();
+                            if (entity == null && world instanceof ServerLevel _servLevel)
+                                entity = FakePlayerFactory.getMinecraft(_servLevel);
+                            Direction direction = Direction.DOWN;
+                            if (entity != null)
+                                direction = entity.getDirection();
 
-							VeilSpawnedProcedure.execute(world, x, y, z, arguments, entity);
-							return 0;
-						})))));
-	}
+                            VeilSpawnedProcedure.execute(world, x, y, z, arguments, entity);
+                            return 0;
+                        })))));
+    }
 }

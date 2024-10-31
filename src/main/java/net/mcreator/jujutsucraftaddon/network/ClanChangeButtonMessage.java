@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.network;
 
 import net.minecraftforge.network.NetworkEvent;
@@ -29,114 +28,114 @@ import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClanChangeButtonMessage {
-	private final int buttonID, x, y, z;
-	private HashMap<String, String> textstate;
+    private final int buttonID, x, y, z;
+    private HashMap<String, String> textstate;
 
-	public ClanChangeButtonMessage(FriendlyByteBuf buffer) {
-		this.buttonID = buffer.readInt();
-		this.x = buffer.readInt();
-		this.y = buffer.readInt();
-		this.z = buffer.readInt();
-		this.textstate = readTextState(buffer);
-	}
+    public ClanChangeButtonMessage(FriendlyByteBuf buffer) {
+        this.buttonID = buffer.readInt();
+        this.x = buffer.readInt();
+        this.y = buffer.readInt();
+        this.z = buffer.readInt();
+        this.textstate = readTextState(buffer);
+    }
 
-	public ClanChangeButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) {
-		this.buttonID = buttonID;
-		this.x = x;
-		this.y = y;
-		this.z = z;
-		this.textstate = textstate;
+    public ClanChangeButtonMessage(int buttonID, int x, int y, int z, HashMap<String, String> textstate) {
+        this.buttonID = buttonID;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.textstate = textstate;
 
-	}
+    }
 
-	public static void buffer(ClanChangeButtonMessage message, FriendlyByteBuf buffer) {
-		buffer.writeInt(message.buttonID);
-		buffer.writeInt(message.x);
-		buffer.writeInt(message.y);
-		buffer.writeInt(message.z);
-		writeTextState(message.textstate, buffer);
-	}
+    public static void buffer(ClanChangeButtonMessage message, FriendlyByteBuf buffer) {
+        buffer.writeInt(message.buttonID);
+        buffer.writeInt(message.x);
+        buffer.writeInt(message.y);
+        buffer.writeInt(message.z);
+        writeTextState(message.textstate, buffer);
+    }
 
-	public static void handler(ClanChangeButtonMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
-		NetworkEvent.Context context = contextSupplier.get();
-		context.enqueueWork(() -> {
-			Player entity = context.getSender();
-			int buttonID = message.buttonID;
-			int x = message.x;
-			int y = message.y;
-			int z = message.z;
-			HashMap<String, String> textstate = message.textstate;
-			handleButtonAction(entity, buttonID, x, y, z, textstate);
-		});
-		context.setPacketHandled(true);
-	}
+    public static void handler(ClanChangeButtonMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+        NetworkEvent.Context context = contextSupplier.get();
+        context.enqueueWork(() -> {
+            Player entity = context.getSender();
+            int buttonID = message.buttonID;
+            int x = message.x;
+            int y = message.y;
+            int z = message.z;
+            HashMap<String, String> textstate = message.textstate;
+            handleButtonAction(entity, buttonID, x, y, z, textstate);
+        });
+        context.setPacketHandled(true);
+    }
 
-	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z, HashMap<String, String> textstate) {
-		Level world = entity.level();
-		HashMap guistate = ClanChangeMenu.guistate;
-		for (Map.Entry<String, String> entry : textstate.entrySet()) {
-			String key = entry.getKey();
-			String value = entry.getValue();
-			guistate.put(key, value);
-		}
-		// security measure to prevent arbitrary chunk generation
-		if (!world.hasChunkAt(new BlockPos(x, y, z)))
-			return;
-		if (buttonID == 0) {
+    public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z, HashMap<String, String> textstate) {
+        Level world = entity.level();
+        HashMap guistate = ClanChangeMenu.guistate;
+        for (Map.Entry<String, String> entry : textstate.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            guistate.put(key, value);
+        }
+        // security measure to prevent arbitrary chunk generation
+        if (!world.hasChunkAt(new BlockPos(x, y, z)))
+            return;
+        if (buttonID == 0) {
 
-			ClanChangerRollProcedure.execute(entity);
-		}
-		if (buttonID == 1) {
+            ClanChangerRollProcedure.execute(entity);
+        }
+        if (buttonID == 1) {
 
-			ClanInformationProcedure.execute(entity);
-		}
-		if (buttonID == 2) {
+            ClanInformationProcedure.execute(entity);
+        }
+        if (buttonID == 2) {
 
-			ClanChangerRollSlot1Procedure.execute(entity);
-		}
-		if (buttonID == 3) {
+            ClanChangerRollSlot1Procedure.execute(entity);
+        }
+        if (buttonID == 3) {
 
-			ClanChangerEquip1Procedure.execute(entity);
-		}
-		if (buttonID == 4) {
+            ClanChangerEquip1Procedure.execute(entity);
+        }
+        if (buttonID == 4) {
 
-			ClanChangerRoll2Procedure.execute(entity);
-		}
-		if (buttonID == 5) {
+            ClanChangerRoll2Procedure.execute(entity);
+        }
+        if (buttonID == 5) {
 
-			ClanChangerEquip2Procedure.execute(entity);
-		}
-		if (buttonID == 6) {
+            ClanChangerEquip2Procedure.execute(entity);
+        }
+        if (buttonID == 6) {
 
-			ClanChangerRollSlot3Procedure.execute(entity);
-		}
-		if (buttonID == 7) {
+            ClanChangerRollSlot3Procedure.execute(entity);
+        }
+        if (buttonID == 7) {
 
-			ClanChangerEquip3Procedure.execute(entity);
-		}
-	}
+            ClanChangerEquip3Procedure.execute(entity);
+        }
+    }
 
-	@SubscribeEvent
-	public static void registerMessage(FMLCommonSetupEvent event) {
-		JujutsucraftaddonMod.addNetworkMessage(ClanChangeButtonMessage.class, ClanChangeButtonMessage::buffer, ClanChangeButtonMessage::new, ClanChangeButtonMessage::handler);
-	}
+    @SubscribeEvent
+    public static void registerMessage(FMLCommonSetupEvent event) {
+        JujutsucraftaddonMod.addNetworkMessage(ClanChangeButtonMessage.class, ClanChangeButtonMessage::buffer, ClanChangeButtonMessage::new, ClanChangeButtonMessage::handler);
+    }
 
-	public static void writeTextState(HashMap<String, String> map, FriendlyByteBuf buffer) {
-		buffer.writeInt(map.size());
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			buffer.writeComponent(Component.literal(entry.getKey()));
-			buffer.writeComponent(Component.literal(entry.getValue()));
-		}
-	}
+    public static void writeTextState(HashMap<String, String> map, FriendlyByteBuf buffer) {
+        buffer.writeInt(map.size());
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            buffer.writeComponent(Component.literal(entry.getKey()));
+            buffer.writeComponent(Component.literal(entry.getValue()));
+        }
+    }
 
-	public static HashMap<String, String> readTextState(FriendlyByteBuf buffer) {
-		int size = buffer.readInt();
-		HashMap<String, String> map = new HashMap<>();
-		for (int i = 0; i < size; i++) {
-			String key = buffer.readComponent().getString();
-			String value = buffer.readComponent().getString();
-			map.put(key, value);
-		}
-		return map;
-	}
+    public static HashMap<String, String> readTextState(FriendlyByteBuf buffer) {
+        int size = buffer.readInt();
+        HashMap<String, String> map = new HashMap<>();
+        for (int i = 0; i < size; i++) {
+            String key = buffer.readComponent().getString();
+            String value = buffer.readComponent().getString();
+            map.put(key, value);
+        }
+        return map;
+    }
 }

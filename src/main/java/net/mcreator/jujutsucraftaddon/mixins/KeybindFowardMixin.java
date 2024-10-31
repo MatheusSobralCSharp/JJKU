@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(KeyForwardOnKeyPressedProcedure.class)
 public abstract class KeybindFowardMixin {
     @Inject(method = "execute", at = @At("TAIL"), remap = false)
-    private static void execute(Entity entity, CallbackInfo ci){
+    private static void execute(Entity entity, CallbackInfo ci) {
 
         if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Dash) {
             entity.getPersistentData().putDouble("dash", (entity.getPersistentData().getDouble("dash") + 1));

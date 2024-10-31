@@ -29,5 +29,6 @@ public abstract class WhenRespawnedMixin {
 
     private static void execute(@Nullable Event event, Entity entity) {
 
+
     }
 }

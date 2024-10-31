@@ -30,8 +30,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = JogoFlame1Procedure.class, remap = false)
 public abstract class DisasterFlamesMixinMixin {
-    public DisasterFlamesMixinMixin(){
+    public DisasterFlamesMixinMixin() {
     }
+
     /**
      * @author Sat
      * @reason Testing
@@ -54,30 +55,30 @@ public abstract class DisasterFlamesMixinMixin {
             entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
             LivingEntity _entGetArmor;
             if (entity instanceof LivingEntity) {
-                _entGetArmor = (LivingEntity)entity;
+                _entGetArmor = (LivingEntity) entity;
                 if (!_entGetArmor.level().isClientSide()) {
                     _entGetArmor.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 5, false, false));
                 }
             }
 
-            yaw = Math.toRadians((double)(entity.getYRot() + 90.0F));
-            picth = Math.toRadians((double)entity.getXRot());
-            x_pos = entity.getX() + Math.cos(yaw) * Math.cos(picth) * (1.5 + (double)entity.getBbWidth());
-            y_pos = entity.getY() + (double)entity.getBbHeight() * 0.75 + Math.sin(picth) * -1.0 * (1.5 + (double)entity.getBbWidth());
-            z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(picth) * (1.5 + (double)entity.getBbWidth());
+            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
+            picth = Math.toRadians((double) entity.getXRot());
+            x_pos = entity.getX() + Math.cos(yaw) * Math.cos(picth) * (1.5 + (double) entity.getBbWidth());
+            y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(picth) * -1.0 * (1.5 + (double) entity.getBbWidth());
+            z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(picth) * (1.5 + (double) entity.getBbWidth());
             LivingEntity var10000;
             Mob _mobEnt;
             Level _level;
             if (entity.getPersistentData().getDouble("cnt1") < 10.0) {
                 if (entity instanceof LivingEntity) {
-                    _entGetArmor = (LivingEntity)entity;
+                    _entGetArmor = (LivingEntity) entity;
                     if (!_entGetArmor.level().isClientSide()) {
-                        _entGetArmor.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int)entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                        _entGetArmor.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                     }
                 }
 
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10000 = _mobEnt.getTarget();
                 } else {
                     var10000 = null;
@@ -86,18 +87,20 @@ public abstract class DisasterFlamesMixinMixin {
                 if (var10000 instanceof LivingEntity) {
                     entity.getPersistentData().putBoolean("PRESS_Z", false);
                     if (GetDistanceNearestEnemyProcedure.execute(world, x, y, z, entity) > 8.0) {
-                        label227: {
+                        label227:
+                        {
                             if (entity instanceof Mob) {
-                                _mobEnt = (Mob)entity;
+                                _mobEnt = (Mob) entity;
                                 var10000 = _mobEnt.getTarget();
                             } else {
                                 var10000 = null;
                             }
 
                             if (var10000.getPersistentData().getDouble("skill") != 0.0) {
-                                label228: {
+                                label228:
+                                {
                                     if (entity instanceof Mob) {
-                                        _mobEnt = (Mob)entity;
+                                        _mobEnt = (Mob) entity;
                                         var10000 = _mobEnt.getTarget();
                                     } else {
                                         var10000 = null;
@@ -134,7 +137,7 @@ public abstract class DisasterFlamesMixinMixin {
                     }
 
                     if (entity instanceof Mob) {
-                        _mobEnt = (Mob)entity;
+                        _mobEnt = (Mob) entity;
                         var10000 = _mobEnt.getTarget();
                     } else {
                         var10000 = null;
@@ -157,8 +160,8 @@ public abstract class DisasterFlamesMixinMixin {
                     if (entity.getPersistentData().getDouble("cnt6") < 5.0) {
                         entity.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6") + 0.1);
                         if (entity instanceof Player) {
-                            double _setval = ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 2.0;
-                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                            double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 2.0;
+                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                                 capability.PlayerCursePowerChange = _setval;
                                 capability.syncPlayerVariables(entity);
                             });
@@ -168,16 +171,16 @@ public abstract class DisasterFlamesMixinMixin {
                         if (entity.getPersistentData().getDouble("cnt7") == 0.0) {
                             entity.getPersistentData().putDouble("cnt7", 1.0);
                             if (world instanceof Level) {
-                                _level = (Level)world;
+                                _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.explode((Entity)null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                    _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                 }
                             }
                         }
                     }
 
                     if (entity.getPersistentData().getDouble("cnt6") >= 5.0 && world instanceof ServerLevel) {
-                        _level = (ServerLevel)world;
+                        _level = (ServerLevel) world;
                         ((ServerLevel) _level).sendParticles(ParticleTypes.FLAME, x_pos, y_pos, z_pos, 2, 0.1, 0.1, 0.1, 0.1);
                     }
                 }
@@ -188,7 +191,7 @@ public abstract class DisasterFlamesMixinMixin {
                 ItemStack var37;
                 if (!(entity instanceof Player)) {
                     if (entity instanceof LivingEntity) {
-                        _entGetArmor = (LivingEntity)entity;
+                        _entGetArmor = (LivingEntity) entity;
                         var37 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var37 = ItemStack.EMPTY;
@@ -196,7 +199,7 @@ public abstract class DisasterFlamesMixinMixin {
 
                     var37.getOrCreateTag().putDouble("P_ANIME1", -4.0);
                     if (entity instanceof LivingEntity) {
-                        _entGetArmor = (LivingEntity)entity;
+                        _entGetArmor = (LivingEntity) entity;
                         var37 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var37 = ItemStack.EMPTY;
@@ -208,7 +211,7 @@ public abstract class DisasterFlamesMixinMixin {
                 PlayAnimationProcedure.execute(entity);
                 if (entity instanceof Player) {
                     if (entity instanceof LivingEntity) {
-                        _entGetArmor = (LivingEntity)entity;
+                        _entGetArmor = (LivingEntity) entity;
                         var37 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var37 = ItemStack.EMPTY;
@@ -216,7 +219,7 @@ public abstract class DisasterFlamesMixinMixin {
 
                     var37.getOrCreateTag().putDouble("P_ANIME1", -4.0);
                     if (entity instanceof LivingEntity) {
-                        _entGetArmor = (LivingEntity)entity;
+                        _entGetArmor = (LivingEntity) entity;
                         var37 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var37 = ItemStack.EMPTY;
@@ -228,18 +231,18 @@ public abstract class DisasterFlamesMixinMixin {
 
             if (entity.getPersistentData().getDouble("cnt1") < 10.0) {
                 if (world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
-                    ((ServerLevel) _level).sendParticles(ParticleTypes.FLAME, x_pos, y_pos, z_pos, (int)(2.0 * CNT6), 0.1, 0.1, 0.1, 0.01 * CNT6);
+                    _level = (ServerLevel) world;
+                    ((ServerLevel) _level).sendParticles(ParticleTypes.FLAME, x_pos, y_pos, z_pos, (int) (2.0 * CNT6), 0.1, 0.1, 0.1, 0.01 * CNT6);
                 }
 
                 if (world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
-                    ((ServerLevel) _level).sendParticles(ParticleTypes.DRAGON_BREATH, x_pos, y_pos, z_pos, (int)(2.0 * CNT6), 0.1, 0.1, 0.1, 0.01 * CNT6);
+                    _level = (ServerLevel) world;
+                    ((ServerLevel) _level).sendParticles(ParticleTypes.DRAGON_BREATH, x_pos, y_pos, z_pos, (int) (2.0 * CNT6), 0.1, 0.1, 0.1, 0.01 * CNT6);
                 }
 
                 if (entity.getPersistentData().getDouble("cnt1") <= 8.0) {
                     if (entity instanceof Mob) {
-                        _mobEnt = (Mob)entity;
+                        _mobEnt = (Mob) entity;
                         var10000 = _mobEnt.getTarget();
                     } else {
                         var10000 = null;
@@ -249,7 +252,7 @@ public abstract class DisasterFlamesMixinMixin {
                         CompoundTag var38 = entity.getPersistentData();
                         LivingEntity var10002;
                         if (entity instanceof Mob) {
-                            _mobEnt = (Mob)entity;
+                            _mobEnt = (Mob) entity;
                             var10002 = _mobEnt.getTarget();
                         } else {
                             var10002 = null;
@@ -258,7 +261,7 @@ public abstract class DisasterFlamesMixinMixin {
                         var38.putDouble("x_pos", var10002.getX());
                         var38 = entity.getPersistentData();
                         if (entity instanceof Mob) {
-                            _mobEnt = (Mob)entity;
+                            _mobEnt = (Mob) entity;
                             var10002 = _mobEnt.getTarget();
                         } else {
                             var10002 = null;
@@ -267,16 +270,16 @@ public abstract class DisasterFlamesMixinMixin {
                         double var36 = var10002.getY();
                         LivingEntity var10003;
                         if (entity instanceof Mob) {
-                            _mobEnt = (Mob)entity;
+                            _mobEnt = (Mob) entity;
                             var10003 = _mobEnt.getTarget();
                         } else {
                             var10003 = null;
                         }
 
-                        var38.putDouble("y_pos", var36 + (double)var10003.getBbHeight() * 0.8);
+                        var38.putDouble("y_pos", var36 + (double) var10003.getBbHeight() * 0.8);
                         var38 = entity.getPersistentData();
                         if (entity instanceof Mob) {
-                            _mobEnt = (Mob)entity;
+                            _mobEnt = (Mob) entity;
                             var10002 = _mobEnt.getTarget();
                         } else {
                             var10002 = null;
@@ -287,7 +290,7 @@ public abstract class DisasterFlamesMixinMixin {
                 }
             } else if (entity.getPersistentData().getDouble("cnt1") < 25.0 * CNT6) {
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10000 = _mobEnt.getTarget();
                 } else {
                     var10000 = null;
@@ -298,34 +301,34 @@ public abstract class DisasterFlamesMixinMixin {
                 }
 
                 if (world instanceof Level) {
-                    _level = (Level)world;
+                    _level = (Level) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                     }
                 }
 
                 if (world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
-                    ((ServerLevel) _level).sendParticles(ParticleTypes.FLAME, x_pos, y_pos, z_pos, (int)(10.0 * CNT6), 0.1, 0.1, 0.1, 0.25 * CNT6);
+                    _level = (ServerLevel) world;
+                    ((ServerLevel) _level).sendParticles(ParticleTypes.FLAME, x_pos, y_pos, z_pos, (int) (10.0 * CNT6), 0.1, 0.1, 0.1, 0.25 * CNT6);
                 }
 
                 entity.getPersistentData().putDouble("Damage", 1.5 * CNT6);
                 DamageFixProcedure.execute(entity);
                 damage = entity.getPersistentData().getDouble("Damage");
-                yaw = (double)entity.getYRot();
-                picth = (double)entity.getXRot();
+                yaw = (double) entity.getYRot();
+                picth = (double) entity.getXRot();
 
-                for(int index0 = 0; index0 < 4; ++index0) {
-                    entity.setYRot((float)(yaw + (Math.random() - 0.5) * 6.0 * CNT6));
-                    entity.setXRot((float)(picth + (Math.random() - 0.5) * 6.0 * CNT6));
+                for (int index0 = 0; index0 < 4; ++index0) {
+                    entity.setYRot((float) (yaw + (Math.random() - 0.5) * 6.0 * CNT6));
+                    entity.setXRot((float) (picth + (Math.random() - 0.5) * 6.0 * CNT6));
                     entity.setYBodyRot(entity.getYRot());
                     entity.setYHeadRot(entity.getYRot());
                     entity.yRotO = entity.getYRot();
                     entity.xRotO = entity.getXRot();
                     if (entity instanceof LivingEntity) {
-                        LivingEntity _entity = (LivingEntity)entity;
+                        LivingEntity _entity = (LivingEntity) entity;
                         _entity.yBodyRotO = _entity.getYRot();
                         _entity.yHeadRotO = _entity.getYRot();
                     }
@@ -336,28 +339,28 @@ public abstract class DisasterFlamesMixinMixin {
                             public Projectile getArrow(Level level, Entity shooter, float damage, int knockback, byte piercing) {
                                 AbstractArrow entityToSpawn = new BulletFlameProjectileEntity((EntityType) JujutsucraftModEntities.BULLET_FLAME_PROJECTILE.get(), level);
                                 entityToSpawn.setOwner(shooter);
-                                entityToSpawn.setBaseDamage((double)damage);
+                                entityToSpawn.setBaseDamage((double) damage);
                                 entityToSpawn.setKnockback(knockback);
                                 entityToSpawn.setSilent(true);
                                 entityToSpawn.setPierceLevel(piercing);
                                 entityToSpawn.setSecondsOnFire(100);
                                 return entityToSpawn;
                             }
-                        })).getArrow(projectileLevel, entity, (float)damage, 0, (byte)100);
+                        })).getArrow(projectileLevel, entity, (float) damage, 0, (byte) 100);
                         _entityToSpawn.setPos(entity.getX(), entity.getEyeY() - 0.1, entity.getZ());
-                        _entityToSpawn.shoot(entity.getLookAngle().x, entity.getLookAngle().y, entity.getLookAngle().z, (float)((2.5 + Math.random() * 0.2) * CNT6), 0.0F);
+                        _entityToSpawn.shoot(entity.getLookAngle().x, entity.getLookAngle().y, entity.getLookAngle().z, (float) ((2.5 + Math.random() * 0.2) * CNT6), 0.0F);
                         projectileLevel.addFreshEntity(_entityToSpawn);
                     }
                 }
 
-                entity.setYRot((float)yaw);
-                entity.setXRot((float)picth);
+                entity.setYRot((float) yaw);
+                entity.setXRot((float) picth);
                 entity.setYBodyRot(entity.getYRot());
                 entity.setYHeadRot(entity.getYRot());
                 entity.yRotO = entity.getYRot();
                 entity.xRotO = entity.getXRot();
                 if (entity instanceof LivingEntity) {
-                    LivingEntity _entity = (LivingEntity)entity;
+                    LivingEntity _entity = (LivingEntity) entity;
                     _entity.yBodyRotO = _entity.getYRot();
                     _entity.yHeadRotO = _entity.getYRot();
                 }

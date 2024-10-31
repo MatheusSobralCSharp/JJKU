@@ -76,20 +76,23 @@ public abstract class AbstractClientPlayerMixin {
             entity_a = entityiterator;
             int index1;
             if (entity_a instanceof LivingEntity) {
-                label543: {
+                label543:
+                {
                     Entity _ent;
                     LivingEntity _entity;
-                    label493: {
+                    label493:
+                    {
                         int var10000;
-                        label478: {
+                        label478:
+                        {
                             cursed_technique = entity.getPersistentData().getDouble("skill") > 100.0 && !entity.getPersistentData().getBoolean("attack");
                             x_pos = entity_a.getX();
-                            y_pos = entity_a.getY() + (double)entity_a.getBbHeight() * 0.5;
+                            y_pos = entity_a.getY() + (double) entity_a.getBbHeight() * 0.5;
                             z_pos = entity_a.getZ();
                             if (entity instanceof EntityWaterEntity) {
                                 if (entity instanceof EntityWaterEntity) {
-                                    EntityWaterEntity _datEntI = (EntityWaterEntity)entity;
-                                    var10000 = (Integer)_datEntI.getEntityData().get(EntityWaterEntity.DATA_type);
+                                    EntityWaterEntity _datEntI = (EntityWaterEntity) entity;
+                                    var10000 = (Integer) _datEntI.getEntityData().get(EntityWaterEntity.DATA_type);
                                 } else {
                                     var10000 = 0;
                                 }
@@ -104,20 +107,22 @@ public abstract class AbstractClientPlayerMixin {
                             }
                         }
 
-                        label494: {
+                        label494:
+                        {
                             if (entity_a instanceof Player) {
-                                if (((JujutsucraftModVariables.PlayerVariables)entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 10.0 || ((JujutsucraftModVariables.PlayerVariables)entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 10.0) {
+                                if (((JujutsucraftModVariables.PlayerVariables) entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 10.0 || ((JujutsucraftModVariables.PlayerVariables) entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 10.0) {
                                     break label494;
                                 }
                             } else if (entity_a instanceof ChosoEntity || entity_a instanceof EsoEntity || entity_a instanceof KamoNoritoshiEntity) {
                                 break label494;
                             }
 
-                            label459: {
+                            label459:
+                            {
                                 if (entity_a instanceof EntityWaterEntity) {
                                     if (entity_a instanceof EntityWaterEntity) {
-                                        EntityWaterEntity _datEntI = (EntityWaterEntity)entity_a;
-                                        var10000 = (Integer)_datEntI.getEntityData().get(EntityWaterEntity.DATA_type);
+                                        EntityWaterEntity _datEntI = (EntityWaterEntity) entity_a;
+                                        var10000 = (Integer) _datEntI.getEntityData().get(EntityWaterEntity.DATA_type);
                                     } else {
                                         var10000 = 0;
                                     }
@@ -134,7 +139,7 @@ public abstract class AbstractClientPlayerMixin {
 
                             _ent = entity_a;
                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill @s");
+                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill @s");
                             }
 
                             if (!entity_a.level().isClientSide()) {
@@ -145,7 +150,7 @@ public abstract class AbstractClientPlayerMixin {
 
                         old_cool = entity_a.getPersistentData().getDouble("COOLDOWN_TICKS");
                         if (entity_a instanceof LivingEntity) {
-                            _entity = (LivingEntity)entity_a;
+                            _entity = (LivingEntity) entity_a;
                             if (!_entity.level().isClientSide()) {
                                 _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), 60, 0, false, false));
                             }
@@ -159,10 +164,12 @@ public abstract class AbstractClientPlayerMixin {
                     Player _player;
                     ItemStack var42;
                     if (entity.getPersistentData().getBoolean("attack")) {
-                        label511: {
-                            label544: {
+                        label511:
+                        {
+                            label544:
+                            {
                                 if (entity instanceof Player) {
-                                    if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 7.0 && ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 7.0) {
+                                    if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 7.0 && ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 7.0) {
                                         break label544;
                                     }
                                 } else if (!(entity instanceof KashimoHajimeEntity)) {
@@ -173,15 +180,15 @@ public abstract class AbstractClientPlayerMixin {
                                 ServerLevel _level;
                                 if (entity.getPersistentData().getDouble("cnt5") != 0.0 && !(entity.getPersistentData().getDouble("cnt5") >= 100.0)) {
                                     if (world instanceof ServerLevel) {
-                                        _level = (ServerLevel)world;
-                                        _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE_MINI.get(), x_pos, y_pos, z_pos, 1, (double)entity.getBbWidth() * 0.25, (double)entity.getBbHeight() * 0.25, (double)entity.getBbWidth() * 0.25, 0.1);
+                                        _level = (ServerLevel) world;
+                                        _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE_MINI.get(), x_pos, y_pos, z_pos, 1, (double) entity.getBbWidth() * 0.25, (double) entity.getBbHeight() * 0.25, (double) entity.getBbWidth() * 0.25, 0.1);
                                     }
 
                                     entity_a.getPersistentData().putDouble("Thunder", entity_a.getPersistentData().getDouble("Thunder") + 0.25);
                                 } else {
                                     if (world instanceof ServerLevel) {
-                                        _level = (ServerLevel)world;
-                                        _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE_MINI.get(), x_pos, y_pos, z_pos, 5, (double)entity.getBbWidth() * 0.25, (double)entity.getBbHeight() * 0.25, (double)entity.getBbWidth() * 0.25, 0.1);
+                                        _level = (ServerLevel) world;
+                                        _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE_MINI.get(), x_pos, y_pos, z_pos, 5, (double) entity.getBbWidth() * 0.25, (double) entity.getBbHeight() * 0.25, (double) entity.getBbWidth() * 0.25, 0.1);
                                     }
 
                                     entity_a.getPersistentData().putDouble("Thunder", entity_a.getPersistentData().getDouble("Thunder") + 1.0);
@@ -189,23 +196,23 @@ public abstract class AbstractClientPlayerMixin {
 
                                 if (NUM1 < 5.0 && entity_a.getPersistentData().getDouble("Thunder") >= 5.0 || entity_a.getPersistentData().getDouble("Thunder") >= 15.0) {
                                     if (world instanceof ServerLevel) {
-                                        _level = (ServerLevel)world;
-                                        _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE_MINI.get(), x_pos, y_pos, z_pos, 10, (double)entity.getBbWidth() * 0.25, (double)entity.getBbHeight() * 0.25, (double)entity.getBbWidth() * 0.25, 0.25);
+                                        _level = (ServerLevel) world;
+                                        _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE_MINI.get(), x_pos, y_pos, z_pos, 10, (double) entity.getBbWidth() * 0.25, (double) entity.getBbHeight() * 0.25, (double) entity.getBbWidth() * 0.25, 0.25);
                                     }
 
                                     if (world instanceof Level) {
-                                        Level _level2 = (Level)world;
+                                        Level _level2 = (Level) world;
                                         if (!_level2.isClientSide()) {
-                                            _level2.playSound((Player)null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.5F, 1.0F);
+                                            _level2.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.5F, 1.0F);
                                         } else {
-                                            _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.5F, 1.0F, false);
+                                            _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.5F, 1.0F, false);
                                         }
                                     }
                                 }
                             }
 
                             if (entity instanceof LivingEntity) {
-                                _livEnt = (LivingEntity)entity;
+                                _livEnt = (LivingEntity) entity;
                                 var42 = _livEnt.getMainHandItem();
                             } else {
                                 var42 = ItemStack.EMPTY;
@@ -213,7 +220,7 @@ public abstract class AbstractClientPlayerMixin {
 
                             item_A = var42;
                             if (entity instanceof Player) {
-                                _player = (Player)entity;
+                                _player = (Player) entity;
                                 if (_player.getCooldowns().isOnCooldown(item_A.getItem())) {
                                     break label511;
                                 }
@@ -222,7 +229,7 @@ public abstract class AbstractClientPlayerMixin {
                             if (item_A.getItem() == JujutsucraftModItems.EXECUTIONERS_SWORD.get()) {
                                 NUM1 = 0.0;
 
-                                for(index2 = 0; index2 < 200; ++index2) {
+                                for (index2 = 0; index2 < 200; ++index2) {
                                     ++NUM1;
                                     STR1 = item_A.getOrCreateTag().getString("TARGET" + Math.round(NUM1));
                                     if (STR1.isEmpty()) {
@@ -231,13 +238,13 @@ public abstract class AbstractClientPlayerMixin {
 
                                     if (STR1.equals(entity_a.getStringUUID())) {
                                         if (entity_a instanceof LivingEntity) {
-                                            _entity = (LivingEntity)entity_a;
-                                            _entity.removeEffect((MobEffect)JujutsucraftModMobEffects.ZONE.get());
+                                            _entity = (LivingEntity) entity_a;
+                                            _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get());
                                         }
 
                                         _ent = entity_a;
                                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill @s");
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill @s");
                                         }
                                         break;
                                     }
@@ -248,9 +255,10 @@ public abstract class AbstractClientPlayerMixin {
 
                     CompoundTag var44;
                     if (cursed_technique && !entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:no_cursed_technique"))) && entity.getPersistentData().getDouble("skill") != 705.0) {
-                        label515: {
+                        label515:
+                        {
                             if (entity_a instanceof Player) {
-                                if (((JujutsucraftModVariables.PlayerVariables)entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 5.0 && ((JujutsucraftModVariables.PlayerVariables)entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 5.0) {
+                                if (((JujutsucraftModVariables.PlayerVariables) entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 5.0 && ((JujutsucraftModVariables.PlayerVariables) entity_a.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 5.0) {
                                     break label515;
                                 }
                             } else if (!(entity_a instanceof OkkotsuYutaEntity) && !(entity_a instanceof OkkotsuYutaCullingGameEntity)) {
@@ -265,14 +273,14 @@ public abstract class AbstractClientPlayerMixin {
                                 AdvancementProgress _ap;
                                 if (entity.getPersistentData().getDouble("skill") >= 305.0 && entity.getPersistentData().getDouble("skill") < 320.0) {
                                     if (entity_a instanceof ServerPlayer) {
-                                        _player2 = (ServerPlayer)entity_a;
+                                        _player2 = (ServerPlayer) entity_a;
                                         _adv = _player2.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_copy_cursed_speech"));
                                         _ap = _player2.getAdvancements().getOrStartProgress(_adv);
                                         if (!_ap.isDone()) {
                                             var23 = _ap.getRemainingCriteria().iterator();
 
-                                            while(var23.hasNext()) {
-                                                criteria = (String)var23.next();
+                                            while (var23.hasNext()) {
+                                                criteria = (String) var23.next();
                                                 _player2.getAdvancements().award(_adv, criteria);
                                             }
                                         }
@@ -285,8 +293,8 @@ public abstract class AbstractClientPlayerMixin {
                                         Objects.requireNonNull(_iitemhandlerref);
                                         var43.ifPresent(_iitemhandlerref::set);
                                         if (_iitemhandlerref.get() != null) {
-                                            for(index2 = 0; index2 < ((IItemHandler)_iitemhandlerref.get()).getSlots(); ++index2) {
-                                                ItemStack itemstackiterator = ((IItemHandler)_iitemhandlerref.get()).getStackInSlot(index2).copy();
+                                            for (index2 = 0; index2 < ((IItemHandler) _iitemhandlerref.get()).getSlots(); ++index2) {
+                                                ItemStack itemstackiterator = ((IItemHandler) _iitemhandlerref.get()).getStackInSlot(index2).copy();
                                                 if (itemstackiterator.getItem() == JujutsucraftModItems.COPIED_CURSED_TECHNIQUE.get() && itemstackiterator.getOrCreateTag().getDouble("skill") == entity.getPersistentData().getDouble("skill")) {
                                                     logic_a = false;
                                                     break;
@@ -294,15 +302,15 @@ public abstract class AbstractClientPlayerMixin {
                                             }
                                         }
 
-                                        item_A = new ItemStack((ItemLike)JujutsucraftModItems.COPIED_CURSED_TECHNIQUE.get());
+                                        item_A = new ItemStack((ItemLike) JujutsucraftModItems.COPIED_CURSED_TECHNIQUE.get());
                                     } else {
                                         logic_a = false;
                                         NUM1 = 0.0;
 
-                                        for(index1 = 0; index1 < 4; ++index1) {
+                                        for (index1 = 0; index1 < 4; ++index1) {
                                             if (entity_a instanceof LivingEntity) {
-                                                LivingEntity _entGetArmor = (LivingEntity)entity_a;
-                                                var42 = _entGetArmor.getItemBySlot(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, (int)NUM1));
+                                                LivingEntity _entGetArmor = (LivingEntity) entity_a;
+                                                var42 = _entGetArmor.getItemBySlot(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, (int) NUM1));
                                             } else {
                                                 var42 = ItemStack.EMPTY;
                                             }
@@ -323,8 +331,8 @@ public abstract class AbstractClientPlayerMixin {
                                             logic_a = true;
                                             NUM1 = Math.floor(Math.random() * 4.0);
                                             if (entity_a instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)entity_a;
-                                                var42 = _livEnt.getItemBySlot(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, (int)NUM1));
+                                                _livEnt = (LivingEntity) entity_a;
+                                                var42 = _livEnt.getItemBySlot(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, (int) NUM1));
                                             } else {
                                                 var42 = ItemStack.EMPTY;
                                             }
@@ -335,7 +343,8 @@ public abstract class AbstractClientPlayerMixin {
 
                                     if (logic_a) {
                                         double var10002;
-                                        label375: {
+                                        label375:
+                                        {
                                             entity_b = entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo"))) ? (new BiFunction<LevelAccessor, String, Entity>() {
                                                 public Entity apply(LevelAccessor levelAccessor, String uuid) {
                                                     if (levelAccessor instanceof ServerLevel serverLevel) {
@@ -353,9 +362,9 @@ public abstract class AbstractClientPlayerMixin {
                                             item_A.getOrCreateTag().putDouble("effect", entity.getPersistentData().getDouble("effect"));
                                             var44 = item_A.getOrCreateTag();
                                             if (entity instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)entity;
-                                                if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME.get())) {
-                                                    var10002 = (double)_livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME.get()).getDuration();
+                                                _livEnt = (LivingEntity) entity;
+                                                if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get())) {
+                                                    var10002 = (double) _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get()).getDuration();
                                                     break label375;
                                                 }
                                             }
@@ -363,13 +372,13 @@ public abstract class AbstractClientPlayerMixin {
                                             var10002 = 0.0;
                                         }
 
-                                        var44.putDouble("COOLDOWN_TICKS", (double)Math.round(Math.max(Math.max(var10002, entity.getPersistentData().getDouble("COOLDOWN_TICKS")) * 2.0, 50.0)));
+                                        var44.putDouble("COOLDOWN_TICKS", (double) Math.round(Math.max(Math.max(var10002, entity.getPersistentData().getDouble("COOLDOWN_TICKS")) * 2.0, 50.0)));
                                         if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo")))) {
                                             item_A.getOrCreateTag().putString("SHIKIGAMI_NAME", ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString());
                                             var44 = item_A.getOrCreateTag();
                                             if (entity instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)entity;
-                                                var10002 = (double)_livEnt.getMaxHealth();
+                                                _livEnt = (LivingEntity) entity;
+                                                var10002 = (double) _livEnt.getMaxHealth();
                                             } else {
                                                 var10002 = -1.0;
                                             }
@@ -381,7 +390,7 @@ public abstract class AbstractClientPlayerMixin {
                                             String var10001 = entity_b.getDisplayName().getString();
                                             item_A.setHoverName(Component.literal(var10001 + Component.translatable("jujutsu.message.cursed_technique").getString() + " (" + Component.translatable("jujutsu.overlay.cost").getString() + ": " + Math.round(item_A.getOrCreateTag().getDouble("COOLDOWN_TICKS")) + ")"));
                                             if (entity_a instanceof Player) {
-                                                _player = (Player)entity_a;
+                                                _player = (Player) entity_a;
                                                 ItemStack _setstack = item_A.copy();
                                                 _setstack.setCount(1);
                                                 ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
@@ -389,14 +398,14 @@ public abstract class AbstractClientPlayerMixin {
                                         }
                                     }
                                 } else if (entity_a instanceof ServerPlayer) {
-                                    _player = (ServerPlayer)entity_a;
+                                    _player = (ServerPlayer) entity_a;
                                     _adv = ((ServerPlayer) _player).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_copy_takako_uro"));
                                     _ap = ((ServerPlayer) _player).getAdvancements().getOrStartProgress(_adv);
                                     if (!_ap.isDone()) {
                                         var23 = _ap.getRemainingCriteria().iterator();
 
-                                        while(var23.hasNext()) {
-                                            criteria = (String)var23.next();
+                                        while (var23.hasNext()) {
+                                            criteria = (String) var23.next();
                                             ((ServerPlayer) _player).getAdvancements().award(_adv, criteria);
                                         }
                                     }
@@ -410,16 +419,17 @@ public abstract class AbstractClientPlayerMixin {
                     }
 
                     if (entity_a instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity_a;
+                        _livEnt = (LivingEntity) entity_a;
                         var42 = _livEnt.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var42 = ItemStack.EMPTY;
                     }
 
-                    label507: {
+                    label507:
+                    {
                         item_A = var42;
                         if (entity_a instanceof Player) {
-                            _player = (Player)entity_a;
+                            _player = (Player) entity_a;
                             if (_player.getCooldowns().isOnCooldown(item_A.getItem())) {
                                 break label507;
                             }
@@ -440,7 +450,7 @@ public abstract class AbstractClientPlayerMixin {
                             if (logic_start && item_A.getOrCreateTag().getDouble(STR1) == 0.0) {
                                 NUM1 = 1.0;
 
-                                for(index2 = 0; index2 < 800; ++index2) {
+                                for (index2 = 0; index2 < 800; ++index2) {
                                     if (item_A.getOrCreateTag().getString("DATA" + Math.round(NUM1)).equals("") || item_A.getOrCreateTag().getString("DATA" + Math.round(NUM1)).equals(STR1)) {
                                         item_A.getOrCreateTag().putString("DATA" + Math.round(NUM1), STR1);
                                         item_A.getOrCreateTag().putDouble(STR1, 1.0);
@@ -460,7 +470,7 @@ public abstract class AbstractClientPlayerMixin {
                     }
 
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         var42 = _livEnt.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var42 = ItemStack.EMPTY;
@@ -468,16 +478,17 @@ public abstract class AbstractClientPlayerMixin {
 
                     item_A = var42;
                     if (entity instanceof Player) {
-                        _player = (Player)entity;
+                        _player = (Player) entity;
                         if (_player.getCooldowns().isOnCooldown(item_A.getItem())) {
                             break label543;
                         }
                     }
 
                     if (item_A.getItem() == JujutsucraftModItems.MAHORAGA_WHEEL_HELMET.get() || item_A.getItem() == JujutsucraftModItems.MAHORAGA_BODY_HELMET.get()) {
-                        label542: {
+                        label542:
+                        {
                             if (entity instanceof Player) {
-                                if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 16.0 && ((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 16.0) {
+                                if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 16.0 && ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 16.0) {
                                     break label542;
                                 }
                             } else if (!(entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) || (entity instanceof IgrisEntity) || (entity instanceof Shadow1Entity)) {
@@ -488,7 +499,7 @@ public abstract class AbstractClientPlayerMixin {
                                 var44 = item_A.getOrCreateTag();
                                 CompoundTag var41 = entity_a.getPersistentData();
                                 if (var44.getDouble("skill" + Math.round(var41.getDouble("skill"))) >= 100.0 && !entity_a.level().isClientSide() && entity_a.getServer() != null) {
-                                    entity_a.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity_a.position(), entity_a.getRotationVector(), entity_a.level() instanceof ServerLevel ? (ServerLevel)entity_a.level() : null, 4, entity_a.getName().getString(), entity_a.getDisplayName(), entity_a.level().getServer(), entity_a), "kill @s");
+                                    entity_a.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity_a.position(), entity_a.getRotationVector(), entity_a.level() instanceof ServerLevel ? (ServerLevel) entity_a.level() : null, 4, entity_a.getName().getString(), entity_a.getDisplayName(), entity_a.level().getServer(), entity_a), "kill @s");
                                 }
                             }
                         }
@@ -513,7 +524,7 @@ public abstract class AbstractClientPlayerMixin {
                 if (!(entity_b instanceof Player)) {
                     NUM1 = 1.0;
 
-                    for(index1 = 0; index1 < 128; ++index1) {
+                    for (index1 = 0; index1 < 128; ++index1) {
                         STR1 = "pName" + Math.round(NUM1);
                         if (entity_b.getPersistentData().getString(STR1).equals("")) {
                             entity_b.getPersistentData().putString(STR1, entity_a.getDisplayName().getString());

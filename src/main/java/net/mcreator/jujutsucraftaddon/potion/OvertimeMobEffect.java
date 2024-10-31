@@ -1,4 +1,3 @@
-
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -11,28 +10,28 @@ import net.mcreator.jujutsucraftaddon.procedures.OvertimeEffectStartedappliedPro
 import net.mcreator.jujutsucraftaddon.procedures.OvertimeEffectExpiresProcedure;
 
 public class OvertimeMobEffect extends MobEffect {
-	public OvertimeMobEffect() {
-		super(MobEffectCategory.NEUTRAL, -16777216);
-	}
+    public OvertimeMobEffect() {
+        super(MobEffectCategory.NEUTRAL, -16777216);
+    }
 
-	@Override
-	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		OvertimeEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
+    @Override
+    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        OvertimeEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+    }
 
-	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		OvertimeOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
+    @Override
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        OvertimeOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+    }
 
-	@Override
-	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		OvertimeEffectExpiresProcedure.execute(entity.level(), entity);
-	}
+    @Override
+    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+        super.removeAttributeModifiers(entity, attributeMap, amplifier);
+        OvertimeEffectExpiresProcedure.execute(entity.level(), entity);
+    }
 
-	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
-		return true;
-	}
+    @Override
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return true;
+    }
 }

@@ -43,8 +43,9 @@ import java.util.List;
 
 @Mixin(value = MaximumMeteorProcedure.class, remap = false)
 public abstract class MaximumMeteorMixin {
-    public MaximumMeteorMixin(){
+    public MaximumMeteorMixin() {
     }
+
     /**
      * @author Sat
      * @reason Testing
@@ -97,7 +98,7 @@ public abstract class MaximumMeteorMixin {
                     entity.getPersistentData().putDouble("cnt3", 1.0);
                     entity.setDeltaMovement(new Vec3(entity.getDeltaMovement().x(), 3.0, entity.getDeltaMovement().z()));
                     if (world instanceof ServerLevel) {
-                        _level = (ServerLevel)world;
+                        _level = (ServerLevel) world;
                         _level.sendParticles(ParticleTypes.CLOUD, x, y, z, 20, 0.0, 0.0, 0.0, 1.0);
                     }
 
@@ -109,9 +110,9 @@ public abstract class MaximumMeteorMixin {
                     if (world instanceof Level) {
                         Level _level2 = (Level) world;
                         if (!_level2.isClientSide()) {
-                            _level2.playSound((Player)null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 5.0F, 1.0F);
+                            _level2.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 5.0F, 1.0F);
                         } else {
-                            _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 5.0F, 1.0F, false);
+                            _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 5.0F, 1.0F, false);
                         }
                     }
                 }
@@ -136,12 +137,12 @@ public abstract class MaximumMeteorMixin {
                     num2 = Math.min(8.0, entity.getPersistentData().getDouble("cnt1"));
                     dis = Math.min(1.5, entity.getPersistentData().getDouble("cnt1") / 15.0);
 
-                    for(index0 = 0; index0 < 12; ++index0) {
+                    for (index0 = 0; index0 < 12; ++index0) {
                         x_pos += x_power / 12.0;
                         y_pos += y_power / 12.0;
                         z_pos += z_power / 12.0;
 
-                        for(index1 = 0; index1 < 2; ++index1) {
+                        for (index1 = 0; index1 < 2; ++index1) {
                             logic_a = !logic_a;
                             if (logic_a) {
                                 xp2 = x_pos + Math.sin(num1) * num2;
@@ -154,24 +155,24 @@ public abstract class MaximumMeteorMixin {
                             }
 
                             if (world instanceof ServerLevel) {
-                                _level = (ServerLevel)world;
+                                _level = (ServerLevel) world;
                                 _level.sendParticles(ParticleTypes.FLAME, xp2, yp2, zp2, 3, dis, dis, dis, dis * 0.1);
                             }
 
                             if (world instanceof ServerLevel) {
-                                _level = (ServerLevel)world;
+                                _level = (ServerLevel) world;
                                 _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), xp2, yp2, zp2, 3, dis, dis, dis, dis * 0.1);
                             }
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.FLAME, x_pos, y_pos, z_pos, 2, dis, dis, dis, dis * 0.1);
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
-                            _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), x_pos, y_pos, z_pos, 2, dis, dis, dis, dis * 0.1);
+                            _level = (ServerLevel) world;
+                            _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), x_pos, y_pos, z_pos, 2, dis, dis, dis, dis * 0.1);
                         }
 
                         num1 += Math.toRadians(Math.random() * 10.0);
@@ -197,8 +198,8 @@ public abstract class MaximumMeteorMixin {
                 num2 = Math.min(8.0, entity.getPersistentData().getDouble("cnt2"));
                 dis = Math.min(1.5, entity.getPersistentData().getDouble("cnt2") / 8.0);
 
-                for(index0 = 0; index0 < 12; ++index0) {
-                    for(index1 = 0; index1 < 2; ++index1) {
+                for (index0 = 0; index0 < 12; ++index0) {
+                    for (index1 = 0; index1 < 2; ++index1) {
                         logic_a = !logic_a;
                         if (logic_a) {
                             xp2 = x_pos + Math.sin(num1) * num2;
@@ -211,13 +212,13 @@ public abstract class MaximumMeteorMixin {
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.FLAME, xp2, yp2, zp2, 3, dis, dis, dis, dis * 0.1);
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
-                            _level.sendParticles((SimpleParticleType)JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), xp2, yp2, zp2, 3, dis, dis, dis, dis * 0.1);
+                            _level = (ServerLevel) world;
+                            _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), xp2, yp2, zp2, 3, dis, dis, dis, dis * 0.1);
                         }
                     }
 
@@ -229,17 +230,18 @@ public abstract class MaximumMeteorMixin {
                 if (entity.getPersistentData().getDouble("cnt2") > 30.0) {
                     LivingEntity _livEnt;
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         _livEnt.swing(InteractionHand.MAIN_HAND, true);
                     }
 
                     int var10001;
-                    label178: {
+                    label178:
+                    {
                         x_pos = x;
                         y_pos = y + Math.random() * 0.1;
                         z_pos = z;
                         if (entity instanceof LivingEntity) {
-                            _livEnt = (LivingEntity)entity;
+                            _livEnt = (LivingEntity) entity;
                             if (_livEnt.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                 var10001 = _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                 break label178;
@@ -249,11 +251,11 @@ public abstract class MaximumMeteorMixin {
                         var10001 = 0;
                     }
 
-                    HP = (double)(400 + var10001 * 40);
+                    HP = (double) (400 + var10001 * 40);
                     if (world instanceof ServerLevel) {
-                        _level = (ServerLevel)world;
+                        _level = (ServerLevel) world;
                         Commands var10000 = _level.getServer().getCommands();
-                        CommandSourceStack var68 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity)null)).withSuppressedOutput();
+                        CommandSourceStack var68 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
                         long var10002 = Math.round(HP);
                         var10000.performPrefixedCommand(var68, "summon jujutsucraft:meteor ~ ~ ~ {Health:" + var10002 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                     }
@@ -267,8 +269,8 @@ public abstract class MaximumMeteorMixin {
                     })).toList();
                     var75 = _entfound.iterator();
 
-                    while(var75.hasNext()) {
-                        entityiterator = (Entity)var75.next();
+                    while (var75.hasNext()) {
+                        entityiterator = (Entity) var75.next();
                         if (entityiterator instanceof MeteorEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                             SetRangedAmmoProcedure.execute(entity, entityiterator);
                             entity.startRiding(entityiterator);
@@ -277,11 +279,11 @@ public abstract class MaximumMeteorMixin {
                     }
 
                     if (world instanceof Level) {
-                        Level _level2 = (Level)world;
+                        Level _level2 = (Level) world;
                         if (!_level2.isClientSide()) {
-                            _level2.playSound((Player)null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 15.0F, 0.5F);
+                            _level2.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 15.0F, 0.5F);
                         } else {
-                            _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 15.0F, 0.5F, false);
+                            _level2.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:flame_explode")), SoundSource.NEUTRAL, 15.0F, 0.5F, false);
                         }
                     }
 
@@ -302,14 +304,14 @@ public abstract class MaximumMeteorMixin {
                 })).toList();
                 var75 = _entfound.iterator();
 
-                while(true) {
+                while (true) {
                     do {
                         if (!var75.hasNext()) {
                             return;
                         }
 
-                        entityiterator = (Entity)var75.next();
-                    } while(!(entityiterator instanceof FallingBlockEntity) && !entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:no_living"))));
+                        entityiterator = (Entity) var75.next();
+                    } while (!(entityiterator instanceof FallingBlockEntity) && !entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:no_living"))));
 
                     x_knockback = entityiterator.getX() - entity.getX();
                     y_knockback = entityiterator.getY() - entity.getY();

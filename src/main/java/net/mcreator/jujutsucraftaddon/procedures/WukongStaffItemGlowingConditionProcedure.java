@@ -3,7 +3,7 @@ package net.mcreator.jujutsucraftaddon.procedures;
 import net.minecraft.world.item.ItemStack;
 
 public class WukongStaffItemGlowingConditionProcedure {
-	public static boolean execute(ItemStack itemstack) {
-		return itemstack.getOrCreateTag().getBoolean("Mode");
-	}
+    public static boolean execute(ItemStack itemstack) {
+        return itemstack.getOrCreateTag().getBoolean("Mode");
+    }
 }

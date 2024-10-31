@@ -18,31 +18,31 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class MeditationOnKeyPressedProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
-			return;
-		if (entity.getPersistentData().getBoolean("Meditation") == false) {
-			entity.getPersistentData().putBoolean("Meditation", true);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:meditationsong")), SoundSource.NEUTRAL, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:meditationsong")), SoundSource.NEUTRAL, 1, 1, false);
-				}
-			}
-			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal("You Feel Your Body More Heavier, But The Connection With Your Soul Is Stronger"), false);
-			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, -1, 255, false, false));
-		} else if (entity.getPersistentData().getBoolean("Meditation") == true) {
-			entity.getPersistentData().putBoolean("Meditation", false);
-			{
-				Entity _ent = entity;
-				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "stopsound @s");
-				}
-			}
-		}
-	}
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (entity == null)
+            return;
+        if (entity.getPersistentData().getBoolean("Meditation") == false) {
+            entity.getPersistentData().putBoolean("Meditation", true);
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:meditationsong")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraftaddon:meditationsong")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (entity instanceof Player _player && !_player.level().isClientSide())
+                _player.displayClientMessage(Component.literal("You Feel Your Body More Heavier, But The Connection With Your Soul Is Stronger"), false);
+            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                _entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, -1, 255, false, false));
+        } else if (entity.getPersistentData().getBoolean("Meditation") == true) {
+            entity.getPersistentData().putBoolean("Meditation", false);
+            {
+                Entity _ent = entity;
+                if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                    _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+                            _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "stopsound @s");
+                }
+            }
+        }
+    }
 }

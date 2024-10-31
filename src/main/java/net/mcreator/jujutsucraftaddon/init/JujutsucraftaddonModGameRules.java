@@ -83,4 +83,5 @@ public class JujutsucraftaddonModGameRules {
 	public static final GameRules.Key<GameRules.IntegerValue> JJKUR_SYSTEM_DIFFICULTY = GameRules.register("jjkurSystemDifficulty", GameRules.Category.MISC, GameRules.IntegerValue.create(1));
 	public static final GameRules.Key<GameRules.BooleanValue> JJKUR_REGENERATE_SHIKIGAMI = GameRules.register("jjkurRegenerateShikigami", GameRules.Category.MISC, GameRules.BooleanValue.create(true));
 	public static final GameRules.Key<GameRules.IntegerValue> JJKU_GOJO_TP = GameRules.register("jjkuGojoTP", GameRules.Category.MISC, GameRules.IntegerValue.create(20));
+	public static final GameRules.Key<GameRules.IntegerValue> JJKU_BF_MASTERY_CAP = GameRules.register("jjkuBFMasteryCap", GameRules.Category.MISC, GameRules.IntegerValue.create(50));
 }

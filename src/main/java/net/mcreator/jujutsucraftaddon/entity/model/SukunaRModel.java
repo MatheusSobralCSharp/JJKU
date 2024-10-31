@@ -9,39 +9,39 @@ import net.minecraft.world.entity.LivingEntity;
 import software.bernie.geckolib.model.GeoModel;
 
 public class SukunaRModel extends GeoModel<SukunaREntity> {
-	@Override
-	public ResourceLocation getAnimationResource(SukunaREntity entity) {
-		return new ResourceLocation("jujutsucraftaddon", "animations/human.animation.json");
-	}
+    @Override
+    public ResourceLocation getAnimationResource(SukunaREntity entity) {
+        return new ResourceLocation("jujutsucraftaddon", "animations/human.animation.json");
+    }
 
-	@Override
-	public ResourceLocation getModelResource(SukunaREntity entity) {
-		return new ResourceLocation("jujutsucraftaddon", "geo/human.geo.json");
-	}
+    @Override
+    public ResourceLocation getModelResource(SukunaREntity entity) {
+        return new ResourceLocation("jujutsucraftaddon", "geo/human.geo.json");
+    }
 
-	@Override
-	public ResourceLocation getTextureResource(SukunaREntity entity) {
-		LivingEntity ownerEntity = entity.getOwner();
+    @Override
+    public ResourceLocation getTextureResource(SukunaREntity entity) {
+        LivingEntity ownerEntity = entity.getOwner();
 
-		if (ownerEntity != null) {
-			EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-			EntityRenderer<? super LivingEntity> livingRenderer = entityRenderDispatcher.getRenderer(ownerEntity);
-			ResourceLocation ownerTexture = livingRenderer.getTextureLocation(ownerEntity);
+        if (ownerEntity != null) {
+            EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+            EntityRenderer<? super LivingEntity> livingRenderer = entityRenderDispatcher.getRenderer(ownerEntity);
+            ResourceLocation ownerTexture = livingRenderer.getTextureLocation(ownerEntity);
 
-			if (entity instanceof SukunaREntity) {
-				entity.getEntityData().set(SukunaREntity.DATA_Testing, ownerTexture.toString());
-			}
+            if (entity instanceof SukunaREntity) {
+                entity.getEntityData().set(SukunaREntity.DATA_Testing, ownerTexture.toString());
+            }
 
-			return ownerTexture;
-		}
+            return ownerTexture;
+        }
 
-		String dataTestingTexture = entity.getEntityData().get(SukunaREntity.DATA_Testing).toLowerCase();
+        String dataTestingTexture = entity.getEntityData().get(SukunaREntity.DATA_Testing).toLowerCase();
 
-		if (!dataTestingTexture.isEmpty()) {
-			return new ResourceLocation(dataTestingTexture);
-		}
+        if (!dataTestingTexture.isEmpty()) {
+            return new ResourceLocation(dataTestingTexture);
+        }
 
-		return new ResourceLocation("jujutsucraftaddon", "textures/entities/" + entity.getTexture() + ".png");
-	}
+        return new ResourceLocation("jujutsucraftaddon", "textures/entities/" + entity.getTexture() + ".png");
+    }
 
 }

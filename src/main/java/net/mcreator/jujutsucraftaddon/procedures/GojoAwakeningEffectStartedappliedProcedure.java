@@ -9,14 +9,14 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 public class GojoAwakeningEffectStartedappliedProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
-			return;
-		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, (int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) + 3),
-					false, false));
-		if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 27) {
-			SummonShikigamiProcedure.execute(world, x, y, z, entity);
-		}
-	}
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (entity == null)
+            return;
+        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+            _entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, (int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.DAMAGE_BOOST) ? _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() : 0) + 3),
+                    false, false));
+        if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 27) {
+            SummonShikigamiProcedure.execute(world, x, y, z, entity);
+        }
+    }
 }

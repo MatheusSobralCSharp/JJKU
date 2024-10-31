@@ -19,28 +19,28 @@ import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import io.netty.buffer.Unpooled;
 
 public class KoganePointsRightclickedProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
-			return;
-		if (!entity.isShiftKeyDown()) {
-			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(
-						Component.literal(("Your Culling Games Points: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Points)), false);
-		} else if (entity.isShiftKeyDown()) {
-			if (entity instanceof ServerPlayer _ent) {
-				BlockPos _bpos = BlockPos.containing(x, y, z);
-				NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
-					@Override
-					public Component getDisplayName() {
-						return Component.literal("KoganeUI");
-					}
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (entity == null)
+            return;
+        if (!entity.isShiftKeyDown()) {
+            if (entity instanceof Player _player && !_player.level().isClientSide())
+                _player.displayClientMessage(
+                        Component.literal(("Your Culling Games Points: " + (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Points)), false);
+        } else if (entity.isShiftKeyDown()) {
+            if (entity instanceof ServerPlayer _ent) {
+                BlockPos _bpos = BlockPos.containing(x, y, z);
+                NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
+                    @Override
+                    public Component getDisplayName() {
+                        return Component.literal("KoganeUI");
+                    }
 
-					@Override
-					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-						return new KoganeUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
-					}
-				}, _bpos);
-			}
-		}
-	}
+                    @Override
+                    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                        return new KoganeUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+                    }
+                }, _bpos);
+            }
+        }
+    }
 }

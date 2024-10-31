@@ -41,6 +41,7 @@ public abstract class AIBlueMixin {
     public AIBlueMixin() {
 
     }
+
     /**
      * @author Sat
      * @reason None

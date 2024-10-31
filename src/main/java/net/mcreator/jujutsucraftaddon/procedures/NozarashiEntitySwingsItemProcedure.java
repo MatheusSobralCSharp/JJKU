@@ -21,58 +21,58 @@ import java.util.List;
 import java.util.Comparator;
 
 public class NozarashiEntitySwingsItemProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
-		if (entity == null)
-			return;
-		double entity_size = 0;
-		double weapon_size = 0;
-		double deg = 0;
-		double r = 0;
-		double yoff = 0;
-		double curve = 0;
-		{
-			final Vec3 _center = new Vec3(x, y, z);
-			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(15 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
-			for (Entity entityiterator : _entfound) {
-				if (!(entityiterator == entity)) {
-					if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo_no_move")))) {
-						if (!entityiterator.level().isClientSide())
-							entityiterator.discard();
-						if (world instanceof ServerLevel _level)
-							_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.HAITI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
-					} else if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo")))) {
-						if (!entityiterator.level().isClientSide())
-							entityiterator.discard();
-						if (world instanceof ServerLevel _level)
-							_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KAI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
-					}
-				}
-			}
-		}
-		if (itemstack.getItem() == JujutsucraftaddonModItems.NOZARASHI.get()) {
-			if (itemstack.getOrCreateTag().getDouble("Range") < 3) {
-				itemstack.getOrCreateTag().putDouble("Reach", 1);
-				itemstack.getOrCreateTag().putDouble("Knockback", 1);
-			}
-			itemstack.getOrCreateTag().putDouble("CursePower", (Mth.nextInt(RandomSource.create(), -5, 5)));
-		}
-		deg = entity.getYRot() - 90;
-		r = 1;
-		curve = Mth.nextDouble(RandomSource.create(), -10, 10);
-		for (int index0 = 0; index0 < 5; index0++) {
-			for (int index1 = 0; index1 < 11; index1++) {
-				if (r == 2 || r == 3) {
-					yoff = Math.sin(Math.toRadians(deg)) * curve;
-					world.addParticle(ParticleTypes.SWEEP_ATTACK, (x - r * Math.sin(Math.toRadians(deg))), (y + 1 + yoff), (z + r * Math.cos(Math.toRadians(deg))), ((-0.1) * Math.sin(Math.toRadians(deg))), 0, (0.1 * Math.cos(Math.toRadians(deg))));
-				}
-				deg = deg + 18;
-			}
-			if (r == 2 || r == 4) {
-				deg = entity.getYRot() - 81;
-			} else {
-				deg = entity.getYRot() - 90;
-			}
-			r = r + 1;
-		}
-	}
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
+        if (entity == null)
+            return;
+        double entity_size = 0;
+        double weapon_size = 0;
+        double deg = 0;
+        double r = 0;
+        double yoff = 0;
+        double curve = 0;
+        {
+            final Vec3 _center = new Vec3(x, y, z);
+            List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(15 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+            for (Entity entityiterator : _entfound) {
+                if (!(entityiterator == entity)) {
+                    if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo_no_move")))) {
+                        if (!entityiterator.level().isClientSide())
+                            entityiterator.discard();
+                        if (world instanceof ServerLevel _level)
+                            _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.HAITI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
+                    } else if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo")))) {
+                        if (!entityiterator.level().isClientSide())
+                            entityiterator.discard();
+                        if (world instanceof ServerLevel _level)
+                            _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KAI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
+                    }
+                }
+            }
+        }
+        if (itemstack.getItem() == JujutsucraftaddonModItems.NOZARASHI.get()) {
+            if (itemstack.getOrCreateTag().getDouble("Range") < 3) {
+                itemstack.getOrCreateTag().putDouble("Reach", 1);
+                itemstack.getOrCreateTag().putDouble("Knockback", 1);
+            }
+            itemstack.getOrCreateTag().putDouble("CursePower", (Mth.nextInt(RandomSource.create(), -5, 5)));
+        }
+        deg = entity.getYRot() - 90;
+        r = 1;
+        curve = Mth.nextDouble(RandomSource.create(), -10, 10);
+        for (int index0 = 0; index0 < 5; index0++) {
+            for (int index1 = 0; index1 < 11; index1++) {
+                if (r == 2 || r == 3) {
+                    yoff = Math.sin(Math.toRadians(deg)) * curve;
+                    world.addParticle(ParticleTypes.SWEEP_ATTACK, (x - r * Math.sin(Math.toRadians(deg))), (y + 1 + yoff), (z + r * Math.cos(Math.toRadians(deg))), ((-0.1) * Math.sin(Math.toRadians(deg))), 0, (0.1 * Math.cos(Math.toRadians(deg))));
+                }
+                deg = deg + 18;
+            }
+            if (r == 2 || r == 4) {
+                deg = entity.getYRot() - 81;
+            } else {
+                deg = entity.getYRot() - 90;
+            }
+            r = r + 1;
+        }
+    }
 }

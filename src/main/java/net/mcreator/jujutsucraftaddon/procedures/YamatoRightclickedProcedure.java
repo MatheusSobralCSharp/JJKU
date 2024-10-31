@@ -9,22 +9,22 @@ import net.minecraft.world.InteractionHand;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModItems;
 
 public class YamatoRightclickedProcedure {
-	public static void execute(Entity entity) {
-		if (entity == null)
-			return;
-		if (entity instanceof LivingEntity _entity) {
-			ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.YAMATO_2.get()).copy();
-			_setstack.setCount(1);
-			_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
-			if (_entity instanceof Player _player)
-				_player.getInventory().setChanged();
-		}
-		if (entity instanceof LivingEntity _entity) {
-			ItemStack _setstack = ItemStack.EMPTY.copy();
-			_setstack.setCount(1);
-			_entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
-			if (_entity instanceof Player _player)
-				_player.getInventory().setChanged();
-		}
-	}
+    public static void execute(Entity entity) {
+        if (entity == null)
+            return;
+        if (entity instanceof LivingEntity _entity) {
+            ItemStack _setstack = new ItemStack(JujutsucraftaddonModItems.YAMATO_2.get()).copy();
+            _setstack.setCount(1);
+            _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+            if (_entity instanceof Player _player)
+                _player.getInventory().setChanged();
+        }
+        if (entity instanceof LivingEntity _entity) {
+            ItemStack _setstack = ItemStack.EMPTY.copy();
+            _setstack.setCount(1);
+            _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
+            if (_entity instanceof Player _player)
+                _player.getInventory().setChanged();
+        }
+    }
 }

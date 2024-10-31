@@ -1,0 +1,12 @@
+{
+  "_fv": 66,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "JJKU Black Flash Mastery CAP",
+    "description": "Changes Mastery Black Flash Cap ( default = 50 )",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 50
+  }
+}

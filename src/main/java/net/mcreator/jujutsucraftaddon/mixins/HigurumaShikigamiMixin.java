@@ -54,15 +54,15 @@ public abstract class HigurumaShikigamiMixin {
                 }).apply(world, entity.getPersistentData().getString("OWNER_UUID"));
                 ServerLevel _level;
                 if (entity_a instanceof LivingEntity) {
-                    LivingEntity _livEnt2 = (LivingEntity)entity_a;
+                    LivingEntity _livEnt2 = (LivingEntity) entity_a;
                     if (_livEnt2.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                         if (entity instanceof JudgemanEntity && entity_a.getPersistentData().getDouble("skill") == 2719.0 && entity_a.getPersistentData().getDouble("cnt3") >= 20.0 && entity_a.getPersistentData().getDouble("cnt1") > 0.0) {
                             if (entity instanceof JudgemanEntity) {
-                                ((JudgemanEntity)entity).setAnimation("empty");
+                                ((JudgemanEntity) entity).setAnimation("empty");
                             }
 
                             if (entity instanceof JudgemanEntity) {
-                                ((JudgemanEntity)entity).setAnimation("judgement");
+                                ((JudgemanEntity) entity).setAnimation("judgement");
                             }
 
                             num1 = 0.0;
@@ -70,7 +70,7 @@ public abstract class HigurumaShikigamiMixin {
                             y_pos = entity.getY();
                             z_pos = entity.getZ();
                             if (world instanceof ServerLevel) {
-                                _level = (ServerLevel)world;
+                                _level = (ServerLevel) world;
                                 _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
                                 return;
                             }
@@ -82,20 +82,20 @@ public abstract class HigurumaShikigamiMixin {
 
                 if (entity instanceof TakadaEntity) {
                     if (world instanceof ServerLevel) {
-                        _level = (ServerLevel)world;
-                        _level.sendParticles(ParticleTypes.END_ROD, x, y + (double)entity.getBbHeight() * 0.5, z, 40, 0.2, 0.5, 0.2, 0.0);
+                        _level = (ServerLevel) world;
+                        _level.sendParticles(ParticleTypes.END_ROD, x, y + (double) entity.getBbHeight() * 0.5, z, 40, 0.2, 0.5, 0.2, 0.0);
                     }
                 } else if (entity instanceof JudgemanEntity && world instanceof ServerLevel) {
-                    _level = (ServerLevel)world;
-                    _level.sendParticles(ParticleTypes.SQUID_INK, x, y + (double)entity.getBbHeight() * 0.5, z, 40, 0.2, 0.5, 0.2, 0.0);
+                    _level = (ServerLevel) world;
+                    _level.sendParticles(ParticleTypes.SQUID_INK, x, y + (double) entity.getBbHeight() * 0.5, z, 40, 0.2, 0.5, 0.2, 0.0);
                 }
 
                 if (!entity.level().isClientSide()) {
-                    if (entity.getPersistentData().getBoolean("ShikigamiLevel") == false){
+                    if (entity.getPersistentData().getBoolean("ShikigamiLevel") == false) {
                         entity.discard();
                     } else {
                         if (entity instanceof JudgemanEntity) {
-                            ((JudgemanEntity)entity).setAnimation("judgement");
+                            ((JudgemanEntity) entity).setAnimation("judgement");
                             num1 = 0.0;
                             x_pos = entity.getX();
                             y_pos = entity.getY();
@@ -108,11 +108,11 @@ public abstract class HigurumaShikigamiMixin {
                     }
                 }
             } else if (!entity.level().isClientSide()) {
-                if (entity.getPersistentData().getBoolean("ShikigamiLevel") == false){
+                if (entity.getPersistentData().getBoolean("ShikigamiLevel") == false) {
                     entity.discard();
                 } else {
                     if (entity instanceof JudgemanEntity) {
-                        ((JudgemanEntity)entity).setAnimation("judgement");
+                        ((JudgemanEntity) entity).setAnimation("judgement");
                         num1 = 0.0;
                         x_pos = entity.getX();
                         y_pos = entity.getY();

@@ -18,6 +18,7 @@ public abstract class DomainFinishMixin {
     public DomainFinishMixin() {
 
     }
+
     /**
      * @author Sat
      * @reason None

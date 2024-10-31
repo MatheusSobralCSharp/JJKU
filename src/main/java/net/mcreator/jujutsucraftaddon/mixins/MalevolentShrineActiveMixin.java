@@ -26,7 +26,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = MalevolentShrineActiveProcedure.class, remap = false)
 public abstract class MalevolentShrineActiveMixin {
-    public MalevolentShrineActiveMixin(){}
+    public MalevolentShrineActiveMixin() {
+    }
+
     /**
      * @author Satushi
      * @reason Changing Shrine
@@ -52,7 +54,8 @@ public abstract class MalevolentShrineActiveMixin {
             double old_cooldown;
             double dust_amount;
             LivingEntity _livEnt;
-            label158: {
+            label158:
+            {
                 STR1 = "";
                 boolean logic_a = false;
                 boolean failed = false;
@@ -74,9 +77,9 @@ public abstract class MalevolentShrineActiveMixin {
                 double dust_amount_old = 0.0;
                 var10000 = JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius;
                 if (entity instanceof LivingEntity) {
-                    _livEnt = (LivingEntity)entity;
+                    _livEnt = (LivingEntity) entity;
                     if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                        var10001 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                        var10001 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                         break label158;
                     }
                 }
@@ -84,16 +87,17 @@ public abstract class MalevolentShrineActiveMixin {
                 var10001 = 0;
             }
 
-            range = var10000 * (double)(var10001 > 0 ? 18 : 2);
+            range = var10000 * (double) (var10001 > 0 ? 18 : 2);
             old_skill = entity.getPersistentData().getDouble("skill");
             old_cooldown = entity.getPersistentData().getDouble("COOLDOWN_TICKS");
             entity.getPersistentData().putDouble("COOLDOWN_TICKS", 50.0);
             entity.getPersistentData().putDouble("y_knockback", -0.1);
 
-            for(int index0 = 0; index0 < 4; ++index0) {
+            for (int index0 = 0; index0 < 4; ++index0) {
                 int var10002;
                 CompoundTag var39;
-                label149: {
+                label149:
+                {
                     num1 = count_A % 2.0 == 0.0 ? 1.0 : -1.0;
                     num2 = count_A % 4.0 <= 1.0 ? 1.0 : -1.0;
                     x_pos = entity.getPersistentData().getDouble("x_pos_doma") + range * 0.25 * num1;
@@ -101,9 +105,9 @@ public abstract class MalevolentShrineActiveMixin {
                     z_pos = entity.getPersistentData().getDouble("z_pos_doma") + range * 0.25 * num2;
                     var39 = entity.getPersistentData();
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
-                        if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                            var10002 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
+                        _livEnt = (LivingEntity) entity;
+                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                            var10002 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
                             break label149;
                         }
 
@@ -113,7 +117,7 @@ public abstract class MalevolentShrineActiveMixin {
                     var10002 = 0;
                 }
 
-                var39.putDouble("skill", (double)(var10002 % 2 == 1 ? 105 : 106));
+                var39.putDouble("skill", (double) (var10002 % 2 == 1 ? 105 : 106));
                 entity.getPersistentData().putDouble("Damage", 10.5);
                 entity.getPersistentData().putDouble("Range", range * 0.5);
                 entity.getPersistentData().putDouble("effect", 1.0);
@@ -127,14 +131,15 @@ public abstract class MalevolentShrineActiveMixin {
             }
 
             int var40;
-            label141: {
+            label141:
+            {
                 entity.getPersistentData().putDouble("y_knockback", 0.0);
                 entity.getPersistentData().putDouble("skill", old_skill);
                 entity.getPersistentData().putDouble("COOLDOWN_TICKS", old_cooldown);
                 if (entity instanceof LivingEntity) {
-                    _livEnt = (LivingEntity)entity;
-                    if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                        var40 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                    _livEnt = (LivingEntity) entity;
+                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                        var40 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                         break label141;
                     }
                 }
@@ -154,7 +159,7 @@ public abstract class MalevolentShrineActiveMixin {
 
                 ServerLevel _level;
                 int index3;
-                for(index3 = 0; index3 < 512; ++index3) {
+                for (index3 = 0; index3 < 512; ++index3) {
                     count_A = Math.toRadians(Math.random() * 360.0);
                     dis = range * 0.5 * (Math.random() * 2.0 - 1.0);
                     x_pos = x_center + Math.sin(count_A) * dis;
@@ -163,7 +168,7 @@ public abstract class MalevolentShrineActiveMixin {
                     if (!world.isEmptyBlock(BlockPos.containing(x_pos, y_pos, z_pos))) {
                         entity.getPersistentData().putDouble("dust_amount", Math.min(entity.getPersistentData().getDouble("dust_amount") + 1.0, 200.0));
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.EXPLOSION, x_pos, y_pos, z_pos, 2, 1.5, 1.5, 1.5, 0.0);
                         }
 
@@ -173,18 +178,18 @@ public abstract class MalevolentShrineActiveMixin {
                                 if (entity instanceof ServerPlayer _plr25 && _plr25.level() instanceof ServerLevel
                                         && _plr25.getAdvancements().getOrStartProgress(_plr25.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone() && entity instanceof ServerPlayer _plr26
                                         && _plr26.level() instanceof ServerLevel && _plr26.getAdvancements().getOrStartProgress(_plr26.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained"))).isDone()) {
-                                    _level = (ServerLevel)world;
+                                    _level = (ServerLevel) world;
                                     _level.sendParticles((SimpleParticleType) JujutsucraftaddonModParticleTypes.KAI.get(), x_pos, y_pos, z_pos, 2, 1.5, 1.5, 1.5, 0.0);
                                     _level.sendParticles((SimpleParticleType) JujutsucraftaddonModParticleTypes.HAITI.get(), x_pos, y_pos, z_pos, 2, 1.5, 1.5, 1.5, 0.0);
                                 }
                             }
                         } else if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_SLASH.get(), x_pos, y_pos, z_pos, 2, 1.5, 1.5, 1.5, 0.0);
                         }
 
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.CLOUD, x_pos, y_pos, z_pos, 2, 1.5, 1.5, 1.5, 0.5);
                         }
 
@@ -201,13 +206,14 @@ public abstract class MalevolentShrineActiveMixin {
                     ++num1;
                 }
 
-                dust_amount = (double)Math.round(entity.getPersistentData().getDouble("dust_amount") / 200.0 * 10.0);
+                dust_amount = (double) Math.round(entity.getPersistentData().getDouble("dust_amount") / 200.0 * 10.0);
                 if (entity instanceof Player) {
-                    label117: {
+                    label117:
+                    {
                         if (entity instanceof LivingEntity) {
-                            _livEnt = (LivingEntity)entity;
-                            if (_livEnt.hasEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                var40 = _livEnt.getEffect((MobEffect)JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
+                            _livEnt = (LivingEntity) entity;
+                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                var40 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getDuration();
                                 break label117;
                             }
                         }
@@ -218,20 +224,20 @@ public abstract class MalevolentShrineActiveMixin {
                     if (var40 % 10 == 0) {
                         String _setval = "DUST";
                         String final_setval = _setval;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                             capability.OVERLAY1 = final_setval;
                             capability.syncPlayerVariables(entity);
                         });
                         _setval = "";
                         String final_setval1 = _setval;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                             capability.OVERLAY2 = final_setval1;
                             capability.syncPlayerVariables(entity);
                         });
                         STR1 = "§l§4";
                         num1 = 0.0;
 
-                        for(int index2 = 0; index2 < 10; ++index2) {
+                        for (int index2 = 0; index2 < 10; ++index2) {
                             if (num1 == dust_amount) {
                                 STR1 = STR1 + "§r§7";
                             }
@@ -241,7 +247,7 @@ public abstract class MalevolentShrineActiveMixin {
                         }
 
                         String finalSTR = STR1;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).ifPresent((capability) -> {
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
                             capability.OVERLAY2 = finalSTR;
                             capability.syncPlayerVariables(entity);
                         });
@@ -252,16 +258,16 @@ public abstract class MalevolentShrineActiveMixin {
                 y_pos = entity.getPersistentData().getDouble("y_pos_doma");
                 z_pos = entity.getPersistentData().getDouble("z_pos_doma");
                 if (entity.getPersistentData().getDouble("skill") == 107.0) {
-                    for(index3 = 0; index3 < (int)(dust_amount + 1.0); ++index3) {
+                    for (index3 = 0; index3 < (int) (dust_amount + 1.0); ++index3) {
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.WHITE_ASH, x_pos, y_pos, z_pos, 50, range / 6.0, range / 6.0, range / 6.0, 0.5);
                         }
                     }
                 } else {
-                    for(index3 = 0; index3 < (int)(dust_amount + 1.0); ++index3) {
+                    for (index3 = 0; index3 < (int) (dust_amount + 1.0); ++index3) {
                         if (world instanceof ServerLevel) {
-                            _level = (ServerLevel)world;
+                            _level = (ServerLevel) world;
                             _level.sendParticles(ParticleTypes.ASH, x_pos, y_pos, z_pos, 50, range / 6.0, range / 6.0, range / 6.0, 0.5);
                         }
                     }

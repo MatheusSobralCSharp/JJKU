@@ -34,6 +34,7 @@ public abstract class KugisakiNailMixin {
     public KugisakiNailMixin() {
 
     }
+
     /**
      * @author Sat
      * @reason None
@@ -62,13 +63,13 @@ public abstract class KugisakiNailMixin {
             boolean attack = false;
             LivingEntity _livEnt;
             if (entity instanceof LivingEntity) {
-                _livEnt = (LivingEntity)entity;
+                _livEnt = (LivingEntity) entity;
                 _livEnt.swing(InteractionHand.MAIN_HAND, true);
             }
 
             ItemStack var10000;
             if (entity instanceof LivingEntity) {
-                _livEnt = (LivingEntity)entity;
+                _livEnt = (LivingEntity) entity;
                 var10000 = _livEnt.getMainHandItem();
             } else {
                 var10000 = ItemStack.EMPTY;
@@ -77,11 +78,11 @@ public abstract class KugisakiNailMixin {
             Level projectileLevel;
             if (var10000.getItem() == JujutsucraftModItems.HAMMER.get()) {
                 if (world instanceof Level) {
-                    projectileLevel = (Level)world;
+                    projectileLevel = (Level) world;
                     if (!projectileLevel.isClientSide()) {
-                        projectileLevel.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F);
+                        projectileLevel.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F);
                     } else {
-                        projectileLevel.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F, false);
+                        projectileLevel.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F, false);
                     }
                 }
             }
@@ -98,7 +99,7 @@ public abstract class KugisakiNailMixin {
 
             LivingEntity var43;
             if (entity instanceof Mob) {
-                Mob _mobEnt = (Mob)entity;
+                Mob _mobEnt = (Mob) entity;
                 var43 = _mobEnt.getTarget();
             } else {
                 var43 = null;
@@ -107,7 +108,7 @@ public abstract class KugisakiNailMixin {
             if (var43 instanceof LivingEntity) {
                 Mob _mobEnt;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var43 = _mobEnt.getTarget();
                 } else {
                     var43 = null;
@@ -117,7 +118,7 @@ public abstract class KugisakiNailMixin {
                 ClipContext var10001;
                 LivingEntity var10003;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10003 = _mobEnt.getTarget();
                 } else {
                     var10003 = null;
@@ -126,7 +127,7 @@ public abstract class KugisakiNailMixin {
                 Vec3 var51 = var10003.getEyePosition(1.0F);
                 LivingEntity var10004;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10004 = _mobEnt.getTarget();
                 } else {
                     var10004 = null;
@@ -135,7 +136,7 @@ public abstract class KugisakiNailMixin {
                 Vec3 var53 = var10004.getEyePosition(1.0F);
                 LivingEntity var10005;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10005 = _mobEnt.getTarget();
                 } else {
                     var10005 = null;
@@ -146,17 +147,17 @@ public abstract class KugisakiNailMixin {
                 ClipContext.Fluid var10006 = ClipContext.Fluid.NONE;
                 LivingEntity var10007;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10007 = _mobEnt.getTarget();
                 } else {
                     var10007 = null;
                 }
 
                 var10001 = new ClipContext(var51, var53, var54, var10006, var10007);
-                double var49 = (double)var48.clip(var10001).getBlockPos().getX();
+                double var49 = (double) var48.clip(var10001).getBlockPos().getX();
                 LivingEntity var44;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var44 = _mobEnt.getTarget();
                 } else {
                     var44 = null;
@@ -165,7 +166,7 @@ public abstract class KugisakiNailMixin {
                 Level var45 = var44.level();
                 ClipContext var10002;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10004 = _mobEnt.getTarget();
                 } else {
                     var10004 = null;
@@ -173,7 +174,7 @@ public abstract class KugisakiNailMixin {
 
                 var53 = var10004.getEyePosition(1.0F);
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10005 = _mobEnt.getTarget();
                 } else {
                     var10005 = null;
@@ -182,7 +183,7 @@ public abstract class KugisakiNailMixin {
                 Vec3 var56 = var10005.getEyePosition(1.0F);
                 LivingEntity var55;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var55 = _mobEnt.getTarget();
                 } else {
                     var55 = null;
@@ -193,17 +194,17 @@ public abstract class KugisakiNailMixin {
                 ClipContext.Fluid var58 = ClipContext.Fluid.NONE;
                 LivingEntity var10008;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10008 = _mobEnt.getTarget();
                 } else {
                     var10008 = null;
                 }
 
                 var10002 = new ClipContext(var53, var56, var57, var58, var10008);
-                double var47 = (double)var45.clip(var10002).getBlockPos().getY();
+                double var47 = (double) var45.clip(var10002).getBlockPos().getY();
                 LivingEntity var46;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var46 = _mobEnt.getTarget();
                 } else {
                     var46 = null;
@@ -212,7 +213,7 @@ public abstract class KugisakiNailMixin {
                 Level var50 = var46.level();
                 ClipContext var52;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10005 = _mobEnt.getTarget();
                 } else {
                     var10005 = null;
@@ -220,7 +221,7 @@ public abstract class KugisakiNailMixin {
 
                 var56 = var10005.getEyePosition(1.0F);
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var55 = _mobEnt.getTarget();
                 } else {
                     var55 = null;
@@ -228,7 +229,7 @@ public abstract class KugisakiNailMixin {
 
                 Vec3 var59 = var55.getEyePosition(1.0F);
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10007 = _mobEnt.getTarget();
                 } else {
                     var10007 = null;
@@ -239,14 +240,14 @@ public abstract class KugisakiNailMixin {
                 ClipContext.Fluid var60 = ClipContext.Fluid.NONE;
                 LivingEntity var10009;
                 if (entity instanceof Mob) {
-                    _mobEnt = (Mob)entity;
+                    _mobEnt = (Mob) entity;
                     var10009 = _mobEnt.getTarget();
                 } else {
                     var10009 = null;
                 }
 
                 var52 = new ClipContext(var56, var59, var61, var60, var10009);
-                RotateEntityProcedure.execute(var49, var47, (double)var50.clip(var52).getBlockPos().getZ(), entity);
+                RotateEntityProcedure.execute(var49, var47, (double) var50.clip(var52).getBlockPos().getZ(), entity);
             }
 
             entity.getPersistentData().putDouble("Damage", 1.5);
@@ -258,14 +259,14 @@ public abstract class KugisakiNailMixin {
                     public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
                         AbstractArrow entityToSpawn = new BulletNailEntity((EntityType) JujutsucraftModEntities.BULLET_NAIL.get(), level);
                         entityToSpawn.setOwner(shooter);
-                        entityToSpawn.setBaseDamage((double)damage);
+                        entityToSpawn.setBaseDamage((double) damage);
                         entityToSpawn.setKnockback(knockback);
                         entityToSpawn.setSilent(true);
                         entityToSpawn.setCritArrow(true);
                         entityToSpawn.pickup = AbstractArrow.Pickup.ALLOWED;
                         return entityToSpawn;
                     }
-                })).getArrow(projectileLevel, entity, (float)damage, 0);
+                })).getArrow(projectileLevel, entity, (float) damage, 0);
                 _entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
                 _entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 3.0F, 0.0F);
                 projectileLevel.addFreshEntity(_entityToSpawn);

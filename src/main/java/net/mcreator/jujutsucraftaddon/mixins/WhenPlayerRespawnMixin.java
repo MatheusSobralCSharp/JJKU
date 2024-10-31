@@ -18,35 +18,37 @@ public abstract class WhenPlayerRespawnMixin {
     public WhenPlayerRespawnMixin() {
     }
 
-     /**
-      * @author Satsuhi
-      * @reason Changes
-      */
-     @Overwrite
-     public static void execute(Entity entity) {
-         if (entity != null) {
-             entity.getPersistentData().putBoolean("JujutsuSorcerer", false);
-             entity.getPersistentData().putBoolean("CurseUser", false);
-             entity.getPersistentData().putBoolean("CursedSpirit", false);
-             if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerProfession == -2.0) {
-                 entity.getPersistentData().putBoolean("CursedSpirit", true);
-                 entity.getPersistentData().putBoolean("CurseUser", true);
-             } else if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerProfession == -1.0) {
-                 entity.getPersistentData().putDouble("CursedSpirit", 1.0);
-             } else if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerProfession == 1.0) {
-                 entity.getPersistentData().putBoolean("CurseUser", true);
-             } else {
-                 entity.getPersistentData().putBoolean("JujutsuSorcerer", true);
-             }
+    /**
+     * @author Satsuhi
+     * @reason Changes and Some Fixes
+     */
+    @Overwrite
+    public static void execute(Entity entity) {
+        if (entity != null) {
+            if (entity.isAlive()) {
+                entity.getPersistentData().putBoolean("JujutsuSorcerer", false);
+                entity.getPersistentData().putBoolean("CurseUser", false);
+                entity.getPersistentData().putBoolean("CursedSpirit", false);
+                if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerProfession == -2.0) {
+                    entity.getPersistentData().putBoolean("CursedSpirit", true);
+                    entity.getPersistentData().putBoolean("CurseUser", true);
+                } else if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerProfession == -1.0) {
+                    entity.getPersistentData().putDouble("CursedSpirit", 1.0);
+                } else if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerProfession == 1.0) {
+                    entity.getPersistentData().putBoolean("CurseUser", true);
+                } else {
+                    entity.getPersistentData().putBoolean("JujutsuSorcerer", true);
+                }
 
-             if (((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 0.0) {
-                 entity.getPersistentData().putBoolean("NonSorcerer", true);
-             } else {
-                 entity.getPersistentData().putBoolean("NonSorcerer", false);
-             }
+                if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 0.0) {
+                    entity.getPersistentData().putBoolean("NonSorcerer", true);
+                } else {
+                    entity.getPersistentData().putBoolean("NonSorcerer", false);
+                }
 
-             Objects.requireNonNull(((LivingEntity) entity).getAttribute((Attribute) ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:profession")))).setBaseValue(((JujutsucraftModVariables.PlayerVariables)entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique);
-         }
-     }
+                Objects.requireNonNull(((LivingEntity) entity).getAttribute((Attribute) ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:profession")))).setBaseValue(((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique);
+            }
+        }
+    }
 
 }

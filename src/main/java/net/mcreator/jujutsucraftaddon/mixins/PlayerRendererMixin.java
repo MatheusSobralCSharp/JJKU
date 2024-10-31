@@ -1,5 +1,6 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
@@ -17,37 +18,32 @@ public abstract class PlayerRendererMixin {
             ordinal = 0
     )
     private Component modifyNameTag(Component component, AbstractClientPlayer abstractClientPlayer) {
-        AbstractClientPlayer player = abstractClientPlayer;
         final Component[] modifiedComponent = {component};
 
-        player.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-            if ("Kenjaku".equals(capability.Clans)) {
-                String tag = capability.tag1;
-                if (tag != null) {
-                    switch (tag) {
-                        case "One":
-                            if (capability.SkinName1 != null && !capability.SkinName1.isEmpty()) {
-                                modifiedComponent[0] = Component.literal(capability.SkinName1);
-                            }
-                            break;
-                        case "Two":
-                            if (capability.SkinName2 != null && !capability.SkinName2.isEmpty()) {
-                                modifiedComponent[0] = Component.literal(capability.SkinName2);
-                            }
-                            break;
-                        case "Three":
-                            if (capability.SkinName3 != null && !capability.SkinName3.isEmpty()) {
-                                modifiedComponent[0] = Component.literal(capability.SkinName3);
-                            }
-                            break;
-                        default:
-                            break;
+        if (abstractClientPlayer.isAlive()) {
+            abstractClientPlayer.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                if ("Kenjaku".equals(capability.Clans)) {
+                    String tag = capability.tag1;
+                    if (tag != null) {
+                        String skinName = switch (tag) {
+                            case "One" -> capability.SkinName1;
+                            case "Two" -> capability.SkinName2;
+                            case "Three" -> capability.SkinName3;
+                            default -> null;
+                        };
+                        if (skinName != null && !skinName.isEmpty()) {
+                            modifiedComponent[0] = Component.literal(skinName);
+                        }
                     }
                 }
+            });
+
+            // If capability is missing, log a warning
+            if (!abstractClientPlayer.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).isPresent()) {
+                JujutsucraftaddonMod.LOGGER.warn("PLAYER_VARIABLES_CAPABILITY is not present for player: " + abstractClientPlayer.getName().getString());
             }
-        });
+        }
 
         return modifiedComponent[0];
     }
 }
-

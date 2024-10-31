@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AISukunaProcedure.class)
 public abstract class SukunaAIBuffMixin {
-    public SukunaAIBuffMixin(){
+    public SukunaAIBuffMixin() {
     }
 
     @Inject(method = "execute", at = @At("TAIL"), remap = false)

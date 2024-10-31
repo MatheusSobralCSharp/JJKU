@@ -8,8 +8,8 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class CreateteamProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
-		if (world instanceof Level _level)
-			_level.getScoreboard().addPlayerTeam((StringArgumentType.getString(arguments, "teamName")));
-	}
+    public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
+        if (world instanceof Level _level)
+            _level.getScoreboard().addPlayerTeam((StringArgumentType.getString(arguments, "teamName")));
+    }
 }
