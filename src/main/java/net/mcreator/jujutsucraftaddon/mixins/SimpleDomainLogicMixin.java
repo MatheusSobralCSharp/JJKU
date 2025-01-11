@@ -24,23 +24,26 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = SimpleDomainOnEffectActiveTickProcedure.class, remap = false)
+@Mixin(value = SimpleDomainOnEffectActiveTickProcedure.class, priority = 3000)
 public abstract class SimpleDomainLogicMixin {
     public SimpleDomainLogicMixin() {
     }
 
     /**
      * @author Satushi
-     * @reason Yes
+     * @reason Changing Simple Domain Tick Active and Radius
      */
-    @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
             double z_pos;
             double num1;
@@ -212,5 +215,6 @@ public abstract class SimpleDomainLogicMixin {
             }
 
         }
+        ci.cancel();
     }
 }

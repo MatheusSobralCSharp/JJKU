@@ -11,6 +11,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({PlayerModel.class})
+
+/**
+ * @author Satushi
+ * @reason Used for make th posestack running loop
+ */
+
+
+
 public class RunningAnimationMixin<T extends LivingEntity> extends HumanoidModel<T> {
     public RunningAnimationMixin(ModelPart p_170677_) {
         super(p_170677_, RenderType::entityTranslucent);

@@ -15,28 +15,28 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class ItemDropProcedure {
-    @SubscribeEvent
-    public static void onGemDropped(ItemTossEvent event) {
-        execute(event, event.getPlayer(), event.getEntity().getItem());
-    }
+	@SubscribeEvent
+	public static void onGemDropped(ItemTossEvent event) {
+		execute(event, event.getPlayer(), event.getEntity().getItem());
+	}
 
-    public static void execute(Entity entity, ItemStack itemstack) {
-        execute(null, entity, itemstack);
-    }
+	public static void execute(Entity entity, ItemStack itemstack) {
+		execute(null, entity, itemstack);
+	}
 
-    private static void execute(@Nullable Event event, Entity entity, ItemStack itemstack) {
-        if (entity == null)
-            return;
-        if (itemstack.getItem() == JujutsucraftaddonModItems.YUTA_RING.get()) {
-            if (entity instanceof Player _player) {
-                ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.YUTA_RING.get());
-                _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
-            }
-            if (event != null && event.isCancelable()) {
-                event.setCanceled(true);
-            } else if (event != null && event.hasResult()) {
-                event.setResult(Event.Result.DENY);
-            }
-        }
-    }
+	private static void execute(@Nullable Event event, Entity entity, ItemStack itemstack) {
+		if (entity == null)
+			return;
+		if (itemstack.getItem() == JujutsucraftaddonModItems.YUTA_RING.get()) {
+			if (entity instanceof Player _player) {
+				ItemStack _stktoremove = new ItemStack(JujutsucraftaddonModItems.YUTA_RING.get());
+				_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+			}
+			if (event != null && event.isCancelable()) {
+				event.setCanceled(true);
+			} else if (event != null && event.hasResult()) {
+				event.setResult(Event.Result.DENY);
+			}
+		}
+	}
 }

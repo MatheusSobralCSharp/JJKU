@@ -1,12 +1,15 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "keybind",
   "definition": {
     "triggerKey": "F",
-    "keyBindingName": "World Slash Key",
+    "keyBindingName": "Ultimate Key / WorldSlash ",
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
       "name": "WorldSlashKeyOnKeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "WorldSlashKeyOnKeyReleased"
     }
   }
 }

@@ -7,6 +7,8 @@ import net.mcreator.jujutsucraft.procedures.DomainActiveProcedure;
 import net.mcreator.jujutsucraft.procedures.DomainExpansionBattleProcedure;
 import net.mcreator.jujutsucraft.procedures.DomainExpansionOnEffectActiveTickProcedure;
 import net.mcreator.jujutsucraft.procedures.EffectCharactorProcedure;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -26,13 +28,15 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = DomainExpansionOnEffectActiveTickProcedure.class, remap = false)
+@Mixin(value = DomainExpansionOnEffectActiveTickProcedure.class, priority = 3000)
 public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
     public DomainExpansionOnEffectActiveTickProcedureMixin() {
     }
@@ -41,9 +45,17 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
      * @author Satushi
      * @reason Fixes Domain Barrier Size
      */
-    @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
+            // Gives Domain Nerf Effect
+            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_DOMAIN_NERF)) {
+                if (!(entity instanceof LivingEntity _livEnt24 && _livEnt24.hasEffect(JujutsucraftaddonModMobEffects.DOMAIN_BREAK.get()))) {
+                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                        _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.DOMAIN_BREAK.get(), -1, 1, false, false));
+                }
+            }
+
             double range = 0.0;
             double level = 0.0;
             double tick = 0.0;
@@ -830,5 +842,6 @@ public abstract class DomainExpansionOnEffectActiveTickProcedureMixin {
             }
 
         }
+        ci.cancel();
     }
 }

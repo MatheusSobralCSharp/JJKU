@@ -9,11 +9,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
-@Mixin(value = PlayerSetProfessionProcedure.class, remap = false)
+@Mixin(value = PlayerSetProfessionProcedure.class, priority = 3005)
 public abstract class WhenPlayerRespawnMixin {
     public WhenPlayerRespawnMixin() {
     }
@@ -22,8 +24,8 @@ public abstract class WhenPlayerRespawnMixin {
      * @author Satsuhi
      * @reason Changes and Some Fixes
      */
-    @Overwrite
-    public static void execute(Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(Entity entity, CallbackInfo ci) {
         if (entity != null) {
             if (entity.isAlive()) {
                 entity.getPersistentData().putBoolean("JujutsuSorcerer", false);
@@ -49,6 +51,6 @@ public abstract class WhenPlayerRespawnMixin {
                 Objects.requireNonNull(((LivingEntity) entity).getAttribute((Attribute) ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("jujutsucraft:profession")))).setBaseValue(((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique);
             }
         }
+        ci.cancel();
     }
-
 }

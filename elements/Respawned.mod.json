@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Respawned",
@@ -12,6 +12,13 @@
     "mobEffectCategory": "BENEFICIAL",
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
+    "isCuredByMilk": true,
+    "isProtectedByTotem": true,
+    "isCuredbyHoney": false,
+    "modifiers": [],
+    "onActiveTick": {
+      "name": "RespawnedOnEffectActiveTick"
+    },
     "onExpired": {
       "name": "RespawnedEffectStartedapplied"
     }

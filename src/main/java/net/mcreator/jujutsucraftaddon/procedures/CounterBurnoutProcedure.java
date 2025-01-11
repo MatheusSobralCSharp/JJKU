@@ -70,6 +70,21 @@ public class CounterBurnoutProcedure {
                                                             _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
                                                     "effect clear @s jujutsucraft:unstable");
                                         }
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+                                                            _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                                    "effect clear @s jujutsucraft:cooldown_time");
+                                        }
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+                                                            _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                                    "effect clear @s jujutsucraft:cooldown_time_combat");
+                                        }
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+                                                            _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                                    "effect clear @s jujutsucraft:unstable");
+                                        }
                                         if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                                 _ent.getServer().getCommands()
@@ -121,6 +136,21 @@ public class CounterBurnoutProcedure {
                                         }
                                     } else if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.UNSTABLE.get())) {
                                         _ent = entity;
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+                                                            _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                                    "effect clear @s jujutsucraft:cooldown_time");
+                                        }
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+                                                            _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                                    "effect clear @s jujutsucraft:cooldown_time_combat");
+                                        }
+                                        if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+                                                            _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                                    "effect clear @s jujutsucraft:unstable");
+                                        }
                                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                             _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
                                                             _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),

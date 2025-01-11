@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.Level;
@@ -15,20 +16,20 @@ import net.mcreator.jujutsucraftaddon.procedures.StrongestOfHistoryRecommendatio
 import java.util.List;
 
 public class StrongestOfHistoryRecommendationItem extends Item {
-    public StrongestOfHistoryRecommendationItem() {
-        super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
-    }
+	public StrongestOfHistoryRecommendationItem() {
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
+	}
 
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, level, list, flag);
-        list.add(Component.literal("[Ability] Use for unlock Strongest History Sorcerer"));
-    }
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
+		list.add(Component.translatable("item.jujutsucraftaddon.strongest_of_history_recommendation.description_0"));
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-        StrongestOfHistoryRecommendationRightclickedProcedure.execute(entity);
-        return ar;
-    }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+		StrongestOfHistoryRecommendationRightclickedProcedure.execute(entity);
+		return ar;
+	}
 }

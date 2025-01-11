@@ -22,6 +22,7 @@ import net.mcreator.jujutsucraftaddon.client.particle.SmokeWhiteParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.SlashParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.RedParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.PunchParticle;
+import net.mcreator.jujutsucraftaddon.client.particle.KokusenSpark1Particle;
 import net.mcreator.jujutsucraftaddon.client.particle.Kokusen5Particle;
 import net.mcreator.jujutsucraftaddon.client.particle.Kokusen4Particle;
 import net.mcreator.jujutsucraftaddon.client.particle.Kokusen3Particle;
@@ -67,10 +68,6 @@ import net.mcreator.jujutsucraftaddon.client.particle.BlueeParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.BluePunchParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.BloodRedParticle;
 import net.mcreator.jujutsucraftaddon.client.particle.BloodParticle;
-import net.mcreator.jujutsucraftaddon.client.particle.BlackFlash4Particle;
-import net.mcreator.jujutsucraftaddon.client.particle.BlackFlash3Particle;
-import net.mcreator.jujutsucraftaddon.client.particle.BlackFlash2Particle;
-import net.mcreator.jujutsucraftaddon.client.particle.BlackFlash1Particle;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class JujutsucraftaddonModParticles {
@@ -134,9 +131,6 @@ public class JujutsucraftaddonModParticles {
 		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.HORIZONTAL_SLASH_1.get(), HorizontalSlash1Particle::provider);
 		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.SUKUNA_SLASH.get(), SukunaSlashParticle::provider);
 		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.SLASH.get(), SlashParticle::provider);
-		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.BLACK_FLASH_1.get(), BlackFlash1Particle::provider);
-		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.BLACK_FLASH_2.get(), BlackFlash2Particle::provider);
-		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.BLACK_FLASH_3.get(), BlackFlash3Particle::provider);
-		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.BLACK_FLASH_4.get(), BlackFlash4Particle::provider);
+		event.registerSpriteSet(JujutsucraftaddonModParticleTypes.KOKUSEN_SPARK_1.get(), KokusenSpark1Particle::provider);
 	}
 }

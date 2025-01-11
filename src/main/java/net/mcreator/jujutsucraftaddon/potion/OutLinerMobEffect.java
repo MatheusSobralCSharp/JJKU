@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -10,28 +11,29 @@ import net.mcreator.jujutsucraftaddon.procedures.OutLinerEffectStartedappliedPro
 import net.mcreator.jujutsucraftaddon.procedures.OutLinerEffectExpiresProcedure;
 
 public class OutLinerMobEffect extends MobEffect {
-    public OutLinerMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, -1);
-    }
+	public OutLinerMobEffect() {
+		super(MobEffectCategory.BENEFICIAL, -1);
+	}
 
-    @Override
-    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        OutLinerEffectStartedappliedProcedure.execute(entity.level(), entity);
-    }
+	@Override
+	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.addAttributeModifiers(entity, attributeMap, amplifier);
+		OutLinerEffectStartedappliedProcedure.execute(entity.level(), entity);
+	}
 
-    @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
-        OutLinerOnEffectActiveTickProcedure.execute(entity.level(), entity);
-    }
+	@Override
+	public void applyEffectTick(LivingEntity entity, int amplifier) {
+		OutLinerOnEffectActiveTickProcedure.execute(entity.level(), entity);
+	}
 
-    @Override
-    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        super.removeAttributeModifiers(entity, attributeMap, amplifier);
-        OutLinerEffectExpiresProcedure.execute(entity.level(), entity);
-    }
+	@Override
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.removeAttributeModifiers(entity, attributeMap, amplifier);
+		OutLinerEffectExpiresProcedure.execute(entity.level(), entity);
+	}
 
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
-    }
+	@Override
+	public boolean isDurationEffectTick(int duration, int amplifier) {
+		return true;
+	}
 }

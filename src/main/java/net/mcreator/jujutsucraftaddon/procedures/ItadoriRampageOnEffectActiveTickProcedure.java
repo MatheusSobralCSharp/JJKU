@@ -10,14 +10,14 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 
 public class ItadoriRampageOnEffectActiveTickProcedure {
-    public static void execute(LevelAccessor world, Entity entity) {
-        if (entity == null)
-            return;
-        if (world instanceof ServerLevel _level)
-            _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get()), (entity.getX() + Mth.nextInt(RandomSource.create(), -1, 1)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)),
-                    (entity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 4, 0, 0, 0, 1);
-        if (world instanceof ServerLevel _level)
-            _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_WHITE.get()), (entity.getX() + Mth.nextInt(RandomSource.create(), -1, 1)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)),
-                    (entity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 4, 0, 0, 0, 1);
-    }
+	public static void execute(LevelAccessor world, Entity entity) {
+		if (entity == null)
+			return;
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get()), (entity.getX() + Mth.nextInt(RandomSource.create(), -1, 1)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)),
+					(entity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 4, 0, 0, 0, 1);
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_WHITE.get()), (entity.getX() + Mth.nextInt(RandomSource.create(), -1, 1)), (entity.getY() + Mth.nextInt(RandomSource.create(), 0, 1)),
+					(entity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 4, 0, 0, 0, 1);
+	}
 }

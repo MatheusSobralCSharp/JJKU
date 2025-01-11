@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -16,7 +16,8 @@
           "image": "fistlevel1.png",
           "use1Xscale": true,
           "x": 42,
-          "y": 89
+          "y": 89,
+          "locked": false
         }
       },
       {
@@ -25,7 +26,8 @@
           "image": "fistlevel2.png",
           "use1Xscale": true,
           "x": 177,
-          "y": 88
+          "y": 88,
+          "locked": false
         }
       },
       {
@@ -34,7 +36,8 @@
           "image": "120.2.png",
           "use1Xscale": true,
           "x": 309,
-          "y": 87
+          "y": 87,
+          "locked": false
         }
       },
       {
@@ -52,7 +55,8 @@
           "width": 98,
           "height": 20,
           "x": 22,
-          "y": 159
+          "y": 159,
+          "locked": false
         }
       },
       {
@@ -70,7 +74,8 @@
           "width": 98,
           "height": 20,
           "x": 156,
-          "y": 159
+          "y": 159,
+          "locked": false
         }
       },
       {
@@ -88,7 +93,8 @@
           "width": 98,
           "height": 20,
           "x": 289,
-          "y": 159
+          "y": 159,
+          "locked": false
         }
       }
     ],

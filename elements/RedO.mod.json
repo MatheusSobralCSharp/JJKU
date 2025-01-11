@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "livingentity",
   "definition": {
     "mobName": "Red",
@@ -10,6 +10,7 @@
       "fixedValue": false
     },
     "modelLayers": [],
+    "animations": [],
     "modelWidth": 0.6,
     "modelHeight": 1.0,
     "modelShadowSize": 0.1,
@@ -66,7 +67,6 @@
       "fixedValue": true
     },
     "flyingMob": true,
-    "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "disableCollisions": false,

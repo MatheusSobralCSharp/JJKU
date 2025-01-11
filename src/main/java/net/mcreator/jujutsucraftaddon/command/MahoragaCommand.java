@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import org.checkerframework.checker.units.qual.s;
@@ -19,36 +20,36 @@ import net.mcreator.jujutsucraftaddon.procedures.MahoragaDisableProcedure;
 
 @Mod.EventBusSubscriber
 public class MahoragaCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurMahoragaWheel").requires(s -> s.hasPermission(2)).then(Commands.literal("Enable").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuMahoragaWheel").requires(s -> s.hasPermission(2)).then(Commands.literal("Enable").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            MahoragaEnableProcedure.execute(arguments);
-            return 0;
-        }))).then(Commands.literal("Disable").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			MahoragaEnableProcedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Disable").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            MahoragaDisableProcedure.execute(arguments);
-            return 0;
-        }))));
-    }
+			MahoragaDisableProcedure.execute(arguments);
+			return 0;
+		}))));
+	}
 }

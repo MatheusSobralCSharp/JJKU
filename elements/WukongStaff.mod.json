@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "animateditem",
   "definition": {
     "renderType": 0,
@@ -10,7 +10,6 @@
     "displaySettings": "wukongstaff.item.json",
     "leftArm": "",
     "rightArm": "",
-    "perspective": "All Perspectives",
     "creativeTab": {
       "value": "CUSTOM:Weapons"
     },

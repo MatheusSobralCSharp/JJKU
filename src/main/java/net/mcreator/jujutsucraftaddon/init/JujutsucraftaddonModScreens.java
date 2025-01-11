@@ -45,10 +45,12 @@ import net.mcreator.jujutsucraftaddon.client.gui.Quest12Screen;
 import net.mcreator.jujutsucraftaddon.client.gui.Quest11Screen;
 import net.mcreator.jujutsucraftaddon.client.gui.Quest10Screen;
 import net.mcreator.jujutsucraftaddon.client.gui.ProfessionGUIScreen;
+import net.mcreator.jujutsucraftaddon.client.gui.NewTabScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.KoganeUIScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.KenjakuBodySwapScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.GojoTrainScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.EvidenceGUIScreen;
+import net.mcreator.jujutsucraftaddon.client.gui.EnchantYorozuScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.ElementsScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.CursedEnergySelectorScreen;
 import net.mcreator.jujutsucraftaddon.client.gui.ClanChangeScreen;
@@ -101,6 +103,8 @@ public class JujutsucraftaddonModScreens {
 			MenuScreens.register(JujutsucraftaddonModMenus.STORY_MODE_SUKUNA_5.get(), StoryModeSukuna5Screen::new);
 			MenuScreens.register(JujutsucraftaddonModMenus.STORY_MODE_SUKUNA_6.get(), StoryModeSukuna6Screen::new);
 			MenuScreens.register(JujutsucraftaddonModMenus.STORY_MODE_SUKUNA_7.get(), StoryModeSukuna7Screen::new);
+			MenuScreens.register(JujutsucraftaddonModMenus.ENCHANT_YOROZU.get(), EnchantYorozuScreen::new);
+			MenuScreens.register(JujutsucraftaddonModMenus.NEW_TAB.get(), NewTabScreen::new);
 		});
 	}
 }

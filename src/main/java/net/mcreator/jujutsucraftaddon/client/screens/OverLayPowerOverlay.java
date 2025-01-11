@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.client.screens;
 
 import org.checkerframework.checker.units.qual.h;
@@ -18,28 +19,28 @@ import net.mcreator.jujutsucraftaddon.procedures.OverLayPowerDisplayOverlayIngam
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class OverLayPowerOverlay {
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void eventHandler(RenderGuiEvent.Pre event) {
-        int w = event.getWindow().getGuiScaledWidth();
-        int h = event.getWindow().getGuiScaledHeight();
-        Level world = null;
-        double x = 0;
-        double y = 0;
-        double z = 0;
-        Player entity = Minecraft.getInstance().player;
-        if (entity != null) {
-            world = entity.level();
-            x = entity.getX();
-            y = entity.getY();
-            z = entity.getZ();
-        }
-        if (OverLayPowerDisplayOverlayIngameProcedure.execute(world, entity)) {
-            event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+	@SubscribeEvent(priority = EventPriority.NORMAL)
+	public static void eventHandler(RenderGuiEvent.Pre event) {
+		int w = event.getWindow().getGuiScaledWidth();
+		int h = event.getWindow().getGuiScaledHeight();
+		Level world = null;
+		double x = 0;
+		double y = 0;
+		double z = 0;
+		Player entity = Minecraft.getInstance().player;
+		if (entity != null) {
+			world = entity.level();
+			x = entity.getX();
+			y = entity.getY();
+			z = entity.getZ();
+		}
+		if (OverLayPowerDisplayOverlayIngameProcedure.execute(world, entity)) {
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
-                    ReturnOPProcedure.execute(entity), w / 2 + -45, h / 2 + -104, -256, false);
-            event.getGuiGraphics().drawString(Minecraft.getInstance().font,
+					ReturnOPProcedure.execute(entity), w / 2 + -45, h / 2 + -104, -256, false);
+			event.getGuiGraphics().drawString(Minecraft.getInstance().font,
 
-                    ReturnOP2Procedure.execute(entity), w / 2 + -45, h / 2 + -95, -256, false);
-        }
-    }
+					ReturnOP2Procedure.execute(entity), w / 2 + -45, h / 2 + -95, -256, false);
+		}
+	}
 }

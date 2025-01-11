@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import org.checkerframework.checker.units.qual.s;
@@ -16,6 +17,8 @@ import net.minecraft.commands.Commands;
 
 import net.mcreator.jujutsucraftaddon.procedures.ChangeTraitTwoProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.ChangeTraitProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.ChangeTrait8Procedure;
+import net.mcreator.jujutsucraftaddon.procedures.ChangeTrait7Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.ChangeTrait6Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.ChangeTrait5Procedure;
 import net.mcreator.jujutsucraftaddon.procedures.ChangeTrait4Procedure;
@@ -23,92 +26,120 @@ import net.mcreator.jujutsucraftaddon.procedures.ChangeTrait3Procedure;
 
 @Mod.EventBusSubscriber
 public class JjkuChangeTraitCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurChangeTrait").requires(s -> s.hasPermission(2)).then(Commands.literal("Gifted").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuChangeTrait").requires(s -> s.hasPermission(2)).then(Commands.literal("TheHonoredOne").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            ChangeTraitProcedure.execute(arguments);
-            return 0;
-        }))).then(Commands.literal("Cursed").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			ChangeTrait7Procedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("TheFallenOne").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            ChangeTraitTwoProcedure.execute(arguments);
-            return 0;
-        }))).then(Commands.literal("Speedy").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			ChangeTrait8Procedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Gifted").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            ChangeTrait3Procedure.execute(arguments);
-            return 0;
-        }))).then(Commands.literal("Strong").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			ChangeTraitProcedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Cursed").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            ChangeTrait4Procedure.execute(arguments);
-            return 0;
-        }))).then(Commands.literal("Resistant").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			ChangeTraitTwoProcedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Speedy").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            ChangeTrait5Procedure.execute(arguments);
-            return 0;
-        }))).then(Commands.literal("Healthy").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			ChangeTrait3Procedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Strong").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            ChangeTrait6Procedure.execute(arguments);
-            return 0;
-        }))));
-    }
+			ChangeTrait4Procedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Resistant").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			ChangeTrait5Procedure.execute(arguments);
+			return 0;
+		}))).then(Commands.literal("Healthy").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
+
+			ChangeTrait6Procedure.execute(arguments);
+			return 0;
+		}))));
+	}
 }

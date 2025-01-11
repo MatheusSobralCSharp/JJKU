@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import org.checkerframework.checker.units.qual.s;
@@ -20,23 +21,22 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 @Mod.EventBusSubscriber
 public class JjkuOutputCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher()
-                .register(Commands.literal("jjkurOutput").requires(s -> s.hasPermission(2)).then(Commands.argument("Output", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
-                    Level world = arguments.getSource().getUnsidedLevel();
-                    double x = arguments.getSource().getPosition().x();
-                    double y = arguments.getSource().getPosition().y();
-                    double z = arguments.getSource().getPosition().z();
-                    Entity entity = arguments.getSource().getEntity();
-                    if (entity == null && world instanceof ServerLevel _servLevel)
-                        entity = FakePlayerFactory.getMinecraft(_servLevel);
-                    Direction direction = Direction.DOWN;
-                    if (entity != null)
-                        direction = entity.getDirection();
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuOutput").requires(s -> s.hasPermission(2)).then(Commands.argument("Output", DoubleArgumentType.doubleArg()).then(Commands.argument("Player", EntityArgument.entity()).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-                    SetOuputProcedure.execute(arguments);
-                    return 0;
-                }))));
-    }
+			SetOuputProcedure.execute(arguments);
+			return 0;
+		}))));
+	}
 }

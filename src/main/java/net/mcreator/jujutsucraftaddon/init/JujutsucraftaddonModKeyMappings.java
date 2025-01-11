@@ -19,17 +19,12 @@ import net.mcreator.jujutsucraftaddon.network.WorldSlashKeyMessage;
 import net.mcreator.jujutsucraftaddon.network.WaterWalkingMessage;
 import net.mcreator.jujutsucraftaddon.network.TestAnimationMessage;
 import net.mcreator.jujutsucraftaddon.network.ReleaseTechniqueMessage;
-import net.mcreator.jujutsucraftaddon.network.ProgressionMenuMessage;
 import net.mcreator.jujutsucraftaddon.network.PassiveKeybindMessage;
-import net.mcreator.jujutsucraftaddon.network.OverlayActiveMessage;
 import net.mcreator.jujutsucraftaddon.network.KeyWheelMessage;
-import net.mcreator.jujutsucraftaddon.network.HistoryModeMessage;
-import net.mcreator.jujutsucraftaddon.network.HabilityWheelKeyMessage;
 import net.mcreator.jujutsucraftaddon.network.ExtensionKeybindMessage;
 import net.mcreator.jujutsucraftaddon.network.DomainTypeMessage;
 import net.mcreator.jujutsucraftaddon.network.DomainExpansionMessage;
-import net.mcreator.jujutsucraftaddon.network.DashKeybindMessage;
-import net.mcreator.jujutsucraftaddon.network.CursedWeaponMessage;
+import net.mcreator.jujutsucraftaddon.network.CursedFistsKeybindMessage;
 import net.mcreator.jujutsucraftaddon.network.CursedEnergyShieldMessage;
 import net.mcreator.jujutsucraftaddon.network.ChangeTechniqueMessage;
 import net.mcreator.jujutsucraftaddon.network.BurnoutKeyMessage;
@@ -48,24 +43,11 @@ public class JujutsucraftaddonModKeyMappings {
 			if (isDownOld != isDown && isDown) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new WorldSlashKeyMessage(0, 0));
 				WorldSlashKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping DASH_KEYBIND = new KeyMapping("key.jujutsucraftaddon.dash_keybind", GLFW.GLFW_KEY_G, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new DashKeybindMessage(0, 0));
-				DashKeybindMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-				DASH_KEYBIND_LASTPRESS = System.currentTimeMillis();
+				WORLD_SLASH_KEY_LASTPRESS = System.currentTimeMillis();
 			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - DASH_KEYBIND_LASTPRESS);
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new DashKeybindMessage(1, dt));
-				DashKeybindMessage.pressAction(Minecraft.getInstance().player, 1, dt);
+				int dt = (int) (System.currentTimeMillis() - WORLD_SLASH_KEY_LASTPRESS);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new WorldSlashKeyMessage(1, dt));
+				WorldSlashKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt);
 			}
 			isDownOld = isDown;
 		}
@@ -79,19 +61,6 @@ public class JujutsucraftaddonModKeyMappings {
 			if (isDownOld != isDown && isDown) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ArmoryOrCopyMessage(0, 0));
 				ArmoryOrCopyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping HABILITY_WHEEL_KEY = new KeyMapping("key.jujutsucraftaddon.hability_wheel_key", GLFW.GLFW_KEY_APOSTROPHE, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new HabilityWheelKeyMessage(0, 0));
-				HabilityWheelKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
@@ -228,19 +197,6 @@ public class JujutsucraftaddonModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping CURSED_WEAPON = new KeyMapping("key.jujutsucraftaddon.cursed_weapon", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedWeaponMessage(0, 0));
-				CursedWeaponMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
 	public static final KeyMapping DOMAIN_TYPE = new KeyMapping("key.jujutsucraftaddon.domain_type", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
 		private boolean isDownOld = false;
 
@@ -263,11 +219,6 @@ public class JujutsucraftaddonModKeyMappings {
 			if (isDownOld != isDown && isDown) {
 				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ChangeTechniqueMessage(0, 0));
 				ChangeTechniqueMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-				CHANGE_TECHNIQUE_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CHANGE_TECHNIQUE_LASTPRESS);
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ChangeTechniqueMessage(1, dt));
-				ChangeTechniqueMessage.pressAction(Minecraft.getInstance().player, 1, dt);
 			}
 			isDownOld = isDown;
 		}
@@ -285,57 +236,28 @@ public class JujutsucraftaddonModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping PROGRESSION_MENU = new KeyMapping("key.jujutsucraftaddon.progression_menu", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
+	public static final KeyMapping CURSED_FISTS_KEYBIND = new KeyMapping("key.jujutsucraftaddon.cursed_fists_keybind", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
 		private boolean isDownOld = false;
 
 		@Override
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new ProgressionMenuMessage(0, 0));
-				ProgressionMenuMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new CursedFistsKeybindMessage(0, 0));
+				CursedFistsKeybindMessage.pressAction(Minecraft.getInstance().player, 0, 0);
 			}
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping HISTORY_MODE = new KeyMapping("key.jujutsucraftaddon.history_mode", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new HistoryModeMessage(0, 0));
-				HistoryModeMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping OVERLAY_ACTIVE = new KeyMapping("key.jujutsucraftaddon.overlay_active", GLFW.GLFW_KEY_UNKNOWN, "key.categories.jujutsucraftaddon") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				JujutsucraftaddonMod.PACKET_HANDLER.sendToServer(new OverlayActiveMessage(0, 0));
-				OverlayActiveMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	private static long DASH_KEYBIND_LASTPRESS = 0;
+	private static long WORLD_SLASH_KEY_LASTPRESS = 0;
 	private static long ANIMATION_KEYBIND_LASTPRESS = 0;
 	private static long DOMAIN_EXPANSION_LASTPRESS = 0;
 	private static long BURNOUT_KEY_LASTPRESS = 0;
-	private static long CHANGE_TECHNIQUE_LASTPRESS = 0;
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(WORLD_SLASH_KEY);
-		event.register(DASH_KEYBIND);
 		event.register(ARMORY_OR_COPY);
-		event.register(HABILITY_WHEEL_KEY);
 		event.register(KEY_WHEEL);
 		event.register(ANIMATION_KEYBIND);
 		event.register(PASSIVE_KEYBIND);
@@ -345,13 +267,10 @@ public class JujutsucraftaddonModKeyMappings {
 		event.register(BURNOUT_KEY);
 		event.register(WATER_WALKING);
 		event.register(CURSED_ENERGY_SHIELD);
-		event.register(CURSED_WEAPON);
 		event.register(DOMAIN_TYPE);
 		event.register(CHANGE_TECHNIQUE);
 		event.register(RELEASE_TECHNIQUE);
-		event.register(PROGRESSION_MENU);
-		event.register(HISTORY_MODE);
-		event.register(OVERLAY_ACTIVE);
+		event.register(CURSED_FISTS_KEYBIND);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -360,9 +279,7 @@ public class JujutsucraftaddonModKeyMappings {
 		public static void onClientTick(TickEvent.ClientTickEvent event) {
 			if (Minecraft.getInstance().screen == null) {
 				WORLD_SLASH_KEY.consumeClick();
-				DASH_KEYBIND.consumeClick();
 				ARMORY_OR_COPY.consumeClick();
-				HABILITY_WHEEL_KEY.consumeClick();
 				KEY_WHEEL.consumeClick();
 				ANIMATION_KEYBIND.consumeClick();
 				PASSIVE_KEYBIND.consumeClick();
@@ -372,13 +289,10 @@ public class JujutsucraftaddonModKeyMappings {
 				BURNOUT_KEY.consumeClick();
 				WATER_WALKING.consumeClick();
 				CURSED_ENERGY_SHIELD.consumeClick();
-				CURSED_WEAPON.consumeClick();
 				DOMAIN_TYPE.consumeClick();
 				CHANGE_TECHNIQUE.consumeClick();
 				RELEASE_TECHNIQUE.consumeClick();
-				PROGRESSION_MENU.consumeClick();
-				HISTORY_MODE.consumeClick();
-				OVERLAY_ACTIVE.consumeClick();
+				CURSED_FISTS_KEYBIND.consumeClick();
 			}
 		}
 	}

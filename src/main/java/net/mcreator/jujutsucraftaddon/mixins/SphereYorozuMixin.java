@@ -7,10 +7,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(AITrueSphereProcedure.class)
+@Mixin(value = AITrueSphereProcedure.class)
 public abstract class SphereYorozuMixin {
     public SphereYorozuMixin() {
     }
+
+    /**
+     * @author Satushi
+     * @reason Changes Yorozu Sphere Size with the gamerule
+     */
 
     @ModifyConstant(
             method = "execute",

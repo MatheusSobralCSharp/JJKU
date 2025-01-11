@@ -21,6 +21,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.jujutsucraftaddon.world.inventory.YutaStorageMenu;
+import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
@@ -30,49 +31,50 @@ import io.netty.buffer.Unpooled;
 
 @Mod.EventBusSubscriber
 public class RightClickRikaProcedure {
-    @SubscribeEvent
-    public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
-        if (event.getHand() != event.getEntity().getUsedItemHand())
-            return;
-        execute(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), event.getTarget(), event.getEntity());
-    }
+	@SubscribeEvent
+	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
+		if (event.getHand() != event.getEntity().getUsedItemHand())
+			return;
+		execute(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), event.getTarget(), event.getEntity());
+	}
 
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
-        execute(null, world, x, y, z, entity, sourceentity);
-    }
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
+		execute(null, world, x, y, z, entity, sourceentity);
+	}
 
-    private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
-        if (entity == null || sourceentity == null)
-            return;
-        if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
-            if (((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2"))
-                    && (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5 && (new Object() {
-                public String getValue() {
-                    CompoundTag dataIndex = new CompoundTag();
-                    entity.saveWithoutId(dataIndex);
-                    return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
-                }
-            }.getValue()).equals(sourceentity.getStringUUID())) {
-                if (!sourceentity.isShiftKeyDown()) {
-                    if (sourceentity instanceof ServerPlayer _ent) {
-                        BlockPos _bpos = BlockPos.containing(x, y, z);
-                        NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
-                            @Override
-                            public Component getDisplayName() {
-                                return Component.literal("YutaStorage");
-                            }
+	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
+		if (entity == null || sourceentity == null)
+			return;
+		if (((sourceentity instanceof LivingEntity) && ((LivingEntity) sourceentity).hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) == false) {
+			if (((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika") || (ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()).equals("jujutsucraft:rika_2"))
+					&& (sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 5 && (new Object() {
+						public String getValue() {
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getCompound("ForgeData").getString("OWNER_UUID");
+						}
+					}.getValue()).equals(sourceentity.getStringUUID())) {
+				if (!sourceentity.isShiftKeyDown()) {
+					JujutsucraftaddonMod.LOGGER.info("Player Opens Yuta Storage");
+					if (sourceentity instanceof ServerPlayer _ent) {
+						BlockPos _bpos = BlockPos.containing(x, y, z);
+						NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
+							@Override
+							public Component getDisplayName() {
+								return Component.literal("YutaStorage");
+							}
 
-                            @Override
-                            public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-                                return new YutaStorageMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
-                            }
-                        }, _bpos);
-                    }
-                }
-            }
-            SwordKusakabeTwoProcedure.execute(entity, sourceentity);
-            SoulBookWhenRightClickedProcedure.execute(entity, sourceentity);
-            NanamiCTWeaponProcedure.execute(entity, sourceentity);
-        }
-    }
+							@Override
+							public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+								return new YutaStorageMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+							}
+						}, _bpos);
+					}
+				}
+			}
+			SwordKusakabeTwoProcedure.execute(entity, sourceentity);
+			SoulBookWhenRightClickedProcedure.execute(entity, sourceentity);
+			NanamiCTWeaponProcedure.execute(entity, sourceentity);
+		}
+	}
 }

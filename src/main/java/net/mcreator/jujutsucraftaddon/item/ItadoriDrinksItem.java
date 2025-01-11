@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.Level;
@@ -14,23 +15,23 @@ import net.mcreator.jujutsucraftaddon.procedures.ItadoriDrinksPlayerFinishesUsin
 import java.util.List;
 
 public class ItadoriDrinksItem extends Item {
-    public ItadoriDrinksItem() {
-        super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.3f).alwaysEat().build()));
-    }
+	public ItadoriDrinksItem() {
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.3f).alwaysEat().build()));
+	}
 
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, level, list, flag);
-        list.add(Component.literal("[Ability] uhh?"));
-    }
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
+		list.add(Component.translatable("item.jujutsucraftaddon.itadori_drinks.description_0"));
+	}
 
-    @Override
-    public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-        ItemStack retval = super.finishUsingItem(itemstack, world, entity);
-        double x = entity.getX();
-        double y = entity.getY();
-        double z = entity.getZ();
-        ItadoriDrinksPlayerFinishesUsingItemProcedure.execute(entity);
-        return retval;
-    }
+	@Override
+	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
+		ItemStack retval = super.finishUsingItem(itemstack, world, entity);
+		double x = entity.getX();
+		double y = entity.getY();
+		double z = entity.getZ();
+		ItadoriDrinksPlayerFinishesUsingItemProcedure.execute(entity);
+		return retval;
+	}
 }

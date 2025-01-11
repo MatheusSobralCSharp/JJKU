@@ -1,8 +1,8 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "command",
   "definition": {
-    "commandName": "jjkurPVP",
+    "commandName": "jjkuPVP",
     "type": "STANDARD",
     "permissionLevel": "No requirement",
     "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"literal\"><field name=\"name\">Battle</field><statement name=\"args\"><block type=\"logic\"><field name=\"name\">Team</field><statement name=\"args\"><block type=\"entity\"><field name=\"name\">Player</field><field name=\"type\">player</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">PVP</field></block></statement></block></statement></block></statement><next><block type=\"literal\"><field name=\"name\">Flag</field><statement name=\"args\"><block type=\"logic\"><field name=\"name\">Team</field><statement name=\"args\"><block type=\"entity\"><field name=\"name\">Player</field><field name=\"type\">player</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">PVPFlag</field></block></statement></block></statement></block></statement><next><block type=\"literal\"><field name=\"name\">Enable</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">Enable</field></block></statement><next><block type=\"literal\"><field name=\"name\">Disable</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">Disable</field></block></statement></block></next></block></next></block></next></block></next></block></xml>"

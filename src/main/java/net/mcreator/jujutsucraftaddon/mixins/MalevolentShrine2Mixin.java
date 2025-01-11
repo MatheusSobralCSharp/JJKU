@@ -9,6 +9,7 @@ import net.mcreator.jujutsucraft.procedures.DomainExpansionCreateBarrierProcedur
 import net.mcreator.jujutsucraft.procedures.MalevolentShrineProcedure;
 import net.mcreator.jujutsucraft.procedures.PlayAnimationProcedure;
 import net.mcreator.jujutsucraft.procedures.RotateEntityProcedure;
+import net.mcreator.jujutsucraftaddon.entity.MalevolentShrineEntity;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -18,6 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -33,20 +35,22 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = MalevolentShrineProcedure.class, remap = false)
+@Mixin(value = MalevolentShrineProcedure.class, priority = 3000)
 public abstract class MalevolentShrine2Mixin {
     /**
      * @author Satushi
      * @reason Change Shrine
      */
-    @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
             double x_pos;
             double y_pos;
@@ -95,61 +99,65 @@ public abstract class MalevolentShrine2Mixin {
             entity.getPersistentData().putDouble("select", 1.0);
             DomainExpansionCreateBarrierProcedure.execute(world, x, y, z, entity);
             if (entity.getPersistentData().getDouble("cnt1") > 0.0 && entity.getPersistentData().getDouble("cnt1") == 34.0) {
-                if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori")) {
-                    if (entity.getPersistentData().getDouble("NameRanged") == 0.0) {
-                        entity.getPersistentData().putDouble("NameRanged", Math.random());
-                    }
-
-                    for (int index0 = 0; index0 < 12; ++index0) {
-                        num1 = Math.toRadians(Math.random() * 720.0);
-
-                        int index2;
-                        for (index2 = 0; index2 < 32; ++index2) {
-                            num2 = Math.random();
-                            if (num2 > 0.5) {
-                                num2 *= dis2 - 4.0;
-                                break;
-                            }
+                if (entity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel && _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained"))).isDone()
+                        && entity instanceof ServerPlayer _plr1 && _plr1.level() instanceof ServerLevel
+                        && _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone()) {
+                    if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori")) {
+                        if (entity.getPersistentData().getDouble("NameRanged") == 0.0) {
+                            entity.getPersistentData().putDouble("NameRanged", Math.random());
                         }
 
-                        x_pos = entity.getPersistentData().getDouble("x_pos_doma") + Math.sin(num1) * num2;
-                        y_pos = entity.getPersistentData().getDouble("y_pos_doma") + 1.0;
-                        z_pos = entity.getPersistentData().getDouble("z_pos_doma") + Math.cos(num1) * num2;
+                        for (int index0 = 0; index0 < 12; ++index0) {
+                            num1 = Math.toRadians(Math.random() * 720.0);
 
-                        for (index2 = 0; index2 < 16; ++index2) {
-                            if (world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos)).canOcclude()) {
-                                ++y_pos;
-                            } else if (!world.getBlockState(BlockPos.containing(x_pos, y_pos - 1.0, z_pos)).canOcclude()) {
-                                --y_pos;
-                            } else if (!world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos)).canOcclude() && world.getBlockState(BlockPos.containing(x_pos, y_pos - 1.0, z_pos)).canOcclude()) {
-                                y_pos = Math.floor(y_pos);
-                                break;
-                            }
-                        }
-
-                        if (world instanceof ServerLevel) {
-                            ServerLevel _level = (ServerLevel) world;
-                            Commands var100002 = _level.getServer().getCommands();
-                            CommandSourceStack var10003 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
-                            double var10002 = Math.random() * 360.0;
-                            var100002.performPrefixedCommand(var10003, "summon jujutsucraft:entity_tree ~ ~ ~ {NoAI:1b,Invulnerable:1b,Rotation:[" + var10002 + "F," + (Math.random() - 0.5) * 30.0 + "F]}");
-                        }
-
-                        if (!world.getEntitiesOfClass(EntityTreeEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
-                            return true;
-                        }).isEmpty()) {
-                            entity_a = (Entity) world.getEntitiesOfClass(EntityTreeEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
-                                return true;
-                            }).stream().sorted(((new Object() {
-                                Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-                                    return Comparator.comparingDouble((_entcnd) -> {
-                                        return _entcnd.distanceToSqr(_x, _y, _z);
-                                    });
+                            int index2;
+                            for (index2 = 0; index2 < 32; ++index2) {
+                                num2 = Math.random();
+                                if (num2 > 0.5) {
+                                    num2 *= dis2 - 4.0;
+                                    break;
                                 }
-                            })).compareDistOf(x_pos, y_pos, z_pos)).findFirst().orElse((EntityTreeEntity) null);
-                            entity_a.getPersistentData().putDouble("NameRanged_ranged", entity.getPersistentData().getDouble("NameRanged"));
-                            entity_a.getPersistentData().putString("OWNER_UUID", entity.getStringUUID());
-                            ((LivingEntity) entity_a).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(2.0 + Math.random());
+                            }
+
+                            x_pos = entity.getPersistentData().getDouble("x_pos_doma") + Math.sin(num1) * num2;
+                            y_pos = entity.getPersistentData().getDouble("y_pos_doma") + 1.0;
+                            z_pos = entity.getPersistentData().getDouble("z_pos_doma") + Math.cos(num1) * num2;
+
+                            for (index2 = 0; index2 < 16; ++index2) {
+                                if (world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos)).canOcclude()) {
+                                    ++y_pos;
+                                } else if (!world.getBlockState(BlockPos.containing(x_pos, y_pos - 1.0, z_pos)).canOcclude()) {
+                                    --y_pos;
+                                } else if (!world.getBlockState(BlockPos.containing(x_pos, y_pos, z_pos)).canOcclude() && world.getBlockState(BlockPos.containing(x_pos, y_pos - 1.0, z_pos)).canOcclude()) {
+                                    y_pos = Math.floor(y_pos);
+                                    break;
+                                }
+                            }
+
+                            if (world instanceof ServerLevel) {
+                                ServerLevel _level = (ServerLevel) world;
+                                Commands var100002 = _level.getServer().getCommands();
+                                CommandSourceStack var10003 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
+                                double var10002 = Math.random() * 360.0;
+                                var100002.performPrefixedCommand(var10003, "summon jujutsucraft:entity_tree ~ ~ ~ {NoAI:1b,Invulnerable:1b,Rotation:[" + var10002 + "F," + (Math.random() - 0.5) * 30.0 + "F]}");
+                            }
+
+                            if (!world.getEntitiesOfClass(EntityTreeEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
+                                return true;
+                            }).isEmpty()) {
+                                entity_a = (Entity) world.getEntitiesOfClass(EntityTreeEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
+                                    return true;
+                                }).stream().sorted(((new Object() {
+                                    Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+                                        return Comparator.comparingDouble((_entcnd) -> {
+                                            return _entcnd.distanceToSqr(_x, _y, _z);
+                                        });
+                                    }
+                                })).compareDistOf(x_pos, y_pos, z_pos)).findFirst().orElse((EntityTreeEntity) null);
+                                entity_a.getPersistentData().putDouble("NameRanged_ranged", entity.getPersistentData().getDouble("NameRanged"));
+                                entity_a.getPersistentData().putString("OWNER_UUID", entity.getStringUUID());
+                                ((LivingEntity) entity_a).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(2.0 + Math.random());
+                            }
                         }
                     }
                 } else {
@@ -235,7 +243,16 @@ public abstract class MalevolentShrine2Mixin {
                         z_pos = entity.getPersistentData().getDouble("z_pos_doma") - Math.sin(Math.toRadians((double) (entity.getYRot() + 90.0F))) * Math.cos(Math.toRadians(0.0)) * (JujutsucraftModVariables.MapVariables.get(world).DomainExpansionRadius - 5.0);
 
                         if (world instanceof ServerLevel) {
-                            if (world instanceof ServerLevel) {
+                            if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) <= (entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1) / 3) {
+                                if (world instanceof ServerLevel) {
+                                    ServerLevel _level2 = (ServerLevel) world;
+                                    Commands var32 = _level2.getServer().getCommands();
+                                    CommandSourceStack var33 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level2, 4, "", Component.literal(""), _level2.getServer(), (Entity) null)).withSuppressedOutput();
+                                    int var10002 = entity.getDirection() != Direction.NORTH && entity.getDirection() != Direction.SOUTH ? 90 : 0;
+                                    var32.performPrefixedCommand(var33, "summon jujutsucraftaddon:malevolent_shrine ~ ~ ~ {Invulnerable:1b,Rotation:[" + var10002 + "F,0F]}");
+                                }
+
+                            } else if (world instanceof ServerLevel) {
                                 ServerLevel _level2 = (ServerLevel) world;
                                 Commands var32 = _level2.getServer().getCommands();
                                 CommandSourceStack var33 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level2, 4, "", Component.literal(""), _level2.getServer(), (Entity) null)).withSuppressedOutput();
@@ -247,7 +264,7 @@ public abstract class MalevolentShrine2Mixin {
                                 entity.getPersistentData().putDouble("NameRanged", Math.random());
                             }
 
-                            if (!world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
+                            if (!world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0) , (e) -> {
                                 return true;
                             }).isEmpty()) {
                                 entity_a = (Entity) world.getEntitiesOfClass(EntityMalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
@@ -259,6 +276,23 @@ public abstract class MalevolentShrine2Mixin {
                                         });
                                     }
                                 })).compareDistOf(x_pos, y_pos, z_pos)).findFirst().orElse((EntityMalevolentShrineEntity) null);
+                                entity_a.getPersistentData().putDouble("NameRanged_ranged", entity.getPersistentData().getDouble("NameRanged"));
+                                entity_a.getPersistentData().putString("OWNER_UUID", entity.getStringUUID());
+
+                            }
+
+                            if (!world.getEntitiesOfClass(MalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0) , (e) -> {
+                                return true;
+                            }).isEmpty()) {
+                                entity_a = (Entity) world.getEntitiesOfClass(MalevolentShrineEntity.class, AABB.ofSize(new Vec3(x_pos, y_pos, z_pos), 1.0, 1.0, 1.0), (e) -> {
+                                    return true;
+                                }).stream().sorted(((new Object() {
+                                    Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+                                        return Comparator.comparingDouble((_entcnd) -> {
+                                            return _entcnd.distanceToSqr(_x, _y, _z);
+                                        });
+                                    }
+                                })).compareDistOf(x_pos, y_pos, z_pos)).findFirst().orElse((MalevolentShrineEntity) null);
                                 entity_a.getPersistentData().putDouble("NameRanged_ranged", entity.getPersistentData().getDouble("NameRanged"));
                                 entity_a.getPersistentData().putString("OWNER_UUID", entity.getStringUUID());
                             }
@@ -290,5 +324,6 @@ public abstract class MalevolentShrine2Mixin {
             }
             PlayAnimationProcedure.execute(entity);
         }
+        ci.cancel();
     }
 }

@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.item;
 
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,25 +17,25 @@ import net.mcreator.jujutsucraftaddon.procedures.KokusenScrollRightclickedProced
 import java.util.List;
 
 public class KokusenScrollItem extends Item {
-    public KokusenScrollItem() {
-        super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
-    }
+	public KokusenScrollItem() {
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));
+	}
 
-    @Override
-    public float getDestroySpeed(ItemStack par1ItemStack, BlockState par2Block) {
-        return 0f;
-    }
+	@Override
+	public float getDestroySpeed(ItemStack par1ItemStack, BlockState par2Block) {
+		return 0f;
+	}
 
-    @Override
-    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, level, list, flag);
-        list.add(Component.literal("[Ability] Master your Rampage State while using a Kokusen"));
-    }
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
+		list.add(Component.translatable("item.jujutsucraftaddon.kokusen_scroll.description_0"));
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-        InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-        KokusenScrollRightclickedProcedure.execute(entity);
-        return ar;
-    }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+		KokusenScrollRightclickedProcedure.execute(entity);
+		return ar;
+	}
 }

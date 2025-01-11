@@ -1,11 +1,22 @@
 repositories {
   maven {
+      url = 'https://cursemaven.com/'
+  }
+}
+
+dependencies {
+  implementation fg.deobf('curse.maven:sorceryfight-471288:5506676')
+}
+
+
+repositories {
+  maven {
       url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
   }
 }
 
 dependencies {
-  implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.2')
+  implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.9')
 }
 
 minecraft {
@@ -26,26 +37,13 @@ minecraft {
 }
 
 
-repositories {
-  maven {
-      url = 'https://cursemaven.com/'
-  }
-}
-
-dependencies {
-  implementation fg.deobf("curse.maven:sorceryfight-471288:5840968")
-}
-
-
 minecraft {
   runs {
    client {    
-      property 'mixin.env.remapRefMap', 'true'
-      property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+      
        }
         server {
-         property 'mixin.env.remapRefMap', 'true'
-         property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+         
        }
       }
      }

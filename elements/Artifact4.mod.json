@@ -1,0 +1,57 @@
+{
+  "_fv": 73,
+  "_type": "animateditem",
+  "definition": {
+    "renderType": 0,
+    "texture": "amuleto5",
+    "name": "Artifact Of Undying",
+    "idle": "idle",
+    "rarity": "EPIC",
+    "displaySettings": "artifact.json",
+    "leftArm": "",
+    "rightArm": "",
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Items"
+      }
+    ],
+    "firstPersonArms": false,
+    "stackSize": 1,
+    "enchantability": 0,
+    "useDuration": 0,
+    "toolType": 1.0,
+    "damageCount": 0,
+    "recipeRemainder": {
+      "value": ""
+    },
+    "destroyAnyBlock": false,
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "enableArmPose": false,
+    "damageOnCrafting": false,
+    "enableMeleeDamage": false,
+    "damageVsEntity": 0.0,
+    "specialInformation": {
+      "fixedValue": [
+        "[Ability] Same thing as Totem of Undying, but every death cost 2k ce, if you don't have you die and lose the artifact",
+        "[Guide] Just keep at the inventory"
+      ]
+    },
+    "hasGlow": false,
+    "guiBoundTo": "<NONE>",
+    "inventorySize": 9,
+    "inventoryStackSize": 64,
+    "isFood": false,
+    "nutritionalValue": 4,
+    "saturation": 0.3,
+    "eatResultItem": {
+      "value": ""
+    },
+    "isMeat": false,
+    "isAlwaysEdible": false,
+    "animation": "none",
+    "normal": "artifact.geo.json",
+    "armPoseList": [],
+    "disableSwing": false
+  }
+}

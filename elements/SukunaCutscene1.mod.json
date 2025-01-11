@@ -1,0 +1,29 @@
+{
+  "_fv": 73,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Sukuna Cutscene 1",
+    "icon": "ce_fix_potion",
+    "color": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true,
+    "isCuredByMilk": true,
+    "isProtectedByTotem": true,
+    "isCuredbyHoney": false,
+    "modifiers": [],
+    "onStarted": {
+      "name": "SukunaCutscene1EffectStartedapplied"
+    },
+    "onActiveTick": {
+      "name": "SukunaCutscene1OnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "SukunaCutscene1EffectExpires"
+    }
+  }
+}

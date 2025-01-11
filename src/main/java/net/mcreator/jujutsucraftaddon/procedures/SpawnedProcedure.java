@@ -1,5 +1,10 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.mcreator.jujutsucraft.entity.*;
+import net.mcreator.jujutsucraft.procedures.SizeByNBTProcedure;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.level.GameRules;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -9,10 +14,6 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.tags.TagKey;
 import net.minecraft.resources.ResourceLocation;
@@ -21,18 +22,10 @@ import net.minecraft.core.registries.Registries;
 
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
-import net.mcreator.jujutsucraft.entity.SukunaPerfectEntity;
-import net.mcreator.jujutsucraft.entity.SukunaEntity;
-import net.mcreator.jujutsucraft.entity.StevensonScreenEntity;
-import net.mcreator.jujutsucraft.entity.GojoSatoruSchoolDaysEntity;
-import net.mcreator.jujutsucraft.entity.GojoSatoruEntity;
-import net.mcreator.jujutsucraft.entity.FushiguroTojiEntity;
-import net.mcreator.jujutsucraft.entity.FushiguroTojiBugEntity;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
-import net.mcreator.jujutsucraft.entity.CursedSpiritGrade37Entity;
 
 import javax.annotation.Nullable;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber
@@ -47,161 +40,141 @@ public class SpawnedProcedure {
     }
 
     private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
-        if (entity == null)
+        if (!(entity instanceof LivingEntity livingEntity))
             return;
-        if (entity.isAlive()) {
-            if (entity instanceof PathfinderMob) {
-                if ((Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).startsWith("jujutsucraft")) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.RESPAWNED_JUJUTSU.get(), 20, 1, false, false));
-                    MobSpawnType spawnType = ((PathfinderMob) entity).getSpawnType();
-                    if (spawnType != null) {
-                        if ((Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).startsWith("jujutsucraft")) {
-                            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_STEVENSON)) {
-                                if (entity instanceof StevensonScreenEntity) {
-                                    if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                        if (!(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                            if (event != null && event.isCancelable()) {
-                                                event.setCanceled(true);
-                                            } else if (event != null && event.hasResult()) {
-                                                event.setResult(Event.Result.DENY);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_ARMORY_SPIRIT)) {
-                                if (entity instanceof CursedSpiritGrade37Entity) {
-                                    if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                        if (!(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                            if (event != null && event.isCancelable()) {
-                                                event.setCanceled(true);
-                                            } else if (event != null && event.hasResult()) {
-                                                event.setResult(Event.Result.DENY);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (entity instanceof SukunaEntity || (Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).equals("jujutsucraft:sukuna_fushiguro") || entity instanceof SukunaPerfectEntity) {
-                                if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                    if (!(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                        if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SUKUNA_RATE))) {
-                                            if (event != null && event.isCancelable()) {
-                                                event.setCanceled(true);
-                                            } else if (event != null && event.hasResult()) {
-                                                event.setResult(Event.Result.DENY);
-                                            }
-                                        }
-                                    }
-                                }
-                            } else if (entity instanceof GojoSatoruSchoolDaysEntity || entity instanceof GojoSatoruEntity) {
-                                if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                    if (!(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                        if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_GOJO_RATE))) {
-                                            if (event != null && event.isCancelable()) {
-                                                event.setCanceled(true);
-                                            } else if (event != null && event.hasResult()) {
-                                                event.setResult(Event.Result.DENY);
-                                            }
-                                        }
-                                    }
-                                }
-                            } else if (entity instanceof FushiguroTojiEntity || entity instanceof FushiguroTojiBugEntity) {
-                                if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                    if (!(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                        if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_TOJI_RATE))) {
-                                            if (event != null && event.isCancelable()) {
-                                                event.setCanceled(true);
-                                            } else if (event != null && event.hasResult()) {
-                                                event.setResult(Event.Result.DENY);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                if (entity.getPersistentData().getDouble("CursedSpirit") == 1 && !(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                    if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_CURSED_SPIRIT_RATE))) {
-                                        if (event != null && event.isCancelable()) {
-                                            event.setCanceled(true);
-                                        } else if (event != null && event.hasResult()) {
-                                            event.setResult(Event.Result.DENY);
-                                        }
-                                    }
-                                } else if (entity.getPersistentData().getDouble("CurseUser") == 1 && !(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                    if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_CURSE_USERS_RATE))) {
-                                        if (event != null && event.isCancelable()) {
-                                            event.setCanceled(true);
-                                        } else if (event != null && event.hasResult()) {
-                                            event.setResult(Event.Result.DENY);
-                                        }
-                                    }
-                                } else if (entity.getPersistentData().getDouble("JujutsuSorcerer") == 1 && !(((PathfinderMob) entity).getSpawnType().toString()).equals("COMMAND")) {
-                                    if (Math.random() >= 0.01 * (world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_SORCERERS_RATE))) {
-                                        if (event != null && event.isCancelable()) {
-                                            event.setCanceled(true);
-                                        } else if (event != null && event.hasResult()) {
-                                            event.setResult(Event.Result.DENY);
-                                        }
-                                    }
-                                } // Check if the entity has the specified tags
-                                if (entity.getPersistentData().getDouble("CursedSpirit") == 1 || entity.getPersistentData().getDouble("CurseUser") == 1 || entity.getPersistentData().getDouble("JujutsuSorcerer") == 1) {
-                                    // Retrieve the "buff" value from the entity's persistent data
-                                    CompoundTag forgeData = entity.getPersistentData().getCompound("ForgeData");
-                                    double buffValue = forgeData.getDouble("buff");
-                                    // If "buff" is not set to 1, apply the health modification
-                                    if (buffValue != 1) {
-                                        LivingEntity livingEntity = (LivingEntity) entity;
-                                        // Get the current MAX_HEALTH attribute
-                                        AttributeInstance maxHealthAttr = livingEntity.getAttribute(Attributes.MAX_HEALTH);
-                                        if (maxHealthAttr != null) {
-                                            // Update the MAX_HEALTH attribute based on game difficulty
-                                            double gameDifficulty = world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DIFFICULTY);
-                                            double newMaxHealth = 100.0 / gameDifficulty * maxHealthAttr.getBaseValue();
-                                            maxHealthAttr.setBaseValue(newMaxHealth);
-                                            // Set the entity's health to the new maximum
-                                            livingEntity.setHealth(livingEntity.getMaxHealth());
-                                        }
-                                        // Update the "buff" value in the persistent data
-                                        forgeData.putDouble("buff", 1);
-                                        entity.getPersistentData().put("ForgeData", forgeData);
-                                    }
-                                }
-                                if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_SPAWN_OVERWORLD)) {
-                                    if ((Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).startsWith("jujutsucraft")) {
-                                        if (!(((PathfinderMob) entity).getSpawnType().toString()).isEmpty()) {
-                                            if ((((PathfinderMob) entity).getSpawnType().toString()).equals("NATURAL")) {
-                                                if (event != null && event.isCancelable()) {
-                                                    event.setCanceled(true);
-                                                } else if (event != null && event.hasResult()) {
-                                                    event.setResult(Event.Result.DENY);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    KenjakuDomainSummoningProcedure.execute(world, x, y, z, entity);
-                    if (entity.getPersistentData().getDouble("Mahoraga") == 1) {
-                        if (entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity) {
-                            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MAHO_EFFECTO.get(), 40, 1, false, false));
-                        }
-                    }
+
+        if (world instanceof ServerLevel serverLevel) {
+            if (serverLevel.getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_VANILLA)) {
+                if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:vanilla_mob")))) {
+                    cancelEvent(event);
                 }
-                if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_VANILLA)) {
-                    if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:vanilla_mob")))) {
-                        if (event != null && event.isCancelable()) {
-                            event.setCanceled(true);
-                        } else if (event != null && event.hasResult()) {
-                            event.setResult(Event.Result.DENY);
-                        }
+            }
+        }
+
+        ResourceLocation entityTypeKey = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+        if (entityTypeKey == null || !entityTypeKey.toString().startsWith("jujutsucraft"))
+            return;
+
+
+        handleMahoragaLogic(world, x, y, z, entity);
+
+        if (entity instanceof RedEntity redEntity) {
+            Pose pose = redEntity.getPose();
+            redEntity.getDimensions(pose).scale((float)SizeByNBTProcedure.execute(entity));
+        }
+
+        boolean isServerSide = !livingEntity.level().isClientSide();
+
+        if (isServerSide) {
+            livingEntity.addEffect(new MobEffectInstance(
+                    JujutsucraftaddonModMobEffects.RESPAWNED_JUJUTSU.get(), 20, 1, false, false
+            ));
+        }
+
+        MobSpawnType spawnType = entity instanceof PathfinderMob ? ((PathfinderMob) entity).getSpawnType() : null;
+        if (spawnType != null) {
+            handleEntitySpawnLogic(event, world, entity, spawnType, entityTypeKey);
+        }
+
+    }
+
+    private static void handleEntitySpawnLogic(Event event, LevelAccessor world, Entity entity, MobSpawnType
+            spawnType, ResourceLocation entityTypeKey) {
+        String spawnTypeName = spawnType.toString();
+        boolean isCommandSpawn = "COMMAND".equals(spawnTypeName);
+
+        if (!isCommandSpawn) {
+            cancelEventIfRuleMet(event, world, JujutsucraftaddonModGameRules.JJKU_NO_STEVENSON, entity instanceof StevensonScreenEntity);
+            cancelEventIfRuleMet(event, world, JujutsucraftaddonModGameRules.JJKU_NO_ARMORY_SPIRIT, entity instanceof CursedSpiritGrade37Entity);
+            cancelEventIfChanceFails(event, world, entity, spawnTypeName, JujutsucraftaddonModGameRules.JJKU_SUKUNA_RATE, SukunaEntity.class, SukunaFushiguroEntity.class, SukunaPerfectEntity.class);
+            cancelEventIfChanceFails(event, world, entity, spawnTypeName, JujutsucraftaddonModGameRules.JJKU_GOJO_RATE, GojoSatoruSchoolDaysEntity.class, GojoSatoruEntity.class);
+            cancelEventIfChanceFails(event, world, entity, spawnTypeName, JujutsucraftaddonModGameRules.JJKU_TOJI_RATE, FushiguroTojiEntity.class, FushiguroTojiBugEntity.class);
+            cancelEventIfPersistentData(event, world, entity, "CursedSpirit", JujutsucraftaddonModGameRules.JJKU_CURSED_SPIRIT_RATE, spawnTypeName);
+            cancelEventIfPersistentData(event, world, entity, "CurseUser", JujutsucraftaddonModGameRules.JJKU_CURSE_USERS_RATE, spawnTypeName);
+            cancelEventIfPersistentData(event, world, entity, "JujutsuSorcerer", JujutsucraftaddonModGameRules.JJKU_SORCERERS_RATE, spawnTypeName);
+        }
+
+        handleBuffModification(world, entity);
+    }
+
+    private static void handleBuffModification(LevelAccessor world, Entity entity) {
+        if (entity.getPersistentData().getDouble("CursedSpirit") == 1
+                || entity.getPersistentData().getDouble("CurseUser") == 1
+                || entity.getPersistentData().getDouble("JujutsuSorcerer") == 1) {
+
+            CompoundTag forgeData = entity.getPersistentData().getCompound("ForgeData");
+            if (forgeData.getDouble("buff") != 1) {
+                LivingEntity livingEntity = (LivingEntity) entity;
+                AttributeInstance maxHealthAttr = livingEntity.getAttribute(Attributes.MAX_HEALTH);
+                if (maxHealthAttr != null) {
+                    double gameDifficulty = world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DIFFICULTY);
+                    double newMaxHealth = 100.0 / gameDifficulty * maxHealthAttr.getBaseValue();
+                    maxHealthAttr.setBaseValue(newMaxHealth);
+                    livingEntity.setHealth(livingEntity.getMaxHealth());
+                }
+                forgeData.putDouble("buff", 1);
+                entity.getPersistentData().put("ForgeData", forgeData);
+            }
+        }
+    }
+
+    private static void handleMahoragaLogic(LevelAccessor world, double x, double y, double z, Entity entity) {
+        KenjakuDomainSummoningProcedure.execute(world, x, y, z, entity);
+        if (entity.getPersistentData().getDouble("Mahoraga") == 1
+                && entity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity
+                && entity instanceof LivingEntity livingEntity
+                && !livingEntity.level().isClientSide()) {
+            livingEntity.addEffect(new MobEffectInstance(
+                    JujutsucraftaddonModMobEffects.MAHO_EFFECTO.get(), 40, 1, false, false
+            ));
+        }
+    }
+
+
+    private static void cancelEventIfRuleMet(Event event, LevelAccessor
+            world, GameRules.Key<GameRules.BooleanValue> rule, boolean condition) {
+        if (world.getLevelData().getGameRules().getBoolean(rule) && condition) {
+            cancelEvent(event);
+        }
+    }
+
+    private static void cancelEventIfChanceFails(Event event, LevelAccessor world, Entity entity, String
+            spawnTypeName, GameRules.Key<GameRules.IntegerValue> rule, Class<?>... entityClasses) {
+        if (Arrays.stream(entityClasses).anyMatch(clazz -> clazz.isInstance(entity))
+                && Math.random() >= 0.01 * world.getLevelData().getGameRules().getInt(rule)) {
+            if (entity.getPersistentData().getString("OWNER_UUID").isEmpty()) {
+                if (entity.getPersistentData().getDouble("friend_num") == 0) {
+                    if (entity.getPersistentData().getDouble("Spirit") == 0) {
+                        cancelEvent(event);
                     }
                 }
             }
         }
     }
+
+    private static void cancelEventIfPersistentData(Event event, LevelAccessor world, Entity entity, String
+            key, GameRules.Key<GameRules.IntegerValue> rule, String spawnTypeName) {
+        if (entity.getPersistentData().getDouble(key) == 1
+                && Math.random() >= 0.01 * world.getLevelData().getGameRules().getInt(rule)) {
+            if (entity.getPersistentData().getString("OWNER_UUID").isEmpty()) {
+                if (entity.getPersistentData().getDouble("friend_num") == 0) {
+                    if (entity.getPersistentData().getDouble("Spirit") == 0) {
+                        cancelEvent(event);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void cancelEvent(Event event) {
+        if (event != null) {
+            if (event.isCancelable()) {
+                event.setCanceled(true);
+            } else if (event.hasResult()) {
+                event.setResult(Event.Result.DENY);
+            }
+        }
+    }
+
+
 }

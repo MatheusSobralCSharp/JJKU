@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
 import net.minecraft.resources.ResourceLocation;
@@ -10,13 +11,13 @@ import net.minecraft.client.model.HumanoidModel;
 import net.mcreator.jujutsucraftaddon.entity.HakariEntity;
 
 public class HakariRenderer extends HumanoidMobRenderer<HakariEntity, HumanoidModel<HakariEntity>> {
-    public HakariRenderer(EntityRendererProvider.Context context) {
-        super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-        this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
-    }
+	public HakariRenderer(EntityRendererProvider.Context context) {
+		super(context, new HumanoidModel<HakariEntity>(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
+		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(HakariEntity entity) {
-        return new ResourceLocation("jujutsucraftaddon:textures/entities/hakari.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(HakariEntity entity) {
+		return new ResourceLocation("jujutsucraftaddon:textures/entities/hakari.png");
+	}
 }

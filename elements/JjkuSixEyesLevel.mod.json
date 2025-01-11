@@ -1,12 +1,12 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "gamerule",
   "definition": {
     "type": "Number",
     "displayName": "JJKU Six Eyes Level",
-    "description": "Change Six Eyes Level for reduced cost ( higher values = more cost, deafult value is = 1 )",
+    "description": "Change Six Eyes Level for reduced cost ( higher values = more cost, deafult value is = 5 )",
     "category": "MISC",
     "defaultValueLogic": false,
-    "defaultValueNumber": 1
+    "defaultValueNumber": 5
   }
 }

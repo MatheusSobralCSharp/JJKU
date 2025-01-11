@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -9,22 +10,23 @@ import net.mcreator.jujutsucraftaddon.procedures.JackpotOnEffectActiveTickProced
 import net.mcreator.jujutsucraftaddon.procedures.JackpotEffectProcedure;
 
 public class JackpotMobEffect extends MobEffect {
-    public JackpotMobEffect() {
-        super(MobEffectCategory.NEUTRAL, -1);
-    }
+	public JackpotMobEffect() {
+		super(MobEffectCategory.NEUTRAL, -1);
+	}
 
-    @Override
-    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        JackpotEffectProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-    }
+	@Override
+	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.addAttributeModifiers(entity, attributeMap, amplifier);
+		JackpotEffectProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+	}
 
-    @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
-        JackpotOnEffectActiveTickProcedure.execute(entity.level(), entity);
-    }
+	@Override
+	public void applyEffectTick(LivingEntity entity, int amplifier) {
+		JackpotOnEffectActiveTickProcedure.execute(entity.level(), entity);
+	}
 
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
-    }
+	@Override
+	public boolean isDurationEffectTick(int duration, int amplifier) {
+		return true;
+	}
 }

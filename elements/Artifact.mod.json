@@ -1,0 +1,65 @@
+{
+  "_fv": 73,
+  "_type": "animateditem",
+  "definition": {
+    "renderType": 0,
+    "texture": "amuleto",
+    "name": "Artifact Cursed Energy Storage",
+    "idle": "idle",
+    "rarity": "EPIC",
+    "displaySettings": "artifact.json",
+    "leftArm": "",
+    "rightArm": "",
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Items"
+      }
+    ],
+    "firstPersonArms": false,
+    "stackSize": 1,
+    "enchantability": 0,
+    "useDuration": 1000,
+    "toolType": 1.0,
+    "damageCount": 0,
+    "recipeRemainder": {
+      "value": ""
+    },
+    "destroyAnyBlock": false,
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "enableArmPose": false,
+    "damageOnCrafting": false,
+    "enableMeleeDamage": false,
+    "damageVsEntity": 0.0,
+    "specialInformation": {
+      "fixedValue": [
+        "[Ability] Store Cursed Energy",
+        "[Ability2] You can use this for make a Curtain, same thing as veil, but the time will be the amount of ce stored ( 10.000 = 1 minute )",
+        "[Ability3] You can use this for restore your cursed energy with the energy stored",
+        "[Guide] Right Click For Swap Modes: Absorb = Grabs Your CE, Fill = Fill your CE with the energy on it, Curtain = Hold to Summon a Curtain with duration relative to the ce stored (Size Isn't big)"
+      ]
+    },
+    "hasGlow": false,
+    "guiBoundTo": "<NONE>",
+    "inventorySize": 9,
+    "inventoryStackSize": 64,
+    "onRightClickedInAir": {
+      "name": "ArtifactRightclicked"
+    },
+    "onItemInUseTick": {
+      "name": "ArtifactItemInHandTick"
+    },
+    "isFood": false,
+    "nutritionalValue": 4,
+    "saturation": 0.3,
+    "eatResultItem": {
+      "value": ""
+    },
+    "isMeat": false,
+    "isAlwaysEdible": false,
+    "animation": "bow",
+    "normal": "artifact.geo.json",
+    "armPoseList": [],
+    "disableSwing": false
+  }
+}

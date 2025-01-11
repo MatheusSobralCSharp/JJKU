@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import org.checkerframework.checker.units.qual.s;
@@ -18,36 +19,36 @@ import net.mcreator.jujutsucraftaddon.procedures.SetPVPBase2Procedure;
 
 @Mod.EventBusSubscriber
 public class JjkurSetBaseCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurSetPVPBase").requires(s -> s.hasPermission(2)).then(Commands.literal("Team1").executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuSetPVPBase").requires(s -> s.hasPermission(2)).then(Commands.literal("Team1").executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            SetPVPBaseProcedure.execute(world, entity);
-            return 0;
-        })).then(Commands.literal("Team2").executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+			SetPVPBaseProcedure.execute(world, entity);
+			return 0;
+		})).then(Commands.literal("Team2").executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            SetPVPBase2Procedure.execute(world, entity);
-            return 0;
-        })));
-    }
+			SetPVPBase2Procedure.execute(world, entity);
+			return 0;
+		})));
+	}
 }

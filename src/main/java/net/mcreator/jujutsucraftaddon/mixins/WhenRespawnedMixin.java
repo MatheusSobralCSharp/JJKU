@@ -3,16 +3,14 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.procedures.WhenEntitySpawnsProcedure;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
 
-
-@Mixin(value = WhenEntitySpawnsProcedure.class, remap = false)
+@Mixin(value = WhenEntitySpawnsProcedure.class, priority = 3003)
 public abstract class WhenRespawnedMixin {
     public WhenRespawnedMixin() {
     }
@@ -21,14 +19,8 @@ public abstract class WhenRespawnedMixin {
      * @author Satushi
      * @reason Testing
      */
-    @SubscribeEvent
-    @Overwrite
-    public static void onEntitySpawned(EntityJoinLevelEvent event) {
-        execute(event, event.getEntity());
-    }
-
-    private static void execute(@Nullable Event event, Entity entity) {
-
-
+    @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/entity/Entity;)V", remap = false, cancellable = true)
+    private static void execute(Event event, Entity entity, CallbackInfo ci) {
+        ci.cancel();
     }
 }

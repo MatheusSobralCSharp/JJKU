@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -16,7 +16,8 @@
           "image": "health.png",
           "use1Xscale": true,
           "x": 15,
-          "y": 26
+          "y": 26,
+          "locked": false
         }
       },
       {
@@ -25,7 +26,8 @@
           "image": "technique.png",
           "use1Xscale": true,
           "x": 85,
-          "y": 114
+          "y": 114,
+          "locked": false
         }
       },
       {
@@ -34,7 +36,8 @@
           "image": "strength2.png",
           "use1Xscale": true,
           "x": 183,
-          "y": 4
+          "y": 4,
+          "locked": false
         }
       },
       {
@@ -43,7 +46,8 @@
           "image": "meditation2.png",
           "use1Xscale": true,
           "x": 332,
-          "y": 118
+          "y": 118,
+          "locked": false
         }
       },
       {
@@ -58,7 +62,8 @@
           "width": 56,
           "height": 20,
           "x": 15,
-          "y": 118
+          "y": 118,
+          "locked": false
         }
       },
       {
@@ -73,7 +78,8 @@
           "width": 56,
           "height": 20,
           "x": 85,
-          "y": 207
+          "y": 207,
+          "locked": false
         }
       },
       {
@@ -88,7 +94,8 @@
           "width": 56,
           "height": 20,
           "x": 183,
-          "y": 94
+          "y": 94,
+          "locked": false
         }
       },
       {
@@ -103,7 +110,8 @@
           "width": 56,
           "height": 20,
           "x": 332,
-          "y": 210
+          "y": 210,
+          "locked": false
         }
       },
       {
@@ -118,7 +126,8 @@
             "falpha": 0.0
           },
           "x": 242,
-          "y": 6
+          "y": 6,
+          "locked": false
         }
       },
       {
@@ -133,7 +142,8 @@
             "falpha": 0.0
           },
           "x": 255,
-          "y": 31
+          "y": 31,
+          "locked": false
         }
       },
       {
@@ -148,7 +158,8 @@
             "falpha": 0.0
           },
           "x": 252,
-          "y": 45
+          "y": 45,
+          "locked": false
         }
       },
       {
@@ -163,7 +174,8 @@
             "falpha": 0.0
           },
           "x": 274,
-          "y": 18
+          "y": 18,
+          "locked": false
         }
       },
       {
@@ -178,7 +190,8 @@
             "falpha": 0.0
           },
           "x": 3,
-          "y": 11
+          "y": 11,
+          "locked": false
         }
       },
       {
@@ -193,7 +206,8 @@
             "falpha": 0.0
           },
           "x": 91,
-          "y": 32
+          "y": 32,
+          "locked": false
         }
       },
       {
@@ -208,7 +222,8 @@
             "falpha": 0.0
           },
           "x": 85,
-          "y": 48
+          "y": 48,
+          "locked": false
         }
       },
       {
@@ -223,7 +238,8 @@
             "falpha": 0.0
           },
           "x": 170,
-          "y": 119
+          "y": 119,
+          "locked": false
         }
       },
       {
@@ -238,7 +254,8 @@
             "falpha": 0.0
           },
           "x": 296,
-          "y": 62
+          "y": 62,
+          "locked": false
         }
       },
       {
@@ -253,7 +270,8 @@
             "falpha": 0.0
           },
           "x": 153,
-          "y": 134
+          "y": 134,
+          "locked": false
         }
       },
       {
@@ -268,7 +286,8 @@
             "falpha": 0.0
           },
           "x": 286,
-          "y": 74
+          "y": 74,
+          "locked": false
         }
       },
       {
@@ -283,7 +302,8 @@
             "falpha": 0.0
           },
           "x": 295,
-          "y": 101
+          "y": 101,
+          "locked": false
         }
       },
       {
@@ -298,7 +318,8 @@
             "falpha": 0.0
           },
           "x": 147,
-          "y": 149
+          "y": 149,
+          "locked": false
         }
       },
       {
@@ -313,7 +334,8 @@
             "falpha": 0.0
           },
           "x": 82,
-          "y": 61
+          "y": 61,
+          "locked": false
         }
       },
       {
@@ -328,7 +350,8 @@
             "falpha": 0.0
           },
           "x": 148,
-          "y": 166
+          "y": 166,
+          "locked": false
         }
       },
       {
@@ -343,7 +366,8 @@
             "falpha": 0.0
           },
           "x": 304,
-          "y": 87
+          "y": 87,
+          "locked": false
         }
       },
       {
@@ -358,7 +382,8 @@
             "falpha": 0.0
           },
           "x": 170,
-          "y": 185
+          "y": 185,
+          "locked": false
         }
       }
     ],

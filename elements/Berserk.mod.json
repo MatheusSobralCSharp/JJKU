@@ -1,9 +1,9 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Berserk",
-    "icon": "ter1.png",
+    "icon": "ter1",
     "color": {
       "value": -16777216,
       "falpha": 0.0
@@ -12,11 +12,15 @@
     "mobEffectCategory": "NEUTRAL",
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
+    "isCuredByMilk": true,
+    "isProtectedByTotem": true,
+    "isCuredbyHoney": false,
+    "modifiers": [],
     "onStarted": {
       "name": "BerserkEffectStartedapplied"
     },
-    "onActiveTick": {
-      "name": "BerserkOnEffectActiveTick"
+    "onExpired": {
+      "name": "BerserkEffectExpires"
     }
   }
 }

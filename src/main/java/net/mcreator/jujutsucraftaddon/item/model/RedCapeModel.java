@@ -1,22 +1,24 @@
 package net.mcreator.jujutsucraftaddon.item.model;
 
-import net.mcreator.jujutsucraftaddon.item.RedCapeItem;
-import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 
+import net.minecraft.resources.ResourceLocation;
+
+import net.mcreator.jujutsucraftaddon.item.RedCapeItem;
+
 public class RedCapeModel extends GeoModel<RedCapeItem> {
-    @Override
-    public ResourceLocation getAnimationResource(RedCapeItem object) {
-        return new ResourceLocation("jujutsucraftaddon", "animations/decisive2.animation.json");
-    }
+	@Override
+	public ResourceLocation getAnimationResource(RedCapeItem object) {
+		return new ResourceLocation("jujutsucraftaddon", "animations/decisive2.animation.json");
+	}
 
-    @Override
-    public ResourceLocation getModelResource(RedCapeItem object) {
-        return new ResourceLocation("jujutsucraftaddon", "geo/decisive2.geo.json");
-    }
+	@Override
+	public ResourceLocation getModelResource(RedCapeItem object) {
+		return new ResourceLocation("jujutsucraftaddon", "geo/decisive2.geo.json");
+	}
 
-    @Override
-    public ResourceLocation getTextureResource(RedCapeItem object) {
-        return new ResourceLocation("jujutsucraftaddon", "textures/item/text25.png");
-    }
+	@Override
+	public ResourceLocation getTextureResource(RedCapeItem object) {
+		return new ResourceLocation("jujutsucraftaddon", "textures/item/text25.png");
+	}
 }

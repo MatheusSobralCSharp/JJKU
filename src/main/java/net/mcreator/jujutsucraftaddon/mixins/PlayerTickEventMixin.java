@@ -1,11 +1,11 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.init.JujutsucraftModAttributes;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.PlayerTickEventProcedure;
 import net.mcreator.jujutsucraft.procedures.PlayerTickSecondTechniqueProcedure;
 import net.mcreator.jujutsucraft.procedures.WhenPlayerActiveTickInfinityProcedure;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -16,23 +16,25 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
-@Mixin(value = PlayerTickEventProcedure.class, remap = false)
+@Mixin(value = PlayerTickEventProcedure.class, priority = 12000)
 public abstract class PlayerTickEventMixin {
     public PlayerTickEventMixin() {
     }
@@ -41,25 +43,50 @@ public abstract class PlayerTickEventMixin {
      * @author Satushi
      * @reason Change Tick Fix
      */
-    @Overwrite
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
-            execute(event, event.player.level(), event.player.getX(), event.player.getY(), event.player.getZ(), event.player);
-        }
-
-    }
-
-
-    private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", remap = false, cancellable = true)
+    private static void execute(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
             double TECHNIQUE = 0.0;
             double CursePowerChange = 0.0;
-            if (entity.isAlive()) {
-                if (Objects.requireNonNull(((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.ANIMATION1.get())).getBaseValue() != 0.0) {
-                    entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("jujutsucraft:start_animation")))), 1.0F);
-                }
+            ItemStack var100001;
+            ResourceLocation entityTypeKey = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
 
+            assert entityTypeKey != null;
+            if (entityTypeKey.toString().startsWith("jujutsucraft")) {
+                return;
+            }
+
+
+            if (entity instanceof LivingEntity _livEnt10) {
+                var100001 = _livEnt10.getItemBySlot(EquipmentSlot.HEAD);
+            } else {
+                var100001 = ItemStack.EMPTY;
+            }
+
+            if (entity instanceof LivingEntity livingEntity) {
+                boolean hasMurasakiEffect = livingEntity.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get());
+                boolean hasWorldCutEffect = livingEntity.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.WORLD_CUT.get());
+
+                if (!hasMurasakiEffect && !hasWorldCutEffect) {
+                    if (var100001.getOrCreateTag().getDouble("P_ANIME1") != 0.0) {
+                        ResourceKey<DamageType> damageTypeKey = ResourceKey.create(
+                                Registries.DAMAGE_TYPE,
+                                new ResourceLocation("jujutsucraft:start_animation")
+                        );
+
+                        DamageSource damageSource = new DamageSource(
+                                world.registryAccess()
+                                        .registryOrThrow(Registries.DAMAGE_TYPE)
+                                        .getHolderOrThrow(damageTypeKey)
+                        );
+
+                        entity.hurt(damageSource, 1.0F);
+                    }
+                }
+            }
+
+
+            if (entity.isAlive()) {
                 TECHNIQUE = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
                 CursePowerChange = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange;
                 if (TECHNIQUE != 0.0) {
@@ -221,6 +248,8 @@ public abstract class PlayerTickEventMixin {
                 entity.getPersistentData().putDouble("NBT_CursePowerAmount", ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower);
             }
 
+
         }
+        ci.cancel();
     }
 }

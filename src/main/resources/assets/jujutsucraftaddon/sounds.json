@@ -1078,5 +1078,118 @@
         "stream": false
       }
     ]
+  },
+  "congratulations": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:congratulations",
+        "stream": true
+      }
+    ]
+  },
+  "dodge": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:dbz-teleport",
+        "stream": true
+      }
+    ]
+  },
+  "dandankokoro": {
+    "subtitle": "subtitles.dandankokoro",
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:dandankokoro",
+        "stream": true
+      }
+    ]
+  },
+  "purplefinal": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:purplefinal",
+        "stream": true
+      }
+    ]
+  },
+  "sukunawaken1": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:sukunaawaken1",
+        "stream": false
+      }
+    ]
+  },
+  "ryomensukuna": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:ryomensukuna",
+        "stream": false
+      }
+    ]
+  },
+  "sukunaawaken2": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:sukunaawaken2",
+        "stream": false
+      }
+    ]
+  },
+  "sukunawaken3": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:sukunaawaken3",
+        "stream": false
+      }
+    ]
+  },
+  "furubeult": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:mahoragasummon",
+        "stream": false
+      }
+    ]
+  },
+  "spawncentipede": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:dig_1",
+        "stream": false
+      }
+    ]
+  },
+  "centipededescer2": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:dig_2",
+        "stream": false
+      }
+    ]
+  },
+  "screamcentipede": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:scream_2",
+        "stream": false
+      }
+    ]
+  },
+  "fuuga": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:fuga",
+        "stream": false
+      }
+    ]
+  },
+  "fugasummon": {
+    "sounds": [
+      {
+        "name": "jujutsucraftaddon:fuga_appear",
+        "stream": false
+      }
+    ]
   }
 }

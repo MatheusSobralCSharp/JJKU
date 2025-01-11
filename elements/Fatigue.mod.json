@@ -1,9 +1,9 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Fatigue",
-    "icon": "broken_brain.png",
+    "icon": "broken_brain",
     "color": {
       "value": -1,
       "falpha": 0.0
@@ -12,6 +12,10 @@
     "mobEffectCategory": "BENEFICIAL",
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
+    "isCuredByMilk": false,
+    "isProtectedByTotem": false,
+    "isCuredbyHoney": false,
+    "modifiers": [],
     "onActiveTick": {
       "name": "FatigueOnEffectActiveTick"
     }

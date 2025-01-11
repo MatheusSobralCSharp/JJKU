@@ -30,23 +30,24 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = WhenEntityDieProcedure.class, remap = false)
+@Mixin(value = WhenEntityDieProcedure.class, priority = 3000)
 public abstract class WhenEntityDieMixin {
     public WhenEntityDieMixin() {
     }
-
     /**
      * @author Satushi
      * @reason Yes
      */
-    @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
             double fame = 0.0;
             double fame_base = 0.0;
@@ -577,7 +578,7 @@ public abstract class WhenEntityDieMixin {
                     }
                 }
             }
-
+            ci.cancel();
         }
     }
 

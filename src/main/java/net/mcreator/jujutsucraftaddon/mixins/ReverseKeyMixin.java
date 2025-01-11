@@ -19,19 +19,23 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = KeyReverseCursedTechniqueOnKeyPressedProcedure.class, remap = false)
+@Mixin(value = KeyReverseCursedTechniqueOnKeyPressedProcedure.class, priority = 3000)
 public abstract class ReverseKeyMixin {
     public ReverseKeyMixin() {
     }
 
     /**
-     * @author Sat
-     * @reason None
+     * @author Satushi
+     * @reason Giving Reverse Cursed Technique Changes
      */
-    @Overwrite
-    public static void execute(Entity entity) {
+
+
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(Entity entity, CallbackInfo ci) {
         if (entity != null) {
             double level = 0.0;
             boolean strength = false;
@@ -247,5 +251,6 @@ public abstract class ReverseKeyMixin {
             }
 
         }
+        ci.cancel();
     }
 }

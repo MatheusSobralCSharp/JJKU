@@ -1,0 +1,86 @@
+{
+  "_fv": 73,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 200,
+    "height": 200,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_sharpness",
+          "text": "Sharpness",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Sharpness"
+          },
+          "width": 72,
+          "height": 20,
+          "x": 175,
+          "y": 45,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_looting",
+          "text": "Looting",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Looting"
+          },
+          "width": 61,
+          "height": 20,
+          "x": 182,
+          "y": 84,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_fire_aspect",
+          "text": "Fire Aspect",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "FireAspect"
+          },
+          "width": 82,
+          "height": 20,
+          "x": 172,
+          "y": 127,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_lure",
+          "text": "Lure",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Lure"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 186,
+          "y": 165,
+          "locked": false
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

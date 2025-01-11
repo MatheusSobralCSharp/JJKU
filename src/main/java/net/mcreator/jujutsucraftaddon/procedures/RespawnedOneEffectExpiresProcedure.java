@@ -8,12 +8,12 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 
 public class RespawnedOneEffectExpiresProcedure {
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-        if (entity == null)
-            return;
-        if (entity instanceof LivingEntity) {
-            ConcorrentSpawnProcedure.execute(entity, world, x, y, z);
-            world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get()), x, y, z, 0, 1, 0);
-        }
-    }
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
+		if (entity instanceof LivingEntity) {
+			ConcorrentSpawnProcedure.execute(entity, world, x, y, z);
+			world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.THUNDER_BLACK.get()), x, y, z, 0, 1, 0);
+		}
+	}
 }

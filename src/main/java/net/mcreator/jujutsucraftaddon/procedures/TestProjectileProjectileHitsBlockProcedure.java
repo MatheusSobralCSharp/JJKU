@@ -8,24 +8,24 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 
 public class TestProjectileProjectileHitsBlockProcedure {
-    public static void execute(LevelAccessor world, Entity entity, Entity immediatesourceentity) {
-        if (entity == null || immediatesourceentity == null)
-            return;
-        double Grow = 0;
-        double TrackZ = 0;
-        double TrackY = 0;
-        double TrackX = 0;
-        if (!(entity == null)) {
-            TrackX = entity.getX() - immediatesourceentity.getX();
-            TrackY = entity.getY() - immediatesourceentity.getY() + entity.getBbHeight() * 0.75 - immediatesourceentity.getBbHeight() * 0.75;
-            TrackZ = entity.getZ() - immediatesourceentity.getZ();
-            Grow = 1;
-            for (int index0 = 0; index0 < 20; index0++) {
-                if (world instanceof ServerLevel _level)
-                    _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.BLOOD_RED.get()), (immediatesourceentity.getX() + TrackX * Grow),
-                            (immediatesourceentity.getY() + immediatesourceentity.getBbHeight() * 0.75 + TrackY * Grow), (immediatesourceentity.getZ() + TrackZ * Grow), 5, 0.15, 0.15, 0.15, 0);
-                Grow = Grow - 0.05;
-            }
-        }
-    }
+	public static void execute(LevelAccessor world, Entity entity, Entity immediatesourceentity) {
+		if (entity == null || immediatesourceentity == null)
+			return;
+		double Grow = 0;
+		double TrackZ = 0;
+		double TrackY = 0;
+		double TrackX = 0;
+		if (!(entity == null)) {
+			TrackX = entity.getX() - immediatesourceentity.getX();
+			TrackY = entity.getY() - immediatesourceentity.getY() + entity.getBbHeight() * 0.75 - immediatesourceentity.getBbHeight() * 0.75;
+			TrackZ = entity.getZ() - immediatesourceentity.getZ();
+			Grow = 1;
+			for (int index0 = 0; index0 < 20; index0++) {
+				if (world instanceof ServerLevel _level)
+					_level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.BLOOD_RED.get()), (immediatesourceentity.getX() + TrackX * Grow),
+							(immediatesourceentity.getY() + immediatesourceentity.getBbHeight() * 0.75 + TrackY * Grow), (immediatesourceentity.getZ() + TrackZ * Grow), 5, 0.15, 0.15, 0.15, 0);
+				Grow = Grow - 0.05;
+			}
+		}
+	}
 }

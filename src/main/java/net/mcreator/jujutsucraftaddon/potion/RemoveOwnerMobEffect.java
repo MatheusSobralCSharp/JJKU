@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -8,18 +9,18 @@ import net.minecraft.world.effect.MobEffect;
 import net.mcreator.jujutsucraftaddon.procedures.RemoveOwnerEffectExpiresProcedure;
 
 public class RemoveOwnerMobEffect extends MobEffect {
-    public RemoveOwnerMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, -1);
-    }
+	public RemoveOwnerMobEffect() {
+		super(MobEffectCategory.BENEFICIAL, -1);
+	}
 
-    @Override
-    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        super.removeAttributeModifiers(entity, attributeMap, amplifier);
-        RemoveOwnerEffectExpiresProcedure.execute(entity);
-    }
+	@Override
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.removeAttributeModifiers(entity, attributeMap, amplifier);
+		RemoveOwnerEffectExpiresProcedure.execute(entity);
+	}
 
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
-    }
+	@Override
+	public boolean isDurationEffectTick(int duration, int amplifier) {
+		return true;
+	}
 }

@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "livingentity",
   "definition": {
     "mobName": "Cleave Web",
@@ -16,12 +16,24 @@
       "fixedValue": false
     },
     "visualScale": {
-      "fixedValue": 10.0
+      "fixedValue": 10.0,
+      "name": "CleaveWebModelVisualScale"
     },
     "boundingBoxScale": {
       "fixedValue": 10.0
     },
-    "modelLayers": [],
+    "modelLayers": [
+      {
+        "model": "ModelCiclo2",
+        "texture": "cowebblack.png",
+        "disableHurtOverlay": false,
+        "glow": false,
+        "condition": {
+          "name": "CleaveWebDisplayCondition"
+        }
+      }
+    ],
+    "animations": [],
     "modelWidth": 0.5,
     "modelHeight": 1.8,
     "modelShadowSize": 0.5,
@@ -77,7 +89,6 @@
       "fixedValue": true
     },
     "flyingMob": false,
-    "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "disableCollisions": true,
@@ -112,7 +123,18 @@
     "stepSound": {
       "value": ""
     },
-    "entityDataEntries": [],
+    "raidCelebrationSound": {
+      "value": ""
+    },
+    "entityDataEntries": [
+      {
+        "min": -2147483648,
+        "max": 2147483647,
+        "name": "b",
+        "type": "integer",
+        "value": 0
+      }
+    ],
     "onMobTickUpdate": {
       "name": "WebTickUpdate"
     },

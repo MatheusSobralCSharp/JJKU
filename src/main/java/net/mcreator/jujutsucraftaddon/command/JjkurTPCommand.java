@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import net.minecraftforge.fml.common.Mod;
@@ -19,40 +20,40 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 @Mod.EventBusSubscriber
 public class JjkurTPCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurTP")
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuTP")
 
-                .then(Commands.literal("Location")
-                        .then(Commands.argument("X", DoubleArgumentType.doubleArg()).then(Commands.argument("Y", DoubleArgumentType.doubleArg()).then(Commands.argument("Z", DoubleArgumentType.doubleArg()).executes(arguments -> {
-                            Level world = arguments.getSource().getUnsidedLevel();
-                            double x = arguments.getSource().getPosition().x();
-                            double y = arguments.getSource().getPosition().y();
-                            double z = arguments.getSource().getPosition().z();
-                            Entity entity = arguments.getSource().getEntity();
-                            if (entity == null && world instanceof ServerLevel _servLevel)
-                                entity = FakePlayerFactory.getMinecraft(_servLevel);
-                            Direction direction = Direction.DOWN;
-                            if (entity != null)
-                                direction = entity.getDirection();
+				.then(Commands.literal("Location")
+						.then(Commands.argument("X", DoubleArgumentType.doubleArg()).then(Commands.argument("Y", DoubleArgumentType.doubleArg()).then(Commands.argument("Z", DoubleArgumentType.doubleArg()).executes(arguments -> {
+							Level world = arguments.getSource().getUnsidedLevel();
+							double x = arguments.getSource().getPosition().x();
+							double y = arguments.getSource().getPosition().y();
+							double z = arguments.getSource().getPosition().z();
+							Entity entity = arguments.getSource().getEntity();
+							if (entity == null && world instanceof ServerLevel _servLevel)
+								entity = FakePlayerFactory.getMinecraft(_servLevel);
+							Direction direction = Direction.DOWN;
+							if (entity != null)
+								direction = entity.getDirection();
 
-                            TPLocationProcedure.execute(world, arguments, entity);
-                            return 0;
-                        })))))
-                .then(Commands.literal("Player").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
-                    Level world = arguments.getSource().getUnsidedLevel();
-                    double x = arguments.getSource().getPosition().x();
-                    double y = arguments.getSource().getPosition().y();
-                    double z = arguments.getSource().getPosition().z();
-                    Entity entity = arguments.getSource().getEntity();
-                    if (entity == null && world instanceof ServerLevel _servLevel)
-                        entity = FakePlayerFactory.getMinecraft(_servLevel);
-                    Direction direction = Direction.DOWN;
-                    if (entity != null)
-                        direction = entity.getDirection();
+							TPLocationProcedure.execute(world, arguments, entity);
+							return 0;
+						})))))
+				.then(Commands.literal("Player").then(Commands.argument("Player", EntityArgument.player()).executes(arguments -> {
+					Level world = arguments.getSource().getUnsidedLevel();
+					double x = arguments.getSource().getPosition().x();
+					double y = arguments.getSource().getPosition().y();
+					double z = arguments.getSource().getPosition().z();
+					Entity entity = arguments.getSource().getEntity();
+					if (entity == null && world instanceof ServerLevel _servLevel)
+						entity = FakePlayerFactory.getMinecraft(_servLevel);
+					Direction direction = Direction.DOWN;
+					if (entity != null)
+						direction = entity.getDirection();
 
-                    TPPlayerProcedure.execute(world, arguments, entity);
-                    return 0;
-                }))));
-    }
+					TPPlayerProcedure.execute(world, arguments, entity);
+					return 0;
+				}))));
+	}
 }

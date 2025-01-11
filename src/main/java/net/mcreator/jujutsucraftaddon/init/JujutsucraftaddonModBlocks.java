@@ -14,6 +14,7 @@ import net.mcreator.jujutsucraftaddon.block.YokuBlock;
 import net.mcreator.jujutsucraftaddon.block.VeilBlockBlock;
 import net.mcreator.jujutsucraftaddon.block.SnowDomainBlock;
 import net.mcreator.jujutsucraftaddon.block.NoDomainBlock;
+import net.mcreator.jujutsucraftaddon.block.CurtainBlockBlock;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
 public class JujutsucraftaddonModBlocks {
@@ -22,6 +23,7 @@ public class JujutsucraftaddonModBlocks {
 	public static final RegistryObject<Block> VEIL_BLOCK = REGISTRY.register("veil_block", () -> new VeilBlockBlock());
 	public static final RegistryObject<Block> YOKU = REGISTRY.register("yoku", () -> new YokuBlock());
 	public static final RegistryObject<Block> SNOW_DOMAIN = REGISTRY.register("snow_domain", () -> new SnowDomainBlock());
+	public static final RegistryObject<Block> CURTAIN_BLOCK = REGISTRY.register("curtain_block", () -> new CurtainBlockBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }

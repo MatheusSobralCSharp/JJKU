@@ -7,10 +7,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 
 public class HakariDanceProcedure {
-    public static void execute(Entity entity) {
-        if (entity == null)
-            return;
-        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-            _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.JACKPOT.get(), 60, 1, false, false));
-    }
+	public static void execute(Entity entity) {
+		if (entity == null)
+			return;
+		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+			_entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.JACKPOT.get(), 60, 1, false, false));
+	}
 }

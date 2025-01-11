@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "tool",
   "definition": {
     "toolType": "Sword",
@@ -34,7 +34,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "SwordJinWooRightclicked"
+      "name": "SpawnShadows"
     },
     "onEntityHitWith": {
       "name": "SwordJinWooLivingEntityIsHitWithTool"

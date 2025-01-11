@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
 import net.minecraft.resources.ResourceLocation;
@@ -10,13 +11,13 @@ import net.minecraft.client.model.HumanoidModel;
 import net.mcreator.jujutsucraftaddon.entity.UraumeEntity;
 
 public class UraumeRenderer extends HumanoidMobRenderer<UraumeEntity, HumanoidModel<UraumeEntity>> {
-    public UraumeRenderer(EntityRendererProvider.Context context) {
-        super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-        this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
-    }
+	public UraumeRenderer(EntityRendererProvider.Context context) {
+		super(context, new HumanoidModel<UraumeEntity>(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
+		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(UraumeEntity entity) {
-        return new ResourceLocation("jujutsucraftaddon:textures/entities/uraume.png");
-    }
+	@Override
+	public ResourceLocation getTextureLocation(UraumeEntity entity) {
+		return new ResourceLocation("jujutsucraftaddon:textures/entities/uraume.png");
+	}
 }

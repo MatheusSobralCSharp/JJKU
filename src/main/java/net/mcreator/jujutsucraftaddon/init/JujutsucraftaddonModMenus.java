@@ -45,10 +45,12 @@ import net.mcreator.jujutsucraftaddon.world.inventory.Quest12Menu;
 import net.mcreator.jujutsucraftaddon.world.inventory.Quest11Menu;
 import net.mcreator.jujutsucraftaddon.world.inventory.Quest10Menu;
 import net.mcreator.jujutsucraftaddon.world.inventory.ProfessionGUIMenu;
+import net.mcreator.jujutsucraftaddon.world.inventory.NewTabMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.KoganeUIMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.KenjakuBodySwapMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.GojoTrainMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.EvidenceGUIMenu;
+import net.mcreator.jujutsucraftaddon.world.inventory.EnchantYorozuMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.ElementsMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.CursedEnergySelectorMenu;
 import net.mcreator.jujutsucraftaddon.world.inventory.ClanChangeMenu;
@@ -99,4 +101,6 @@ public class JujutsucraftaddonModMenus {
 	public static final RegistryObject<MenuType<StoryModeSukuna5Menu>> STORY_MODE_SUKUNA_5 = REGISTRY.register("story_mode_sukuna_5", () -> IForgeMenuType.create(StoryModeSukuna5Menu::new));
 	public static final RegistryObject<MenuType<StoryModeSukuna6Menu>> STORY_MODE_SUKUNA_6 = REGISTRY.register("story_mode_sukuna_6", () -> IForgeMenuType.create(StoryModeSukuna6Menu::new));
 	public static final RegistryObject<MenuType<StoryModeSukuna7Menu>> STORY_MODE_SUKUNA_7 = REGISTRY.register("story_mode_sukuna_7", () -> IForgeMenuType.create(StoryModeSukuna7Menu::new));
+	public static final RegistryObject<MenuType<EnchantYorozuMenu>> ENCHANT_YOROZU = REGISTRY.register("enchant_yorozu", () -> IForgeMenuType.create(EnchantYorozuMenu::new));
+	public static final RegistryObject<MenuType<NewTabMenu>> NEW_TAB = REGISTRY.register("new_tab", () -> IForgeMenuType.create(NewTabMenu::new));
 }

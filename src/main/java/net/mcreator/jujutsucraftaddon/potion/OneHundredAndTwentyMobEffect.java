@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.potion;
 
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -9,23 +10,24 @@ import net.mcreator.jujutsucraftaddon.procedures.OneHundredAndTwentyEffectStarte
 import net.mcreator.jujutsucraftaddon.procedures.OneHundredAndTwentyEffectExpiresProcedure;
 
 public class OneHundredAndTwentyMobEffect extends MobEffect {
-    public OneHundredAndTwentyMobEffect() {
-        super(MobEffectCategory.BENEFICIAL, -1);
-    }
+	public OneHundredAndTwentyMobEffect() {
+		super(MobEffectCategory.BENEFICIAL, -1);
+	}
 
-    @Override
-    public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        OneHundredAndTwentyEffectStartedappliedProcedure.execute(entity);
-    }
+	@Override
+	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.addAttributeModifiers(entity, attributeMap, amplifier);
+		OneHundredAndTwentyEffectStartedappliedProcedure.execute(entity);
+	}
 
-    @Override
-    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-        super.removeAttributeModifiers(entity, attributeMap, amplifier);
-        OneHundredAndTwentyEffectExpiresProcedure.execute(entity);
-    }
+	@Override
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.removeAttributeModifiers(entity, attributeMap, amplifier);
+		OneHundredAndTwentyEffectExpiresProcedure.execute(entity);
+	}
 
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        return true;
-    }
+	@Override
+	public boolean isDurationEffectTick(int duration, int amplifier) {
+		return true;
+	}
 }

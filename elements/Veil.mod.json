@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "livingentity",
   "definition": {
     "mobName": "Veil",
@@ -41,6 +41,7 @@
         }
       }
     ],
+    "animations": [],
     "modelWidth": 0.6,
     "modelHeight": 1.8,
     "modelShadowSize": 0.5,
@@ -95,8 +96,7 @@
     "pushedByFluids": {
       "fixedValue": false
     },
-    "flyingMob": true,
-    "guiBoundTo": "<NONE>",
+    "flyingMob": false,
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "disableCollisions": true,
@@ -131,6 +131,9 @@
     "stepSound": {
       "value": ""
     },
+    "raidCelebrationSound": {
+      "value": ""
+    },
     "entityDataEntries": [
       {
         "name": "flag",
@@ -141,6 +144,20 @@
         "min": -2147483648,
         "max": 2147483647,
         "name": "FlagColor",
+        "type": "integer",
+        "value": 0
+      },
+      {
+        "min": -2147483648,
+        "max": 2147483647,
+        "name": "VeilTemporaryTimer",
+        "type": "integer",
+        "value": 0
+      },
+      {
+        "min": -2147483648,
+        "max": 2147483647,
+        "name": "VeilTemporarySize",
         "type": "integer",
         "value": 0
       }

@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.block;
 
 import net.minecraft.world.level.material.PushReaction;
@@ -14,14 +15,14 @@ import net.mcreator.jujutsucraftaddon.procedures.YokuMobplayerCollidesBlockProce
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModFluids;
 
 public class YokuBlock extends LiquidBlock {
-    public YokuBlock() {
-        super(() -> JujutsucraftaddonModFluids.YOKU.get(), BlockBehaviour.Properties.of().mapColor(MapColor.WATER).strength(100f).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noCollission().noLootTable().liquid()
-                .pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY).replaceable());
-    }
+	public YokuBlock() {
+		super(() -> JujutsucraftaddonModFluids.YOKU.get(), BlockBehaviour.Properties.of().mapColor(MapColor.WATER).strength(100f).hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).noCollission().noLootTable().liquid()
+				.pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY).replaceable());
+	}
 
-    @Override
-    public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
-        super.entityInside(blockstate, world, pos, entity);
-        YokuMobplayerCollidesBlockProcedure.execute(world, entity);
-    }
+	@Override
+	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
+		super.entityInside(blockstate, world, pos, entity);
+		YokuMobplayerCollidesBlockProcedure.execute(world, entity);
+	}
 }

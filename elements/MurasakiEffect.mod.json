@@ -1,22 +1,29 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Murasaki",
-    "icon": "communityicon_gjmpgn4931761.png",
+    "icon": "communityicon_gjmpgn4931761",
     "color": {
       "value": -1,
       "falpha": 0.0
     },
     "isInstant": false,
-    "mobEffectCategory": "NEUTRAL",
+    "mobEffectCategory": "BENEFICIAL",
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
+    "isCuredByMilk": true,
+    "isProtectedByTotem": true,
+    "isCuredbyHoney": false,
+    "modifiers": [],
     "onStarted": {
       "name": "Murasakii"
     },
     "onActiveTick": {
       "name": "MurasakiEffectOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "MurasakiEffectEffectExpires"
     }
   }
 }

@@ -18,6 +18,8 @@ import net.minecraft.world.entity.Entity;
 
 import net.mcreator.jujutsucraftaddon.entity.YutaCullingGamesEntity;
 import net.mcreator.jujutsucraftaddon.entity.YeEntity;
+import net.mcreator.jujutsucraftaddon.entity.WorldSlashVariantEntity;
+import net.mcreator.jujutsucraftaddon.entity.WorldSlashFinalEntity;
 import net.mcreator.jujutsucraftaddon.entity.VeilEntity;
 import net.mcreator.jujutsucraftaddon.entity.UraumeEntity;
 import net.mcreator.jujutsucraftaddon.entity.UiUiEntity;
@@ -26,7 +28,6 @@ import net.mcreator.jujutsucraftaddon.entity.TestingVersionEntity;
 import net.mcreator.jujutsucraftaddon.entity.TestingEntityEntity;
 import net.mcreator.jujutsucraftaddon.entity.TestProjectileEntity;
 import net.mcreator.jujutsucraftaddon.entity.TanjerinaEntity;
-import net.mcreator.jujutsucraftaddon.entity.SukunaREntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaNoShirtEntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaMangaEntity;
 import net.mcreator.jujutsucraftaddon.entity.SukunaFushiguroEntity;
@@ -37,8 +38,10 @@ import net.mcreator.jujutsucraftaddon.entity.RikoAmanaiEntity;
 import net.mcreator.jujutsucraftaddon.entity.RedOEntity;
 import net.mcreator.jujutsucraftaddon.entity.RedEntityEntity;
 import net.mcreator.jujutsucraftaddon.entity.OutlineEntity;
+import net.mcreator.jujutsucraftaddon.entity.MalevolentShrineEntity;
 import net.mcreator.jujutsucraftaddon.entity.MaleniaEntity;
 import net.mcreator.jujutsucraftaddon.entity.MakiPreparationEntity;
+import net.mcreator.jujutsucraftaddon.entity.MakiPreparation2Entity;
 import net.mcreator.jujutsucraftaddon.entity.KashimoFemboyEntity;
 import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
 import net.mcreator.jujutsucraftaddon.entity.IronkkEntity;
@@ -49,11 +52,14 @@ import net.mcreator.jujutsucraftaddon.entity.GojoSchoolEntity;
 import net.mcreator.jujutsucraftaddon.entity.GojoMangaEntity;
 import net.mcreator.jujutsucraftaddon.entity.GegeAkutamiEntity;
 import net.mcreator.jujutsucraftaddon.entity.FakeClonesEntity;
+import net.mcreator.jujutsucraftaddon.entity.ErrorEntity;
+import net.mcreator.jujutsucraftaddon.entity.ErroEntity;
 import net.mcreator.jujutsucraftaddon.entity.DismantleVariantEntity;
 import net.mcreator.jujutsucraftaddon.entity.DismantleEntity;
 import net.mcreator.jujutsucraftaddon.entity.CloneEntity;
 import net.mcreator.jujutsucraftaddon.entity.CleaveWebEntity;
 import net.mcreator.jujutsucraftaddon.entity.CircleEntity;
+import net.mcreator.jujutsucraftaddon.entity.CentipedeEntity;
 import net.mcreator.jujutsucraftaddon.entity.BulletProjectileEntity;
 import net.mcreator.jujutsucraftaddon.entity.BlueEntityEntity;
 import net.mcreator.jujutsucraftaddon.entity.AntiVeilEntity;
@@ -200,15 +206,33 @@ public class JujutsucraftaddonModEntities {
 			EntityType.Builder.<CloneEntity>of(CloneEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CloneEntity::new)
 
 					.sized(0.6f, 1.8f));
-	public static final RegistryObject<EntityType<SukunaREntity>> SUKUNA_R = register("sukuna_r",
-			EntityType.Builder.<SukunaREntity>of(SukunaREntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(SukunaREntity::new)
-
-					.sized(0.6f, 1.8f));
 	public static final RegistryObject<EntityType<DismantleEntity>> DISMANTLE = register("dismantle",
 			EntityType.Builder.<DismantleEntity>of(DismantleEntity::new, MobCategory.MISC).setCustomClientFactory(DismantleEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<DismantleVariantEntity>> DISMANTLE_VARIANT = register("dismantle_variant", EntityType.Builder.<DismantleVariantEntity>of(DismantleVariantEntity::new, MobCategory.MISC)
 			.setCustomClientFactory(DismantleVariantEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<MakiPreparation2Entity>> MAKI_PREPARATION_2 = register("maki_preparation_2",
+			EntityType.Builder.<MakiPreparation2Entity>of(MakiPreparation2Entity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(MakiPreparation2Entity::new)
 
+					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<ErroEntity>> ERRO = register("erro",
+			EntityType.Builder.<ErroEntity>of(ErroEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(ErroEntity::new)
+
+					.sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<CentipedeEntity>> CENTIPEDE = register("centipede",
+			EntityType.Builder.<CentipedeEntity>of(CentipedeEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CentipedeEntity::new).fireImmune().sized(2f, 3f));
+	public static final RegistryObject<EntityType<MalevolentShrineEntity>> MALEVOLENT_SHRINE = register("malevolent_shrine", EntityType.Builder.<MalevolentShrineEntity>of(MalevolentShrineEntity::new, MobCategory.MONSTER)
+			.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(MalevolentShrineEntity::new).fireImmune().sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<WorldSlashVariantEntity>> WORLD_SLASH_VARIANT = register("world_slash_variant", EntityType.Builder.<WorldSlashVariantEntity>of(WorldSlashVariantEntity::new, MobCategory.MISC)
+			.setCustomClientFactory(WorldSlashVariantEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<WorldSlashFinalEntity>> WORLD_SLASH_FINAL = register("world_slash_final", EntityType.Builder.<WorldSlashFinalEntity>of(WorldSlashFinalEntity::new, MobCategory.MISC)
+			.setCustomClientFactory(WorldSlashFinalEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<ErrorEntity>> ERROR = register("error",
+			EntityType.Builder.<ErrorEntity>of(ErrorEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(ErrorEntity::new)
+
+					.sized(0.6f, 1.8f));
+
+	// Start of user code block custom entities
+	// End of user code block custom entities
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
 	}
@@ -254,7 +278,11 @@ public class JujutsucraftaddonModEntities {
 			YeEntity.init();
 			FakeClonesEntity.init();
 			CloneEntity.init();
-			SukunaREntity.init();
+			MakiPreparation2Entity.init();
+			ErroEntity.init();
+			CentipedeEntity.init();
+			MalevolentShrineEntity.init();
+			ErrorEntity.init();
 		});
 	}
 
@@ -298,6 +326,10 @@ public class JujutsucraftaddonModEntities {
 		event.put(YE.get(), YeEntity.createAttributes().build());
 		event.put(FAKE_CLONES.get(), FakeClonesEntity.createAttributes().build());
 		event.put(CLONE.get(), CloneEntity.createAttributes().build());
-		event.put(SUKUNA_R.get(), SukunaREntity.createAttributes().build());
+		event.put(MAKI_PREPARATION_2.get(), MakiPreparation2Entity.createAttributes().build());
+		event.put(ERRO.get(), ErroEntity.createAttributes().build());
+		event.put(CENTIPEDE.get(), CentipedeEntity.createAttributes().build());
+		event.put(MALEVOLENT_SHRINE.get(), MalevolentShrineEntity.createAttributes().build());
+		event.put(ERROR.get(), ErrorEntity.createAttributes().build());
 	}
 }

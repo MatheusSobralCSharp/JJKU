@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class MilkNerf2Procedure {
-    @SubscribeEvent
-    public static void onUseItemStart(LivingEntityUseItemEvent.Start event) {
-        if (event != null && event.getEntity() != null) {
-            execute(event, event.getEntity());
-        }
-    }
+	@SubscribeEvent
+	public static void onUseItemStart(LivingEntityUseItemEvent.Start event) {
+		if (event != null && event.getEntity() != null) {
+			execute(event, event.getEntity());
+		}
+	}
 
-    public static void execute(Entity entity) {
-        execute(null, entity);
-    }
+	public static void execute(Entity entity) {
+		execute(null, entity);
+	}
 
-    private static void execute(@Nullable Event event, Entity entity) {
-        if (entity == null)
-            return;
-        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.MILK_BUCKET) {
-            if (event != null && event.isCancelable()) {
-                event.setCanceled(true);
-            } else if (event != null && event.hasResult()) {
-                event.setResult(Event.Result.DENY);
-            }
-        }
-    }
+	private static void execute(@Nullable Event event, Entity entity) {
+		if (entity == null)
+			return;
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.MILK_BUCKET) {
+			if (event != null && event.isCancelable()) {
+				event.setCanceled(true);
+			} else if (event != null && event.hasResult()) {
+				event.setResult(Event.Result.DENY);
+			}
+		}
+	}
 }

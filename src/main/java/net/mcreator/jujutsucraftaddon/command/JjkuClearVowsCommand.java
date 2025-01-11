@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import org.checkerframework.checker.units.qual.s;
@@ -17,22 +18,22 @@ import net.mcreator.jujutsucraftaddon.procedures.VowClearProcedure;
 
 @Mod.EventBusSubscriber
 public class JjkuClearVowsCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurClearVows").requires(s -> s.hasPermission(2)).executes(arguments -> {
-            Level world = arguments.getSource().getUnsidedLevel();
-            double x = arguments.getSource().getPosition().x();
-            double y = arguments.getSource().getPosition().y();
-            double z = arguments.getSource().getPosition().z();
-            Entity entity = arguments.getSource().getEntity();
-            if (entity == null && world instanceof ServerLevel _servLevel)
-                entity = FakePlayerFactory.getMinecraft(_servLevel);
-            Direction direction = Direction.DOWN;
-            if (entity != null)
-                direction = entity.getDirection();
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuClearVows").requires(s -> s.hasPermission(2)).executes(arguments -> {
+			Level world = arguments.getSource().getUnsidedLevel();
+			double x = arguments.getSource().getPosition().x();
+			double y = arguments.getSource().getPosition().y();
+			double z = arguments.getSource().getPosition().z();
+			Entity entity = arguments.getSource().getEntity();
+			if (entity == null && world instanceof ServerLevel _servLevel)
+				entity = FakePlayerFactory.getMinecraft(_servLevel);
+			Direction direction = Direction.DOWN;
+			if (entity != null)
+				direction = entity.getDirection();
 
-            VowClearProcedure.execute(entity);
-            return 0;
-        }));
-    }
+			VowClearProcedure.execute(entity);
+			return 0;
+		}));
+	}
 }

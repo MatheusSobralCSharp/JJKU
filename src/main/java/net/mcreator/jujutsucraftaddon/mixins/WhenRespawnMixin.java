@@ -3,19 +3,19 @@ package net.mcreator.jujutsucraftaddon.mixins;
 import net.mcreator.jujutsucraft.procedures.WhenRespawnProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.procedures.ConcorrentSpawnProcedure;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
-
-@Mixin(value = WhenRespawnProcedure.class, remap = false)
+@Mixin(value = WhenRespawnProcedure.class, priority = 3002)
 public abstract class WhenRespawnMixin {
     public WhenRespawnMixin() {
     }
@@ -25,22 +25,19 @@ public abstract class WhenRespawnMixin {
      * @reason Change Some Stuff in Respawn
      */
 
-    @Overwrite
-    @SubscribeEvent
-    public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
-        execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
-    }
-
-    private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", remap = false, cancellable = true)
+    private static void execute(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
-            if (entity.isAlive()) {
-                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.RESPAWNED.get(), 20, 1, false, false));
+            ResourceLocation entityTypeKey = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+            if (entityTypeKey == null || !entityTypeKey.toString().startsWith("jujutsucraft")) {
+                if (entity.isAlive()) {
+                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                        _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.RESPAWNED.get(), 20, 1, false, false));
 
-                ConcorrentSpawnProcedure.execute(entity, world, x, y, z);
+                    ConcorrentSpawnProcedure.execute(entity, world, x, y, z);
+                }
             }
         }
-
+        ci.cancel();
     }
-
 }

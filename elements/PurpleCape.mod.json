@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "animatedarmor",
   "definition": {
     "enableHelmet": false,
@@ -16,10 +16,11 @@
     "onLeggingsTick": {
       "name": "PurpleLeggings"
     },
-    "creativeTab": {
-      "value": "CUSTOM:Armors"
-    },
-    "creativeTabs": [],
+    "creativeTabs": [
+      {
+        "value": "CUSTOM:Armors"
+      }
+    ],
     "armorTextureFile": "purplee.png",
     "model": "decisive2.geo.json",
     "idle": "idle",
@@ -52,7 +53,7 @@
     "leggingsImmuneToFire": false,
     "bootsImmuneToFire": false,
     "fullyEquipped": false,
-    "maxDamage": 37,
+    "maxDamage": 0,
     "damageValueHelmet": 2,
     "damageValueBody": 6,
     "damageValueLeggings": 5,

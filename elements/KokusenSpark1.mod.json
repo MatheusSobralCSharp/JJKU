@@ -1,0 +1,24 @@
+{
+  "_fv": 73,
+  "_type": "particle",
+  "definition": {
+    "texture": "blackflash",
+    "animate": true,
+    "frameDuration": 2,
+    "width": 0.2,
+    "height": 0.2,
+    "scale": {
+      "fixedValue": 1.0,
+      "name": "KokusenSpark1ParticleVisualScale"
+    },
+    "speedFactor": 1.0,
+    "gravity": 0.0,
+    "maxAge": 20,
+    "maxAgeDiff": 13,
+    "angularVelocity": 1.0,
+    "angularAcceleration": 0.0,
+    "canCollide": true,
+    "alwaysShow": false,
+    "renderType": "LIT"
+  }
+}

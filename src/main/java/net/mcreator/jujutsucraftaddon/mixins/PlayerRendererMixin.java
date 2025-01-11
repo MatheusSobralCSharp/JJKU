@@ -9,8 +9,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(PlayerRenderer.class)
+@Mixin(value = PlayerRenderer.class, priority = 3000)
 public abstract class PlayerRendererMixin {
+
+    /**
+     * @author Satushi
+     * @reason Changes Name Tag for Kenjaku Players
+     */
+
+
     @ModifyVariable(
             method = "renderNameTag(Lnet/minecraft/client/player/AbstractClientPlayer;Lnet/minecraft/network/chat/Component;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At("HEAD"),

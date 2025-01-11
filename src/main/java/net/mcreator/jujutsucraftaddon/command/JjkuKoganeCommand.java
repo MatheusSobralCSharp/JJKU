@@ -1,3 +1,4 @@
+
 package net.mcreator.jujutsucraftaddon.command;
 
 import net.minecraftforge.fml.common.Mod;
@@ -15,24 +16,24 @@ import net.mcreator.jujutsucraftaddon.procedures.KoganeItemProcedure;
 
 @Mod.EventBusSubscriber
 public class JjkuKoganeCommand {
-    @SubscribeEvent
-    public static void registerCommand(RegisterCommandsEvent event) {
-        event.getDispatcher().register(Commands.literal("jjkurKogane")
+	@SubscribeEvent
+	public static void registerCommand(RegisterCommandsEvent event) {
+		event.getDispatcher().register(Commands.literal("jjkuKogane")
 
-                .executes(arguments -> {
-                    Level world = arguments.getSource().getUnsidedLevel();
-                    double x = arguments.getSource().getPosition().x();
-                    double y = arguments.getSource().getPosition().y();
-                    double z = arguments.getSource().getPosition().z();
-                    Entity entity = arguments.getSource().getEntity();
-                    if (entity == null && world instanceof ServerLevel _servLevel)
-                        entity = FakePlayerFactory.getMinecraft(_servLevel);
-                    Direction direction = Direction.DOWN;
-                    if (entity != null)
-                        direction = entity.getDirection();
+				.executes(arguments -> {
+					Level world = arguments.getSource().getUnsidedLevel();
+					double x = arguments.getSource().getPosition().x();
+					double y = arguments.getSource().getPosition().y();
+					double z = arguments.getSource().getPosition().z();
+					Entity entity = arguments.getSource().getEntity();
+					if (entity == null && world instanceof ServerLevel _servLevel)
+						entity = FakePlayerFactory.getMinecraft(_servLevel);
+					Direction direction = Direction.DOWN;
+					if (entity != null)
+						direction = entity.getDirection();
 
-                    KoganeItemProcedure.execute(world, entity);
-                    return 0;
-                }));
-    }
+					KoganeItemProcedure.execute(world, entity);
+					return 0;
+				}));
+	}
 }

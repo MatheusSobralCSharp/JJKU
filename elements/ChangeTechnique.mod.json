@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "keybind",
   "definition": {
     "triggerKey": "V",
@@ -7,9 +7,6 @@
     "keyBindingCategoryKey": "jujutsucraftaddon",
     "onKeyPressed": {
       "name": "KeyPressed"
-    },
-    "onKeyReleased": {
-      "name": "PassiveKeybindOnKeyReleased"
     }
   }
 }

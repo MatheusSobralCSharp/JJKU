@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "gui",
   "definition": {
     "type": 0,
@@ -22,7 +22,8 @@
           "width": 56,
           "height": 20,
           "x": 140,
-          "y": 80
+          "y": 80,
+          "locked": false
         }
       },
       {
@@ -37,7 +38,8 @@
           "width": 77,
           "height": 20,
           "x": 129,
-          "y": 167
+          "y": 167,
+          "locked": false
         }
       },
       {
@@ -52,7 +54,8 @@
           "width": 61,
           "height": 20,
           "x": 236,
-          "y": 167
+          "y": 167,
+          "locked": false
         }
       },
       {
@@ -61,7 +64,8 @@
           "image": "shokoanime1.png",
           "use1Xscale": true,
           "x": 138,
-          "y": 22
+          "y": 22,
+          "locked": false
         }
       },
       {
@@ -70,7 +74,8 @@
           "image": "sage.png",
           "use1Xscale": true,
           "x": 239,
-          "y": 23
+          "y": 23,
+          "locked": false
         }
       },
       {
@@ -85,7 +90,8 @@
           "width": 87,
           "height": 20,
           "x": 225,
-          "y": 83
+          "y": 83,
+          "locked": false
         }
       },
       {
@@ -94,7 +100,8 @@
           "image": "warrior.png",
           "use1Xscale": true,
           "x": 236,
-          "y": 108
+          "y": 108,
+          "locked": false
         }
       },
       {
@@ -103,7 +110,8 @@
           "image": "blacksmith.png",
           "use1Xscale": true,
           "x": 138,
-          "y": 107
+          "y": 107,
+          "locked": false
         }
       }
     ],

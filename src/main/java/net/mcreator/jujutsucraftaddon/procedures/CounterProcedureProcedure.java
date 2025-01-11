@@ -18,9 +18,17 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 
 public class CounterProcedureProcedure {
-    public static void execute(LevelAccessor world, DamageSource damagesource, Entity entity, Entity sourceentity) {
-        if (damagesource == null || entity == null || sourceentity == null)
-            return;
+    public static void execute(
+            LevelAccessor world,
+            DamageSource damagesource,
+            Entity entity,
+            Entity sourceentity
+    ) {
+        if (
+                damagesource == null ||
+                        entity == null ||
+                        sourceentity == null
+        ) return;
         if (!(entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftaddonModMobEffects.COUNTER_CD.get()))) {
             if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                 _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.COUNTER_ANIMATION.get(), 10, 254, false, false));
@@ -34,34 +42,27 @@ public class CounterProcedureProcedure {
                 if (_ent instanceof ServerPlayer _serverPlayer)
                     _serverPlayer.connection.teleport((sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + 1), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), 0, 1)), _ent.getYRot(), _ent.getXRot());
             }
-            sourceentity.hurt(damagesource,
-                    (float) (((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getValue() * (1 - Math.min(20,
-                            Math.max(((LivingEntity) sourceentity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).getValue() / 5,
-                                    ((LivingEntity) sourceentity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR).getValue()
-                                            - (4 * ((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).getValue())
-                                            / (((LivingEntity) sourceentity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS).getValue() + 8)))
-                            / 25)));
             sourceentity.setDeltaMovement(new Vec3((10 * Math.cos((entity.getYRot() + 90) * (Math.PI / 180))), (-100), (10 * Math.sin((entity.getYRot() + 90) * (Math.PI / 180)))));
             if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(
-                        new MobEffectInstance(MobEffects.WEAKNESS, 20, (int) ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.WEAKNESS) ? _livEnt.getEffect(MobEffects.WEAKNESS).getAmplifier() : 0) + 1), false, false));
+                _entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, (int) ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.WEAKNESS) ?
+                        _livEnt.getEffect(MobEffects.WEAKNESS).getAmplifier() : 0) + 1), false, false));
             if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20,
-                        (int) ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ? _livEnt.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() : 0) + 1), false, false));
+                _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, (int) ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ?
+                        _livEnt.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() : 0) + 1), false, false));
             if (world instanceof ServerLevel _level)
                 _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.BLOOD.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + 1), (sourceentity.getZ()), 2, 0, 0, 0, 1);
             if (world instanceof ServerLevel _level)
-                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.PUNCH.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)),
-                        (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
+                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.PUNCH.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
             if (world instanceof ServerLevel _level)
-                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.PUNCH.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)),
-                        (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
-            if (!(((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo")
-                    || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna"))) {
+                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.PUNCH.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
+            if (!(((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                    .orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                    .orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna"))) {
                 if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                     _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.COUNTER_CD.get(), 1200, 1, false, false));
-            } else if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo")
-                    || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna")) {
+            } else if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                    .orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+                    .orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna")) {
                 if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                     _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.COUNTER_CD.get(), 600, 1, false, false));
             }

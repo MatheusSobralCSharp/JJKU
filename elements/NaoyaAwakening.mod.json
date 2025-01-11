@@ -1,9 +1,9 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "potioneffect",
   "definition": {
     "effectName": "Naoya Awakening",
-    "icon": "naoya.png",
+    "icon": "naoya",
     "color": {
       "value": -1,
       "falpha": 0.0
@@ -12,8 +12,12 @@
     "mobEffectCategory": "BENEFICIAL",
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
+    "isCuredByMilk": true,
+    "isProtectedByTotem": true,
+    "isCuredbyHoney": false,
+    "modifiers": [],
     "onStarted": {
-      "name": "NaoyaAwakeningEffectStartedapplied"
+      "name": "NaoyaAwakeningEffectStartedapplied1"
     },
     "onExpired": {
       "name": "NaoyaAwakeningEffectExpires"

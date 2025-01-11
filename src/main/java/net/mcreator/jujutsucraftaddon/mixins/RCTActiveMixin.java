@@ -26,6 +26,7 @@ public abstract class RCTActiveMixin {
      * @author Satushi
      * @reason Changing the value of RCT Fatigue Rate with a gamerule lines: 37 to 42. Add a procedure for play, lines: 47 to 51
      */
+
     @ModifyConstant(
             method = {"execute"},
             constant = {@Constant(

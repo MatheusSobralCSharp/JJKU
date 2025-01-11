@@ -37,13 +37,15 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = TechniqueRedProcedure.class, remap = false)
+@Mixin(value = TechniqueRedProcedure.class, priority = 3000)
 public abstract class RedTechniqueMixin {
     public RedTechniqueMixin() {
     }
@@ -52,8 +54,8 @@ public abstract class RedTechniqueMixin {
      * @author Satushi
      * @reason Changing Red
      */
-    @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
             double x_pos = 0.0;
             double y_pos = 0.0;
@@ -322,5 +324,6 @@ public abstract class RedTechniqueMixin {
                 PlayAnimationProcedure.execute(entity);
             }
         }
+        ci.cancel();
     }
 }

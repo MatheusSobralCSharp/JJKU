@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "procedure",
   "definition": {
     "procedurexml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><xml xmlns=\"https://developers.google.com/blockly/xml\"><block deletable=\"false\" type=\"event_trigger\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"world_data_isremote\"/></value><statement name=\"DO0\"><block type=\"controls_if\"><value name=\"IF0\"><block type=\"logic_binary_ops\"><field name=\"OP\">EQ</field><value name=\"A\"><block type=\"get_shader_group\"/></value><value name=\"B\"><block type=\"shader_null\"/></value></block></value><statement name=\"DO0\"><block type=\"load_shader\"><value name=\"shader_location\"><block type=\"text\"><field name=\"TEXT\">jujutsucraftaddon:shaders/blackandwhiteweak.json</field></block></value></block></statement></block></statement></block></next></block></xml>"

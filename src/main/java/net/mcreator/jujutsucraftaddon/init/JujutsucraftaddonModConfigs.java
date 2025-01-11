@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import net.mcreator.jujutsucraftaddon.configuration.JujutsuClanRatesConfiguration;
 import net.mcreator.jujutsucraftaddon.configuration.JogoatConfiguration;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 
@@ -15,6 +16,7 @@ public class JujutsucraftaddonModConfigs {
 	public static void register(FMLConstructModEvent event) {
 		event.enqueueWork(() -> {
 			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JogoatConfiguration.SPEC, "Jujutsu Rates.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, JujutsuClanRatesConfiguration.SPEC, "Jujutsu Clan Rates.toml");
 		});
 	}
 }

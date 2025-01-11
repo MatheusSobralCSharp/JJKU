@@ -1,5 +1,5 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "animatedentity",
   "definition": {
     "mobName": "Red Entity",
@@ -27,10 +27,11 @@
       "value": -1,
       "falpha": 0.0
     },
-    "creativeTab": {
-      "value": "No creative tab entry"
-    },
-    "creativeTabs": [],
+    "creativeTabs": [
+      {
+        "value": "No creative tab entry"
+      }
+    ],
     "isBoss": false,
     "bossBarColor": "PINK",
     "bossBarType": "PROGRESS",
@@ -102,6 +103,9 @@
     "stepSound": {
       "value": ""
     },
+    "raidCelebrationSound": {
+      "value": ""
+    },
     "onMobTickUpdate": {
       "name": "RedEntityOnEntityTickUpdate"
     },
@@ -146,6 +150,7 @@
     "rangedAttackInterval": 20,
     "rangedAttackRadius": 10.0,
     "height": 1.0,
+    "attackRate": 7,
     "raidSpawnsCount": [
       4,
       3,

@@ -1,0 +1,29 @@
+{
+  "_fv": 73,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "World Cut",
+    "icon": "heian",
+    "color": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": false,
+    "renderStatusInHUD": false,
+    "isCuredByMilk": false,
+    "isProtectedByTotem": false,
+    "isCuredbyHoney": false,
+    "modifiers": [],
+    "onStarted": {
+      "name": "WorldCutEffectStartedapplied"
+    },
+    "onActiveTick": {
+      "name": "WorldCutOnEffectActiveTick"
+    },
+    "onExpired": {
+      "name": "WorldCutEffectExpires"
+    }
+  }
+}

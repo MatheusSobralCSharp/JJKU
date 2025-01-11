@@ -1,0 +1,352 @@
+{
+  "_fv": 73,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 350,
+    "height": 220,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_unlock_extension",
+          "text": "Unlock Extension",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "UnlockExtension"
+          },
+          "width": 108,
+          "height": 20,
+          "x": 240,
+          "y": 33,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_for_unlock_extension_just_click",
+          "text": {
+            "fixedValue": "For Unlock Extension, Just Click To See The Requirements"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 280,
+          "y": 30,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_map_navigation",
+          "text": "Toggle Map Navigation",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "OverlayActiveOnKeyPressed"
+          },
+          "width": 134,
+          "height": 20,
+          "x": 63,
+          "y": 186,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_toggle_overlay_map_navigation_fo",
+          "text": {
+            "fixedValue": "Toggle Overlay Map Navigation For Quests"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 111,
+          "y": 185,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_history_mode",
+          "text": "History Mode",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "HistoryModeOnKeyPressed"
+          },
+          "width": 87,
+          "height": 20,
+          "x": 249,
+          "y": 123,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_here_is_where_history_mode_quest",
+          "text": {
+            "fixedValue": "Here is where History Mode Quests Are, just try it"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 280,
+          "y": 121,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_cursed_weapon_menu",
+          "text": "Cursed Weapon Menu",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "CursedWeaponOnKeyPressed"
+          },
+          "width": 119,
+          "height": 20,
+          "x": 236,
+          "y": 63,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_display_cursed_weapon_menu_encha",
+          "text": {
+            "fixedValue": "Display Cursed Weapon Menu Enchants"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 280,
+          "y": 60,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_water_walking",
+          "text": "Toggle Water Walking",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "WaterWalkingOnKeyPressed"
+          },
+          "width": 129,
+          "height": 20,
+          "x": 66,
+          "y": 126,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_enable_or_disable_water_walking",
+          "text": {
+            "fixedValue": "Enable Or Disable Water Walking"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 112,
+          "y": 122,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_profession_tree",
+          "text": "Profession Tree",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "ProgressionMenuOnKeyPressed"
+          },
+          "width": 103,
+          "height": 20,
+          "x": 241,
+          "y": 93,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_display_your_profession_skill_tr",
+          "text": {
+            "fixedValue": "Display your Profession Skill Tree"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 280,
+          "y": 91,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_music_ost",
+          "text": "Toggle Music Ost",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Ost"
+          },
+          "width": 108,
+          "height": 20,
+          "x": 74,
+          "y": 157,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_disable_jjk_songsosts_from_bein",
+          "text": {
+            "fixedValue": "Disable JJK Songs/Osts From Being Trigged "
+          },
+          "width": 24,
+          "height": 24,
+          "x": 111,
+          "y": 154,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_impact_frames",
+          "text": "Toggle Impact Frames",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Frames"
+          },
+          "width": 129,
+          "height": 20,
+          "x": 66,
+          "y": 94,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_disableenable_impact_frames",
+          "text": {
+            "fixedValue": "Disable/Enable Impact Frames"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 112,
+          "y": 92,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_dash",
+          "text": "Toggle Dash",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "DashToggl"
+          },
+          "width": 82,
+          "height": 20,
+          "x": 86,
+          "y": 62,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_enabledisable_dashing",
+          "text": {
+            "fixedValue": "Enable/Disable Dashing"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 112,
+          "y": 61,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_toggle_combat_animations",
+          "text": "Toggle Combat Animations",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "DisableOrEnableAnimations"
+          },
+          "width": 150,
+          "height": 20,
+          "x": 56,
+          "y": 33,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_disable_or_enable_combat_animati",
+          "text": {
+            "fixedValue": "Disable or Enable JJKU Combat Animations"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 112,
+          "y": 31,
+          "locked": false
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_history_mode_gojosukuna",
+          "text": "History Mode Gojo/Sukuna",
+          "isUndecorated": false,
+          "onClick": {
+            "name": "Gojukuna"
+          },
+          "width": 150,
+          "height": 20,
+          "x": 221,
+          "y": 152,
+          "locked": false
+        }
+      },
+      {
+        "type": "tooltip",
+        "data": {
+          "name": "tooltip_empty",
+          "text": {
+            "fixedValue": "History mode for Gojo and Sukuna"
+          },
+          "width": 24,
+          "height": 24,
+          "x": 280,
+          "y": 150,
+          "locked": false
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

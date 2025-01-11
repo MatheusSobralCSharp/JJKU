@@ -7,9 +7,9 @@ import net.minecraft.world.entity.Entity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
 public class ReturnDomainProcedure {
-    public static boolean execute(LevelAccessor world, Entity entity) {
-        if (entity == null)
-            return false;
-        return (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) == false;
-    }
+	public static boolean execute(LevelAccessor world, Entity entity) {
+		if (entity == null)
+			return false;
+		return (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) == false;
+	}
 }

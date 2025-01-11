@@ -12,14 +12,14 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class PVPRewardProcedure {
-    public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
-        if (entity == null)
-            return;
-        JujutsucraftaddonModVariables.MapVariables.get(world).PVPReward = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy());
-        JujutsucraftaddonModVariables.MapVariables.get(world).syncData(world);
-        JujutsucraftaddonModVariables.MapVariables.get(world).PVPRewardRate = DoubleArgumentType.getDouble(arguments, "Rate");
-        JujutsucraftaddonModVariables.MapVariables.get(world).syncData(world);
-        JujutsucraftaddonModVariables.MapVariables.get(world).PVPAmount1 = DoubleArgumentType.getDouble(arguments, "Amount");
-        JujutsucraftaddonModVariables.MapVariables.get(world).syncData(world);
-    }
+	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+		if (entity == null)
+			return;
+		JujutsucraftaddonModVariables.MapVariables.get(world).PVPReward = ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).copy()).copy();
+		JujutsucraftaddonModVariables.MapVariables.get(world).syncData(world);
+		JujutsucraftaddonModVariables.MapVariables.get(world).PVPRewardRate = DoubleArgumentType.getDouble(arguments, "Rate");
+		JujutsucraftaddonModVariables.MapVariables.get(world).syncData(world);
+		JujutsucraftaddonModVariables.MapVariables.get(world).PVPAmount1 = DoubleArgumentType.getDouble(arguments, "Amount");
+		JujutsucraftaddonModVariables.MapVariables.get(world).syncData(world);
+	}
 }

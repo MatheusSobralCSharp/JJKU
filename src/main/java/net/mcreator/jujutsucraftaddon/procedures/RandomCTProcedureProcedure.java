@@ -18,34 +18,34 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class RandomCTProcedureProcedure {
-    @SubscribeEvent
-    public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.getHand() != event.getEntity().getUsedItemHand())
-            return;
-        execute(event, event.getLevel(), event.getEntity());
-    }
+	@SubscribeEvent
+	public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+		if (event.getHand() != event.getEntity().getUsedItemHand())
+			return;
+		execute(event, event.getLevel(), event.getEntity());
+	}
 
-    public static void execute(LevelAccessor world, Entity entity) {
-        execute(null, world, entity);
-    }
+	public static void execute(LevelAccessor world, Entity entity) {
+		execute(null, world, entity);
+	}
 
-    private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
-        if (entity == null)
-            return;
-        if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_RANDOM_CT) == true) {
-            if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:cursed_technique_changer")) {
-                if (event != null && event.isCancelable()) {
-                    event.setCanceled(true);
-                } else if (event != null && event.hasResult()) {
-                    event.setResult(Event.Result.DENY);
-                }
-                if (entity instanceof Player _player)
-                    _player.closeContainer();
-                if (entity instanceof Player _player) {
-                    ItemStack _stktoremove = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
-                    _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
-                }
-            }
-        }
-    }
+	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
+		if (entity == null)
+			return;
+		if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_RANDOM_CT) == true) {
+			if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:cursed_technique_changer")) {
+				if (event != null && event.isCancelable()) {
+					event.setCanceled(true);
+				} else if (event != null && event.hasResult()) {
+					event.setResult(Event.Result.DENY);
+				}
+				if (entity instanceof Player _player)
+					_player.closeContainer();
+				if (entity instanceof Player _player) {
+					ItemStack _stktoremove = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
+					_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+				}
+			}
+		}
+	}
 }

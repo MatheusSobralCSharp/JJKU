@@ -1,8 +1,8 @@
 {
-  "_fv": 66,
+  "_fv": 73,
   "_type": "command",
   "definition": {
-    "commandName": "jjkurSetPVPBase",
+    "commandName": "jjkuSetPVPBase",
     "type": "STANDARD",
     "permissionLevel": "2",
     "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"literal\"><field name=\"name\">Team1</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">SetPVPBase</field></block></statement><next><block type=\"literal\"><field name=\"name\">Team2</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">SetPVPBase2</field></block></statement></block></next></block></next></block></xml>"

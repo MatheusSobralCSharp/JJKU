@@ -35,13 +35,15 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = MaximumMeteorProcedure.class, remap = false)
+@Mixin(value = MaximumMeteorProcedure.class, priority = 3000)
 public abstract class MaximumMeteorMixin {
     public MaximumMeteorMixin() {
     }
@@ -50,8 +52,8 @@ public abstract class MaximumMeteorMixin {
      * @author Sat
      * @reason Testing
      */
-    @Overwrite
-    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         if (entity != null) {
             ItemStack old_health = ItemStack.EMPTY;
             Entity entity_a = null;
@@ -348,5 +350,6 @@ public abstract class MaximumMeteorMixin {
                 }
             }
         }
+        ci.cancel();
     }
 }

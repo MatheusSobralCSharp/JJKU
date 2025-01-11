@@ -1,58 +1,37 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.network.chat.Component;
 
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.player.AdvancementEvent;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-
-import javax.annotation.Nullable;
 
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.IAnimation;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-
-import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 
 import java.util.Objects;
 
@@ -232,33 +211,9 @@ public class BlackFlashedProcedure {
                     entity.saveWithoutId(dataIndex37);
                     dataIndex37.getCompound("ForgeData").putDouble("Kokusen", 1);
                     entity.load(dataIndex37);
-                    world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_1.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5),
-                            (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 0.3, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), 1, 1) * 5), 0, 0, 0);
-                    if (world instanceof ServerLevel _level)
-                        _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_4.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5),
-                                (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5), 5, 0, 0, 0, 1);
-                    if (world instanceof ServerLevel _level)
-                        _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_2.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5),
-                                (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5), 5, 0, 0, 0, 1);
-                    if (world instanceof ServerLevel _level)
-                        _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_3.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5),
-                                (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 0.5, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5), 5, 0, 0, 0, 1);
-                    if (world instanceof ServerLevel _level)
-                        _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_5.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5),
-                                (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 1, 2) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5), 5, 0, 0, 0, 1);
                 }
             } else if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_NO_BLACK_FLASH_CUTSCENE)) {
-                world.addParticle((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_1.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5),
-                        (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 0.3, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), 1, 1) * 5), 0, 0, 0);
-                if (world instanceof ServerLevel _level)
-                    _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_4.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5),
-                            (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -1, 1) * 5), 5, 0, 0, 0, 1);
-                if (world instanceof ServerLevel _level)
-                    _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_5.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5),
-                            (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 0.5, 1) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5), 5, 0, 0, 0, 1);
-                if (world instanceof ServerLevel _level)
-                    _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KOKUSEN_2.get()), (entity.getX() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5),
-                            (entity.getY() + 0 + Mth.nextDouble(RandomSource.create(), 1, 2) * 5), (entity.getZ() + 0 + Mth.nextDouble(RandomSource.create(), -0.1, 0.1) * 5), 5, 0, 0, 0, 1);
+
             }
             {
                 Entity _ent = entity;
@@ -268,13 +223,16 @@ public class BlackFlashedProcedure {
                 }
             }
         }
-        {
-            Entity _ent = entity;
-            if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-                                _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-                        "execute if entity @s[advancements={jujutsucraft:black_flash=true}] as @s[advancements={jujutsucraft:black_flash=true}] at @s run jjc_cursepower 500 @s");
+        if (!(entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE_BLACK_FLASH.get()))) {
+            {
+                Entity _ent = entity;
+                if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                    _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+                                    _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
+                            "execute if entity @s[advancements={jujutsucraft:black_flash=true}] as @s[advancements={jujutsucraft:black_flash=true}] at @s run jjc_cursepower 250 @s");
+                }
             }
         }
+
     }
 }
