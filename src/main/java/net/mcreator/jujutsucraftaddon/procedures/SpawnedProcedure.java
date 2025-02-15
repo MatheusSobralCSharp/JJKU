@@ -2,31 +2,29 @@ package net.mcreator.jujutsucraftaddon.procedures;
 
 import net.mcreator.jujutsucraft.entity.*;
 import net.mcreator.jujutsucraft.procedures.SizeByNBTProcedure;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.level.GameRules;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.tags.TagKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.registries.Registries;
-
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
-
 import java.util.Arrays;
-import java.util.Objects;
 
 @Mod.EventBusSubscriber
 public class SpawnedProcedure {
@@ -55,12 +53,26 @@ public class SpawnedProcedure {
         if (entityTypeKey == null || !entityTypeKey.toString().startsWith("jujutsucraft"))
             return;
 
+        if (entity instanceof TodoAoiEntity || entity instanceof HigurumaHiromiEntity) {
+            LivingEntity livingEntity2 = (LivingEntity) entity;
+            AttributeInstance maxHealthAttr = livingEntity2.getAttribute(Attributes.MAX_HEALTH);
+            maxHealthAttr.setBaseValue(900);
+            AttributeInstance maxHealthAttr1 = livingEntity2.getAttribute(Attributes.ARMOR);
+            maxHealthAttr1.setBaseValue(30);
+            livingEntity2.setHealth(livingEntity2.getMaxHealth());
+        }
+
+
 
         handleMahoragaLogic(world, x, y, z, entity);
 
+        if (!entity.getPersistentData().getString("OWNER_UUID").isEmpty()) {
+            return;
+        }
+
         if (entity instanceof RedEntity redEntity) {
             Pose pose = redEntity.getPose();
-            redEntity.getDimensions(pose).scale((float)SizeByNBTProcedure.execute(entity));
+            redEntity.getDimensions(pose).scale((float) SizeByNBTProcedure.execute(entity));
         }
 
         boolean isServerSide = !livingEntity.level().isClientSide();

@@ -215,7 +215,6 @@ public class Shadow1Entity extends TamableAnimal implements GeoEntity {
     public void baseTick() {
         super.baseTick();
         CloneOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
-        ;
         this.refreshDimensions();
     }
 

@@ -10,17 +10,14 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -41,7 +38,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
-@Mixin(value = DismantleProcedure.class, priority = 3000)
+@Mixin(value = DismantleProcedure.class, priority = -10000)
 public abstract class DismantleProcedureMixin {
     public DismantleProcedureMixin() {
     }
@@ -53,6 +50,8 @@ public abstract class DismantleProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean logic_a;
             boolean worldCutter;
@@ -76,16 +75,14 @@ public abstract class DismantleProcedureMixin {
                     worldCutter = false;
                     entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
                     if (entity instanceof Player) {
-                        if (entity instanceof ServerPlayer) {
-                            ServerPlayer _plr3 = (ServerPlayer) entity;
+                        if (entity instanceof ServerPlayer _plr3) {
                             if (_plr3.level() instanceof ServerLevel && _plr3.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr3.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_dismantle_cut_the_world")))).isDone()) {
                                 break label428;
                             }
                         }
                     } else {
-                        if (entity instanceof SukunaFushiguroEntity && entity instanceof SukunaFushiguroEntity) {
-                            SukunaFushiguroEntity _datEntL5 = (SukunaFushiguroEntity) entity;
-                            if ((Boolean) _datEntL5.getEntityData().get(SukunaFushiguroEntity.DATA_world_cut)) {
+                        if (entity instanceof SukunaFushiguroEntity _datEntL5 && entity instanceof SukunaFushiguroEntity) {
+                            if (_datEntL5.getEntityData().get(SukunaFushiguroEntity.DATA_world_cut)) {
                                 break label428;
                             }
                         }
@@ -101,7 +98,7 @@ public abstract class DismantleProcedureMixin {
 
                     canUseWorld = false;
                     _setval = 0.0;
-                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                         capability.p_x_power = _setval;
                         capability.syncPlayerVariables(entity);
                     });
@@ -110,7 +107,7 @@ public abstract class DismantleProcedureMixin {
 
                 canUseWorld = true;
                 _setval = 1.0;
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                     capability.p_x_power = _setval;
                     capability.syncPlayerVariables(entity);
                 });
@@ -227,8 +224,8 @@ public abstract class DismantleProcedureMixin {
 
                     var44 = var10000;
                     if (var44 instanceof LivingEntity) {
-                        _entity = (LivingEntity) var44;
-                        if (_entity.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get()) && !entity.getPersistentData().getBoolean("flag_dismantle")) {
+                        _entity = var44;
+                        if (_entity.hasEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get()) && !entity.getPersistentData().getBoolean("flag_dismantle")) {
                             entity.getPersistentData().putBoolean("flag_dismantle", true);
                             entity.getPersistentData().putDouble("cnt6", 5.0);
                         }
@@ -277,8 +274,8 @@ public abstract class DismantleProcedureMixin {
 
                     var44 = var10000;
                     if (var44 instanceof LivingEntity) {
-                        _entity = (LivingEntity) var44;
-                        if (_entity.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                        _entity = var44;
+                        if (_entity.hasEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
                             entity.getPersistentData().putDouble("cnt7", 2.0);
                         }
                     }
@@ -299,7 +296,7 @@ public abstract class DismantleProcedureMixin {
                 if (entity instanceof LivingEntity) {
                     _entGetArmor = (LivingEntity) entity;
                     if (!_entGetArmor.level().isClientSide()) {
-                        _entGetArmor.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                        _entGetArmor.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                     }
                 }
 
@@ -307,8 +304,8 @@ public abstract class DismantleProcedureMixin {
                 range = 0.5 * ((world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DESTRUCTION_LEVEL)));
             } else {
                 if (entity.getPersistentData().getDouble("cnt1") <= 1.0) {
-                    yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-                    picth = Math.toRadians((double) entity.getXRot());
+                    yaw = Math.toRadians(entity.getYRot() + 90.0F);
+                    picth = Math.toRadians(entity.getXRot());
                     x_pos = entity.getX() + Math.cos(yaw) * Math.cos(picth) * (double) (1.0F + entity.getBbWidth());
                     y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(picth) * -1.0 * (double) (1.0F + entity.getBbWidth());
                     z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(picth) * (double) (1.0F + entity.getBbWidth());
@@ -324,12 +321,12 @@ public abstract class DismantleProcedureMixin {
                         if (entity instanceof LivingEntity) {
                             _entGetArmor = (LivingEntity) entity;
                             if (!_entGetArmor.level().isClientSide()) {
-                                _entGetArmor.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                                _entGetArmor.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                             }
                         }
 
                         ServerLevel _level1;
-                        if (!(entity instanceof LivingEntity _livEnt11 && _livEnt11.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.WORLD_CUT.get()))) {
+                        if (!(entity instanceof LivingEntity _livEnt11 && _livEnt11.hasEffect(JujutsucraftaddonModMobEffects.WORLD_CUT.get()))) {
                             if (entity.getPersistentData().getDouble("cnt6") >= 5.0) {
                                 if (world instanceof ServerLevel) {
                                     _level1 = (ServerLevel) world;
@@ -346,8 +343,7 @@ public abstract class DismantleProcedureMixin {
                             if (entity.getPersistentData().getDouble("cnt5") > 20.0) {
                                 entity.getPersistentData().putDouble("cnt5", 0.0);
                                 entity.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6") + 1.0);
-                                if (entity instanceof Player) {
-                                    Player _player = (Player) entity;
+                                if (entity instanceof Player _player) {
                                     if (!_player.level().isClientSide()) {
                                         CompoundTag var56 = entity.getPersistentData();
                                         _player.displayClientMessage(Component.literal("§l\"" + Component.translatable("chant.jujutsucraft.dismantle" + Math.round(var56.getDouble("cnt6"))).getString() + "\""), false);
@@ -355,9 +351,9 @@ public abstract class DismantleProcedureMixin {
                                 }
 
                                 if (entity instanceof Player) {
-                                    _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 30.0;
+                                    _setval = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange - 30.0;
                                     double final_setval = _setval;
-                                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                         capability.PlayerCursePowerChange = final_setval;
                                         capability.syncPlayerVariables(entity);
                                     });
@@ -368,7 +364,7 @@ public abstract class DismantleProcedureMixin {
                             if (world instanceof Level) {
                                 _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                    _level.explode(null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                 }
                             }
 
@@ -383,7 +379,7 @@ public abstract class DismantleProcedureMixin {
                 range = 1.0 * ((world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DESTRUCTION_LEVEL)));
             }
 
-            if (entity.getPersistentData().getDouble("cnt1") == 0.0 && (canUseWorld || entity instanceof Player && ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).p_x_power != 0.0)) {
+            if (entity.getPersistentData().getDouble("cnt1") == 0.0 && (canUseWorld || entity instanceof Player && entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).p_x_power != 0.0)) {
                 ItemStack var59;
                 if (!(entity instanceof Player)) {
                     if (entity instanceof LivingEntity) {
@@ -393,7 +389,7 @@ public abstract class DismantleProcedureMixin {
                         var59 = ItemStack.EMPTY;
                     }
 
-                    var59.getOrCreateTag().putDouble("P_ANIME1", (double) (entity.getPersistentData().getDouble("cnt6") >= 5.0 ? 207 : 120));
+                    var59.getOrCreateTag().putDouble("P_ANIME1", entity.getPersistentData().getDouble("cnt6") >= 5.0 ? 207 : 120);
                     if (entity instanceof LivingEntity) {
                         _entGetArmor = (LivingEntity) entity;
                         var59 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
@@ -404,7 +400,7 @@ public abstract class DismantleProcedureMixin {
                     var59.getOrCreateTag().putDouble("P_ANIME2", 0.0);
                 }
 
-                if (!(entity instanceof LivingEntity _livEnt11 && _livEnt11.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.WORLD_CUT.get()))) {
+                if (!(entity instanceof LivingEntity _livEnt11 && _livEnt11.hasEffect(JujutsucraftaddonModMobEffects.WORLD_CUT.get()))) {
                     PlayAnimationProcedure.execute(entity);
                 }
 
@@ -416,7 +412,7 @@ public abstract class DismantleProcedureMixin {
                         var59 = ItemStack.EMPTY;
                     }
 
-                    var59.getOrCreateTag().putDouble("P_ANIME1", (double) (entity.getPersistentData().getDouble("cnt6") >= 5.0 ? 207 : 120));
+                    var59.getOrCreateTag().putDouble("P_ANIME1", entity.getPersistentData().getDouble("cnt6") >= 5.0 ? 207 : 120);
                     if (entity instanceof LivingEntity) {
                         _entGetArmor = (LivingEntity) entity;
                         var59 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
@@ -439,36 +435,36 @@ public abstract class DismantleProcedureMixin {
                     entity.getPersistentData().putDouble("cnt1", Math.max(entity.getPersistentData().getDouble("cnt7"), 4.0));
                 }
             } else if (entity.getPersistentData().getDouble("cnt1") == 5.0) {
-                if (entity.getPersistentData().getDouble("cnt6") >= 5.0 && (canUseWorld || entity instanceof Player && ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).p_x_power != 0.0)) {
+                if (entity.getPersistentData().getDouble("cnt6") >= 5.0 && (canUseWorld || entity instanceof Player && entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).p_x_power != 0.0)) {
                     worldCutter = true;
                 }
 
-                yaw = (double) entity.getYRot();
-                picth = (double) entity.getXRot();
+                yaw = entity.getYRot();
+                picth = entity.getXRot();
                 if (world instanceof Level) {
                     _level = (Level) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.5F);
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.5F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.5F, false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.5F, false);
                     }
                 }
 
                 if (world instanceof Level) {
                     _level = (Level) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.75F);
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.75F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.75F, false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 0.75F, false);
                     }
                 }
 
                 if (world instanceof Level) {
                     _level = (Level) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 1.0F);
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 1.0F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 1.0F, false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, (float) (0.3 * CNT6), 1.0F, false);
                     }
                 }
 
@@ -495,9 +491,9 @@ public abstract class DismantleProcedureMixin {
                     dis = 0.0;
 
                     for (int index1 = 0; (long) index1 < Math.round(20.0 + Math.max(entity.getPersistentData().getDouble("cnt6"), 0.0) * 2.0); ++index1) {
-                        x_pos = (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(dis)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX();
-                        y_pos = (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(dis)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY();
-                        z_pos = (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(dis)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ();
+                        x_pos = entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(dis)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX();
+                        y_pos = entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(dis)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY();
+                        z_pos = entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(dis)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ();
                         entity.getPersistentData().putDouble("Damage", 15.0);
                         if (Math.round(Math.floor(dis)) > 0L) {
                             for (int index2 = 0; index2 < (int) Math.round(Math.floor(dis)); ++index2) {
@@ -529,22 +525,21 @@ public abstract class DismantleProcedureMixin {
                                 if ((!worldCutter || entity.getPersistentData().getDouble("cnt6") >= 5.0) && world instanceof Level) {
                                     _level = (Level) world;
                                     if (!_level.isClientSide()) {
-                                        _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                        _level.explode(null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                     }
                                 }
 
                                 if (world instanceof Level) {
                                     _level = (Level) world;
                                     if (!_level.isClientSide()) {
-                                        _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, 0.05F, 2.0F);
+                                        _level.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, 0.05F, 2.0F);
                                     } else {
-                                        _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, 0.05F, 2.0F, false);
+                                        _level.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:sword_sweep")), SoundSource.NEUTRAL, 0.05F, 2.0F, false);
                                     }
                                 }
                             }
 
-                            if (world instanceof ServerLevel) {
-                                ServerLevel _level2 = (ServerLevel) world;
+                            if (world instanceof ServerLevel _level2) {
                                 _level2.sendParticles(ParticleTypes.CLOUD, x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
                             }
 
@@ -588,13 +583,13 @@ public abstract class DismantleProcedureMixin {
                         entity.getPersistentData().putDouble("cnt1", 0.0);
                         entity.getPersistentData().putDouble("cnt8", entity.getPersistentData().getDouble("cnt8") + 1.0);
                         if (entity instanceof Player) {
-                            _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 5.0;
+                            _setval = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange - 5.0;
                             double final_setval1 = _setval;
-                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.PlayerCursePowerChange = final_setval1;
                                 capability.syncPlayerVariables(entity);
                             });
-                            if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower + ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange <= 0.0) {
+                            if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePower + entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange <= 0.0) {
                                 entity.getPersistentData().putDouble("skill", 0.0);
                             }
                         }
@@ -609,6 +604,5 @@ public abstract class DismantleProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

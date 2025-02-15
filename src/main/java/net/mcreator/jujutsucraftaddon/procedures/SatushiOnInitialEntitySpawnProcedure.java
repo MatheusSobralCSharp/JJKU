@@ -1,13 +1,10 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 public class SatushiOnInitialEntitySpawnProcedure {
     public static void execute(Entity entity) {

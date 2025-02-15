@@ -19,7 +19,7 @@ public class RikaSpawnedTwoProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity sourceentity) {
         if (sourceentity == null)
             return;
-        if (!(!world.getEntitiesOfClass(Rika2Entity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty())) {
+        if (world.getEntitiesOfClass(Rika2Entity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
             if (world instanceof ServerLevel _serverLevel) {
                 Entity entitytospawn = JujutsucraftModEntities.RIKA_2.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
                 if (entitytospawn != null) {

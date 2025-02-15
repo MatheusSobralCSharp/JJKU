@@ -28,7 +28,7 @@ public abstract class MythicalBeastAmberStartMixin {
         }
 
         if ("Kashimo".equals(variables.Clans)) {
-            return constant * 2;
+            return constant * 1.25;
         }
 
         return constant;

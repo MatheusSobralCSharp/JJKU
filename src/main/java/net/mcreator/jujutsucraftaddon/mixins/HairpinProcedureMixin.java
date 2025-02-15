@@ -9,16 +9,12 @@ import net.mcreator.jujutsucraft.procedures.RangeAttackProcedure;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.procedures.SummonRessonanceProcedure;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -35,7 +31,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = HairpinProcedure.class, priority = 3000)
+@Mixin(value = HairpinProcedure.class, priority = -10000)
 public abstract class HairpinProcedureMixin {
     /**
      * @author Satushi
@@ -45,6 +41,8 @@ public abstract class HairpinProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             String targetUUID = "";
             Entity entity_a = null;
@@ -63,8 +61,7 @@ public abstract class HairpinProcedureMixin {
             entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
             if (entity.getPersistentData().getDouble("cnt1") == 1.0) {
                 ItemStack var10000;
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt = (LivingEntity) entity;
+                if (entity instanceof LivingEntity _livEnt) {
                     var10000 = _livEnt.getMainHandItem();
                 } else {
                     var10000 = ItemStack.EMPTY;
@@ -76,9 +73,9 @@ public abstract class HairpinProcedureMixin {
                     if (world instanceof Level) {
                         _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F);
+                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F);
                         } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F, false);
+                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F, false);
                         }
                     }
 
@@ -87,8 +84,7 @@ public abstract class HairpinProcedureMixin {
                         _entity.swing(InteractionHand.MAIN_HAND, true);
                     }
                 } else {
-                    if (entity instanceof LivingEntity) {
-                        LivingEntity _livEnt = (LivingEntity) entity;
+                    if (entity instanceof LivingEntity _livEnt) {
                         var10000 = _livEnt.getOffhandItem();
                     } else {
                         var10000 = ItemStack.EMPTY;
@@ -98,9 +94,9 @@ public abstract class HairpinProcedureMixin {
                         if (world instanceof Level) {
                             _level = (Level) world;
                             if (!_level.isClientSide()) {
-                                _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F);
+                                _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F);
                             } else {
-                                _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F, false);
+                                _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast")), SoundSource.NEUTRAL, 1.0F, 1.22F, false);
                             }
                         }
 
@@ -125,8 +121,7 @@ public abstract class HairpinProcedureMixin {
                     Entity entityiterator = (Entity) var46.next();
                     if (entity != entityiterator && entityiterator.getPersistentData().getDouble("Nail") > 0.0) {
                         double var37;
-                        if (entityiterator instanceof Projectile) {
-                            Projectile _projEnt = (Projectile) entityiterator;
+                        if (entityiterator instanceof Projectile _projEnt) {
                             var37 = _projEnt.getDeltaMovement().length();
                         } else {
                             var37 = 0.0;
@@ -168,28 +163,28 @@ public abstract class HairpinProcedureMixin {
                     if (world instanceof Level) {
                         _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.large_blast")), SoundSource.NEUTRAL, (float) range, 1.0F);
+                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.large_blast")), SoundSource.NEUTRAL, (float) range, 1.0F);
                         } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.large_blast")), SoundSource.NEUTRAL, (float) range, 1.0F, false);
+                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.large_blast")), SoundSource.NEUTRAL, (float) range, 1.0F, false);
                         }
                     }
 
                     if (world instanceof Level) {
                         _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                            _level.explode(null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                         }
                     }
 
                     ServerLevel _level2;
                     if (world instanceof ServerLevel) {
                         _level2 = (ServerLevel) world;
-                        _level2.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_CURSE_POWER_BLUE.get(), x_pos, y_pos, z_pos, (int) (10.0 * CNT6), 0.25 * range, 0.25 * range, 0.25 * range, 1.0 * range);
+                        _level2.sendParticles(JujutsucraftModParticleTypes.PARTICLE_CURSE_POWER_BLUE.get(), x_pos, y_pos, z_pos, (int) (10.0 * CNT6), 0.25 * range, 0.25 * range, 0.25 * range, range);
                     }
 
                     if (world instanceof ServerLevel) {
                         _level2 = (ServerLevel) world;
-                        _level2.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, (int) (5.0 * CNT6), 0.25 * range, 0.25 * range, 0.25 * range, 1.0 * range);
+                        _level2.sendParticles(JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, (int) (5.0 * CNT6), 0.25 * range, 0.25 * range, 0.25 * range, range);
                     }
 
                     x_pos -= x_power * 0.25 * 16.0 * range;
@@ -216,7 +211,7 @@ public abstract class HairpinProcedureMixin {
 
                         if (world instanceof ServerLevel) {
                             _level2 = (ServerLevel) world;
-                            _level2.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_CURSE_POWER_BLUE.get(), x_pos, y_pos, z_pos, (int) (1.0 + CNT6), 0.1 * range, 0.1 * range, 0.1 * range, 0.0);
+                            _level2.sendParticles(JujutsucraftModParticleTypes.PARTICLE_CURSE_POWER_BLUE.get(), x_pos, y_pos, z_pos, (int) (1.0 + CNT6), 0.1 * range, 0.1 * range, 0.1 * range, 0.0);
                         }
 
                         x_pos += x_power * 0.25;
@@ -226,8 +221,8 @@ public abstract class HairpinProcedureMixin {
                 } else {
                     entity.getPersistentData().putDouble("skill", 0.0);
                     if (entity.getPersistentData().getDouble("cnt1") == 1.0) {
-                        double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange + ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueCost;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                        double _setval = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange + entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerSelectCurseTechniqueCost;
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                             capability.PlayerCursePowerChange = _setval;
                             capability.syncPlayerVariables(entity);
                         });
@@ -240,7 +235,6 @@ public abstract class HairpinProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 
 }

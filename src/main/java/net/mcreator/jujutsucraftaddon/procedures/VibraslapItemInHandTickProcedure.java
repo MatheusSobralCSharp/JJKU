@@ -1,12 +1,10 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LevelAccessor;
 
 public class VibraslapItemInHandTickProcedure {
     public static void execute(LevelAccessor world, Entity entity) {

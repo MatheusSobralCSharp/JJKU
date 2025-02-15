@@ -1,34 +1,32 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
-import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
-import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 public class JogoFlameOnEffectActiveTickProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
+
         if (new Object() {
             public double getValue() {
                 CompoundTag dataIndex0 = new CompoundTag();
@@ -41,7 +39,7 @@ public class JogoFlameOnEffectActiveTickProcedure {
                 entity.saveWithoutId(dataIndex1);
                 return dataIndex1.getCompound("ForgeData").getDouble("cnt6");
             }
-        }.getValue() < 10) {
+        }.getValue() < 6) {
             CompoundTag dataIndex3 = new CompoundTag();
             entity.saveWithoutId(dataIndex3);
             dataIndex3.getCompound("ForgeData").putDouble("cnt6", (new Object() {

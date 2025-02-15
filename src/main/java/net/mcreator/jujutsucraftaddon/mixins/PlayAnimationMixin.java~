@@ -1,0 +1,27 @@
+package net.mcreator.jujutsucraftaddon.mixins;
+
+import net.mcreator.jujutsucraft.procedures.PlayAnimationIfPossibleProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.NewPlayAnimation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.Event;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(value = PlayAnimationIfPossibleProcedure.class)
+public abstract class PlayAnimationMixin {
+    @Redirect(method = "onEntityAttacked",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/mcreator/jujutsucraft/procedures/PlayAnimationIfPossibleProcedure;execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/entity/Entity;)V",
+                    remap = false))
+    private static void redirectOnEntityAttacked(Event event, LevelAccessor world, DamageSource damageSource, Entity entity) {
+        if (event != null && entity != null) {
+            NewPlayAnimation.execute(event, world, damageSource, entity);
+        }
+    }
+}

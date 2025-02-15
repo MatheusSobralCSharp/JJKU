@@ -1,12 +1,11 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.Entity;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 
 public class FixProcedure {
     public static void execute(

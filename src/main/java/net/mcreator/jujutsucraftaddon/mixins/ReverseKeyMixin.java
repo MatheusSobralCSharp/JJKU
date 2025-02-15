@@ -6,14 +6,12 @@ import net.mcreator.jujutsucraft.procedures.KeyReverseCursedTechniqueOnKeyPresse
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = KeyReverseCursedTechniqueOnKeyPressedProcedure.class, priority = 3000)
+@Mixin(value = KeyReverseCursedTechniqueOnKeyPressedProcedure.class, priority = -10000)
 public abstract class ReverseKeyMixin {
     public ReverseKeyMixin() {
     }
@@ -36,14 +34,15 @@ public abstract class ReverseKeyMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double level = 0.0;
             boolean strength = false;
             boolean Player = false;
             Player = entity instanceof Player;
-            if (Player && entity instanceof LivingEntity) {
-                LivingEntity _livEnt1 = (LivingEntity) entity;
-                if (_livEnt1.hasEffect((MobEffect) JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get())) {
+            if (Player && entity instanceof LivingEntity _livEnt1) {
+                if (_livEnt1.hasEffect(JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get())) {
                     return;
                 }
             }
@@ -52,25 +51,12 @@ public abstract class ReverseKeyMixin {
                 entity.getPersistentData().putBoolean("PRESS_BURNOUT", true);
             }
 
-            if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == -1) {
-                if (!entity.getPersistentData().getBoolean("HR")) {
-                    entity.getPersistentData().putBoolean("HR", true);
-                    if (entity instanceof Player _player && !_player.level().isClientSide())
-                        _player.displayClientMessage(Component.literal("Enabled HR Vision"), false);
-                } else if (entity.getPersistentData().getBoolean("HR")) {
-                    entity.getPersistentData().putBoolean("HR", false);
-                    if (entity instanceof Player _player && !_player.level().isClientSide())
-                        _player.displayClientMessage(Component.literal("Disabled HR Vision"), false);
-                }
-            }
-
 
             Player _player;
             label142:
             {
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt2 = (LivingEntity) entity;
-                    if (_livEnt2.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+                if (entity instanceof LivingEntity _livEnt2) {
+                    if (_livEnt2.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
                         break label142;
                     }
                 }
@@ -90,19 +76,18 @@ public abstract class ReverseKeyMixin {
                                 var10000 = -1.0F;
                             }
 
-                            level = (double) (var10000 > 800.0F ? 1 : 0);
+                            level = var10000 > 800.0F ? 1 : 0;
                         } else {
                             level = -1.0;
                         }
-                    } else if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerFormer > 150.0 && ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower >= 10.0) {
+                    } else if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerFormer > 150.0 && entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePower >= 10.0) {
                         label156:
                         {
                             label128:
                             {
                                 label157:
                                 {
-                                    if (entity instanceof ServerPlayer) {
-                                        ServerPlayer _plr5 = (ServerPlayer) entity;
+                                    if (entity instanceof ServerPlayer _plr5) {
                                         if (_plr5.level() instanceof ServerLevel && _plr5.getAdvancements().getOrStartProgress(_plr5.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:reverse_cursed_technique_2"))).isDone()) {
                                             break label157;
                                         }
@@ -113,7 +98,7 @@ public abstract class ReverseKeyMixin {
                                     }
 
                                     _livEnt = (LivingEntity) entity;
-                                    if (!_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                    if (!_livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                         break label128;
                                     }
                                 }
@@ -122,8 +107,7 @@ public abstract class ReverseKeyMixin {
                                 break label156;
                             }
 
-                            if (entity instanceof ServerPlayer) {
-                                ServerPlayer _plr7 = (ServerPlayer) entity;
+                            if (entity instanceof ServerPlayer _plr7) {
                                 if (_plr7.level() instanceof ServerLevel && _plr7.getAdvancements().getOrStartProgress(_plr7.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:reverse_cursed_technique_1"))).isDone()) {
                                     level = 0.0;
                                     break label156;
@@ -147,7 +131,7 @@ public abstract class ReverseKeyMixin {
                     } else {
                         if (entity instanceof LivingEntity) {
                             _entity = (LivingEntity) entity;
-                            if (_entity.hasEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get())) {
+                            if (_entity.hasEffect(JujutsucraftModMobEffects.ZONE.get())) {
                                 double var13;
                                 int var10001;
                                 label102:
@@ -155,8 +139,8 @@ public abstract class ReverseKeyMixin {
                                     var13 = level + 1.0;
                                     if (entity instanceof LivingEntity) {
                                         _livEnt = (LivingEntity) entity;
-                                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get())) {
-                                            var10001 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.ZONE.get()).getAmplifier();
+                                        if (_livEnt.hasEffect(JujutsucraftModMobEffects.ZONE.get())) {
+                                            var10001 = _livEnt.getEffect(JujutsucraftModMobEffects.ZONE.get()).getAmplifier();
                                             break label102;
                                         }
                                     }
@@ -170,7 +154,7 @@ public abstract class ReverseKeyMixin {
 
                         if (entity instanceof LivingEntity) {
                             _entity = (LivingEntity) entity;
-                            _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get());
+                            _entity.removeEffect(JujutsucraftModMobEffects.GUARD.get());
                         }
 
                         entity.getPersistentData().putBoolean("PRESS_M", true);
@@ -179,7 +163,7 @@ public abstract class ReverseKeyMixin {
                                 if (entity instanceof LivingEntity) {
                                     _entity = (LivingEntity) entity;
                                     if (!_entity.level().isClientSide()) {
-                                        _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, (int) (Math.round(level) * -1L), true, true));
+                                        _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, (int) (Math.round(level) * -1L), true, true));
                                     }
                                 }
                             }
@@ -251,6 +235,5 @@ public abstract class ReverseKeyMixin {
             }
 
         }
-        ci.cancel();
     }
 }

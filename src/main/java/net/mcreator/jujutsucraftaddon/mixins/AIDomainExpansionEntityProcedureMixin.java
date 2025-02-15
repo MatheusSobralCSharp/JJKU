@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -21,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = AIDomainExpansionEntityProcedure.class, priority = 3000)
+@Mixin(value = AIDomainExpansionEntityProcedure.class, priority = -10000)
 public abstract class AIDomainExpansionEntityProcedureMixin {
 
     /**
@@ -31,6 +30,8 @@ public abstract class AIDomainExpansionEntityProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             BlockState blockstate1 = Blocks.AIR.defaultBlockState();
             String outside = "";
@@ -61,8 +62,7 @@ public abstract class AIDomainExpansionEntityProcedureMixin {
             entity.setDeltaMovement(new Vec3(0.0, 0.0, 0.0));
             Entity _ent = entity;
             _ent.teleportTo(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos"), entity.getPersistentData().getDouble("z_pos"));
-            if (_ent instanceof ServerPlayer) {
-                ServerPlayer _serverPlayer = (ServerPlayer) _ent;
+            if (_ent instanceof ServerPlayer _serverPlayer) {
                 _serverPlayer.connection.teleport(entity.getPersistentData().getDouble("x_pos"), entity.getPersistentData().getDouble("y_pos"), entity.getPersistentData().getDouble("z_pos"), _ent.getYRot(), _ent.getXRot());
             }
 
@@ -79,7 +79,7 @@ public abstract class AIDomainExpansionEntityProcedureMixin {
                 {
                     if (entity instanceof LivingEntity) {
                         _livEnt12 = (LivingEntity) entity;
-                        if (_livEnt12.hasEffect((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
+                        if (_livEnt12.hasEffect(JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
                             break label88;
                         }
                     }
@@ -92,7 +92,7 @@ public abstract class AIDomainExpansionEntityProcedureMixin {
 
                 if (entity instanceof LivingEntity) {
                     _livEnt12 = (LivingEntity) entity;
-                    if (_livEnt12.hasEffect((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
+                    if (_livEnt12.hasEffect(JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
                         entity.getPersistentData().putBoolean("Break", false);
                         entity.getPersistentData().putDouble("cnt_life2", 0.0);
                     }
@@ -151,6 +151,5 @@ public abstract class AIDomainExpansionEntityProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

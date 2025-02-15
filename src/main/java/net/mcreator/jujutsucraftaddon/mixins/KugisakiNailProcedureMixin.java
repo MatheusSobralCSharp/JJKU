@@ -8,11 +8,9 @@ import net.mcreator.jujutsucraft.procedures.KugisakiNailProcedure;
 import net.mcreator.jujutsucraft.procedures.RotateEntityProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +18,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
@@ -30,7 +27,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = KugisakiNailProcedure.class, priority = 3000)
+@Mixin(value = KugisakiNailProcedure.class, priority = -10000)
 public abstract class KugisakiNailProcedureMixin {
 
     /**
@@ -40,6 +37,8 @@ public abstract class KugisakiNailProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double dis = 0.0;
             double x_pos = 0.0;
@@ -78,17 +77,16 @@ public abstract class KugisakiNailProcedureMixin {
                 if (world instanceof Level) {
                     projectileLevel = (Level) world;
                     if (!projectileLevel.isClientSide()) {
-                        projectileLevel.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F);
+                        projectileLevel.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F);
                     } else {
-                        projectileLevel.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F, false);
+                        projectileLevel.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.anvil.place")), SoundSource.NEUTRAL, 0.5F, 1.5F, false);
                     }
                 }
             }
 
             if (Math.random() <= 0.01) {
-                if (entity instanceof Player) {
-                    Player _player = (Player) entity;
-                    ItemStack _stktoremove = new ItemStack((ItemLike) JujutsucraftModItems.NAIL.get());
+                if (entity instanceof Player _player) {
+                    ItemStack _stktoremove = new ItemStack(JujutsucraftModItems.NAIL.get());
                     _player.getInventory().clearOrCountMatchingItems((p) -> {
                         return _stktoremove.getItem() == p.getItem();
                     }, 1, _player.inventoryMenu.getCraftSlots());
@@ -96,8 +94,7 @@ public abstract class KugisakiNailProcedureMixin {
             }
 
             LivingEntity var43;
-            if (entity instanceof Mob) {
-                Mob _mobEnt = (Mob) entity;
+            if (entity instanceof Mob _mobEnt) {
                 var43 = _mobEnt.getTarget();
             } else {
                 var43 = null;
@@ -152,7 +149,7 @@ public abstract class KugisakiNailProcedureMixin {
                 }
 
                 var10001 = new ClipContext(var51, var53, var54, var10006, var10007);
-                double var49 = (double) var48.clip(var10001).getBlockPos().getX();
+                double var49 = var48.clip(var10001).getBlockPos().getX();
                 LivingEntity var44;
                 if (entity instanceof Mob) {
                     _mobEnt = (Mob) entity;
@@ -199,7 +196,7 @@ public abstract class KugisakiNailProcedureMixin {
                 }
 
                 var10002 = new ClipContext(var53, var56, var57, var58, var10008);
-                double var47 = (double) var45.clip(var10002).getBlockPos().getY();
+                double var47 = var45.clip(var10002).getBlockPos().getY();
                 LivingEntity var46;
                 if (entity instanceof Mob) {
                     _mobEnt = (Mob) entity;
@@ -245,7 +242,7 @@ public abstract class KugisakiNailProcedureMixin {
                 }
 
                 var52 = new ClipContext(var56, var59, var61, var60, var10009);
-                RotateEntityProcedure.execute(var49, var47, (double) var50.clip(var52).getBlockPos().getZ(), entity);
+                RotateEntityProcedure.execute(var49, var47, var50.clip(var52).getBlockPos().getZ(), entity);
             }
 
             entity.getPersistentData().putDouble("Damage", 1.5);
@@ -255,9 +252,9 @@ public abstract class KugisakiNailProcedureMixin {
             if (!projectileLevel.isClientSide()) {
                 Projectile _entityToSpawn = ((new Object() {
                     public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-                        AbstractArrow entityToSpawn = new BulletNailEntity((EntityType) JujutsucraftModEntities.BULLET_NAIL.get(), level);
+                        AbstractArrow entityToSpawn = new BulletNailEntity(JujutsucraftModEntities.BULLET_NAIL.get(), level);
                         entityToSpawn.setOwner(shooter);
-                        entityToSpawn.setBaseDamage((double) damage);
+                        entityToSpawn.setBaseDamage(damage);
                         entityToSpawn.setKnockback(knockback);
                         entityToSpawn.setSilent(true);
                         entityToSpawn.setCritArrow(true);
@@ -272,6 +269,5 @@ public abstract class KugisakiNailProcedureMixin {
 
             entity.getPersistentData().putDouble("skill", 0.0);
         }
-        ci.cancel();
     }
 }

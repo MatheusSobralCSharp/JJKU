@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.HashMap;
 
-@Mixin(value = SelectTechniqueScreen.class, priority = 3000)
+@Mixin(value = SelectTechniqueScreen.class, priority = -10000)
 public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen<SelectTechniqueMenu> {
     @Unique
     Button second_technique;
@@ -38,7 +38,7 @@ public abstract class SelectTechniqueScreenMixin extends AbstractContainerScreen
             at = {@At("TAIL")}
     )
     public void onInit(CallbackInfo ci) {
-        TechniqueGuiAccessorMixin accessor = (TechniqueGuiAccessorMixin)this;
+        TechniqueGuiAccessorMixin accessor = (TechniqueGuiAccessorMixin) this;
         Level world = accessor.getWorld();
         int x = accessor.getX();
         int y = accessor.getY();

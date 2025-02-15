@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.Pose;
 import org.spongepowered.asm.mixin.Mixin;
+
 @Mixin(RedEntity.class)
 public abstract class RedEntityJujutsuMixin extends PathfinderMob {
     public RedEntityJujutsuMixin(EntityType<? extends PathfinderMob> type, ServerLevel world) {

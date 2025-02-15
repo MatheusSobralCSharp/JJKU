@@ -1,8 +1,8 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.client.model.Modelcursedspirit_armoury;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraft.procedures.SimpleDomainEffectStartedappliedProcedure;
 import net.mcreator.jujutsucraftaddon.entity.UiUiEntity;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.advancements.Advancement;
@@ -19,7 +19,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,7 +35,7 @@ import java.util.Comparator;
 import java.util.List;
 
 
-@Mixin(value = Modelcursedspirit_armoury.class, priority = 3000)
+@Mixin(value = SimpleDomainEffectStartedappliedProcedure.class, priority = -10000)
 public abstract class SimpleDomainVowMixin {
     public SimpleDomainVowMixin() {
     }
@@ -45,8 +44,11 @@ public abstract class SimpleDomainVowMixin {
      * @author Satushi
      * @reason Change Simple Domain Logic To Upgrade Range
      */
+
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double x_pos;
             double y_pos;
@@ -65,10 +67,9 @@ public abstract class SimpleDomainVowMixin {
                 double pitch = 0.0;
                 double yaw = 0.0;
                 double tick = 0.0;
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt = (LivingEntity) entity;
-                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                        var10000 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier();
+                if (entity instanceof LivingEntity _livEnt) {
+                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                        var10000 = _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier();
                         break label44;
                     }
                 }
@@ -115,8 +116,8 @@ public abstract class SimpleDomainVowMixin {
                                 }
                                 if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
                                     _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get(), 400,
-                                            (int) ((entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier() : 0)
-                                                    + 3),
+                                            (entityiterator instanceof LivingEntity _livEnt && _livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()) ? _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier() : 0)
+                                                    + 3,
                                             false, false));
                             }
                         }
@@ -125,13 +126,12 @@ public abstract class SimpleDomainVowMixin {
 
             }
 
-            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleQuest >= 3.0) {
-                if (entity.getPersistentData().getDouble("cnt_simpledomain") < 6000.0) {
-                    label68:
+            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleQuest >= 0.0) {
+                if (entity.getPersistentData().getDouble("cnt_simpledomain") <= 10000.0) {
                     {
                         entity.getPersistentData().putDouble("cnt_simpledomain", entity.getPersistentData().getDouble("cnt_simpledomain") + 1.0);
                     }
-                } else if (entity.getPersistentData().getDouble("cnt_simpledomain") == 6000.0) {
+                } else if (entity.getPersistentData().getDouble("cnt_simpledomain") >= 10000.0) {
                     if (entity instanceof ServerPlayer _player) {
                         Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:perfect_simple_domain"));
                         AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -167,11 +167,10 @@ public abstract class SimpleDomainVowMixin {
                 label37:
                 {
                     num1 = Math.toRadians(Math.random() * 360.0);
-                    var30 = (double) entity.getBbWidth();
-                    if (entity instanceof LivingEntity) {
-                        LivingEntity _livEnt = (LivingEntity) entity;
-                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                            var10002 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
+                    var30 = entity.getBbWidth();
+                    if (entity instanceof LivingEntity _livEnt) {
+                        if (_livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                            var10002 = _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
                             break label37;
                         }
                     }
@@ -192,18 +191,20 @@ public abstract class SimpleDomainVowMixin {
                             if (world instanceof ServerLevel) {
                                 {
                                     ServerLevel _level = (ServerLevel) world;
-                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle dust 0.749 0.984 1.000 1 ~ ~ ~ 0 0 0 1 1 force");
+                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput(), "particle dust 0.749 0.984 1.000 1 ~ ~ ~ 0 0 0 1 1 force");
                                 }
                             }
                         } else {
-                            if (Math.random() < (1) / ((float) 40)) {
-                                if (world instanceof ServerLevel) {
-                                    {
-                                        ServerLevel _level = (ServerLevel) world;
-                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle jjkueffects:simple_domain_2 ~ ~ ~ 0 0 0 1 1 force");
+                            if (Math.random() < (1) / ((float) 20)) {
+                                {
+                                    Entity _ent = entity;
+                                    if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+                                                _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "particle jjkueffects:simple_domain_2");
                                     }
                                 }
                             }
+
                         }
 
 
@@ -216,18 +217,20 @@ public abstract class SimpleDomainVowMixin {
                             if (world instanceof ServerLevel) {
                                 {
                                     ServerLevel _level = (ServerLevel) world;
-                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle dust 0.749 0.984 1.000 1 ~ ~ ~ 0 0 0 1 1 force");
+                                    _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput(), "particle dust 0.749 0.984 1.000 1 ~ ~ ~ 0 0 0 1 1 force");
                                 }
                             }
                         } else {
-                            if (Math.random() < (1) / ((float) 40)) {
-                                if (world instanceof ServerLevel) {
-                                    {
-                                        ServerLevel _level = (ServerLevel) world;
-                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle jjkueffects:simple_domain ~ ~ ~ 0 0 0 1 1 force");
+                            if (Math.random() < (1) / ((float) 20)) {
+                                {
+                                    Entity _ent = entity;
+                                    if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+                                                _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "particle jjkueffects:simple_domain");
                                     }
                                 }
                             }
+
                         }
 
                         num1 += Math.toRadians(Math.random() * 10.0);
@@ -236,6 +239,5 @@ public abstract class SimpleDomainVowMixin {
             }
 
         }
-        ci.cancel();
     }
 }

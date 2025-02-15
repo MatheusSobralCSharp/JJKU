@@ -31,7 +31,7 @@ public class CursedPowerItadoriParticle extends TextureSheetParticle {
         this.spriteSet = spriteSet;
         this.setSize(0.5f, 0.5f);
         this.quadSize *= 3f;
-        this.lifetime = (int) Math.max(1, 20 + (this.random.nextInt(4) - 2));
+        this.lifetime = Math.max(1, 20 + (this.random.nextInt(4) - 2));
         this.gravity = 0f;
         this.hasPhysics = true;
         this.xd = vx * 0;

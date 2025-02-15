@@ -26,7 +26,7 @@ public class TodoHitProcedureProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity sourceentity) {
         if (sourceentity == null)
             return;
-        if (Math.random() <= 0.05) {
+        if (Math.random() <= 0.0005) {
             if (!(sourceentity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel
                     && _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:sorcerer_strongest_of_modern"))).isDone())) {
                 if (world instanceof ServerLevel _serverLevel) {

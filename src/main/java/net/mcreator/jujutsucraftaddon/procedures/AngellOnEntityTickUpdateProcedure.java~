@@ -1,0 +1,33 @@
+package net.mcreator.jujutsucraftaddon.procedures;
+
+import net.mcreator.jujutsucraft.procedures.AIKashimoHajimeProcedure;
+import net.mcreator.jujutsucraft.procedures.AIOkkotsuProcedure;
+import net.mcreator.jujutsucraft.procedures.LocateRikaProcedure;
+import net.mcreator.jujutsucraftaddon.entity.AngellEntity;
+import net.mcreator.jujutsucraftaddon.entity.HakariEntity;
+import net.mcreator.jujutsucraftaddon.entity.KashimoFemboyEntity;
+import net.mcreator.jujutsucraftaddon.entity.YutaCullingGamesEntity;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.LevelAccessor;
+
+public class AngellOnEntityTickUpdateProcedure {
+    public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+        if (entity == null)
+            return;
+
+        if (entity instanceof HakariEntity) {
+            HakariOnInitialEntitySpawnProcedure.execute(entity);
+            net.mcreator.jujutsucraft.procedures.AIHakariProcedure.execute(world, x, y, z, entity);
+        } else if (entity instanceof AngellEntity) {
+            AngellOnInitialEntitySpawnProcedure.execute(entity);
+        } else if (entity instanceof YutaCullingGamesEntity) {
+
+        } else if (entity instanceof KashimoFemboyEntity) {
+            AIKashimoHajimeProcedure.execute(world, x, y, z, entity);
+        }
+
+    }
+
+}

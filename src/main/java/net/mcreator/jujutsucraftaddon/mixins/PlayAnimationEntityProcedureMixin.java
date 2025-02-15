@@ -3,6 +3,7 @@ package net.mcreator.jujutsucraftaddon.mixins;
 import net.mcreator.jujutsucraft.entity.*;
 import net.mcreator.jujutsucraft.init.JujutsucraftModBlocks;
 import net.mcreator.jujutsucraft.procedures.PlayAnimationEntityProcedure;
+import net.mcreator.jujutsucraftaddon.entity.PartialRikaEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
@@ -13,14 +14,13 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-@Mixin(value = PlayAnimationEntityProcedure.class, priority = 3000)
+@Mixin(value = PlayAnimationEntityProcedure.class, priority = -10000)
 public abstract class PlayAnimationEntityProcedureMixin {
 
     /**
@@ -30,6 +30,8 @@ public abstract class PlayAnimationEntityProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         boolean sword = false;
         double NUM2 = 0.0;
         double NUM3 = 0.0;
@@ -343,6 +345,10 @@ public abstract class PlayAnimationEntityProcedureMixin {
                     ((Rika2Entity) entity).setAnimation(ANIME_NAME);
                 }
 
+                if (entity instanceof PartialRikaEntity) {
+                    ((PartialRikaEntity) entity).setAnimation(ANIME_NAME);
+                }
+
                 if (entity instanceof RozetsuEntity) {
                     ((RozetsuEntity) entity).setAnimation(ANIME_NAME);
                 }
@@ -375,10 +381,9 @@ public abstract class PlayAnimationEntityProcedureMixin {
                 var10000 = ItemStack.EMPTY;
             }
 
-            if (var10000.getItem() == ((Block) JujutsucraftModBlocks.IN_BARRIER.get()).asItem()) {
+            if (var10000.getItem() == JujutsucraftModBlocks.IN_BARRIER.get().asItem()) {
                 Entity _entity = entity;
-                if (_entity instanceof Player) {
-                    Player _player = (Player) _entity;
+                if (_entity instanceof Player _player) {
                     _player.getInventory().armor.set(3, ItemStack.EMPTY);
                     _player.getInventory().setChanged();
                 } else if (_entity instanceof LivingEntity) {
@@ -387,6 +392,5 @@ public abstract class PlayAnimationEntityProcedureMixin {
                 }
             }
         }
-        ci.cancel();
     }
 }

@@ -1,48 +1,41 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
+import dev.kosmx.playerAnim.api.layered.IAnimation;
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
+import dev.kosmx.playerAnim.api.layered.ModifierLayer;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.MergedBeastAgitoEntity;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-import net.minecraftforge.registries.ForgeRegistries;
-
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.tags.TagKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.client.player.AbstractClientPlayer;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
-
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-import net.mcreator.jujutsucraft.entity.MergedBeastAgitoEntity;
-import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
-
-import java.util.List;
 import java.util.Comparator;
-
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import dev.kosmx.playerAnim.api.layered.ModifierLayer;
-import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
-import dev.kosmx.playerAnim.api.layered.IAnimation;
+import java.util.List;
+import java.util.Objects;
 
 public class AnimationKeybindOnKeyPressedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -55,14 +48,14 @@ public class AnimationKeybindOnKeyPressedProcedure {
                 return dataIndex0.getCompound("ForgeData").getDouble("NBT_CursePowerAmount");
             }
         }.getValue() == 0) {
-            if ((ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()).toString()).equals("jujutsucraft:split_soul_katana")) {
+            if ((Objects.requireNonNull(ForgeRegistries.ITEMS.getKey((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem())).toString()).equals("jujutsucraft:split_soul_katana")) {
                 if (!(entity.isShiftKeyDown() || entity.isSprinting() || entity instanceof LivingEntity _livEnt5 && _livEnt5.hasEffect(MobEffects.MOVEMENT_SLOWDOWN))) {
                     if (entity.onGround()) {
                         if (world.isClientSide()) {
                             if (entity instanceof AbstractClientPlayer player) {
                                 var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
                                 if (animation != null && !animation.isActive()) {
-                                    animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "idletoji"))));
+                                    animation.setAnimation(new KeyframeAnimationPlayer(Objects.requireNonNull(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "idletoji")))));
                                 }
                             }
                         }
@@ -72,7 +65,7 @@ public class AnimationKeybindOnKeyPressedProcedure {
         }
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 2) {
             if (entity instanceof ServerPlayer _plr9 && _plr9.level() instanceof ServerLevel
-                    && _plr9.getAdvancements().getOrStartProgress(_plr9.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:gojo_training_part_3"))).isDone()) {
+                    && _plr9.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr9.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:gojo_training_part_3")))).isDone()) {
                 if (entity.isShiftKeyDown()) {
                     if (!(entity instanceof LivingEntity _livEnt11 && _livEnt11.hasEffect(JujutsucraftaddonModMobEffects.DASH_COOLDOWN.get()))) {
                         {
@@ -106,7 +99,7 @@ public class AnimationKeybindOnKeyPressedProcedure {
             }
         }
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6) {
-            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain == true) {
+            if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain) {
                 if (entity.isShiftKeyDown()) {
                     {
                         final Vec3 _center = new Vec3(x, y, z);

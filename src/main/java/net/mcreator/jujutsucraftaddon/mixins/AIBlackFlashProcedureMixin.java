@@ -6,13 +6,10 @@ import net.mcreator.jujutsucraft.procedures.BlockDestroyAllDirectionProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.EffectsBlackFlashProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -22,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = AIBlackFlashProcedure.class, priority = 3000)
+@Mixin(value = AIBlackFlashProcedure.class, priority = -10000)
 public abstract class AIBlackFlashProcedureMixin {
     /**
      * @author Satushi
@@ -31,6 +28,8 @@ public abstract class AIBlackFlashProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double rad = 0.0;
             double range = 0.0;
@@ -54,12 +53,11 @@ public abstract class AIBlackFlashProcedureMixin {
                     soundPitch = 0.75;
 
                     for (index2 = 0; index2 < 3; ++index2) {
-                        if (world instanceof Level) {
-                            Level _level1 = (Level) world;
+                        if (world instanceof Level _level1) {
                             if (!_level1.isClientSide()) {
-                                _level1.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
+                                _level1.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
                             } else {
-                                _level1.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
+                                _level1.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
                             }
                         }
 
@@ -69,7 +67,7 @@ public abstract class AIBlackFlashProcedureMixin {
 
                 if (world instanceof ServerLevel) {
                     _level = (ServerLevel) world;
-                    _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x, y + 1.0, z, 3, 0.5, 1.0, 0.5, 0.0);
+                    _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x, y + 1.0, z, 3, 0.5, 1.0, 0.5, 0.0);
                 }
 
             } else if (entity.getPersistentData().getDouble("cnt1") < 17.0) {
@@ -77,21 +75,19 @@ public abstract class AIBlackFlashProcedureMixin {
                     soundPitch = 0.75;
 
                     for (index2 = 0; index2 < 3; ++index2) {
-                        if (world instanceof Level) {
-                            Level _level3 = (Level) world;
+                        if (world instanceof Level _level3) {
                             if (!_level3.isClientSide()) {
-                                _level3.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
+                                _level3.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
                             } else {
-                                _level3.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
+                                _level3.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.thunder")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
                             }
                         }
 
-                        if (world instanceof Level) {
-                            Level _level4 = (Level) world;
+                        if (world instanceof Level _level4) {
                             if (!_level4.isClientSide()) {
-                                _level4.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
+                                _level4.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch);
                             } else {
-                                _level4.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
+                                _level4.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.lightning_bolt.impact")), SoundSource.NEUTRAL, 1.0F, (float) soundPitch, false);
                             }
                         }
 
@@ -122,7 +118,7 @@ public abstract class AIBlackFlashProcedureMixin {
                         z_pos = entity.getPersistentData().getDouble("z_pos") + Math.sin(rad_now) * (Math.cos(pitch) + Math.abs(Math.cos(rad_now) * Math.sin(pitch))) * (entity.getPersistentData().getDouble("cnt2") + 1.0);
                         if (world instanceof ServerLevel) {
                             _level = (ServerLevel) world;
-                            _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
+                            _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_BLACK_FLASH_1.get(), x_pos, y_pos, z_pos, 1, 0.1, 0.1, 0.1, 0.0);
                         }
 
 
@@ -176,12 +172,11 @@ public abstract class AIBlackFlashProcedureMixin {
                 y_pos = y;
                 z_pos = z + Math.random() * 16.0 - 8.0;
 
-                if (world instanceof Level) {
-                    Level _level5 = (Level) world;
+                if (world instanceof Level _level5) {
                     if (!_level5.isClientSide()) {
-                        _level5.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F);
+                        _level5.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F);
                     } else {
-                        _level5.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F, false);
+                        _level5.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 0.25F, 1.25F, false);
                     }
                 }
 
@@ -191,6 +186,5 @@ public abstract class AIBlackFlashProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

@@ -1,113 +1,146 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
-import net.mcreator.jujutsucraft.procedures.GuardEffectStartedappliedProcedure;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.procedures.PlayAnimationProcedure;
+import net.mcreator.jujutsucraft.procedures.StartGuardProcedure;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
-@Mixin(value = GuardEffectStartedappliedProcedure.class)
+@Mixin(value = StartGuardProcedure.class)
 public abstract class GuardEffectStartedappliedProcedureMixin {
 
     /**
      * @author Satushi
      * @reason Changes the guard + remove the sukuna slash guard when the effect start for balance reasons
      */
+    @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
+    private static void execute(Entity entity, CallbackInfo ci) {
+        ci.cancel();
 
-   /* @Overwrite
-    public static void execute(LevelAccessor world, Entity entity) {
         if (entity != null) {
-            boolean logic_a = false;
-            boolean logic_b = false;
-            boolean SUCCESS = false;
-            double num1 = 0.0;
-            double num2 = 0.0;
-            double speed = 0.0;
-            double x_pos = 0.0;
-            double y_pos = 0.0;
-            double z_pos = 0.0;
-            double num3 = 0.0;
-            double x_power = 0.0;
-            double y_power = 0.0;
-            double z_power = 0.0;
-            double dis = 0.0;
-            double yaw = 0.0;
-            double pitch = 0.0;
-            if (entity.isAlive()) {
-                if (LogicStartPassiveProcedure.execute(entity)) {
-                    label90:
-                    {
-                        if (entity instanceof LivingEntity) {
-                            LivingEntity _livEnt1 = (LivingEntity) entity;
-                            if (_livEnt1.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
-                                break label90;
-                            }
+            double level = 0.0;
+            double level_jump = 0.0;
+            double level_health = 0.0;
+            double level_resistance = 0.0;
+            double level_speed = 0.0;
+            double level_power = 0.0;
+            double level_armor = 0.0;
+            double level_armorToughness = 0.0;
+            double old_health = 0.0;
+            double level_speed_set = 0.0;
+            double animation_num = 0.0;
+            if (entity instanceof LivingEntity) {
+                LivingEntity _livEnt0 = (LivingEntity)entity;
+                if (_livEnt0.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+                    return;
+                }
+            }
+
+            if (entity.getPersistentData().getDouble("skill") == 0.0) {
+                if (entity instanceof LivingEntity) {
+                    LivingEntity _livEnt2 = (LivingEntity)entity;
+                    if (_livEnt2.hasEffect((MobEffect)JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get()) && entity.getPersistentData().getBoolean("PRESS_M")) {
+                        return;
+                    }
+                }
+
+                LivingEntity _entity;
+                label88: {
+                    if (entity instanceof LivingEntity) {
+                        _entity = (LivingEntity)entity;
+                        if (_entity.hasEffect((MobEffect)JujutsucraftModMobEffects.DAMAGE_EFFECT.get())) {
+                            break label88;
                         }
+                    }
 
-                        num1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
-                        num2 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
-                        CompoundTag var10000;
-                        int var10003;
-                        LivingEntity _livEnt;
+                    if (entity instanceof LivingEntity) {
+                        LivingEntity _livEnt5 = (LivingEntity)entity;
+                        if (_livEnt5.hasEffect((MobEffect)JujutsucraftModMobEffects.GUARD.get())) {
+                            break label88;
+                        }
+                    }
 
-                        if (num1 == 8.0 || num2 == 8.0 || entity instanceof Dagon2Entity) {
-                            label61:
-                            {
-                                var10000 = entity.getPersistentData();
+                    LivingEntity _livEnt7;
+                    if (entity instanceof LivingEntity) {
+                        _livEnt7 = (LivingEntity)entity;
+                        if (!_livEnt7.level().isClientSide()) {
+                            _livEnt7.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.GUARD.get(), 40, 1, false, false));
+                        }
+                    }
+
+                    if (entity instanceof LivingEntity) {
+                        _livEnt7 = (LivingEntity)entity;
+                        if (_livEnt7.hasEffect((MobEffect)JujutsucraftModMobEffects.PRAYER_SONG.get())) {
+                            LivingEntity _entGetArmor;
+                            if (entity instanceof LivingEntity) {
+                                _entGetArmor = (LivingEntity)entity;
+                                if (!_entGetArmor.level().isClientSide()) {
+                                    _entGetArmor.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.GUARD.get(), 40, 1, false, false));
+                                }
+                            }
+
+                            animation_num = (double)Math.round(-15.0 + Math.ceil(Math.random() * 4.0));
+                            ItemStack var10000;
+                            if (!(entity instanceof Player)) {
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt = (LivingEntity) entity;
-                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get())) {
-                                        var10003 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
-                                        break label61;
-                                    }
+                                    _entGetArmor = (LivingEntity)entity;
+                                    var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
+                                } else {
+                                    var10000 = ItemStack.EMPTY;
                                 }
 
-                                var10003 = 0;
-                            }
-
-                            var10000.putDouble("Damage", (double) (6 + var10003 * 3) * 0.25);
-                            num1 = Math.toRadians(Math.random() * 360.0);
-                            num2 = (double) entity.getBbWidth() + 1.5;
-
-                            for (int index0 = 0; index0 < 72; ++index0) {
-                                if (Math.random() < 0.5) {
-                                    x_pos = entity.getX() + Math.sin(num1) * num2;
-                                    y_pos = entity.getY() + (double) entity.getBbHeight() * 0.5;
-                                    z_pos = entity.getZ() + Math.cos(num1) * num2;
-                                    if (world instanceof ServerLevel) {
-                                        ServerLevel _level = (ServerLevel) world;
-                                        _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle jujutsucraft:particle_water_no_gravity ~ ~ ~ 0.1 0.1 0.1 0 1 force");
-                                    }
+                                var10000.getOrCreateTag().putDouble("P_ANIME1", animation_num);
+                                if (entity instanceof LivingEntity) {
+                                    _entGetArmor = (LivingEntity)entity;
+                                    var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
+                                } else {
+                                    var10000 = ItemStack.EMPTY;
                                 }
 
-                                num1 += Math.toRadians(Math.random() * 10.0);
+                                var10000.getOrCreateTag().putDouble("P_ANIME2", 0.0);
                             }
 
-                            entity.getPersistentData().putDouble("Range", ((double) entity.getBbWidth() + 1.5) * 2.0 + 2.0);
-                            entity.getPersistentData().putDouble("knockback", 0.25);
-                            entity.getPersistentData().putDouble("projectile_type", 1.0);
-                            entity.getPersistentData().putBoolean("onlyRanged", true);
-                            RangeAttackProcedure.execute(world, entity.getX(), entity.getY() + (double) entity.getBbHeight() * 0.5, entity.getZ(), entity);
-                            entity.getPersistentData().putBoolean("onlyRanged", false);
-                            entity.getPersistentData().putDouble("knockback", 0.25);
-                            entity.getPersistentData().putDouble("effect", 1.0);
-                            KnockbackProcedure.execute(world, entity.getX(), entity.getY() + (double) entity.getBbHeight() * 0.5, entity.getZ(), entity);
-                            entity.getPersistentData().putDouble("knockback", 0.0);
-                            entity.getPersistentData().putDouble("effect", 0.0);
-                        }
+                            PlayAnimationProcedure.execute(entity);
+                            if (entity instanceof Player) {
+                                if (entity instanceof LivingEntity) {
+                                    _entGetArmor = (LivingEntity)entity;
+                                    var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
+                                } else {
+                                    var10000 = ItemStack.EMPTY;
+                                }
 
-                        if (num1 == 38.0 || num2 == 38.0 || entity instanceof UroTakakoEntity) {
-                            UroCounterProcedure.execute(world, entity);
+                                var10000.getOrCreateTag().putDouble("P_ANIME1", animation_num);
+                                if (entity instanceof LivingEntity) {
+                                    _entGetArmor = (LivingEntity)entity;
+                                    var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
+                                } else {
+                                    var10000 = ItemStack.EMPTY;
+                                }
+
+                                var10000.getOrCreateTag().putDouble("P_ANIME2", 0.0);
+                            }
                         }
                     }
                 }
 
-                if (entity.getPersistentData().getDouble("skill") == 0.0) {
-                    GuardSetDamageProcedure.execute(entity);
+                if (entity instanceof LivingEntity) {
+                    _entity = (LivingEntity)entity;
+                    if (!_entity.level().isClientSide()) {
+                        _entity.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.GUARD.get(), 40, 1, false, false));
+                    }
                 }
             }
 
         }
-
-
     }
-*/
 }

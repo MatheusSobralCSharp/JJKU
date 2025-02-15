@@ -10,7 +10,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -20,11 +19,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = MythicalBeastAmberEffectEffectExpiresProcedure.class, priority = 3000)
+@Mixin(value = MythicalBeastAmberEffectEffectExpiresProcedure.class, priority = -10000)
 public abstract class MythicalBeastAmberExpiresProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, Entity entity, double amplifier, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double num_level = 0.0;
             num_level = amplifier + 1.0;
@@ -33,7 +34,7 @@ public abstract class MythicalBeastAmberExpiresProcedureMixin {
             }
             JujutsucraftMod.queueServerWork(1, () -> {
                 if (entity instanceof LivingEntity _livEnt2) {
-                    if (_livEnt2.hasEffect((MobEffect) JujutsucraftModMobEffects.MYTHICAL_BEAST_AMBER_EFFECT.get())) {
+                    if (_livEnt2.hasEffect(JujutsucraftModMobEffects.MYTHICAL_BEAST_AMBER_EFFECT.get())) {
                         return;
                     }
                 }
@@ -44,7 +45,7 @@ public abstract class MythicalBeastAmberExpiresProcedureMixin {
                 }
 
                 if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Kashimo")) {
-                    if (Math.random() < (1) / ((float) 5)) {
+                    if (Math.random() < (1) / ((float) 2)) {
                         if (entity instanceof LivingEntity _entity) {
                             _entity.setHealth(0.0F);
                         }
@@ -61,6 +62,5 @@ public abstract class MythicalBeastAmberExpiresProcedureMixin {
 
             });
         }
-        ci.cancel();
     }
 }

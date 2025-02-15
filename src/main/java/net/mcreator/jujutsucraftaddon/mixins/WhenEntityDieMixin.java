@@ -11,14 +11,12 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -38,16 +36,19 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = WhenEntityDieProcedure.class, priority = 3000)
+@Mixin(value = WhenEntityDieProcedure.class, priority = -10000)
 public abstract class WhenEntityDieMixin {
     public WhenEntityDieMixin() {
     }
+
     /**
      * @author Satushi
      * @reason Yes
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double fame = 0.0;
             double fame_base = 0.0;
@@ -83,8 +84,7 @@ public abstract class WhenEntityDieMixin {
                                 }
 
                                 entityiterator = (Entity) var30.next();
-                                if (entityiterator instanceof Mob) {
-                                    Mob _mobEnt = (Mob) entityiterator;
+                                if (entityiterator instanceof Mob _mobEnt) {
                                     var10000 = _mobEnt.getTarget();
                                 } else {
                                     var10000 = null;
@@ -106,8 +106,7 @@ public abstract class WhenEntityDieMixin {
                     }
                 }
 
-                if (entity instanceof Mob) {
-                    Mob _mobEnt = (Mob) entity;
+                if (entity instanceof Mob _mobEnt) {
                     var10000 = _mobEnt.getTarget();
                 } else {
                     var10000 = null;
@@ -117,10 +116,9 @@ public abstract class WhenEntityDieMixin {
                     double var69;
                     label453:
                     {
-                        if (entity instanceof LivingEntity) {
-                            LivingEntity _livEnt = (LivingEntity) entity;
+                        if (entity instanceof LivingEntity _livEnt) {
                             if (_livEnt.hasEffect(MobEffects.DAMAGE_BOOST)) {
-                                var69 = (double) _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
+                                var69 = _livEnt.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                 break label453;
                             }
                         }
@@ -201,8 +199,7 @@ public abstract class WhenEntityDieMixin {
                                                 } while (manageSukunaPlayerOrNo(_livEnt22));
 
                                                 if (entityiterator.getPersistentData().getBoolean("JujutsuSorcerer")) {
-                                                    if (entity instanceof Mob) {
-                                                        Mob _mobEnt = (Mob) entity;
+                                                    if (entity instanceof Mob _mobEnt) {
                                                         var10000 = _mobEnt.getTarget();
                                                     } else {
                                                         var10000 = null;
@@ -214,8 +211,7 @@ public abstract class WhenEntityDieMixin {
                                                 }
 
                                                 if (entityiterator.getPersistentData().getBoolean("CurseUser")) {
-                                                    if (entity instanceof Mob) {
-                                                        Mob _mobEnt = (Mob) entity;
+                                                    if (entity instanceof Mob _mobEnt) {
                                                         var10000 = _mobEnt.getTarget();
                                                     } else {
                                                         var10000 = null;
@@ -227,8 +223,7 @@ public abstract class WhenEntityDieMixin {
                                                 }
 
                                                 if (entityiterator.getPersistentData().getBoolean("CursedSpirit")) {
-                                                    if (entity instanceof Mob) {
-                                                        Mob _mobEnt = (Mob) entity;
+                                                    if (entity instanceof Mob _mobEnt) {
                                                         var10000 = _mobEnt.getTarget();
                                                     } else {
                                                         var10000 = null;
@@ -239,8 +234,7 @@ public abstract class WhenEntityDieMixin {
                                                     }
                                                 }
 
-                                                if (entity instanceof Mob) {
-                                                    Mob _mobEnt = (Mob) entity;
+                                                if (entity instanceof Mob _mobEnt) {
                                                     var10000 = _mobEnt.getTarget();
                                                 } else {
                                                     var10000 = null;
@@ -250,8 +244,7 @@ public abstract class WhenEntityDieMixin {
                                                     break;
                                                 }
 
-                                                if (entity instanceof Mob) {
-                                                    Mob _mobEnt = (Mob) entity;
+                                                if (entity instanceof Mob _mobEnt) {
                                                     var10000 = _mobEnt.getTarget();
                                                 } else {
                                                     var10000 = null;
@@ -280,8 +273,7 @@ public abstract class WhenEntityDieMixin {
                                             }
                                         } while (!logic_a);
 
-                                        if (entity instanceof Mob) {
-                                            Mob _mobEnt = (Mob) entity;
+                                        if (entity instanceof Mob _mobEnt) {
                                             var10000 = _mobEnt.getTarget();
                                         } else {
                                             var10000 = null;
@@ -292,24 +284,21 @@ public abstract class WhenEntityDieMixin {
                                             label498:
                                             {
                                                 if (var10000 != entityiterator) {
-                                                    if (entity instanceof Mob) {
-                                                        Mob _mobEnt = (Mob) entity;
+                                                    if (entity instanceof Mob _mobEnt) {
                                                         var10000 = _mobEnt.getTarget();
                                                     } else {
                                                         var10000 = null;
                                                     }
 
                                                     if (!(var10000 instanceof Player)) {
-                                                        if (entity instanceof Mob) {
-                                                            Mob _mobEnt = (Mob) entity;
+                                                        if (entity instanceof Mob _mobEnt) {
                                                             var10000 = _mobEnt.getTarget();
                                                         } else {
                                                             var10000 = null;
                                                         }
 
                                                         if (!var10000.getPersistentData().getBoolean("Player")) {
-                                                            if (entity instanceof Mob) {
-                                                                Mob _mobEnt = (Mob) entity;
+                                                            if (entity instanceof Mob _mobEnt) {
                                                                 var10000 = _mobEnt.getTarget();
                                                             } else {
                                                                 var10000 = null;
@@ -319,8 +308,7 @@ public abstract class WhenEntityDieMixin {
                                                                 break label498;
                                                             }
 
-                                                            if (entity instanceof Mob) {
-                                                                Mob _mobEnt = (Mob) entity;
+                                                            if (entity instanceof Mob _mobEnt) {
                                                                 var10000 = _mobEnt.getTarget();
                                                             } else {
                                                                 var10000 = null;
@@ -335,9 +323,9 @@ public abstract class WhenEntityDieMixin {
 
                                                 MVP_Message = "[MVP]";
                                                 fame = fame_base;
-                                                double _setval = Math.max(((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerExperience, level_strength);
+                                                double _setval = Math.max(entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerExperience, level_strength);
                                                 Entity finalEntityiterator = entityiterator;
-                                                entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                                                entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                                     capability.PlayerExperience = _setval;
                                                     capability.syncPlayerVariables(finalEntityiterator);
                                                 });
@@ -424,15 +412,14 @@ public abstract class WhenEntityDieMixin {
                                             fame = (double) Math.round(fame_base / 10.0);
                                         }
 
-                                        double _setval = ((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame + fame;
+                                        double _setval = entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame + fame;
                                         Entity finalEntityiterator1 = entityiterator;
-                                        entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                                        entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                             capability.PlayerFame = _setval;
                                             capability.syncPlayerVariables(finalEntityiterator1);
                                         });
                                         message = target_jp.replace("[point]", "§l" + Math.round(fame) + "§r");
-                                        if (entityiterator instanceof Player) {
-                                            Player _player1 = (Player) entityiterator;
+                                        if (entityiterator instanceof Player _player1) {
                                             if (!_player1.level().isClientSide()) {
                                                 _player1.displayClientMessage(Component.literal(MVP_Message + message), false);
                                             }
@@ -448,36 +435,33 @@ public abstract class WhenEntityDieMixin {
                                                 }
                                             }
 
-                                            if (entityiterator instanceof ServerPlayer) {
-                                                ServerPlayer _plr59 = (ServerPlayer) entityiterator;
+                                            if (entityiterator instanceof ServerPlayer _plr59) {
                                                 if (_plr59.level() instanceof ServerLevel && _plr59.getAdvancements().getOrStartProgress(_plr59.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:fame_1"))).isDone()) {
                                                     FameGrade = 8.0;
                                                     break label500;
                                                 }
                                             }
 
-                                            if (entityiterator instanceof ServerPlayer) {
-                                                ServerPlayer _plr60 = (ServerPlayer) entityiterator;
+                                            if (entityiterator instanceof ServerPlayer _plr60) {
                                                 if (_plr60.level() instanceof ServerLevel && _plr60.getAdvancements().getOrStartProgress(_plr60.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:fame_2"))).isDone()) {
                                                     FameGrade = 6.0;
                                                     break label500;
                                                 }
                                             }
 
-                                            if (entityiterator instanceof ServerPlayer) {
-                                                ServerPlayer _plr61 = (ServerPlayer) entityiterator;
+                                            if (entityiterator instanceof ServerPlayer _plr61) {
                                                 if (_plr61.level() instanceof ServerLevel && _plr61.getAdvancements().getOrStartProgress(_plr61.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:fame_3"))).isDone()) {
                                                     FameGrade = 4.0;
                                                 }
                                             }
                                         }
 
-                                        difficulty = (double) world.getLevelData().getGameRules().getInt(JujutsucraftModGameRules.JUJUTSUUPGRADEDIFFICULTY);
-                                        if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 8000.0 * difficulty && FameGrade >= 10.0) {
+                                        difficulty = world.getLevelData().getGameRules().getInt(JujutsucraftModGameRules.JUJUTSUUPGRADEDIFFICULTY);
+                                        if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 8000.0 * difficulty && FameGrade >= 10.0) {
                                             break;
                                         }
 
-                                        if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 5500.0 * difficulty && FameGrade >= 8.0) {
+                                        if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 5500.0 * difficulty && FameGrade >= 8.0) {
                                             if (entityiterator instanceof ServerPlayer) {
                                                 _player = (ServerPlayer) entityiterator;
                                                 _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_1"));
@@ -491,7 +475,7 @@ public abstract class WhenEntityDieMixin {
                                                     }
                                                 }
                                             }
-                                        } else if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 3500.0 * difficulty) {
+                                        } else if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 3500.0 * difficulty) {
                                             if (entityiterator instanceof ServerPlayer) {
                                                 _player = (ServerPlayer) entityiterator;
                                                 _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_1_semi"));
@@ -505,7 +489,7 @@ public abstract class WhenEntityDieMixin {
                                                     }
                                                 }
                                             }
-                                        } else if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 2000.0 * difficulty && FameGrade >= 6.0) {
+                                        } else if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 2000.0 * difficulty && FameGrade >= 6.0) {
                                             if (entityiterator instanceof ServerPlayer) {
                                                 _player = (ServerPlayer) entityiterator;
                                                 _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_2"));
@@ -519,7 +503,7 @@ public abstract class WhenEntityDieMixin {
                                                     }
                                                 }
                                             }
-                                        } else if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 1000.0 * difficulty) {
+                                        } else if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 1000.0 * difficulty) {
                                             if (entityiterator instanceof ServerPlayer) {
                                                 _player = (ServerPlayer) entityiterator;
                                                 _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_2_semi"));
@@ -533,7 +517,7 @@ public abstract class WhenEntityDieMixin {
                                                     }
                                                 }
                                             }
-                                        } else if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 400.0 * difficulty && FameGrade >= 4.0) {
+                                        } else if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 400.0 * difficulty && FameGrade >= 4.0) {
                                             if (entityiterator instanceof ServerPlayer) {
                                                 _player = (ServerPlayer) entityiterator;
                                                 _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_3"));
@@ -547,7 +531,7 @@ public abstract class WhenEntityDieMixin {
                                                     }
                                                 }
                                             }
-                                        } else if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerFame >= 100.0 * difficulty && entityiterator instanceof ServerPlayer) {
+                                        } else if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerFame >= 100.0 * difficulty && entityiterator instanceof ServerPlayer) {
                                             _player = (ServerPlayer) entityiterator;
                                             _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_4"));
                                             _ap = _player.getAdvancements().getOrStartProgress(_adv);
@@ -578,13 +562,12 @@ public abstract class WhenEntityDieMixin {
                     }
                 }
             }
-            ci.cancel();
         }
     }
 
     private static boolean manageSukunaPlayerOrNo(LivingEntity entity) {
         Level world = entity.level();
-        boolean b = entity.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get());
+        boolean b = entity.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get());
         return b ? !world.getServer().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_CAN_SUKUNA_GET_ADVANCEMENTS) : b;
     }
 }

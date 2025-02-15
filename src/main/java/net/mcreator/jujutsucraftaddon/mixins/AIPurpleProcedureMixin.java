@@ -5,16 +5,12 @@ import net.mcreator.jujutsucraft.init.JujutsucraftModGameRules;
 import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
 import net.mcreator.jujutsucraft.procedures.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -28,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
-@Mixin(value = AIPurpleProcedure.class, priority = 3000)
+@Mixin(value = AIPurpleProcedure.class, priority = -10000)
 public abstract class AIPurpleProcedureMixin {
     /**
      * @author Sat
@@ -36,6 +32,8 @@ public abstract class AIPurpleProcedureMixin {
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean logic_attack = false;
             boolean big = false;
@@ -88,13 +86,12 @@ public abstract class AIPurpleProcedureMixin {
                         }).apply(world, entity.getPersistentData().getString("OWNER_UUID"));
                         if (entity.getPersistentData().getDouble("NameRanged_ranged") == entity_a.getPersistentData().getDouble("NameRanged")) {
                             logic_attack = true;
-                            yaw = Math.toRadians((double) (entity_a.getYRot() + 90.0F));
-                            pitch = Math.toRadians((double) entity_a.getXRot());
+                            yaw = Math.toRadians(entity_a.getYRot() + 90.0F);
+                            pitch = Math.toRadians(entity_a.getXRot());
                             dis = 1.5 + (double) entity_a.getBbWidth();
                             Entity _ent = entity;
                             _ent.teleportTo(entity_a.getX() + Math.cos(yaw) * Math.cos(pitch) * dis, entity_a.getY() + (double) entity_a.getBbHeight() * 0.5 + Math.sin(pitch) * -1.0 * dis, entity_a.getZ() + Math.sin(yaw) * Math.cos(pitch) * dis);
-                            if (_ent instanceof ServerPlayer) {
-                                ServerPlayer _serverPlayer = (ServerPlayer) _ent;
+                            if (_ent instanceof ServerPlayer _serverPlayer) {
                                 _serverPlayer.connection.teleport(entity_a.getX() + Math.cos(yaw) * Math.cos(pitch) * dis, entity_a.getY() + (double) entity_a.getBbHeight() * 0.5 + Math.sin(pitch) * -1.0 * dis, entity_a.getZ() + Math.sin(yaw) * Math.cos(pitch) * dis, _ent.getYRot(), _ent.getXRot());
                             }
 
@@ -108,9 +105,9 @@ public abstract class AIPurpleProcedureMixin {
                     if (Math.random() < 0.05 && world instanceof Level) {
                         _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()));
+                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()));
                         } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()), false);
+                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()), false);
                         }
                     }
 
@@ -124,32 +121,31 @@ public abstract class AIPurpleProcedureMixin {
                     } else {
                         BulletDomainHit2Procedure.execute(world, entity);
                         if (big) {
-                            if (((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 300.0) {
-                                ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 15.0, 300.0));
+                            if (((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 300.0) {
+                                ((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 15.0, 300.0));
                             }
 
                             if (entity.getPersistentData().getDouble("cnt1") == 10.0 && world instanceof Level) {
                                 _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F);
+                                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F);
                                 } else {
-                                    _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F, false);
+                                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, 0.75F, false);
                                 }
                             }
 
                             if (entity.getPersistentData().getDouble("cnt1") % 4.0 == 1.0 && world instanceof Level) {
                                 _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float) (1.0 + Math.random()));
+                                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float) (1.0 + Math.random()));
                                 } else {
-                                    _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float) (1.0 + Math.random()), false);
+                                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 4.0F, (float) (1.0 + Math.random()), false);
                                 }
                             }
                         }
 
-                        if (world instanceof ServerLevel) {
-                            ServerLevel _level1 = (ServerLevel) world;
-                            _level1.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), entity.getX(), entity.getY(), entity.getZ(), (int) (5.0 * range), range, range, range, range);
+                        if (world instanceof ServerLevel _level1) {
+                            _level1.sendParticles(JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), entity.getX(), entity.getY(), entity.getZ(), (int) (5.0 * range), range, range, range, range);
                         }
 
                         x_power = entity.getPersistentData().getDouble("x_power") * 2.0;
@@ -173,13 +169,13 @@ public abstract class AIPurpleProcedureMixin {
                                     if (world instanceof Level) {
                                         _level = (Level) world;
                                         if (!_level.isClientSide()) {
-                                            _level.explode((Entity) null, x_pos, y_pos, z_pos, (float) (2.0 * range), Level.ExplosionInteraction.MOB);
+                                            _level.explode(null, x_pos, y_pos, z_pos, (float) (2.0 * range), Level.ExplosionInteraction.MOB);
                                         }
                                     }
                                 } else if (world instanceof Level) {
                                     _level = (Level) world;
                                     if (!_level.isClientSide()) {
-                                        _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                        _level.explode(null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                     }
                                 }
                             }
@@ -201,9 +197,8 @@ public abstract class AIPurpleProcedureMixin {
                                 BlockDestroyAllDirectionProcedure.execute(world, x_pos, y_pos, z_pos, entity);
                             }
 
-                            if (world instanceof ServerLevel) {
-                                ServerLevel _level2 = (ServerLevel) world;
-                                _level2.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int) (5.0 * range), range, range, range, range);
+                            if (world instanceof ServerLevel _level2) {
+                                _level2.sendParticles(JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int) (5.0 * range), range, range, range, range);
                             }
 
                             if (big) {
@@ -216,8 +211,7 @@ public abstract class AIPurpleProcedureMixin {
                             }
 
                             entity.teleportTo(entity.getX() + x_power, entity.getY() + y_power, entity.getZ() + z_power);
-                            if (entity instanceof ServerPlayer) {
-                                ServerPlayer _serverPlayer = (ServerPlayer) entity;
+                            if (entity instanceof ServerPlayer _serverPlayer) {
                                 _serverPlayer.connection.teleport(entity.getX() + x_power, entity.getY() + y_power, entity.getZ() + z_power, entity.getYRot(), entity.getXRot());
                             }
                         }
@@ -225,11 +219,11 @@ public abstract class AIPurpleProcedureMixin {
                         if (big) {
                             entity.setDeltaMovement(new Vec3(0.0, 0.0, 0.0));
                         } else {
-                            entity.setDeltaMovement(new Vec3(entity.getPersistentData().getDouble("x_power") * 1.0 , entity.getPersistentData().getDouble("y_power") * 1.0, entity.getPersistentData().getDouble("z_power") * 1.0));
+                            entity.setDeltaMovement(new Vec3(entity.getPersistentData().getDouble("x_power"), entity.getPersistentData().getDouble("y_power"), entity.getPersistentData().getDouble("z_power")));
                         }
 
                         entity.getPersistentData().putDouble("cnt_life", entity.getPersistentData().getDouble("cnt_life") + 1.0);
-                        if (((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 80.0) {
+                        if (((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 80.0) {
                             if (entity.getPersistentData().getDouble("cnt1") >= (double) (big ? 80 : 30) && !entity.level().isClientSide()) {
                                 entity.discard();
                             }
@@ -244,6 +238,5 @@ public abstract class AIPurpleProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

@@ -1,7 +1,0 @@
-{
-  "_fv": 73,
-  "_type": "procedure",
-  "definition": {
-    "procedurexml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><xml xmlns=\"https://developers.google.com/blockly/xml\"><block deletable=\"false\" type=\"event_trigger\" x=\"0\" y=\"0\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"is_special_grade\"><value name=\"entity\"><block type=\"entity_from_deps\"/></value></block></value><statement name=\"DO0\"><block type=\"world_switch_world\"><field name=\"dimension\">Nether</field><statement name=\"worldstatements\"><block type=\"world_spawn_modified_entity\"><field name=\"entitytype\">CUSTOM:Adjucha</field><value name=\"entitytospawn\"><block type=\"entitytospawn\"/></value><value name=\"x\"><block type=\"coord_x\"/></value><value name=\"y\"><block type=\"coord_y\"/></value><value name=\"z\"><block type=\"coord_z\"/></value><statement name=\"do\"><block type=\"set_friend\"><value name=\"entity\"><block type=\"entitytospawn\"/></value><value name=\"entity2\"><block type=\"entity_from_deps\"/></value></block></statement></block></statement></block></statement></block></next></block></xml>"
-  }
-}

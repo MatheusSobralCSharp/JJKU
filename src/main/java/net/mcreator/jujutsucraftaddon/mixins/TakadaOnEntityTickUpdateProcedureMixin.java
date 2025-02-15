@@ -7,7 +7,6 @@ import net.mcreator.jujutsucraft.procedures.LogicOwnerExistProcedure;
 import net.mcreator.jujutsucraft.procedures.TakadaOnEntityTickUpdateProcedure;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
-@Mixin(value = TakadaOnEntityTickUpdateProcedure.class, priority = 3000)
+@Mixin(value = TakadaOnEntityTickUpdateProcedure.class, priority = -10000)
 public abstract class TakadaOnEntityTickUpdateProcedureMixin {
 
     /**
@@ -34,6 +33,8 @@ public abstract class TakadaOnEntityTickUpdateProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             Entity entity_a = null;
             double x_pos = 0.0;
@@ -54,9 +55,8 @@ public abstract class TakadaOnEntityTickUpdateProcedureMixin {
                     }
                 }).apply(world, entity.getPersistentData().getString("OWNER_UUID"));
                 ServerLevel _level;
-                if (entity_a instanceof LivingEntity) {
-                    LivingEntity _livEnt2 = (LivingEntity) entity_a;
-                    if (_livEnt2.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                if (entity_a instanceof LivingEntity _livEnt2) {
+                    if (_livEnt2.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
                         if (entity instanceof JudgemanEntity && entity_a.getPersistentData().getDouble("skill") == 2719.0 && entity_a.getPersistentData().getDouble("cnt3") >= 20.0 && entity_a.getPersistentData().getDouble("cnt1") > 0.0) {
                             if (entity instanceof JudgemanEntity) {
                                 ((JudgemanEntity) entity).setAnimation("empty");
@@ -118,8 +118,7 @@ public abstract class TakadaOnEntityTickUpdateProcedureMixin {
                         x_pos = entity.getX();
                         y_pos = entity.getY();
                         z_pos = entity.getZ();
-                        if (world instanceof ServerLevel) {
-                            ServerLevel _level = (ServerLevel) world;
+                        if (world instanceof ServerLevel _level) {
                             _level.sendParticles(ParticleTypes.SQUID_INK, x_pos, y_pos, z_pos, 15, 2.0, 0.5, 2.0, 0.5);
                             return;
                         }
@@ -140,6 +139,5 @@ public abstract class TakadaOnEntityTickUpdateProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

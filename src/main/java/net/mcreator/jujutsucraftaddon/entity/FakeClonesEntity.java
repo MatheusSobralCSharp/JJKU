@@ -210,7 +210,6 @@ public class FakeClonesEntity extends TamableAnimal {
     public void baseTick() {
         super.baseTick();
         CloneOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
-        ;
     }
 
     @Override

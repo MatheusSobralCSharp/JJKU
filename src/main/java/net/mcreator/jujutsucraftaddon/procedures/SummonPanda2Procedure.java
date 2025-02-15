@@ -1,23 +1,20 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
-
-
 import net.mcreator.jujutsucraft.init.JujutsucraftModEntities;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModEntities;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.level.LevelAccessor;
 
 public class SummonPanda2Procedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
         if (entity == null || sourceentity == null)
             return;
-        if (sourceentity instanceof ServerPlayer && ((ServerPlayer) sourceentity).level() instanceof ServerLevel
+        if (sourceentity instanceof ServerPlayer && sourceentity.level() instanceof ServerLevel
                 && ((ServerPlayer) sourceentity).getAdvancements().getOrStartProgress(((ServerPlayer) sourceentity).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sorcerer_grade_special"))).isDone()) {
             if (!entity.level().isClientSide())
                 entity.discard();

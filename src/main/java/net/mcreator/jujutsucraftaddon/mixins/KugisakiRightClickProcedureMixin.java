@@ -5,9 +5,7 @@ import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.KugisakiNailProcedure;
 import net.mcreator.jujutsucraft.procedures.KugisakiRightClickProcedure;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
-@Mixin(value = KugisakiRightClickProcedure.class, priority = 3000)
+@Mixin(value = KugisakiRightClickProcedure.class, priority = -10000)
 public abstract class KugisakiRightClickProcedureMixin {
     /**
      * @author Satushi
@@ -33,6 +31,8 @@ public abstract class KugisakiRightClickProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean logic_a;
             Player _plr;
@@ -48,7 +48,7 @@ public abstract class KugisakiRightClickProcedureMixin {
                 }
 
                 LivingEntity _livEnt1 = (LivingEntity) entity;
-                if (!_livEnt1.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
+                if (!_livEnt1.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
                     break label83;
                 }
 
@@ -65,12 +65,12 @@ public abstract class KugisakiRightClickProcedureMixin {
             }
 
             AtomicReference<IItemHandler> _iitemhandlerref = new AtomicReference<>();
-            LazyOptional<IItemHandler> var10000 = entity.getCapability(ForgeCapabilities.ITEM_HANDLER, (Direction) null);
+            LazyOptional<IItemHandler> var10000 = entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null);
             Objects.requireNonNull(_iitemhandlerref);
             var10000.ifPresent(_iitemhandlerref::set);
             if (_iitemhandlerref.get() != null) {
-                for (int _idx = 0; _idx < ((IItemHandler) _iitemhandlerref.get()).getSlots(); ++_idx) {
-                    ItemStack itemstackiterator = ((IItemHandler) _iitemhandlerref.get()).getStackInSlot(_idx).copy();
+                for (int _idx = 0; _idx < _iitemhandlerref.get().getSlots(); ++_idx) {
+                    ItemStack itemstackiterator = _iitemhandlerref.get().getStackInSlot(_idx).copy();
                     if (itemstackiterator.getItem() == JujutsucraftModItems.NAIL.get()) {
                         logic_a = true;
                         break;
@@ -81,7 +81,7 @@ public abstract class KugisakiRightClickProcedureMixin {
             Player _player;
             label84:
             {
-                if (!logic_a || !(((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower + ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange >= 10.0)) {
+                if (!logic_a || !(entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePower + entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange >= 10.0)) {
                     if (!(entity instanceof Player)) {
                         break label84;
                     }
@@ -109,6 +109,5 @@ public abstract class KugisakiRightClickProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
-@Mixin(value = WhenEntitySpawnsProcedure.class, priority = 3003)
+@Mixin(value = WhenEntitySpawnsProcedure.class, priority = -10000)
 public abstract class WhenRespawnedMixin {
     public WhenRespawnedMixin() {
     }

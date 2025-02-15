@@ -1,20 +1,18 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.nbt.CompoundTag;
-
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.LevelAccessor;
 
 public class JjkuHardcoreProcedure {
     public static void execute(LevelAccessor world, Entity sourceentity) {
         if (sourceentity == null)
             return;
-        if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_HARDCORE_MODE) == true) {
+        if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_HARDCORE_MODE)) {
             if (sourceentity instanceof Monster) {
                 if (new Object() {
                     public double getValue() {

@@ -21,6 +21,7 @@
     "jujutsucraftaddon:satushi",
     "jujutsucraftaddon:clone",
     "jujutsucraftaddon:ui_ui",
-    "jujutsucraftaddon:erro"
+    "jujutsucraftaddon:erro",
+    "jujutsucraftaddon:error"
   ]
 }

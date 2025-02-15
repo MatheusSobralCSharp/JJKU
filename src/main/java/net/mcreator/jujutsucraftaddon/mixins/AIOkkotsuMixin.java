@@ -12,7 +12,6 @@ import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -26,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = AIOkkotsuProcedure.class, priority = 3000)
+@Mixin(value = AIOkkotsuProcedure.class, priority = -10000)
 public abstract class AIOkkotsuMixin {
 
     /**
@@ -36,6 +35,8 @@ public abstract class AIOkkotsuMixin {
 
     @Inject(method = "execute", at = @At("HEAD"), remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             ItemStack ITEM1 = ItemStack.EMPTY;
             boolean StrongEnemy = false;
@@ -54,33 +55,35 @@ public abstract class AIOkkotsuMixin {
             if (entity.isAlive()) {
                 LivingEntity _livEnt;
                 LivingEntity _livEnt50;
-                label547: {
+                label547:
+                {
                     AIActiveProcedure.execute(world, x, y, z, entity);
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         if (_livEnt.hasEffect(MobEffects.DAMAGE_BOOST)) {
                             break label547;
                         }
                     }
 
                     if (entity instanceof LivingEntity) {
-                        _livEnt50 = (LivingEntity)entity;
+                        _livEnt50 = (LivingEntity) entity;
                         if (!_livEnt50.level().isClientSide()) {
                             _livEnt50.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, Integer.MAX_VALUE, entity instanceof OkkotsuYutaCullingGameEntity || entity instanceof YutaCullingGamesEntity ? 20 : 18, false, false));
                         }
                     }
                 }
 
-                label542: {
+                label542:
+                {
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         if (_livEnt.hasEffect(MobEffects.DAMAGE_RESISTANCE)) {
                             break label542;
                         }
                     }
 
                     if (entity instanceof LivingEntity) {
-                        _livEnt50 = (LivingEntity)entity;
+                        _livEnt50 = (LivingEntity) entity;
                         if (!_livEnt50.level().isClientSide()) {
                             _livEnt50.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 3, false, false));
                         }
@@ -92,8 +95,7 @@ public abstract class AIOkkotsuMixin {
                     AIAttackProcedure.execute(world, x, y, z, entity);
                 } else {
                     LivingEntity var10000;
-                    if (entity instanceof Mob) {
-                        Mob _mobEnt = (Mob)entity;
+                    if (entity instanceof Mob _mobEnt) {
                         var10000 = _mobEnt.getTarget();
                     } else {
                         var10000 = null;
@@ -112,28 +114,30 @@ public abstract class AIOkkotsuMixin {
                                 CompoundTag var52 = entity.getPersistentData();
                                 float var10002;
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt = (LivingEntity)entity;
+                                    _livEnt = (LivingEntity) entity;
                                     var10002 = _livEnt.getHealth();
                                 } else {
                                     var10002 = -1.0F;
                                 }
 
-                                double var48 = (double)var10002;
+                                double var48 = var10002;
                                 float var10003;
                                 if (entity instanceof LivingEntity) {
-                                    _entGetArmor = (LivingEntity)entity;
+                                    _entGetArmor = (LivingEntity) entity;
                                     var10003 = _entGetArmor.getMaxHealth();
                                 } else {
                                     var10003 = -1.0F;
                                 }
 
                                 boolean var51;
-                                label526: {
-                                    if (var48 < (double)var10003 * 0.5) {
+                                label526:
+                                {
+                                    if (var48 < (double) var10003 * 0.5) {
                                         int var49;
-                                        label523: {
+                                        label523:
+                                        {
                                             if (entity instanceof LivingEntity) {
-                                                _entGetArmor = (LivingEntity)entity;
+                                                _entGetArmor = (LivingEntity) entity;
                                                 if (_entGetArmor.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                                     var49 = _entGetArmor.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                                     break label523;
@@ -146,17 +150,18 @@ public abstract class AIOkkotsuMixin {
                                         var49 -= 10;
                                         LivingEntity var50;
                                         if (entity instanceof Mob) {
-                                            _mobEnt = (Mob)entity;
+                                            _mobEnt = (Mob) entity;
                                             var50 = _mobEnt.getTarget();
                                         } else {
                                             var50 = null;
                                         }
 
                                         int var53;
-                                        label517: {
+                                        label517:
+                                        {
                                             _livEnt = var50;
                                             if (_livEnt instanceof LivingEntity) {
-                                                _livEnt50 = (LivingEntity)_livEnt;
+                                                _livEnt50 = _livEnt;
                                                 if (_livEnt50.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                                     var53 = _livEnt50.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                                     break label517;
@@ -180,7 +185,7 @@ public abstract class AIOkkotsuMixin {
                             }
 
                             if (entity instanceof Mob) {
-                                _mobEnt = (Mob)entity;
+                                _mobEnt = (Mob) entity;
                                 var10000 = _mobEnt.getTarget();
                             } else {
                                 var10000 = null;
@@ -188,16 +193,17 @@ public abstract class AIOkkotsuMixin {
 
                             _livEnt = var10000;
                             if (_livEnt instanceof Mob) {
-                                _mobEnt = (Mob)_livEnt;
+                                _mobEnt = (Mob) _livEnt;
                                 var10000 = _mobEnt.getTarget();
                             } else {
                                 var10000 = null;
                             }
 
-                            label509: {
+                            label509:
+                            {
                                 if (!(var10000 instanceof RikaEntity)) {
                                     if (entity instanceof Mob) {
-                                        _mobEnt = (Mob)entity;
+                                        _mobEnt = (Mob) entity;
                                         var10000 = _mobEnt.getTarget();
                                     } else {
                                         var10000 = null;
@@ -205,7 +211,7 @@ public abstract class AIOkkotsuMixin {
 
                                     _livEnt = var10000;
                                     if (_livEnt instanceof Mob) {
-                                        _mobEnt = (Mob)_livEnt;
+                                        _mobEnt = (Mob) _livEnt;
                                         var10000 = _mobEnt.getTarget();
                                     } else {
                                         var10000 = null;
@@ -224,32 +230,34 @@ public abstract class AIOkkotsuMixin {
                             double var55;
                             if (entity instanceof OkkotsuYutaEntity) {
                                 boolean var56;
-                                label501: {
-                                    label500: {
+                                label501:
+                                {
+                                    label500:
+                                    {
                                         if (LocateRikaProcedure.execute(world, entity)) {
                                             float var54;
                                             if (entity instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)entity;
+                                                _livEnt = (LivingEntity) entity;
                                                 var54 = _livEnt.getHealth();
                                             } else {
                                                 var54 = -1.0F;
                                             }
 
-                                            var55 = (double)var54;
+                                            var55 = var54;
                                             float var10001;
                                             if (entity instanceof LivingEntity) {
-                                                _livEnt = (LivingEntity)entity;
+                                                _livEnt = (LivingEntity) entity;
                                                 var10001 = _livEnt.getMaxHealth();
                                             } else {
                                                 var10001 = -1.0F;
                                             }
 
-                                            if (var55 <= (double)var10001 * 0.2) {
+                                            if (var55 <= (double) var10001 * 0.2) {
                                                 break label500;
                                             }
 
                                             if (entity instanceof Mob) {
-                                                _mobEnt = (Mob)entity;
+                                                _mobEnt = (Mob) entity;
                                                 var10000 = _mobEnt.getTarget();
                                             } else {
                                                 var10000 = null;
@@ -257,7 +265,7 @@ public abstract class AIOkkotsuMixin {
 
                                             if (var10000.getPersistentData().getDouble("skill") % 100.0 == 15.0) {
                                                 if (entity instanceof Mob) {
-                                                    _mobEnt = (Mob)entity;
+                                                    _mobEnt = (Mob) entity;
                                                     var10000 = _mobEnt.getTarget();
                                                 } else {
                                                     var10000 = null;
@@ -268,7 +276,7 @@ public abstract class AIOkkotsuMixin {
                                                 }
 
                                                 if (entity instanceof Mob) {
-                                                    _mobEnt = (Mob)entity;
+                                                    _mobEnt = (Mob) entity;
                                                     var10000 = _mobEnt.getTarget();
                                                 } else {
                                                     var10000 = null;
@@ -276,7 +284,7 @@ public abstract class AIOkkotsuMixin {
 
                                                 if (var10000.getPersistentData().getDouble("cnt9") >= 20.0) {
                                                     if (entity instanceof Mob) {
-                                                        _mobEnt = (Mob)entity;
+                                                        _mobEnt = (Mob) entity;
                                                         var10000 = _mobEnt.getTarget();
                                                     } else {
                                                         var10000 = null;
@@ -300,17 +308,18 @@ public abstract class AIOkkotsuMixin {
                             }
 
                             if (entity instanceof Mob) {
-                                _mobEnt = (Mob)entity;
+                                _mobEnt = (Mob) entity;
                                 var10000 = _mobEnt.getTarget();
                             } else {
                                 var10000 = null;
                             }
 
                             int var57;
-                            label482: {
+                            label482:
+                            {
                                 _entGetArmor = var10000;
                                 if (_entGetArmor instanceof LivingEntity) {
-                                    _entGetArmor = (LivingEntity)_entGetArmor;
+                                    _entGetArmor = _entGetArmor;
                                     if (_entGetArmor.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                         var57 = _entGetArmor.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                         break label482;
@@ -321,10 +330,11 @@ public abstract class AIOkkotsuMixin {
                             }
 
                             int var47;
-                            label477: {
-                                var55 = (double)var57;
+                            label477:
+                            {
+                                var55 = var57;
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt50 = (LivingEntity)entity;
+                                    _livEnt50 = (LivingEntity) entity;
                                     if (_livEnt50.hasEffect(MobEffects.DAMAGE_BOOST)) {
                                         var47 = _livEnt50.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier();
                                         break label477;
@@ -334,7 +344,7 @@ public abstract class AIOkkotsuMixin {
                                 var47 = 0;
                             }
 
-                            StrongEnemy = var55 >= (double)var47 * 0.5 || entity.getPersistentData().getDouble("cnt_target") > 600.0;
+                            StrongEnemy = var55 >= (double) var47 * 0.5 || entity.getPersistentData().getDouble("cnt_target") > 600.0;
                             ResetCounterProcedure.execute(entity);
                             rnd = 0.0;
                             if (LogicStartProcedure.execute(entity) || domain) {
@@ -354,8 +364,8 @@ public abstract class AIOkkotsuMixin {
                                         if (Math.random() > 0.8) {
                                             distance = GetDistanceProcedure.execute(world, entity);
 
-                                            for(index1 = 0; index1 < 256; ++index1) {
-                                                rnd = (double)Math.round(Math.random() * 10.0);
+                                            for (index1 = 0; index1 < 256; ++index1) {
+                                                rnd = (double) Math.round(Math.random() * 10.0);
                                                 if (rnd == 3.0) {
                                                     tick = 20.0;
                                                     if (!(distance < 6.0)) {
@@ -368,7 +378,7 @@ public abstract class AIOkkotsuMixin {
                                                     }
                                                 } else if (rnd == 6.0) {
                                                     tick = 60.0;
-                                                    if (entity instanceof OkkotsuYutaCullingGameEntity || entity instanceof YutaCullingGamesEntity  && !(distance < 6.0)) {
+                                                    if (entity instanceof OkkotsuYutaCullingGameEntity || entity instanceof YutaCullingGamesEntity && !(distance < 6.0)) {
                                                         break;
                                                     }
                                                 } else if (rnd == 7.0) {
@@ -384,10 +394,11 @@ public abstract class AIOkkotsuMixin {
                                                 }
                                             }
                                         } else {
-                                            label563: {
-                                                if (entity instanceof OkkotsuYutaCullingGameEntity || entity instanceof YutaCullingGamesEntity  && Math.random() > 0.8 && GetDistanceProcedure.execute(world, entity) < 4.0 && entity instanceof LivingEntity) {
-                                                    _livEnt50 = (LivingEntity)entity;
-                                                    if (_livEnt50.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()) && !entity.getPersistentData().getBoolean("Failed")) {
+                                            label563:
+                                            {
+                                                if (entity instanceof OkkotsuYutaCullingGameEntity || entity instanceof YutaCullingGamesEntity && Math.random() > 0.8 && GetDistanceProcedure.execute(world, entity) < 4.0 && entity instanceof LivingEntity) {
+                                                    _livEnt50 = (LivingEntity) entity;
+                                                    if (_livEnt50.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()) && !entity.getPersistentData().getBoolean("Failed")) {
                                                         use_copy = true;
                                                         rnd = 106.0;
                                                         tick = 50.0;
@@ -398,10 +409,10 @@ public abstract class AIOkkotsuMixin {
                                                 use_copy = false;
                                                 NUM_COPY = Math.floor(Math.random() * 4.0);
 
-                                                for(index1 = 0; index1 < 4; ++index1) {
+                                                for (index1 = 0; index1 < 4; ++index1) {
                                                     if (entity instanceof LivingEntity) {
-                                                        _entGetArmor = (LivingEntity)entity;
-                                                        var46 = _entGetArmor.getItemBySlot(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, (int)NUM_COPY));
+                                                        _entGetArmor = (LivingEntity) entity;
+                                                        var46 = _entGetArmor.getItemBySlot(EquipmentSlot.byTypeAndIndex(EquipmentSlot.Type.ARMOR, (int) NUM_COPY));
                                                     } else {
                                                         var46 = ItemStack.EMPTY;
                                                     }
@@ -424,7 +435,7 @@ public abstract class AIOkkotsuMixin {
                                     }
                                 } else {
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt50 = (LivingEntity)entity;
+                                        _livEnt50 = (LivingEntity) entity;
                                         if (!_livEnt50.level().isClientSide()) {
                                             _livEnt50.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 19, false, false));
                                         }
@@ -441,24 +452,24 @@ public abstract class AIOkkotsuMixin {
                             }
 
                             if (rnd > 0.0) {
-                                entity.getPersistentData().putDouble("skill", (double)Math.round(use_copy ? rnd : 500.0 + rnd));
+                                entity.getPersistentData().putDouble("skill", (double) Math.round(use_copy ? rnd : 500.0 + rnd));
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt50 = (LivingEntity)entity;
+                                    _livEnt50 = (LivingEntity) entity;
                                     if (!_livEnt50.level().isClientSide()) {
-                                        _livEnt50.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, 0, false, false));
+                                        _livEnt50.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), Integer.MAX_VALUE, 0, false, false));
                                     }
                                 }
 
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt50 = (LivingEntity)entity;
+                                    _livEnt50 = (LivingEntity) entity;
                                     if (!_livEnt50.level().isClientSide()) {
-                                        _livEnt50.addEffect(new MobEffectInstance((MobEffect)JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int)tick, 0, false, false));
+                                        _livEnt50.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) tick, 0, false, false));
                                     }
                                 }
 
                                 if (rnd == 15.0) {
                                     if (entity instanceof LivingEntity) {
-                                        _livEnt50 = (LivingEntity)entity;
+                                        _livEnt50 = (LivingEntity) entity;
                                         var46 = _livEnt50.getMainHandItem();
                                     } else {
                                         var46 = ItemStack.EMPTY;
@@ -466,7 +477,7 @@ public abstract class AIOkkotsuMixin {
 
                                     if (var46.getItem() == JujutsucraftModItems.SWORD_OKKOTSU_YUTA.get()) {
                                         if (entity instanceof LivingEntity) {
-                                            _entGetArmor = (LivingEntity)entity;
+                                            _entGetArmor = (LivingEntity) entity;
                                             var46 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                         } else {
                                             var46 = ItemStack.EMPTY;
@@ -475,11 +486,11 @@ public abstract class AIOkkotsuMixin {
                                         if (var46.getItem() == ItemStack.EMPTY.getItem()) {
                                             _ent = entity;
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s armor.head with jujutsucraft:sword_okkotsu_yuta");
+                                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s armor.head with jujutsucraft:sword_okkotsu_yuta");
                                             }
 
                                             if (entity instanceof LivingEntity) {
-                                                _entGetArmor = (LivingEntity)entity;
+                                                _entGetArmor = (LivingEntity) entity;
                                                 var46 = _entGetArmor.getMainHandItem();
                                             } else {
                                                 var46 = ItemStack.EMPTY;
@@ -488,7 +499,7 @@ public abstract class AIOkkotsuMixin {
                                             _nbtTag = var46.getTag();
                                             if (_nbtTag != null) {
                                                 if (entity instanceof LivingEntity) {
-                                                    _entGetArmor = (LivingEntity)entity;
+                                                    _entGetArmor = (LivingEntity) entity;
                                                     var46 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                                 } else {
                                                     var46 = ItemStack.EMPTY;
@@ -499,14 +510,14 @@ public abstract class AIOkkotsuMixin {
 
                                             _ent = entity;
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s weapon.mainhand with air");
+                                                _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s weapon.mainhand with air");
                                             }
                                         }
                                     }
                                 }
                             } else if (PureLoveCannon) {
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt50 = (LivingEntity)entity;
+                                    _livEnt50 = (LivingEntity) entity;
                                     if (!_livEnt50.level().isClientSide()) {
                                         _livEnt50.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 19, false, false));
                                     }
@@ -516,7 +527,7 @@ public abstract class AIOkkotsuMixin {
                             } else {
                                 CalculateAttackProcedure.execute(world, x, y, z, entity);
                                 if (entity instanceof LivingEntity) {
-                                    _livEnt50 = (LivingEntity)entity;
+                                    _livEnt50 = (LivingEntity) entity;
                                     var46 = _livEnt50.getMainHandItem();
                                 } else {
                                     var46 = ItemStack.EMPTY;
@@ -524,7 +535,7 @@ public abstract class AIOkkotsuMixin {
 
                                 if (var46.getItem() == ItemStack.EMPTY.getItem()) {
                                     if (entity instanceof LivingEntity) {
-                                        _entGetArmor = (LivingEntity)entity;
+                                        _entGetArmor = (LivingEntity) entity;
                                         var46 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                     } else {
                                         var46 = ItemStack.EMPTY;
@@ -533,11 +544,11 @@ public abstract class AIOkkotsuMixin {
                                     if (var46.getItem() == JujutsucraftModItems.SWORD_OKKOTSU_YUTA.get()) {
                                         _ent = entity;
                                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s weapon.mainhand with jujutsucraft:sword_okkotsu_yuta");
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s weapon.mainhand with jujutsucraft:sword_okkotsu_yuta");
                                         }
 
                                         if (entity instanceof LivingEntity) {
-                                            _entGetArmor = (LivingEntity)entity;
+                                            _entGetArmor = (LivingEntity) entity;
                                             var46 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                         } else {
                                             var46 = ItemStack.EMPTY;
@@ -546,7 +557,7 @@ public abstract class AIOkkotsuMixin {
                                         _nbtTag = var46.getTag();
                                         if (_nbtTag != null) {
                                             if (entity instanceof LivingEntity) {
-                                                _entGetArmor = (LivingEntity)entity;
+                                                _entGetArmor = (LivingEntity) entity;
                                                 var46 = _entGetArmor.getMainHandItem();
                                             } else {
                                                 var46 = ItemStack.EMPTY;
@@ -557,7 +568,7 @@ public abstract class AIOkkotsuMixin {
 
                                         _ent = entity;
                                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s armor.head with air");
+                                            _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s armor.head with air");
                                         }
                                     }
                                 }
@@ -568,11 +579,11 @@ public abstract class AIOkkotsuMixin {
                         entity.getPersistentData().putDouble("cnt_rika", entity.getPersistentData().getDouble("cnt_rika") + 1.0);
                         if (entity.getPersistentData().getDouble("cnt_rika") % 200.0 == 190.0) {
                             if (LocateRikaProcedure.execute(world, entity)) {
-                                TechniqueRika2Procedure.execute(world, entity);
+                                TechniqueRika1Procedure.execute(world, entity);
                             }
 
                             if (entity instanceof LivingEntity) {
-                                _livEnt50 = (LivingEntity)entity;
+                                _livEnt50 = (LivingEntity) entity;
                                 var46 = _livEnt50.getMainHandItem();
                             } else {
                                 var46 = ItemStack.EMPTY;
@@ -580,7 +591,7 @@ public abstract class AIOkkotsuMixin {
 
                             if (var46.getItem() == JujutsucraftModItems.SWORD_OKKOTSU_YUTA.get()) {
                                 if (entity instanceof LivingEntity) {
-                                    _entGetArmor = (LivingEntity)entity;
+                                    _entGetArmor = (LivingEntity) entity;
                                     var46 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                 } else {
                                     var46 = ItemStack.EMPTY;
@@ -589,11 +600,11 @@ public abstract class AIOkkotsuMixin {
                                 if (var46.getItem() == ItemStack.EMPTY.getItem()) {
                                     _ent = entity;
                                     if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s armor.head with jujutsucraft:sword_okkotsu_yuta");
+                                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s armor.head with jujutsucraft:sword_okkotsu_yuta");
                                     }
 
                                     if (entity instanceof LivingEntity) {
-                                        _entGetArmor = (LivingEntity)entity;
+                                        _entGetArmor = (LivingEntity) entity;
                                         var46 = _entGetArmor.getMainHandItem();
                                     } else {
                                         var46 = ItemStack.EMPTY;
@@ -602,7 +613,7 @@ public abstract class AIOkkotsuMixin {
                                     _nbtTag = var46.getTag();
                                     if (_nbtTag != null) {
                                         if (entity instanceof LivingEntity) {
-                                            _entGetArmor = (LivingEntity)entity;
+                                            _entGetArmor = (LivingEntity) entity;
                                             var46 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                         } else {
                                             var46 = ItemStack.EMPTY;
@@ -613,7 +624,7 @@ public abstract class AIOkkotsuMixin {
 
                                     _ent = entity;
                                     if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel)_ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s weapon.mainhand with air");
+                                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "item replace entity @s weapon.mainhand with air");
                                     }
                                 }
                             }
@@ -623,19 +634,18 @@ public abstract class AIOkkotsuMixin {
 
                 if (entity.getPersistentData().getDouble("skill") == 0.0) {
                     if (entity instanceof LivingEntity) {
-                        _livEnt = (LivingEntity)entity;
+                        _livEnt = (LivingEntity) entity;
                         var46 = _livEnt.getMainHandItem();
                     } else {
                         var46 = ItemStack.EMPTY;
                     }
 
                     if (var46.getItem() == JujutsucraftModItems.LOUDSPEAKER.get() && !entity.level().isClientSide() && entity.getServer() != null) {
-                        entity.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel)entity.level() : null, 4, entity.getName().getString(), entity.getDisplayName(), entity.level().getServer(), entity), "item replace entity @s weapon.mainhand with air");
+                        entity.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(), entity.getDisplayName(), entity.level().getServer(), entity), "item replace entity @s weapon.mainhand with air");
                     }
                 }
             }
 
         }
-        ci.cancel();
     }
 }

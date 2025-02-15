@@ -1,34 +1,30 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.tags.TagKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.client.player.AbstractClientPlayer;
-
-import net.mcreator.jujutsucraftaddon.item.WukongStaffItem;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
-
-import java.util.List;
-import java.util.Comparator;
-
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import dev.kosmx.playerAnim.api.layered.ModifierLayer;
-import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.IAnimation;
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
+import dev.kosmx.playerAnim.api.layered.ModifierLayer;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import net.mcreator.jujutsucraft.init.JujutsucraftModParticleTypes;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
+import net.mcreator.jujutsucraftaddon.item.WukongStaffItem;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Comparator;
+import java.util.List;
 
 public class WukongStaffEntitySwingsItemProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
@@ -58,13 +54,13 @@ public class WukongStaffEntitySwingsItemProcedure {
                             ("playsound jujutsucraftaddon:wu" + new java.text.DecimalFormat("##.##").format(itemstack.getOrCreateTag().getDouble("Test")) + " master @s"));
                 }
             }
-            if (itemstack.getOrCreateTag().getBoolean("Mode") == true) {
+            if (itemstack.getOrCreateTag().getBoolean("Mode")) {
                 if (itemstack.getItem() instanceof WukongStaffItem)
                     itemstack.getOrCreateTag().putString("geckoAnim", ("wu" + new java.text.DecimalFormat("##.##").format(itemstack.getOrCreateTag().getDouble("Test"))));
             }
             itemstack.getOrCreateTag().putDouble("Test", 0);
         }
-        if (itemstack.getOrCreateTag().getBoolean("Mode") == true) {
+        if (itemstack.getOrCreateTag().getBoolean("Mode")) {
             itemstack.getOrCreateTag().putDouble("Reach", (Mth.nextInt(RandomSource.create(), 1, 5)));
             itemstack.getOrCreateTag().putDouble("Knockback", (Mth.nextInt(RandomSource.create(), 1, 5)));
             itemstack.getOrCreateTag().putDouble("Range", (Mth.nextInt(RandomSource.create(), 1, 5)));
@@ -78,12 +74,12 @@ public class WukongStaffEntitySwingsItemProcedure {
                             if (!entityiterator.level().isClientSide())
                                 entityiterator.discard();
                             if (world instanceof ServerLevel _level)
-                                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.HAITI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
+                                _level.sendParticles(JujutsucraftaddonModParticleTypes.HAITI.get(), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
                         } else if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo")))) {
                             if (!entityiterator.level().isClientSide())
                                 entityiterator.discard();
                             if (world instanceof ServerLevel _level)
-                                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KAI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
+                                _level.sendParticles(JujutsucraftaddonModParticleTypes.KAI.get(), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
                         }
                     }
                 }
@@ -99,12 +95,12 @@ public class WukongStaffEntitySwingsItemProcedure {
                                 if (!entityiterator.level().isClientSide())
                                     entityiterator.discard();
                                 if (world instanceof ServerLevel _level)
-                                    _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.HAITI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
+                                    _level.sendParticles(JujutsucraftaddonModParticleTypes.HAITI.get(), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
                             } else if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo")))) {
                                 if (!entityiterator.level().isClientSide())
                                     entityiterator.discard();
                                 if (world instanceof ServerLevel _level)
-                                    _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.KAI.get()), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
+                                    _level.sendParticles(JujutsucraftaddonModParticleTypes.KAI.get(), (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 1, 0, 0, 0, 1);
                             }
                         }
                     }

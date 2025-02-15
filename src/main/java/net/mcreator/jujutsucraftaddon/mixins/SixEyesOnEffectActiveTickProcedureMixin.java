@@ -20,13 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
-@Mixin(value = SixEyesOnEffectActiveTickProcedure.class, priority = 3000)
+@Mixin(value = SixEyesOnEffectActiveTickProcedure.class, priority = -10000)
 public abstract class SixEyesOnEffectActiveTickProcedureMixin {
 
     /*
-    * Give six eyes users the new conditions for allow them to use gojo new things
-    *
-    */
+     * Give six eyes users the new conditions for allow them to use gojo new things
+     *
+     */
 
     @Inject(method = "execute", at = @At("TAIL"), remap = false)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo cir) {

@@ -1,16 +1,15 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.nbt.CompoundTag;
-
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 public class TsukumoExtensionProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {

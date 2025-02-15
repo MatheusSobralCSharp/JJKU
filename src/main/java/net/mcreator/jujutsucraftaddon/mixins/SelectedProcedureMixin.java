@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = SelectTechniqueButtonMessage.class, priority = 3000)
+@Mixin(value = SelectTechniqueButtonMessage.class, priority = -10000)
 public abstract class SelectedProcedureMixin {
 
     /**
@@ -27,7 +27,7 @@ public abstract class SelectedProcedureMixin {
     private static void onHandleButtonAction(Player entity, int buttonID, int x, int y, int z, CallbackInfo ci) {
         Level world = entity.level();
         if (buttonID == 100) {
-            CustomCursedTechniqueChangerRightclickedProcedureProcedure.execute(world, (double)x, (double)y, (double)z, entity);
+            CustomCursedTechniqueChangerRightclickedProcedureProcedure.execute(world, x, y, z, entity);
         }
 
     }

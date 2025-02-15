@@ -12,20 +12,16 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
@@ -42,7 +38,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = OpenProcedure.class, priority = 3000)
+@Mixin(value = OpenProcedure.class, priority = -10000)
 public abstract class OpenProcedureMixin {
     /**
      * @author Satushi
@@ -50,6 +46,8 @@ public abstract class OpenProcedureMixin {
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean rotate = false;
             double x_pos = 0.0;
@@ -124,8 +122,8 @@ public abstract class OpenProcedureMixin {
             entity.getPersistentData().putDouble("x_power", entity.getLookAngle().x * 3.0);
             entity.getPersistentData().putDouble("y_power", entity.getLookAngle().y * 3.0);
             entity.getPersistentData().putDouble("z_power", entity.getLookAngle().z * 3.0);
-            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-            pitch = Math.toRadians((double) entity.getXRot());
+            yaw = Math.toRadians(entity.getYRot() + 90.0F);
+            pitch = Math.toRadians(entity.getXRot());
             x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (double) (1.0F + entity.getBbWidth());
             y_pos = entity.getY() + (double) entity.getBbHeight() * 0.6 + Math.sin(pitch) * -1.0 * (double) (1.0F + entity.getBbWidth());
             z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (double) (1.0F + entity.getBbWidth());
@@ -138,12 +136,11 @@ public abstract class OpenProcedureMixin {
                     _livEnt.swing(InteractionHand.MAIN_HAND, true);
                 }
 
-                if (world instanceof Level) {
-                    Level _level = (Level) world;
+                if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                        _level.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                     } else {
-                        _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                        _level.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                     }
                 }
 
@@ -161,11 +158,10 @@ public abstract class OpenProcedureMixin {
                     var55 = 0;
                 }
 
-                HP = (double) (200 + var55 * 20 * 10);
-                if (world instanceof ServerLevel) {
-                    ServerLevel _level = (ServerLevel) world;
+                HP = 200 + var55 * 20 * 10;
+                if (world instanceof ServerLevel _level) {
                     Commands var54 = _level.getServer().getCommands();
-                    CommandSourceStack var56 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
+                    CommandSourceStack var56 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput();
                     long var57 = Math.round(HP);
                     var54.performPrefixedCommand(var56, "summon jujutsucraft:flame_arrow ~ ~ ~ {Health:" + var57 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                 }
@@ -193,7 +189,7 @@ public abstract class OpenProcedureMixin {
                 if (entity instanceof LivingEntity) {
                     _livEnt = (LivingEntity) entity;
                     if (!_livEnt.level().isClientSide()) {
-                        _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                        _livEnt.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                     }
                 }
 
@@ -385,7 +381,7 @@ public abstract class OpenProcedureMixin {
 
                     if (Math.random() < 0.1 && entity.getPersistentData().getDouble("cnt6") > 2.5 && world instanceof ServerLevel) {
                         _level = (ServerLevel) world;
-                        _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), x_pos, y_pos, z_pos, 1, distance * 0.5, distance * 0.05, distance * 0.5, 0.05);
+                        _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_MAGMA.get(), x_pos, y_pos, z_pos, 1, distance * 0.5, distance * 0.05, distance * 0.5, 0.05);
                     }
                 }
 
@@ -439,6 +435,5 @@ public abstract class OpenProcedureMixin {
 
             PlayAnimationProcedure.execute(entity);
         }
-        ci.cancel();
     }
 }

@@ -1,37 +1,20 @@
 package net.mcreator.jujutsucraftaddon.client.renderer;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.mcreator.jujutsucraftaddon.entity.CloneEntity;
-import net.mcreator.jujutsucraftaddon.entity.FakeClonesEntity;
+import net.mcreator.jujutsucraftaddon.entity.ErrorEntity;
+import net.mcreator.jujutsucraftaddon.entity.MakiPreparation2Entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.resources.ResourceLocation;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.properties.Property;
-import net.minecraft.client.renderer.texture.HttpTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.fml.loading.FMLPaths;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.Map;
-import java.util.UUID;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 
 public class CloneRenderer extends HumanoidMobRenderer<CloneEntity, HumanoidModel<CloneEntity>> {
 //    private static final MinecraftSessionService sessionService = Minecraft.getInstance().getMinecraftSessionService();
@@ -43,6 +26,28 @@ public class CloneRenderer extends HumanoidMobRenderer<CloneEntity, HumanoidMode
     public CloneRenderer(EntityRendererProvider.Context context) {
         super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
         this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
+        this.addLayer(new RenderLayer<CloneEntity, HumanoidModel<CloneEntity>>(this) {
+            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("jujutsucraftaddon:textures/entities/pmcskin3d-steve.png");
+
+
+
+            @Override
+            public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, CloneEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+                ResourceLocation textureLocation;
+                // Get the owner entity
+                LivingEntity livingEntity = entity.getOwner();
+                if (livingEntity != null) {
+                    EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+                    EntityRenderer<? super LivingEntity> livingRenderer = entityRenderDispatcher.getRenderer(livingEntity);
+                    textureLocation = livingRenderer.getTextureLocation(livingEntity);
+                } else {
+                    textureLocation = LAYER_TEXTURE;
+                }
+                VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(textureLocation));
+                this.getParentModel().renderToBuffer(poseStack, vertexConsumer, light, LivingEntityRenderer.getOverlayCoords(entity, 0), 1, 1, 1, 1);
+            }
+        });
+
     }
 
     @Override
@@ -54,13 +59,13 @@ public class CloneRenderer extends HumanoidMobRenderer<CloneEntity, HumanoidMode
         }
 
         LivingEntity livingEntity = entity.getOwner();
-        if (livingEntity != null) {
-            EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-            EntityRenderer<? super LivingEntity> livingRenderer = entityRenderDispatcher.getRenderer(livingEntity);
-            return livingRenderer.getTextureLocation(livingEntity);
+        if (livingEntity == null) {
+            return new ResourceLocation("jujutsucraftaddon:textures/entities/pmcskin3d-steve.png");
         }
 
-        return new ResourceLocation("jujutsucraftaddon:textures/entities/pmcskin3d-steve.png");
+        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+        EntityRenderer<? super LivingEntity> livingRenderer = entityRenderDispatcher.getRenderer(livingEntity);
+        return livingRenderer.getTextureLocation(livingEntity);
     }
 }
 //

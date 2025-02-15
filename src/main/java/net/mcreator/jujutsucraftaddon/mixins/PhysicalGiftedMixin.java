@@ -11,7 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = PhysicalGiftedEffectOnEffectActiveTickProcedure.class)
 public abstract class PhysicalGiftedMixin {
-    public PhysicalGiftedMixin() {}
+    public PhysicalGiftedMixin() {
+    }
 
     /**
      * @author Satushi

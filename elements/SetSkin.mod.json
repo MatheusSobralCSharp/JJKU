@@ -1,7 +1,0 @@
-{
-  "_fv": 73,
-  "_type": "procedure",
-  "definition": {
-    "procedurexml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable id=\"overlayPath\" type=\"String\">overlayPath</variable></variables><block deletable=\"false\" type=\"event_trigger\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"variables_set_string\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" has_entity=\"false\" is_player_var=\"false\"/><field name=\"VAR\">local:overlayPath</field><value name=\"VAL\"><block type=\"variables_get_string\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" has_entity=\"true\" is_player_var=\"true\"/><field name=\"VAR\">global:MobTexture</field><value name=\"entity\"><block type=\"entity_from_deps\"/></value></block></value><next><block type=\"entity_send_chat\"><value name=\"text\"><block type=\"text\"><field name=\"TEXT\">Sent Packet</field></block></value><value name=\"entity\"><block type=\"entity_from_deps\"/></value><value name=\"actbar\"><block type=\"logic_boolean\"><field name=\"BOOL\">FALSE</field></block></value></block></next></block></next></block><block type=\"get_command_parameter_string\" x=\"308\" y=\"151\"><field name=\"param\">overlayPath</field></block></xml>"
-  }
-}

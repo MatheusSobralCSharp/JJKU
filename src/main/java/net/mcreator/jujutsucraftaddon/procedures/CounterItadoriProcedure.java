@@ -4,7 +4,6 @@ import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,7 +19,6 @@ public class CounterItadoriProcedure {
                 LivingEntity _livEnt9;
                 Player _player;
                 if (entity.getPersistentData().getDouble("cnt_t") < 20.0) {
-                    label68:
                     {
                         entity.getPersistentData().putDouble("cnt_t", entity.getPersistentData().getDouble("cnt_t") + 1.0);
                         endtext = "§0BERSERK MODE";
@@ -41,12 +39,11 @@ public class CounterItadoriProcedure {
                 }
 
                 if (entity.getPersistentData().getDouble("cnt_t") == 20.0) {
-                    label54:
                     {
                         Entity _ent;
                         if (entity instanceof LivingEntity) {
                             _livEnt9 = (LivingEntity) entity;
-                            if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+                            if (_livEnt9.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
 
                             }
 

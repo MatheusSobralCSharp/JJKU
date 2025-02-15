@@ -2,11 +2,11 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.procedures.GetDomainBlockProcedure;
+import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = GetDomainBlockProcedure.class, priority = 3000)
+@Mixin(value = GetDomainBlockProcedure.class, priority = -10000)
 public abstract class GetDomainBlockProcedureMixin {
 
     /**
@@ -24,6 +24,8 @@ public abstract class GetDomainBlockProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double var10000;
             String outside;
@@ -40,13 +42,11 @@ public abstract class GetDomainBlockProcedureMixin {
                 domain_num = 0.0;
                 close_type = 0.0;
                 domain_num = entity.getPersistentData().getDouble("select") > 0.0 ? entity.getPersistentData().getDouble("select") : entity.getPersistentData().getDouble("skill_domain");
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt3 = (LivingEntity) entity;
-                    if (_livEnt3.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                        if (entity instanceof LivingEntity) {
-                            LivingEntity _livEnt = (LivingEntity) entity;
-                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
-                                var10000 = (double) _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
+                if (entity instanceof LivingEntity _livEnt3) {
+                    if (_livEnt3.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                        if (entity instanceof LivingEntity _livEnt) {
+                            if (_livEnt.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get())) {
+                                var10000 = _livEnt.getEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()).getAmplifier();
                                 break label133;
                             }
                         }
@@ -65,16 +65,14 @@ public abstract class GetDomainBlockProcedureMixin {
             floor = "jujutsucraft:block_universe";
             if (domain_num <= 10.0) {
                 if (domain_num == 1.0) {
-                    if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Death Painting")) {
-                        if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori")) {
-                            if (entity instanceof ServerPlayer _plr25 && _plr25.level() instanceof ServerLevel
-                                    && _plr25.getAdvancements().getOrStartProgress(_plr25.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone() && entity instanceof ServerPlayer _plr26
-                                    && _plr26.level() instanceof ServerLevel && _plr26.getAdvancements().getOrStartProgress(_plr26.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained"))).isDone()) {
-                                inside = "jujutsucraftaddon:snow_domain";
-                                floor = "jujutsucraftaddon:snow_domain";
-                                outside = "jujutsucraftaddon:snow_domain";
-                            }
-                        }
+                    if ((((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Subrace).equals("Death Painting") && ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Itadori") && (entity instanceof ServerPlayer _plr25 && _plr25.level() instanceof ServerLevel
+                            && _plr25.getAdvancements().getOrStartProgress(_plr25.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:soul_research"))).isDone() && entity instanceof ServerPlayer _plr26
+                            && _plr26.level() instanceof ServerLevel && _plr26.getAdvancements().getOrStartProgress(_plr26.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained"))).isDone())) || entity instanceof ItadoriShinjukuEntity) {
+
+                        inside = "jujutsucraftaddon:snow_domain";
+                        floor = "jujutsucraftaddon:snow_domain";
+                        outside = "jujutsucraftaddon:snow_domain";
+
                     } else {
                         inside = "jujutsucraft:domain_bone";
                         floor = "jujutsucraft:block_red";
@@ -181,6 +179,5 @@ public abstract class GetDomainBlockProcedureMixin {
             entity.getPersistentData().putString("domain_inside", inside);
             entity.getPersistentData().putString("domain_floor", floor);
         }
-        ci.cancel();
     }
 }

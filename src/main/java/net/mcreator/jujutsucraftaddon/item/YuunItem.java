@@ -71,11 +71,11 @@ public class YuunItem extends Item implements GeoItem {
     }
 
     public void getTransformType(ItemDisplayContext type) {
-        this.transformType = type;
+        transformType = type;
     }
 
     private PlayState idlePredicate(AnimationState event) {
-        if (this.transformType != null ? true : false) {
+        if (transformType != null) {
             if (this.animationprocedure.equals("empty")) {
                 event.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
                 return PlayState.CONTINUE;
@@ -85,7 +85,7 @@ public class YuunItem extends Item implements GeoItem {
     }
 
     private PlayState procedurePredicate(AnimationState event) {
-        if (this.transformType != null ? true : false) {
+        if (transformType != null) {
             if (!this.animationprocedure.equals("empty") && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
                 event.getController().setAnimation(RawAnimation.begin().thenPlay(this.animationprocedure));
                 if (event.getController().getAnimationState() == AnimationController.State.STOPPED) {

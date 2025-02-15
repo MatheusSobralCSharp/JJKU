@@ -1,7 +1,0 @@
-{
-  "_fv": 73,
-  "_type": "procedure",
-  "definition": {
-    "procedurexml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><xml xmlns=\"https://developers.google.com/blockly/xml\"><block deletable=\"false\" type=\"event_trigger\" x=\"47\" y=\"23\"><field name=\"trigger\">gem_dropped</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"compare_mcitems\"><value name=\"a\"><block type=\"itemstack_to_mcitem\"/></value><value name=\"b\"><block type=\"mcitem_all\"><field name=\"value\">CUSTOM:YutaRing</field></block></value></block></value><statement name=\"DO0\"><block type=\"entity_remove_item\"><value name=\"amount\"><block type=\"math_number\"><field name=\"NUM\">1</field></block></value><value name=\"item\"><block type=\"mcitem_all\"><field name=\"value\">CUSTOM:YutaRing</field></block></value><value name=\"entity\"><block type=\"entity_from_deps\"/></value><next><block type=\"cancel_event\"/></next></block></statement></block></next></block></xml>"
-  }
-}

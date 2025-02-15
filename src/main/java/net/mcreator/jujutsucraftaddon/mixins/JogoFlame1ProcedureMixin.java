@@ -7,17 +7,17 @@ import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
 import net.mcreator.jujutsucraft.procedures.*;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -30,7 +30,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = JogoFlame1Procedure.class, priority = 3000)
+@Mixin(value = JogoFlame1Procedure.class, priority = -10000)
 public abstract class JogoFlame1ProcedureMixin {
     /**
      * @author Satushi
@@ -38,6 +38,8 @@ public abstract class JogoFlame1ProcedureMixin {
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean logic_a = false;
             double x_pos = 0.0;
@@ -60,8 +62,8 @@ public abstract class JogoFlame1ProcedureMixin {
                 }
             }
 
-            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-            picth = Math.toRadians((double) entity.getXRot());
+            yaw = Math.toRadians(entity.getYRot() + 90.0F);
+            picth = Math.toRadians(entity.getXRot());
             x_pos = entity.getX() + Math.cos(yaw) * Math.cos(picth) * (1.5 + (double) entity.getBbWidth());
             y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(picth) * -1.0 * (1.5 + (double) entity.getBbWidth());
             z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(picth) * (1.5 + (double) entity.getBbWidth());
@@ -72,7 +74,7 @@ public abstract class JogoFlame1ProcedureMixin {
                 if (entity instanceof LivingEntity) {
                     _entGetArmor = (LivingEntity) entity;
                     if (!_entGetArmor.level().isClientSide()) {
-                        _entGetArmor.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                        _entGetArmor.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                     }
                 }
 
@@ -159,8 +161,8 @@ public abstract class JogoFlame1ProcedureMixin {
                     if (entity.getPersistentData().getDouble("cnt6") < 5.0) {
                         entity.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6") + 0.1);
                         if (entity instanceof Player) {
-                            double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 2.0;
-                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            double _setval = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange - 2.0;
+                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.PlayerCursePowerChange = _setval;
                                 capability.syncPlayerVariables(entity);
                             });
@@ -172,7 +174,7 @@ public abstract class JogoFlame1ProcedureMixin {
                             if (world instanceof Level) {
                                 _level = (Level) world;
                                 if (!_level.isClientSide()) {
-                                    _level.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                    _level.explode(null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                 }
                             }
                         }
@@ -302,9 +304,9 @@ public abstract class JogoFlame1ProcedureMixin {
                 if (world instanceof Level) {
                     _level = (Level) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.blaze.shoot")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                     }
                 }
 
@@ -316,8 +318,8 @@ public abstract class JogoFlame1ProcedureMixin {
                 entity.getPersistentData().putDouble("Damage", 1.5 * CNT6);
                 DamageFixProcedure.execute(entity);
                 damage = entity.getPersistentData().getDouble("Damage");
-                yaw = (double) entity.getYRot();
-                picth = (double) entity.getXRot();
+                yaw = entity.getYRot();
+                picth = entity.getXRot();
 
                 for (int index0 = 0; index0 < 4; ++index0) {
                     entity.setYRot((float) (yaw + (Math.random() - 0.5) * 6.0 * CNT6));
@@ -326,8 +328,7 @@ public abstract class JogoFlame1ProcedureMixin {
                     entity.setYHeadRot(entity.getYRot());
                     entity.yRotO = entity.getYRot();
                     entity.xRotO = entity.getXRot();
-                    if (entity instanceof LivingEntity) {
-                        LivingEntity _entity = (LivingEntity) entity;
+                    if (entity instanceof LivingEntity _entity) {
                         _entity.yBodyRotO = _entity.getYRot();
                         _entity.yHeadRotO = _entity.getYRot();
                     }
@@ -336,9 +337,9 @@ public abstract class JogoFlame1ProcedureMixin {
                     if (!projectileLevel.isClientSide()) {
                         Projectile _entityToSpawn = ((new Object() {
                             public Projectile getArrow(Level level, Entity shooter, float damage, int knockback, byte piercing) {
-                                AbstractArrow entityToSpawn = new BulletFlameProjectileEntity((EntityType) JujutsucraftModEntities.BULLET_FLAME_PROJECTILE.get(), level);
+                                AbstractArrow entityToSpawn = new BulletFlameProjectileEntity(JujutsucraftModEntities.BULLET_FLAME_PROJECTILE.get(), level);
                                 entityToSpawn.setOwner(shooter);
-                                entityToSpawn.setBaseDamage((double) damage);
+                                entityToSpawn.setBaseDamage(damage);
                                 entityToSpawn.setKnockback(knockback);
                                 entityToSpawn.setSilent(true);
                                 entityToSpawn.setPierceLevel(piercing);
@@ -358,15 +359,14 @@ public abstract class JogoFlame1ProcedureMixin {
                 entity.setYHeadRot(entity.getYRot());
                 entity.yRotO = entity.getYRot();
                 entity.xRotO = entity.getXRot();
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _entity = (LivingEntity) entity;
+                if (entity instanceof LivingEntity _entity) {
                     _entity.yBodyRotO = _entity.getYRot();
                     _entity.yHeadRotO = _entity.getYRot();
                 }
 
                 entity.getPersistentData().putDouble("Damage", 15.0 * CNT6);
                 entity.getPersistentData().putDouble("Range", 5.0 * CNT6 * ((world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_DESTRUCTION_LEVEL))));
-                entity.getPersistentData().putDouble("knockback", 1.0 * CNT6);
+                entity.getPersistentData().putDouble("knockback", CNT6);
                 entity.getPersistentData().putDouble("effect", 10.0);
                 RangeAttackProcedure.execute(world, x_pos, y_pos, z_pos, entity);
             } else if (entity.getPersistentData().getDouble("cnt1") > 25.0 * CNT6 + 10.0) {
@@ -374,6 +374,5 @@ public abstract class JogoFlame1ProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

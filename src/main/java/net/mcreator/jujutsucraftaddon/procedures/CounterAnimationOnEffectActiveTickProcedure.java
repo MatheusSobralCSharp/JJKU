@@ -1,56 +1,31 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraftforge.network.NetworkDirection;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.Connection;
-import net.minecraft.client.player.AbstractClientPlayer;
-
-import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
-
-import java.util.List;
-import java.util.Iterator;
-
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import dev.kosmx.playerAnim.api.layered.ModifierLayer;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
-import dev.kosmx.playerAnim.api.layered.IAnimation;
+import dev.kosmx.playerAnim.api.layered.ModifierLayer;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LevelAccessor;
 
 public class CounterAnimationOnEffectActiveTickProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
-		if (entity == null)
-			return;
-		if (world.isClientSide()) {
-			if (entity instanceof AbstractClientPlayer player) {
-				var animation = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
-				if (animation != null && !animation.isActive()) {
-					animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "counter"))));
-				}
-			}
-		}
-		if (!world.isClientSide()) {
-			if (entity instanceof Player && world instanceof ServerLevel srvLvl_) {
-				List<Connection> connections = srvLvl_.getServer().getConnection().getConnections();
-				synchronized (connections) {
-					Iterator<Connection> iterator = connections.iterator();
-					while (iterator.hasNext()) {
-						Connection connection = iterator.next();
-						if (!connection.isConnecting() && connection.isConnected())
-							JujutsucraftaddonMod.PACKET_HANDLER.sendTo(new SetupAnimationsProcedure.JujutsucraftaddonModAnimationMessage(Component.literal("counter"), entity.getId(), false), connection, NetworkDirection.PLAY_TO_CLIENT);
-					}
-				}
-			}
-		}
-		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 254, false, false));
-	}
+    public static void execute(LevelAccessor world, Entity entity) {
+        if (entity == null)
+            return;
+        if (world.isClientSide()) {
+            if (entity instanceof AbstractClientPlayer player) {
+                var animation = (ModifierLayer) PlayerAnimationAccess.getPlayerAssociatedData(player).get(new ResourceLocation("jujutsucraftaddon", "player_animation"));
+                if (animation != null && !animation.isActive()) {
+                    animation.setAnimation(new KeyframeAnimationPlayer(PlayerAnimationRegistry.getAnimation(new ResourceLocation("jujutsucraftaddon", "counter"))));
+                }
+            }
+        }
+
+        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+            _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 254, false, false));
+    }
 }

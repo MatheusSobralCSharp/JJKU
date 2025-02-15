@@ -9,7 +9,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,7 +30,6 @@ public class CounterBurnoutProcedure {
                         LivingEntity _livEnt9;
                         Player _player;
                         if (entity.getPersistentData().getDouble("cnt_v") < 20.0) {
-                            label68:
                             {
                                 entity.getPersistentData().putDouble("cnt_v", entity.getPersistentData().getDouble("cnt_v") + 1.0);
                                 endtext = "Reverse Burnout";
@@ -48,12 +46,11 @@ public class CounterBurnoutProcedure {
                             }
                         }
                         if (entity.getPersistentData().getDouble("cnt_v") == 20.0) {
-                            label54:
                             {
                                 Entity _ent;
                                 if (entity instanceof LivingEntity) {
                                     _livEnt9 = (LivingEntity) entity;
-                                    if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get())) {
+                                    if (_livEnt9.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME.get())) {
                                         _ent = entity;
                                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                             _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
@@ -85,7 +82,7 @@ public class CounterBurnoutProcedure {
                                                             _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
                                                     "effect clear @s jujutsucraft:unstable");
                                         }
-                                        if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                        if (_livEnt9.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                                 _ent.getServer().getCommands()
                                                         .performPrefixedCommand(
@@ -93,7 +90,7 @@ public class CounterBurnoutProcedure {
                                                                         _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
                                                                 "execute as @s at @s run particle jujutsucraft:particle_curse_power_red ~ ~1.8 ~ 0 0 0 0.1 10 normal");
                                             }
-                                        } else if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.JACKPOT.get())) {
+                                        } else if (_livEnt9.hasEffect(JujutsucraftModMobEffects.JACKPOT.get())) {
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                                 _ent.getServer().getCommands()
                                                         .performPrefixedCommand(
@@ -134,7 +131,7 @@ public class CounterBurnoutProcedure {
                                                 }
                                             }
                                         }
-                                    } else if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.UNSTABLE.get())) {
+                                    } else if (_livEnt9.hasEffect(JujutsucraftModMobEffects.UNSTABLE.get())) {
                                         _ent = entity;
                                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                             _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
@@ -166,7 +163,7 @@ public class CounterBurnoutProcedure {
                                                             _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
                                                     "effect clear @s jujutsucraft:unstable");
                                         }
-                                        if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                        if (_livEnt9.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                                 _ent.getServer().getCommands()
                                                         .performPrefixedCommand(
@@ -174,7 +171,7 @@ public class CounterBurnoutProcedure {
                                                                         _ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent),
                                                                 "execute as @s at @s run particle jujutsucraft:particle_curse_power_red ~ ~1.8 ~ 0 0 0 0.1 10 normal");
                                             }
-                                        } else if (_livEnt9.hasEffect((MobEffect) JujutsucraftModMobEffects.JACKPOT.get())) {
+                                        } else if (_livEnt9.hasEffect(JujutsucraftModMobEffects.JACKPOT.get())) {
                                             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                                                 _ent.getServer().getCommands()
                                                         .performPrefixedCommand(

@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 
 
-
 public class RunningAnimationMixin<T extends LivingEntity> extends HumanoidModel<T> {
     public RunningAnimationMixin(ModelPart p_170677_) {
         super(p_170677_, RenderType::entityTranslucent);

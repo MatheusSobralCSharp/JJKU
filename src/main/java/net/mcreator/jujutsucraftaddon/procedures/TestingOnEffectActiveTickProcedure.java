@@ -1,9 +1,8 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.Entity;
-
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.LevelAccessor;
 
 public class TestingOnEffectActiveTickProcedure {
     public static void execute(LevelAccessor world, Entity entity) {

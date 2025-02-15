@@ -9,13 +9,11 @@ import net.mcreator.jujutsucraft.procedures.LogicAttackDomainProcedure;
 import net.mcreator.jujutsucraft.procedures.LogicAttackProcedure;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -28,7 +26,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
-@Mixin(value = LogicAttackProcedure.class, remap = false, priority = 3000)
+@Mixin(value = LogicAttackProcedure.class, remap = false, priority = -10000)
 public abstract class LogicAttackProcedureMixin {
 
     /**
@@ -148,8 +146,7 @@ public abstract class LogicAttackProcedureMixin {
                         return false;
                     }
 
-                    if (entityiterator instanceof Player) {
-                        Player _plr = (Player) entityiterator;
+                    if (entityiterator instanceof Player _plr) {
                         if (_plr.getAbilities().instabuild) {
                             return false;
                         }
@@ -201,21 +198,20 @@ public abstract class LogicAttackProcedureMixin {
                         {
                             if (entity_attacker_owner instanceof LivingEntity) {
                                 _livEnt132 = (LivingEntity) entity_attacker_owner;
-                                if (_livEnt132.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                if (_livEnt132.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     break label570;
                                 }
                             }
 
                             if (entity_attacker instanceof LivingEntity) {
                                 _livEnt = (LivingEntity) entity_attacker;
-                                if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                if (_livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     break label570;
                                 }
                             }
 
-                            if (entity_iterator_owner instanceof LivingEntity) {
-                                LivingEntity _livEnt50 = (LivingEntity) entity_iterator_owner;
-                                if (_livEnt50.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                            if (entity_iterator_owner instanceof LivingEntity _livEnt50) {
+                                if (_livEnt50.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     break label570;
                                 }
                             }
@@ -225,7 +221,7 @@ public abstract class LogicAttackProcedureMixin {
                             }
 
                             _livEnt59 = (LivingEntity) entity_iterator;
-                            if (!_livEnt59.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                            if (!_livEnt59.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                 break label458;
                             }
                         }
@@ -239,8 +235,7 @@ public abstract class LogicAttackProcedureMixin {
                             label572:
                             {
                                 if (entity_attacker_owner instanceof UraumeEntity) {
-                                    if (entity_iterator_owner instanceof Player && (((JujutsucraftModVariables.PlayerVariables) entity_iterator_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 21.0 || ((JujutsucraftModVariables.PlayerVariables) entity_iterator_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 21.0) && entity_iterator_owner instanceof ServerPlayer) {
-                                        ServerPlayer _plr54 = (ServerPlayer) entity_iterator_owner;
+                                    if (entity_iterator_owner instanceof Player && (entity_iterator_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 21.0 || entity_iterator_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 == 21.0) && entity_iterator_owner instanceof ServerPlayer _plr54) {
                                         if (_plr54.level() instanceof ServerLevel && _plr54.getAdvancements().getOrStartProgress(_plr54.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sukuna_finger_1"))).isDone()) {
                                             break label572;
                                         }
@@ -248,7 +243,7 @@ public abstract class LogicAttackProcedureMixin {
 
                                     if (entity_iterator_owner instanceof LivingEntity) {
                                         _livEnt = (LivingEntity) entity_iterator_owner;
-                                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                        if (_livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                             break label572;
                                         }
                                     }
@@ -258,8 +253,7 @@ public abstract class LogicAttackProcedureMixin {
                                     break label438;
                                 }
 
-                                if (entity_attacker_owner instanceof Player && (((JujutsucraftModVariables.PlayerVariables) entity_attacker_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 21.0 || ((JujutsucraftModVariables.PlayerVariables) entity_attacker_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 21.0) && entity_attacker_owner instanceof ServerPlayer) {
-                                    ServerPlayer _plr58 = (ServerPlayer) entity_attacker_owner;
+                                if (entity_attacker_owner instanceof Player && (entity_attacker_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 21.0 || entity_attacker_owner.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 == 21.0) && entity_attacker_owner instanceof ServerPlayer _plr58) {
                                     if (_plr58.level() instanceof ServerLevel && _plr58.getAdvancements().getOrStartProgress(_plr58.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sukuna_finger_1"))).isDone()) {
                                         break label572;
                                     }
@@ -270,7 +264,7 @@ public abstract class LogicAttackProcedureMixin {
                                 }
 
                                 _livEnt59 = (LivingEntity) entity_attacker_owner;
-                                if (!_livEnt59.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                if (!_livEnt59.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     break label438;
                                 }
                             }
@@ -279,11 +273,7 @@ public abstract class LogicAttackProcedureMixin {
                         }
 
                         if ((entity_attacker_owner.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:group_1"))) || entity_attacker_owner instanceof Player && entity_attacker_owner.getPersistentData().getBoolean("CurseUser")) && (entity_iterator_owner.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:group_1"))) || entity_iterator_owner instanceof Player && entity_iterator_owner.getPersistentData().getBoolean("CurseUser")) || entity_attacker_owner.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:group_2"))) && entity_iterator_owner.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:group_2"))) || entity_attacker_owner.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:group_3"))) && entity_iterator_owner.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:group_3")))) {
-                            if (!world.isClientSide() && world.getServer().getGameRules().getBoolean(JujutsucraftaddonModGameRules.ENABLE_SUKUNA_PVP)) {
-                                logic_attack = true;
-                            } else {
-                                logic_attack = false;
-                            }
+                            logic_attack = !world.isClientSide() && world.getServer().getGameRules().getBoolean(JujutsucraftaddonModGameRules.ENABLE_SUKUNA_PVP);
                         }
                     }
 
@@ -486,14 +476,14 @@ public abstract class LogicAttackProcedureMixin {
 
                     if (entityiterator instanceof LivingEntity) {
                         _livEnt132 = (LivingEntity) entityiterator;
-                        if (_livEnt132.hasEffect((MobEffect) JujutsucraftModMobEffects.PRAYER_SONG.get())) {
+                        if (_livEnt132.hasEffect(JujutsucraftModMobEffects.PRAYER_SONG.get())) {
                             int var34;
                             label290:
                             {
                                 if (entityiterator instanceof LivingEntity) {
                                     _livEnt = (LivingEntity) entityiterator;
-                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get())) {
-                                        var34 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
+                                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.GUARD.get())) {
+                                        var34 = _livEnt.getEffect(JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
                                         break label290;
                                     }
                                 }

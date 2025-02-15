@@ -24,43 +24,43 @@ public class YutaCondition2Procedure {
                     Entity entitytospawn = JujutsucraftModEntities.RIKA_2.get().spawn(_serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
                     if (entitytospawn != null) {
                         entitytospawn.setYRot(world.getRandom().nextFloat() * 360.0F);
+                        CompoundTag dataIndex4 = new CompoundTag();
+                        (entitytospawn).saveWithoutId(dataIndex4);
+                        dataIndex4.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
+                        (entitytospawn).load(dataIndex4);
+                        CompoundTag dataIndex7 = new CompoundTag();
+                        (entitytospawn).saveWithoutId(dataIndex7);
+                        dataIndex7.getCompound("ForgeData").putDouble("friend_num", (new Object() {
+                            public double getValue() {
+                                CompoundTag dataIndex6 = new CompoundTag();
+                                entity.saveWithoutId(dataIndex6);
+                                return dataIndex6.getCompound("ForgeData").getDouble("friend_num");
+                            }
+                        }.getValue()));
+                        (entitytospawn).load(dataIndex7);
+                        CompoundTag dataIndex10 = new CompoundTag();
+                        (entitytospawn).saveWithoutId(dataIndex10);
+                        dataIndex10.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
+                            public double getValue() {
+                                CompoundTag dataIndex9 = new CompoundTag();
+                                entity.saveWithoutId(dataIndex9);
+                                return dataIndex9.getCompound("ForgeData").getDouble("friend_num");
+                            }
+                        }.getValue()));
+                        (entitytospawn).load(dataIndex10);
+                        CompoundTag dataIndex13 = new CompoundTag();
+                        (entitytospawn).saveWithoutId(dataIndex13);
+                        dataIndex13.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
+                            public double getValue() {
+                                CompoundTag dataIndex12 = new CompoundTag();
+                                entity.saveWithoutId(dataIndex12);
+                                return dataIndex12.getCompound("ForgeData").getDouble("friend_num");
+                            }
+                        }.getValue()));
+                        (entitytospawn).load(dataIndex13);
+                        if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                            _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MANIFESTATION.get(), 100, 1, false, false));
                     }
-                    CompoundTag dataIndex4 = new CompoundTag();
-                    (entitytospawn).saveWithoutId(dataIndex4);
-                    dataIndex4.getCompound("ForgeData").putString("OWNER_UUID", (entity.getStringUUID()));
-                    (entitytospawn).load(dataIndex4);
-                    CompoundTag dataIndex7 = new CompoundTag();
-                    (entitytospawn).saveWithoutId(dataIndex7);
-                    dataIndex7.getCompound("ForgeData").putDouble("friend_num", (new Object() {
-                        public double getValue() {
-                            CompoundTag dataIndex6 = new CompoundTag();
-                            entity.saveWithoutId(dataIndex6);
-                            return dataIndex6.getCompound("ForgeData").getDouble("friend_num");
-                        }
-                    }.getValue()));
-                    (entitytospawn).load(dataIndex7);
-                    CompoundTag dataIndex10 = new CompoundTag();
-                    (entitytospawn).saveWithoutId(dataIndex10);
-                    dataIndex10.getCompound("ForgeData").putDouble("friend_num2", (new Object() {
-                        public double getValue() {
-                            CompoundTag dataIndex9 = new CompoundTag();
-                            entity.saveWithoutId(dataIndex9);
-                            return dataIndex9.getCompound("ForgeData").getDouble("friend_num");
-                        }
-                    }.getValue()));
-                    (entitytospawn).load(dataIndex10);
-                    CompoundTag dataIndex13 = new CompoundTag();
-                    (entitytospawn).saveWithoutId(dataIndex13);
-                    dataIndex13.getCompound("ForgeData").putDouble("friend_num_worker", (new Object() {
-                        public double getValue() {
-                            CompoundTag dataIndex12 = new CompoundTag();
-                            entity.saveWithoutId(dataIndex12);
-                            return dataIndex12.getCompound("ForgeData").getDouble("friend_num");
-                        }
-                    }.getValue()));
-                    (entitytospawn).load(dataIndex13);
-                    if ((entitytospawn) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.MANIFESTATION.get(), 100, 1, false, false));
                 }
                 if (entity instanceof Player _player && !_player.level().isClientSide())
                     _player.displayClientMessage(Component.literal("Rika.."), false);

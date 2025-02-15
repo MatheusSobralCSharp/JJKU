@@ -13,24 +13,20 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
@@ -51,7 +47,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
-@Mixin(value = AIBlueProcedure.class, priority = 3000)
+@Mixin(value = AIBlueProcedure.class, priority = -10000)
 public abstract class AIBlueProcedureMixin {
 
     /**
@@ -62,6 +58,8 @@ public abstract class AIBlueProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             ItemStack old_health = ItemStack.EMPTY;
             boolean logic_a = false;
@@ -99,16 +97,16 @@ public abstract class AIBlueProcedureMixin {
 
             if (entity instanceof BlackHoleEntity) {
                 if (entity.getPersistentData().getDouble("Ult") == 0) {
-                    if (((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 64.0) {
-                        ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 0.8, 64.0));
+                    if (((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 64.0) {
+                        ((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 0.8, 64.0));
                     }
                 } else {
-                    if (((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 120.0) {
-                        ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 0.8, 64.0));
+                    if (((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() < 120.0) {
+                        ((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).setBaseValue(Math.min(((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() + 0.8, 64.0));
                     }
                 }
 
-                dis = ((LivingEntity) entity).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).getBaseValue() * 10.0;
+                dis = ((LivingEntity) entity).getAttribute(JujutsucraftModAttributes.SIZE.get()).getBaseValue() * 10.0;
                 ServerLevel _level;
                 if (world instanceof ServerLevel) {
                     _level = (ServerLevel) world;
@@ -123,8 +121,7 @@ public abstract class AIBlueProcedureMixin {
                 if (entity_a instanceof LivingEntity) {
                     entity_a.setDeltaMovement(new Vec3(0.0, 0.0, 0.0));
                     entity_a.teleportTo(x, y, z);
-                    if (entity_a instanceof ServerPlayer) {
-                        ServerPlayer _serverPlayer = (ServerPlayer) entity_a;
+                    if (entity_a instanceof ServerPlayer _serverPlayer) {
                         _serverPlayer.connection.teleport(x, y, z, entity_a.getYRot(), entity_a.getXRot());
                     }
                 }
@@ -135,7 +132,7 @@ public abstract class AIBlueProcedureMixin {
             if (entity.getPersistentData().getBoolean("flag_start")) {
                 if (entity.getPersistentData().getBoolean("circle")) {
                     if (entity.getPersistentData().getDouble("NameRanged_ranged") != 0.0 && entity_a instanceof LivingEntity && entity.getPersistentData().getDouble("NameRanged_ranged") == entity_a.getPersistentData().getDouble("NameRanged")) {
-                        RotateEntityProcedure.execute((double) entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getX(), (double) entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getY(), (double) entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getZ(), entity);
+                        RotateEntityProcedure.execute(entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getX(), entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getY(), entity_a.level().clip(new ClipContext(entity_a.getEyePosition(1.0F), entity_a.getEyePosition(1.0F).add(entity_a.getViewVector(1.0F).scale(0.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity_a)).getBlockPos().getZ(), entity);
                     }
 
                     entity.setYRot(entity.getYRot() + 90.0F);
@@ -151,7 +148,7 @@ public abstract class AIBlueProcedureMixin {
                     }
 
                     entity.getPersistentData().putBoolean("free", true);
-                    GetPowerForwardProcedure.execute((double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(24.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX(), (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(24.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY(), (double) entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(24.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ(), entity);
+                    GetPowerForwardProcedure.execute(entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(24.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX(), entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(24.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY(), entity.level().clip(new ClipContext(entity.getEyePosition(1.0F), entity.getEyePosition(1.0F).add(entity.getViewVector(1.0F).scale(24.0)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ(), entity);
                     entity.setDeltaMovement(new Vec3(entity.getPersistentData().getDouble("x_power") * 0.4, entity.getPersistentData().getDouble("y_power") * 0.4, entity.getPersistentData().getDouble("z_power") * 0.4));
                 } else {
                     entity.setDeltaMovement(new Vec3(entity.getPersistentData().getDouble("x_power") * 0.0, entity.getPersistentData().getDouble("y_power") * 0.0, entity.getPersistentData().getDouble("z_power") * 0.0));
@@ -165,18 +162,18 @@ public abstract class AIBlueProcedureMixin {
                     if (world instanceof Level) {
                         _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 1.0F);
+                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 1.0F);
                         } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 1.0F, false);
+                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 1.0F, false);
                         }
                     }
 
                     if (world instanceof Level) {
                         _level = (Level) world;
                         if (!_level.isClientSide()) {
-                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 0.5F);
+                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 0.5F);
                         } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 0.5F, false);
+                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, (float) (1.5 + CNT6), 0.5F, false);
                         }
                     }
 
@@ -209,7 +206,7 @@ public abstract class AIBlueProcedureMixin {
                         entity.getPersistentData().putDouble("BlockDamage", 3.5 * (range + 0.01) * CNT6);
                         entity.getPersistentData().putBoolean("noParticle", entity instanceof BlackHoleEntity);
                         BlockDestroyAllDirectionProcedure.execute(world, x_pos, y_pos, z_pos, entity);
-                        entity.getPersistentData().putDouble("BlockRange", Math.min(9.0 * CNT6, entity.getPersistentData().getDouble("cnt1") * 1.0));
+                        entity.getPersistentData().putDouble("BlockRange", Math.min(9.0 * CNT6, entity.getPersistentData().getDouble("cnt1")));
                         entity.getPersistentData().putDouble("BlockDamage", 1.5 * (range + 0.01) * CNT6);
                         entity.getPersistentData().putBoolean("noParticle", entity instanceof BlackHoleEntity);
                         BlockDestroyAllDirectionProcedure.execute(world, x_pos, y_pos, z_pos, entity);
@@ -219,7 +216,7 @@ public abstract class AIBlueProcedureMixin {
                         entity.getPersistentData().putDouble("BlockDamage", 3.5 * (range + 0.01) * CNT6 * 2);
                         entity.getPersistentData().putBoolean("noParticle", entity instanceof BlackHoleEntity);
                         BlockDestroyAllDirectionProcedure.execute(world, x_pos, y_pos, z_pos, entity);
-                        entity.getPersistentData().putDouble("BlockRange", Math.min(9.0 * CNT6, entity.getPersistentData().getDouble("cnt1") * 1.0) * 2);
+                        entity.getPersistentData().putDouble("BlockRange", Math.min(9.0 * CNT6, entity.getPersistentData().getDouble("cnt1")) * 2);
                         entity.getPersistentData().putDouble("BlockDamage", 1.5 * (range + 0.01) * CNT6 * 2);
                         entity.getPersistentData().putBoolean("noParticle", entity instanceof BlackHoleEntity);
                         BlockDestroyAllDirectionProcedure.execute(world, x_pos, y_pos, z_pos, entity);
@@ -259,7 +256,7 @@ public abstract class AIBlueProcedureMixin {
 
                                     logic_a = true;
                                     if (entityiterator instanceof Player) {
-                                        if (((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique != 16.0 && ((JujutsucraftModVariables.PlayerVariables) entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 != 16.0) {
+                                        if (entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique != 16.0 && entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 != 16.0) {
                                             continue;
                                         }
                                     } else if (!(entityiterator instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity)) {
@@ -267,8 +264,7 @@ public abstract class AIBlueProcedureMixin {
                                     }
 
                                     ItemStack var63;
-                                    if (entityiterator instanceof LivingEntity) {
-                                        LivingEntity _entGetArmor = (LivingEntity) entityiterator;
+                                    if (entityiterator instanceof LivingEntity _entGetArmor) {
                                         var63 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                                     } else {
                                         var63 = ItemStack.EMPTY;
@@ -400,31 +396,31 @@ public abstract class AIBlueProcedureMixin {
                             }
 
                             _livEnt116 = (LivingEntity) entity_a;
-                        } while (_livEnt116.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()));
+                        } while (_livEnt116.hasEffect(JujutsucraftModMobEffects.DOMAIN_EXPANSION.get()));
 
                         entityiterator.setDeltaMovement(new Vec3(x_knockback, Math.min(y_knockback, 1.5), z_knockback));
                         if (entityiterator instanceof Player) {
                             boolean _setval2 = true;
                             Entity finalEntityiterator1 = entityiterator;
-                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.p_flag_power = _setval2;
                                 capability.syncPlayerVariables(finalEntityiterator1);
                             });
                             double finalX_knockback = x_knockback;
                             Entity finalEntityiterator = entityiterator;
-                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.p_x_power = finalX_knockback;
                                 capability.syncPlayerVariables(finalEntityiterator);
                             });
                             double _setval = Math.min(y_knockback, 1.5);
                             Entity finalEntityiterator2 = entityiterator;
-                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.p_y_power = _setval;
                                 capability.syncPlayerVariables(finalEntityiterator2);
                             });
                             double finalZ_knockback = z_knockback;
                             Entity finalEntityiterator3 = entityiterator;
-                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            entityiterator.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.p_z_power = finalZ_knockback;
                                 capability.syncPlayerVariables(finalEntityiterator3);
                             });
@@ -455,9 +451,9 @@ public abstract class AIBlueProcedureMixin {
                 if (logic_b && world instanceof Level) {
                     _level = (Level) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:crush")), SoundSource.NEUTRAL, 0.25F, 1.0F);
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:crush")), SoundSource.NEUTRAL, 0.25F, 1.0F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:crush")), SoundSource.NEUTRAL, 0.25F, 1.0F, false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:crush")), SoundSource.NEUTRAL, 0.25F, 1.0F, false);
                     }
                 }
 
@@ -472,7 +468,7 @@ public abstract class AIBlueProcedureMixin {
                             entity_a.getPersistentData().putDouble("skill", 0.0);
                             if (entity_a instanceof LivingEntity) {
                                 _entity = (LivingEntity) entity_a;
-                                _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.STAR_RAGE.get());
+                                _entity.removeEffect(JujutsucraftModMobEffects.STAR_RAGE.get());
                             }
 
                             if (entity_a instanceof Player && entity_a instanceof Player) {
@@ -501,7 +497,7 @@ public abstract class AIBlueProcedureMixin {
                         entity_a.getPersistentData().putDouble("skill", 0.0);
                         if (entity_a instanceof LivingEntity) {
                             _entity = (LivingEntity) entity_a;
-                            _entity.removeEffect((MobEffect) JujutsucraftModMobEffects.STAR_RAGE.get());
+                            _entity.removeEffect(JujutsucraftModMobEffects.STAR_RAGE.get());
                         }
 
                         if (entity_a instanceof Player && entity_a instanceof Player) {
@@ -525,7 +521,6 @@ public abstract class AIBlueProcedureMixin {
             SetCustomizedProcedure.execute(world, x, y, z, entity);
 
         }
-        ci.cancel();
     }
 
 }

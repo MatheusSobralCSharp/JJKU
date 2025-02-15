@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = WhenRespawnProcedure.class, priority = 3002)
+@Mixin(value = WhenRespawnProcedure.class, priority = -10000)
 public abstract class WhenRespawnMixin {
     public WhenRespawnMixin() {
     }
@@ -27,6 +27,8 @@ public abstract class WhenRespawnMixin {
 
     @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", remap = false, cancellable = true)
     private static void execute(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             ResourceLocation entityTypeKey = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
             if (entityTypeKey == null || !entityTypeKey.toString().startsWith("jujutsucraft")) {
@@ -38,6 +40,5 @@ public abstract class WhenRespawnMixin {
                 }
             }
         }
-        ci.cancel();
     }
 }

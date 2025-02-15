@@ -10,18 +10,15 @@ import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
@@ -38,7 +35,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.BiFunction;
 
-@Mixin(value = AIPureLoveCannonProcedure.class, priority = 3000)
+@Mixin(value = AIPureLoveCannonProcedure.class, priority = -10000)
 public abstract class AIPureLoveCannonProcedureMixin {
 
     /**
@@ -47,6 +44,8 @@ public abstract class AIPureLoveCannonProcedureMixin {
      */
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             Entity entity_a = null;
             boolean logic_attack = false;
@@ -70,17 +69,16 @@ public abstract class AIPureLoveCannonProcedureMixin {
             ServerLevel _level;
             if (world instanceof ServerLevel) {
                 _level = (ServerLevel) world;
-                _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_FIRE_SPARK.get(), x, y, z, 1, 1.0, 1.0, 1.0, 2.0);
+                _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_FIRE_SPARK.get(), x, y, z, 1, 1.0, 1.0, 1.0, 2.0);
             }
 
             if (world instanceof ServerLevel) {
                 _level = (ServerLevel) world;
-                _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x, y, z, 6, 1.0, 1.0, 1.0, 1.0);
+                _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x, y, z, 6, 1.0, 1.0, 1.0, 1.0);
             }
             if (world instanceof ServerLevel) {
-                if (entity instanceof PureLoveCannonEntity) {
-                    PureLoveCannonEntity _datEntL2 = (PureLoveCannonEntity) entity;
-                    if ((Boolean) _datEntL2.getEntityData().get(PureLoveCannonEntity.DATA_move)) {
+                if (entity instanceof PureLoveCannonEntity _datEntL2) {
+                    if (_datEntL2.getEntityData().get(PureLoveCannonEntity.DATA_move)) {
                         entity.getPersistentData().putDouble("cnt1", entity.getPersistentData().getDouble("cnt1") + 1.0);
                         if (entity.getPersistentData().getDouble("cnt2") == 0.0) {
                             if (entity.getPersistentData().getDouble("cnt1") > 12.0) {
@@ -88,18 +86,18 @@ public abstract class AIPureLoveCannonProcedureMixin {
                                     if (world instanceof ServerLevel) {
                                         _level = (ServerLevel) world;
                                         if (!_level.isClientSide()) {
-                                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 0.75F);
+                                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 0.75F);
                                         } else {
-                                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 0.75F, false);
+                                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 0.75F, false);
                                         }
                                     }
 
                                     if (world instanceof ServerLevel) {
                                         _level = (ServerLevel) world;
                                         if (!_level.isClientSide()) {
-                                            _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 1.0F);
+                                            _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 1.0F);
                                         } else {
-                                            _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 1.0F, false);
+                                            _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 2.0F, 1.0F, false);
                                         }
                                     }
 
@@ -163,12 +161,12 @@ public abstract class AIPureLoveCannonProcedureMixin {
                             z_pos = entity.getPersistentData().getDouble("z_pos");
                             if (world instanceof ServerLevel) {
                                 _level = (ServerLevel) world;
-                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle jujutsucraft:particle_thunder_blue ~ ~ ~ 8 8 8 2 150 force");
+                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput(), "particle jujutsucraft:particle_thunder_blue ~ ~ ~ 8 8 8 2 150 force");
                             }
 
                             if (world instanceof ServerLevel) {
                                 _level = (ServerLevel) world;
-                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput(), "particle minecraft:explosion ~ ~ ~ 8 8 8 1 150 force");
+                                _level.getServer().getCommands().performPrefixedCommand((new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput(), "particle minecraft:explosion ~ ~ ~ 8 8 8 1 150 force");
                             }
 
                             if (entity.getPersistentData().getDouble("cnt2") < 15.0) {
@@ -180,18 +178,18 @@ public abstract class AIPureLoveCannonProcedureMixin {
                                 if (world instanceof ServerLevel) {
                                     _level = (ServerLevel) world;
                                     if (!_level.isClientSide()) {
-                                        _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F);
+                                        _level.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F);
                                     } else {
-                                        _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F, false);
+                                        _level.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F, false);
                                     }
                                 }
 
                                 if (world instanceof ServerLevel) {
                                     _level = (ServerLevel) world;
                                     if (!_level.isClientSide()) {
-                                        _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.5F);
+                                        _level.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.5F);
                                     } else {
-                                        _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.5F, false);
+                                        _level.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.5F, false);
                                     }
                                 }
                             }
@@ -204,18 +202,18 @@ public abstract class AIPureLoveCannonProcedureMixin {
                                 if (world instanceof ServerLevel) {
                                     _level = (ServerLevel) world;
                                     if (!_level.isClientSide()) {
-                                        _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F);
+                                        _level.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F);
                                     } else {
-                                        _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F, false);
+                                        _level.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 1.0F, false);
                                     }
                                 }
 
                                 if (world instanceof ServerLevel) {
                                     _level = (ServerLevel) world;
                                     if (!_level.isClientSide()) {
-                                        _level.playSound((Player) null, BlockPos.containing(x_pos, y_pos, z_pos), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.75F);
+                                        _level.playSound(null, BlockPos.containing(x_pos, y_pos, z_pos), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.75F);
                                     } else {
-                                        _level.playLocalSound(x_pos, y_pos, z_pos, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.75F, false);
+                                        _level.playLocalSound(x_pos, y_pos, z_pos, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 5.0F, 0.75F, false);
                                     }
                                 }
                             }
@@ -248,8 +246,7 @@ public abstract class AIPureLoveCannonProcedureMixin {
                         logic_attack = true;
                         Entity _ent = entity;
                         _ent.teleportTo(entity_a.getPersistentData().getDouble("x_pos"), entity_a.getPersistentData().getDouble("y_pos"), entity_a.getPersistentData().getDouble("z_pos"));
-                        if (_ent instanceof ServerPlayer) {
-                            ServerPlayer _serverPlayer = (ServerPlayer) _ent;
+                        if (_ent instanceof ServerPlayer _serverPlayer) {
                             _serverPlayer.connection.teleport(entity_a.getPersistentData().getDouble("x_pos"), entity_a.getPersistentData().getDouble("y_pos"), entity_a.getPersistentData().getDouble("z_pos"), _ent.getYRot(), _ent.getXRot());
                         }
 
@@ -260,8 +257,7 @@ public abstract class AIPureLoveCannonProcedureMixin {
                         _ent.setYHeadRot(_ent.getYRot());
                         _ent.yRotO = _ent.getYRot();
                         _ent.xRotO = _ent.getXRot();
-                        if (_ent instanceof LivingEntity) {
-                            LivingEntity _entity = (LivingEntity) _ent;
+                        if (_ent instanceof LivingEntity _entity) {
                             _entity.yBodyRotO = _entity.getYRot();
                             _entity.yHeadRotO = _entity.getYRot();
                         }
@@ -275,18 +271,18 @@ public abstract class AIPureLoveCannonProcedureMixin {
                 if (Math.random() < 0.05 && world instanceof ServerLevel) {
                     _level = (ServerLevel) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()));
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()));
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()), false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 2.0F, (float) (0.5 + Math.random()), false);
                     }
                 }
 
                 if (Math.random() < 0.5 && world instanceof ServerLevel) {
                     _level = (ServerLevel) world;
                     if (!_level.isClientSide()) {
-                        _level.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 1.0F, 0.5F);
+                        _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 1.0F, 0.5F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 1.0F, 0.5F, false);
+                        _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.end_gateway.spawn")), SoundSource.NEUTRAL, 1.0F, 0.5F, false);
                     }
                 }
 
@@ -329,14 +325,12 @@ public abstract class AIPureLoveCannonProcedureMixin {
                     }
                 }
 
-                if (reChange && entity instanceof PureLoveCannonEntity) {
-                    PureLoveCannonEntity _datEntSetL = (PureLoveCannonEntity) entity;
+                if (reChange && entity instanceof PureLoveCannonEntity _datEntSetL) {
                     _datEntSetL.getEntityData().set(PureLoveCannonEntity.DATA_move, true);
                 }
 
             }
 
         }
-        ci.cancel();
     }
 }

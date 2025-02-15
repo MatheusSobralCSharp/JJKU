@@ -2,6 +2,7 @@ package net.mcreator.jujutsucraftaddon.mixins;
 
 import net.mcreator.jujutsucraft.entity.DomainExpansionEntityEntity;
 import net.mcreator.jujutsucraft.entity.EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity;
+import net.mcreator.jujutsucraft.entity.TodoAoiEntity;
 import net.mcreator.jujutsucraft.entity.UroTakakoEntity;
 import net.mcreator.jujutsucraft.init.JujutsucraftModGameRules;
 import net.mcreator.jujutsucraft.init.JujutsucraftModItems;
@@ -17,7 +18,7 @@ import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.procedures.AnimationDodgeProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.SukunaAttackAnimationsProcedure;
-import net.minecraft.core.Direction;
+import net.mcreator.jujutsucraftaddon.procedures.SwapTodoTarget;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -28,8 +29,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -41,7 +42,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = WhenEntityAttackedProcedure.class, priority = 3000)
+@Mixin(value = WhenEntityAttackedProcedure.class, priority = -10000)
 public abstract class WhenEntityAttackedProcedureMixin {
     public WhenEntityAttackedProcedureMixin() {
     }
@@ -51,8 +52,10 @@ public abstract class WhenEntityAttackedProcedureMixin {
      * @reason Change The Logic from attacks in jujutsucraft + add animations for attacks ( also that gives the mahoraga adaptation too )
      */
 
-    @Inject(at = @At("HEAD"), method = "Lnet/mcreator/jujutsucraft/procedures/WhenEntityAttackedProcedure;execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;D)V", remap = false, cancellable = true)
+    @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;D)V", remap = false, cancellable = true)
     private static void execute(Event event, LevelAccessor world, double x, double y, double z, DamageSource damagesource, Entity entity, Entity sourceentity, double amount, CallbackInfo ci) {
+        ci.cancel();
+
         if (damagesource != null && entity != null && sourceentity != null) {
             String STR1 = "";
             ItemStack item_A = ItemStack.EMPTY;
@@ -72,9 +75,32 @@ public abstract class WhenEntityAttackedProcedureMixin {
             if ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Run == 1) {
                 if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                     if (!(sourceentity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(JujutsucraftaddonModMobEffects.ANIMATION.get()))) {
-                        _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.ANIMATION.get(), 20, 1, false, false));
+                        _entity.addEffect(new MobEffectInstance(JujutsucraftaddonModMobEffects.ANIMATION.get(), 10, 1, false, false));
                     }
 
+            }
+
+            if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 20) {
+                if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePower >= 1000) {
+                    if (Math.random() < (1) / ((float) 60)) {
+                        SwapTodoTarget.execute(entity, world, sourceentity);
+                        AnimationDodgeProcedure.execute(world, entity);
+                        if (event != null && event.isCancelable()) {
+                            event.setCanceled(true);
+                        } else if (event != null && event.hasResult()) {
+                            event.setResult(Event.Result.DENY);
+                        }
+                    }
+                }
+            } else if (entity instanceof TodoAoiEntity) {
+                if (Math.random() < (1) / ((float) 60)) {
+                    SwapTodoTarget.execute(entity, world, sourceentity);
+                    if (event != null && event.isCancelable()) {
+                        event.setCanceled(true);
+                    } else if (event != null && event.hasResult()) {
+                        event.setResult(Event.Result.DENY);
+                    }
+                }
             }
 
 
@@ -97,8 +123,8 @@ public abstract class WhenEntityAttackedProcedureMixin {
                     sourceentity.getPersistentData().putDouble("cnt6", 4.0);
                     if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                         _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), 60, 1, false, false));
-                    double yaw = Math.toRadians((double) (sourceentity.getYRot() + 90.0F));
-                    double pitch = Math.toRadians((double) sourceentity.getXRot());
+                    double yaw = Math.toRadians(sourceentity.getYRot() + 90.0F);
+                    double pitch = Math.toRadians(sourceentity.getXRot());
                     sourceentity.getPersistentData().putDouble("x_pos", entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (double) (2.0F + entity.getBbWidth()));
                     sourceentity.getPersistentData().putDouble("y_pos", entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (double) (2.0F + entity.getBbWidth()));
                     sourceentity.getPersistentData().putDouble("z_pos", entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (double) (2.0F + entity.getBbWidth()));
@@ -117,8 +143,8 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         entity.getPersistentData().putDouble("cnt6", 4.0);
                         if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                             _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), 60, 1, false, false));
-                        double yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-                        double pitch = Math.toRadians((double) entity.getXRot());
+                        double yaw = Math.toRadians(entity.getYRot() + 90.0F);
+                        double pitch = Math.toRadians(entity.getXRot());
                         entity.getPersistentData().putDouble("x_pos", entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (double) (2.0F + entity.getBbWidth()));
                         entity.getPersistentData().putDouble("y_pos", entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (double) (2.0F + entity.getBbWidth()));
                         entity.getPersistentData().putDouble("z_pos", entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (double) (2.0F + entity.getBbWidth()));
@@ -136,8 +162,8 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         entity.getPersistentData().putDouble("cnt6", 4.0);
                         if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                             _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), 60, 1, false, false));
-                        double yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-                        double pitch = Math.toRadians((double) entity.getXRot());
+                        double yaw = Math.toRadians(entity.getYRot() + 90.0F);
+                        double pitch = Math.toRadians(entity.getXRot());
                         entity.getPersistentData().putDouble("x_pos", entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (double) (2.0F + entity.getBbWidth()));
                         entity.getPersistentData().putDouble("y_pos", entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (double) (2.0F + entity.getBbWidth()));
                         entity.getPersistentData().putDouble("z_pos", entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (double) (2.0F + entity.getBbWidth()));
@@ -182,16 +208,16 @@ public abstract class WhenEntityAttackedProcedureMixin {
                 LivingEntity _entGetArmor;
                 LivingEntity _livEnt;
                 if (sourceentity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo"))) && !sourceentity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:ranged_ammo_no_move"))) && LogicStartPassiveProcedure.execute(entity)) {
-                    NUM1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
-                    NUM2 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
+                    NUM1 = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique;
+                    NUM2 = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2;
                     if ((NUM1 == 38.0 || NUM2 == 38.0 || entity instanceof UroTakakoEntity) && sourceentity.getBbWidth() + sourceentity.getBbHeight() <= (entity.getBbWidth() + entity.getBbHeight()) * 4.0F && entity instanceof LivingEntity) {
                         _entGetArmor = (LivingEntity) entity;
-                        if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get())) {
+                        if (_entGetArmor.hasEffect(JujutsucraftModMobEffects.GUARD.get())) {
                             label522:
                             {
                                 if (entity instanceof LivingEntity) {
                                     _livEnt = (LivingEntity) entity;
-                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
+                                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.NEUTRALIZATION.get())) {
                                         break label522;
                                     }
                                 }
@@ -229,8 +255,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                             var10000 = null;
                         }
 
-                        if (entity instanceof Mob) {
-                            Mob _mobEnt4 = (Mob) entity;
+                        if (entity instanceof Mob _mobEnt4) {
                             var10001 = _mobEnt4.getTarget();
                         } else {
                             var10001 = null;
@@ -254,48 +279,42 @@ public abstract class WhenEntityAttackedProcedureMixin {
 
                             label502:
                             {
-                                if (entity instanceof TamableAnimal) {
-                                    TamableAnimal _tamEnt = (TamableAnimal) entity;
+                                if (entity instanceof TamableAnimal _tamEnt) {
                                     if (_tamEnt.isTame()) {
                                         break label502;
                                     }
                                 }
 
-                                if (!(sourceentity instanceof TamableAnimal)) {
+                                if (!(sourceentity instanceof TamableAnimal _tamEnt)) {
                                     break label523;
                                 }
 
-                                TamableAnimal _tamEnt = (TamableAnimal) sourceentity;
                                 if (!_tamEnt.isTame()) {
                                     break label523;
                                 }
                             }
 
-                            if (entity instanceof TamableAnimal) {
-                                TamableAnimal _tamEnt = (TamableAnimal) entity;
+                            if (entity instanceof TamableAnimal _tamEnt) {
                                 var10000 = _tamEnt.getOwner();
                             } else {
                                 var10000 = null;
                             }
 
                             if (var10000 != sourceentity) {
-                                if (sourceentity instanceof TamableAnimal) {
-                                    TamableAnimal _tamEnt = (TamableAnimal) sourceentity;
+                                if (sourceentity instanceof TamableAnimal _tamEnt) {
                                     var10000 = _tamEnt.getOwner();
                                 } else {
                                     var10000 = null;
                                 }
 
                                 if (var10000 != entity) {
-                                    if (entity instanceof TamableAnimal) {
-                                        TamableAnimal _tamEnt = (TamableAnimal) entity;
+                                    if (entity instanceof TamableAnimal _tamEnt) {
                                         var10000 = _tamEnt.getOwner();
                                     } else {
                                         var10000 = null;
                                     }
 
-                                    if (sourceentity instanceof TamableAnimal) {
-                                        TamableAnimal _tamEnt = (TamableAnimal) sourceentity;
+                                    if (sourceentity instanceof TamableAnimal _tamEnt) {
                                         var10001 = _tamEnt.getOwner();
                                     } else {
                                         var10001 = null;
@@ -319,7 +338,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                 cancel = true;
                                 if (entity instanceof LivingEntity) {
                                     _entGetArmor = (LivingEntity) entity;
-                                    if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                    if (_entGetArmor.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                         break label505;
                                     }
                                 }
@@ -329,7 +348,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                 }
 
                                 _livEnt = (LivingEntity) sourceentity;
-                                if (!_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                if (!_livEnt.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                     break label541;
                                 }
                             }
@@ -375,9 +394,9 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         {
                             if (sourceentity instanceof LivingEntity) {
                                 _entGetArmor = (LivingEntity) sourceentity;
-                                if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()) && sourceentity instanceof LivingEntity) {
+                                if (_entGetArmor.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()) && sourceentity instanceof LivingEntity) {
                                     _livEnt = (LivingEntity) sourceentity;
-                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
+                                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get())) {
                                         break label507;
                                     }
                                 }
@@ -387,8 +406,8 @@ public abstract class WhenEntityAttackedProcedureMixin {
                             {
                                 if (sourceentity instanceof LivingEntity) {
                                     _livEnt = (LivingEntity) sourceentity;
-                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
-                                        var46 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()).getAmplifier();
+                                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get())) {
+                                        var46 = _livEnt.getEffect(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get()).getAmplifier();
                                         break label391;
                                     }
                                 }
@@ -406,13 +425,13 @@ public abstract class WhenEntityAttackedProcedureMixin {
 
                     if (entity instanceof LivingEntity) {
                         _entGetArmor = (LivingEntity) entity;
-                        if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.PRAYER_SONG.get())) {
+                        if (_entGetArmor.hasEffect(JujutsucraftModMobEffects.PRAYER_SONG.get())) {
                             label381:
                             {
                                 if (entity instanceof LivingEntity) {
                                     _livEnt = (LivingEntity) entity;
-                                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get())) {
-                                        var46 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
+                                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.GUARD.get())) {
+                                        var46 = _livEnt.getEffect(JujutsucraftModMobEffects.GUARD.get()).getAmplifier();
                                         break label381;
                                     }
                                 }
@@ -422,6 +441,19 @@ public abstract class WhenEntityAttackedProcedureMixin {
 
                             if (var46 > 0) {
                                 cancel = true;
+                                if (entity instanceof LivingEntity _livEnt1) {
+                                    if (!_livEnt1.level().isClientSide()) {
+                                        int amplifier = 0; // Default amplifier
+                                        if (_livEnt1.hasEffect(MobEffects.DAMAGE_BOOST)) {
+                                            MobEffectInstance currentEffect = _livEnt1.getEffect(MobEffects.DAMAGE_BOOST);
+                                            if (currentEffect != null) {
+                                                amplifier = currentEffect.getAmplifier() + 1; // Increase amplifier by 1
+                                            }
+                                        }
+                                        // Add or update the effect with the new amplifier
+                                        _livEnt1.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, amplifier, false, false));
+                                    }
+                                }
                             }
                         }
                     }
@@ -461,14 +493,14 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                     if (entity instanceof LivingEntity) {
                                         _livEnt = (LivingEntity) entity;
                                         if (!_livEnt.level().isClientSide()) {
-                                            _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.CANCEL_CURSED_TECHNIQUE.get(), 1, 0, false, false));
+                                            _livEnt.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CANCEL_CURSED_TECHNIQUE.get(), 60, 0, false, false));
                                         }
                                     }
 
                                     if (entity instanceof LivingEntity) {
                                         _livEnt = (LivingEntity) entity;
                                         if (!_livEnt.level().isClientSide()) {
-                                            _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.UNSTABLE.get(), 10, 0, false, false));
+                                            _livEnt.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.UNSTABLE.get(), 60, 0, false, false));
                                         }
                                     }
                                 }
@@ -478,15 +510,15 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         LivingEntity _livEnt6;
                         if (sourceentity instanceof LivingEntity) {
                             _entGetArmor = (LivingEntity) sourceentity;
-                            if (_entGetArmor.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()) && entity instanceof LivingEntity) {
+                            if (_entGetArmor.hasEffect(JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()) && entity instanceof LivingEntity) {
                                 _livEnt6 = (LivingEntity) entity;
-                                if (_livEnt6.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                if (_livEnt6.hasEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
                                     label352:
                                     {
                                         if (entity instanceof LivingEntity) {
                                             _livEnt = (LivingEntity) entity;
-                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
-                                                var46 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getAmplifier();
+                                            if (_livEnt.hasEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                                var46 = _livEnt.getEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getAmplifier();
                                                 break label352;
                                             }
                                         }
@@ -498,11 +530,11 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                     double var48;
                                     label347:
                                     {
-                                        var48 = (double) var46;
+                                        var48 = var46;
                                         if (sourceentity instanceof LivingEntity) {
                                             _livEnt = (LivingEntity) sourceentity;
-                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get())) {
-                                                var44 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()).getAmplifier();
+                                            if (_livEnt.hasEffect(JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get())) {
+                                                var44 = _livEnt.getEffect(JujutsucraftModMobEffects.DOMAIN_AMPLIFICATION.get()).getAmplifier();
                                                 break label347;
                                             }
                                         }
@@ -512,11 +544,11 @@ public abstract class WhenEntityAttackedProcedureMixin {
 
                                     label342:
                                     {
-                                        NUM1 = (double) Math.round(var48 - Math.ceil((double) ((var44 + 10) / 10)));
+                                        NUM1 = (double) Math.round(var48 - Math.ceil((var44 + 10) / 10));
                                         if (entity instanceof LivingEntity) {
                                             _livEnt = (LivingEntity) entity;
-                                            if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
-                                                var48 = (double) _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getDuration();
+                                            if (_livEnt.hasEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                                var48 = _livEnt.getEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get()).getDuration();
                                                 break label342;
                                             }
                                         }
@@ -527,19 +559,18 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                     NUM2 = var48;
                                     if (entity instanceof LivingEntity) {
                                         _livEnt = (LivingEntity) entity;
-                                        _livEnt.removeEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get());
+                                        _livEnt.removeEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get());
                                     }
 
                                     if (NUM1 >= 0.0) {
                                         if (entity instanceof LivingEntity) {
                                             _livEnt = (LivingEntity) entity;
                                             if (!_livEnt.level().isClientSide()) {
-                                                _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get(), (int) NUM2, (int) NUM1));
+                                                _livEnt.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.INFINITY_EFFECT.get(), (int) NUM2, (int) NUM1));
                                             }
                                         }
 
-                                        if (world instanceof ServerLevel) {
-                                            ServerLevel _level = (ServerLevel) world;
+                                        if (world instanceof ServerLevel _level) {
                                             _level.sendParticles(ParticleTypes.ENCHANTED_HIT, x, y, z, 20, 0.5, 0.5, 0.5, 1.0);
                                         }
                                     }
@@ -563,12 +594,12 @@ public abstract class WhenEntityAttackedProcedureMixin {
                         }
 
                         if (item_A.getItem() == JujutsucraftModItems.MAHORAGA_WHEEL_HELMET.get() || item_A.getItem() == JujutsucraftModItems.MAHORAGA_BODY_HELMET.get()) {
-                            mahorage = sourceentity instanceof Player ? ((JujutsucraftModVariables.PlayerVariables) sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 16.0 || (sourceentity.getPersistentData().getDouble("IsMahoraga") == 1.0) || ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1) : sourceentity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity || sourceentity instanceof IgrisEntity || sourceentity instanceof Shadow1Entity;
+                            mahorage = sourceentity instanceof Player ? sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 16.0 || (sourceentity.getPersistentData().getDouble("IsMahoraga") == 1.0) || ((sourceentity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Mahoraga == 1) : sourceentity instanceof EightHandledSwrodDivergentSilaDivineGeneralMahoragaEntity || sourceentity instanceof IgrisEntity || sourceentity instanceof Shadow1Entity;
                             NUM1 = 0.0;
                             STR1 = "";
                             if (NUM1 == 0.0 && entity instanceof LivingEntity) {
                                 _livEnt = (LivingEntity) entity;
-                                if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
+                                if (_livEnt.hasEffect(JujutsucraftModMobEffects.INFINITY_EFFECT.get())) {
                                     STR1 = "skill205";
                                     if (item_A.getOrCreateTag().getDouble(STR1) == 0.0) {
                                         NUM1 = 1.0;
@@ -577,7 +608,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                         if (entity instanceof LivingEntity) {
                                             _livEnt = (LivingEntity) entity;
                                             if (!_livEnt.level().isClientSide()) {
-                                                _livEnt.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.NEUTRALIZATION.get(), 1, 1));
+                                                _livEnt.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.NEUTRALIZATION.get(), 1, 1));
                                             }
                                         }
                                     }
@@ -613,8 +644,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                             ItemStack var10003;
                                             if (entity.getPersistentData().getBoolean("CursedSpirit")) {
                                                 ItemStack var10002;
-                                                if (sourceentity instanceof LivingEntity) {
-                                                    LivingEntity _livEnt7 = (LivingEntity) sourceentity;
+                                                if (sourceentity instanceof LivingEntity _livEnt7) {
                                                     var10002 = _livEnt7.getMainHandItem();
                                                 } else {
                                                     var10002 = ItemStack.EMPTY;
@@ -662,8 +692,7 @@ public abstract class WhenEntityAttackedProcedureMixin {
                                     ++NUM1;
                                 }
 
-                                if (sourceentity instanceof Player) {
-                                    Player _player = (Player) sourceentity;
+                                if (sourceentity instanceof Player _player) {
                                     if (!_player.level().isClientSide()) {
                                         _player.displayClientMessage(Component.literal(Component.translatable("jujutsu.message.adaptation_start").getString()), false);
                                     }
@@ -675,6 +704,5 @@ public abstract class WhenEntityAttackedProcedureMixin {
             }
 
         }
-        ci.cancel();
     }
 }

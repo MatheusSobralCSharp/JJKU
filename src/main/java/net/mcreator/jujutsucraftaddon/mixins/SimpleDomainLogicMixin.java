@@ -9,13 +9,10 @@ import net.mcreator.jujutsucraft.procedures.SimpleDomainEffectStartedappliedProc
 import net.mcreator.jujutsucraft.procedures.SimpleDomainOnEffectActiveTickProcedure;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.procedures.YamatoToolInHandTickProcedure;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,7 +29,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = SimpleDomainOnEffectActiveTickProcedure.class, priority = 3000)
+@Mixin(value = SimpleDomainOnEffectActiveTickProcedure.class, priority = -10000)
 public abstract class SimpleDomainLogicMixin {
     public SimpleDomainLogicMixin() {
     }
@@ -44,6 +41,8 @@ public abstract class SimpleDomainLogicMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             double z_pos;
             double num1;
@@ -65,10 +64,9 @@ public abstract class SimpleDomainLogicMixin {
                 pitch = 0.0;
                 yaw = 0.0;
                 num2 = 0.0;
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt = (LivingEntity) entity;
-                    if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                        var10000 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier();
+                if (entity instanceof LivingEntity _livEnt) {
+                    if (_livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                        var10000 = _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getAmplifier();
                         break label128;
                     }
                 }
@@ -82,8 +80,8 @@ public abstract class SimpleDomainLogicMixin {
                 {
                     if (entity instanceof LivingEntity) {
                         _livEnt = (LivingEntity) entity;
-                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                            var10000 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
+                        if (_livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                            var10000 = _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
                             break label121;
                         }
                     }
@@ -98,13 +96,13 @@ public abstract class SimpleDomainLogicMixin {
                         {
                             if (entity instanceof LivingEntity) {
                                 _livEnt7 = (LivingEntity) entity;
-                                if (_livEnt7.hasEffect((MobEffect) JujutsucraftModMobEffects.SIX_EYES.get())) {
+                                if (_livEnt7.hasEffect(JujutsucraftModMobEffects.SIX_EYES.get())) {
                                     break label113;
                                 }
                             }
 
-                            double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 1.0;
-                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                            double _setval = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange - 1.0;
+                            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                 capability.PlayerCursePowerChange = _setval;
                                 capability.syncPlayerVariables(entity);
                             });
@@ -124,7 +122,7 @@ public abstract class SimpleDomainLogicMixin {
                 if ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).SimpleDomainLevel <= 1.0) {
                     if (!ActiveTickConditionProcedure.execute(entity) && entity instanceof LivingEntity) {
                         _livEnt = (LivingEntity) entity;
-                        _livEnt.removeEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get());
+                        _livEnt.removeEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get());
                     }
                 }
 
@@ -132,8 +130,8 @@ public abstract class SimpleDomainLogicMixin {
                 {
                     if (entity instanceof LivingEntity) {
                         _livEnt = (LivingEntity) entity;
-                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                            var10000 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
+                        if (_livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                            var10000 = _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
                             break label105;
                         }
                     }
@@ -144,14 +142,14 @@ public abstract class SimpleDomainLogicMixin {
                 if (var10000 % 2 == 1) {
                     label138:
                     {
-                        num1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
-                        num2 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
+                        num1 = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique;
+                        num2 = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2;
                         if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("jujutsucraft:can_use_hollow_wicker_basket")))) {
                             label135:
                             {
                                 if (entity instanceof LivingEntity) {
                                     _livEnt7 = (LivingEntity) entity;
-                                    if (_livEnt7.hasEffect((MobEffect) JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
+                                    if (_livEnt7.hasEffect(JujutsucraftModMobEffects.SUKUNA_EFFECT.get())) {
                                         break label135;
                                     }
                                 }
@@ -162,14 +160,13 @@ public abstract class SimpleDomainLogicMixin {
                             }
                         }
 
-                        yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-                        pitch = Math.toRadians((double) entity.getXRot());
+                        yaw = Math.toRadians(entity.getYRot() + 90.0F);
+                        pitch = Math.toRadians(entity.getXRot());
                         x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (double) (-1.0F - entity.getBbWidth());
                         y_pos = entity.getY() + (double) entity.getBbHeight() * 0.5;
                         z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (double) (-1.0F - entity.getBbWidth());
-                        if (world instanceof ServerLevel) {
-                            ServerLevel _level = (ServerLevel) world;
-                            _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_HOLLOW_WICKER_BASKET.get(), x_pos, y_pos, z_pos, 0, 0.0, 0.0, 0.0, 0.0);
+                        if (world instanceof ServerLevel _level) {
+                            _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_HOLLOW_WICKER_BASKET.get(), x_pos, y_pos, z_pos, 0, 0.0, 0.0, 0.0, 0.0);
                         }
                     }
                 }
@@ -178,11 +175,11 @@ public abstract class SimpleDomainLogicMixin {
                 double var33;
                 label80:
                 {
-                    var33 = (double) entity.getBbWidth();
+                    var33 = entity.getBbWidth();
                     if (entity instanceof LivingEntity) {
                         _livEnt = (LivingEntity) entity;
-                        if (_livEnt.hasEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
-                            var10002 = _livEnt.getEffect((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
+                        if (_livEnt.hasEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get())) {
+                            var10002 = _livEnt.getEffect(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get()).getDuration();
                             break label80;
                         }
                     }
@@ -203,10 +200,9 @@ public abstract class SimpleDomainLogicMixin {
                 while (var37.hasNext()) {
                     Entity entityiterator = (Entity) var37.next();
                     if (entity != entityiterator && entity.getY() + (double) entity.getBbHeight() >= entityiterator.getY() && entity.getY() <= entityiterator.getY() + (double) entityiterator.getBbHeight()) {
-                        if (entityiterator instanceof LivingEntity) {
-                            LivingEntity _entity = (LivingEntity) entityiterator;
+                        if (entityiterator instanceof LivingEntity _entity) {
                             if (!_entity.level().isClientSide()) {
-                                _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.SIMPLE_DOMAIN.get(), 5, 0, true, true));
+                                _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.SIMPLE_DOMAIN.get(), 5, 0, true, true));
                             }
                         }
                         break;
@@ -215,6 +211,5 @@ public abstract class SimpleDomainLogicMixin {
             }
 
         }
-        ci.cancel();
     }
 }

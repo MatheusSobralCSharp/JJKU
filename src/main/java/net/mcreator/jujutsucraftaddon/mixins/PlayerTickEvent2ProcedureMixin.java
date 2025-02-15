@@ -12,7 +12,6 @@ import net.mcreator.jujutsucraftaddon.procedures.*;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -37,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Objects;
 
 
-@Mixin(value = PlayerTickEvent2Procedure.class, priority = 6000)
+@Mixin(value = PlayerTickEvent2Procedure.class, priority = -10000)
 public abstract class PlayerTickEvent2ProcedureMixin {
     public PlayerTickEvent2ProcedureMixin() {
     }
@@ -50,6 +49,8 @@ public abstract class PlayerTickEvent2ProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", remap = false, cancellable = true)
     private static void execute(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean changeTechnique = false;
             double PlayerCT2 = 0.0;
@@ -63,28 +64,27 @@ public abstract class PlayerTickEvent2ProcedureMixin {
             }
 
             if (entity.isAlive()) {
-                PlayerCT1 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique;
-                PlayerCT2 = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2;
+                PlayerCT1 = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique;
+                PlayerCT2 = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2;
                 if (entity.isShiftKeyDown()) {
                     StartGuardProcedure.execute(entity);
-                    if (entity instanceof LivingEntity) {
-                        LivingEntity _entity = (LivingEntity) entity;
+                    if (entity instanceof LivingEntity _entity) {
                         _entity.removeEffect(MobEffects.MOVEMENT_SPEED);
                     }
 
-                    if (!((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).flag_shift) {
+                    if (!entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).flag_shift) {
                         _setval = true;
                         boolean final_setval2 = _setval;
-                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                             capability.flag_shift = final_setval2;
                             capability.syncPlayerVariables(entity);
                         });
                         changeTechnique = true;
                     }
-                } else if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).flag_shift) {
+                } else if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).flag_shift) {
                     _setval = false;
                     boolean final_setval3 = _setval;
-                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                         capability.flag_shift = final_setval3;
                         capability.syncPlayerVariables(entity);
                     });
@@ -92,15 +92,15 @@ public abstract class PlayerTickEvent2ProcedureMixin {
                 }
 
                 if (changeTechnique && PlayerCT1 == 6.0) {
-                    old_name = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName;
+                    old_name = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerSelectCurseTechniqueName;
                     _setval = true;
                     boolean final_setval = _setval;
-                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                         capability.noChangeTechnique = final_setval;
                         capability.syncPlayerVariables(entity);
                     });
                     KeyChangeTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-                    if (!old_name.equals(((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerSelectCurseTechniqueName)) {
+                    if (!old_name.equals(entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerSelectCurseTechniqueName)) {
                         Entity _ent = entity;
                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                             _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), Objects.requireNonNull(_ent.level().getServer()), _ent), "playsound ui.button.click master @s");
@@ -133,7 +133,7 @@ public abstract class PlayerTickEvent2ProcedureMixin {
                 }
 
                 if (entity.level().getGameTime() % 12000 == 0) {
-                    if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 6) {
+                    if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique == 6) {
                         if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_REGENERATE_SHIKIGAMI)) {
                             if (!(entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(JujutsucraftaddonModMobEffects.REGENERATE_SHIKIGAMI.get()))) {
                                 if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -146,7 +146,7 @@ public abstract class PlayerTickEvent2ProcedureMixin {
 
                 if (entity.level().getGameTime() % 7200 == 0) {
                     if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_SUKUNA_POSSESSION_ENABLED)) {
-                        if (entity instanceof ServerPlayer && ((ServerPlayer) entity).level() instanceof ServerLevel
+                        if (entity instanceof ServerPlayer && entity.level() instanceof ServerLevel
                                 && ((ServerPlayer) entity).getAdvancements().getOrStartProgress(Objects.requireNonNull(((ServerPlayer) entity).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sukuna_finger_1")))).isDone()) {
                             if (!(entity instanceof ServerPlayer _plr1 && _plr1.level() instanceof ServerLevel
                                     && _plr1.getAdvancements().getOrStartProgress(Objects.requireNonNull(_plr1.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraftaddon:enchained")))).isDone())) {
@@ -175,10 +175,6 @@ public abstract class PlayerTickEvent2ProcedureMixin {
                     }
                 }
 
-                if (entity instanceof LivingEntity _livEnt49 && _livEnt49.hasEffect(JujutsucraftaddonModMobEffects.ANIMATION.get())) {
-                    ClickAnimation2Procedure.execute(world, entity);
-                }
-
                 if (entity.getPersistentData().getBoolean("PRESS_BURNOUT")) {
                     CounterBurnoutProcedure.execute(entity);
                 }
@@ -200,20 +196,19 @@ public abstract class PlayerTickEvent2ProcedureMixin {
                     ExtensionTickProcedure.execute(world, x, y, z, entity);
                 }
 
-                if (((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).p_flag_power) {
+                if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).p_flag_power) {
                     _setval = false;
                     boolean final_setval1 = _setval;
-                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                         capability.p_flag_power = final_setval1;
                         capability.syncPlayerVariables(entity);
                     });
-                    entity.setDeltaMovement(new Vec3(((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).p_x_power, ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).p_y_power, ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).p_z_power));
+                    entity.setDeltaMovement(new Vec3(entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).p_x_power, entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).p_y_power, entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).p_z_power));
                 }
 
             }
 
         }
-        ci.cancel();
     }
 }
 

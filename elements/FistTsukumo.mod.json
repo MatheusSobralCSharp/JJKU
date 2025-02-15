@@ -1,7 +1,0 @@
-{
-  "_fv": 73,
-  "_type": "procedure",
-  "definition": {
-    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"0\" y=\"0\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"text_binary_ops\"><value name=\"A\"><block type=\"get_player_select_curse_technique_name\"><value name=\"entity\"><block type=\"source_entity_from_deps\"></block></value></block></value><value name=\"B\"><block type=\"text\"><field name=\"TEXT\">Mass Black Hole Barrage</field></block></value></block></value><statement name=\"DO0\"><block type=\"call_procedure\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" inputs=\"undefined\"></mutation><field name=\"procedure\">Tsukumo2</field></block></statement></block></next></block></xml>"
-  }
-}

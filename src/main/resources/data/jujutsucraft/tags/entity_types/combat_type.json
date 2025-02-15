@@ -69,6 +69,8 @@
     "jujutsucraftaddon:uraume",
     "jujutsucraftaddon:satushi",
     "jujutsucraftaddon:clone",
-    "jujutsucraftaddon:fake_clones"
+    "jujutsucraftaddon:fake_clones",
+    "jujutsucraftaddon:erro",
+    "jujutsucraftaddon:error"
   ]
 }

@@ -1,11 +1,15 @@
 package net.mcreator.jujutsucraftaddon.mixins;
 
+import net.mcreator.jujutsucraft.entity.*;
 import net.mcreator.jujutsucraft.procedures.RangeAttackProcedure;
+import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.procedures.*;
-import net.minecraft.core.Direction;
+import net.mcreator.jujutsucraftaddon.procedures.BFMasteryProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.BlackFlashNerfedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.BlackFlashedProcedure;
+import net.mcreator.jujutsucraftaddon.procedures.ItadoriClan2Procedure;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
-@Mixin(value = RangeAttackProcedure.class, priority = 3000)
+@Mixin(value = RangeAttackProcedure.class, priority = -10000)
 public abstract class RangeAttackProcedureMixin {
 
     /**
@@ -36,9 +40,42 @@ public abstract class RangeAttackProcedureMixin {
             remap = false
     )
     private static double injection(double constant, LevelAccessor world, double x, double y, double z, Entity entity) {
-        if (!Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString().startsWith("jujutsucraft")) {
 
-            if (Math.random() < ((float) (((JujutsucraftaddonModVariables.PlayerVariables) entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).BFChance)) / ((float) 1000)) {
+        if (entity instanceof ItadoriShinjukuEntity || entity instanceof ItadoriYujiShinjukuEntity) {
+            if (((LivingEntity) entity).getHealth() <= ((LivingEntity) entity).getMaxHealth() / 4)  {
+                if (Math.random() < (1) / ((float) 50)) {
+                    return 0.001;
+                }
+            } else if (((LivingEntity) entity).getHealth() <= ((LivingEntity) entity).getMaxHealth() / 3) {
+                if (Math.random() < (1) / ((float) 100)) {
+                    return 0.001;
+                }
+            } else {
+                if (Math.random() < (1) / ((float) 250)) {
+                    return 0.001;
+                }
+            }
+        }
+
+        if (entity instanceof SukunaPerfectEntity || entity instanceof GojoSatoruEntity || entity instanceof OkkotsuYutaCullingGameEntity || entity instanceof NanamiKentoEntity || entity instanceof GojoSatoruSchoolDaysEntity || entity instanceof SukunaEntity) {
+            if (((LivingEntity) entity).getHealth() <= ((LivingEntity) entity).getMaxHealth() / 2) {
+                if (entity instanceof SukunaPerfectEntity) {
+                    if (Math.random() < (1) / ((float) 15)) {
+                        return 0.001;
+                    }
+                } else if (Math.random() < (1) / ((float) 25)) {
+                    return 0.001;
+                }
+            } else {
+                if (Math.random() < (1) / ((float) 50)) {
+                    return 0.001;
+                }
+            }
+        }
+
+
+        if (!Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString().startsWith("jujutsucraft")) {
+            if (Math.random() < ((float) (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables()).BFChance)) / ((float) 1000)) {
                 if ((world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_BLACK_FLASH_REWORKED))) {
                     if (!(entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE_BLACK_FLASH.get()))) {
                         if (entity.getPersistentData().getDouble("cnt_bf") >= 50.0) {
@@ -63,7 +100,11 @@ public abstract class RangeAttackProcedureMixin {
                     ordinal = 4),
             remap = false)
     private static void injectProcedure(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
-        KokusenSpawnProcedure.execute(entity);
+        if ((ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString().startsWith("jujutsucraft")) {
+            BlackFlashedProcedure.execute(world, x, y, z, entity);
+            return;
+        }
+
         if (!(Objects.requireNonNull(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType())).toString()).startsWith("jujutsucraft")) {
             if ((world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_BLACK_FLASH_REWORKED))) {
                 if (!(entity instanceof LivingEntity _livEnt1 && _livEnt1.hasEffect(JujutsucraftaddonModMobEffects.FATIGUE_BLACK_FLASH.get()))) {

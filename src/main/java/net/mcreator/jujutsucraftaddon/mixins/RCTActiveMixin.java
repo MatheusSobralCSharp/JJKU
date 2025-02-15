@@ -4,7 +4,6 @@ import net.mcreator.jujutsucraft.procedures.ReverseCursedTechniqueOnEffectActive
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
 import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
 import net.mcreator.jujutsucraftaddon.procedures.RctOutputProcedure;
-import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,9 +33,12 @@ public abstract class RCTActiveMixin {
             )},
             remap = false
     )
-    private static int injection0(int value, LevelAccessor world) {
+    private static int injection0(int value, LevelAccessor world, double x, double y, double z, Entity entity) {
         if (world != null) {
             int valueNew = world.getLevelData().getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_FATIGUE_RATE);
+            if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Profession).equals("Healer")) {
+                return valueNew / 2;
+            }
             return valueNew;
         } else {
             return value;
@@ -46,7 +48,7 @@ public abstract class RCTActiveMixin {
 
     @Inject(method = "execute", at = @At("HEAD"), remap = false)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
-        if (((JujutsucraftaddonModVariables.PlayerVariables) entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).RCTOutputActive) {
+        if (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables()).RCTOutputActive) {
             RctOutputProcedure.execute(world, entity);
         }
     }

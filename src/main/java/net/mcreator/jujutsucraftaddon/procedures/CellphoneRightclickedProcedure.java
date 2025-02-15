@@ -1,14 +1,12 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.network.chat.Component;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 
 public class CellphoneRightclickedProcedure {
     public static void execute(Entity entity) {

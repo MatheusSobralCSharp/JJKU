@@ -1,57 +1,78 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.server.level.ServerLevel;
-
-import net.minecraftforge.registries.ForgeRegistries;
-
-import net.minecraft.world.level.Level;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.client.player.AbstractClientPlayer;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
-import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
-import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
-
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import dev.kosmx.playerAnim.api.layered.ModifierLayer;
-import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.IAnimation;
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
+import dev.kosmx.playerAnim.api.layered.ModifierLayer;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
+import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraftaddon.entity.ItadoriShinjukuEntity;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModGameRules;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
 
 public class BlackFlashedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-        if (entity == null)
+        if (entity == null || !(world instanceof ServerLevel serverLevel))
             return;
+
         if (!((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()))) {
             if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                 _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 6000, 0, false, false));
         } else if ((entity instanceof LivingEntity) && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get())) {
-            if (world.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK)) {
-                if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) <= (world.getLevelData()
-                        .getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK_CAP))) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 6000,
-                                (int) ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) + 1),
-                                false, false));
+            if (!(entity instanceof ItadoriShinjukuEntity)) {
+                ResourceLocation entityTypeKey = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+                assert entityTypeKey != null;
+                if (entityTypeKey.toString().startsWith("jujutsucraft")) {
+                    if (serverLevel.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK)) {
+                        if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) <= (serverLevel.getLevelData()
+                                .getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK_CAP))) {
+                            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                                _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 1200,
+                                        (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) + 1,
+                                        false, false));
+                        }
+                    }
+                    if (Math.random() < (1) / ((float) 5)) {
+                        entity.getPersistentData().putDouble("cnt_reverse_lim", 0);
+                    }
+                } else {
+                    if (Math.random() < (1) / ((float) 2)) {
+                        if (serverLevel.getLevelData().getGameRules().getBoolean(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK)) {
+                            if ((entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) <= (serverLevel.getLevelData()
+                                    .getGameRules().getInt(JujutsucraftaddonModGameRules.JJKU_ZONE_STACK_CAP))) {
+                                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+                                    _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.ZONE.get(), 600,
+                                            (entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(JujutsucraftModMobEffects.ZONE.get()) ? Objects.requireNonNull(((LivingEntity) entity).getEffect(JujutsucraftModMobEffects.ZONE.get())).getAmplifier() : 0) + 1,
+                                            false, false));
+                            }
+                        }
+                    }
+
                 }
             }
+
             if (Math.random() <= 0.05) {
                 CompoundTag dataIndex8 = new CompoundTag();
                 entity.saveWithoutId(dataIndex8);
@@ -61,6 +82,10 @@ public class BlackFlashedProcedure {
                 if (entity instanceof LivingEntity _entity)
                     _entity.removeEffect(JujutsucraftModMobEffects.UNSTABLE.get());
             } else if (Math.random() <= 0.2) {
+                if (entity.getPersistentData().getBoolean("JujutsuSorcerer")) {
+                    if (entity instanceof LivingEntity _entity)
+                        _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.REVERSE_CURSED_TECHNIQUE.get(), 40, 2, false, false));
+                }
                 if (entity instanceof LivingEntity _entity)
                     _entity.removeEffect(MobEffects.WEAKNESS);
                 if (entity instanceof LivingEntity _entity)
@@ -109,7 +134,7 @@ public class BlackFlashedProcedure {
                         Entity _ent = entity;
                         if (!_ent.level().isClientSide() && _ent.getServer() != null) {
                             _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-                                    _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), (("execute as @s run title @s title {\"text\":\"" + "120%") + "" + "\",\"color\":\"aqua\",\"bold\":true}"));
+                                    _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), (("execute as @s run title @s title {\"text\":\"" + "120%") + "\",\"color\":\"aqua\",\"bold\":true}"));
                         }
                     }
                 }
@@ -233,6 +258,7 @@ public class BlackFlashedProcedure {
                 }
             }
         }
+
 
     }
 }

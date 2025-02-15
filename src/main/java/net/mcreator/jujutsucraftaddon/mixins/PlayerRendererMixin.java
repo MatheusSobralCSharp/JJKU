@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(value = PlayerRenderer.class, priority = 3000)
+@Mixin(value = PlayerRenderer.class, priority = -10000)
 public abstract class PlayerRendererMixin {
 
     /**

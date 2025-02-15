@@ -1,21 +1,19 @@
 package net.mcreator.jujutsucraftaddon.procedures;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-
-import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
 import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModMobEffects;
+import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModParticleTypes;
+import net.mcreator.jujutsucraftaddon.network.JujutsucraftaddonModVariables;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.Vec3;
 
 public class CounterProcedureProcedure {
     public static void execute(
@@ -44,17 +42,17 @@ public class CounterProcedureProcedure {
             }
             sourceentity.setDeltaMovement(new Vec3((10 * Math.cos((entity.getYRot() + 90) * (Math.PI / 180))), (-100), (10 * Math.sin((entity.getYRot() + 90) * (Math.PI / 180)))));
             if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, (int) ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.WEAKNESS) ?
-                        _livEnt.getEffect(MobEffects.WEAKNESS).getAmplifier() : 0) + 1), false, false));
+                _entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, (sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.WEAKNESS) ?
+                        _livEnt.getEffect(MobEffects.WEAKNESS).getAmplifier() : 0) + 1, false, false));
             if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, (int) ((sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ?
-                        _livEnt.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() : 0) + 1), false, false));
+                _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, (sourceentity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) ?
+                        _livEnt.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() : 0) + 1, false, false));
             if (world instanceof ServerLevel _level)
-                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.BLOOD.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + 1), (sourceentity.getZ()), 2, 0, 0, 0, 1);
+                _level.sendParticles(JujutsucraftaddonModParticleTypes.BLOOD.get(), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + 1), (sourceentity.getZ()), 2, 0, 0, 0, 1);
             if (world instanceof ServerLevel _level)
-                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.PUNCH.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
+                _level.sendParticles(JujutsucraftaddonModParticleTypes.PUNCH.get(), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
             if (world instanceof ServerLevel _level)
-                _level.sendParticles((SimpleParticleType) (JujutsucraftaddonModParticleTypes.PUNCH.get()), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
+                _level.sendParticles(JujutsucraftaddonModParticleTypes.PUNCH.get(), (sourceentity.getX() + Mth.nextInt(RandomSource.create(), -2, 2)), (sourceentity.getY() + Mth.nextInt(RandomSource.create(), 1, 2)), (sourceentity.getZ() + Mth.nextInt(RandomSource.create(), -1, 1)), 1, 0, 0, 0, 1);
             if (!(((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
                     .orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Gojo") || ((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null)
                     .orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna"))) {

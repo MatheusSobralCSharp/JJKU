@@ -1,24 +1,22 @@
 package net.mcreator.jujutsucraftaddon.item.model;
 
+import net.mcreator.jujutsucraftaddon.item.Artifact5Item;
+import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 
-import net.minecraft.resources.ResourceLocation;
-
-import net.mcreator.jujutsucraftaddon.item.Artifact5Item;
-
 public class Artifact5ItemModel extends GeoModel<Artifact5Item> {
-	@Override
-	public ResourceLocation getAnimationResource(Artifact5Item animatable) {
-		return new ResourceLocation("jujutsucraftaddon", "animations/artifact.animation.json");
-	}
+    @Override
+    public ResourceLocation getAnimationResource(Artifact5Item animatable) {
+        return new ResourceLocation("jujutsucraftaddon", "animations/artifact.animation.json");
+    }
 
-	@Override
-	public ResourceLocation getModelResource(Artifact5Item animatable) {
-		return new ResourceLocation("jujutsucraftaddon", "geo/artifact.geo.json");
-	}
+    @Override
+    public ResourceLocation getModelResource(Artifact5Item animatable) {
+        return new ResourceLocation("jujutsucraftaddon", "geo/artifact.geo.json");
+    }
 
-	@Override
-	public ResourceLocation getTextureResource(Artifact5Item animatable) {
-		return new ResourceLocation("jujutsucraftaddon", "textures/item/amuleto4.png");
-	}
+    @Override
+    public ResourceLocation getTextureResource(Artifact5Item animatable) {
+        return new ResourceLocation("jujutsucraftaddon", "textures/item/amuleto4.png");
+    }
 }

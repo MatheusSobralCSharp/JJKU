@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = SukunaFingerFoodEatenProcedure.class, priority = 3000)
+@Mixin(value = SukunaFingerFoodEatenProcedure.class, priority = -10000)
 public abstract class SukunaFingerFoodEatenProcedureMixin {
 
     /**
@@ -32,6 +32,8 @@ public abstract class SukunaFingerFoodEatenProcedureMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean success = false;
             boolean sukuna = false;
@@ -47,7 +49,7 @@ public abstract class SukunaFingerFoodEatenProcedureMixin {
             if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 6
                     || (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 21
                     || (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 1 || (entity instanceof Player _plr && _plr.getAbilities().instabuild)) {
-                if (!(entity instanceof ServerPlayer && ((ServerPlayer) entity).level() instanceof ServerLevel
+                if (!(entity instanceof ServerPlayer && entity.level() instanceof ServerLevel
                         && ((ServerPlayer) entity).getAdvancements().getOrStartProgress(((ServerPlayer) entity).server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:sukuna_finger_1"))).isDone())) {
                     if (((entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).Clans).equals("Sukuna")) {
                         if (Math.random() < (1) / ((float) 2)) {
@@ -105,13 +107,12 @@ public abstract class SukunaFingerFoodEatenProcedureMixin {
                 } else {
                     FingerEatedProcedure.execute(world, x, y, z, entity);
                 }
-            }  else {
+            } else {
                 if (entity instanceof Player _player && !_player.level().isClientSide())
                     _player.displayClientMessage(Component.literal("Nuh Uh"), false);
                 CongratulationsProcedure.execute(world, x, y, z);
             }
 
         }
-        ci.cancel();
     }
 }

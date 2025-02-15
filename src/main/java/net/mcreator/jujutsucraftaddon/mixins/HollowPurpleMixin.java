@@ -14,24 +14,19 @@ import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -49,11 +44,13 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-@Mixin(value = HollowPurpleProcedure.class, priority = 3000)
+@Mixin(value = HollowPurpleProcedure.class, priority = -10000)
 public abstract class HollowPurpleMixin {
 
     @Inject(at = @At("HEAD"), method = "execute", remap = false, cancellable = true)
     private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel();
+
         if (entity != null) {
             boolean logic_a = false;
             double rnd = 0.0;
@@ -74,7 +71,7 @@ public abstract class HollowPurpleMixin {
             if (entity instanceof LivingEntity) {
                 _entity = (LivingEntity) entity;
                 if (!_entity.level().isClientSide()) {
-                    _entity.addEffect(new MobEffectInstance((MobEffect) JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
+                    _entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME.get(), (int) entity.getPersistentData().getDouble("COOLDOWN_TICKS"), 0, false, false));
                 }
             }
 
@@ -165,16 +162,16 @@ public abstract class HollowPurpleMixin {
                     var57 = 0;
                 }
 
-                HP = (double) (40 + var57 * 20);
-                pitch = Math.toRadians((double) entity.getXRot());
-                yaw = Math.toRadians((double) (entity.getYRot() + 90.0F - 40.0F));
+                HP = 40 + var57 * 20;
+                pitch = Math.toRadians(entity.getXRot());
+                yaw = Math.toRadians(entity.getYRot() + 90.0F - 40.0F);
                 x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                 y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
                 z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                 if (world instanceof ServerLevel) {
                     _level = (ServerLevel) world;
                     var56 = _level.getServer().getCommands();
-                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
+                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput();
                     var60 = Math.round(HP);
                     var56.performPrefixedCommand(var59, "summon jujutsucraft:red ~ ~ ~ {Invulnerable:1b,Health:" + var60 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                 }
@@ -197,14 +194,14 @@ public abstract class HollowPurpleMixin {
                     }
                 }
 
-                yaw = Math.toRadians((double) (entity.getYRot() + 90.0F + 40.0F));
+                yaw = Math.toRadians(entity.getYRot() + 90.0F + 40.0F);
                 x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                 y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
                 z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                 if (world instanceof ServerLevel) {
                     _level = (ServerLevel) world;
                     var56 = _level.getServer().getCommands();
-                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
+                    var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput();
                     var60 = Math.round(HP);
                     var56.performPrefixedCommand(var59, "summon jujutsucraft:blue ~ ~ ~ {Invulnerable:1b,Health:" + var60 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                 }
@@ -260,14 +257,13 @@ public abstract class HollowPurpleMixin {
                             }
 
                             if (logic_a) {
-                                pitch = Math.toRadians((double) entity.getXRot());
+                                pitch = Math.toRadians(entity.getXRot());
                                 x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                                 y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
                                 z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                                 Entity _ent = entityiterator;
                                 _ent.teleportTo(x_pos, y_pos, z_pos);
-                                if (_ent instanceof ServerPlayer) {
-                                    ServerPlayer _serverPlayer = (ServerPlayer) _ent;
+                                if (_ent instanceof ServerPlayer _serverPlayer) {
                                     _serverPlayer.connection.teleport(x_pos, y_pos, z_pos, _ent.getYRot(), _ent.getXRot());
                                 }
                             }
@@ -290,11 +286,11 @@ public abstract class HollowPurpleMixin {
                         Level _level2;
                         if (Math.random() < 0.1 && world instanceof Level) {
                             _level2 = (Level) world;
-                            if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))) {
+                            if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))) {
                                 if (!_level2.isClientSide()) {
-                                    _level2.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                                    _level2.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                                 } else {
-                                    _level2.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                                    _level2.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                                 }
                             }
                         }
@@ -329,8 +325,7 @@ public abstract class HollowPurpleMixin {
                                             }
 
                                             if (var10000.getPersistentData().getDouble("skill") != 0.0) {
-                                                if (entity instanceof Mob) {
-                                                    Mob _mobEnt2 = (Mob) entity;
+                                                if (entity instanceof Mob _mobEnt2) {
                                                     var10000 = _mobEnt2.getTarget();
                                                 } else {
                                                     var10000 = null;
@@ -341,8 +336,7 @@ public abstract class HollowPurpleMixin {
                                                 }
                                             }
 
-                                            if (entity instanceof Mob) {
-                                                Mob _mobEnt3 = (Mob) entity;
+                                            if (entity instanceof Mob _mobEnt3) {
                                                 var10000 = _mobEnt3.getTarget();
                                             } else {
                                                 var10000 = null;
@@ -354,8 +348,7 @@ public abstract class HollowPurpleMixin {
                                         }
                                     }
 
-                                    if (entity instanceof Mob) {
-                                        Mob _mobEnt4 = (Mob) entity;
+                                    if (entity instanceof Mob _mobEnt4) {
                                         var10000 = _mobEnt4.getTarget();
                                     } else {
                                         var10000 = null;
@@ -385,15 +378,15 @@ public abstract class HollowPurpleMixin {
                                 }
                             }
 
-                            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-                            pitch = Math.toRadians((double) entity.getXRot());
+                            yaw = Math.toRadians(entity.getYRot() + 90.0F);
+                            pitch = Math.toRadians(entity.getXRot());
                             x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                             y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
                             z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
-                            if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))){
+                            if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))) {
                                 if (world instanceof ServerLevel) {
                                     _level = (ServerLevel) world;
-                                    _level.sendParticles((SimpleParticleType) JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int) (1.0 + entity.getPersistentData().getDouble("cnt6")), 0.25, 0.25, 0.25, 1.0);
+                                    _level.sendParticles(JujutsucraftModParticleTypes.PARTICLE_THUNDER_BLUE.get(), x_pos, y_pos, z_pos, (int) (1.0 + entity.getPersistentData().getDouble("cnt6")), 0.25, 0.25, 0.25, 1.0);
                                 }
                             }
 
@@ -403,8 +396,7 @@ public abstract class HollowPurpleMixin {
                                 if (entity.getPersistentData().getDouble("cnt5") > 20.0) {
                                     entity.getPersistentData().putDouble("cnt5", 0.0);
                                     entity.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6") + 1.0);
-                                    if (entity instanceof Player) {
-                                        Player _player = (Player) entity;
+                                    if (entity instanceof Player _player) {
                                         if (!_player.level().isClientSide()) {
                                             CompoundTag var61 = entity.getPersistentData();
                                             _player.displayClientMessage(Component.literal("§l\"" + Component.translatable("chant.jujutsucraft.purple" + Math.round(var61.getDouble("cnt6"))).getString() + "\""), false);
@@ -412,8 +404,8 @@ public abstract class HollowPurpleMixin {
                                     }
 
                                     if (entity instanceof Player) {
-                                        double _setval = ((JujutsucraftModVariables.PlayerVariables) entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCursePowerChange - 50.0;
-                                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction) null).ifPresent((capability) -> {
+                                        double _setval = entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePowerChange - 50.0;
+                                        entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent((capability) -> {
                                             capability.PlayerCursePowerChange = _setval;
                                             capability.syncPlayerVariables(entity);
                                         });
@@ -424,7 +416,7 @@ public abstract class HollowPurpleMixin {
                                 if (world instanceof Level) {
                                     _level2 = (Level) world;
                                     if (!_level2.isClientSide()) {
-                                        _level2.explode((Entity) null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
+                                        _level2.explode(null, x_pos, y_pos, z_pos, 0.0F, Level.ExplosionInteraction.NONE);
                                     }
                                 }
 
@@ -433,13 +425,13 @@ public abstract class HollowPurpleMixin {
                                     _level.sendParticles(ParticleTypes.FLASH, x_pos, y_pos, z_pos, 10, 0.25, 0.25, 0.25, 1.5);
                                 }
 
-                                if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect((MobEffect) JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))){
+                                if (!(entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(JujutsucraftaddonModMobEffects.MURASAKI_EFFECT.get()))) {
                                     if (world instanceof Level) {
                                         _level2 = (Level) world;
                                         if (!_level2.isClientSide()) {
-                                            _level2.playSound((Player) null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                                            _level2.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F);
                                         } else {
-                                            _level2.playLocalSound(x, y, z, (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
+                                            _level2.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("jujutsucraft:electric_shock")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                                         }
                                     }
                                 }
@@ -466,8 +458,8 @@ public abstract class HollowPurpleMixin {
                         label289:
                         {
                             entity.getPersistentData().putDouble("cnt2", 1.0);
-                            yaw = Math.toRadians((double) (entity.getYRot() + 90.0F));
-                            pitch = Math.toRadians((double) entity.getXRot());
+                            yaw = Math.toRadians(entity.getYRot() + 90.0F);
+                            pitch = Math.toRadians(entity.getXRot());
                             x_pos = entity.getX() + Math.cos(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
                             y_pos = entity.getY() + (double) entity.getBbHeight() * 0.75 + Math.sin(pitch) * -1.0 * (1.5 + (double) entity.getBbWidth());
                             z_pos = entity.getZ() + Math.sin(yaw) * Math.cos(pitch) * (1.5 + (double) entity.getBbWidth());
@@ -482,11 +474,11 @@ public abstract class HollowPurpleMixin {
                             var57 = 0;
                         }
 
-                        HP = (double) (400 + var57 * 40);
+                        HP = 400 + var57 * 40;
                         if (world instanceof ServerLevel) {
                             _level = (ServerLevel) world;
                             var56 = _level.getServer().getCommands();
-                            var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), (Entity) null)).withSuppressedOutput();
+                            var59 = (new CommandSourceStack(CommandSource.NULL, new Vec3(x_pos, y_pos, z_pos), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)).withSuppressedOutput();
                             var60 = Math.round(HP);
                             var56.performPrefixedCommand(var59, "summon jujutsucraft:purple ~ ~ ~ {Health:" + var60 + "f,Attributes:[{Name:generic.max_health,Base:" + Math.round(HP) + "}],Rotation:[" + entity.getYRot() + "F," + entity.getXRot() + "F]}");
                         }
@@ -504,7 +496,7 @@ public abstract class HollowPurpleMixin {
                             entityiterator = (Entity) var45.next();
                             if (entityiterator instanceof PurpleEntity && entityiterator.getPersistentData().getDouble("NameRanged_ranged") == 0.0) {
                                 SetRangedAmmoProcedure.execute(entity, entityiterator);
-                                ((LivingEntity) entityiterator).getAttribute((Attribute) JujutsucraftModAttributes.SIZE.get()).setBaseValue(8.0 * (0.5 + entity.getPersistentData().getDouble("cnt6") * 0.2));
+                                ((LivingEntity) entityiterator).getAttribute(JujutsucraftModAttributes.SIZE.get()).setBaseValue(8.0 * (0.5 + entity.getPersistentData().getDouble("cnt6") * 0.2));
                                 entityiterator.getPersistentData().putDouble("cnt6", entity.getPersistentData().getDouble("cnt6"));
                                 if (entity instanceof Player) {
                                     if (entity.getPersistentData().getDouble("cnt6") >= 6.0) {
@@ -512,17 +504,15 @@ public abstract class HollowPurpleMixin {
                                     }
                                 } else {
                                     float var63;
-                                    if (entity instanceof LivingEntity) {
-                                        LivingEntity _livEnt = (LivingEntity) entity;
+                                    if (entity instanceof LivingEntity _livEnt) {
                                         var63 = _livEnt.getHealth();
                                     } else {
                                         var63 = -1.0F;
                                     }
 
-                                    var54 = (double) var63;
+                                    var54 = var63;
                                     float var62;
-                                    if (entity instanceof LivingEntity) {
-                                        LivingEntity _livEnt = (LivingEntity) entity;
+                                    if (entity instanceof LivingEntity _livEnt) {
                                         var62 = _livEnt.getMaxHealth();
                                     } else {
                                         var62 = -1.0F;
@@ -544,7 +534,6 @@ public abstract class HollowPurpleMixin {
             }
 
         }
-        ci.cancel();
     }
 
 }
