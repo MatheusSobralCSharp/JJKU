@@ -26,4 +26,4 @@ This project is licensed under the [MIT License](LICENSE).
 ## 📩 Contact
 
 Have any questions or suggestions? Join our **Discord Community**:
-[![Discord](https://discord.gg/2XRUDaaV)
+[![Discord](https://discord.gg/2XRUDaaV)]
