@@ -13,6 +13,9 @@ We welcome contributions! If you want to help:
 - Create a new branch.
 - Submit a pull request!
 
+# NOTE: 
+Ellie is the only that will have access to original mod page, she is the only that can publish in the main curseforge page, you can do your own version of jjku, but that will require add me in project, often curseforge delete projects that aren't yours or block it
+
 For major changes, open an issue first to discuss improvements.
 
 ---
