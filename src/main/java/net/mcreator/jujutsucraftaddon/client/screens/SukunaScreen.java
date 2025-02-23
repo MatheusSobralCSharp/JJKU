@@ -66,14 +66,10 @@ public class SukunaScreen extends Screen {
 
     private List<SukunaScreen.AltarOption> getOptions() {
         List<SukunaScreen.AltarOption> options = new ArrayList<>();
-        options.add(new SukunaScreen.AltarOption("Attack"));
-        options.add(new SukunaScreen.AltarOption("Knockback Attack"));
-        options.add(new SukunaScreen.AltarOption("Barrage Attack"));
         options.add(new SukunaScreen.AltarOption("Dismantle"));
-        options.add(new SukunaScreen.AltarOption("Cleave"));
         options.add(new SukunaScreen.AltarOption("Open"));
+        options.add(new SukunaScreen.AltarOption("Cleave"));
         options.add(new SukunaScreen.AltarOption("World Slash(WIP)"));
-        options.add(new SukunaScreen.AltarOption("Malevolent Shrine(WIP)"));
         return options;
     }
 

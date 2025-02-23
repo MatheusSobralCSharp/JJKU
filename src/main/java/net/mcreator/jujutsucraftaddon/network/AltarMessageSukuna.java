@@ -63,75 +63,40 @@ public class AltarMessageSukuna {
         // Ações feitas, cada page = um index, lembrando que começa por 0, não por 1
         if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 == 1 && entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePower >= 500) {
             // Execute actions based on the type
-            if (page == 0) {
-                entity.getPersistentData().putDouble("skill", 100);
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                    capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.attack1").getString());
-                    capability.syncPlayerVariables(entity);
-                });
-                KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-
-            } else if (page == 1) {
-                entity.getPersistentData().putDouble("skill", 101);
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                    capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.attack2").getString());
-                    capability.syncPlayerVariables(entity);
-                });
-                KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-
-            } else if (page == 2) {
-                entity.getPersistentData().putDouble("skill", 102);
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                    capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.attack3").getString());
-                    capability.syncPlayerVariables(entity);
-                });
-                KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-
-            } else if (page == 3) {
+             if (page == 0) {
                 entity.getPersistentData().putDouble("skill", 105);
-                KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
+                //entity.getPersistentData().putBoolean("PRESS_Z", true);
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                     capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.dismantle").getString());
                     capability.syncPlayerVariables(entity);
                 });
-
-            } else if (page == 4) {
+                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
+            } else if (page == 1) {
+                 entity.getPersistentData().putDouble("skill", 107);
+                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
+                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                     capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.open").getString());
+                     capability.syncPlayerVariables(entity);
+                 });
+             } else if (page == 2) {
                 entity.getPersistentData().putDouble("skill", 106);
                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                     capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.cleave").getString());
                     capability.syncPlayerVariables(entity);
                 });
-
-            } else if (page == 5) {
-                entity.getPersistentData().putDouble("skill", 107);
-                KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                    capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.open").getString());
-                    capability.syncPlayerVariables(entity);
-                });
-
-            } else if (page == 6) {
+            }  else if (page == 3) {
                 if (entity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel && _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_dismantle_cut_the_world"))).isDone())
                          {
-                    entity.getPersistentData().putDouble("skill", 1619);
+                    entity.getPersistentData().putDouble("skill", 119);
+                             KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                     entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                         capability.PlayerSelectCurseTechniqueName = "jujutsu.technique.dismantle";
                         entity.getPersistentData().putDouble("cnt6", 45);
                         capability.syncPlayerVariables(entity);
                     });
-                    KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                 }
-            } } else if (page == 7) {
-            entity.getPersistentData().putDouble("skill", 220);
-            entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                capability.PlayerSelectCurseTechniqueName = "jujutsu.technique.malevolent_shrine";
-                capability.syncPlayerVariables(entity);
-            });
-            KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-
-
-        }
+            } }
         RemoveCE.execute(entity, world);
     }
     // Registrando o Packet
