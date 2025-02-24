@@ -21,6 +21,27 @@ public class DomainBreakOnEffectActiveTickProcedure {
                     entity.saveWithoutId(dataIndex);
                     return dataIndex.getCompound("ForgeData").getDouble("skill");
                 }
+            }.getValue() == 206.0D) {
+                {
+                    CompoundTag dataIndex = new CompoundTag();
+                    entity.saveWithoutId(dataIndex);
+                    dataIndex.getCompound("ForgeData").putDouble("skill", 1);
+                    entity.load(dataIndex);
+                }
+                {
+                    Entity _ent = entity;
+                    if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+                                _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "execute as @s run effect clear @s jujutsucraft:cursed_technique");
+                    }
+                }
+            }
+            if (new Object() {
+                public double getValue() {
+                    CompoundTag dataIndex = new CompoundTag();
+                    entity.saveWithoutId(dataIndex);
+                    return dataIndex.getCompound("ForgeData").getDouble("skill");
+                }
             }.getValue() == 105) {
                 {
                     CompoundTag dataIndex = new CompoundTag();
