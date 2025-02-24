@@ -115,6 +115,19 @@ public class JujutsucraftaddonModKeyMappings {
                                 Minecraft.getInstance().setScreen(new MahoragaScreen());
                             }
                         });
+                    } else if (player.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 2) {
+                        Minecraft.getInstance().execute(() -> {
+                            if (Minecraft.getInstance().screen == null) {
+                                Minecraft.getInstance().setScreen(new GojoScreen());
+                            }
+                        });
+                    }
+                    else if (player.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique == 1) {
+                        Minecraft.getInstance().execute(() -> {
+                            if (Minecraft.getInstance().screen == null) {
+                                Minecraft.getInstance().setScreen(new SukunaScreen());
+                            }
+                        });
                     }
                 }
             }
