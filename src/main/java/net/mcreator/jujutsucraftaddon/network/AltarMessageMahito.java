@@ -96,6 +96,7 @@ public class AltarMessageMahito {
                     capability.syncPlayerVariables(entity);
                 });
                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 50));
             } else if (page == 5) {
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                     capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.attack8").getString());
@@ -122,6 +123,7 @@ public class AltarMessageMahito {
                             entity.displayClientMessage(Component.literal("Summoning Clone"), true);
                     }
                 }
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 100));
             }
 
             RemoveCE.execute(entity, world);
