@@ -2,36 +2,18 @@ package net.mcreator.jujutsucraftaddon.network;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
-import net.mcreator.jujutsucraft.potion.CooldownTimeMobEffect;
-import net.mcreator.jujutsucraft.procedures.CooldownTimeCombatEffectStartedappliedProcedure;
-import net.mcreator.jujutsucraft.procedures.KeyChangeTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
-import net.mcreator.jujutsucraftaddon.init.JujutsucraftaddonModKeyMappings;
-import net.mcreator.jujutsucraftaddon.procedures.BarrierlessAndCompressedProcedure;
-import net.mcreator.jujutsucraftaddon.procedures.DomainExpansionOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.procedures.RemoveCE;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
-import org.lwjgl.glfw.GLFW;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import java.util.function.Supplier;
 
 
@@ -79,14 +61,9 @@ public class AltarMessageGojo {
         if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 == 2 && entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePower >= 500) {
             // Execute actions based on the type
             if (page == 0) {
-                entity.getPersistentData().putDouble("skill", 215);
-                //entity.getPersistentData().putBoolean("PRESS_Z", true);
-                entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                    capability.PlayerSelectCurseTechniqueName = "jujutsu.technique.purple";
-                    capability.syncPlayerVariables(entity);
-                });
-                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 180));
-                KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
+                entity.getPersistentData().putDouble("skill", -99);
+                entity.getPersistentData().putBoolean("PRESS_Z", true);
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), 60, 3, false, false));
             } else if (page == 1) {
                 entity.getPersistentData().putDouble("skill", 207);
                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
@@ -95,13 +72,14 @@ public class AltarMessageGojo {
                     capability.syncPlayerVariables(entity);
                 });
                 entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 100));
-            } else if (page == 2) {
-                entity.getPersistentData().putDouble("skill", 205);
+            } if (page == 2) {
+                entity.getPersistentData().putDouble("skill", 215);
                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                    capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.infinity").getString());
+                    capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.purple").getString());
                     capability.syncPlayerVariables(entity);
                 });
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 180));
             } else if (page == 3) {
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                     capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.blue").getString());

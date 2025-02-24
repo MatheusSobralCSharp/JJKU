@@ -2,15 +2,11 @@ package net.mcreator.jujutsucraftaddon.network;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
-import net.mcreator.jujutsucraft.procedures.CooldownTimeCombatEffectStartedappliedProcedure;
 import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraftaddon.procedures.RemoveCE;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -20,6 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
+
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AltarMessageSukuna {
@@ -61,19 +58,21 @@ public class AltarMessageSukuna {
             return;
 
 
-        // Ações feitas, cada page = um index, lembrando que começa por 0, não por 1
         if (entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCurseTechnique2 == 1 && entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables()).PlayerCursePower >= 500) {
             // Execute actions based on the type
-             if (page == 0) {
+            if (page == 0) {
+                entity.getPersistentData().putDouble("skill", -99);
+                entity.getPersistentData().putBoolean("PRESS_Z", true);
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.CURSED_TECHNIQUE.get(), 60, 3, false, false));
+            } else if (page == 1) {
                 entity.getPersistentData().putDouble("skill", 105);
-                //entity.getPersistentData().putBoolean("PRESS_Z", true);
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                     capability.PlayerSelectCurseTechniqueName = (Component.translatable("jujutsu.technique.dismantle").getString());
                     capability.syncPlayerVariables(entity);
                 });
                  KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                  entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 20));
-             } else if (page == 1) {
+             } else if (page == 2) {
                  entity.getPersistentData().putDouble("skill", 107);
                  KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                  entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -81,7 +80,7 @@ public class AltarMessageSukuna {
                      capability.syncPlayerVariables(entity);
                  });
                  entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 100));
-             } else if (page == 2) {
+             } else if (page == 3) {
                 entity.getPersistentData().putDouble("skill", 106);
                 KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                 entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -89,21 +88,9 @@ public class AltarMessageSukuna {
                     capability.syncPlayerVariables(entity);
                 });
                  entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 20));
-             }  else if (page == 3) {
-                if (entity instanceof ServerPlayer _plr0 && _plr0.level() instanceof ServerLevel && _plr0.getAdvancements().getOrStartProgress(_plr0.server.getAdvancements().getAdvancement(new ResourceLocation("jujutsucraft:skill_dismantle_cut_the_world"))).isDone())
-                         {
-                    entity.getPersistentData().putDouble("skill", 119);
-                             KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
-                    entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-                        capability.PlayerSelectCurseTechniqueName = "jujutsu.technique.dismantle";
-                        entity.getPersistentData().putDouble("cnt6", 45);
-                        capability.syncPlayerVariables(entity);
-                    });
-                }
-                 entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 1800));
-             } }
+             }
+        }
         RemoveCE.execute(entity, world);
-        CooldownTimeCombatEffectStartedappliedProcedure.execute(entity);
     }
     // Registrando o Packet
     @SubscribeEvent

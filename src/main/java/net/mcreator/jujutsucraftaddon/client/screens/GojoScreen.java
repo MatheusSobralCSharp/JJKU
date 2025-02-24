@@ -66,9 +66,9 @@ public class GojoScreen extends Screen {
 
     private List<GojoScreen.AltarOption> getOptions() {
         List<GojoScreen.AltarOption> options = new ArrayList<>();
-        options.add(new GojoScreen.AltarOption("Hollow Purple"));
+        options.add(new GojoScreen.AltarOption("Strong Attack"));
         options.add(new GojoScreen.AltarOption("Red"));
-        options.add(new GojoScreen.AltarOption("Infinity"));
+        options.add(new GojoScreen.AltarOption("Hollow Purple"));
         options.add(new GojoScreen.AltarOption("Blue"));
         return options;
     }
