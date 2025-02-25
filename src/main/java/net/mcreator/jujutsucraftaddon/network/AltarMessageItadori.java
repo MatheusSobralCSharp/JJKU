@@ -2,6 +2,7 @@ package net.mcreator.jujutsucraftaddon.network;
 
 import net.mcreator.jujutsucraft.init.JujutsucraftModMobEffects;
 import net.mcreator.jujutsucraft.network.JujutsucraftModVariables;
+import net.mcreator.jujutsucraft.procedures.CooldownTimeCombatEffectStartedappliedProcedure;
 import net.mcreator.jujutsucraft.procedures.KeyStartTechniqueOnKeyPressedProcedure;
 import net.mcreator.jujutsucraftaddon.JujutsucraftaddonMod;
 import net.mcreator.jujutsucraftaddon.procedures.RemoveCE;
@@ -130,7 +131,6 @@ public class AltarMessageItadori {
                     KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                 }
             }
-
             RemoveCE.execute(entity, world);
         }
 

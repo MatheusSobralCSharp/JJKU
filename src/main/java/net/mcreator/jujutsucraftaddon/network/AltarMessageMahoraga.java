@@ -106,6 +106,7 @@ public class AltarMessageMahoraga {
                     BlockPos center = new BlockPos((int) x, (int) y - 1, (int) z);
                     net.mcreator.jujutsucraftaddon.WaveEffect.createShockwave((ServerLevel) world, center, Mth.nextInt(RandomSource.create(), 5, 20), 20);
                 }
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 50));
             } else if (page == 5) {
                 ItemStack headItem = entity.getItemBySlot(EquipmentSlot.HEAD);
                 if (entity.getHealth() <= entity.getMaxHealth() / 2) {
@@ -119,7 +120,7 @@ public class AltarMessageMahoraga {
                         KeyStartTechniqueOnKeyPressedProcedure.execute(world, x, y, z, entity);
                     }
                 }
-
+                entity.addEffect(new MobEffectInstance(JujutsucraftModMobEffects.COOLDOWN_TIME_COMBAT.get(), 200));
             } else if (page == 6) {
 
                 MobEffectInstance regenerationEffect = entity.getEffect(JujutsucraftModMobEffects.GUARD.get());

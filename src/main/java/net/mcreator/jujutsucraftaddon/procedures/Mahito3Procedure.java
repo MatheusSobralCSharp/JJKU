@@ -16,8 +16,8 @@ public class Mahito3Procedure {
             return;
         if ((entity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 15
                 && (entity.getCapability(JujutsucraftaddonModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftaddonModVariables.PlayerVariables())).InfusedDomain) {
-            if (Math.random() <= 0.005) {
-                sourceentity.hurt(damagesource, (float) (amount / 2));
+            if (Math.random() <= 0.2) {
+                sourceentity.hurt(damagesource, (int) (amount / 0.2));
             }
         }
         if ((sourceentity.getCapability(JujutsucraftModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new JujutsucraftModVariables.PlayerVariables())).PlayerCurseTechnique2 == 15
